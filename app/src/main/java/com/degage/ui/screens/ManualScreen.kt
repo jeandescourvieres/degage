@@ -41,14 +41,14 @@ fun ManualScreen(onBack: () -> Unit) {
         ) {
             item {
                 ManualSection(
-                    title = "🛡️ À quoi sert DÉGAGE ?",
-                    body = "DÉGAGE intercepte automatiquement les appels provenant de numéros de démarcheurs connus, leur joue un message vocal, puis raccroche — sans que votre téléphone ait sonné.\n\nVous économisez du temps et de l'énergie en n'ayant plus jamais à décrocher pour entendre un robot vous proposer une cuisine équipée."
+                    title = "🛡️ À quoi sert Tu dégages ?",
+                    body = "Tu dégages intercepte automatiquement les appels provenant de numéros de démarcheurs connus, leur joue un message vocal, puis raccroche — sans que votre téléphone ait sonné.\n\nVous économisez du temps et de l'énergie en n'ayant plus jamais à décrocher pour entendre un robot vous proposer une cuisine équipée."
                 )
             }
             item {
                 ManualSection(
                     title = "⚡ Démarrage rapide",
-                    body = "1. Ouvrez DÉGAGE.\n2. Assurez-vous que le bouton de protection est sur ON (vert) sur l'écran d'accueil.\n3. C'est tout. DÉGAGE travaille en arrière-plan."
+                    body = "1. Ouvrez Tu dégages.\n2. Assurez-vous que le bouton de protection est sur ON (vert) sur l'écran d'accueil.\n3. C'est tout. Tu dégages travaille en arrière-plan."
                 )
             }
             item {
@@ -84,13 +84,13 @@ fun ManualScreen(onBack: () -> Unit) {
             item {
                 ManualSection(
                     title = "⚙️ Options avancées",
-                    body = "Dans Paramètres :\n\n• Décroche automatique : DÉGAGE répond à l'appel sans faire sonner votre téléphone (recommandé).\n• Bloquer après réponse : ajoute le numéro à votre liste noire personnelle après chaque interaction.\n• Notifications : reçois une notification à chaque appel bloqué."
+                    body = "Dans Paramètres :\n\n• Décroche automatique : Tu dégages répond à l'appel sans faire sonner votre téléphone (recommandé).\n• Bloquer après réponse : ajoute le numéro à votre liste noire personnelle après chaque interaction.\n• Notifications : reçois une notification à chaque appel bloqué."
                 )
             }
             item {
                 ManualSection(
                     title = "❓ Pourquoi le blocage ne fonctionne pas ?",
-                    body = "Si DÉGAGE ne bloque pas les appels, vérifiez :\n\n1. La protection est bien sur ON (écran d'accueil).\n2. DÉGAGE est bien défini comme service de filtrage d'appels : Paramètres Android → Applications → Applications par défaut → Service d'identification de l'appelant et anti-spam → Sélectionner DÉGAGE.\n3. Les permissions téléphone sont accordées à DÉGAGE."
+                    body = "Si Tu dégages ne bloque pas les appels, vérifiez :\n\n1. La protection est bien sur ON (écran d'accueil).\n2. Tu dégages est bien défini comme service de filtrage d'appels : Paramètres Android → Applications → Applications par défaut → Service d'identification de l'appelant et anti-spam → Sélectionner Tu dégages.\n3. Les permissions téléphone sont accordées à Tu dégages."
                 )
             }
             item { Spacer(modifier = Modifier.height(80.dp)) }

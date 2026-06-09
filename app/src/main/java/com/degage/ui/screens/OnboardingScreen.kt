@@ -65,13 +65,13 @@ private fun OnboardingFeaturesScreen(onNext: () -> Unit) {
                 )
                 Spacer(modifier = Modifier.height(32.dp))
 
-                FeatureRow(emoji = "📞", title = "Détection automatique", desc = "DÉGAGE reconnaît les numéros de démarcheurs connus et intercepte l'appel avant que votre téléphone sonne.")
+                FeatureRow(emoji = "📞", title = "Détection automatique", desc = "Tu dégages reconnaît les numéros de démarcheurs connus et intercepte l'appel avant que votre téléphone sonne.")
                 Spacer(modifier = Modifier.height(16.dp))
                 FeatureRow(emoji = "🎙️", title = "Réponse vocale", desc = "Une voix synthétique répond au spammeur à votre place, puis raccroche. 4 tons disponibles : poli, administratif, sarcastique ou troll.")
                 Spacer(modifier = Modifier.height(16.dp))
                 FeatureRow(emoji = "📊", title = "Statistiques & Historique", desc = "Consultez le nombre d'appels bloqués, le temps économisé et l'historique détaillé de chaque interaction.")
                 Spacer(modifier = Modifier.height(16.dp))
-                FeatureRow(emoji = "✏️", title = "Totalement personnalisable", desc = "Créez vos propres messages, ajustez la voix, la vitesse et le ton. DÉGAGE s'adapte à votre style.")
+                FeatureRow(emoji = "✏️", title = "Totalement personnalisable", desc = "Créez vos propres messages, ajustez la voix, la vitesse et le ton. Tu dégages s'adapte à votre style.")
             }
 
             Column(horizontalAlignment = Alignment.CenterHorizontally) {
@@ -179,7 +179,7 @@ private fun PermissionExplanationScreen(onAuthorize: () -> Unit) {
                 Spacer(modifier = Modifier.height(20.dp))
 
                 Text(
-                    text = "👉  Sélectionnez \"Dégage\" dans la liste\n\n👉  Puis appuyez sur \"Définir par défaut\"",
+                    text = "👉  Sélectionnez \"Tu dégages\" dans la liste\n\n👉  Puis appuyez sur \"Définir par défaut\"",
                     fontSize = 16.sp,
                     color = Color.White,
                     textAlign = TextAlign.Center,
@@ -189,7 +189,7 @@ private fun PermissionExplanationScreen(onAuthorize: () -> Unit) {
                 Spacer(modifier = Modifier.height(16.dp))
 
                 Text(
-                    text = "Sans cette autorisation, DÉGAGE ne peut pas intercepter les appels des démarcheurs.",
+                    text = "Sans cette autorisation, Tu dégages ne peut pas intercepter les appels des démarcheurs.",
                     fontSize = 13.sp,
                     color = Color(0xFF8A8A8A),
                     textAlign = TextAlign.Center,
@@ -254,7 +254,7 @@ private fun OnboardingWelcomeScreen(onNext: () -> Unit) {
                 Spacer(modifier = Modifier.height(32.dp))
 
                 Text(
-                    text = "DÉGAGE",
+                    text = "Tu dégages",
                     fontSize = 48.sp,
                     fontWeight = FontWeight.Black,
                     color = Color.White

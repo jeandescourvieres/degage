@@ -51,7 +51,7 @@ fun AboutScreen(onBack: () -> Unit) {
             }
 
             Spacer(modifier = Modifier.height(16.dp))
-            Text("DÉGAGE", fontSize = 32.sp, fontWeight = FontWeight.Black, color = Color.White)
+            Text("Tu dégages", fontSize = 32.sp, fontWeight = FontWeight.Black, color = Color.White)
             Text("v1.0.0", color = TextSecondary, fontSize = 14.sp)
             Spacer(modifier = Modifier.height(8.dp))
             Text(

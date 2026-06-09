@@ -47,7 +47,7 @@ fun HomeScreen(
     var showInfo by remember { mutableStateOf(false) }
     if (showInfo) InfoDialog(
         title = "Écran d'accueil",
-        content = "DÉGAGE protège votre téléphone contre les appels de démarchage.\n\n• Le bouton ON/OFF active ou désactive la protection en temps réel.\n• Les compteurs affichent vos statistiques de blocage.\n• La liste en bas montre les derniers appels bloqués.\n• Appuyez sur \"Voir tout\" pour consulter l'historique complet.",
+        content = "Tu dégages protège votre téléphone contre les appels de démarchage.\n\n• Le bouton ON/OFF active ou désactive la protection en temps réel.\n• Les compteurs affichent vos statistiques de blocage.\n• La liste en bas montre les derniers appels bloqués.\n• Appuyez sur \"Voir tout\" pour consulter l'historique complet.",
         onDismiss = { showInfo = false }
     )
 
@@ -69,7 +69,7 @@ fun HomeScreen(
             ) {
                 Column {
                     Text(
-                        text = "DÉGAGE",
+                        text = "Tu dégages",
                         fontSize = 28.sp,
                         fontWeight = FontWeight.Black,
                         color = Color.White

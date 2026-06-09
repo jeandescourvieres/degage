@@ -37,7 +37,7 @@ fun HistoryScreen(
     var showInfo by remember { mutableStateOf(false) }
     if (showInfo) InfoDialog(
         title = "Historique",
-        content = "Journal de tous les appels bloqués par DÉGAGE.\n\n• Chaque ligne affiche le numéro détecté, la date/heure, le mode utilisé et le message joué.\n• Utilisez les filtres en haut (Tous / Bloqués / Réponses / Manuels) pour trier l'affichage.\n• Appuyez sur l'icône 🗑️ pour supprimer une entrée de l'historique.",
+        content = "Journal de tous les appels bloqués par Tu dégages.\n\n• Chaque ligne affiche le numéro détecté, la date/heure, le mode utilisé et le message joué.\n• Utilisez les filtres en haut (Tous / Bloqués / Réponses / Manuels) pour trier l'affichage.\n• Appuyez sur l'icône 🗑️ pour supprimer une entrée de l'historique.",
         onDismiss = { showInfo = false }
     )
 

@@ -128,7 +128,7 @@ fun MessageBuilderScreen(
                         color = Color.White
                     )
                     Text(
-                        "DÉGAGE assemble automatiquement un message en 3 parties avant de raccrocher. Vous choisissez librement une option par section :",
+                        "Tu dégages assemble automatiquement un message en 3 parties avant de raccrocher. Vous choisissez librement une option par section :",
                         fontSize = 13.sp,
                         color = TextSecondary,
                         lineHeight = 20.sp
@@ -170,7 +170,7 @@ fun MessageBuilderScreen(
             item {
                 PartSection(
                     part = MessagePart.SALUTATION,
-                    description = "La phrase d'ouverture lue en premier par DÉGAGE. Sélectionnez celle qui correspond à votre style — une seule à la fois.",
+                    description = "La phrase d'ouverture lue en premier par Tu dégages. Sélectionnez celle qui correspond à votre style — une seule à la fois.",
                     isExpanded = expandedSection == MessagePart.SALUTATION,
                     onToggleExpand = {
                         expandedSection = if (expandedSection == MessagePart.SALUTATION) null else MessagePart.SALUTATION
@@ -366,7 +366,7 @@ fun MessageBuilderPreview() {
             activeMode = AppMode.SARCASTIQUE,
             salutations = listOf(
                 ReplyEntity(id = 1, text = "Bonjour.", modeName = "GLOBAL", partType = "SALUTATION", isEnabled = true),
-                ReplyEntity(id = 2, text = "Bonjour et bienvenue sur DÉGAGE.", modeName = "GLOBAL", partType = "SALUTATION", isEnabled = false),
+                ReplyEntity(id = 2, text = "Bonjour et bienvenue sur Tu dégages.", modeName = "GLOBAL", partType = "SALUTATION", isEnabled = false),
             ),
             bodies = listOf(
                 ReplyEntity(id = 3, text = "Cette ligne est allergique au démarchage.", modeName = "SARCASTIQUE", partType = "BODY", isEnabled = true),

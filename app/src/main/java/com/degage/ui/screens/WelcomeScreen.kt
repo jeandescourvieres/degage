@@ -43,7 +43,7 @@ fun WelcomeScreen(
                 Spacer(modifier = Modifier.width(48.dp))
             }
             Text(
-                text = "Bienvenue sur DÉGAGE",
+                text = "Bienvenue sur Tu dégages",
                 fontSize = 20.sp,
                 fontWeight = FontWeight.Bold,
                 color = Color.White,
@@ -100,7 +100,7 @@ fun WelcomeScreen(
             item {
                 WelcomeSection(
                     "🤖 Blocage intelligent avec réponse IA",
-                    "DÉGAGE filtre les appels indésirables et les redirige vers votre assistant vocal IA personnalisé — avant de mettre fin à la conversation. Le démarcheur parle à votre IA, pas à vous."
+                    "Tu dégages filtre les appels indésirables et les redirige vers votre assistant vocal IA personnalisé — avant de mettre fin à la conversation. Le démarcheur parle à votre IA, pas à vous."
                 )
             }
             item {
