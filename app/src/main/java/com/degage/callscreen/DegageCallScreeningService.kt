@@ -8,6 +8,7 @@ import com.degage.database.AppDatabase
 import com.degage.database.entities.BlockedCallEntity
 import com.degage.database.entities.SpamEntry
 import com.degage.modes.AppMode
+import com.degage.spam.SupabaseClient
 import com.degage.prefs.AppPreferences
 import com.degage.replies.MessagePart
 import com.degage.tts.HoldMusicPlayer
@@ -47,6 +48,8 @@ class DegageCallScreeningService : CallScreeningService() {
 
             val db = AppDatabase.getInstance(applicationContext)
 
+            val contributeDb = prefs.contributeDb.first()
+
             // ── Numéro déjà connu dans la base spam → rejet immédiat sans TTS ──
             if (normalized.isNotBlank() && db.spamDao().isKnownSpam(normalized)) {
                 silentReject(callDetails)
@@ -59,6 +62,7 @@ class DegageCallScreeningService : CallScreeningService() {
                         replyUsed = "Rejet automatique — numéro connu"
                     )
                 )
+                if (contributeDb) SupabaseClient.reportNumber(normalized)
                 return@launch
             }
 
@@ -125,6 +129,7 @@ class DegageCallScreeningService : CallScreeningService() {
             // ── Mémoriser ce numéro pour rejet immédiat la prochaine fois ────
             if (normalized.isNotBlank()) {
                 db.spamDao().insert(SpamEntry(number = normalized, source = "auto_block"))
+                if (contributeDb) SupabaseClient.reportNumber(normalized)
             }
         }
     }

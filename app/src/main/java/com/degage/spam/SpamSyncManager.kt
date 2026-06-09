@@ -64,6 +64,22 @@ object SpamSyncManager {
         SyncResult("bundled", added)
     }
 
+    suspend fun syncFromSupabase(context: Context): SyncResult = withContext(Dispatchers.IO) {
+        val numbers = SupabaseClient.fetchSpamNumbers()
+        if (numbers.isEmpty()) return@withContext SyncResult("community", 0)
+        val db = AppDatabase.getInstance(context)
+        var added = 0
+        numbers.forEach { number ->
+            val normalized = number.normalizeNumber()
+            if (normalized.length >= 6) {
+                db.spamDao().insert(SpamEntry(number = normalized, source = "community"))
+                added++
+            }
+        }
+        Log.i(TAG, "Supabase sync: +$added")
+        SyncResult("community", added)
+    }
+
     suspend fun syncAll(context: Context): List<SyncResult> = withContext(Dispatchers.IO) {
         REMOTE_SOURCES.map { source -> syncSource(context, source) }
     }

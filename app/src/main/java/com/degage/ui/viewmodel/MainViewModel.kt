@@ -77,6 +77,9 @@ class MainViewModel(app: Application) : AndroidViewModel(app) {
     val monitorLive: StateFlow<Boolean> = prefs.monitorLive
         .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5000), false)
 
+    val contributeDb: StateFlow<Boolean> = prefs.contributeDb
+        .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5000), false)
+
     val spamDbCount: StateFlow<Int> = db.spamDao().getCount()
         .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5000), 0)
 
@@ -94,7 +97,9 @@ class MainViewModel(app: Application) : AndroidViewModel(app) {
             SpamSyncManager.loadBundledList(getApplication())
             prefs.setBundledLoaded()
         }
-        // Sync depuis les sources réseau
+        // Sync base communautaire Supabase
+        SpamSyncManager.syncFromSupabase(getApplication())
+        // Sync depuis les sources réseau publiques
         SpamSyncManager.syncAll(getApplication())
         prefs.setLastSpamSync(System.currentTimeMillis())
         _isSyncing.value = false
@@ -164,4 +169,5 @@ class MainViewModel(app: Application) : AndroidViewModel(app) {
     fun setNotifications(v: Boolean) = viewModelScope.launch { prefs.setNotifications(v) }
     fun setBlockAfterReply(v: Boolean) = viewModelScope.launch { prefs.setBlockAfterReply(v) }
     fun setMonitorLive(v: Boolean) = viewModelScope.launch { prefs.setMonitorLive(v) }
+    fun setContributeDb(v: Boolean) = viewModelScope.launch { prefs.setContributeDb(v) }
 }

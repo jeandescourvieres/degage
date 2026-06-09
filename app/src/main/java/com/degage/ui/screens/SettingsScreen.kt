@@ -1,6 +1,7 @@
 package com.degage.ui.screens
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
@@ -28,11 +29,13 @@ fun SettingsScreen(
     blockAfterReply: Boolean,
     notifications: Boolean,
     monitorLive: Boolean = false,
+    contributeDb: Boolean = false,
     onToggleEnabled: () -> Unit,
     onToggleAutoReject: () -> Unit,
     onToggleBlockAfterReply: () -> Unit,
     onToggleNotifications: () -> Unit,
     onToggleMonitorLive: () -> Unit = {},
+    onToggleContributeDb: () -> Unit = {},
     onNavigateAbout: () -> Unit,
     onNavigateMessageBuilder: () -> Unit,
     onNavigateVoiceSettings: () -> Unit,
@@ -85,6 +88,9 @@ fun SettingsScreen(
         }
         item {
             MonitorLiveRow(checked = monitorLive, onToggle = onToggleMonitorLive)
+        }
+        item {
+            ContributeDbRow(checked = contributeDb, onToggle = onToggleContributeDb)
         }
 
         item { Spacer(modifier = Modifier.height(16.dp)) }
@@ -222,6 +228,88 @@ fun MonitorLiveRow(checked: Boolean, onToggle: () -> Unit) {
             )
         )
     }
+}
+
+@Composable
+fun ContributeDbRow(checked: Boolean, onToggle: () -> Unit) {
+    Column(
+        modifier = Modifier
+            .fillMaxWidth()
+            .background(
+                if (checked) NeonGreenDim.copy(alpha = 0.18f) else CardBg,
+                RoundedCornerShape(18.dp)
+            )
+            .border(
+                width = if (checked) 1.5.dp else 1.dp,
+                color = if (checked) NeonGreen.copy(alpha = 0.6f) else NeonGreen.copy(alpha = 0.15f),
+                shape = RoundedCornerShape(18.dp)
+            )
+            .padding(20.dp)
+    ) {
+        Row(verticalAlignment = Alignment.CenterVertically) {
+            Text("🌍", fontSize = 28.sp)
+            Spacer(modifier = Modifier.width(12.dp))
+            Column(modifier = Modifier.weight(1f)) {
+                Text(
+                    "Base communautaire",
+                    color = NeonGreen,
+                    fontSize = 13.sp,
+                    fontWeight = FontWeight.Bold
+                )
+                Text(
+                    "La clé de voûte de Tu dégages",
+                    color = Color.White,
+                    fontSize = 17.sp,
+                    fontWeight = FontWeight.Black,
+                    lineHeight = 22.sp
+                )
+            }
+            Switch(
+                checked = checked,
+                onCheckedChange = { onToggle() },
+                colors = SwitchDefaults.colors(
+                    checkedThumbColor = Color.Black,
+                    checkedTrackColor = NeonGreen,
+                    uncheckedThumbColor = TextSecondary,
+                    uncheckedTrackColor = CardBgAlt
+                )
+            )
+        }
+        Spacer(modifier = Modifier.height(14.dp))
+        Text(
+            "Chaque spammeur bloqué par un utilisateur est signalé à toute la communauté. " +
+            "Plus on est nombreux, plus la base grossit — et plus les rejets sont rapides pour tout le monde.",
+            color = TextSecondary,
+            fontSize = 13.sp,
+            lineHeight = 20.sp
+        )
+        Spacer(modifier = Modifier.height(12.dp))
+        Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+            ContributeBadge("🤝 Partagé entre tous")
+            ContributeBadge("🔒 Opt-in")
+            ContributeBadge("🇫🇷 Serveur EU")
+        }
+        Spacer(modifier = Modifier.height(12.dp))
+        Text(
+            "Seul le numéro de l'appelant spam est transmis — jamais vos données personnelles.",
+            color = TextSecondary.copy(alpha = 0.7f),
+            fontSize = 11.sp,
+            lineHeight = 16.sp
+        )
+    }
+}
+
+@Composable
+private fun ContributeBadge(label: String) {
+    Text(
+        label,
+        color = NeonGreen,
+        fontSize = 10.sp,
+        fontWeight = FontWeight.SemiBold,
+        modifier = Modifier
+            .background(NeonGreen.copy(alpha = 0.1f), RoundedCornerShape(20.dp))
+            .padding(horizontal = 8.dp, vertical = 4.dp)
+    )
 }
 
 @Composable

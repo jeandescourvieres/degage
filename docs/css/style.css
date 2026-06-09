@@ -434,6 +434,94 @@ section:nth-child(even) { background: var(--card); }
   margin-top: 16px;
 }
 
+/* ── COMMUNAUTÉ ──────────────────────────────────────────────────────── */
+.community-section {
+  background: linear-gradient(180deg, var(--bg) 0%, rgba(170,255,0,0.03) 50%, var(--bg) 100%);
+  border-top: 1px solid rgba(170,255,0,0.1);
+  border-bottom: 1px solid rgba(170,255,0,0.1);
+}
+
+.community-card {
+  background: var(--card);
+  border: 1.5px solid var(--green-border);
+  border-radius: 20px;
+  padding: 36px;
+  margin: 36px 0 24px;
+}
+
+.community-how {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  margin-bottom: 28px;
+  flex-wrap: wrap;
+}
+
+.community-step {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  flex: 1;
+  min-width: 180px;
+}
+
+.comm-icon {
+  font-size: 28px;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.community-step strong {
+  display: block;
+  color: var(--text);
+  font-size: 15px;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.community-step p {
+  color: var(--text-secondary);
+  font-size: 13px;
+  line-height: 1.5;
+  margin: 0;
+}
+
+.community-arrow {
+  color: var(--green);
+  font-size: 24px;
+  font-weight: 900;
+  align-self: center;
+  flex-shrink: 0;
+  opacity: 0.6;
+}
+
+.community-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.comm-badge {
+  background: rgba(170,255,0,0.08);
+  border: 1px solid rgba(170,255,0,0.2);
+  color: var(--green);
+  font-size: 12px;
+  font-weight: 600;
+  padding: 6px 14px;
+  border-radius: 20px;
+}
+
+.community-note {
+  text-align: center;
+  color: var(--text-secondary);
+  font-size: 13px;
+  line-height: 1.6;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.community-note strong { color: var(--text); }
+
 /* ── FOOTER ──────────────────────────────────────────────────────────── */
 footer {
   background: #050505;
