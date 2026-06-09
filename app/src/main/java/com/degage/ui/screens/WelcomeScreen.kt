@@ -79,7 +79,7 @@ fun WelcomeScreen(
                         lineHeight = 28.sp
                     )
                     Text(
-                        text = "Votre IA adore\nleur répondre !",
+                        text = "Votre IA va adorer\nleur répondre !",
                         fontSize = 22.sp,
                         fontWeight = FontWeight.Black,
                         color = NeonGreen,
