@@ -69,7 +69,7 @@ fun HomeScreen(
             ) {
                 Column {
                     Text(
-                        text = "Tu dégages",
+                        text = "Tu dégages !",
                         fontSize = 28.sp,
                         fontWeight = FontWeight.Black,
                         color = Color.White

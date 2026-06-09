@@ -278,7 +278,8 @@ fun ContributeDbRow(checked: Boolean, onToggle: () -> Unit) {
         Spacer(modifier = Modifier.height(14.dp))
         Text(
             "Chaque spammeur bloqué par un utilisateur est signalé à toute la communauté. " +
-            "Plus on est nombreux, plus la base grossit — et plus les rejets sont rapides pour tout le monde.",
+            "À chaque connexion, votre appli télécharge automatiquement les nouveaux numéros signalés par tous les utilisateurs — " +
+            "et les ajoute à votre base locale. Plus on est nombreux, plus les rejets sont rapides pour tout le monde.",
             color = TextSecondary,
             fontSize = 13.sp,
             lineHeight = 20.sp
