@@ -215,7 +215,7 @@ section:nth-child(even) { background: var(--card); }
 
 .section-sub {
   font-size: 16px;
-  color: var(--text-secondary);
+  color: #bbb;
   max-width: 560px;
   line-height: 1.65;
   margin-bottom: 48px;
@@ -239,7 +239,7 @@ section:nth-child(even) { background: var(--card); }
 
 .feature-icon { font-size: 32px; margin-bottom: 14px; }
 .feature-card h3 { font-size: 16px; font-weight: 700; margin-bottom: 8px; }
-.feature-card p { font-size: 13px; color: var(--text-secondary); line-height: 1.6; }
+.feature-card p { font-size: 13px; color: #bbb; line-height: 1.6; }
 
 /* ── MODES ───────────────────────────────────────────────────────────── */
 .modes-grid {
@@ -257,7 +257,7 @@ section:nth-child(even) { background: var(--card); }
 .mode-card.active { border-color: var(--green-border); background: var(--green-dim); }
 .mode-card .mode-emoji { font-size: 28px; margin-bottom: 10px; }
 .mode-card h3 { font-size: 15px; font-weight: 700; margin-bottom: 6px; }
-.mode-card p { font-size: 12px; color: var(--text-secondary); line-height: 1.55; }
+.mode-card p { font-size: 12px; color: #bbb; line-height: 1.55; }
 .mode-card .mode-example { margin-top: 10px; font-size: 11px; color: rgba(170,255,0,0.7); font-style: italic; }
 
 /* ── HOW IT WORKS ────────────────────────────────────────────────────── */
@@ -295,7 +295,7 @@ section:nth-child(even) { background: var(--card); }
   flex-shrink: 0;
 }
 .step-body h3 { font-size: 16px; font-weight: 700; margin-bottom: 6px; padding-top: 8px; }
-.step-body p { font-size: 14px; color: var(--text-secondary); line-height: 1.6; }
+.step-body p { font-size: 14px; color: #bbb; line-height: 1.6; }
 
 /* ── SPAM DB ─────────────────────────────────────────────────────────── */
 .sources-grid {
@@ -315,7 +315,7 @@ section:nth-child(even) { background: var(--card); }
 }
 .source-card .source-icon { font-size: 22px; flex-shrink: 0; }
 .source-card h4 { font-size: 13px; font-weight: 700; margin-bottom: 4px; }
-.source-card p { font-size: 11px; color: var(--text-secondary); line-height: 1.5; }
+.source-card p { font-size: 11px; color: #bbb; line-height: 1.5; }
 .badge-active {
   display: inline-block;
   background: var(--green-dim);
