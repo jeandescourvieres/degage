@@ -27,10 +27,12 @@ fun SettingsScreen(
     autoReject: Boolean,
     blockAfterReply: Boolean,
     notifications: Boolean,
+    monitorLive: Boolean = false,
     onToggleEnabled: () -> Unit,
     onToggleAutoReject: () -> Unit,
     onToggleBlockAfterReply: () -> Unit,
     onToggleNotifications: () -> Unit,
+    onToggleMonitorLive: () -> Unit = {},
     onNavigateAbout: () -> Unit,
     onNavigateMessageBuilder: () -> Unit,
     onNavigateVoiceSettings: () -> Unit,
@@ -80,6 +82,9 @@ fun SettingsScreen(
         }
         item {
             SettingsToggleRow(label = "Notifications", checked = notifications, onToggle = onToggleNotifications)
+        }
+        item {
+            MonitorLiveRow(checked = monitorLive, onToggle = onToggleMonitorLive)
         }
 
         item { Spacer(modifier = Modifier.height(16.dp)) }
@@ -183,6 +188,39 @@ fun SpamSyncRow(isSyncing: Boolean, onClick: () -> Unit) {
         } else {
             Text("Sync", color = NeonGreen, fontSize = 13.sp, fontWeight = FontWeight.SemiBold)
         }
+    }
+}
+
+@Composable
+fun MonitorLiveRow(checked: Boolean, onToggle: () -> Unit) {
+    Row(
+        modifier = Modifier
+            .fillMaxWidth()
+            .background(if (checked) NeonGreenDim.copy(alpha = 0.15f) else CardBg, RoundedCornerShape(14.dp))
+            .padding(horizontal = 20.dp, vertical = 10.dp),
+        horizontalArrangement = Arrangement.SpaceBetween,
+        verticalAlignment = Alignment.CenterVertically
+    ) {
+        Column(modifier = Modifier.weight(1f)) {
+            Text("🔊 Écouter la réponse IA en direct", color = Color.White, fontSize = 15.sp)
+            Text(
+                "Entendez ce que votre IA dit au spammeur sur votre haut-parleur",
+                color = TextSecondary,
+                fontSize = 11.sp,
+                lineHeight = 16.sp
+            )
+        }
+        Spacer(modifier = Modifier.width(12.dp))
+        Switch(
+            checked = checked,
+            onCheckedChange = { onToggle() },
+            colors = SwitchDefaults.colors(
+                checkedThumbColor = Color.Black,
+                checkedTrackColor = NeonGreen,
+                uncheckedThumbColor = TextSecondary,
+                uncheckedTrackColor = CardBgAlt
+            )
+        )
     }
 }
 

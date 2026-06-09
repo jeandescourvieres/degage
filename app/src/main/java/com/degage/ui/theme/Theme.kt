@@ -12,7 +12,7 @@ val CardBg = Color(0xFF141414)
 val CardBgAlt = Color(0xFF1C1C1C)
 val RedAlert = Color(0xFFE53935)
 val TextPrimary = Color(0xFFFFFFFF)
-val TextSecondary = Color(0xFF8A8A8A)
+val TextSecondary = Color(0xFFBBBBBB)
 
 private val DegageColorScheme = darkColorScheme(
     primary = NeonGreen,

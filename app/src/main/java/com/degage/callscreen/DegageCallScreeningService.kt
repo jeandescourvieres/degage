@@ -1,5 +1,7 @@
 package com.degage.callscreen
 
+import android.content.Context
+import android.media.AudioManager
 import android.telecom.Call
 import android.telecom.CallScreeningService
 import com.degage.database.AppDatabase
@@ -82,7 +84,18 @@ class DegageCallScreeningService : CallScreeningService() {
             val rate = prefs.speechRate.first()
             val pitch = prefs.pitch.first()
             val voiceName = prefs.voiceName.first().ifBlank { null }
+            val monitorLive = prefs.monitorLive.first()
             ttsManager.applySettings(rate, pitch, voiceName)
+
+            val audioManager = getSystemService(Context.AUDIO_SERVICE) as AudioManager
+            if (monitorLive) {
+                audioManager.isSpeakerphoneOn = true
+                audioManager.setStreamVolume(
+                    AudioManager.STREAM_MUSIC,
+                    audioManager.getStreamMaxVolume(AudioManager.STREAM_MUSIC),
+                    0
+                )
+            }
 
             if (mode == AppMode.TROLL) {
                 ttsManager.speak(fullMessage)
@@ -92,6 +105,10 @@ class DegageCallScreeningService : CallScreeningService() {
             } else {
                 ttsManager.speak(fullMessage)
                 delay(5_000L)
+            }
+
+            if (monitorLive) {
+                audioManager.isSpeakerphoneOn = false
             }
 
             silentReject(callDetails)

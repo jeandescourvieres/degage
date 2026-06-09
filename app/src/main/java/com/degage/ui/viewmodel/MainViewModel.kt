@@ -74,6 +74,9 @@ class MainViewModel(app: Application) : AndroidViewModel(app) {
     val blockAfterReply: StateFlow<Boolean> = prefs.blockAfterReply
         .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5000), true)
 
+    val monitorLive: StateFlow<Boolean> = prefs.monitorLive
+        .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5000), false)
+
     val spamDbCount: StateFlow<Int> = db.spamDao().getCount()
         .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5000), 0)
 
@@ -160,4 +163,5 @@ class MainViewModel(app: Application) : AndroidViewModel(app) {
     fun setAutoReject(v: Boolean) = viewModelScope.launch { prefs.setAutoReject(v) }
     fun setNotifications(v: Boolean) = viewModelScope.launch { prefs.setNotifications(v) }
     fun setBlockAfterReply(v: Boolean) = viewModelScope.launch { prefs.setBlockAfterReply(v) }
+    fun setMonitorLive(v: Boolean) = viewModelScope.launch { prefs.setMonitorLive(v) }
 }

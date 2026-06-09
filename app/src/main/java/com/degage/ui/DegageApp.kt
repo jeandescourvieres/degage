@@ -54,6 +54,7 @@ fun DegageApp(
     val spamDbCount by viewModel.spamDbCount.collectAsStateWithLifecycle()
     val lastSpamSync by viewModel.lastSpamSync.collectAsStateWithLifecycle()
     val isSyncing by viewModel.isSyncing.collectAsStateWithLifecycle()
+    val monitorLive by viewModel.monitorLive.collectAsStateWithLifecycle()
 
     val startDestination = when {
         !onboardingDone -> Screen.Onboarding.route
@@ -162,10 +163,12 @@ fun DegageApp(
                         autoReject = autoReject,
                         blockAfterReply = blockAfterReply,
                         notifications = notifications,
+                        monitorLive = monitorLive,
                         onToggleEnabled = viewModel::toggleEnabled,
                         onToggleAutoReject = { viewModel.setAutoReject(!autoReject) },
                         onToggleBlockAfterReply = { viewModel.setBlockAfterReply(!blockAfterReply) },
                         onToggleNotifications = { viewModel.setNotifications(!notifications) },
+                        onToggleMonitorLive = { viewModel.setMonitorLive(!monitorLive) },
                         onNavigateAbout = { navController.navigate(Screen.About.route) },
                         onNavigateMessageBuilder = { navController.navigate(Screen.MessageBuilder.route) },
                         onNavigateVoiceSettings = { navController.navigate(Screen.VoiceSettings.route) },
