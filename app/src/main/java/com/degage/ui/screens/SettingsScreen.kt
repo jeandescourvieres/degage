@@ -12,6 +12,9 @@ import androidx.compose.material.icons.filled.ChevronRight
 import androidx.compose.material.icons.filled.Info
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
+import androidx.compose.ui.text.buildAnnotatedString
+import androidx.compose.ui.text.SpanStyle
+import androidx.compose.ui.text.withStyle
 import com.degage.ui.components.InfoDialog
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -257,7 +260,10 @@ fun ContributeDbRow(checked: Boolean, onToggle: () -> Unit) {
                     fontWeight = FontWeight.Bold
                 )
                 Text(
-                    "La clé de voûte de Tu dégages",
+                    buildAnnotatedString {
+                        append("La clé de voûte de\n")
+                        withStyle(SpanStyle(color = NeonGreen)) { append("Tu dégages") }
+                    },
                     color = Color.White,
                     fontSize = 17.sp,
                     fontWeight = FontWeight.Black,
