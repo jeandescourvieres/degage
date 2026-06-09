@@ -71,7 +71,7 @@ fun WelcomeScreen(
                     Text("🤖", fontSize = 48.sp)
                     Spacer(modifier = Modifier.height(12.dp))
                     Text(
-                        text = "Les spammeurs adorent\nvous appeler.",
+                        text = "Les spammeurs adorent\nvous appeler ?",
                         fontSize = 20.sp,
                         fontWeight = FontWeight.Bold,
                         color = Color.White,
@@ -79,7 +79,7 @@ fun WelcomeScreen(
                         lineHeight = 28.sp
                     )
                     Text(
-                        text = "Votre IA adore\nleur répondre.",
+                        text = "Votre IA adore\nleur répondre !",
                         fontSize = 22.sp,
                         fontWeight = FontWeight.Black,
                         color = NeonGreen,
