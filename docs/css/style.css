@@ -89,6 +89,16 @@ nav {
 
 .hero-inner { max-width: 720px; position: relative; }
 
+.hero-appname {
+  font-size: clamp(52px, 10vw, 96px);
+  font-weight: 900;
+  letter-spacing: 6px;
+  color: var(--text);
+  margin-bottom: 16px;
+  line-height: 1;
+}
+.hero-appname span { color: var(--green); }
+
 .hero-badge {
   display: inline-flex;
   align-items: center;
