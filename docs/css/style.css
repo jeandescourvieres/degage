@@ -155,42 +155,87 @@ nav {
 .btn-secondary:hover { border-color: rgba(255,255,255,0.3); text-decoration: none; }
 
 /* ── DIFFERENTIATOR ──────────────────────────────────────────────────── */
-.diff {
-  padding: 0 24px 80px;
-  display: flex;
-  justify-content: center;
+.diff-section {
+  background: linear-gradient(180deg, #0a0a0a 0%, #0d1a00 50%, #0a0a0a 100%);
+  border-top: 1px solid var(--green-border);
+  border-bottom: 1px solid var(--green-border);
+  padding: 80px 24px;
+  text-align: center;
 }
 
-.diff-card {
-  max-width: 780px;
-  width: 100%;
-  background: var(--green-dim);
-  border: 1px solid var(--green-border);
-  border-radius: var(--radius);
-  padding: 36px 40px;
-  display: flex;
-  align-items: flex-start;
-  gap: 24px;
+.diff-inner {
+  max-width: 860px;
+  margin: 0 auto;
 }
 
-.diff-icon { font-size: 42px; flex-shrink: 0; margin-top: 4px; }
-
-.diff-text p:first-child {
-  font-size: 15px;
-  color: var(--text-secondary);
-  margin-bottom: 10px;
-  text-decoration: line-through;
-  text-decoration-color: rgba(255,255,255,0.2);
-}
-.diff-text p:last-child {
-  font-size: clamp(17px, 2.8vw, 22px);
+.diff-vs {
+  font-size: 11px;
   font-weight: 800;
-  color: var(--text);
-  line-height: 1.4;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  margin-bottom: 12px;
 }
-.diff-text p:last-child em {
+
+.diff-other {
+  font-size: clamp(18px, 3vw, 26px);
+  color: var(--text-secondary);
+  text-decoration: line-through;
+  text-decoration-color: rgba(255,255,255,0.25);
+  font-weight: 500;
+  margin-bottom: 32px;
+}
+
+.diff-separator {
+  margin: 0 auto 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+}
+.diff-separator::before,
+.diff-separator::after {
+  content: '';
+  flex: 1;
+  max-width: 200px;
+  height: 1px;
+  background: var(--green-border);
+}
+
+.diff-vs-badge {
+  background: var(--green);
+  color: #000;
+  font-size: 13px;
+  font-weight: 900;
+  padding: 6px 16px;
+  border-radius: 20px;
+  letter-spacing: 2px;
+}
+
+.diff-us-label {
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 2px;
+  text-transform: uppercase;
   color: var(--green);
-  font-style: normal;
+  margin-bottom: 16px;
+}
+
+.diff-headline {
+  font-size: clamp(28px, 5vw, 52px);
+  font-weight: 900;
+  line-height: 1.15;
+  color: var(--text);
+  margin-bottom: 20px;
+}
+.diff-headline span { color: var(--green); }
+
+.diff-sub {
+  font-size: clamp(15px, 2vw, 18px);
+  color: #bbb;
+  line-height: 1.7;
+  max-width: 580px;
+  margin: 0 auto;
 }
 
 /* ── SECTIONS ────────────────────────────────────────────────────────── */
