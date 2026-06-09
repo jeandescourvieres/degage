@@ -4,7 +4,9 @@ import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material.icons.filled.Info
@@ -50,6 +52,7 @@ fun StatisticsScreen(
         modifier = Modifier
             .fillMaxSize()
             .background(DarkBg)
+            .verticalScroll(rememberScrollState())
             .padding(horizontal = 16.dp),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
@@ -112,6 +115,9 @@ fun StatisticsScreen(
         StatRow(emoji = "🛡️", value = spamDbCount.toString(), label = "Numéros mémorisés (rejet auto)")
         Spacer(modifier = Modifier.height(12.dp))
         SpamDbInfoRow(lastSpamSync = lastSpamSync)
+        Spacer(modifier = Modifier.height(12.dp))
+        LegalNoteCard()
+        Spacer(modifier = Modifier.height(80.dp))
     }
 }
 
@@ -193,6 +199,46 @@ private fun SpamSourceRow(emoji: String, name: String, desc: String, alwaysActiv
                 modifier = Modifier
                     .background(NeonGreen.copy(alpha = 0.15f), RoundedCornerShape(4.dp))
                     .padding(horizontal = 6.dp, vertical = 2.dp))
+        }
+    }
+}
+
+@Composable
+private fun LegalNoteCard() {
+    Column(
+        modifier = Modifier
+            .fillMaxWidth()
+            .background(CardBgAlt, RoundedCornerShape(14.dp))
+            .border(1.dp, NeonGreen.copy(alpha = 0.15f), RoundedCornerShape(14.dp))
+            .padding(horizontal = 16.dp, vertical = 14.dp),
+        verticalArrangement = Arrangement.spacedBy(8.dp)
+    ) {
+        Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+            Text("⚖️", fontSize = 16.sp)
+            Text("Pourquoi on ne partage pas vos données ?", fontSize = 13.sp, fontWeight = FontWeight.Bold, color = Color.White)
+        }
+        Text(
+            "Un numéro de téléphone est une donnée personnelle protégée par le RGPD. " +
+            "Transmettre votre liste de numéros bloqués à un tiers — même pour aider d'autres utilisateurs — est interdit sans consentement explicite.",
+            fontSize = 12.sp, color = TextSecondary, lineHeight = 18.sp
+        )
+        Text(
+            "C'est pourquoi Tu dégages stocke tout localement sur votre appareil et ne consulte que des sources publiques officielles (ARCEP, Signal-Spam). " +
+            "Vos données ne quittent jamais votre téléphone.",
+            fontSize = 12.sp, color = TextSecondary, lineHeight = 18.sp
+        )
+        Row(
+            modifier = Modifier
+                .background(NeonGreen.copy(alpha = 0.08f), RoundedCornerShape(8.dp))
+                .padding(horizontal = 10.dp, vertical = 6.dp),
+            verticalAlignment = Alignment.CenterVertically,
+            horizontalArrangement = Arrangement.spacedBy(6.dp)
+        ) {
+            Text("💡", fontSize = 12.sp)
+            Text(
+                "Pour signaler un numéro à la communauté nationale : signal-spam.fr",
+                fontSize = 11.sp, color = NeonGreen, lineHeight = 16.sp
+            )
         }
     }
 }
