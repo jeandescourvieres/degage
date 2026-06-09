@@ -1,0 +1,215 @@
+package com.degage.ui.screens
+
+import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.ArrowBack
+import androidx.compose.material.icons.filled.ChevronRight
+import androidx.compose.material.icons.filled.Info
+import androidx.compose.material3.*
+import androidx.compose.runtime.*
+import com.degage.ui.components.InfoDialog
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
+import com.degage.ui.theme.*
+
+@Composable
+fun SettingsScreen(
+    isEnabled: Boolean,
+    autoReject: Boolean,
+    blockAfterReply: Boolean,
+    notifications: Boolean,
+    onToggleEnabled: () -> Unit,
+    onToggleAutoReject: () -> Unit,
+    onToggleBlockAfterReply: () -> Unit,
+    onToggleNotifications: () -> Unit,
+    onNavigateAbout: () -> Unit,
+    onNavigateMessageBuilder: () -> Unit,
+    onNavigateVoiceSettings: () -> Unit,
+    onNavigateManual: () -> Unit,
+    onNavigateWelcome: () -> Unit = {},
+    onSyncSpamList: () -> Unit = {},
+    isSyncing: Boolean = false,
+    onBack: () -> Unit = {},
+) {
+    var showInfo by remember { mutableStateOf(false) }
+    if (showInfo) InfoDialog(
+        title = "Paramètres",
+        content = "Configurez le comportement de DÉGAGE :\n\n• Protection : active/désactive le filtrage global des appels.\n• Décroche automatique : répond à l'appel sans que le téléphone sonne (recommandé).\n• Bloquer après réponse : ajoute le numéro à la liste noire après chaque interaction.\n• Notifications : vous avertit à chaque appel bloqué.\n• Personnaliser les réponses : créez et gérez vos propres messages.\n• Paramètres vocaux : changez la voix, la vitesse et la hauteur.",
+        onDismiss = { showInfo = false }
+    )
+    LazyColumn(
+        modifier = Modifier
+            .fillMaxSize()
+            .background(DarkBg)
+            .padding(horizontal = 16.dp),
+        verticalArrangement = Arrangement.spacedBy(2.dp)
+    ) {
+        item {
+            Row(
+                modifier = Modifier.fillMaxWidth().padding(top = 8.dp),
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                IconButton(onClick = onBack) {
+                    Icon(Icons.Default.ArrowBack, contentDescription = "Retour", tint = Color.White)
+                }
+                Text("Paramètres", fontSize = 20.sp, fontWeight = FontWeight.Bold, color = Color.White, modifier = Modifier.weight(1f))
+                IconButton(onClick = { showInfo = true }) {
+                    Icon(Icons.Default.Info, contentDescription = "Aide", tint = NeonGreen, modifier = Modifier.size(26.dp))
+                }
+            }
+            Spacer(modifier = Modifier.height(12.dp))
+        }
+
+        item {
+            SettingsToggleRow(label = "Protection", checked = isEnabled, onToggle = onToggleEnabled)
+        }
+        item {
+            SettingsToggleRow(label = "Décroche automatique", checked = autoReject, onToggle = onToggleAutoReject)
+        }
+        item {
+            SettingsToggleRow(label = "Bloquer le numéro après réponse", checked = blockAfterReply, onToggle = onToggleBlockAfterReply)
+        }
+        item {
+            SettingsToggleRow(label = "Notifications", checked = notifications, onToggle = onToggleNotifications)
+        }
+
+        item { Spacer(modifier = Modifier.height(16.dp)) }
+
+        item {
+            SettingsNavRow(label = "💬 Personnaliser les réponses", onClick = onNavigateMessageBuilder)
+        }
+        item {
+            SettingsNavRow(label = "🎙️ Paramètres vocaux", onClick = onNavigateVoiceSettings)
+        }
+
+        item { Spacer(modifier = Modifier.height(8.dp)) }
+
+        item {
+            SettingsInfoRow(label = "Base communautaire", value = "Mise à jour : aujourd'hui 08:15")
+        }
+        item {
+            SettingsInfoRow(label = "Langue", value = "Français")
+        }
+        item {
+            SpamSyncRow(isSyncing = isSyncing, onClick = onSyncSpamList)
+        }
+        item {
+            SettingsNavRow(label = "📖 Mode d'emploi", onClick = onNavigateManual)
+        }
+        item {
+            SettingsNavRow(label = "👋 Revoir la présentation", onClick = onNavigateWelcome)
+        }
+        item {
+            SettingsNavRow(label = "À propos", onClick = onNavigateAbout)
+        }
+
+        item { Spacer(modifier = Modifier.height(80.dp)) }
+    }
+}
+
+@Composable
+fun SettingsToggleRow(label: String, checked: Boolean, onToggle: () -> Unit) {
+    Row(
+        modifier = Modifier
+            .fillMaxWidth()
+            .background(CardBg, RoundedCornerShape(14.dp))
+            .padding(horizontal = 20.dp, vertical = 4.dp),
+        horizontalArrangement = Arrangement.SpaceBetween,
+        verticalAlignment = Alignment.CenterVertically
+    ) {
+        Text(label, color = Color.White, fontSize = 15.sp)
+        Switch(
+            checked = checked,
+            onCheckedChange = { onToggle() },
+            colors = SwitchDefaults.colors(
+                checkedThumbColor = Color.Black,
+                checkedTrackColor = NeonGreen,
+                uncheckedThumbColor = TextSecondary,
+                uncheckedTrackColor = CardBgAlt
+            )
+        )
+    }
+}
+
+@Composable
+fun SettingsInfoRow(label: String, value: String) {
+    Row(
+        modifier = Modifier
+            .fillMaxWidth()
+            .background(CardBg, RoundedCornerShape(14.dp))
+            .padding(horizontal = 20.dp, vertical = 16.dp),
+        horizontalArrangement = Arrangement.SpaceBetween,
+        verticalAlignment = Alignment.CenterVertically
+    ) {
+        Text(label, color = Color.White, fontSize = 15.sp)
+        Text(value, color = TextSecondary, fontSize = 13.sp)
+    }
+}
+
+@Composable
+fun SpamSyncRow(isSyncing: Boolean, onClick: () -> Unit) {
+    Row(
+        modifier = Modifier
+            .fillMaxWidth()
+            .background(CardBg, RoundedCornerShape(14.dp))
+            .clickable(enabled = !isSyncing) { onClick() }
+            .padding(horizontal = 20.dp, vertical = 14.dp),
+        horizontalArrangement = Arrangement.SpaceBetween,
+        verticalAlignment = Alignment.CenterVertically
+    ) {
+        Column(modifier = Modifier.weight(1f)) {
+            Text("🛡️ Mettre à jour la base spam", color = Color.White, fontSize = 15.sp)
+            Text(
+                "phoneblock.net • Signal-Spam France • ARCEP",
+                color = TextSecondary,
+                fontSize = 11.sp
+            )
+        }
+        if (isSyncing) {
+            CircularProgressIndicator(
+                modifier = Modifier.size(20.dp),
+                color = NeonGreen,
+                strokeWidth = 2.dp
+            )
+        } else {
+            Text("Sync", color = NeonGreen, fontSize = 13.sp, fontWeight = FontWeight.SemiBold)
+        }
+    }
+}
+
+@Composable
+fun SettingsNavRow(label: String, onClick: () -> Unit) {
+    Row(
+        modifier = Modifier
+            .fillMaxWidth()
+            .background(CardBg, RoundedCornerShape(14.dp))
+            .clickable { onClick() }
+            .padding(horizontal = 20.dp, vertical = 16.dp),
+        horizontalArrangement = Arrangement.SpaceBetween,
+        verticalAlignment = Alignment.CenterVertically
+    ) {
+        Text(label, color = Color.White, fontSize = 15.sp)
+        Icon(Icons.Default.ChevronRight, contentDescription = null, tint = TextSecondary)
+    }
+}
+
+@Preview(showBackground = true, backgroundColor = 0xFF0A0A0A)
+@Composable
+fun SettingsPreview() {
+    DegageTheme {
+        SettingsScreen(
+            isEnabled = true, autoReject = true, blockAfterReply = true, notifications = true,
+            onToggleEnabled = {}, onToggleAutoReject = {}, onToggleBlockAfterReply = {}, onToggleNotifications = {},
+            onNavigateAbout = {}, onNavigateMessageBuilder = {}, onNavigateVoiceSettings = {}, onNavigateManual = {}
+        )
+    }
+}

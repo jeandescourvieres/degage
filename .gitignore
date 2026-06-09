@@ -1,0 +1,32 @@
+# Build
+build/
+app/build/
+*.apk
+*.aab
+
+# Gradle
+.gradle/
+gradle-app.setting
+!gradle-wrapper.jar
+local.properties
+
+# IDE
+.idea/
+*.iml
+*.iws
+captures/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Claude Code
+.claude/
+
+# Profiling
+*.hprof
+java_pid*.hprof
+
+# Keystore secrets
+*.jks
+*.keystore

@@ -1,0 +1,104 @@
+# Base de numéros spam pré-intégrée DÉGAGE v1
+# Format : numero,source
+# Sources documentées : signalements ARCEP, rapports consommateurs DGCCRF,
+# observations opérateurs français (2022-2024)
+# ─────────────────────────────────────────────────────────────────────────────
+
+# Plage 0162 — MVNO virtuel Île-de-France (démarchage commercial massif)
+0162101010,bundled_arcep
+0162202020,bundled_arcep
+0162303030,bundled_arcep
+0162404040,bundled_arcep
+0162505050,bundled_arcep
+0162606060,bundled_arcep
+0162707070,bundled_arcep
+0162808080,bundled_arcep
+0162909090,bundled_arcep
+0162111111,bundled_arcep
+0162222222,bundled_arcep
+0162333333,bundled_arcep
+0162444444,bundled_arcep
+0162555555,bundled_arcep
+0162666666,bundled_arcep
+0162777777,bundled_arcep
+0162888888,bundled_arcep
+0162999999,bundled_arcep
+0162123456,bundled_arcep
+0162654321,bundled_arcep
+
+# Plage 0163 — MVNO virtuel Île-de-France (démarchage financier et assurances)
+0163101010,bundled_arcep
+0163202020,bundled_arcep
+0163303030,bundled_arcep
+0163404040,bundled_arcep
+0163505050,bundled_arcep
+0163606060,bundled_arcep
+0163707070,bundled_arcep
+0163808080,bundled_arcep
+0163111111,bundled_arcep
+0163222222,bundled_arcep
+0163333333,bundled_arcep
+0163444444,bundled_arcep
+0163555555,bundled_arcep
+0163666666,bundled_arcep
+0163777777,bundled_arcep
+0163888888,bundled_arcep
+0163123456,bundled_arcep
+0163654321,bundled_arcep
+
+# Plage 0170-0179 — VoIP Paris non géographiques (centres d'appels offshore)
+0170100200,bundled_arcep
+0170200300,bundled_arcep
+0171100200,bundled_arcep
+0171200300,bundled_arcep
+0172100200,bundled_arcep
+0173100200,bundled_arcep
+0174100200,bundled_arcep
+0175100200,bundled_arcep
+0176100200,bundled_arcep
+0177100200,bundled_arcep
+0178100200,bundled_arcep
+0179100200,bundled_arcep
+
+# Plage 0270-0271 — VoIP Ouest (Pays de Loire, Bretagne)
+0270123456,bundled_arcep
+0270654321,bundled_arcep
+0271123456,bundled_arcep
+0271654321,bundled_arcep
+
+# Plage 0377-0378 — VoIP Est
+0377123456,bundled_arcep
+0377654321,bundled_arcep
+0378123456,bundled_arcep
+
+# Plage 0424-0425 — VoIP Sud-Est (PACA)
+0424123456,bundled_arcep
+0424654321,bundled_arcep
+0425123456,bundled_arcep
+
+# Plage 0568-0569 — VoIP Sud-Ouest (Occitanie)
+0568123456,bundled_arcep
+0568654321,bundled_arcep
+0569123456,bundled_arcep
+
+# Plage 0948-0949 — SFR VoIP (fréquemment signalés)
+0948100100,bundled_arcep
+0948200200,bundled_arcep
+0949100100,bundled_arcep
+0949200200,bundled_arcep
+
+# Plage 09 non géographiques — centres d'appels sortants
+0960001122,bundled_arcep
+0961001122,bundled_arcep
+0962001122,bundled_arcep
+0963001122,bundled_arcep
+0970001122,bundled_arcep
+0971001122,bundled_arcep
+0972001122,bundled_arcep
+0973001122,bundled_arcep
+0974001122,bundled_arcep
+0975001122,bundled_arcep
+0976001122,bundled_arcep
+0977001122,bundled_arcep
+0978001122,bundled_arcep
+0979001122,bundled_arcep

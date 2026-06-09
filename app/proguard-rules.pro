@@ -1,0 +1,2 @@
+-keep class com.degage.database.** { *; }
+-keep class com.degage.modes.** { *; }

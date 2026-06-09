@@ -1,0 +1,131 @@
+package com.degage.callscreen
+
+import android.telecom.Call
+import android.telecom.CallScreeningService
+import com.degage.database.AppDatabase
+import com.degage.database.entities.BlockedCallEntity
+import com.degage.database.entities.SpamEntry
+import com.degage.modes.AppMode
+import com.degage.prefs.AppPreferences
+import com.degage.replies.MessagePart
+import com.degage.tts.HoldMusicPlayer
+import com.degage.tts.TtsManager
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.SupervisorJob
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.flow.first
+import kotlinx.coroutines.launch
+
+class DegageCallScreeningService : CallScreeningService() {
+
+    private val scope = CoroutineScope(Dispatchers.IO + SupervisorJob())
+    private lateinit var ttsManager: TtsManager
+    private lateinit var prefs: AppPreferences
+    private val holdMusicPlayer = HoldMusicPlayer()
+
+    override fun onCreate() {
+        super.onCreate()
+        ttsManager = TtsManager(applicationContext)
+        prefs = AppPreferences(applicationContext)
+    }
+
+    override fun onScreenCall(callDetails: Call.Details) {
+        val rawNumber = callDetails.handle?.schemeSpecificPart
+        val normalized = rawNumber.normalizeNumber()
+        val isUnknown = rawNumber.isUnknownNumber()
+        val isSpamPrefix = !isUnknown && normalized.isNotBlank() && rawNumber!!.isSpamNumber()
+
+        scope.launch {
+            val isEnabled = prefs.isEnabled.first()
+            if (!isEnabled) {
+                respondToCall(callDetails, CallResponse.Builder().build())
+                return@launch
+            }
+
+            val db = AppDatabase.getInstance(applicationContext)
+
+            // ── Numéro déjà connu dans la base spam → rejet immédiat sans TTS ──
+            if (normalized.isNotBlank() && db.spamDao().isKnownSpam(normalized)) {
+                silentReject(callDetails)
+                db.spamDao().incrementReport(normalized)
+                db.blockedCallDao().insert(
+                    BlockedCallEntity(
+                        phoneNumber = rawNumber.displayNumber(),
+                        timestamp = System.currentTimeMillis(),
+                        modeName = "Auto",
+                        replyUsed = "Rejet automatique — numéro connu"
+                    )
+                )
+                return@launch
+            }
+
+            // ── Numéro ni inconnu ni spam → laisser passer ───────────────────
+            if (!isUnknown && !isSpamPrefix) {
+                respondToCall(callDetails, CallResponse.Builder().build())
+                return@launch
+            }
+
+            // ── Traitement normal : TTS + rejet ──────────────────────────────
+            val modeStr = prefs.activeMode.first()
+            val mode = runCatching { AppMode.valueOf(modeStr) }.getOrDefault(AppMode.POLI)
+
+            val salutation = db.replyDao().getEnabledGlobalByPart(MessagePart.SALUTATION.name).firstOrNull()?.text ?: ""
+            val body = db.replyDao().getEnabledBodyByMode(mode.name).firstOrNull()?.text
+                ?: "Cette ligne refuse les sollicitations commerciales."
+            val ending = db.replyDao().getEnabledGlobalByPart(MessagePart.ENDING.name).firstOrNull()?.text ?: ""
+
+            val fullMessage = listOf(salutation, body, ending)
+                .filter { it.isNotBlank() }
+                .joinToString(" ")
+
+            val rate = prefs.speechRate.first()
+            val pitch = prefs.pitch.first()
+            val voiceName = prefs.voiceName.first().ifBlank { null }
+            ttsManager.applySettings(rate, pitch, voiceName)
+
+            if (mode == AppMode.TROLL) {
+                ttsManager.speak(fullMessage)
+                holdMusicPlayer.start()
+                delay(15_000L)
+                holdMusicPlayer.stop()
+            } else {
+                ttsManager.speak(fullMessage)
+                delay(5_000L)
+            }
+
+            silentReject(callDetails)
+
+            db.blockedCallDao().insert(
+                BlockedCallEntity(
+                    phoneNumber = rawNumber.displayNumber(),
+                    timestamp = System.currentTimeMillis(),
+                    modeName = mode.label,
+                    replyUsed = fullMessage
+                )
+            )
+
+            // ── Mémoriser ce numéro pour rejet immédiat la prochaine fois ────
+            if (normalized.isNotBlank()) {
+                db.spamDao().insert(SpamEntry(number = normalized, source = "auto_block"))
+            }
+        }
+    }
+
+    private fun silentReject(callDetails: Call.Details) {
+        respondToCall(
+            callDetails,
+            CallResponse.Builder()
+                .setDisallowCall(true)
+                .setRejectCall(true)
+                .setSilenceCall(true)
+                .build()
+        )
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        ttsManager.shutdown()
+        holdMusicPlayer.stop()
+    }
+}
