@@ -1,6 +1,7 @@
 package com.degage.ui.screens
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
@@ -9,19 +10,23 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Block
 import androidx.compose.material.icons.filled.Info
-import androidx.compose.material.icons.filled.Notifications
 import androidx.compose.material.icons.filled.Settings
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
-import com.degage.ui.components.InfoDialog
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.SpanStyle
+import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.degage.database.entities.BlockedCallEntity
+import com.degage.ui.components.InfoDialog
 import com.degage.ui.components.StatCard
 import com.degage.ui.theme.*
 import java.text.SimpleDateFormat
@@ -47,7 +52,7 @@ fun HomeScreen(
     var showInfo by remember { mutableStateOf(false) }
     if (showInfo) InfoDialog(
         title = "Écran d'accueil",
-        content = "Tu dégages protège votre téléphone contre les appels de démarchage.\n\n• Le bouton ON/OFF active ou désactive la protection en temps réel.\n• Les compteurs affichent vos statistiques de blocage.\n• La liste en bas montre les derniers appels bloqués.\n• Appuyez sur \"Voir tout\" pour consulter l'historique complet.",
+        content = "Tu dégages protège votre téléphone contre les appels de démarchage.\n\n• Le bouton ON/OFF active ou désactive la protection.\n• Les compteurs affichent vos statistiques de blocage.\n• La liste en bas montre les derniers appels bloqués.",
         onDismiss = { showInfo = false }
     )
 
@@ -56,34 +61,35 @@ fun HomeScreen(
             .fillMaxSize()
             .background(DarkBg)
             .padding(horizontal = 16.dp),
-        verticalArrangement = Arrangement.spacedBy(16.dp)
+        verticalArrangement = Arrangement.spacedBy(14.dp)
     ) {
+
+        // ── HEADER ────────────────────────────────────────────────────────
         item {
-            // Header
             Row(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(top = 24.dp),
+                    .padding(top = 20.dp),
                 horizontalArrangement = Arrangement.SpaceBetween,
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 Column {
                     Text(
                         text = "Tu dégages !",
-                        fontSize = 28.sp,
+                        fontSize = 26.sp,
                         fontWeight = FontWeight.Black,
                         color = Color.White
                     )
                     Text(
                         text = "L'IA qui répond à vos spammeurs",
-                        fontSize = 12.sp,
+                        fontSize = 11.sp,
                         color = NeonGreen,
                         fontWeight = FontWeight.SemiBold
                     )
                 }
                 Row {
                     IconButton(onClick = { showInfo = true }) {
-                        Icon(Icons.Default.Info, contentDescription = "Aide", tint = NeonGreen, modifier = Modifier.size(26.dp))
+                        Icon(Icons.Default.Info, contentDescription = "Aide", tint = NeonGreen, modifier = Modifier.size(24.dp))
                     }
                     IconButton(onClick = onNavigateSettings) {
                         Icon(Icons.Default.Settings, contentDescription = "Paramètres", tint = TextSecondary)
@@ -92,33 +98,87 @@ fun HomeScreen(
             }
         }
 
+        // ── INTRO HERO ────────────────────────────────────────────────────
         item {
-            // Carte protection active
-            Row(
+            Box(
                 modifier = Modifier
                     .fillMaxWidth()
                     .background(
-                        if (isEnabled) NeonGreenDim.copy(alpha = 0.25f) else CardBgAlt,
+                        Brush.verticalGradient(
+                            listOf(NeonGreen.copy(alpha = 0.12f), NeonGreen.copy(alpha = 0.04f))
+                        ),
                         RoundedCornerShape(20.dp)
                     )
-                    .padding(20.dp),
-                horizontalArrangement = Arrangement.SpaceBetween,
-                verticalAlignment = Alignment.CenterVertically
+                    .border(1.dp, NeonGreen.copy(alpha = 0.25f), RoundedCornerShape(20.dp))
+                    .padding(20.dp)
             ) {
-                Column {
+                Column(horizontalAlignment = Alignment.CenterHorizontally, modifier = Modifier.fillMaxWidth()) {
+                    Text("🤖", fontSize = 40.sp, textAlign = TextAlign.Center)
+                    Spacer(modifier = Modifier.height(10.dp))
                     Text(
-                        text = if (isEnabled) "PROTECTION ACTIVE" else "PROTECTION INACTIVE",
+                        buildAnnotatedString {
+                            append("Les spammeurs adorent vous appeler ?\n")
+                            withStyle(SpanStyle(color = NeonGreen, fontWeight = FontWeight.Black)) {
+                                append("Votre IA va adorer leur répondre !")
+                            }
+                        },
+                        fontSize = 16.sp,
                         fontWeight = FontWeight.Bold,
-                        color = if (isEnabled) NeonGreen else TextSecondary,
-                        fontSize = 14.sp
+                        color = Color.White,
+                        textAlign = TextAlign.Center,
+                        lineHeight = 24.sp
                     )
-                    Text(
-                        text = if (isEnabled) "Votre IA répond à votre place.\nLes spammeurs ne passent plus." else "Activez votre IA anti-spam.",
-                        color = TextSecondary,
-                        fontSize = 12.sp,
-                        lineHeight = 18.sp
-                    )
+                    Spacer(modifier = Modifier.height(12.dp))
+                    Row(
+                        modifier = Modifier.fillMaxWidth(),
+                        horizontalArrangement = Arrangement.Center
+                    ) {
+                        IntroBadge("❌ Les autres bloquent")
+                        Spacer(modifier = Modifier.width(8.dp))
+                        IntroBadge("✅ Nous, on répond")
+                    }
                 }
+            }
+        }
+
+        // ── STATUT CENTRAL ────────────────────────────────────────────────
+        item {
+            Column(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .background(
+                        if (isEnabled) NeonGreenDim.copy(alpha = 0.22f) else CardBgAlt,
+                        RoundedCornerShape(24.dp)
+                    )
+                    .border(
+                        width = if (isEnabled) 1.5.dp else 1.dp,
+                        color = if (isEnabled) NeonGreen.copy(alpha = 0.5f) else TextSecondary.copy(alpha = 0.15f),
+                        shape = RoundedCornerShape(24.dp)
+                    )
+                    .padding(24.dp),
+                horizontalAlignment = Alignment.CenterHorizontally
+            ) {
+                Text(if (isEnabled) "🛡️" else "😴", fontSize = 52.sp)
+                Spacer(modifier = Modifier.height(8.dp))
+                Text(
+                    text = if (isEnabled) "PROTECTION ACTIVE" else "PROTECTION INACTIVE",
+                    fontSize = 18.sp,
+                    fontWeight = FontWeight.Black,
+                    color = if (isEnabled) NeonGreen else TextSecondary,
+                    letterSpacing = 1.sp
+                )
+                Spacer(modifier = Modifier.height(4.dp))
+                Text(
+                    text = if (isEnabled)
+                        "Votre IA répond à votre place.\nLes spammeurs ne passent plus."
+                    else
+                        "Activez la protection pour démarrer.",
+                    fontSize = 13.sp,
+                    color = TextSecondary,
+                    textAlign = TextAlign.Center,
+                    lineHeight = 19.sp
+                )
+                Spacer(modifier = Modifier.height(16.dp))
                 Switch(
                     checked = isEnabled,
                     onCheckedChange = { onToggle() },
@@ -129,74 +189,58 @@ fun HomeScreen(
                         uncheckedTrackColor = CardBgAlt
                     )
                 )
+                if (isEnabled) {
+                    Spacer(modifier = Modifier.height(12.dp))
+                    Row(
+                        modifier = Modifier
+                            .background(NeonGreen.copy(alpha = 0.1f), RoundedCornerShape(20.dp))
+                            .padding(horizontal = 14.dp, vertical = 6.dp),
+                        verticalAlignment = Alignment.CenterVertically,
+                        horizontalArrangement = Arrangement.spacedBy(6.dp)
+                    ) {
+                        Text("🎭", fontSize = 13.sp)
+                        Text(
+                            "Mode : $activeMode",
+                            color = NeonGreen,
+                            fontSize = 12.sp,
+                            fontWeight = FontWeight.Bold
+                        )
+                    }
+                }
             }
         }
 
+        // ── STATS ─────────────────────────────────────────────────────────
         item {
-            // Stats
             Row(
                 modifier = Modifier.fillMaxWidth(),
                 horizontalArrangement = Arrangement.spacedBy(10.dp)
             ) {
-                StatCard(
+                BigStatCard(
                     value = totalBlocked.toString(),
-                    label = "Spammeurs\nbloqués",
+                    label = "Spammeurs bloqués",
                     emoji = "🛡️",
                     modifier = Modifier.weight(1f)
                 )
-                StatCard(
+                BigStatCard(
                     value = timeSavedLabel,
-                    label = "Temps\néconomisé",
+                    label = "Temps récupéré",
                     emoji = "⏰",
                     modifier = Modifier.weight(1f)
                 )
-                StatCard(
-                    value = todayCount.toString(),
-                    label = "Appels évités\naujourd'hui",
-                    emoji = "😊",
-                    modifier = Modifier.weight(1f)
-                )
             }
         }
 
+        // ── DERNIERS APPELS ───────────────────────────────────────────────
         item {
-            // Carte différenciation
-            Column(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .background(CardBg, RoundedCornerShape(16.dp))
-                    .padding(horizontal = 20.dp, vertical = 14.dp),
-                verticalArrangement = Arrangement.spacedBy(6.dp)
-            ) {
-                Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-                    Text("💡", fontSize = 16.sp)
-                    Text("Ce qui nous différencie", fontSize = 12.sp, fontWeight = FontWeight.Bold, color = NeonGreen)
-                }
-                Text(
-                    text = "Les applis classiques bloquent les appels.",
-                    fontSize = 13.sp,
-                    color = TextSecondary
-                )
-                Text(
-                    text = "La nôtre laisse votre IA répondre — avec le ton que vous choisissez.",
-                    fontSize = 14.sp,
-                    fontWeight = FontWeight.Bold,
-                    color = Color.White,
-                    lineHeight = 20.sp
-                )
-            }
-        }
-
-        item {
-            // Derniers appels bloqués header
             Row(
                 modifier = Modifier.fillMaxWidth(),
                 horizontalArrangement = Arrangement.SpaceBetween,
                 verticalAlignment = Alignment.CenterVertically
             ) {
-                Text("Derniers appels bloqués", fontWeight = FontWeight.SemiBold, color = Color.White)
+                Text("Derniers appels bloqués", fontWeight = FontWeight.SemiBold, color = Color.White, fontSize = 14.sp)
                 Text(
-                    text = "Voir tout",
+                    text = "Voir tout →",
                     color = NeonGreen,
                     fontSize = 13.sp,
                     modifier = Modifier.clickable { onNavigateHistory() }
@@ -213,7 +257,8 @@ fun HomeScreen(
                         .padding(32.dp),
                     contentAlignment = Alignment.Center
                 ) {
-                    Text("Aucun appel bloqué pour l'instant", color = TextSecondary, fontSize = 14.sp)
+                    Text("Aucun appel bloqué pour l'instant\nActivez la protection et attendez… 😏",
+                        color = TextSecondary, fontSize = 13.sp, textAlign = TextAlign.Center, lineHeight = 20.sp)
                 }
             }
         } else {
@@ -223,6 +268,34 @@ fun HomeScreen(
         }
 
         item { Spacer(modifier = Modifier.height(80.dp)) }
+    }
+}
+
+@Composable
+private fun IntroBadge(label: String) {
+    Text(
+        label,
+        color = Color.White,
+        fontSize = 11.sp,
+        fontWeight = FontWeight.SemiBold,
+        modifier = Modifier
+            .background(CardBgAlt, RoundedCornerShape(20.dp))
+            .padding(horizontal = 10.dp, vertical = 5.dp)
+    )
+}
+
+@Composable
+private fun BigStatCard(value: String, label: String, emoji: String, modifier: Modifier = Modifier) {
+    Column(
+        modifier = modifier
+            .background(CardBg, RoundedCornerShape(18.dp))
+            .padding(18.dp),
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
+        Text(emoji, fontSize = 22.sp)
+        Spacer(modifier = Modifier.height(6.dp))
+        Text(value, fontSize = 32.sp, fontWeight = FontWeight.Black, color = NeonGreen)
+        Text(label, fontSize = 11.sp, color = TextSecondary, textAlign = TextAlign.Center, lineHeight = 16.sp)
     }
 }
 
