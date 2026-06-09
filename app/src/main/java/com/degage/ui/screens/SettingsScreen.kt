@@ -279,7 +279,7 @@ fun ContributeDbRow(checked: Boolean, onToggle: () -> Unit) {
         Text(
             "Chaque spammeur bloqué par un utilisateur est signalé à toute la communauté. " +
             "À chaque connexion, votre appli télécharge automatiquement les nouveaux numéros signalés par tous les utilisateurs — " +
-            "et les ajoute à votre base locale. Plus on est nombreux, plus les rejets sont rapides pour tout le monde.",
+            "et les ajoute à votre base locale. Plus on est nombreux, plus la base devient redoutable contre les spammeurs.",
             color = TextSecondary,
             fontSize = 13.sp,
             lineHeight = 20.sp
