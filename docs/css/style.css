@@ -49,6 +49,7 @@ nav {
   font-weight: 900;
   color: var(--text);
   letter-spacing: 1px;
+  white-space: nowrap;
 }
 .nav-logo span { color: var(--green); }
 
