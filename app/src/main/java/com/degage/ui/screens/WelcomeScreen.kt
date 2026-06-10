@@ -121,6 +121,12 @@ fun WelcomeScreen(
                     "Historique complet, temps économisé, numéros mémorisés pour rejet immédiat. Vous saurez exactement combien de fois votre IA a gagné."
                 )
             }
+            item {
+                WelcomeSection(
+                    "🇫🇷🇨🇭 Adapté à la France et à la Suisse",
+                    "Choisissez votre pays dans Paramètres : la base de numéros indésirables s'adapte automatiquement (préfixes ARCEP en France, numéros à valeur ajoutée et numéros d'entreprise OFCOM en Suisse)."
+                )
+            }
 
             item {
                 Column(

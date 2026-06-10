@@ -139,6 +139,8 @@ fun HomeScreen(
                     }
                     Spacer(modifier = Modifier.height(8.dp))
                     IntroBadge("📡 Fonctionne même hors ligne")
+                    Spacer(modifier = Modifier.height(8.dp))
+                    IntroBadge("🇫🇷🇨🇭 Adapté France & Suisse")
                 }
             }
         }

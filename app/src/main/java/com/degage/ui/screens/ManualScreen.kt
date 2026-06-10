@@ -80,7 +80,7 @@ fun ManualScreen(onBack: () -> Unit) {
             item {
                 ManualSection(
                     title = "🇫🇷🇨🇭 Tu dégages fonctionne-t-il en Suisse ?",
-                    body = "Oui ! Dans Paramètres, choisissez votre pays (🇫🇷 France ou 🇨🇭 Suisse).\n\nEn Suisse, Tu dégages détecte notamment les numéros à valeur ajoutée (0900/0901/0906) et les numéros à coût partagé (084x), souvent utilisés par les centres d'appels et hotlines commerciales en Suisse.\n\nLa base communautaire et votre historique personnel fonctionnent de la même façon, quel que soit le pays."
+                    body = "Oui ! Dans Paramètres, choisissez votre pays (🇫🇷 France ou 🇨🇭 Suisse) tout en haut de la liste.\n\nEn Suisse, Tu dégages détecte notamment :\n\n• Les numéros à valeur ajoutée (0900, 0901, 0906) — business, marketing et divertissement, attribués individuellement par l'OFCOM.\n• Les numéros d'entreprise nationaux à coût partagé (0840, 0842, 0844, 0848, 0878) — souvent utilisés comme numéros de redirection par des centres d'appels et hotlines commerciales.\n\nLa base communautaire et votre historique personnel fonctionnent exactement de la même façon, quel que soit le pays choisi."
                 )
             }
             item {
