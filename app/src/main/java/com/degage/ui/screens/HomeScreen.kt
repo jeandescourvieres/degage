@@ -137,6 +137,8 @@ fun HomeScreen(
                         Spacer(modifier = Modifier.width(8.dp))
                         IntroBadge("✅ Nous, on répond")
                     }
+                    Spacer(modifier = Modifier.height(8.dp))
+                    IntroBadge("📡 Fonctionne même hors ligne")
                 }
             }
         }

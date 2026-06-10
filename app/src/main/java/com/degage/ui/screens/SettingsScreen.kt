@@ -92,7 +92,7 @@ fun SettingsScreen(
             SettingsToggleRow(label = "Notifications", checked = notifications, onToggle = onToggleNotifications)
         }
         item {
-            SettingsToggleRow(label = "📵 Bloquer les appels masqués", checked = blockHiddenNumbers, onToggle = onToggleBlockHiddenNumbers)
+            BlockHiddenNumbersRow(checked = blockHiddenNumbers, onToggle = onToggleBlockHiddenNumbers)
         }
         item {
             MonitorLiveRow(checked = monitorLive, onToggle = onToggleMonitorLive)
@@ -202,6 +202,39 @@ fun SpamSyncRow(isSyncing: Boolean, onClick: () -> Unit) {
         } else {
             Text("Sync", color = NeonGreen, fontSize = 13.sp, fontWeight = FontWeight.SemiBold)
         }
+    }
+}
+
+@Composable
+fun BlockHiddenNumbersRow(checked: Boolean, onToggle: () -> Unit) {
+    Row(
+        modifier = Modifier
+            .fillMaxWidth()
+            .background(if (checked) NeonGreenDim.copy(alpha = 0.15f) else CardBg, RoundedCornerShape(14.dp))
+            .padding(horizontal = 20.dp, vertical = 10.dp),
+        horizontalArrangement = Arrangement.SpaceBetween,
+        verticalAlignment = Alignment.CenterVertically
+    ) {
+        Column(modifier = Modifier.weight(1f)) {
+            Text("📵 Bloquer les appels masqués", color = Color.White, fontSize = 15.sp)
+            Text(
+                "Rejette automatiquement, sans message vocal, les appels sans numéro affiché (masqué, privé, inconnu).",
+                color = TextSecondary,
+                fontSize = 11.sp,
+                lineHeight = 16.sp
+            )
+        }
+        Spacer(modifier = Modifier.width(12.dp))
+        Switch(
+            checked = checked,
+            onCheckedChange = { onToggle() },
+            colors = SwitchDefaults.colors(
+                checkedThumbColor = Color.Black,
+                checkedTrackColor = NeonGreen,
+                uncheckedThumbColor = TextSecondary,
+                uncheckedTrackColor = CardBgAlt
+            )
+        )
     }
 }
 
