@@ -41,6 +41,12 @@ fun ManualScreen(onBack: () -> Unit) {
         ) {
             item {
                 ManualSection(
+                    title = "👤 Mes contacts peuvent-ils être bloqués par erreur ?",
+                    body = "Non. Si un numéro qui vous appelle correspond à un contact enregistré sur votre téléphone, Tu dégages laisse toujours passer l'appel — même si ce numéro figure par ailleurs dans la base spam ou dans vos règles personnalisées.\n\nCette vérification nécessite l'autorisation d'accès aux contacts, demandée au premier lancement de l'application."
+                )
+            }
+            item {
+                ManualSection(
                     title = "🛡️ À quoi sert Tu dégages ?",
                     body = "Tu dégages intercepte automatiquement les appels provenant de numéros de démarcheurs connus, leur joue un message vocal, puis raccroche — sans que votre téléphone ait sonné.\n\nVous économisez du temps et de l'énergie en n'ayant plus jamais à décrocher pour entendre un robot vous proposer une cuisine équipée."
                 )

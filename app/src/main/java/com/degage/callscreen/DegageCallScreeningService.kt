@@ -46,6 +46,12 @@ class DegageCallScreeningService : CallScreeningService() {
                 return@launch
             }
 
+            // ── Numéro enregistré dans les contacts → jamais bloqué ──────────
+            if (!isUnknown && rawNumber != null && applicationContext.isNumberInContacts(rawNumber)) {
+                respondToCall(callDetails, CallResponse.Builder().build())
+                return@launch
+            }
+
             val db = AppDatabase.getInstance(applicationContext)
 
             val contributeDb = prefs.contributeDb.first()
