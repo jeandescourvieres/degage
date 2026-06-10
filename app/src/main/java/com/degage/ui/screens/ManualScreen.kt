@@ -47,6 +47,12 @@ fun ManualScreen(onBack: () -> Unit) {
             }
             item {
                 ManualSection(
+                    title = "📞 J'attends un rappel d'un numéro inconnu (commande, devis...) : risque-t-il d'être bloqué ?",
+                    body = "Le risque est faible : un numéro inconnu n'est bloqué que s'il figure dans la base spam (préfixes connus, signalements communautaires) ou dans une de vos règles manuelles — pas un numéro de service client ou de livreur classique.\n\nSi malgré tout l'appel est bloqué, il reste visible dans l'onglet Historique avec le numéro et l'heure : vous pouvez le rappeler, puis appuyer sur ✅ « Pas un spam » pour qu'il ne soit plus jamais bloqué.\n\nSi vous attendez un appel important et préférez ne prendre aucun risque, désactivez temporairement la protection depuis l'écran d'accueil le temps de l'appel, puis réactivez-la ensuite."
+                )
+            }
+            item {
+                ManualSection(
                     title = "🛡️ À quoi sert Tu dégages ?",
                     body = "Tu dégages intercepte automatiquement les appels provenant de numéros de démarcheurs connus, leur joue un message vocal, puis raccroche — sans que votre téléphone ait sonné.\n\nVous économisez du temps et de l'énergie en n'ayant plus jamais à décrocher pour entendre un robot vous proposer une cuisine équipée."
                 )
