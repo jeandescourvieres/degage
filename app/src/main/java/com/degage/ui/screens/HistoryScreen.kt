@@ -8,6 +8,7 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material.icons.filled.Block
+import androidx.compose.material.icons.filled.CheckCircle
 import androidx.compose.material.icons.filled.Delete
 import androidx.compose.material.icons.filled.Info
 import androidx.compose.material3.*
@@ -31,13 +32,14 @@ enum class HistoryFilter(val label: String) { TOUS("Tous"), BLOQUES("Bloqués"),
 fun HistoryScreen(
     calls: List<BlockedCallEntity>,
     onDelete: (Long) -> Unit,
+    onMarkNotSpam: (BlockedCallEntity) -> Unit = {},
     onBack: () -> Unit = {},
 ) {
     var filter by remember { mutableStateOf(HistoryFilter.TOUS) }
     var showInfo by remember { mutableStateOf(false) }
     if (showInfo) InfoDialog(
         title = "Historique",
-        content = "Journal de tous les appels bloqués par Tu dégages.\n\n• Chaque ligne affiche le numéro détecté, la date/heure, le mode utilisé et le message joué.\n• Utilisez les filtres en haut (Tous / Bloqués / Réponses / Manuels) pour trier l'affichage.\n• Appuyez sur l'icône 🗑️ pour supprimer une entrée de l'historique.",
+        content = "Journal de tous les appels bloqués par Tu dégages.\n\n• Chaque ligne affiche le numéro détecté, la date/heure, le mode utilisé et le message joué.\n• Utilisez les filtres en haut (Tous / Bloqués / Réponses / Manuels) pour trier l'affichage.\n• Appuyez sur l'icône ✅ si ce numéro a été bloqué à tort : il ne sera plus jamais bloqué.\n• Appuyez sur l'icône 🗑️ pour supprimer une entrée de l'historique.",
         onDismiss = { showInfo = false }
     )
 
@@ -87,7 +89,7 @@ fun HistoryScreen(
         } else {
             LazyColumn(verticalArrangement = Arrangement.spacedBy(10.dp)) {
                 items(calls, key = { it.id }) { call ->
-                    HistoryRow(call = call, onDelete = { onDelete(call.id) })
+                    HistoryRow(call = call, onDelete = { onDelete(call.id) }, onMarkNotSpam = { onMarkNotSpam(call) })
                 }
                 item { Spacer(modifier = Modifier.height(80.dp)) }
             }
@@ -96,11 +98,12 @@ fun HistoryScreen(
 }
 
 @Composable
-fun HistoryRow(call: BlockedCallEntity, onDelete: () -> Unit) {
+fun HistoryRow(call: BlockedCallEntity, onDelete: () -> Unit, onMarkNotSpam: () -> Unit = {}) {
     val dateStr = remember(call.timestamp) {
         val sdf = SimpleDateFormat("dd/MM HH:mm", Locale.FRENCH)
         sdf.format(Date(call.timestamp))
     }
+    val isRealNumber = call.phoneNumber.any { it.isDigit() }
 
     Row(
         modifier = Modifier
@@ -121,8 +124,16 @@ fun HistoryRow(call: BlockedCallEntity, onDelete: () -> Unit) {
         Column(horizontalAlignment = Alignment.End) {
             Text(dateStr, color = TextSecondary, fontSize = 11.sp)
             Spacer(modifier = Modifier.height(4.dp))
-            IconButton(onClick = onDelete, modifier = Modifier.size(24.dp)) {
-                Icon(Icons.Default.Delete, contentDescription = "Supprimer", tint = TextSecondary, modifier = Modifier.size(16.dp))
+            Row {
+                if (isRealNumber) {
+                    IconButton(onClick = onMarkNotSpam, modifier = Modifier.size(24.dp)) {
+                        Icon(Icons.Default.CheckCircle, contentDescription = "Pas un spam", tint = NeonGreen, modifier = Modifier.size(16.dp))
+                    }
+                    Spacer(modifier = Modifier.width(4.dp))
+                }
+                IconButton(onClick = onDelete, modifier = Modifier.size(24.dp)) {
+                    Icon(Icons.Default.Delete, contentDescription = "Supprimer", tint = TextSecondary, modifier = Modifier.size(16.dp))
+                }
             }
         }
     }

@@ -157,6 +157,7 @@ fun DegageApp(
                     HistoryScreen(
                         calls = allCalls,
                         onDelete = viewModel::deleteHistoryEntry,
+                        onMarkNotSpam = viewModel::markNotSpam,
                         onBack = { navController.navigateUp() }
                     )
                 }

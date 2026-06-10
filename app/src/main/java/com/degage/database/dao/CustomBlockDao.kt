@@ -24,4 +24,7 @@ interface CustomBlockDao {
 
     @Query("SELECT value FROM custom_blocks WHERE isPrefix = 1")
     suspend fun getPrefixes(): List<String>
+
+    @Query("DELETE FROM custom_blocks WHERE isPrefix = 0 AND value = :value")
+    suspend fun deleteExactByValue(value: String)
 }

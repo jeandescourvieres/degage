@@ -54,6 +54,12 @@ class DegageCallScreeningService : CallScreeningService() {
 
             val db = AppDatabase.getInstance(applicationContext)
 
+            // ── Numéro marqué « pas un spam » → jamais bloqué ────────────────
+            if (normalized.isNotBlank() && db.whitelistDao().isWhitelisted(normalized)) {
+                respondToCall(callDetails, CallResponse.Builder().build())
+                return@launch
+            }
+
             val contributeDb = prefs.contributeDb.first()
             val country = prefs.country.first()
             val notificationsEnabled = prefs.notifications.first()

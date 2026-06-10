@@ -24,4 +24,7 @@ interface SpamDao {
 
     @Query("SELECT COUNT(*) FROM spam_entries")
     suspend fun getCountOnce(): Int
+
+    @Query("DELETE FROM spam_entries WHERE number = :number")
+    suspend fun deleteByNumber(number: String)
 }

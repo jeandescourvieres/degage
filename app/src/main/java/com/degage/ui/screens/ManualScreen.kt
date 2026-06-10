@@ -138,7 +138,7 @@ fun ManualScreen(onBack: () -> Unit) {
             item {
                 ManualSection(
                     title = "Que faire si un numéro est bloqué à tort ?",
-                    body = "Tu dégages n'a pas encore de bouton « débloquer » intégré. En attendant :\n\n• Si vous attendez un appel important d'un numéro inconnu, désactivez temporairement la protection (écran d'accueil) le temps de l'appel.\n• Si un numéro légitime a été ajouté par erreur à la base communautaire, contactez-nous (voir À propos) pour le faire retirer du serveur partagé.\n\nUne fonction de liste blanche est à l'étude pour une prochaine version."
+                    body = "Allez dans l'onglet Historique, repérez l'appel concerné et appuyez sur l'icône ✅ « Pas un spam ».\n\nCe numéro est alors immédiatement retiré de votre base spam et de vos règles personnelles, et ajouté à votre liste blanche locale : il ne sera plus jamais bloqué sur votre téléphone, même si une mise à jour de la base spam le réintègre.\n\nSi vous attendez un appel important d'un numéro inconnu, vous pouvez aussi désactiver temporairement la protection (écran d'accueil) le temps de l'appel."
                 )
             }
             item {

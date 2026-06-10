@@ -3,10 +3,12 @@ package com.degage.ui.viewmodel
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
+import com.degage.callscreen.normalizeNumber
 import com.degage.database.AppDatabase
 import com.degage.database.entities.BlockedCallEntity
 import com.degage.database.entities.CustomBlockEntity
 import com.degage.database.entities.ReplyEntity
+import com.degage.database.entities.WhitelistEntry
 import com.degage.modes.AppMode
 import com.degage.prefs.AppPreferences
 import com.degage.spam.SpamSyncManager
@@ -191,5 +193,15 @@ class MainViewModel(app: Application) : AndroidViewModel(app) {
 
     fun deleteCustomBlock(entry: CustomBlockEntity) = viewModelScope.launch {
         db.customBlockDao().delete(entry)
+    }
+
+    /** Marque un appel comme légitime : retire le numéro de la base spam et des
+     *  règles personnalisées, et l'ajoute à la liste blanche locale. */
+    fun markNotSpam(call: BlockedCallEntity) = viewModelScope.launch {
+        val normalized = call.phoneNumber.normalizeNumber()
+        if (normalized.isBlank()) return@launch
+        db.spamDao().deleteByNumber(normalized)
+        db.customBlockDao().deleteExactByValue(normalized)
+        db.whitelistDao().insert(WhitelistEntry(number = normalized))
     }
 }
