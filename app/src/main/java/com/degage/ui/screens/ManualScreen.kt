@@ -138,7 +138,7 @@ fun ManualScreen(onBack: () -> Unit) {
             item {
                 ManualSection(
                     title = "Que faire si un numéro est bloqué à tort ?",
-                    body = "Allez dans l'onglet Historique, repérez l'appel concerné et appuyez sur l'icône ✅ « Pas un spam ».\n\nCe numéro est alors immédiatement retiré de votre base spam et de vos règles personnelles, et ajouté à votre liste blanche locale : il ne sera plus jamais bloqué sur votre téléphone, même si une mise à jour de la base spam le réintègre.\n\nSi vous attendez un appel important d'un numéro inconnu, vous pouvez aussi désactiver temporairement la protection (écran d'accueil) le temps de l'appel."
+                    body = "Allez dans l'onglet Historique, repérez l'appel concerné et appuyez sur l'icône ✅ « Pas un spam ».\n\nCe numéro est alors immédiatement retiré de votre base spam et de vos règles personnelles, et ajouté à votre liste blanche locale : il ne sera plus jamais bloqué sur votre téléphone, même si une mise à jour de la base spam le réintègre.\n\nAucun e-mail à envoyer, aucune attente : tout se passe directement sur votre téléphone, dans votre base de données locale — ça fonctionne même sans connexion internet et prend effet dès le prochain appel.\n\nSi vous attendez un appel important d'un numéro inconnu, vous pouvez aussi désactiver temporairement la protection (écran d'accueil) le temps de l'appel."
                 )
             }
             item {
