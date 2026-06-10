@@ -6,6 +6,7 @@ import android.telecom.Call
 import android.telecom.CallScreeningService
 import com.degage.database.AppDatabase
 import com.degage.database.entities.BlockedCallEntity
+import com.degage.database.entities.CallAttemptEntity
 import com.degage.database.entities.SpamEntry
 import com.degage.modes.AppMode
 import com.degage.notifications.NotificationHelper
@@ -22,6 +23,11 @@ import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
 
 class DegageCallScreeningService : CallScreeningService() {
+
+    companion object {
+        private const val BURST_WINDOW_MS = 30 * 60 * 1000L // 30 minutes
+        private const val BURST_THRESHOLD = 3 // appels avant blocage automatique
+    }
 
     private val scope = CoroutineScope(Dispatchers.IO + SupervisorJob())
     private lateinit var ttsManager: TtsManager
@@ -122,8 +128,32 @@ class DegageCallScreeningService : CallScreeningService() {
                 return@launch
             }
 
-            // ── Numéro ni inconnu ni spam → laisser passer ───────────────────
+            // ── Numéro ni inconnu ni spam → vérifier les rafales d'appels ────
             if (!isUnknown && !isSpamPrefix) {
+                if (normalized.isNotBlank()) {
+                    val now = System.currentTimeMillis()
+                    db.callAttemptDao().deleteOlderThan(now - BURST_WINDOW_MS)
+                    db.callAttemptDao().insert(CallAttemptEntity(number = normalized, timestamp = now))
+                    val attempts = db.callAttemptDao().countSince(normalized, now - BURST_WINDOW_MS)
+                    if (attempts >= BURST_THRESHOLD) {
+                        silentReject(callDetails)
+                        db.spamDao().insert(SpamEntry(number = normalized, source = "auto_block_burst"))
+                        db.callAttemptDao().deleteByNumber(normalized)
+                        db.blockedCallDao().insert(
+                            BlockedCallEntity(
+                                phoneNumber = rawNumber.displayNumber(),
+                                timestamp = now,
+                                modeName = "Auto",
+                                replyUsed = "Rejet automatique — appels répétés en peu de temps"
+                            )
+                        )
+                        if (notificationsEnabled) {
+                            NotificationHelper.notifyBlockedCall(applicationContext, rawNumber.displayNumber(), "appels répétés")
+                        }
+                        if (contributeDb) SupabaseClient.reportNumber(normalized)
+                        return@launch
+                    }
+                }
                 respondToCall(callDetails, CallResponse.Builder().build())
                 return@launch
             }

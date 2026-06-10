@@ -7,11 +7,13 @@ import androidx.room.RoomDatabase
 import androidx.room.migration.Migration
 import androidx.sqlite.db.SupportSQLiteDatabase
 import com.degage.database.dao.BlockedCallDao
+import com.degage.database.dao.CallAttemptDao
 import com.degage.database.dao.CustomBlockDao
 import com.degage.database.dao.ReplyDao
 import com.degage.database.dao.SpamDao
 import com.degage.database.dao.WhitelistDao
 import com.degage.database.entities.BlockedCallEntity
+import com.degage.database.entities.CallAttemptEntity
 import com.degage.database.entities.CustomBlockEntity
 import com.degage.database.entities.ReplyEntity
 import com.degage.database.entities.SpamEntry
@@ -24,8 +26,8 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 @Database(
-    entities = [BlockedCallEntity::class, ReplyEntity::class, SpamEntry::class, CustomBlockEntity::class, WhitelistEntry::class],
-    version = 5,
+    entities = [BlockedCallEntity::class, ReplyEntity::class, SpamEntry::class, CustomBlockEntity::class, WhitelistEntry::class, CallAttemptEntity::class],
+    version = 6,
     exportSchema = false
 )
 abstract class AppDatabase : RoomDatabase() {
@@ -34,6 +36,7 @@ abstract class AppDatabase : RoomDatabase() {
     abstract fun spamDao(): SpamDao
     abstract fun customBlockDao(): CustomBlockDao
     abstract fun whitelistDao(): WhitelistDao
+    abstract fun callAttemptDao(): CallAttemptDao
 
     companion object {
         @Volatile private var INSTANCE: AppDatabase? = null
@@ -77,10 +80,22 @@ abstract class AppDatabase : RoomDatabase() {
             }
         }
 
+        private val MIGRATION_5_6 = object : Migration(5, 6) {
+            override fun migrate(database: SupportSQLiteDatabase) {
+                database.execSQL("""
+                    CREATE TABLE IF NOT EXISTS `call_attempts` (
+                        `id` INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+                        `number` TEXT NOT NULL,
+                        `timestamp` INTEGER NOT NULL
+                    )
+                """.trimIndent())
+            }
+        }
+
         fun getInstance(context: Context): AppDatabase {
             return INSTANCE ?: synchronized(this) {
                 Room.databaseBuilder(context, AppDatabase::class.java, "degage.db")
-                    .addMigrations(MIGRATION_2_3, MIGRATION_3_4, MIGRATION_4_5)
+                    .addMigrations(MIGRATION_2_3, MIGRATION_3_4, MIGRATION_4_5, MIGRATION_5_6)
                     .addCallback(object : Callback() {
                         override fun onCreate(db: SupportSQLiteDatabase) {
                             super.onCreate(db)

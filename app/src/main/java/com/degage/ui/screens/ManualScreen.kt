@@ -71,6 +71,12 @@ fun ManualScreen(onBack: () -> Unit) {
             }
             item {
                 ManualSection(
+                    title = "🔁 Un numéro me rappelle plusieurs fois en peu de temps : que se passe-t-il ?",
+                    body = "C'est une technique fréquente des centres d'appels de démarchage : ils rappellent plusieurs fois de suite si vous ne décrochez pas, parfois avec des numéros qui ne sont pas (encore) connus comme spam.\n\nTu dégages détecte automatiquement ces rafales : si un même numéro inconnu vous appelle 3 fois ou plus en moins de 30 minutes, il est automatiquement ajouté à votre base spam personnelle et tous ses appels suivants sont rejetés silencieusement.\n\nCe mécanisme ne concerne que les numéros qui appellent en rafale — un appel isolé d'un livreur, d'un médecin ou d'un proche n'est jamais affecté. Et comme toujours, si un numéro est bloqué à tort, l'icône ✅ « Pas un spam » dans l'Historique permet de le débloquer en un tap."
+                )
+            }
+            item {
+                ManualSection(
                     title = "⚡ Démarrage rapide",
                     body = "1. Ouvrez Tu dégages.\n2. Assurez-vous que le bouton de protection est sur ON (vert) sur l'écran d'accueil.\n3. C'est tout. Tu dégages travaille en arrière-plan."
                 )
