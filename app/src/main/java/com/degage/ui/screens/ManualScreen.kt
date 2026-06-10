@@ -47,6 +47,12 @@ fun ManualScreen(onBack: () -> Unit) {
             }
             item {
                 ManualSection(
+                    title = "🎯 Pourquoi on ne bloque pas « tout un opérateur » ?",
+                    body = "Certaines applis concurrentes annoncent bloquer en bloc des numéros appartenant à des opérateurs VoIP (Aircall, Vonage, Manifone, Tata Communications, CM Telecom, etc.).\n\nTu dégages a fait le choix inverse, et voici pourquoi :\n\nCes opérateurs sont des fournisseurs VoIP généralistes, pas des « opérateurs spam ». Ils sont utilisés :\n❌ par des centres d'appels de démarchage,\n✅ mais aussi par des entreprises légitimes : support client, livraisons, rendez-vous médicaux, artisans, etc.\n\nSi on bloquait « tout Aircall » ou « tout Vonage », on bloquerait aussi ces appels légitimes — gros risque de faux positifs et de plaintes (« pourquoi mon livreur n'arrive pas à m'appeler ?! »).\n\nLa bonne approche, c'est celle qu'on a construite : la base communautaire (voir plus bas) capture les numéros réellement signalés comme spam par les utilisateurs, peu importe l'opérateur derrière — sans jamais bloquer les usages légitimes du même opérateur.\n\nTu dégages préfère un blocage précis et fiable plutôt qu'un rejet à l'arrache fait pour impressionner."
+                )
+            }
+            item {
+                ManualSection(
                     title = "⚡ Démarrage rapide",
                     body = "1. Ouvrez Tu dégages.\n2. Assurez-vous que le bouton de protection est sur ON (vert) sur l'écran d'accueil.\n3. C'est tout. Tu dégages travaille en arrière-plan."
                 )
