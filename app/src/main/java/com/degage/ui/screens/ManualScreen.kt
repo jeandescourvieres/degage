@@ -75,6 +75,28 @@ fun ManualScreen(onBack: () -> Unit) {
                     body = "Dans Paramètres → Paramètres vocaux :\n\n• Choisissez la voix (selon les voix installées sur votre téléphone).\n• Ajustez la vitesse de lecture (de lent à rapide).\n• Modifiez la hauteur de la voix (grave ou aiguë).\n• Testez le rendu avec le bouton de prévisualisation."
                 )
             }
+
+            item { CategoryHeader("📋 Base de numéros bloqués") }
+            item {
+                ManualSection(
+                    title = "Quels numéros sont bloqués ?",
+                    body = "Tu dégages combine plusieurs sources :\n\n• Plages ARCEP documentées : 52 préfixes français officiellement attribués au démarchage téléphonique.\n• phoneblock.net : base communautaire européenne open source.\n• Signal-Spam France : association française de lutte contre le spam.\n• Base communautaire Tu dégages : numéros signalés par les utilisateurs (opt-in).\n• Votre historique personnel : tout numéro qui vous a déjà appelé et a été traité comme spam."
+                )
+            }
+            item {
+                ManualSection(
+                    title = "À quoi sert le signalement d'un numéro ?",
+                    body = "Quand vous bloquez un numéro et que vous avez activé « Base communautaire » dans les Paramètres, ce numéro est transmis — anonymement, sans aucune de vos données — à un serveur partagé.\n\nTous les autres utilisateurs de Tu dégages téléchargent ensuite ce numéro et le rejettent automatiquement, sans même jouer le message vocal. Plus il y a d'utilisateurs, plus la base est efficace pour tout le monde."
+                )
+            }
+            item {
+                ManualSection(
+                    title = "Comment sont choisis les numéros bloqués ?",
+                    body = "Un numéro est bloqué s'il appartient à une plage ARCEP connue pour le démarchage, s'il figure dans phoneblock.net ou Signal-Spam, s'il vous a déjà appelé et a été traité comme spam, ou s'il a été signalé par la communauté.\n\nTu dégages ne bloque jamais un numéro simplement parce qu'il appartient à tel ou tel opérateur télécom — voir « Pourquoi on ne bloque pas tout un opérateur » plus haut."
+                )
+            }
+
+            item { CategoryHeader("📱 Utilisation") }
             item {
                 ManualSection(
                     title = "📋 Historique",
@@ -93,15 +115,76 @@ fun ManualScreen(onBack: () -> Unit) {
                     body = "Dans Paramètres :\n\n• Décroche automatique : Tu dégages répond à l'appel sans faire sonner votre téléphone (recommandé).\n• Bloquer après réponse : ajoute le numéro à votre liste noire personnelle après chaque interaction.\n• Notifications : reçois une notification à chaque appel bloqué."
                 )
             }
+
+            item { CategoryHeader("🔧 Problèmes") }
+            item {
+                ManualSection(
+                    title = "Que faire si un numéro est bloqué à tort ?",
+                    body = "Tu dégages n'a pas encore de bouton « débloquer » intégré. En attendant :\n\n• Si vous attendez un appel important d'un numéro inconnu, désactivez temporairement la protection (écran d'accueil) le temps de l'appel.\n• Si un numéro légitime a été ajouté par erreur à la base communautaire, contactez-nous (voir À propos) pour le faire retirer du serveur partagé.\n\nUne fonction de liste blanche est à l'étude pour une prochaine version."
+                )
+            }
+            item {
+                ManualSection(
+                    title = "Que faire si je suis victime de spoofing ou d'usurpation de numéro ?",
+                    body = "Le spoofing (un spammeur qui affiche un faux numéro, parfois le vôtre ou celui d'un proche) est un problème du réseau téléphonique que Tu dégages ne peut pas corriger : l'appli ne voit que le numéro affiché par l'opérateur.\n\nSi vous recevez des appels avec votre propre numéro ou un numéro usurpé, le signalement à votre opérateur ou au 33700 (service anti-arnaque SMS/appels) reste la solution la plus efficace."
+                )
+            }
+            item {
+                ManualSection(
+                    title = "Un numéro spam n'est pas bloqué, que faire ?",
+                    body = "1. Vérifiez que la protection est activée (écran d'accueil).\n2. Vérifiez que Tu dégages est bien défini comme service d'identification d'appel par défaut (Paramètres Android → Applications → Application de filtrage des appels).\n3. Mettez à jour la base spam manuellement : Paramètres → Mettre à jour la base spam.\n4. Si le numéro continue d'appeler après ça, il sera mémorisé dès le premier blocage et rejeté automatiquement la fois suivante."
+                )
+            }
+            item {
+                ManualSection(
+                    title = "Les appelants peuvent-ils laisser un message vocal ?",
+                    body = "Non. Tu dégages joue son propre message à l'appelant puis raccroche la ligne — l'appelant n'a pas accès à votre messagerie vocale habituelle pour cet appel.\n\nC'est volontaire : un démarcheur qui ne peut ni vous parler ni laisser de message a beaucoup moins de raisons de rappeler."
+                )
+            }
             item {
                 ManualSection(
                     title = "❓ Pourquoi le blocage ne fonctionne pas ?",
                     body = "Si Tu dégages ne bloque pas les appels, vérifiez :\n\n1. La protection est bien sur ON (écran d'accueil).\n2. Tu dégages est bien défini comme service de filtrage d'appels : Paramètres Android → Applications → Applications par défaut → Service d'identification de l'appelant et anti-spam → Sélectionner Tu dégages.\n3. Les permissions téléphone sont accordées à Tu dégages."
                 )
             }
+
+            item { CategoryHeader("⚙️ Fonctionnalités & technique") }
+            item {
+                ManualSection(
+                    title = "Tu dégages consomme-t-il beaucoup de batterie ?",
+                    body = "Non. Tu dégages ne tourne pas en permanence en arrière-plan : Android ne réveille l'appli qu'au moment précis où un appel arrive, via le service de filtrage d'appels du système.\n\nEn dehors des appels, l'appli est totalement inactive. La seule activité réseau a lieu lors de la mise à jour de la base spam (manuelle ou à l'ouverture de l'appli)."
+                )
+            }
+
+            item { CategoryHeader("❓ Autres") }
+            item {
+                ManualSection(
+                    title = "Comment est protégée ma vie privée ?",
+                    body = "Par défaut, Tu dégages ne collecte et ne transmet aucune donnée : tout reste sur votre téléphone.\n\nSi vous activez la base communautaire (opt-in), seul le numéro de l'appelant spam est transmis à un serveur hébergé en Europe — jamais votre numéro ni vos informations personnelles. Le détail complet est dans À propos → Politique de confidentialité."
+                )
+            }
+            item {
+                ManualSection(
+                    title = "Comment signaler un bug ou donner un avis ?",
+                    body = "Vous pouvez nous écrire directement à l'adresse de contact indiquée dans À propos. Décrivez le problème rencontré (modèle de téléphone, version d'Android, ce qui s'est passé) — ça nous aide énormément à améliorer Tu dégages."
+                )
+            }
+
             item { Spacer(modifier = Modifier.height(80.dp)) }
         }
     }
+}
+
+@Composable
+private fun CategoryHeader(title: String) {
+    Text(
+        title,
+        fontSize = 13.sp,
+        fontWeight = FontWeight.Bold,
+        color = NeonGreen,
+        letterSpacing = 1.sp,
+        modifier = Modifier.padding(top = 8.dp, bottom = 2.dp)
+    )
 }
 
 @Composable
