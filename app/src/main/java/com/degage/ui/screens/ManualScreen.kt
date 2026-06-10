@@ -42,7 +42,7 @@ fun ManualScreen(onBack: () -> Unit) {
             item {
                 ManualSection(
                     title = "⭐ Qu'est-ce qui est gratuit et qu'est-ce qui est Premium ?",
-                    body = "🆓 GRATUIT, POUR TOUJOURS — la protection :\n\n• Blocage automatique des spams connus (base ARCEP/OFCOM + apprentissage de votre historique)\n• Mode de réponse Poli\n• Historique des appels bloqués\n• Vos contacts ne sont jamais bloqués\n• « Pas un spam » : correction d'un blocage à tort, en un tap\n• Notifications à chaque appel bloqué\n\nLa sécurité et la protection contre les faux positifs ne seront JAMAIS payantes.\n\n⭐ PREMIUM (1 €/mois ou 10 €/an) — le confort et la personnalisation :\n\n• Les modes Administratif, Sarcastique et Troll\n• Personnalisation complète des messages (constructeur, phrases perso)\n• Réglages de la voix (voix, vitesse, hauteur)\n• Base communautaire (synchronisation et contribution)\n• Blocage manuel de numéros et préfixes\n• Export CSV de l'historique\n• Mode Suisse (numéros OFCOM)\n\nUn cadenas 🔒 apparaît sur chaque fonctionnalité Premium dans l'application. Appuyez dessus pour voir le détail de l'offre dans Paramètres → « ⭐ Tu dégages Premium »."
+                    body = "🆓 GRATUIT, POUR TOUJOURS — la protection :\n\n• Blocage automatique des spams connus (base ARCEP/OFCOM + apprentissage de votre historique)\n• Mode de réponse Poli\n• Historique des appels bloqués\n• Vos contacts ne sont jamais bloqués\n• « Pas un spam » : correction d'un blocage à tort, en un tap\n• Notifications à chaque appel bloqué\n\nLa sécurité et la protection contre les faux positifs ne seront JAMAIS payantes.\n\n⭐ PREMIUM (1 €/mois ou 10 €/an) — le confort et la personnalisation :\n\n• Les modes Administratif, Sarcastique et Troll\n• Personnalisation complète des messages (constructeur, phrases perso)\n• Réglages de la voix (voix, vitesse, hauteur)\n• Base communautaire (synchronisation et contribution)\n• Blocage manuel de numéros et préfixes\n• Export CSV de l'historique\n• Mode Suisse (numéros OFCOM)\n• Réponses vocales en allemand\n\nUn cadenas 🔒 apparaît sur chaque fonctionnalité Premium dans l'application. Appuyez dessus pour voir le détail de l'offre dans Paramètres → « ⭐ Tu dégages Premium »."
                 )
             }
             item {
@@ -105,6 +105,12 @@ fun ManualScreen(onBack: () -> Unit) {
                 ManualSection(
                     title = "🇫🇷🇨🇭 Tu dégages fonctionne-t-il en Suisse ?",
                     body = "Oui ! Dans Paramètres, choisissez votre pays (🇫🇷 France ou 🇨🇭 Suisse) tout en haut de la liste.\n\nEn Suisse, Tu dégages détecte notamment :\n\n• Les numéros à valeur ajoutée (0900, 0901, 0906) — business, marketing et divertissement, attribués individuellement par l'OFCOM.\n• Les numéros d'entreprise nationaux à coût partagé (0840, 0842, 0844, 0848, 0878) — souvent utilisés comme numéros de redirection par des centres d'appels et hotlines commerciales.\n\nLa base communautaire et votre historique personnel fonctionnent exactement de la même façon, quel que soit le pays choisi."
+                )
+            }
+            item {
+                ManualSection(
+                    title = "🇩🇪 Peut-on répondre en allemand (Suisse alémanique) ?",
+                    body = "Oui. Dans Paramètres, juste sous le sélecteur de pays, choisissez la « Langue des messages vocaux » : 🇫🇷 Français ou 🇩🇪 Deutsch.\n\nEn allemand, Tu dégages joue un message fixe adapté au mode actif (Poli, Administratif, Sarcastique ou Troll), avec une voix allemande si votre téléphone en propose une.\n\nCe réglage ne change pas la langue de l'application elle-même, qui reste en français — seul le message entendu par le démarcheur change."
                 )
             }
             item {

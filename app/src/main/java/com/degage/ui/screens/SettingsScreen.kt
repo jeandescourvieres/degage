@@ -36,6 +36,7 @@ fun SettingsScreen(
     contributeDb: Boolean = false,
     blockHiddenNumbers: Boolean = false,
     country: String = "FR",
+    replyLanguage: String = "FR",
     isPremium: Boolean = true,
     onUpgrade: () -> Unit = {},
     onToggleEnabled: () -> Unit,
@@ -46,6 +47,7 @@ fun SettingsScreen(
     onToggleContributeDb: () -> Unit = {},
     onToggleBlockHiddenNumbers: () -> Unit = {},
     onSetCountry: (String) -> Unit = {},
+    onSetReplyLanguage: (String) -> Unit = {},
     onNavigateAbout: () -> Unit,
     onNavigateMessageBuilder: () -> Unit,
     onNavigateVoiceSettings: () -> Unit,
@@ -87,6 +89,9 @@ fun SettingsScreen(
 
         item {
             CountrySelectorRow(country = country, isPremium = isPremium, onSetCountry = onSetCountry, onUpgrade = onUpgrade)
+        }
+        item {
+            ReplyLanguageSelectorRow(language = replyLanguage, isPremium = isPremium, onSetLanguage = onSetReplyLanguage, onUpgrade = onUpgrade)
         }
         item {
             SettingsToggleRow(label = "Protection", checked = isEnabled, onToggle = onToggleEnabled)
@@ -246,6 +251,36 @@ fun CountrySelectorRow(country: String, isPremium: Boolean = true, onSetCountry:
                 onClick = { if (chLocked) onUpgrade() else onSetCountry("CH") }
             )
             if (chLocked) PremiumBadge()
+        }
+    }
+}
+
+@Composable
+fun ReplyLanguageSelectorRow(language: String, isPremium: Boolean = true, onSetLanguage: (String) -> Unit, onUpgrade: () -> Unit = {}) {
+    Column(
+        modifier = Modifier
+            .fillMaxWidth()
+            .background(CardBg, RoundedCornerShape(14.dp))
+            .padding(horizontal = 20.dp, vertical = 14.dp)
+    ) {
+        Text("Langue des messages vocaux", color = Color.White, fontSize = 15.sp)
+        Text(
+            "Langue dans laquelle Tu dégages répond aux démarcheurs (utile en Suisse alémanique).",
+            color = TextSecondary,
+            fontSize = 11.sp,
+            lineHeight = 16.sp
+        )
+        Spacer(modifier = Modifier.height(10.dp))
+        Row(horizontalArrangement = Arrangement.spacedBy(8.dp), verticalAlignment = Alignment.CenterVertically) {
+            CountryChip("🇫🇷 Français", selected = language == "FR", onClick = { onSetLanguage("FR") })
+            val deSelected = language == "DE"
+            val deLocked = !isPremium
+            CountryChip(
+                "🇩🇪 Deutsch",
+                selected = deSelected && !deLocked,
+                onClick = { if (deLocked) onUpgrade() else onSetLanguage("DE") }
+            )
+            if (deLocked) PremiumBadge()
         }
     }
 }

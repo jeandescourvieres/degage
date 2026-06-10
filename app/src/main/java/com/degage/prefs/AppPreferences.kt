@@ -34,6 +34,7 @@ class AppPreferences(private val context: Context) {
         val KEY_BLOCK_HIDDEN = booleanPreferencesKey("block_hidden_numbers")
         val KEY_COUNTRY = stringPreferencesKey("country")
         val KEY_IS_PREMIUM = booleanPreferencesKey("is_premium")
+        val KEY_REPLY_LANGUAGE = stringPreferencesKey("reply_language")
     }
 
     val isEnabled: Flow<Boolean> = context.dataStore.data.map { it[KEY_ENABLED] ?: true }
@@ -53,6 +54,7 @@ class AppPreferences(private val context: Context) {
     val blockHiddenNumbers: Flow<Boolean> = context.dataStore.data.map { it[KEY_BLOCK_HIDDEN] ?: false }
     val country: Flow<String> = context.dataStore.data.map { it[KEY_COUNTRY] ?: "FR" }
     val isPremium: Flow<Boolean> = context.dataStore.data.map { it[KEY_IS_PREMIUM] ?: false }
+    val replyLanguage: Flow<String> = context.dataStore.data.map { it[KEY_REPLY_LANGUAGE] ?: "FR" }
 
     suspend fun setEnabled(value: Boolean) = context.dataStore.edit { it[KEY_ENABLED] = value }
     suspend fun setActiveMode(mode: String) = context.dataStore.edit { it[KEY_MODE] = mode }
@@ -71,4 +73,5 @@ class AppPreferences(private val context: Context) {
     suspend fun setBlockHiddenNumbers(value: Boolean) = context.dataStore.edit { it[KEY_BLOCK_HIDDEN] = value }
     suspend fun setCountry(value: String) = context.dataStore.edit { it[KEY_COUNTRY] = value }
     suspend fun setPremium(value: Boolean) = context.dataStore.edit { it[KEY_IS_PREMIUM] = value }
+    suspend fun setReplyLanguage(value: String) = context.dataStore.edit { it[KEY_REPLY_LANGUAGE] = value }
 }

@@ -60,6 +60,7 @@ fun DegageApp(
     val country by viewModel.country.collectAsStateWithLifecycle()
     val customBlocks by viewModel.customBlocks.collectAsStateWithLifecycle()
     val isPremium by viewModel.isPremium.collectAsStateWithLifecycle()
+    val replyLanguage by viewModel.replyLanguage.collectAsStateWithLifecycle()
 
     val startDestination = when {
         !onboardingDone -> Screen.Onboarding.route
@@ -177,6 +178,7 @@ fun DegageApp(
                         contributeDb = contributeDb,
                         blockHiddenNumbers = blockHiddenNumbers,
                         country = country,
+                        replyLanguage = replyLanguage,
                         isPremium = isPremium,
                         onUpgrade = { navController.navigate(Screen.Premium.route) },
                         onToggleEnabled = viewModel::toggleEnabled,
@@ -187,6 +189,7 @@ fun DegageApp(
                         onToggleContributeDb = { viewModel.setContributeDb(!contributeDb) },
                         onToggleBlockHiddenNumbers = { viewModel.setBlockHiddenNumbers(!blockHiddenNumbers) },
                         onSetCountry = { viewModel.setCountry(it) },
+                        onSetReplyLanguage = { viewModel.setReplyLanguage(it) },
                         onNavigateAbout = { navController.navigate(Screen.About.route) },
                         onNavigateMessageBuilder = { navController.navigate(Screen.MessageBuilder.route) },
                         onNavigateVoiceSettings = { navController.navigate(Screen.VoiceSettings.route) },

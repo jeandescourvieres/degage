@@ -12,6 +12,7 @@ import com.degage.modes.AppMode
 import com.degage.notifications.NotificationHelper
 import com.degage.spam.SupabaseClient
 import com.degage.prefs.AppPreferences
+import com.degage.replies.GermanReplies
 import com.degage.replies.MessagePart
 import com.degage.tts.HoldMusicPlayer
 import com.degage.tts.TtsManager
@@ -161,21 +162,26 @@ class DegageCallScreeningService : CallScreeningService() {
             // ── Traitement normal : TTS + rejet ──────────────────────────────
             val modeStr = prefs.activeMode.first()
             val mode = runCatching { AppMode.valueOf(modeStr) }.getOrDefault(AppMode.POLI)
+            val replyLanguage = prefs.replyLanguage.first()
 
-            val salutation = db.replyDao().getEnabledGlobalByPart(MessagePart.SALUTATION.name).firstOrNull()?.text ?: ""
-            val body = db.replyDao().getEnabledBodyByMode(mode.name).firstOrNull()?.text
-                ?: "Cette ligne refuse les sollicitations commerciales."
-            val ending = db.replyDao().getEnabledGlobalByPart(MessagePart.ENDING.name).firstOrNull()?.text ?: ""
-
-            val fullMessage = listOf(salutation, body, ending)
-                .filter { it.isNotBlank() }
-                .joinToString(" ")
+            val fullMessage = if (replyLanguage == "DE") {
+                GermanReplies.fullMessage(mode)
+            } else {
+                val salutation = db.replyDao().getEnabledGlobalByPart(MessagePart.SALUTATION.name).firstOrNull()?.text ?: ""
+                val body = db.replyDao().getEnabledBodyByMode(mode.name).firstOrNull()?.text
+                    ?: "Cette ligne refuse les sollicitations commerciales."
+                val ending = db.replyDao().getEnabledGlobalByPart(MessagePart.ENDING.name).firstOrNull()?.text ?: ""
+                listOf(salutation, body, ending)
+                    .filter { it.isNotBlank() }
+                    .joinToString(" ")
+            }
 
             val rate = prefs.speechRate.first()
             val pitch = prefs.pitch.first()
             val voiceName = prefs.voiceName.first().ifBlank { null }
             val monitorLive = prefs.monitorLive.first()
-            ttsManager.applySettings(rate, pitch, voiceName)
+            ttsManager.setLanguage(replyLanguage)
+            ttsManager.applySettings(rate, pitch, if (replyLanguage == "DE") null else voiceName)
 
             val audioManager = getSystemService(Context.AUDIO_SERVICE) as AudioManager
             if (monitorLive) {

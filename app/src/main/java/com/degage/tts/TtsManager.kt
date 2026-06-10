@@ -36,6 +36,19 @@ class TtsManager(context: Context) {
         }
     }
 
+    // Bascule la langue de synthèse vocale ("fr" ou "de")
+    fun setLanguage(languageCode: String) {
+        val locale = if (languageCode == "DE") Locale.GERMAN else Locale.FRENCH
+        tts?.language = locale
+        tts?.voice?.let { voice ->
+            if (voice.locale.language != locale.language) {
+                tts?.voices
+                    ?.firstOrNull { it.locale.language == locale.language }
+                    ?.let { tts?.voice = it }
+            }
+        }
+    }
+
     // Retourne les voix françaises installées, triées par nom
     fun getAvailableVoices(): List<Voice> =
         tts?.voices
