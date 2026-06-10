@@ -7,9 +7,11 @@ import androidx.room.RoomDatabase
 import androidx.room.migration.Migration
 import androidx.sqlite.db.SupportSQLiteDatabase
 import com.degage.database.dao.BlockedCallDao
+import com.degage.database.dao.CustomBlockDao
 import com.degage.database.dao.ReplyDao
 import com.degage.database.dao.SpamDao
 import com.degage.database.entities.BlockedCallEntity
+import com.degage.database.entities.CustomBlockEntity
 import com.degage.database.entities.ReplyEntity
 import com.degage.database.entities.SpamEntry
 import com.degage.modes.AppMode
@@ -20,14 +22,15 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 @Database(
-    entities = [BlockedCallEntity::class, ReplyEntity::class, SpamEntry::class],
-    version = 3,
+    entities = [BlockedCallEntity::class, ReplyEntity::class, SpamEntry::class, CustomBlockEntity::class],
+    version = 4,
     exportSchema = false
 )
 abstract class AppDatabase : RoomDatabase() {
     abstract fun blockedCallDao(): BlockedCallDao
     abstract fun replyDao(): ReplyDao
     abstract fun spamDao(): SpamDao
+    abstract fun customBlockDao(): CustomBlockDao
 
     companion object {
         @Volatile private var INSTANCE: AppDatabase? = null
@@ -47,10 +50,23 @@ abstract class AppDatabase : RoomDatabase() {
             }
         }
 
+        private val MIGRATION_3_4 = object : Migration(3, 4) {
+            override fun migrate(database: SupportSQLiteDatabase) {
+                database.execSQL("""
+                    CREATE TABLE IF NOT EXISTS `custom_blocks` (
+                        `id` INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+                        `value` TEXT NOT NULL,
+                        `isPrefix` INTEGER NOT NULL,
+                        `createdAt` INTEGER NOT NULL DEFAULT 0
+                    )
+                """.trimIndent())
+            }
+        }
+
         fun getInstance(context: Context): AppDatabase {
             return INSTANCE ?: synchronized(this) {
                 Room.databaseBuilder(context, AppDatabase::class.java, "degage.db")
-                    .addMigrations(MIGRATION_2_3)
+                    .addMigrations(MIGRATION_2_3, MIGRATION_3_4)
                     .addCallback(object : Callback() {
                         override fun onCreate(db: SupportSQLiteDatabase) {
                             super.onCreate(db)

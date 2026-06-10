@@ -5,6 +5,7 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
 import com.degage.database.AppDatabase
 import com.degage.database.entities.BlockedCallEntity
+import com.degage.database.entities.CustomBlockEntity
 import com.degage.database.entities.ReplyEntity
 import com.degage.modes.AppMode
 import com.degage.prefs.AppPreferences
@@ -85,6 +86,9 @@ class MainViewModel(app: Application) : AndroidViewModel(app) {
 
     val country: StateFlow<String> = prefs.country
         .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5000), "FR")
+
+    val customBlocks: StateFlow<List<CustomBlockEntity>> = db.customBlockDao().getAll()
+        .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5000), emptyList())
 
     val spamDbCount: StateFlow<Int> = db.spamDao().getCount()
         .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5000), 0)
@@ -178,4 +182,14 @@ class MainViewModel(app: Application) : AndroidViewModel(app) {
     fun setContributeDb(v: Boolean) = viewModelScope.launch { prefs.setContributeDb(v) }
     fun setBlockHiddenNumbers(v: Boolean) = viewModelScope.launch { prefs.setBlockHiddenNumbers(v) }
     fun setCountry(v: String) = viewModelScope.launch { prefs.setCountry(v) }
+
+    fun addCustomBlock(value: String, isPrefix: Boolean) = viewModelScope.launch {
+        val cleaned = value.trim().filter { it.isDigit() || it == '+' }
+        if (cleaned.isBlank()) return@launch
+        db.customBlockDao().insert(CustomBlockEntity(value = cleaned, isPrefix = isPrefix))
+    }
+
+    fun deleteCustomBlock(entry: CustomBlockEntity) = viewModelScope.launch {
+        db.customBlockDao().delete(entry)
+    }
 }

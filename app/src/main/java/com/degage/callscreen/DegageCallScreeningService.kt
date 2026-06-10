@@ -8,6 +8,7 @@ import com.degage.database.AppDatabase
 import com.degage.database.entities.BlockedCallEntity
 import com.degage.database.entities.SpamEntry
 import com.degage.modes.AppMode
+import com.degage.notifications.NotificationHelper
 import com.degage.spam.SupabaseClient
 import com.degage.prefs.AppPreferences
 import com.degage.replies.MessagePart
@@ -49,6 +50,7 @@ class DegageCallScreeningService : CallScreeningService() {
 
             val contributeDb = prefs.contributeDb.first()
             val country = prefs.country.first()
+            val notificationsEnabled = prefs.notifications.first()
             val isSpamPrefix = !isUnknown && normalized.isNotBlank() && rawNumber!!.isSpamNumber(country)
 
             // ── Appel masqué/inconnu + option activée → rejet immédiat sans TTS ──
@@ -62,7 +64,31 @@ class DegageCallScreeningService : CallScreeningService() {
                         replyUsed = "Rejet automatique — numéro masqué"
                     )
                 )
+                if (notificationsEnabled) {
+                    NotificationHelper.notifyBlockedCall(applicationContext, rawNumber.displayNumber(), "numéro masqué")
+                }
                 return@launch
+            }
+
+            // ── Numéro correspondant à une règle personnalisée → rejet immédiat ──
+            if (!isUnknown && normalized.isNotBlank()) {
+                val isCustomExact = db.customBlockDao().isExactBlocked(normalized)
+                val isCustomPrefix = db.customBlockDao().getPrefixes().any { normalized.startsWith(it) }
+                if (isCustomExact || isCustomPrefix) {
+                    silentReject(callDetails)
+                    db.blockedCallDao().insert(
+                        BlockedCallEntity(
+                            phoneNumber = rawNumber.displayNumber(),
+                            timestamp = System.currentTimeMillis(),
+                            modeName = "Auto",
+                            replyUsed = "Rejet automatique — règle personnalisée"
+                        )
+                    )
+                    if (notificationsEnabled) {
+                        NotificationHelper.notifyBlockedCall(applicationContext, rawNumber.displayNumber(), "règle personnalisée")
+                    }
+                    return@launch
+                }
             }
 
             // ── Numéro déjà connu dans la base spam → rejet immédiat sans TTS ──
@@ -77,6 +103,9 @@ class DegageCallScreeningService : CallScreeningService() {
                         replyUsed = "Rejet automatique — numéro connu"
                     )
                 )
+                if (notificationsEnabled) {
+                    NotificationHelper.notifyBlockedCall(applicationContext, rawNumber.displayNumber(), "numéro connu")
+                }
                 if (contributeDb) SupabaseClient.reportNumber(normalized)
                 return@launch
             }
@@ -140,6 +169,10 @@ class DegageCallScreeningService : CallScreeningService() {
                     replyUsed = fullMessage
                 )
             )
+
+            if (notificationsEnabled) {
+                NotificationHelper.notifyBlockedCall(applicationContext, rawNumber.displayNumber(), "mode ${mode.label}")
+            }
 
             // ── Mémoriser ce numéro pour rejet immédiat la prochaine fois ────
             if (normalized.isNotBlank()) {

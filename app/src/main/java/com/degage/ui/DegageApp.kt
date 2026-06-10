@@ -58,6 +58,7 @@ fun DegageApp(
     val contributeDb by viewModel.contributeDb.collectAsStateWithLifecycle()
     val blockHiddenNumbers by viewModel.blockHiddenNumbers.collectAsStateWithLifecycle()
     val country by viewModel.country.collectAsStateWithLifecycle()
+    val customBlocks by viewModel.customBlocks.collectAsStateWithLifecycle()
 
     val startDestination = when {
         !onboardingDone -> Screen.Onboarding.route
@@ -182,6 +183,7 @@ fun DegageApp(
                         onNavigateMessageBuilder = { navController.navigate(Screen.MessageBuilder.route) },
                         onNavigateVoiceSettings = { navController.navigate(Screen.VoiceSettings.route) },
                         onNavigateManual = { navController.navigate(Screen.Manual.route) },
+                        onNavigateCustomBlocks = { navController.navigate(Screen.CustomBlocks.route) },
                         onNavigateWelcome = { navController.navigate(Screen.Welcome.route) },
                         onSyncSpamList = viewModel::syncSpamList,
                         isSyncing = isSyncing,
@@ -256,6 +258,15 @@ fun DegageApp(
 
                 composable(Screen.About.route) {
                     AboutScreen(onBack = { navController.popBackStack() })
+                }
+
+                composable(Screen.CustomBlocks.route) {
+                    CustomBlockScreen(
+                        blocks = customBlocks,
+                        onAdd = viewModel::addCustomBlock,
+                        onDelete = viewModel::deleteCustomBlock,
+                        onBack = { navController.popBackStack() }
+                    )
                 }
             }
         }

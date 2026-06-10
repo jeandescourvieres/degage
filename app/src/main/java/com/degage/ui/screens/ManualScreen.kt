@@ -101,6 +101,12 @@ fun ManualScreen(onBack: () -> Unit) {
                     body = "Un numéro est bloqué s'il appartient à une plage ARCEP connue pour le démarchage, s'il figure dans phoneblock.net ou Signal-Spam, s'il vous a déjà appelé et a été traité comme spam, ou s'il a été signalé par la communauté.\n\nTu dégages ne bloque jamais un numéro simplement parce qu'il appartient à tel ou tel opérateur télécom — voir « Pourquoi on ne bloque pas tout un opérateur » plus haut."
                 )
             }
+            item {
+                ManualSection(
+                    title = "🚫 Puis-je bloquer moi-même un numéro ou un préfixe ?",
+                    body = "Oui ! Dans Paramètres → Numéros bloqués manuellement, vous pouvez ajouter vos propres règles :\n\n• Numéro exact : bloque uniquement ce numéro précis (ex. 0612345678).\n• Préfixe : bloque tous les numéros commençant par cette suite de chiffres (ex. 0033612 bloque tous les numéros commençant ainsi).\n\nCes règles s'ajoutent à la base spam automatique : tout appel correspondant est rejeté immédiatement, sans message vocal. Vous pouvez supprimer une règle à tout moment depuis le même écran."
+                )
+            }
 
             item { CategoryHeader("📱 Utilisation") }
             item {
@@ -118,7 +124,7 @@ fun ManualScreen(onBack: () -> Unit) {
             item {
                 ManualSection(
                     title = "⚙️ Options avancées",
-                    body = "Dans Paramètres :\n\n• Décroche automatique : Tu dégages répond à l'appel sans faire sonner votre téléphone (recommandé).\n• Bloquer après réponse : ajoute le numéro à votre liste noire personnelle après chaque interaction.\n• Notifications : reçois une notification à chaque appel bloqué."
+                    body = "Dans Paramètres :\n\n• Décroche automatique : Tu dégages répond à l'appel sans faire sonner votre téléphone (recommandé).\n• Bloquer après réponse : ajoute le numéro à votre liste noire personnelle après chaque interaction.\n• Notifications : si activé, vous recevez une notification Android à chaque appel bloqué (numéro et raison du blocage)."
                 )
             }
 

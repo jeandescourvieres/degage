@@ -6,6 +6,7 @@ app/build/
 
 # Gradle
 .gradle/
+.kotlin/
 gradle-app.setting
 !gradle-wrapper.jar
 local.properties

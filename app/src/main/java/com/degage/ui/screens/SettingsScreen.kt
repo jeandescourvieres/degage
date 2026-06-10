@@ -47,6 +47,7 @@ fun SettingsScreen(
     onNavigateMessageBuilder: () -> Unit,
     onNavigateVoiceSettings: () -> Unit,
     onNavigateManual: () -> Unit,
+    onNavigateCustomBlocks: () -> Unit = {},
     onNavigateWelcome: () -> Unit = {},
     onSyncSpamList: () -> Unit = {},
     isSyncing: Boolean = false,
@@ -113,6 +114,9 @@ fun SettingsScreen(
         }
         item {
             SettingsNavRow(label = "🎙️ Paramètres vocaux", onClick = onNavigateVoiceSettings)
+        }
+        item {
+            SettingsNavRow(label = "🚫 Numéros bloqués manuellement", onClick = onNavigateCustomBlocks)
         }
 
         item { Spacer(modifier = Modifier.height(8.dp)) }

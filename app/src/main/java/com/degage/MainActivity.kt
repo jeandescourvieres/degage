@@ -36,6 +36,7 @@ class MainActivity : ComponentActivity() {
 
         requestRequiredPermissions()
         promptCallScreeningRole()
+        com.degage.notifications.NotificationHelper.ensureChannel(this)
         viewModel.ensureBundledListLoaded()
 
         lifecycleScope.launch {
@@ -59,13 +60,15 @@ class MainActivity : ComponentActivity() {
     }
 
     private fun requestRequiredPermissions() {
-        permissionLauncher.launch(
-            arrayOf(
-                Manifest.permission.READ_PHONE_STATE,
-                Manifest.permission.READ_CALL_LOG,
-                Manifest.permission.ANSWER_PHONE_CALLS,
-            )
+        val permissions = mutableListOf(
+            Manifest.permission.READ_PHONE_STATE,
+            Manifest.permission.READ_CALL_LOG,
+            Manifest.permission.ANSWER_PHONE_CALLS,
         )
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            permissions.add(Manifest.permission.POST_NOTIFICATIONS)
+        }
+        permissionLauncher.launch(permissions.toTypedArray())
     }
 
     private fun promptCallScreeningRole() {

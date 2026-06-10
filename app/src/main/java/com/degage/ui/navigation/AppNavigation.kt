@@ -19,8 +19,7 @@ sealed class Screen(val route: String) {
         fun withMode(mode: String) = "replies/$mode"
     }
     data object About : Screen("about")
-    data object AddNumber : Screen("add_number")
-    data object Notifications : Screen("notifications")
+    data object CustomBlocks : Screen("custom_blocks")
     data object MessageBuilder : Screen("message_builder")
     data object VoiceSettings : Screen("voice_settings")
     data object Manual : Screen("manual")
