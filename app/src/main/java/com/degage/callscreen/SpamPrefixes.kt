@@ -39,17 +39,17 @@ val SPAM_PREFIXES = listOf(
 )
 
 // Préfixes suisses documentés comme sources fréquentes d'appels indésirables.
-// Source : OFCOM (numéros à valeur ajoutée attribués au démarchage/marketing).
+// Source : OFCOM/BAKOM (plages de numéros à valeur ajoutée et numéros d'entreprise nationaux).
 val SPAM_PREFIXES_CH = listOf(
 
     // ── Numéros à valeur ajoutée (0900/0901/0906) ────────────────────────
-    // Attribués individuellement par l'OFCOM pour le business/marketing
+    // Attribués individuellement par l'OFCOM pour le business/marketing/divertissement
     "0900", "0901", "0906",
 
-    // ── Numéros à coût partagé (084x) ─────────────────────────────────────
-    // Souvent utilisés par les centres d'appels et hotlines commerciales
-    "0840", "0841", "0842", "0843", "0844",
-    "0845", "0846", "0847", "0848", "0849",
+    // ── Numéros d'entreprise nationaux à coût partagé (084x/0878) ────────
+    // Plages effectivement allouées par l'OFCOM (0840, 0842, 0844, 0848, 0878),
+    // utilisées comme numéros de redirection par des centres d'appels et hotlines
+    "0840", "0842", "0844", "0848", "0878",
 )
 
 private val UNKNOWN_MARKERS = listOf(
