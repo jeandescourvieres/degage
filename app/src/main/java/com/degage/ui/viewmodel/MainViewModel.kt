@@ -124,6 +124,15 @@ class MainViewModel(app: Application) : AndroidViewModel(app) {
         }
     }
 
+    /** Sync silencieuse de la base spam au lancement, si la dernière date de plus de 24h. */
+    fun autoSyncIfNeeded() = viewModelScope.launch {
+        val last = prefs.lastSpamSync.first()
+        val dayMs = 24 * 60 * 60 * 1000L
+        if (System.currentTimeMillis() - last >= dayMs) {
+            syncSpamList()
+        }
+    }
+
     // ── Message builder : flows par partie ──────────────────────────────
     fun getSalutations(): Flow<List<ReplyEntity>> =
         db.replyDao().getGlobalByPart(com.degage.replies.MessagePart.SALUTATION.name)

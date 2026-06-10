@@ -98,7 +98,7 @@ fun ManualScreen(onBack: () -> Unit) {
             item {
                 ManualSection(
                     title = "À quoi sert le signalement d'un numéro ?",
-                    body = "Quand vous bloquez un numéro et que vous avez activé « Base communautaire » dans les Paramètres, ce numéro est transmis — anonymement, sans aucune de vos données — à un serveur partagé.\n\nTous les autres utilisateurs de Tu dégages téléchargent ensuite ce numéro et le rejettent automatiquement, sans même jouer le message vocal. Plus il y a d'utilisateurs, plus la base est efficace pour tout le monde."
+                    body = "Quand vous bloquez un numéro et que vous avez activé « Base communautaire » dans les Paramètres, ce numéro est transmis — anonymement, sans aucune de vos données — à un serveur partagé.\n\nTous les autres utilisateurs de Tu dégages récupèrent ensuite ce numéro et le rejettent automatiquement, sans même jouer le message vocal. Plus il y a d'utilisateurs, plus la base est efficace pour tout le monde.\n\nCette récupération se fait automatiquement, en silence, une fois par jour à l'ouverture de l'application — vous n'avez rien à faire. Le bouton « Mettre à jour la base spam » dans Paramètres permet simplement de forcer une mise à jour immédiate."
                 )
             }
             item {

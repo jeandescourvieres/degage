@@ -38,6 +38,7 @@ class MainActivity : ComponentActivity() {
         promptCallScreeningRole()
         com.degage.notifications.NotificationHelper.ensureChannel(this)
         viewModel.ensureBundledListLoaded()
+        viewModel.autoSyncIfNeeded()
 
         lifecycleScope.launch {
             val onboardingDone = prefs.onboardingDone.first()
