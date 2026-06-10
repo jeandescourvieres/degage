@@ -10,6 +10,7 @@ import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material.icons.filled.Block
 import androidx.compose.material.icons.filled.CheckCircle
 import androidx.compose.material.icons.filled.Delete
+import androidx.compose.material.icons.filled.FileDownload
 import androidx.compose.material.icons.filled.Info
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
@@ -17,11 +18,13 @@ import com.degage.ui.components.InfoDialog
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.degage.database.entities.BlockedCallEntity
+import com.degage.history.exportCallsToCsv
 import com.degage.ui.theme.*
 import java.text.SimpleDateFormat
 import java.util.*
@@ -35,11 +38,12 @@ fun HistoryScreen(
     onMarkNotSpam: (BlockedCallEntity) -> Unit = {},
     onBack: () -> Unit = {},
 ) {
+    val context = LocalContext.current
     var filter by remember { mutableStateOf(HistoryFilter.TOUS) }
     var showInfo by remember { mutableStateOf(false) }
     if (showInfo) InfoDialog(
         title = "Historique",
-        content = "Journal de tous les appels bloqués par Tu dégages.\n\n• Chaque ligne affiche le numéro détecté, la date/heure, le mode utilisé et le message joué.\n• Utilisez les filtres en haut (Tous / Bloqués / Réponses / Manuels) pour trier l'affichage.\n• Appuyez sur l'icône ✅ si ce numéro a été bloqué à tort : il ne sera plus jamais bloqué.\n• Appuyez sur l'icône 🗑️ pour supprimer une entrée de l'historique.",
+        content = "Journal de tous les appels bloqués par Tu dégages.\n\n• Chaque ligne affiche le numéro détecté, la date/heure, le mode utilisé et le message joué.\n• Utilisez les filtres en haut (Tous / Bloqués / Réponses / Manuels) pour trier l'affichage.\n• Appuyez sur l'icône ✅ si ce numéro a été bloqué à tort : il ne sera plus jamais bloqué.\n• Appuyez sur l'icône 🗑️ pour supprimer une entrée de l'historique.\n• Appuyez sur l'icône ⬇️ pour exporter l'historique en fichier CSV (à enregistrer ou envoyer par e-mail).",
         onDismiss = { showInfo = false }
     )
 
@@ -57,6 +61,9 @@ fun HistoryScreen(
                 Icon(Icons.Default.ArrowBack, contentDescription = "Retour", tint = Color.White)
             }
             Text("Historique", fontSize = 20.sp, fontWeight = FontWeight.Bold, color = Color.White, modifier = Modifier.weight(1f))
+            IconButton(onClick = { exportCallsToCsv(context, calls) }, enabled = calls.isNotEmpty()) {
+                Icon(Icons.Default.FileDownload, contentDescription = "Exporter en CSV", tint = if (calls.isNotEmpty()) NeonGreen else TextSecondary, modifier = Modifier.size(26.dp))
+            }
             IconButton(onClick = { showInfo = true }) {
                 Icon(Icons.Default.Info, contentDescription = "Aide", tint = NeonGreen, modifier = Modifier.size(26.dp))
             }

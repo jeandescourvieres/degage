@@ -123,6 +123,12 @@ fun ManualScreen(onBack: () -> Unit) {
             }
             item {
                 ManualSection(
+                    title = "⬇️ Peut-on télécharger la liste des numéros bloqués ?",
+                    body = "Oui. Dans l'onglet Historique, appuyez sur l'icône ⬇️ en haut de l'écran : un fichier CSV (numéro, date, mode, message joué) est généré et vous pouvez l'enregistrer ou l'envoyer par e-mail via le menu de partage Android.\n\nCet export est purement personnel : il sert de trace ou de preuve, par exemple pour un signalement officiel. Il ne transmet rien à Tu dégages ni à qui que ce soit d'autre."
+                )
+            }
+            item {
+                ManualSection(
                     title = "📊 Statistiques",
                     body = "L'onglet Statistiques affiche :\n\n• Le temps total économisé (graphique circulaire).\n• Le nombre total de spammeurs bloqués depuis l'installation.\n• La moyenne d'appels évités par jour.\n• La durée moyenne d'un appel de démarchage évitée."
                 )
