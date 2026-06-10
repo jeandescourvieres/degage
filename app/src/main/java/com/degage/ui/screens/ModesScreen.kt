@@ -16,12 +16,14 @@ import androidx.compose.runtime.*
 import com.degage.ui.components.InfoDialog
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.degage.modes.AppMode
+import com.degage.ui.components.PremiumBadge
 import com.degage.ui.theme.*
 
 data class ModeInfo(
@@ -42,6 +44,8 @@ fun ModesScreen(
     activeMode: AppMode,
     onSelectMode: (AppMode) -> Unit,
     onPreviewMode: (AppMode) -> Unit,
+    isPremium: Boolean = true,
+    onUpgrade: () -> Unit = {},
     onBack: () -> Unit = {},
 ) {
     Column(
@@ -75,10 +79,12 @@ fun ModesScreen(
 
         LazyColumn(verticalArrangement = Arrangement.spacedBy(12.dp)) {
             items(modeInfoList) { info ->
+                val locked = !isPremium && info.mode != AppMode.POLI
                 ModeCard(
                     info = info,
                     isSelected = activeMode == info.mode,
-                    onClick = { onSelectMode(info.mode) }
+                    locked = locked,
+                    onClick = { if (locked) onUpgrade() else onSelectMode(info.mode) }
                 )
             }
 
@@ -103,7 +109,7 @@ fun ModesScreen(
 }
 
 @Composable
-fun ModeCard(info: ModeInfo, isSelected: Boolean, onClick: () -> Unit) {
+fun ModeCard(info: ModeInfo, isSelected: Boolean, locked: Boolean = false, onClick: () -> Unit) {
     val borderColor = if (isSelected) NeonGreen else Color.Transparent
     Row(
         modifier = Modifier
@@ -114,19 +120,23 @@ fun ModeCard(info: ModeInfo, isSelected: Boolean, onClick: () -> Unit) {
             .padding(16.dp),
         verticalAlignment = Alignment.CenterVertically
     ) {
-        Text(text = info.mode.emoji, fontSize = 32.sp)
+        Text(text = info.mode.emoji, fontSize = 32.sp, modifier = Modifier.alpha(if (locked) 0.4f else 1f))
         Spacer(modifier = Modifier.width(14.dp))
-        Column(modifier = Modifier.weight(1f)) {
+        Column(modifier = Modifier.weight(1f).alpha(if (locked) 0.4f else 1f)) {
             Text(info.mode.label, fontWeight = FontWeight.Bold, color = Color.White, fontSize = 16.sp)
             Text(info.description, color = TextSecondary, fontSize = 12.sp, lineHeight = 18.sp)
             Spacer(modifier = Modifier.height(6.dp))
             Text(info.examplePhrase, color = Color(0xFF6A6A6A), fontSize = 11.sp, fontStyle = androidx.compose.ui.text.font.FontStyle.Italic)
         }
-        RadioButton(
-            selected = isSelected,
-            onClick = onClick,
-            colors = RadioButtonDefaults.colors(selectedColor = NeonGreen, unselectedColor = TextSecondary)
-        )
+        if (locked) {
+            PremiumBadge()
+        } else {
+            RadioButton(
+                selected = isSelected,
+                onClick = onClick,
+                colors = RadioButtonDefaults.colors(selectedColor = NeonGreen, unselectedColor = TextSecondary)
+            )
+        }
     }
 }
 

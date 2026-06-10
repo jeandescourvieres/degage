@@ -59,6 +59,7 @@ fun DegageApp(
     val blockHiddenNumbers by viewModel.blockHiddenNumbers.collectAsStateWithLifecycle()
     val country by viewModel.country.collectAsStateWithLifecycle()
     val customBlocks by viewModel.customBlocks.collectAsStateWithLifecycle()
+    val isPremium by viewModel.isPremium.collectAsStateWithLifecycle()
 
     val startDestination = when {
         !onboardingDone -> Screen.Onboarding.route
@@ -138,6 +139,8 @@ fun DegageApp(
                         onPreviewMode = { mode ->
                             viewModel.previewMode(mode)
                         },
+                        isPremium = isPremium,
+                        onUpgrade = { navController.navigate(Screen.Premium.route) },
                         onBack = { navController.navigateUp() }
                     )
                 }
@@ -158,6 +161,8 @@ fun DegageApp(
                         calls = allCalls,
                         onDelete = viewModel::deleteHistoryEntry,
                         onMarkNotSpam = viewModel::markNotSpam,
+                        isPremium = isPremium,
+                        onUpgrade = { navController.navigate(Screen.Premium.route) },
                         onBack = { navController.navigateUp() }
                     )
                 }
@@ -172,6 +177,8 @@ fun DegageApp(
                         contributeDb = contributeDb,
                         blockHiddenNumbers = blockHiddenNumbers,
                         country = country,
+                        isPremium = isPremium,
+                        onUpgrade = { navController.navigate(Screen.Premium.route) },
                         onToggleEnabled = viewModel::toggleEnabled,
                         onToggleAutoReject = { viewModel.setAutoReject(!autoReject) },
                         onToggleBlockAfterReply = { viewModel.setBlockAfterReply(!blockAfterReply) },
@@ -267,6 +274,14 @@ fun DegageApp(
                         onAdd = viewModel::addCustomBlock,
                         onDelete = viewModel::deleteCustomBlock,
                         onBack = { navController.popBackStack() }
+                    )
+                }
+
+                composable(Screen.Premium.route) {
+                    PremiumScreen(
+                        isPremium = isPremium,
+                        onBack = { navController.popBackStack() },
+                        onToggleDevPremium = viewModel::setPremium
                     )
                 }
             }

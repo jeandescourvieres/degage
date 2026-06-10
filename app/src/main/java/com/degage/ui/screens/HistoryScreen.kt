@@ -25,6 +25,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.degage.database.entities.BlockedCallEntity
 import com.degage.history.exportCallsToCsv
+import com.degage.ui.components.PremiumBadge
 import com.degage.ui.theme.*
 import java.text.SimpleDateFormat
 import java.util.*
@@ -36,6 +37,8 @@ fun HistoryScreen(
     calls: List<BlockedCallEntity>,
     onDelete: (Long) -> Unit,
     onMarkNotSpam: (BlockedCallEntity) -> Unit = {},
+    isPremium: Boolean = true,
+    onUpgrade: () -> Unit = {},
     onBack: () -> Unit = {},
 ) {
     val context = LocalContext.current
@@ -61,8 +64,15 @@ fun HistoryScreen(
                 Icon(Icons.Default.ArrowBack, contentDescription = "Retour", tint = Color.White)
             }
             Text("Historique", fontSize = 20.sp, fontWeight = FontWeight.Bold, color = Color.White, modifier = Modifier.weight(1f))
-            IconButton(onClick = { exportCallsToCsv(context, calls) }, enabled = calls.isNotEmpty()) {
-                Icon(Icons.Default.FileDownload, contentDescription = "Exporter en CSV", tint = if (calls.isNotEmpty()) NeonGreen else TextSecondary, modifier = Modifier.size(26.dp))
+            IconButton(
+                onClick = { if (!isPremium) onUpgrade() else exportCallsToCsv(context, calls) },
+                enabled = calls.isNotEmpty()
+            ) {
+                if (!isPremium) {
+                    PremiumBadge()
+                } else {
+                    Icon(Icons.Default.FileDownload, contentDescription = "Exporter en CSV", tint = if (calls.isNotEmpty()) NeonGreen else TextSecondary, modifier = Modifier.size(26.dp))
+                }
             }
             IconButton(onClick = { showInfo = true }) {
                 Icon(Icons.Default.Info, contentDescription = "Aide", tint = NeonGreen, modifier = Modifier.size(26.dp))

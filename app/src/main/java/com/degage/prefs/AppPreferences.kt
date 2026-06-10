@@ -33,6 +33,7 @@ class AppPreferences(private val context: Context) {
         val KEY_CONTRIBUTE_DB = booleanPreferencesKey("contribute_db")
         val KEY_BLOCK_HIDDEN = booleanPreferencesKey("block_hidden_numbers")
         val KEY_COUNTRY = stringPreferencesKey("country")
+        val KEY_IS_PREMIUM = booleanPreferencesKey("is_premium")
     }
 
     val isEnabled: Flow<Boolean> = context.dataStore.data.map { it[KEY_ENABLED] ?: true }
@@ -51,6 +52,7 @@ class AppPreferences(private val context: Context) {
     val contributeDb: Flow<Boolean> = context.dataStore.data.map { it[KEY_CONTRIBUTE_DB] ?: false }
     val blockHiddenNumbers: Flow<Boolean> = context.dataStore.data.map { it[KEY_BLOCK_HIDDEN] ?: false }
     val country: Flow<String> = context.dataStore.data.map { it[KEY_COUNTRY] ?: "FR" }
+    val isPremium: Flow<Boolean> = context.dataStore.data.map { it[KEY_IS_PREMIUM] ?: false }
 
     suspend fun setEnabled(value: Boolean) = context.dataStore.edit { it[KEY_ENABLED] = value }
     suspend fun setActiveMode(mode: String) = context.dataStore.edit { it[KEY_MODE] = mode }
@@ -68,4 +70,5 @@ class AppPreferences(private val context: Context) {
     suspend fun setContributeDb(value: Boolean) = context.dataStore.edit { it[KEY_CONTRIBUTE_DB] = value }
     suspend fun setBlockHiddenNumbers(value: Boolean) = context.dataStore.edit { it[KEY_BLOCK_HIDDEN] = value }
     suspend fun setCountry(value: String) = context.dataStore.edit { it[KEY_COUNTRY] = value }
+    suspend fun setPremium(value: Boolean) = context.dataStore.edit { it[KEY_IS_PREMIUM] = value }
 }

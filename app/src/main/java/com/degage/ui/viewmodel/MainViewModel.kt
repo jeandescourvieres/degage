@@ -89,6 +89,9 @@ class MainViewModel(app: Application) : AndroidViewModel(app) {
     val country: StateFlow<String> = prefs.country
         .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5000), "FR")
 
+    val isPremium: StateFlow<Boolean> = prefs.isPremium
+        .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5000), false)
+
     val customBlocks: StateFlow<List<CustomBlockEntity>> = db.customBlockDao().getAll()
         .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5000), emptyList())
 
@@ -193,6 +196,9 @@ class MainViewModel(app: Application) : AndroidViewModel(app) {
     fun setContributeDb(v: Boolean) = viewModelScope.launch { prefs.setContributeDb(v) }
     fun setBlockHiddenNumbers(v: Boolean) = viewModelScope.launch { prefs.setBlockHiddenNumbers(v) }
     fun setCountry(v: String) = viewModelScope.launch { prefs.setCountry(v) }
+
+    /** Mode développeur : bascule manuelle de l'état Premium, en attendant l'intégration Google Play Billing. */
+    fun setPremium(v: Boolean) = viewModelScope.launch { prefs.setPremium(v) }
 
     fun addCustomBlock(value: String, isPrefix: Boolean) = viewModelScope.launch {
         val cleaned = value.trim().filter { it.isDigit() || it == '+' }

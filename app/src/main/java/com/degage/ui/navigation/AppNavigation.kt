@@ -24,6 +24,7 @@ sealed class Screen(val route: String) {
     data object VoiceSettings : Screen("voice_settings")
     data object Manual : Screen("manual")
     data object Welcome : Screen("welcome")
+    data object Premium : Screen("premium")
 }
 
 data class BottomNavItem(

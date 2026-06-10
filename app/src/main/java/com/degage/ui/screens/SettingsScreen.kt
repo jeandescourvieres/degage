@@ -16,6 +16,7 @@ import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.withStyle
 import com.degage.ui.components.InfoDialog
+import com.degage.ui.components.PremiumBadge
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -35,6 +36,8 @@ fun SettingsScreen(
     contributeDb: Boolean = false,
     blockHiddenNumbers: Boolean = false,
     country: String = "FR",
+    isPremium: Boolean = true,
+    onUpgrade: () -> Unit = {},
     onToggleEnabled: () -> Unit,
     onToggleAutoReject: () -> Unit,
     onToggleBlockAfterReply: () -> Unit,
@@ -83,7 +86,7 @@ fun SettingsScreen(
         }
 
         item {
-            CountrySelectorRow(country = country, onSetCountry = onSetCountry)
+            CountrySelectorRow(country = country, isPremium = isPremium, onSetCountry = onSetCountry, onUpgrade = onUpgrade)
         }
         item {
             SettingsToggleRow(label = "Protection", checked = isEnabled, onToggle = onToggleEnabled)
@@ -104,19 +107,22 @@ fun SettingsScreen(
             MonitorLiveRow(checked = monitorLive, onToggle = onToggleMonitorLive)
         }
         item {
-            ContributeDbRow(checked = contributeDb, onToggle = onToggleContributeDb)
+            ContributeDbRow(checked = contributeDb, isPremium = isPremium, onToggle = onToggleContributeDb, onUpgrade = onUpgrade)
         }
 
         item { Spacer(modifier = Modifier.height(16.dp)) }
 
         item {
-            SettingsNavRow(label = "💬 Personnaliser les réponses", onClick = onNavigateMessageBuilder)
+            SettingsNavRow(label = "💬 Personnaliser les réponses", locked = !isPremium, onClick = onNavigateMessageBuilder, onUpgrade = onUpgrade)
         }
         item {
-            SettingsNavRow(label = "🎙️ Paramètres vocaux", onClick = onNavigateVoiceSettings)
+            SettingsNavRow(label = "🎙️ Paramètres vocaux", locked = !isPremium, onClick = onNavigateVoiceSettings, onUpgrade = onUpgrade)
         }
         item {
-            SettingsNavRow(label = "🚫 Numéros bloqués manuellement", onClick = onNavigateCustomBlocks)
+            SettingsNavRow(label = "🚫 Numéros bloqués manuellement", locked = !isPremium, onClick = onNavigateCustomBlocks, onUpgrade = onUpgrade)
+        }
+        item {
+            SettingsNavRow(label = "⭐ Tu dégages Premium", onClick = onUpgrade)
         }
 
         item { Spacer(modifier = Modifier.height(8.dp)) }
@@ -215,7 +221,7 @@ fun SpamSyncRow(isSyncing: Boolean, onClick: () -> Unit) {
 }
 
 @Composable
-fun CountrySelectorRow(country: String, onSetCountry: (String) -> Unit) {
+fun CountrySelectorRow(country: String, isPremium: Boolean = true, onSetCountry: (String) -> Unit, onUpgrade: () -> Unit = {}) {
     Column(
         modifier = Modifier
             .fillMaxWidth()
@@ -230,9 +236,16 @@ fun CountrySelectorRow(country: String, onSetCountry: (String) -> Unit) {
             lineHeight = 16.sp
         )
         Spacer(modifier = Modifier.height(10.dp))
-        Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+        Row(horizontalArrangement = Arrangement.spacedBy(8.dp), verticalAlignment = Alignment.CenterVertically) {
             CountryChip("🇫🇷 France", selected = country == "FR", onClick = { onSetCountry("FR") })
-            CountryChip("🇨🇭 Suisse", selected = country == "CH", onClick = { onSetCountry("CH") })
+            val chSelected = country == "CH"
+            val chLocked = !isPremium
+            CountryChip(
+                "🇨🇭 Suisse",
+                selected = chSelected && !chLocked,
+                onClick = { if (chLocked) onUpgrade() else onSetCountry("CH") }
+            )
+            if (chLocked) PremiumBadge()
         }
     }
 }
@@ -318,7 +331,8 @@ fun MonitorLiveRow(checked: Boolean, onToggle: () -> Unit) {
 }
 
 @Composable
-fun ContributeDbRow(checked: Boolean, onToggle: () -> Unit) {
+fun ContributeDbRow(checked: Boolean, isPremium: Boolean = true, onToggle: () -> Unit, onUpgrade: () -> Unit = {}) {
+    val locked = !isPremium
     Column(
         modifier = Modifier
             .fillMaxWidth()
@@ -331,6 +345,7 @@ fun ContributeDbRow(checked: Boolean, onToggle: () -> Unit) {
                 color = if (checked) NeonGreen.copy(alpha = 0.6f) else NeonGreen.copy(alpha = 0.15f),
                 shape = RoundedCornerShape(18.dp)
             )
+            .then(if (locked) Modifier.clickable { onUpgrade() } else Modifier)
             .padding(20.dp)
     ) {
         Row(verticalAlignment = Alignment.CenterVertically) {
@@ -354,16 +369,20 @@ fun ContributeDbRow(checked: Boolean, onToggle: () -> Unit) {
                     lineHeight = 22.sp
                 )
             }
-            Switch(
-                checked = checked,
-                onCheckedChange = { onToggle() },
-                colors = SwitchDefaults.colors(
-                    checkedThumbColor = Color.Black,
-                    checkedTrackColor = NeonGreen,
-                    uncheckedThumbColor = TextSecondary,
-                    uncheckedTrackColor = CardBgAlt
+            if (locked) {
+                PremiumBadge()
+            } else {
+                Switch(
+                    checked = checked,
+                    onCheckedChange = { onToggle() },
+                    colors = SwitchDefaults.colors(
+                        checkedThumbColor = Color.Black,
+                        checkedTrackColor = NeonGreen,
+                        uncheckedThumbColor = TextSecondary,
+                        uncheckedTrackColor = CardBgAlt
+                    )
                 )
-            )
+            }
         }
         Spacer(modifier = Modifier.height(14.dp))
         Text(
@@ -404,18 +423,18 @@ private fun ContributeBadge(label: String) {
 }
 
 @Composable
-fun SettingsNavRow(label: String, onClick: () -> Unit) {
+fun SettingsNavRow(label: String, locked: Boolean = false, onClick: () -> Unit, onUpgrade: () -> Unit = {}) {
     Row(
         modifier = Modifier
             .fillMaxWidth()
             .background(CardBg, RoundedCornerShape(14.dp))
-            .clickable { onClick() }
+            .clickable { if (locked) onUpgrade() else onClick() }
             .padding(horizontal = 20.dp, vertical = 16.dp),
         horizontalArrangement = Arrangement.SpaceBetween,
         verticalAlignment = Alignment.CenterVertically
     ) {
         Text(label, color = Color.White, fontSize = 15.sp)
-        Icon(Icons.Default.ChevronRight, contentDescription = null, tint = TextSecondary)
+        if (locked) PremiumBadge() else Icon(Icons.Default.ChevronRight, contentDescription = null, tint = TextSecondary)
     }
 }
 
