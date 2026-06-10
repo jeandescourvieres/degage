@@ -27,7 +27,7 @@ private val premiumFeatures = listOf(
     "🚫 Blocage manuel de numéros et préfixes",
     "⬇️ Export CSV de l'historique",
     "🇨🇭 Mode Suisse (numéros OFCOM)",
-    "🇩🇪 Réponses vocales en allemand",
+    "🇩🇪🇮🇹 Réponses vocales en allemand et en italien",
 )
 
 @Composable

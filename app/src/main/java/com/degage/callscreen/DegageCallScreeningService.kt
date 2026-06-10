@@ -13,6 +13,7 @@ import com.degage.notifications.NotificationHelper
 import com.degage.spam.SupabaseClient
 import com.degage.prefs.AppPreferences
 import com.degage.replies.GermanReplies
+import com.degage.replies.ItalianReplies
 import com.degage.replies.MessagePart
 import com.degage.tts.HoldMusicPlayer
 import com.degage.tts.TtsManager
@@ -166,6 +167,8 @@ class DegageCallScreeningService : CallScreeningService() {
 
             val fullMessage = if (replyLanguage == "DE") {
                 GermanReplies.fullMessage(mode)
+            } else if (replyLanguage == "IT") {
+                ItalianReplies.fullMessage(mode)
             } else {
                 val salutation = db.replyDao().getEnabledGlobalByPart(MessagePart.SALUTATION.name).firstOrNull()?.text ?: ""
                 val body = db.replyDao().getEnabledBodyByMode(mode.name).firstOrNull()?.text
@@ -181,7 +184,7 @@ class DegageCallScreeningService : CallScreeningService() {
             val voiceName = prefs.voiceName.first().ifBlank { null }
             val monitorLive = prefs.monitorLive.first()
             ttsManager.setLanguage(replyLanguage)
-            ttsManager.applySettings(rate, pitch, if (replyLanguage == "DE") null else voiceName)
+            ttsManager.applySettings(rate, pitch, if (replyLanguage == "FR") voiceName else null)
 
             val audioManager = getSystemService(Context.AUDIO_SERVICE) as AudioManager
             if (monitorLive) {

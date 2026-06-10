@@ -265,7 +265,7 @@ fun ReplyLanguageSelectorRow(language: String, isPremium: Boolean = true, onSetL
     ) {
         Text("Langue des messages vocaux", color = Color.White, fontSize = 15.sp)
         Text(
-            "Langue dans laquelle Tu dégages répond aux démarcheurs (utile en Suisse alémanique).",
+            "Langue dans laquelle Tu dégages répond aux démarcheurs (utile en Suisse alémanique ou italophone).",
             color = TextSecondary,
             fontSize = 11.sp,
             lineHeight = 16.sp
@@ -273,14 +273,18 @@ fun ReplyLanguageSelectorRow(language: String, isPremium: Boolean = true, onSetL
         Spacer(modifier = Modifier.height(10.dp))
         Row(horizontalArrangement = Arrangement.spacedBy(8.dp), verticalAlignment = Alignment.CenterVertically) {
             CountryChip("🇫🇷 Français", selected = language == "FR", onClick = { onSetLanguage("FR") })
-            val deSelected = language == "DE"
-            val deLocked = !isPremium
+            val locked = !isPremium
             CountryChip(
                 "🇩🇪 Deutsch",
-                selected = deSelected && !deLocked,
-                onClick = { if (deLocked) onUpgrade() else onSetLanguage("DE") }
+                selected = language == "DE" && !locked,
+                onClick = { if (locked) onUpgrade() else onSetLanguage("DE") }
             )
-            if (deLocked) PremiumBadge()
+            CountryChip(
+                "🇮🇹 Italiano",
+                selected = language == "IT" && !locked,
+                onClick = { if (locked) onUpgrade() else onSetLanguage("IT") }
+            )
+            if (locked) PremiumBadge()
         }
     }
 }
