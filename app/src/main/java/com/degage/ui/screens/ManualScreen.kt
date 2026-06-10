@@ -41,6 +41,12 @@ fun ManualScreen(onBack: () -> Unit) {
         ) {
             item {
                 ManualSection(
+                    title = "⭐ Qu'est-ce qui est gratuit et qu'est-ce qui est Premium ?",
+                    body = "🆓 GRATUIT, POUR TOUJOURS — la protection :\n\n• Blocage automatique des spams connus (base ARCEP/OFCOM + apprentissage de votre historique)\n• Mode de réponse Poli\n• Historique des appels bloqués\n• Vos contacts ne sont jamais bloqués\n• « Pas un spam » : correction d'un blocage à tort, en un tap\n• Notifications à chaque appel bloqué\n\nLa sécurité et la protection contre les faux positifs ne seront JAMAIS payantes.\n\n⭐ PREMIUM (1 €/mois ou 10 €/an) — le confort et la personnalisation :\n\n• Les modes Administratif, Sarcastique et Troll\n• Personnalisation complète des messages (constructeur, phrases perso)\n• Réglages de la voix (voix, vitesse, hauteur)\n• Base communautaire (synchronisation et contribution)\n• Blocage manuel de numéros et préfixes\n• Export CSV de l'historique\n• Mode Suisse (numéros OFCOM)\n\nUn cadenas 🔒 apparaît sur chaque fonctionnalité Premium dans l'application. Appuyez dessus pour voir le détail de l'offre dans Paramètres → « ⭐ Tu dégages Premium »."
+                )
+            }
+            item {
+                ManualSection(
                     title = "👤 Mes contacts peuvent-ils être bloqués par erreur ?",
                     body = "Non. Si un numéro qui vous appelle correspond à un contact enregistré sur votre téléphone, Tu dégages laisse toujours passer l'appel — même si ce numéro figure par ailleurs dans la base spam ou dans vos règles personnalisées.\n\nCette vérification nécessite l'autorisation d'accès aux contacts, demandée au premier lancement de l'application."
                 )
