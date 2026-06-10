@@ -15,13 +15,15 @@
 
 <!-- ── NAVIGATION ──────────────────────────────────────────────────────── -->
 <nav>
-  <div class="nav-logo">TU <span>DÉGAGES</span> !</div>
+  <div class="nav-logo">
+    <img src="img/robot.png" alt="" class="logo-icon">
+    <span class="nav-logo-text">TU <span>DÉGAGES</span> !</span>
+  </div>
   <div class="nav-links">
     <a href="#fonctionnement">Comment ça marche</a>
     <a href="#modes">Les modes</a>
     <a href="#base-spam">Base anti-spam</a>
     <a href="#communaute">Communauté</a>
-    <a href="#faq">FAQ</a>
     <a href="#telecharger" class="btn-nav">Télécharger</a>
   </div>
 </nav>
@@ -29,6 +31,7 @@
 <!-- ── HERO ────────────────────────────────────────────────────────────── -->
 <section class="hero">
   <div class="hero-inner">
+    <img src="img/robot.png" alt="" class="hero-logo">
     <div class="hero-appname">TU <span>DÉGAGES</span> !</div>
     <div class="hero-badge">🤖 L'appli de blocage intelligent de spams avec réponse IA</div>
     <div class="hero-badge-row">
@@ -104,7 +107,7 @@
       <div class="feature-card">
         <div class="feature-icon">🔒</div>
         <h3>100 % privé, zéro cloud</h3>
-        <p>Aucune donnée ne quitte votre téléphone. Pas de compte, pas d'abonnement, pas de serveur. Tout reste sur votre appareil.</p>
+        <p>Aucune donnée ne quitte votre téléphone. Pas de compte, pas de serveur. Tout reste sur votre appareil.</p>
       </div>
       <div class="feature-card">
         <div class="feature-icon">📡</div>
@@ -220,9 +223,27 @@
 <!-- ── BASE SPAM ───────────────────────────────────────────────────────── -->
 <section id="base-spam">
   <div class="section-inner">
-    <p class="section-label">Base anti-spam</p>
-    <h2 class="section-title">Des milliers de spammeurs<br>déjà identifiés.</h2>
-    <p class="section-sub"><span class="brand">Tu dégages</span> intègre plusieurs sources publiques de numéros indésirables, synchronisées automatiquement.</p>
+    <div class="base-spam-top">
+      <div class="base-spam-text">
+        <p class="section-label">Base anti-spam</p>
+        <h2 class="section-title">Des milliers de spammeurs<br>déjà identifiés.</h2>
+        <p class="section-sub" style="margin-bottom:0"><span class="brand">Tu dégages</span> intègre plusieurs sources publiques de numéros indésirables, synchronisées automatiquement.</p>
+      </div>
+      <div class="base-spam-visual">
+        <div class="spam-shield">
+          <svg viewBox="0 0 100 100" aria-hidden="true">
+            <path d="M50 4 L90 18 V46 C90 70 73 88 50 96 C27 88 10 70 10 46 V18 Z" fill="#0d0d0d" stroke="#aaff00" stroke-width="4"/>
+            <path d="M34 50 L46 62 L68 38" fill="none" stroke="#aaff00" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <div class="phone-mockup">
+          <div class="phone-row"><span>👤 01 23 45 67 89</span><span class="phone-block">🚫</span></div>
+          <div class="phone-row"><span>👤 03 12 34 56 78</span><span class="phone-block">🚫</span></div>
+          <div class="phone-row"><span>👤 07 89 01 23 45</span><span class="phone-block">🚫</span></div>
+          <div class="phone-status"><span class="dot"></span> Base mise à jour en temps réel</div>
+        </div>
+      </div>
+    </div>
     <div class="sources-grid">
       <div class="source-card">
         <div class="source-icon">📋</div>
@@ -345,7 +366,7 @@
 <!-- ── CTA ─────────────────────────────────────────────────────────────── -->
 <section id="telecharger" class="cta-band">
   <h2>Prêt à laisser <span>votre IA répondre</span> ?</h2>
-  <p>Gratuit. Sans compte. Sans publicité. Sans abonnement.</p>
+  <p>Gratuit. Sans compte. Sans publicité. Premium en option.</p>
   <a href="#" class="store-badge">
     <span class="store-icon">▶</span>
     <div style="text-align:left">
@@ -386,6 +407,26 @@
     <p>Fait avec ☕ en France.</p>
   </div>
 </footer>
+
+<!-- ── BARRE DE NAVIGATION FIXE ────────────────────────────────────────── -->
+<nav class="app-bottom-nav">
+  <a href="#" class="app-nav-item active">
+    <span class="app-nav-icon">🏠</span>
+    <span>Accueil</span>
+  </a>
+  <a href="#modes" class="app-nav-item">
+    <span class="app-nav-icon">🛡️</span>
+    <span>Protection</span>
+  </a>
+  <a href="#base-spam" class="app-nav-item">
+    <span class="app-nav-icon">🕐</span>
+    <span>Historique</span>
+  </a>
+  <a href="#communaute" class="app-nav-item">
+    <span class="app-nav-icon">👤</span>
+    <span>Profil</span>
+  </a>
+</nav>
 
 </body>
 </html>
