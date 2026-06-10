@@ -151,6 +151,12 @@ fun ManualScreen(onBack: () -> Unit) {
                     body = "Dans Paramètres :\n\n• Décroche automatique : Tu dégages répond à l'appel sans faire sonner votre téléphone (recommandé).\n• Bloquer après réponse : ajoute le numéro à votre liste noire personnelle après chaque interaction.\n• Notifications : si activé, vous recevez une notification Android à chaque appel bloqué (numéro et raison du blocage)."
                 )
             }
+            item {
+                ManualSection(
+                    title = "🟢 Tuile de réglages rapides",
+                    body = "Tu dégages ajoute une tuile dans le panneau de réglages rapides d'Android (celui qu'on ouvre en glissant deux doigts depuis le haut de l'écran, à côté du Wi-Fi et du Bluetooth).\n\nPour l'ajouter : ouvrez le panneau de réglages rapides, appuyez sur le crayon ✏️ (ou « Modifier »), puis glissez la tuile « Tu dégages » vers vos tuiles actives.\n\nUn appui sur la tuile active ou désactive instantanément la protection, sans avoir besoin d'ouvrir l'application."
+                )
+            }
 
             item { CategoryHeader("🔧 Problèmes") }
             item {
