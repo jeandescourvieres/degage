@@ -1,6 +1,8 @@
 package com.degage.database
 
+import android.content.ContentValues
 import android.content.Context
+import android.database.sqlite.SQLiteDatabase
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
@@ -27,7 +29,7 @@ import kotlinx.coroutines.launch
 
 @Database(
     entities = [BlockedCallEntity::class, ReplyEntity::class, SpamEntry::class, CustomBlockEntity::class, WhitelistEntry::class, CallAttemptEntity::class],
-    version = 6,
+    version = 7,
     exportSchema = false
 )
 abstract class AppDatabase : RoomDatabase() {
@@ -92,16 +94,35 @@ abstract class AppDatabase : RoomDatabase() {
             }
         }
 
+        private val MIGRATION_6_7 = object : Migration(6, 7) {
+            override fun migrate(database: SupportSQLiteDatabase) {
+                database.execSQL("ALTER TABLE replies ADD COLUMN language TEXT NOT NULL DEFAULT 'FR'")
+                (DEFAULT_REPLIES_DE + DEFAULT_REPLIES_IT).forEach { insertReply(database, it) }
+            }
+        }
+
+        private fun insertReply(database: SupportSQLiteDatabase, reply: ReplyEntity) {
+            val values = ContentValues().apply {
+                put("text", reply.text)
+                put("modeName", reply.modeName)
+                put("partType", reply.partType)
+                put("isEnabled", if (reply.isEnabled) 1 else 0)
+                put("isCustom", if (reply.isCustom) 1 else 0)
+                put("language", reply.language)
+            }
+            database.insert("replies", SQLiteDatabase.CONFLICT_REPLACE, values)
+        }
+
         fun getInstance(context: Context): AppDatabase {
             return INSTANCE ?: synchronized(this) {
                 Room.databaseBuilder(context, AppDatabase::class.java, "degage.db")
-                    .addMigrations(MIGRATION_2_3, MIGRATION_3_4, MIGRATION_4_5, MIGRATION_5_6)
+                    .addMigrations(MIGRATION_2_3, MIGRATION_3_4, MIGRATION_4_5, MIGRATION_5_6, MIGRATION_6_7)
                     .addCallback(object : Callback() {
                         override fun onCreate(db: SupportSQLiteDatabase) {
                             super.onCreate(db)
                             CoroutineScope(Dispatchers.IO).launch {
                                 getInstance(context).replyDao().let { dao ->
-                                    DEFAULT_REPLIES.forEach { dao.insert(it) }
+                                    (DEFAULT_REPLIES + DEFAULT_REPLIES_DE + DEFAULT_REPLIES_IT).forEach { dao.insert(it) }
                                 }
                             }
                         }
@@ -144,6 +165,62 @@ abstract class AppDatabase : RoomDatabase() {
             ReplyEntity(text = "Cordialement… enfin presque.", modeName = MODE_GLOBAL, partType = MessagePart.ENDING.name, isEnabled = false),
             ReplyEntity(text = "Veuillez oublier ce numéro.", modeName = MODE_GLOBAL, partType = MessagePart.ENDING.name, isEnabled = false),
             ReplyEntity(text = "Bonne continuation ailleurs.", modeName = MODE_GLOBAL, partType = MessagePart.ENDING.name, isEnabled = false),
+        )
+
+        private val DEFAULT_REPLIES_DE = listOf(
+            // ── Salutations globales (allemand) ───────────────────────────
+            ReplyEntity(text = "Guten Tag.", modeName = MODE_GLOBAL, partType = MessagePart.SALUTATION.name, language = "DE"),
+            ReplyEntity(text = "Guten Tag und willkommen.", modeName = MODE_GLOBAL, partType = MessagePart.SALUTATION.name, isEnabled = false, language = "DE"),
+            ReplyEntity(text = "Guten Tag. Diese Leitung ist geschützt.", modeName = MODE_GLOBAL, partType = MessagePart.SALUTATION.name, isEnabled = false, language = "DE"),
+
+            // ── Corps — Poli (allemand) ────────────────────────────────────
+            ReplyEntity(text = "Diese Nummer wünscht keine Werbeanrufe.", modeName = AppMode.POLI.name, partType = MessagePart.BODY.name, language = "DE"),
+            ReplyEntity(text = "Bitte entfernen Sie diese Nummer von Ihrer Liste.", modeName = AppMode.POLI.name, partType = MessagePart.BODY.name, isEnabled = false, language = "DE"),
+
+            // ── Corps — Administratif (allemand) ──────────────────────────
+            ReplyEntity(text = "Dieser Anruf wurde als Werbung eingestuft und automatisch abgelehnt.", modeName = AppMode.ADMINISTRATIF.name, partType = MessagePart.BODY.name, language = "DE"),
+            ReplyEntity(text = "Werbeanrufe sind auf dieser Leitung nicht erwünscht.", modeName = AppMode.ADMINISTRATIF.name, partType = MessagePart.BODY.name, isEnabled = false, language = "DE"),
+
+            // ── Corps — Sarcastique (allemand) ────────────────────────────
+            ReplyEntity(text = "Bitte legen Sie auf, bevor es unangenehm wird.", modeName = AppMode.SARCASTIQUE.name, partType = MessagePart.BODY.name, language = "DE"),
+            ReplyEntity(text = "Diese Leitung ist allergisch gegen Werbeanrufe.", modeName = AppMode.SARCASTIQUE.name, partType = MessagePart.BODY.name, isEnabled = false, language = "DE"),
+
+            // ── Corps — Troll (allemand) ──────────────────────────────────
+            ReplyEntity(text = "Bitte warten Sie, Ihr Anruf wird weitergeleitet…", modeName = AppMode.TROLL.name, partType = MessagePart.BODY.name, language = "DE"),
+            ReplyEntity(text = "Einen Moment bitte, Sie werden verbunden…", modeName = AppMode.TROLL.name, partType = MessagePart.BODY.name, isEnabled = false, language = "DE"),
+
+            // ── Formules de fin globales (allemand) ───────────────────────
+            ReplyEntity(text = "Auf Wiederhören.", modeName = MODE_GLOBAL, partType = MessagePart.ENDING.name, language = "DE"),
+            ReplyEntity(text = "Bitte rufen Sie nicht mehr an.", modeName = MODE_GLOBAL, partType = MessagePart.ENDING.name, isEnabled = false, language = "DE"),
+            ReplyEntity(text = "Vergessen Sie diese Nummer.", modeName = MODE_GLOBAL, partType = MessagePart.ENDING.name, isEnabled = false, language = "DE"),
+        )
+
+        private val DEFAULT_REPLIES_IT = listOf(
+            // ── Salutations globales (italien) ────────────────────────────
+            ReplyEntity(text = "Buongiorno.", modeName = MODE_GLOBAL, partType = MessagePart.SALUTATION.name, language = "IT"),
+            ReplyEntity(text = "Buongiorno e benvenuti.", modeName = MODE_GLOBAL, partType = MessagePart.SALUTATION.name, isEnabled = false, language = "IT"),
+            ReplyEntity(text = "Buongiorno. Questa linea è protetta.", modeName = MODE_GLOBAL, partType = MessagePart.SALUTATION.name, isEnabled = false, language = "IT"),
+
+            // ── Corps — Poli (italien) ─────────────────────────────────────
+            ReplyEntity(text = "Questo numero non desidera ricevere chiamate pubblicitarie.", modeName = AppMode.POLI.name, partType = MessagePart.BODY.name, language = "IT"),
+            ReplyEntity(text = "La preghiamo di rimuovere questo numero dalle vostre liste.", modeName = AppMode.POLI.name, partType = MessagePart.BODY.name, isEnabled = false, language = "IT"),
+
+            // ── Corps — Administratif (italien) ───────────────────────────
+            ReplyEntity(text = "Questa chiamata è stata classificata come pubblicità e rifiutata automaticamente.", modeName = AppMode.ADMINISTRATIF.name, partType = MessagePart.BODY.name, language = "IT"),
+            ReplyEntity(text = "Le chiamate commerciali non sono gradite su questa linea.", modeName = AppMode.ADMINISTRATIF.name, partType = MessagePart.BODY.name, isEnabled = false, language = "IT"),
+
+            // ── Corps — Sarcastique (italien) ─────────────────────────────
+            ReplyEntity(text = "La preghiamo di riagganciare prima che diventi imbarazzante.", modeName = AppMode.SARCASTIQUE.name, partType = MessagePart.BODY.name, language = "IT"),
+            ReplyEntity(text = "Questa linea è allergica alle chiamate pubblicitarie.", modeName = AppMode.SARCASTIQUE.name, partType = MessagePart.BODY.name, isEnabled = false, language = "IT"),
+
+            // ── Corps — Troll (italien) ────────────────────────────────────
+            ReplyEntity(text = "Attenda in linea, la sua chiamata verrà inoltrata…", modeName = AppMode.TROLL.name, partType = MessagePart.BODY.name, language = "IT"),
+            ReplyEntity(text = "Un momento, la stiamo mettendo in contatto…", modeName = AppMode.TROLL.name, partType = MessagePart.BODY.name, isEnabled = false, language = "IT"),
+
+            // ── Formules de fin globales (italien) ────────────────────────
+            ReplyEntity(text = "Arrivederci.", modeName = MODE_GLOBAL, partType = MessagePart.ENDING.name, language = "IT"),
+            ReplyEntity(text = "La preghiamo di non richiamare più.", modeName = MODE_GLOBAL, partType = MessagePart.ENDING.name, isEnabled = false, language = "IT"),
+            ReplyEntity(text = "Dimentichi questo numero.", modeName = MODE_GLOBAL, partType = MessagePart.ENDING.name, isEnabled = false, language = "IT"),
         )
     }
 }

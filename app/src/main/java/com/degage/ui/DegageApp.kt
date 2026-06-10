@@ -225,6 +225,7 @@ fun DegageApp(
                         salutations = salutations,
                         bodies = bodies,
                         endings = endings,
+                        replyLanguage = replyLanguage,
                         onBack = { navController.popBackStack() },
                         onSelect = viewModel::selectReply,
                         onAdd = { text, part -> viewModel.addPartItem(text, part, activeMode) },

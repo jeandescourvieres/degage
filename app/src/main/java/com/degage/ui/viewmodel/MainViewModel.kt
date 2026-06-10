@@ -1,3 +1,5 @@
+@file:OptIn(kotlinx.coroutines.ExperimentalCoroutinesApi::class)
+
 package com.degage.ui.viewmodel
 
 import android.app.Application
@@ -139,15 +141,21 @@ class MainViewModel(app: Application) : AndroidViewModel(app) {
         }
     }
 
-    // ── Message builder : flows par partie ──────────────────────────────
+    // ── Message builder : flows par partie, réactifs à la langue des réponses ──
     fun getSalutations(): Flow<List<ReplyEntity>> =
-        db.replyDao().getGlobalByPart(com.degage.replies.MessagePart.SALUTATION.name)
+        replyLanguage.flatMapLatest { lang ->
+            db.replyDao().getGlobalByPart(com.degage.replies.MessagePart.SALUTATION.name, lang)
+        }
 
     fun getBodiesForMode(mode: AppMode): Flow<List<ReplyEntity>> =
-        db.replyDao().getBodyByMode(mode.name)
+        replyLanguage.flatMapLatest { lang ->
+            db.replyDao().getBodyByMode(mode.name, lang)
+        }
 
     fun getEndings(): Flow<List<ReplyEntity>> =
-        db.replyDao().getGlobalByPart(com.degage.replies.MessagePart.ENDING.name)
+        replyLanguage.flatMapLatest { lang ->
+            db.replyDao().getGlobalByPart(com.degage.replies.MessagePart.ENDING.name, lang)
+        }
 
     // Compat écran Réponses existant
     fun getRepliesForMode(mode: AppMode): Flow<List<ReplyEntity>> =
@@ -166,14 +174,15 @@ class MainViewModel(app: Application) : AndroidViewModel(app) {
     }
 
     fun selectReply(reply: ReplyEntity) = viewModelScope.launch {
-        val allInSection = db.replyDao().getAllBySection(reply.modeName, reply.partType)
+        val allInSection = db.replyDao().getAllBySection(reply.modeName, reply.partType, reply.language)
         allInSection.forEach { item ->
             db.replyDao().update(item.copy(isEnabled = item.id == reply.id))
         }
     }
 
     fun addCustomReply(text: String, mode: AppMode) = viewModelScope.launch {
-        db.replyDao().insert(ReplyEntity(text = text, modeName = mode.name, isCustom = true))
+        val lang = prefs.replyLanguage.first()
+        db.replyDao().insert(ReplyEntity(text = text, modeName = mode.name, isCustom = true, language = lang))
     }
 
     fun addPartItem(text: String, part: com.degage.replies.MessagePart, mode: AppMode) = viewModelScope.launch {
@@ -181,7 +190,8 @@ class MainViewModel(app: Application) : AndroidViewModel(app) {
             com.degage.replies.MessagePart.BODY -> mode.name
             else -> com.degage.replies.MODE_GLOBAL
         }
-        db.replyDao().insert(ReplyEntity(text = text, modeName = modeName, partType = part.name, isCustom = true))
+        val lang = prefs.replyLanguage.first()
+        db.replyDao().insert(ReplyEntity(text = text, modeName = modeName, partType = part.name, isCustom = true, language = lang))
     }
 
     fun deleteReply(reply: ReplyEntity) = viewModelScope.launch {

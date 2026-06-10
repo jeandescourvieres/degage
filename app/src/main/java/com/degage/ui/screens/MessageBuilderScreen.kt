@@ -40,6 +40,7 @@ fun MessageBuilderScreen(
     salutations: List<ReplyEntity>,
     bodies: List<ReplyEntity>,
     endings: List<ReplyEntity>,
+    replyLanguage: String = "FR",
     onBack: () -> Unit,
     onSelect: (ReplyEntity) -> Unit,
     onAdd: (String, MessagePart) -> Unit,
@@ -104,6 +105,31 @@ fun MessageBuilderScreen(
                 textAlign = TextAlign.End,
                 lineHeight = 14.sp
             )
+        }
+
+        if (replyLanguage != "FR") {
+            val langLabel = when (replyLanguage) {
+                "DE" -> "allemand"
+                "IT" -> "italien"
+                else -> replyLanguage
+            }
+            Row(
+                modifier = Modifier
+                    .padding(horizontal = 16.dp)
+                    .background(NeonGreenDim.copy(alpha = 0.15f), RoundedCornerShape(12.dp))
+                    .border(1.dp, NeonGreen.copy(alpha = 0.4f), RoundedCornerShape(12.dp))
+                    .padding(horizontal = 16.dp, vertical = 10.dp),
+                verticalAlignment = Alignment.CenterVertically,
+                horizontalArrangement = Arrangement.spacedBy(10.dp)
+            ) {
+                Text("🌐", fontSize = 18.sp)
+                Text(
+                    "Les phrases ci-dessous sont en $langLabel, la langue choisie pour vos messages vocaux. Sélectionnez celles qui vous correspondent.",
+                    fontSize = 12.sp,
+                    color = TextSecondary,
+                    lineHeight = 18.sp
+                )
+            }
         }
 
         Spacer(modifier = Modifier.height(4.dp))
