@@ -56,6 +56,7 @@ fun DegageApp(
     val isSyncing by viewModel.isSyncing.collectAsStateWithLifecycle()
     val monitorLive by viewModel.monitorLive.collectAsStateWithLifecycle()
     val contributeDb by viewModel.contributeDb.collectAsStateWithLifecycle()
+    val blockHiddenNumbers by viewModel.blockHiddenNumbers.collectAsStateWithLifecycle()
 
     val startDestination = when {
         !onboardingDone -> Screen.Onboarding.route
@@ -166,12 +167,14 @@ fun DegageApp(
                         notifications = notifications,
                         monitorLive = monitorLive,
                         contributeDb = contributeDb,
+                        blockHiddenNumbers = blockHiddenNumbers,
                         onToggleEnabled = viewModel::toggleEnabled,
                         onToggleAutoReject = { viewModel.setAutoReject(!autoReject) },
                         onToggleBlockAfterReply = { viewModel.setBlockAfterReply(!blockAfterReply) },
                         onToggleNotifications = { viewModel.setNotifications(!notifications) },
                         onToggleMonitorLive = { viewModel.setMonitorLive(!monitorLive) },
                         onToggleContributeDb = { viewModel.setContributeDb(!contributeDb) },
+                        onToggleBlockHiddenNumbers = { viewModel.setBlockHiddenNumbers(!blockHiddenNumbers) },
                         onNavigateAbout = { navController.navigate(Screen.About.route) },
                         onNavigateMessageBuilder = { navController.navigate(Screen.MessageBuilder.route) },
                         onNavigateVoiceSettings = { navController.navigate(Screen.VoiceSettings.route) },

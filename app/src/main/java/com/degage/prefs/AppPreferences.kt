@@ -31,6 +31,7 @@ class AppPreferences(private val context: Context) {
         val KEY_BUNDLED_LOADED = booleanPreferencesKey("bundled_spam_loaded")
         val KEY_MONITOR_LIVE = booleanPreferencesKey("monitor_live")
         val KEY_CONTRIBUTE_DB = booleanPreferencesKey("contribute_db")
+        val KEY_BLOCK_HIDDEN = booleanPreferencesKey("block_hidden_numbers")
     }
 
     val isEnabled: Flow<Boolean> = context.dataStore.data.map { it[KEY_ENABLED] ?: true }
@@ -47,6 +48,7 @@ class AppPreferences(private val context: Context) {
     val bundledLoaded: Flow<Boolean> = context.dataStore.data.map { it[KEY_BUNDLED_LOADED] ?: false }
     val monitorLive: Flow<Boolean> = context.dataStore.data.map { it[KEY_MONITOR_LIVE] ?: false }
     val contributeDb: Flow<Boolean> = context.dataStore.data.map { it[KEY_CONTRIBUTE_DB] ?: false }
+    val blockHiddenNumbers: Flow<Boolean> = context.dataStore.data.map { it[KEY_BLOCK_HIDDEN] ?: false }
 
     suspend fun setEnabled(value: Boolean) = context.dataStore.edit { it[KEY_ENABLED] = value }
     suspend fun setActiveMode(mode: String) = context.dataStore.edit { it[KEY_MODE] = mode }
@@ -62,4 +64,5 @@ class AppPreferences(private val context: Context) {
     suspend fun setBundledLoaded() = context.dataStore.edit { it[KEY_BUNDLED_LOADED] = true }
     suspend fun setMonitorLive(value: Boolean) = context.dataStore.edit { it[KEY_MONITOR_LIVE] = value }
     suspend fun setContributeDb(value: Boolean) = context.dataStore.edit { it[KEY_CONTRIBUTE_DB] = value }
+    suspend fun setBlockHiddenNumbers(value: Boolean) = context.dataStore.edit { it[KEY_BLOCK_HIDDEN] = value }
 }

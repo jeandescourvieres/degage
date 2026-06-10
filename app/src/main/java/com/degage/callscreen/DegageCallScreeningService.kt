@@ -50,6 +50,20 @@ class DegageCallScreeningService : CallScreeningService() {
 
             val contributeDb = prefs.contributeDb.first()
 
+            // ── Appel masqué/inconnu + option activée → rejet immédiat sans TTS ──
+            if (isUnknown && prefs.blockHiddenNumbers.first()) {
+                silentReject(callDetails)
+                db.blockedCallDao().insert(
+                    BlockedCallEntity(
+                        phoneNumber = rawNumber.displayNumber(),
+                        timestamp = System.currentTimeMillis(),
+                        modeName = "Auto",
+                        replyUsed = "Rejet automatique — numéro masqué"
+                    )
+                )
+                return@launch
+            }
+
             // ── Numéro déjà connu dans la base spam → rejet immédiat sans TTS ──
             if (normalized.isNotBlank() && db.spamDao().isKnownSpam(normalized)) {
                 silentReject(callDetails)

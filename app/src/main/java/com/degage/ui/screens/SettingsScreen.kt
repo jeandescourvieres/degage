@@ -33,12 +33,14 @@ fun SettingsScreen(
     notifications: Boolean,
     monitorLive: Boolean = false,
     contributeDb: Boolean = false,
+    blockHiddenNumbers: Boolean = false,
     onToggleEnabled: () -> Unit,
     onToggleAutoReject: () -> Unit,
     onToggleBlockAfterReply: () -> Unit,
     onToggleNotifications: () -> Unit,
     onToggleMonitorLive: () -> Unit = {},
     onToggleContributeDb: () -> Unit = {},
+    onToggleBlockHiddenNumbers: () -> Unit = {},
     onNavigateAbout: () -> Unit,
     onNavigateMessageBuilder: () -> Unit,
     onNavigateVoiceSettings: () -> Unit,
@@ -88,6 +90,9 @@ fun SettingsScreen(
         }
         item {
             SettingsToggleRow(label = "Notifications", checked = notifications, onToggle = onToggleNotifications)
+        }
+        item {
+            SettingsToggleRow(label = "📵 Bloquer les appels masqués", checked = blockHiddenNumbers, onToggle = onToggleBlockHiddenNumbers)
         }
         item {
             MonitorLiveRow(checked = monitorLive, onToggle = onToggleMonitorLive)
