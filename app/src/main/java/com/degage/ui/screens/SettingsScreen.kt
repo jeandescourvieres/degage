@@ -34,6 +34,7 @@ fun SettingsScreen(
     monitorLive: Boolean = false,
     contributeDb: Boolean = false,
     blockHiddenNumbers: Boolean = false,
+    country: String = "FR",
     onToggleEnabled: () -> Unit,
     onToggleAutoReject: () -> Unit,
     onToggleBlockAfterReply: () -> Unit,
@@ -41,6 +42,7 @@ fun SettingsScreen(
     onToggleMonitorLive: () -> Unit = {},
     onToggleContributeDb: () -> Unit = {},
     onToggleBlockHiddenNumbers: () -> Unit = {},
+    onSetCountry: (String) -> Unit = {},
     onNavigateAbout: () -> Unit,
     onNavigateMessageBuilder: () -> Unit,
     onNavigateVoiceSettings: () -> Unit,
@@ -79,6 +81,9 @@ fun SettingsScreen(
             Spacer(modifier = Modifier.height(12.dp))
         }
 
+        item {
+            CountrySelectorRow(country = country, onSetCountry = onSetCountry)
+        }
         item {
             SettingsToggleRow(label = "Protection", checked = isEnabled, onToggle = onToggleEnabled)
         }
@@ -203,6 +208,43 @@ fun SpamSyncRow(isSyncing: Boolean, onClick: () -> Unit) {
             Text("Sync", color = NeonGreen, fontSize = 13.sp, fontWeight = FontWeight.SemiBold)
         }
     }
+}
+
+@Composable
+fun CountrySelectorRow(country: String, onSetCountry: (String) -> Unit) {
+    Column(
+        modifier = Modifier
+            .fillMaxWidth()
+            .background(CardBg, RoundedCornerShape(14.dp))
+            .padding(horizontal = 20.dp, vertical = 14.dp)
+    ) {
+        Text("Pays", color = Color.White, fontSize = 15.sp)
+        Text(
+            "Adapte la base de numéros indésirables détectés à votre pays.",
+            color = TextSecondary,
+            fontSize = 11.sp,
+            lineHeight = 16.sp
+        )
+        Spacer(modifier = Modifier.height(10.dp))
+        Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+            CountryChip("🇫🇷 France", selected = country == "FR", onClick = { onSetCountry("FR") })
+            CountryChip("🇨🇭 Suisse", selected = country == "CH", onClick = { onSetCountry("CH") })
+        }
+    }
+}
+
+@Composable
+private fun CountryChip(label: String, selected: Boolean, onClick: () -> Unit) {
+    Text(
+        label,
+        color = if (selected) Color.Black else Color.White,
+        fontSize = 13.sp,
+        fontWeight = FontWeight.SemiBold,
+        modifier = Modifier
+            .background(if (selected) NeonGreen else CardBgAlt, RoundedCornerShape(20.dp))
+            .clickable { onClick() }
+            .padding(horizontal = 16.dp, vertical = 8.dp)
+    )
 }
 
 @Composable

@@ -37,7 +37,6 @@ class DegageCallScreeningService : CallScreeningService() {
         val rawNumber = callDetails.handle?.schemeSpecificPart
         val normalized = rawNumber.normalizeNumber()
         val isUnknown = rawNumber.isUnknownNumber()
-        val isSpamPrefix = !isUnknown && normalized.isNotBlank() && rawNumber!!.isSpamNumber()
 
         scope.launch {
             val isEnabled = prefs.isEnabled.first()
@@ -49,6 +48,8 @@ class DegageCallScreeningService : CallScreeningService() {
             val db = AppDatabase.getInstance(applicationContext)
 
             val contributeDb = prefs.contributeDb.first()
+            val country = prefs.country.first()
+            val isSpamPrefix = !isUnknown && normalized.isNotBlank() && rawNumber!!.isSpamNumber(country)
 
             // ── Appel masqué/inconnu + option activée → rejet immédiat sans TTS ──
             if (isUnknown && prefs.blockHiddenNumbers.first()) {

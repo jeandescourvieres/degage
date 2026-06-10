@@ -57,6 +57,7 @@ fun DegageApp(
     val monitorLive by viewModel.monitorLive.collectAsStateWithLifecycle()
     val contributeDb by viewModel.contributeDb.collectAsStateWithLifecycle()
     val blockHiddenNumbers by viewModel.blockHiddenNumbers.collectAsStateWithLifecycle()
+    val country by viewModel.country.collectAsStateWithLifecycle()
 
     val startDestination = when {
         !onboardingDone -> Screen.Onboarding.route
@@ -168,6 +169,7 @@ fun DegageApp(
                         monitorLive = monitorLive,
                         contributeDb = contributeDb,
                         blockHiddenNumbers = blockHiddenNumbers,
+                        country = country,
                         onToggleEnabled = viewModel::toggleEnabled,
                         onToggleAutoReject = { viewModel.setAutoReject(!autoReject) },
                         onToggleBlockAfterReply = { viewModel.setBlockAfterReply(!blockAfterReply) },
@@ -175,6 +177,7 @@ fun DegageApp(
                         onToggleMonitorLive = { viewModel.setMonitorLive(!monitorLive) },
                         onToggleContributeDb = { viewModel.setContributeDb(!contributeDb) },
                         onToggleBlockHiddenNumbers = { viewModel.setBlockHiddenNumbers(!blockHiddenNumbers) },
+                        onSetCountry = { viewModel.setCountry(it) },
                         onNavigateAbout = { navController.navigate(Screen.About.route) },
                         onNavigateMessageBuilder = { navController.navigate(Screen.MessageBuilder.route) },
                         onNavigateVoiceSettings = { navController.navigate(Screen.VoiceSettings.route) },

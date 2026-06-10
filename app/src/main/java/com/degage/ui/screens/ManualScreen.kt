@@ -79,6 +79,12 @@ fun ManualScreen(onBack: () -> Unit) {
             item { CategoryHeader("📋 Base de numéros bloqués") }
             item {
                 ManualSection(
+                    title = "🇫🇷🇨🇭 Tu dégages fonctionne-t-il en Suisse ?",
+                    body = "Oui ! Dans Paramètres, choisissez votre pays (🇫🇷 France ou 🇨🇭 Suisse).\n\nEn Suisse, Tu dégages détecte notamment les numéros à valeur ajoutée (0900/0901/0906) et les numéros à coût partagé (084x), souvent utilisés par les centres d'appels et hotlines commerciales en Suisse.\n\nLa base communautaire et votre historique personnel fonctionnent de la même façon, quel que soit le pays."
+                )
+            }
+            item {
+                ManualSection(
                     title = "Quels numéros sont bloqués ?",
                     body = "Tu dégages combine plusieurs sources :\n\n• Plages ARCEP documentées : 52 préfixes français officiellement attribués au démarchage téléphonique.\n• phoneblock.net : base communautaire européenne open source.\n• Signal-Spam France : association française de lutte contre le spam.\n• Base communautaire Tu dégages : numéros signalés par les utilisateurs (opt-in).\n• Votre historique personnel : tout numéro qui vous a déjà appelé et a été traité comme spam."
                 )

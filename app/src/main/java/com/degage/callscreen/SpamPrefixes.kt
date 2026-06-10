@@ -38,14 +38,29 @@ val SPAM_PREFIXES = listOf(
     "0596",  // Martinique — parfois usurpé
 )
 
+// Préfixes suisses documentés comme sources fréquentes d'appels indésirables.
+// Source : OFCOM (numéros à valeur ajoutée attribués au démarchage/marketing).
+val SPAM_PREFIXES_CH = listOf(
+
+    // ── Numéros à valeur ajoutée (0900/0901/0906) ────────────────────────
+    // Attribués individuellement par l'OFCOM pour le business/marketing
+    "0900", "0901", "0906",
+
+    // ── Numéros à coût partagé (084x) ─────────────────────────────────────
+    // Souvent utilisés par les centres d'appels et hotlines commerciales
+    "0840", "0841", "0842", "0843", "0844",
+    "0845", "0846", "0847", "0848", "0849",
+)
+
 private val UNKNOWN_MARKERS = listOf(
     "inconnu", "unknown", "privé", "private",
     "masqué", "hidden", "anonymous", "withheld"
 )
 
-fun String.isSpamNumber(): Boolean {
+fun String.isSpamNumber(country: String = "FR"): Boolean {
     val normalized = this.replace(" ", "").replace("-", "").replace(".", "")
-    return SPAM_PREFIXES.any { normalized.startsWith(it) }
+    val prefixes = if (country == "CH") SPAM_PREFIXES_CH else SPAM_PREFIXES
+    return prefixes.any { normalized.startsWith(it) }
 }
 
 fun String?.isUnknownNumber(): Boolean {
