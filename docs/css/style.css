@@ -177,14 +177,14 @@ nav {
 }
 
 .hero-mini-badge-flags {
-  font-size: 18px;
+  font-size: 22px;
   background: rgba(170,255,0,0.08);
   border: 1px solid var(--green-border);
   color: var(--text);
   font-weight: 700;
 }
 .hero-mini-badge-flags .flag {
-  font-size: 22px;
+  font-size: 28px;
 }
 
 .hero-mini-badge {
@@ -194,7 +194,7 @@ nav {
   background: rgba(255,255,255,0.04);
   border: 1px solid rgba(255,255,255,0.1);
   color: var(--text-secondary);
-  font-size: 12px;
+  font-size: 15px;
   font-weight: 600;
   padding: 6px 14px;
   border-radius: 20px;
