@@ -183,8 +183,12 @@ nav {
   color: var(--text);
   font-weight: 700;
 }
-.hero-mini-badge-flags .flag {
-  font-size: 28px;
+.hero-mini-badge-flags .flag-icon {
+  height: 18px;
+  width: auto;
+  border-radius: 2px;
+  vertical-align: middle;
+  box-shadow: 0 0 0 1px rgba(255,255,255,0.15);
 }
 
 .hero-mini-badge {
