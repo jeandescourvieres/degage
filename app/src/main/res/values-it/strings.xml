@@ -276,7 +276,7 @@
     <!-- ── Schermata Home ───────────────────────────────────────────────── -->
     <string name="home_info_title">Schermata iniziale</string>
     <string name="home_info_content">Tu dégages protegge il tuo telefono dalle chiamate di teleselling.\n\n• Il pulsante ON/OFF attiva o disattiva la protezione.\n• I contatori mostrano le tue statistiche di blocco.\n• L\'elenco in basso mostra le ultime chiamate bloccate.</string>
-    <string name="home_title">TU DÉGAGES !</string>
+    <string name="home_title">TU DÉGAGES</string>
     <string name="home_subtitle">L\'IA che risponde ai tuoi spammer</string>
     <string name="home_hero_badge">🤖 L\'app di blocco intelligente dello spam con risposta IA</string>
     <string name="home_hero_line1">I call center adorano chiamarti?\n</string>

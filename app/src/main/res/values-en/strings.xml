@@ -276,7 +276,7 @@
     <!-- ── Home screen ───────────────────────────────────────────────── -->
     <string name="home_info_title">Home screen</string>
     <string name="home_info_content">Tu dégages protects your phone against telemarketing calls.\n\n• The ON/OFF button enables or disables protection.\n• The counters show your blocking statistics.\n• The list at the bottom shows the most recent blocked calls.</string>
-    <string name="home_title">TU DÉGAGES !</string>
+    <string name="home_title">TU DÉGAGES</string>
     <string name="home_subtitle">The AI that answers your spammers</string>
     <string name="home_hero_badge">🤖 The smart spam-blocking app with AI replies</string>
     <string name="home_hero_line1">Telemarketers love calling you?\n</string>

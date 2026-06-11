@@ -79,7 +79,7 @@ fun HomeScreen(
                 Column {
                     Text(
                         text = stringResource(R.string.home_title),
-                        fontSize = 26.sp,
+                        fontSize = 20.sp,
                         fontWeight = FontWeight.Black,
                         color = Color.White
                     )
@@ -145,7 +145,7 @@ fun HomeScreen(
                         color = NeonGreen,
                         textAlign = TextAlign.Center
                     )
-                    Spacer(modifier = Modifier.height(6.dp))
+                    Spacer(modifier = Modifier.height(16.dp))
                     Text(
                         buildAnnotatedString {
                             append(stringResource(R.string.home_hero_line1))
