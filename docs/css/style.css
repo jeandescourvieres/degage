@@ -121,7 +121,7 @@ nav {
 .hero-inner { max-width: 720px; position: relative; }
 
 .hero-welcome {
-  font-size: clamp(14px, 2.4vw, 22px);
+  font-size: clamp(20px, 4vw, 36px);
   font-weight: 900;
   letter-spacing: 1px;
   color: var(--text);
