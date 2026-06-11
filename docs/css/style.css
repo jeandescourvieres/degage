@@ -125,7 +125,7 @@ nav {
   font-weight: 900;
   letter-spacing: 1px;
   color: var(--text);
-  margin-bottom: 16px;
+  margin-bottom: 36px;
   white-space: nowrap;
 }
 .hero-welcome span { color: var(--green); }
