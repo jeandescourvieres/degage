@@ -278,6 +278,7 @@
     <string name="home_info_content">Tu dégages protège votre téléphone contre les appels de démarchage.\n\n• Le bouton ON/OFF active ou désactive la protection.\n• Les compteurs affichent vos statistiques de blocage.\n• La liste en bas montre les derniers appels bloqués.</string>
     <string name="home_title">TU DÉGAGES</string>
     <string name="home_subtitle">L\'IA qui répond à vos spammeurs</string>
+    <string name="home_hero_welcome">vous souhaite la bienvenue !</string>
     <string name="home_hero_badge">🤖 L\'appli de blocage intelligent de spams avec réponse IA</string>
     <string name="home_hero_line1">Les spammeurs adorent vous appeler ?\n</string>
     <string name="home_hero_line2">TU DÉGAGES, votre nouvelle IA, va adorer leur répondre !</string>

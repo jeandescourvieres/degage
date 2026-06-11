@@ -116,14 +116,6 @@ fun HomeScreen(
                     .padding(14.dp)
             ) {
                 Column(horizontalAlignment = Alignment.CenterHorizontally, modifier = Modifier.fillMaxWidth()) {
-                    Image(
-                        painter = painterResource(R.drawable.robot),
-                        contentDescription = null,
-                        modifier = Modifier
-                            .size(72.dp)
-                            .clip(RoundedCornerShape(16.dp))
-                    )
-                    Spacer(modifier = Modifier.height(6.dp))
                     Text(
                         buildAnnotatedString {
                             append("TU ")
@@ -135,6 +127,22 @@ fun HomeScreen(
                         fontWeight = FontWeight.Black,
                         color = Color.White,
                         letterSpacing = 2.sp,
+                        textAlign = TextAlign.Center
+                    )
+                    Spacer(modifier = Modifier.height(6.dp))
+                    Image(
+                        painter = painterResource(R.drawable.robot),
+                        contentDescription = null,
+                        modifier = Modifier
+                            .size(72.dp)
+                            .clip(RoundedCornerShape(16.dp))
+                    )
+                    Spacer(modifier = Modifier.height(6.dp))
+                    Text(
+                        text = stringResource(R.string.home_hero_welcome),
+                        fontSize = 14.sp,
+                        fontWeight = FontWeight.SemiBold,
+                        color = Color.White,
                         textAlign = TextAlign.Center
                     )
                     Spacer(modifier = Modifier.height(6.dp))
