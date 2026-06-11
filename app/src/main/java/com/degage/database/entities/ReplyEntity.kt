@@ -11,5 +11,5 @@ data class ReplyEntity(
     val partType: String = "BODY",  // MessagePart.name : SALUTATION | BODY | ENDING
     val isEnabled: Boolean = true,
     val isCustom: Boolean = false,
-    val language: String = "FR"     // FR | DE | IT
+    val language: String = "FR"     // FR | DE | IT | EN
 )

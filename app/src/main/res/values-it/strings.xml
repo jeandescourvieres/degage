@@ -89,6 +89,7 @@
     <string name="mb_lang_banner">Le frasi qui sotto sono in %1$s, la lingua scelta per i tuoi messaggi vocali. Seleziona quelle che preferisci.</string>
     <string name="reply_lang_de">tedesco</string>
     <string name="reply_lang_it">italiano</string>
+    <string name="reply_lang_en">inglese</string>
     <string name="mb_intro_title">Come comporre il tuo messaggio?</string>
     <string name="mb_intro_desc">Tu dégages assembla automaticamente un messaggio in 3 parti prima di riagganciare. Scegli liberamente un\'opzione per ogni sezione:</string>
     <string name="mb_explain_salutation_title">Saluto</string>
@@ -233,6 +234,7 @@
     <string name="lang_fr">🇫🇷 Français</string>
     <string name="lang_de">🇩🇪 Deutsch</string>
     <string name="lang_it">🇮🇹 Italiano</string>
+    <string name="lang_en">🇬🇧 English</string>
 
     <string name="settings_reply_lang_label">Lingua dei messaggi vocali</string>
     <string name="settings_reply_lang_desc">Lingua in cui Tu dégages risponde ai call center (utile nella Svizzera tedesca o italiana).</string>

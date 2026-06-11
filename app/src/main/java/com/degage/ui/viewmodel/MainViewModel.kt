@@ -42,6 +42,12 @@ class MainViewModel(app: Application) : AndroidViewModel(app) {
                 AppMode.SARCASTIQUE -> "Congratulazioni, ha raggiunto la segreteria telefonica più sarcastica d'Italia."
                 AppMode.TROLL -> "Attenda in linea, la sua chiamata è molto importante per noi."
             }
+            "EN" -> when (mode) {
+                AppMode.POLI -> "This line does not accept commercial solicitations."
+                AppMode.ADMINISTRATIF -> "Your call has been classified as unsolicited telemarketing."
+                AppMode.SARCASTIQUE -> "Congratulations, you've reached the most sarcastic voicemail in the country."
+                AppMode.TROLL -> "Please hold, your call is very important to us."
+            }
             else -> when (mode) {
                 AppMode.POLI -> "Cette ligne n'accepte pas les sollicitations commerciales."
                 AppMode.ADMINISTRATIF -> "Votre appel a été classé comme démarchage non sollicité."

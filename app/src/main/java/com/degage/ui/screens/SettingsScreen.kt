@@ -286,6 +286,7 @@ fun AppLanguageSelectorRow(language: String, onSetLanguage: (String) -> Unit) {
             CountryChip(stringResource(R.string.lang_fr), selected = language == "FR", onClick = { onSetLanguage("FR") })
             CountryChip(stringResource(R.string.lang_de), selected = language == "DE", onClick = { onSetLanguage("DE") })
             CountryChip(stringResource(R.string.lang_it), selected = language == "IT", onClick = { onSetLanguage("IT") })
+            CountryChip(stringResource(R.string.lang_en), selected = language == "EN", onClick = { onSetLanguage("EN") })
         }
     }
 }
@@ -322,6 +323,11 @@ fun ReplyLanguageSelectorRow(language: String, isPremium: Boolean = true, onSetL
                 stringResource(R.string.lang_it),
                 selected = language == "IT" && !locked,
                 onClick = { if (locked) onUpgrade() else onSetLanguage("IT") }
+            )
+            CountryChip(
+                stringResource(R.string.lang_en),
+                selected = language == "EN" && !locked,
+                onClick = { if (locked) onUpgrade() else onSetLanguage("EN") }
             )
             if (locked) PremiumBadge()
         }

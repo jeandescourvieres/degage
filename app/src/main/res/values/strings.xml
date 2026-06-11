@@ -89,6 +89,7 @@
     <string name="mb_lang_banner">Les phrases ci-dessous sont en %1$s, la langue choisie pour vos messages vocaux. Sélectionnez celles qui vous correspondent.</string>
     <string name="reply_lang_de">allemand</string>
     <string name="reply_lang_it">italien</string>
+    <string name="reply_lang_en">anglais</string>
     <string name="mb_intro_title">Comment composer votre message ?</string>
     <string name="mb_intro_desc">Tu dégages assemble automatiquement un message en 3 parties avant de raccrocher. Vous choisissez librement une option par section :</string>
     <string name="mb_explain_salutation_title">Salutation</string>
@@ -233,6 +234,7 @@
     <string name="lang_fr">🇫🇷 Français</string>
     <string name="lang_de">🇩🇪 Deutsch</string>
     <string name="lang_it">🇮🇹 Italiano</string>
+    <string name="lang_en">🇬🇧 English</string>
 
     <string name="settings_reply_lang_label">Langue des messages vocaux</string>
     <string name="settings_reply_lang_desc">Langue dans laquelle Tu dégages répond aux démarcheurs (utile en Suisse alémanique ou italophone).</string>

@@ -36,11 +36,12 @@ class TtsManager(context: Context) {
         }
     }
 
-    // Bascule la langue de synthèse vocale ("FR", "DE" ou "IT")
+    // Bascule la langue de synthèse vocale ("FR", "DE", "IT" ou "EN")
     fun setLanguage(languageCode: String) {
         val locale = when (languageCode) {
             "DE" -> Locale.GERMAN
             "IT" -> Locale.ITALIAN
+            "EN" -> Locale.UK
             else -> Locale.FRENCH
         }
         tts?.language = locale
