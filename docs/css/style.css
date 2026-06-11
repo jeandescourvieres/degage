@@ -67,7 +67,7 @@ nav {
 }
 .nav-logo-text span { color: var(--green); }
 
-.nav-links { display: flex; gap: 28px; align-items: center; }
+.nav-links { display: flex; gap: 28px; align-items: center; margin-left: auto; }
 .nav-links a { color: var(--text-secondary); font-size: 14px; font-weight: 500; transition: color .2s; }
 .nav-links a:hover { color: var(--text); text-decoration: none; }
 
@@ -82,15 +82,21 @@ nav {
 }
 .btn-nav:hover { opacity: .85; text-decoration: none !important; }
 
-.nav-lang { display: flex; gap: 6px; align-items: center; }
+.nav-lang { display: flex; gap: 6px; align-items: center; margin-left: 24px; }
 .nav-lang a {
-  font-size: 16px;
-  opacity: .45;
-  transition: opacity .2s;
+  font-size: 19px;
+  opacity: .6;
+  transition: opacity .2s, background .2s;
   line-height: 1;
+  padding: 6px;
+  border-radius: 8px;
 }
-.nav-lang a:hover { opacity: .8; text-decoration: none; }
-.nav-lang a.active { opacity: 1; }
+.nav-lang a:hover { opacity: 1; background: rgba(255,255,255,0.08); text-decoration: none; }
+.nav-lang a.active {
+  opacity: 1;
+  background: rgba(170,255,0,0.12);
+  border: 1px solid var(--green-border);
+}
 
 /* ── HERO ────────────────────────────────────────────────────────────── */
 .hero {
@@ -113,6 +119,15 @@ nav {
 }
 
 .hero-inner { max-width: 720px; position: relative; }
+
+.hero-welcome {
+  font-size: clamp(14px, 2.4vw, 22px);
+  font-weight: 900;
+  letter-spacing: 1px;
+  color: var(--text);
+  margin-bottom: 16px;
+}
+.hero-welcome span { color: var(--green); }
 
 .hero-logo {
   width: clamp(90px, 14vw, 150px);
@@ -252,41 +267,6 @@ nav {
   color: var(--green);
   font-weight: 800;
   margin-bottom: 32px;
-}
-
-.diff-separator {
-  margin: 0 auto 32px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 16px;
-}
-.diff-separator::before,
-.diff-separator::after {
-  content: '';
-  flex: 1;
-  max-width: 200px;
-  height: 1px;
-  background: var(--green-border);
-}
-
-.diff-vs-badge {
-  background: var(--green);
-  color: #000;
-  font-size: 13px;
-  font-weight: 900;
-  padding: 6px 16px;
-  border-radius: 20px;
-  letter-spacing: 2px;
-}
-
-.diff-us-label {
-  font-size: 13px;
-  font-weight: 800;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  color: var(--green);
-  margin-bottom: 16px;
 }
 
 .diff-headline {
