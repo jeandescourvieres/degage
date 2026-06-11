@@ -381,7 +381,7 @@ fun ReplyLanguageSelectorRow(language: String, isPremium: Boolean = true, onSetL
 @Composable
 fun SettingsHelpToggle(text: String) {
     var expanded by remember { mutableStateOf(false) }
-    Column(modifier = Modifier.padding(top = 8.dp)) {
+    Column(modifier = Modifier.padding(top = 6.dp)) {
         Row(
             verticalAlignment = Alignment.CenterVertically,
             modifier = Modifier.clickable { expanded = !expanded }
@@ -612,7 +612,7 @@ fun SettingsNavRow(label: AnnotatedString, locked: Boolean = false, helpText: St
             modifier = Modifier
                 .fillMaxWidth()
                 .clickable { if (locked) onUpgrade() else onClick() }
-                .padding(horizontal = 20.dp, vertical = 16.dp),
+                .padding(start = 20.dp, end = 20.dp, top = 16.dp, bottom = if (helpText != null) 0.dp else 16.dp),
             horizontalArrangement = Arrangement.SpaceBetween,
             verticalAlignment = Alignment.CenterVertically
         ) {
