@@ -175,6 +175,17 @@ nav {
   margin-bottom: 28px;
 }
 
+.hero-mini-badge-flags {
+  font-size: 18px;
+  background: rgba(170,255,0,0.08);
+  border: 1px solid var(--green-border);
+  color: var(--text);
+  font-weight: 700;
+}
+.hero-mini-badge-flags .flag {
+  font-size: 22px;
+}
+
 .hero-mini-badge {
   display: inline-flex;
   align-items: center;
