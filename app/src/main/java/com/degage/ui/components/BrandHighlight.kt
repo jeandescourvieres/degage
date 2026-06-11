@@ -18,7 +18,7 @@ fun highlightBrand(text: String): AnnotatedString = buildAnnotatedString {
         }
         append(text.substring(start, index))
         withStyle(SpanStyle(color = NeonGreen)) {
-            append(text.substring(index, index + brand.length))
+            append(text.substring(index, index + brand.length).uppercase())
         }
         start = index + brand.length
     }

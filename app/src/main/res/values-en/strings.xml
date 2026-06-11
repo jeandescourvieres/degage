@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Tu dégages</string>
+    <string name="app_name">TU DÉGAGES</string>
 
     <!-- ── Common ──────────────────────────────────────────────────────── -->
     <string name="cd_back">Back</string>
@@ -59,7 +59,7 @@
     <string name="custom_block_exact_label">Exact number</string>
 
     <!-- ── Premium screen ───────────────────────────────────────────────── -->
-    <string name="premium_title">Tu dégages Premium</string>
+    <string name="premium_title">TU DÉGAGES Premium</string>
     <string name="premium_hero_title">Go further with Premium</string>
     <string name="premium_hero_subtitle">Basic protection stays free, forever. Premium adds personalization and comfort.</string>
     <string-array name="premium_features">
@@ -192,15 +192,16 @@
     <string name="welcome_hero_title">Telemarketers love\ncalling you?</string>
     <string name="welcome_hero_subtitle">TU DÉGAGES, your new AI,\nwill love answering them!</string>
     <string name="welcome_hero_desc">Stop wasting time answering unwanted calls just to hang up afterwards. Let your personal AI answer with the humor of your choice.</string>
-    <string name="welcome_section1_title">🤖 Smart blocking with AI reply</string>
+    <string name="welcome_sections_intro">Discover TU DÉGAGES in detail:</string>
+    <string name="welcome_section1_title">🤖 Smart blocking with AI reply:</string>
     <string name="welcome_section1_body">TU DÉGAGES filters unwanted calls and redirects them to your personalized AI voice assistant — before ending the conversation. The telemarketer talks to your AI, not to you.</string>
-    <string name="welcome_section2_title">🎭 Not like other apps</string>
+    <string name="welcome_section2_title">🎭 Not like other apps:</string>
     <string name="welcome_section2_body">Classic apps just block calls. Ours lets your AI answer with the tone you choose — Polite, Administrative, Sarcastic or Troll — before hanging up.</string>
-    <string name="welcome_section3_title">💬 Your AI, your voice</string>
-    <string name="welcome_section3_body">Write your own phrases, choose the tone, adjust the voice. Your AI sounds like you. Spammers deserve a reply that matches.</string>
-    <string name="welcome_section4_title">📊 Every battle counted</string>
+    <string name="welcome_section3_title">💬 Your AI, your voice:</string>
+    <string name="welcome_section3_body">Write your own phrases, choose the tone, adjust the voice. Your AI sounds like you. Spammers deserve a reply that matches. 🎤</string>
+    <string name="welcome_section4_title">📊 Every battle counted:</string>
     <string name="welcome_section4_body">Full history, time saved, numbers memorized for instant rejection. You\'ll know exactly how many times your AI has won.</string>
-    <string name="welcome_section5_title">🇫🇷🇨🇭 Tailored for France and Switzerland</string>
+    <string name="welcome_section5_title">🇫🇷🇨🇭 Tailored for France and Switzerland:</string>
     <string name="welcome_section5_body">Choose your country in Settings: the unwanted-number database adapts automatically (ARCEP prefixes in France, premium-rate and OFCOM business numbers in Switzerland).</string>
     <string name="welcome_tip_title">💡 Good to know</string>
     <string name="welcome_tip_body">You can review this presentation at any time from Settings → Review presentation.</string>
@@ -231,7 +232,7 @@
     <string name="settings_nav_message_builder">💬 Customize replies</string>
     <string name="settings_nav_voice">🎙️ Voice settings</string>
     <string name="settings_nav_custom_blocks">🚫 Manually blocked numbers</string>
-    <string name="settings_nav_premium">⭐ Tu dégages Premium</string>
+    <string name="settings_nav_premium">⭐ TU DÉGAGES Premium</string>
     <string name="settings_community_db_label">Community database</string>
     <string name="settings_community_db_value">Updated: today 08:15</string>
     <string name="settings_nav_manual">📖 User manual</string>
@@ -275,7 +276,7 @@
     <!-- ── Home screen ───────────────────────────────────────────────── -->
     <string name="home_info_title">Home screen</string>
     <string name="home_info_content">Tu dégages protects your phone against telemarketing calls.\n\n• The ON/OFF button enables or disables protection.\n• The counters show your blocking statistics.\n• The list at the bottom shows the most recent blocked calls.</string>
-    <string name="home_title">Tu dégages !</string>
+    <string name="home_title">TU DÉGAGES !</string>
     <string name="home_subtitle">The AI that answers your spammers</string>
     <string name="home_hero_line1">Telemarketers love calling you?\n</string>
     <string name="home_hero_line2">TU DÉGAGES, your new AI, will love answering them!</string>
@@ -394,7 +395,7 @@
 
     <!-- ── About ────────────────────────────────────────────────────── -->
     <string name="about_title">About</string>
-    <string name="about_app_name">Tu dégages</string>
+    <string name="about_app_name">TU DÉGAGES</string>
     <string name="about_tagline">The app that sends\ntelemarketers packing.</string>
     <string name="about_version_label">Version</string>
     <string name="about_legal_mentions">Legal notice</string>

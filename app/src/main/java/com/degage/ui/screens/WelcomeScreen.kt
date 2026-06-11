@@ -120,33 +120,48 @@ fun WelcomeScreen(
             }
 
             item {
+                Text(
+                    text = highlightBrand(stringResource(R.string.welcome_sections_intro)),
+                    fontSize = 17.sp,
+                    fontWeight = FontWeight.Bold,
+                    color = Color.White,
+                    textAlign = TextAlign.Center,
+                    modifier = Modifier.fillMaxWidth().padding(top = 4.dp)
+                )
+            }
+            item {
                 WelcomeSection(
                     stringResource(R.string.welcome_section1_title),
-                    stringResource(R.string.welcome_section1_body)
+                    stringResource(R.string.welcome_section1_body),
+                    accentColor = NeonGreen
                 )
             }
             item {
                 WelcomeSection(
                     stringResource(R.string.welcome_section2_title),
-                    stringResource(R.string.welcome_section2_body)
+                    stringResource(R.string.welcome_section2_body),
+                    accentColor = AccentBlue
                 )
             }
             item {
                 WelcomeSection(
                     stringResource(R.string.welcome_section3_title),
-                    stringResource(R.string.welcome_section3_body)
+                    stringResource(R.string.welcome_section3_body),
+                    accentColor = AccentPurple
                 )
             }
             item {
                 WelcomeSection(
                     stringResource(R.string.welcome_section4_title),
-                    stringResource(R.string.welcome_section4_body)
+                    stringResource(R.string.welcome_section4_body),
+                    accentColor = AccentOrange
                 )
             }
             item {
                 WelcomeSection(
                     stringResource(R.string.welcome_section5_title),
-                    stringResource(R.string.welcome_section5_body)
+                    stringResource(R.string.welcome_section5_body),
+                    accentColor = AccentPink
                 )
             }
 
@@ -204,11 +219,12 @@ fun WelcomeScreen(
 }
 
 @Composable
-private fun WelcomeSection(title: String, body: String) {
+private fun WelcomeSection(title: String, body: String, accentColor: Color) {
     Column(
         modifier = Modifier
             .fillMaxWidth()
-            .background(CardBg, RoundedCornerShape(14.dp))
+            .background(accentColor.copy(alpha = 0.10f), RoundedCornerShape(14.dp))
+            .border(1.dp, accentColor.copy(alpha = 0.35f), RoundedCornerShape(14.dp))
             .padding(16.dp)
     ) {
         Text(highlightBrand(title), fontSize = 15.sp, fontWeight = FontWeight.Bold, color = Color.White)

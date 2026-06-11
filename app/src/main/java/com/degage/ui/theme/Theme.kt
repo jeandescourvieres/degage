@@ -14,6 +14,12 @@ val RedAlert = Color(0xFFE53935)
 val TextPrimary = Color(0xFFFFFFFF)
 val TextSecondary = Color(0xFFBBBBBB)
 
+// Couleurs d'accentuation pour égayer les sections de l'écran de bienvenue
+val AccentBlue = Color(0xFF3B9DFF)
+val AccentPurple = Color(0xFFB084FF)
+val AccentOrange = Color(0xFFFFA53B)
+val AccentPink = Color(0xFFFF6FB0)
+
 private val DegageColorScheme = darkColorScheme(
     primary = NeonGreen,
     onPrimary = Color.Black,

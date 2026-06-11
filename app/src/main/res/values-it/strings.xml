@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Tu dégages</string>
+    <string name="app_name">TU DÉGAGES</string>
 
     <!-- ── Generale ──────────────────────────────────────────────────────── -->
     <string name="cd_back">Indietro</string>
@@ -59,7 +59,7 @@
     <string name="custom_block_exact_label">Numero esatto</string>
 
     <!-- ── Schermata Premium ───────────────────────────────────────────────── -->
-    <string name="premium_title">Tu dégages Premium</string>
+    <string name="premium_title">TU DÉGAGES Premium</string>
     <string name="premium_hero_title">Vai oltre con Premium</string>
     <string name="premium_hero_subtitle">La protezione di base resta gratuita, per sempre. Premium aggiunge personalizzazione e comodità.</string>
     <string-array name="premium_features">
@@ -192,15 +192,16 @@
     <string name="welcome_hero_title">I call center adorano\nchiamarti?</string>
     <string name="welcome_hero_subtitle">TU DÉGAGES, la tua nuova IA,\nadorerà rispondere loro!</string>
     <string name="welcome_hero_desc">Non perdere più tempo a rispondere a chiamate indesiderate per poi dover riagganciare. Lascia che la tua IA personale risponda con l\'umorismo che preferisci.</string>
-    <string name="welcome_section1_title">🤖 Blocco intelligente con risposta IA</string>
+    <string name="welcome_sections_intro">Scopri TU DÉGAGES nel dettaglio:</string>
+    <string name="welcome_section1_title">🤖 Blocco intelligente con risposta IA:</string>
     <string name="welcome_section1_body">TU DÉGAGES filtra le chiamate indesiderate e le reindirizza al tuo assistente vocale IA personalizzato — prima di terminare la conversazione. Il call center parla con la tua IA, non con te.</string>
-    <string name="welcome_section2_title">🎭 Diversa dalle altre app</string>
+    <string name="welcome_section2_title">🎭 Diversa dalle altre app:</string>
     <string name="welcome_section2_body">Le app classiche bloccano le chiamate. La nostra permette alla tua IA di rispondere con il tono che scegli — Cortese, Amministrativo, Sarcastico o Troll — prima di riagganciare.</string>
-    <string name="welcome_section3_title">💬 La tua IA, la tua voce</string>
-    <string name="welcome_section3_body">Componi le tue formule, scegli il tono, regola la voce. La tua IA ti somiglia. I call center meritano una risposta all\'altezza.</string>
-    <string name="welcome_section4_title">📊 Ogni battaglia conta</string>
+    <string name="welcome_section3_title">💬 La tua IA, la tua voce:</string>
+    <string name="welcome_section3_body">Componi le tue formule, scegli il tono, regola la voce. La tua IA ti somiglia. I call center meritano una risposta all\'altezza. 🎤</string>
+    <string name="welcome_section4_title">📊 Ogni battaglia conta:</string>
     <string name="welcome_section4_body">Cronologia completa, tempo risparmiato, numeri memorizzati per il rifiuto immediato. Saprai esattamente quante volte la tua IA ha vinto.</string>
-    <string name="welcome_section5_title">🇫🇷🇨🇭 Adatta alla Francia e alla Svizzera</string>
+    <string name="welcome_section5_title">🇫🇷🇨🇭 Adatta alla Francia e alla Svizzera:</string>
     <string name="welcome_section5_body">Scegli il tuo paese in Impostazioni: il database dei numeri indesiderati si adatta automaticamente (prefissi ARCEP in Francia, numeri a valore aggiunto e numeri aziendali OFCOM in Svizzera).</string>
     <string name="welcome_tip_title">💡 Da sapere</string>
     <string name="welcome_tip_body">Puoi rivedere questa presentazione in qualsiasi momento da Impostazioni → Rivedi la presentazione.</string>
@@ -231,7 +232,7 @@
     <string name="settings_nav_message_builder">💬 Personalizza le risposte</string>
     <string name="settings_nav_voice">🎙️ Impostazioni vocali</string>
     <string name="settings_nav_custom_blocks">🚫 Numeri bloccati manualmente</string>
-    <string name="settings_nav_premium">⭐ Tu dégages Premium</string>
+    <string name="settings_nav_premium">⭐ TU DÉGAGES Premium</string>
     <string name="settings_community_db_label">Database della community</string>
     <string name="settings_community_db_value">Aggiornato: oggi alle 08:15</string>
     <string name="settings_nav_manual">📖 Manuale d\'uso</string>
@@ -275,7 +276,7 @@
     <!-- ── Schermata Home ───────────────────────────────────────────────── -->
     <string name="home_info_title">Schermata iniziale</string>
     <string name="home_info_content">Tu dégages protegge il tuo telefono dalle chiamate di teleselling.\n\n• Il pulsante ON/OFF attiva o disattiva la protezione.\n• I contatori mostrano le tue statistiche di blocco.\n• L\'elenco in basso mostra le ultime chiamate bloccate.</string>
-    <string name="home_title">Tu dégages !</string>
+    <string name="home_title">TU DÉGAGES !</string>
     <string name="home_subtitle">L\'IA che risponde ai tuoi spammer</string>
     <string name="home_hero_line1">I call center adorano chiamarti?\n</string>
     <string name="home_hero_line2">TU DÉGAGES, la tua nuova IA, adorerà rispondere loro!</string>
@@ -394,7 +395,7 @@
 
     <!-- ── Informazioni ────────────────────────────────────────────────────── -->
     <string name="about_title">Informazioni</string>
-    <string name="about_app_name">Tu dégages</string>
+    <string name="about_app_name">TU DÉGAGES</string>
     <string name="about_tagline">L\'app che manda a quel paese\ni call center.</string>
     <string name="about_version_label">Versione</string>
     <string name="about_legal_mentions">Note legali</string>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Tu dégages</string>
+    <string name="app_name">TU DÉGAGES</string>
 
     <!-- ── Commun ──────────────────────────────────────────────────────── -->
     <string name="cd_back">Retour</string>
@@ -59,7 +59,7 @@
     <string name="custom_block_exact_label">Numéro exact</string>
 
     <!-- ── Écran Premium ───────────────────────────────────────────────── -->
-    <string name="premium_title">Tu dégages Premium</string>
+    <string name="premium_title">TU DÉGAGES Premium</string>
     <string name="premium_hero_title">Allez plus loin avec Premium</string>
     <string name="premium_hero_subtitle">La protection de base reste gratuite, pour toujours. Premium ajoute la personnalisation et le confort.</string>
     <string-array name="premium_features">
@@ -192,15 +192,16 @@
     <string name="welcome_hero_title">Les spammeurs adorent\nvous appeler ?</string>
     <string name="welcome_hero_subtitle">TU DÉGAGES, votre nouvelle IA,\nva adorer leur répondre !</string>
     <string name="welcome_hero_desc">Ne perdez plus de temps à répondre aux appels indésirables pour devoir raccrocher ensuite. Faites répondre votre IA personnelle avec l\'humour de votre choix.</string>
-    <string name="welcome_section1_title">🤖 Blocage intelligent avec réponse IA</string>
+    <string name="welcome_sections_intro">Découvrez TU DÉGAGES en détail :</string>
+    <string name="welcome_section1_title">🤖 Blocage intelligent avec réponse IA :</string>
     <string name="welcome_section1_body">TU DÉGAGES filtre les appels indésirables et les redirige vers votre assistant vocal IA personnalisé — avant de mettre fin à la conversation. Le démarcheur parle à votre IA, pas à vous.</string>
-    <string name="welcome_section2_title">🎭 Pas comme les autres applis</string>
+    <string name="welcome_section2_title">🎭 Pas comme les autres applis :</string>
     <string name="welcome_section2_body">Les applications classiques bloquent les appels. La nôtre permet à votre IA de répondre avec le ton que vous choisissez — Poli, Administratif, Sarcastique ou Troll — avant de raccrocher.</string>
-    <string name="welcome_section3_title">💬 Votre IA, votre voix</string>
-    <string name="welcome_section3_body">Composez vos propres formules, choisissez le ton, réglez la voix. Votre IA vous ressemble. Les spammeurs méritent une réponse à la hauteur.</string>
-    <string name="welcome_section4_title">📊 Chaque bataille comptée</string>
+    <string name="welcome_section3_title">💬 Votre IA, votre voix :</string>
+    <string name="welcome_section3_body">Composez vos propres formules, choisissez le ton, réglez la voix. Votre IA vous ressemble. Les spammeurs méritent une réponse à la hauteur. 🎤</string>
+    <string name="welcome_section4_title">📊 Chaque bataille comptée :</string>
     <string name="welcome_section4_body">Historique complet, temps économisé, numéros mémorisés pour rejet immédiat. Vous saurez exactement combien de fois votre IA a gagné.</string>
-    <string name="welcome_section5_title">🇫🇷🇨🇭 Adapté à la France et à la Suisse</string>
+    <string name="welcome_section5_title">🇫🇷🇨🇭 Adapté à la France et à la Suisse :</string>
     <string name="welcome_section5_body">Choisissez votre pays dans Paramètres : la base de numéros indésirables s\'adapte automatiquement (préfixes ARCEP en France, numéros à valeur ajoutée et numéros d\'entreprise OFCOM en Suisse).</string>
     <string name="welcome_tip_title">💡 Bon à savoir</string>
     <string name="welcome_tip_body">Vous pouvez revoir cette présentation à tout moment depuis Paramètres → Revoir la présentation.</string>
@@ -231,7 +232,7 @@
     <string name="settings_nav_message_builder">💬 Personnaliser les réponses</string>
     <string name="settings_nav_voice">🎙️ Paramètres vocaux</string>
     <string name="settings_nav_custom_blocks">🚫 Numéros bloqués manuellement</string>
-    <string name="settings_nav_premium">⭐ Tu dégages Premium</string>
+    <string name="settings_nav_premium">⭐ TU DÉGAGES Premium</string>
     <string name="settings_community_db_label">Base communautaire</string>
     <string name="settings_community_db_value">Mise à jour : aujourd\'hui 08:15</string>
     <string name="settings_nav_manual">📖 Mode d\'emploi</string>
@@ -275,7 +276,7 @@
     <!-- ── Écran Accueil ───────────────────────────────────────────────── -->
     <string name="home_info_title">Écran d\'accueil</string>
     <string name="home_info_content">Tu dégages protège votre téléphone contre les appels de démarchage.\n\n• Le bouton ON/OFF active ou désactive la protection.\n• Les compteurs affichent vos statistiques de blocage.\n• La liste en bas montre les derniers appels bloqués.</string>
-    <string name="home_title">Tu dégages !</string>
+    <string name="home_title">TU DÉGAGES !</string>
     <string name="home_subtitle">L\'IA qui répond à vos spammeurs</string>
     <string name="home_hero_line1">Les spammeurs adorent vous appeler ?\n</string>
     <string name="home_hero_line2">TU DÉGAGES, votre nouvelle IA, va adorer leur répondre !</string>
@@ -394,7 +395,7 @@
 
     <!-- ── À propos ────────────────────────────────────────────────────── -->
     <string name="about_title">À propos</string>
-    <string name="about_app_name">Tu dégages</string>
+    <string name="about_app_name">TU DÉGAGES</string>
     <string name="about_tagline">L\'app qui envoie bouler\nles démarcheurs.</string>
     <string name="about_version_label">Version</string>
     <string name="about_legal_mentions">Mentions légales</string>

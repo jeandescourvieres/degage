@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Tu dégages</string>
+    <string name="app_name">TU DÉGAGES</string>
 
     <!-- ── Allgemein ──────────────────────────────────────────────────────── -->
     <string name="cd_back">Zurück</string>
@@ -59,7 +59,7 @@
     <string name="custom_block_exact_label">Genaue Nummer</string>
 
     <!-- ── Bildschirm Premium ───────────────────────────────────────────────── -->
-    <string name="premium_title">Tu dégages Premium</string>
+    <string name="premium_title">TU DÉGAGES Premium</string>
     <string name="premium_hero_title">Mit Premium noch weiter gehen</string>
     <string name="premium_hero_subtitle">Der Basisschutz bleibt für immer kostenlos. Premium bringt Personalisierung und Komfort.</string>
     <string-array name="premium_features">
@@ -192,15 +192,16 @@
     <string name="welcome_hero_title">Werbeanrufer rufen Sie\nständig an?</string>
     <string name="welcome_hero_subtitle">TU DÉGAGES, Ihre neue KI,\nantwortet ihnen gerne!</string>
     <string name="welcome_hero_desc">Verschwenden Sie keine Zeit mehr damit, unerwünschte Anrufe entgegenzunehmen, nur um danach aufzulegen. Lassen Sie Ihre persönliche KI mit dem Humor Ihrer Wahl antworten.</string>
-    <string name="welcome_section1_title">🤖 Intelligente Blockierung mit KI-Antwort</string>
+    <string name="welcome_sections_intro">Entdecken Sie TU DÉGAGES im Detail:</string>
+    <string name="welcome_section1_title">🤖 Intelligente Blockierung mit KI-Antwort:</string>
     <string name="welcome_section1_body">TU DÉGAGES filtert unerwünschte Anrufe und leitet sie an Ihren persönlichen KI-Sprachassistenten weiter — bevor das Gespräch beendet wird. Der Anrufer spricht mit Ihrer KI, nicht mit Ihnen.</string>
-    <string name="welcome_section2_title">🎭 Anders als andere Apps</string>
+    <string name="welcome_section2_title">🎭 Anders als andere Apps:</string>
     <string name="welcome_section2_body">Klassische Apps blockieren Anrufe. Unsere lässt Ihre KI mit dem von Ihnen gewählten Ton antworten — Höflich, Administrativ, Sarkastisch oder Troll — bevor aufgelegt wird.</string>
-    <string name="welcome_section3_title">💬 Ihre KI, Ihre Stimme</string>
-    <string name="welcome_section3_body">Verfassen Sie eigene Formulierungen, wählen Sie den Ton, stellen Sie die Stimme ein. Ihre KI gleicht Ihnen. Spammer verdienen eine angemessene Antwort.</string>
-    <string name="welcome_section4_title">📊 Jeder Sieg zählt</string>
+    <string name="welcome_section3_title">💬 Ihre KI, Ihre Stimme:</string>
+    <string name="welcome_section3_body">Verfassen Sie eigene Formulierungen, wählen Sie den Ton, stellen Sie die Stimme ein. Ihre KI gleicht Ihnen. Spammer verdienen eine angemessene Antwort. 🎤</string>
+    <string name="welcome_section4_title">📊 Jeder Sieg zählt:</string>
     <string name="welcome_section4_body">Vollständiger Verlauf, eingesparte Zeit, gespeicherte Nummern für sofortige Ablehnung. Sie wissen genau, wie oft Ihre KI gewonnen hat.</string>
-    <string name="welcome_section5_title">🇫🇷🇨🇭 Angepasst an Frankreich und die Schweiz</string>
+    <string name="welcome_section5_title">🇫🇷🇨🇭 Angepasst an Frankreich und die Schweiz:</string>
     <string name="welcome_section5_body">Wählen Sie Ihr Land in den Einstellungen: Die Datenbank unerwünschter Nummern passt sich automatisch an (ARCEP-Präfixe in Frankreich, Mehrwert- und OFCOM-Unternehmensnummern in der Schweiz).</string>
     <string name="welcome_tip_title">💡 Gut zu wissen</string>
     <string name="welcome_tip_body">Sie können diese Präsentation jederzeit über Einstellungen → Präsentation erneut ansehen aufrufen.</string>
@@ -231,7 +232,7 @@
     <string name="settings_nav_message_builder">💬 Antworten anpassen</string>
     <string name="settings_nav_voice">🎙️ Spracheinstellungen</string>
     <string name="settings_nav_custom_blocks">🚫 Manuell blockierte Nummern</string>
-    <string name="settings_nav_premium">⭐ Tu dégages Premium</string>
+    <string name="settings_nav_premium">⭐ TU DÉGAGES Premium</string>
     <string name="settings_community_db_label">Community-Datenbank</string>
     <string name="settings_community_db_value">Aktualisiert: heute 08:15</string>
     <string name="settings_nav_manual">📖 Bedienungsanleitung</string>
@@ -275,7 +276,7 @@
     <!-- ── Startbildschirm ───────────────────────────────────────────────── -->
     <string name="home_info_title">Startbildschirm</string>
     <string name="home_info_content">Tu dégages schützt Ihr Telefon vor Werbeanrufen.\n\n• Der EIN/AUS-Schalter aktiviert oder deaktiviert den Schutz.\n• Die Zähler zeigen Ihre Blockierstatistiken.\n• Die Liste unten zeigt die zuletzt blockierten Anrufe.</string>
-    <string name="home_title">Tu dégages !</string>
+    <string name="home_title">TU DÉGAGES !</string>
     <string name="home_subtitle">Die KI, die Ihren Spammern antwortet</string>
     <string name="home_hero_line1">Werbeanrufer lieben es, Sie anzurufen?\n</string>
     <string name="home_hero_line2">TU DÉGAGES, Ihre neue KI, antwortet ihnen gerne!</string>
@@ -394,7 +395,7 @@
 
     <!-- ── Über die App ────────────────────────────────────────────────────── -->
     <string name="about_title">Über die App</string>
-    <string name="about_app_name">Tu dégages</string>
+    <string name="about_app_name">TU DÉGAGES</string>
     <string name="about_tagline">Die App, die\nWerbeanrufer abwimmelt.</string>
     <string name="about_version_label">Version</string>
     <string name="about_legal_mentions">Impressum</string>
