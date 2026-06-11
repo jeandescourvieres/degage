@@ -13,11 +13,15 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.SpanStyle
+import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.degage.R
+import com.degage.ui.components.highlightBrand
 import com.degage.ui.theme.*
 
 @Composable
@@ -45,11 +49,12 @@ fun WelcomeScreen(
                 Spacer(modifier = Modifier.width(48.dp))
             }
             Text(
-                text = stringResource(R.string.welcome_title),
+                text = highlightBrand(stringResource(R.string.welcome_title)),
                 fontSize = 20.sp,
                 fontWeight = FontWeight.Bold,
                 color = Color.White,
                 textAlign = TextAlign.Center,
+                lineHeight = 26.sp,
                 modifier = Modifier.weight(1f)
             )
             Spacer(modifier = Modifier.width(48.dp))
@@ -73,6 +78,21 @@ fun WelcomeScreen(
                     Text("🤖", fontSize = 48.sp)
                     Spacer(modifier = Modifier.height(12.dp))
                     Text(
+                        buildAnnotatedString {
+                            append("TU ")
+                            withStyle(SpanStyle(color = NeonGreen)) {
+                                append("DÉGAGES")
+                            }
+                            append(" !")
+                        },
+                        fontSize = 28.sp,
+                        fontWeight = FontWeight.Black,
+                        color = Color.White,
+                        letterSpacing = 2.sp,
+                        textAlign = TextAlign.Center
+                    )
+                    Spacer(modifier = Modifier.height(10.dp))
+                    Text(
                         text = stringResource(R.string.welcome_hero_title),
                         fontSize = 20.sp,
                         fontWeight = FontWeight.Bold,
@@ -82,11 +102,11 @@ fun WelcomeScreen(
                     )
                     Text(
                         text = stringResource(R.string.welcome_hero_subtitle),
-                        fontSize = 22.sp,
+                        fontSize = 17.sp,
                         fontWeight = FontWeight.Black,
                         color = NeonGreen,
                         textAlign = TextAlign.Center,
-                        lineHeight = 30.sp
+                        lineHeight = 23.sp
                     )
                     Spacer(modifier = Modifier.height(12.dp))
                     Text(
@@ -191,8 +211,8 @@ private fun WelcomeSection(title: String, body: String) {
             .background(CardBg, RoundedCornerShape(14.dp))
             .padding(16.dp)
     ) {
-        Text(title, fontSize = 15.sp, fontWeight = FontWeight.Bold, color = Color.White)
+        Text(highlightBrand(title), fontSize = 15.sp, fontWeight = FontWeight.Bold, color = Color.White)
         Spacer(modifier = Modifier.height(6.dp))
-        Text(body, fontSize = 13.sp, color = TextSecondary, lineHeight = 20.sp)
+        Text(highlightBrand(body), fontSize = 13.sp, color = TextSecondary, lineHeight = 20.sp)
     }
 }

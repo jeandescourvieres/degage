@@ -188,12 +188,12 @@
     <string name="onboarding_permission_button">Show authorization popup</string>
 
     <!-- ── Welcome screen ───────────────────────────────────────────── -->
-    <string name="welcome_title">Welcome to Tu dégages</string>
+    <string name="welcome_title">TU DÉGAGES welcomes you!</string>
     <string name="welcome_hero_title">Telemarketers love\ncalling you?</string>
-    <string name="welcome_hero_subtitle">Your AI will love\nanswering them!</string>
-    <string name="welcome_hero_desc">Stop just hanging up. Let your personal AI answer with the humor of your choice.</string>
+    <string name="welcome_hero_subtitle">TU DÉGAGES, your new AI,\nwill love answering them!</string>
+    <string name="welcome_hero_desc">Stop wasting time answering unwanted calls just to hang up afterwards. Let your personal AI answer with the humor of your choice.</string>
     <string name="welcome_section1_title">🤖 Smart blocking with AI reply</string>
-    <string name="welcome_section1_body">Tu dégages filters unwanted calls and redirects them to your personalized AI voice assistant — before ending the conversation. The telemarketer talks to your AI, not to you.</string>
+    <string name="welcome_section1_body">TU DÉGAGES filters unwanted calls and redirects them to your personalized AI voice assistant — before ending the conversation. The telemarketer talks to your AI, not to you.</string>
     <string name="welcome_section2_title">🎭 Not like other apps</string>
     <string name="welcome_section2_body">Classic apps just block calls. Ours lets your AI answer with the tone you choose — Polite, Administrative, Sarcastic or Troll — before hanging up.</string>
     <string name="welcome_section3_title">💬 Your AI, your voice</string>
@@ -278,7 +278,7 @@
     <string name="home_title">Tu dégages !</string>
     <string name="home_subtitle">The AI that answers your spammers</string>
     <string name="home_hero_line1">Telemarketers love calling you?\n</string>
-    <string name="home_hero_line2">Your AI will love answering them!</string>
+    <string name="home_hero_line2">TU DÉGAGES, your new AI, will love answering them!</string>
     <string name="home_badge_others_block">❌ Other apps just block the call.</string>
     <string name="home_badge_we_reply">✅ We answer!</string>
     <string name="home_badge_offline">📡 Works even offline</string>

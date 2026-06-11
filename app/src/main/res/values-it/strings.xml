@@ -188,12 +188,12 @@
     <string name="onboarding_permission_button">Mostra il popup di autorizzazione</string>
 
     <!-- ── Schermata Benvenuto (Welcome) ───────────────────────────────────── -->
-    <string name="welcome_title">Benvenuto su Tu dégages</string>
+    <string name="welcome_title">TU DÉGAGES ti dà il benvenuto!</string>
     <string name="welcome_hero_title">I call center adorano\nchiamarti?</string>
-    <string name="welcome_hero_subtitle">La tua IA adorerà\nrispondere loro!</string>
-    <string name="welcome_hero_desc">Non limitarti più a riagganciare. Lascia che la tua IA personale risponda con l\'umorismo che preferisci.</string>
+    <string name="welcome_hero_subtitle">TU DÉGAGES, la tua nuova IA,\nadorerà rispondere loro!</string>
+    <string name="welcome_hero_desc">Non perdere più tempo a rispondere a chiamate indesiderate per poi dover riagganciare. Lascia che la tua IA personale risponda con l\'umorismo che preferisci.</string>
     <string name="welcome_section1_title">🤖 Blocco intelligente con risposta IA</string>
-    <string name="welcome_section1_body">Tu dégages filtra le chiamate indesiderate e le reindirizza al tuo assistente vocale IA personalizzato — prima di terminare la conversazione. Il call center parla con la tua IA, non con te.</string>
+    <string name="welcome_section1_body">TU DÉGAGES filtra le chiamate indesiderate e le reindirizza al tuo assistente vocale IA personalizzato — prima di terminare la conversazione. Il call center parla con la tua IA, non con te.</string>
     <string name="welcome_section2_title">🎭 Diversa dalle altre app</string>
     <string name="welcome_section2_body">Le app classiche bloccano le chiamate. La nostra permette alla tua IA di rispondere con il tono che scegli — Cortese, Amministrativo, Sarcastico o Troll — prima di riagganciare.</string>
     <string name="welcome_section3_title">💬 La tua IA, la tua voce</string>
@@ -278,7 +278,7 @@
     <string name="home_title">Tu dégages !</string>
     <string name="home_subtitle">L\'IA che risponde ai tuoi spammer</string>
     <string name="home_hero_line1">I call center adorano chiamarti?\n</string>
-    <string name="home_hero_line2">La tua IA adorerà rispondere loro!</string>
+    <string name="home_hero_line2">TU DÉGAGES, la tua nuova IA, adorerà rispondere loro!</string>
     <string name="home_badge_others_block">❌ Le altre app bloccano la chiamata.</string>
     <string name="home_badge_we_reply">✅ Noi rispondiamo!</string>
     <string name="home_badge_offline">📡 Funziona anche offline</string>

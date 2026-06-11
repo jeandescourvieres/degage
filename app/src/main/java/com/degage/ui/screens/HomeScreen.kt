@@ -110,11 +110,26 @@ fun HomeScreen(
                         RoundedCornerShape(20.dp)
                     )
                     .border(1.dp, NeonGreen.copy(alpha = 0.25f), RoundedCornerShape(20.dp))
-                    .padding(20.dp)
+                    .padding(14.dp)
             ) {
                 Column(horizontalAlignment = Alignment.CenterHorizontally, modifier = Modifier.fillMaxWidth()) {
-                    Text("🤖", fontSize = 40.sp, textAlign = TextAlign.Center)
-                    Spacer(modifier = Modifier.height(10.dp))
+                    Text("🤖", fontSize = 32.sp, textAlign = TextAlign.Center)
+                    Spacer(modifier = Modifier.height(6.dp))
+                    Text(
+                        buildAnnotatedString {
+                            append("TU ")
+                            withStyle(SpanStyle(color = NeonGreen)) {
+                                append("DÉGAGES")
+                            }
+                            append(" !")
+                        },
+                        fontSize = 22.sp,
+                        fontWeight = FontWeight.Black,
+                        color = Color.White,
+                        letterSpacing = 2.sp,
+                        textAlign = TextAlign.Center
+                    )
+                    Spacer(modifier = Modifier.height(6.dp))
                     Text(
                         buildAnnotatedString {
                             append(stringResource(R.string.home_hero_line1))
@@ -122,24 +137,24 @@ fun HomeScreen(
                                 append(stringResource(R.string.home_hero_line2))
                             }
                         },
-                        fontSize = 16.sp,
+                        fontSize = 14.sp,
                         fontWeight = FontWeight.Bold,
                         color = Color.White,
                         textAlign = TextAlign.Center,
-                        lineHeight = 24.sp
+                        lineHeight = 20.sp
                     )
-                    Spacer(modifier = Modifier.height(12.dp))
+                    Spacer(modifier = Modifier.height(8.dp))
                     Column(
                         modifier = Modifier.fillMaxWidth(),
                         horizontalAlignment = Alignment.CenterHorizontally
                     ) {
                         IntroBadge(stringResource(R.string.home_badge_others_block))
-                        Spacer(modifier = Modifier.height(8.dp))
+                        Spacer(modifier = Modifier.height(6.dp))
                         IntroBadge(stringResource(R.string.home_badge_we_reply))
                     }
-                    Spacer(modifier = Modifier.height(8.dp))
+                    Spacer(modifier = Modifier.height(6.dp))
                     IntroBadge(stringResource(R.string.home_badge_offline))
-                    Spacer(modifier = Modifier.height(8.dp))
+                    Spacer(modifier = Modifier.height(6.dp))
                     IntroBadge(stringResource(R.string.home_badge_countries))
                 }
             }
@@ -280,11 +295,11 @@ private fun IntroBadge(label: String) {
     Text(
         label,
         color = Color.White,
-        fontSize = 11.sp,
+        fontSize = 14.sp,
         fontWeight = FontWeight.SemiBold,
         modifier = Modifier
             .background(CardBgAlt, RoundedCornerShape(20.dp))
-            .padding(horizontal = 10.dp, vertical = 5.dp)
+            .padding(horizontal = 10.dp, vertical = 4.dp)
     )
 }
 

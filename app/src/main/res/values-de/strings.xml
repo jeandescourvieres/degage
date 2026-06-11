@@ -188,12 +188,12 @@
     <string name="onboarding_permission_button">Berechtigungsdialog anzeigen</string>
 
     <!-- ── Bildschirm Willkommen (Welcome) ─────────────────────────────────── -->
-    <string name="welcome_title">Willkommen bei Tu dégages</string>
+    <string name="welcome_title">TU DÉGAGES heißt Sie willkommen!</string>
     <string name="welcome_hero_title">Werbeanrufer rufen Sie\nständig an?</string>
-    <string name="welcome_hero_subtitle">Ihre KI antwortet\nihnen gerne!</string>
-    <string name="welcome_hero_desc">Legen Sie nicht einfach nur auf. Lassen Sie Ihre persönliche KI mit dem Humor Ihrer Wahl antworten.</string>
+    <string name="welcome_hero_subtitle">TU DÉGAGES, Ihre neue KI,\nantwortet ihnen gerne!</string>
+    <string name="welcome_hero_desc">Verschwenden Sie keine Zeit mehr damit, unerwünschte Anrufe entgegenzunehmen, nur um danach aufzulegen. Lassen Sie Ihre persönliche KI mit dem Humor Ihrer Wahl antworten.</string>
     <string name="welcome_section1_title">🤖 Intelligente Blockierung mit KI-Antwort</string>
-    <string name="welcome_section1_body">Tu dégages filtert unerwünschte Anrufe und leitet sie an Ihren persönlichen KI-Sprachassistenten weiter — bevor das Gespräch beendet wird. Der Anrufer spricht mit Ihrer KI, nicht mit Ihnen.</string>
+    <string name="welcome_section1_body">TU DÉGAGES filtert unerwünschte Anrufe und leitet sie an Ihren persönlichen KI-Sprachassistenten weiter — bevor das Gespräch beendet wird. Der Anrufer spricht mit Ihrer KI, nicht mit Ihnen.</string>
     <string name="welcome_section2_title">🎭 Anders als andere Apps</string>
     <string name="welcome_section2_body">Klassische Apps blockieren Anrufe. Unsere lässt Ihre KI mit dem von Ihnen gewählten Ton antworten — Höflich, Administrativ, Sarkastisch oder Troll — bevor aufgelegt wird.</string>
     <string name="welcome_section3_title">💬 Ihre KI, Ihre Stimme</string>
@@ -278,7 +278,7 @@
     <string name="home_title">Tu dégages !</string>
     <string name="home_subtitle">Die KI, die Ihren Spammern antwortet</string>
     <string name="home_hero_line1">Werbeanrufer lieben es, Sie anzurufen?\n</string>
-    <string name="home_hero_line2">Ihre KI liebt es, ihnen zu antworten!</string>
+    <string name="home_hero_line2">TU DÉGAGES, Ihre neue KI, antwortet ihnen gerne!</string>
     <string name="home_badge_others_block">❌ Andere Apps blockieren den Anruf.</string>
     <string name="home_badge_we_reply">✅ Wir antworten!</string>
     <string name="home_badge_offline">📡 Funktioniert auch offline</string>

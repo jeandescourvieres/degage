@@ -188,12 +188,12 @@
     <string name="onboarding_permission_button">Afficher la popup d\'autorisation</string>
 
     <!-- ── Écran Bienvenue (Welcome) ───────────────────────────────────── -->
-    <string name="welcome_title">Bienvenue sur Tu dégages</string>
+    <string name="welcome_title">TU DÉGAGES vous souhaite la bienvenue !</string>
     <string name="welcome_hero_title">Les spammeurs adorent\nvous appeler ?</string>
-    <string name="welcome_hero_subtitle">Votre IA va adorer\nleur répondre !</string>
-    <string name="welcome_hero_desc">Ne vous contentez plus de raccrocher. Faites répondre votre IA personnelle avec l\'humour de votre choix.</string>
+    <string name="welcome_hero_subtitle">TU DÉGAGES, votre nouvelle IA,\nva adorer leur répondre !</string>
+    <string name="welcome_hero_desc">Ne perdez plus de temps à répondre aux appels indésirables pour devoir raccrocher ensuite. Faites répondre votre IA personnelle avec l\'humour de votre choix.</string>
     <string name="welcome_section1_title">🤖 Blocage intelligent avec réponse IA</string>
-    <string name="welcome_section1_body">Tu dégages filtre les appels indésirables et les redirige vers votre assistant vocal IA personnalisé — avant de mettre fin à la conversation. Le démarcheur parle à votre IA, pas à vous.</string>
+    <string name="welcome_section1_body">TU DÉGAGES filtre les appels indésirables et les redirige vers votre assistant vocal IA personnalisé — avant de mettre fin à la conversation. Le démarcheur parle à votre IA, pas à vous.</string>
     <string name="welcome_section2_title">🎭 Pas comme les autres applis</string>
     <string name="welcome_section2_body">Les applications classiques bloquent les appels. La nôtre permet à votre IA de répondre avec le ton que vous choisissez — Poli, Administratif, Sarcastique ou Troll — avant de raccrocher.</string>
     <string name="welcome_section3_title">💬 Votre IA, votre voix</string>
@@ -278,9 +278,9 @@
     <string name="home_title">Tu dégages !</string>
     <string name="home_subtitle">L\'IA qui répond à vos spammeurs</string>
     <string name="home_hero_line1">Les spammeurs adorent vous appeler ?\n</string>
-    <string name="home_hero_line2">Votre IA va adorer leur répondre !</string>
+    <string name="home_hero_line2">TU DÉGAGES, votre nouvelle IA, va adorer leur répondre !</string>
     <string name="home_badge_others_block">❌ Les autres applications bloquent l\'appel.</string>
-    <string name="home_badge_we_reply">✅ Nous, on répond !</string>
+    <string name="home_badge_we_reply">✅ Nous, on répond, c\'est plus fun !</string>
     <string name="home_badge_offline">📡 Fonctionne même hors ligne</string>
     <string name="home_badge_countries">🇫🇷🇨🇭 Adapté France &amp; Suisse</string>
     <string name="home_status_active">PROTECTION ACTIVE</string>
