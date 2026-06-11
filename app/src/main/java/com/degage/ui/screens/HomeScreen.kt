@@ -95,7 +95,7 @@ fun HomeScreen(
                         Icon(Icons.Default.Info, contentDescription = stringResource(R.string.cd_help), tint = NeonGreen, modifier = Modifier.size(24.dp))
                     }
                     IconButton(onClick = onNavigateSettings) {
-                        Icon(Icons.Default.Settings, contentDescription = stringResource(R.string.settings_title), tint = TextSecondary)
+                        Icon(Icons.Default.Settings, contentDescription = stringResource(R.string.settings_title), tint = NeonGreen, modifier = Modifier.size(24.dp))
                     }
                 }
             }
