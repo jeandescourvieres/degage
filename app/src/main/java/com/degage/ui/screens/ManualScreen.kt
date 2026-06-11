@@ -13,6 +13,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
+import com.degage.ui.components.highlightBrand
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.degage.R
@@ -251,8 +252,8 @@ private fun ManualSection(title: String, body: String) {
             .background(CardBg, RoundedCornerShape(16.dp))
             .padding(20.dp)
     ) {
-        Text(title, fontSize = 16.sp, fontWeight = FontWeight.Bold, color = Color.White)
+        Text(highlightBrand(title), fontSize = 16.sp, fontWeight = FontWeight.Bold, color = Color.White)
         Spacer(modifier = Modifier.height(10.dp))
-        Text(body, fontSize = 14.sp, color = TextSecondary, lineHeight = 22.sp)
+        Text(highlightBrand(body), fontSize = 14.sp, color = TextSecondary, lineHeight = 22.sp)
     }
 }

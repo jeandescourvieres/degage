@@ -262,8 +262,8 @@
     <string name="home_subtitle">Die KI, die Ihren Spammern antwortet</string>
     <string name="home_hero_line1">Werbeanrufer lieben es, Sie anzurufen?\n</string>
     <string name="home_hero_line2">Ihre KI liebt es, ihnen zu antworten!</string>
-    <string name="home_badge_others_block">❌ Andere blockieren</string>
-    <string name="home_badge_we_reply">✅ Wir antworten</string>
+    <string name="home_badge_others_block">❌ Andere Apps blockieren den Anruf.</string>
+    <string name="home_badge_we_reply">✅ Wir antworten!</string>
     <string name="home_badge_offline">📡 Funktioniert auch offline</string>
     <string name="home_badge_countries">🇫🇷🇨🇭 Angepasst für Frankreich &amp; Schweiz</string>
     <string name="home_status_active">SCHUTZ AKTIV</string>

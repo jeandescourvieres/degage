@@ -3,9 +3,7 @@ package com.degage.ui.screens
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
@@ -14,11 +12,13 @@ import androidx.compose.material.icons.filled.ChevronRight
 import androidx.compose.material.icons.filled.Info
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
+import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.withStyle
 import com.degage.ui.components.InfoDialog
 import com.degage.ui.components.PremiumBadge
+import com.degage.ui.components.highlightBrand
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -127,16 +127,16 @@ fun SettingsScreen(
         item { Spacer(modifier = Modifier.height(16.dp)) }
 
         item {
-            SettingsNavRow(label = stringResource(R.string.settings_nav_message_builder), locked = !isPremium, onClick = onNavigateMessageBuilder, onUpgrade = onUpgrade)
+            SettingsNavRow(label = highlightBrand(stringResource(R.string.settings_nav_message_builder)), locked = !isPremium, onClick = onNavigateMessageBuilder, onUpgrade = onUpgrade)
         }
         item {
-            SettingsNavRow(label = stringResource(R.string.settings_nav_voice), locked = !isPremium, onClick = onNavigateVoiceSettings, onUpgrade = onUpgrade)
+            SettingsNavRow(label = highlightBrand(stringResource(R.string.settings_nav_voice)), locked = !isPremium, onClick = onNavigateVoiceSettings, onUpgrade = onUpgrade)
         }
         item {
-            SettingsNavRow(label = stringResource(R.string.settings_nav_custom_blocks), locked = !isPremium, onClick = onNavigateCustomBlocks, onUpgrade = onUpgrade)
+            SettingsNavRow(label = highlightBrand(stringResource(R.string.settings_nav_custom_blocks)), locked = !isPremium, onClick = onNavigateCustomBlocks, onUpgrade = onUpgrade)
         }
         item {
-            SettingsNavRow(label = stringResource(R.string.settings_nav_premium), onClick = onUpgrade)
+            SettingsNavRow(label = highlightBrand(stringResource(R.string.settings_nav_premium)), onClick = onUpgrade)
         }
 
         item { Spacer(modifier = Modifier.height(8.dp)) }
@@ -148,13 +148,13 @@ fun SettingsScreen(
             SpamSyncRow(isSyncing = isSyncing, onClick = onSyncSpamList)
         }
         item {
-            SettingsNavRow(label = stringResource(R.string.settings_nav_manual), onClick = onNavigateManual)
+            SettingsNavRow(label = highlightBrand(stringResource(R.string.settings_nav_manual)), onClick = onNavigateManual)
         }
         item {
-            SettingsNavRow(label = stringResource(R.string.settings_nav_welcome), onClick = onNavigateWelcome)
+            SettingsNavRow(label = highlightBrand(stringResource(R.string.settings_nav_welcome)), onClick = onNavigateWelcome)
         }
         item {
-            SettingsNavRow(label = stringResource(R.string.settings_nav_about), onClick = onNavigateAbout)
+            SettingsNavRow(label = highlightBrand(stringResource(R.string.settings_nav_about)), onClick = onNavigateAbout)
         }
 
         item { Spacer(modifier = Modifier.height(80.dp)) }
@@ -261,6 +261,7 @@ fun CountrySelectorRow(country: String, isPremium: Boolean = true, onSetCountry:
     }
 }
 
+@OptIn(androidx.compose.foundation.layout.ExperimentalLayoutApi::class)
 @Composable
 fun AppLanguageSelectorRow(language: String, onSetLanguage: (String) -> Unit) {
     Column(
@@ -271,16 +272,15 @@ fun AppLanguageSelectorRow(language: String, onSetLanguage: (String) -> Unit) {
     ) {
         Text(stringResource(R.string.settings_app_lang_label), color = Color.White, fontSize = 15.sp)
         Text(
-            stringResource(R.string.settings_app_lang_desc),
+            highlightBrand(stringResource(R.string.settings_app_lang_desc)),
             color = TextSecondary,
             fontSize = 11.sp,
             lineHeight = 16.sp
         )
         Spacer(modifier = Modifier.height(10.dp))
-        Row(
-            modifier = Modifier.horizontalScroll(rememberScrollState()),
+        FlowRow(
             horizontalArrangement = Arrangement.spacedBy(8.dp),
-            verticalAlignment = Alignment.CenterVertically
+            verticalArrangement = Arrangement.spacedBy(8.dp)
         ) {
             CountryChip(stringResource(R.string.lang_system), selected = language == "", onClick = { onSetLanguage("") })
             CountryChip(stringResource(R.string.lang_fr), selected = language == "FR", onClick = { onSetLanguage("FR") })
@@ -290,6 +290,7 @@ fun AppLanguageSelectorRow(language: String, onSetLanguage: (String) -> Unit) {
     }
 }
 
+@OptIn(androidx.compose.foundation.layout.ExperimentalLayoutApi::class)
 @Composable
 fun ReplyLanguageSelectorRow(language: String, isPremium: Boolean = true, onSetLanguage: (String) -> Unit, onUpgrade: () -> Unit = {}) {
     Column(
@@ -300,16 +301,15 @@ fun ReplyLanguageSelectorRow(language: String, isPremium: Boolean = true, onSetL
     ) {
         Text(stringResource(R.string.settings_reply_lang_label), color = Color.White, fontSize = 15.sp)
         Text(
-            stringResource(R.string.settings_reply_lang_desc),
+            highlightBrand(stringResource(R.string.settings_reply_lang_desc)),
             color = TextSecondary,
             fontSize = 11.sp,
             lineHeight = 16.sp
         )
         Spacer(modifier = Modifier.height(10.dp))
-        Row(
-            modifier = Modifier.horizontalScroll(rememberScrollState()),
+        FlowRow(
             horizontalArrangement = Arrangement.spacedBy(8.dp),
-            verticalAlignment = Alignment.CenterVertically
+            verticalArrangement = Arrangement.spacedBy(8.dp)
         ) {
             CountryChip(stringResource(R.string.lang_fr), selected = language == "FR", onClick = { onSetLanguage("FR") })
             val locked = !isPremium
@@ -499,7 +499,7 @@ private fun ContributeBadge(label: String) {
 }
 
 @Composable
-fun SettingsNavRow(label: String, locked: Boolean = false, onClick: () -> Unit, onUpgrade: () -> Unit = {}) {
+fun SettingsNavRow(label: AnnotatedString, locked: Boolean = false, onClick: () -> Unit, onUpgrade: () -> Unit = {}) {
     Row(
         modifier = Modifier
             .fillMaxWidth()

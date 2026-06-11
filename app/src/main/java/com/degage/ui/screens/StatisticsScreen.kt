@@ -14,6 +14,7 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import com.degage.ui.components.InfoDialog
+import com.degage.ui.components.highlightBrand
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.geometry.Size
@@ -224,7 +225,7 @@ private fun LegalNoteCard() {
             fontSize = 12.sp, color = TextSecondary, lineHeight = 18.sp
         )
         Text(
-            stringResource(R.string.stats_legal_p2),
+            highlightBrand(stringResource(R.string.stats_legal_p2)),
             fontSize = 12.sp, color = TextSecondary, lineHeight = 18.sp
         )
         Row(

@@ -262,8 +262,8 @@
     <string name="home_subtitle">L\'IA qui répond à vos spammeurs</string>
     <string name="home_hero_line1">Les spammeurs adorent vous appeler ?\n</string>
     <string name="home_hero_line2">Votre IA va adorer leur répondre !</string>
-    <string name="home_badge_others_block">❌ Les autres bloquent</string>
-    <string name="home_badge_we_reply">✅ Nous, on répond</string>
+    <string name="home_badge_others_block">❌ Les autres applications bloquent l\'appel.</string>
+    <string name="home_badge_we_reply">✅ Nous, on répond !</string>
     <string name="home_badge_offline">📡 Fonctionne même hors ligne</string>
     <string name="home_badge_countries">🇫🇷🇨🇭 Adapté France &amp; Suisse</string>
     <string name="home_status_active">PROTECTION ACTIVE</string>

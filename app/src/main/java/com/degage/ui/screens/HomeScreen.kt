@@ -129,12 +129,12 @@ fun HomeScreen(
                         lineHeight = 24.sp
                     )
                     Spacer(modifier = Modifier.height(12.dp))
-                    Row(
+                    Column(
                         modifier = Modifier.fillMaxWidth(),
-                        horizontalArrangement = Arrangement.Center
+                        horizontalAlignment = Alignment.CenterHorizontally
                     ) {
                         IntroBadge(stringResource(R.string.home_badge_others_block))
-                        Spacer(modifier = Modifier.width(8.dp))
+                        Spacer(modifier = Modifier.height(8.dp))
                         IntroBadge(stringResource(R.string.home_badge_we_reply))
                     }
                     Spacer(modifier = Modifier.height(8.dp))

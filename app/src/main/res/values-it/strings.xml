@@ -262,8 +262,8 @@
     <string name="home_subtitle">L\'IA che risponde ai tuoi spammer</string>
     <string name="home_hero_line1">I call center adorano chiamarti?\n</string>
     <string name="home_hero_line2">La tua IA adorerà rispondere loro!</string>
-    <string name="home_badge_others_block">❌ Gli altri bloccano</string>
-    <string name="home_badge_we_reply">✅ Noi rispondiamo</string>
+    <string name="home_badge_others_block">❌ Le altre app bloccano la chiamata.</string>
+    <string name="home_badge_we_reply">✅ Noi rispondiamo!</string>
     <string name="home_badge_offline">📡 Funziona anche offline</string>
     <string name="home_badge_countries">🇫🇷🇨🇭 Adatta a Francia e Svizzera</string>
     <string name="home_status_active">PROTEZIONE ATTIVA</string>

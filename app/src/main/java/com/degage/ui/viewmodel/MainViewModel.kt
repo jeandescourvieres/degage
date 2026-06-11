@@ -28,12 +28,28 @@ class MainViewModel(app: Application) : AndroidViewModel(app) {
     private val ttsManager = TtsManager(app)
 
     fun previewMode(mode: AppMode) = viewModelScope.launch {
-        val phrase = when (mode) {
-            AppMode.POLI -> "Cette ligne n'accepte pas les sollicitations commerciales."
-            AppMode.ADMINISTRATIF -> "Votre appel a été classé comme démarchage non sollicité."
-            AppMode.SARCASTIQUE -> "Félicitations, vous avez atteint la boîte vocale la plus sarcastique de France."
-            AppMode.TROLL -> "Merci de patienter, votre appel est très important pour nous."
+        val lang = prefs.replyLanguage.first()
+        val phrase = when (lang) {
+            "DE" -> when (mode) {
+                AppMode.POLI -> "Diese Leitung nimmt keine kommerziellen Werbeanrufe entgegen."
+                AppMode.ADMINISTRATIF -> "Ihr Anruf wurde als unerwünschte Werbung eingestuft."
+                AppMode.SARCASTIQUE -> "Herzlichen Glückwunsch, Sie haben die sarkastischste Mailbox Deutschlands erreicht."
+                AppMode.TROLL -> "Bitte warten Sie, Ihr Anruf ist uns sehr wichtig."
+            }
+            "IT" -> when (mode) {
+                AppMode.POLI -> "Questa linea non accetta sollecitazioni commerciali."
+                AppMode.ADMINISTRATIF -> "La sua chiamata è stata classificata come telemarketing non richiesto."
+                AppMode.SARCASTIQUE -> "Congratulazioni, ha raggiunto la segreteria telefonica più sarcastica d'Italia."
+                AppMode.TROLL -> "Attenda in linea, la sua chiamata è molto importante per noi."
+            }
+            else -> when (mode) {
+                AppMode.POLI -> "Cette ligne n'accepte pas les sollicitations commerciales."
+                AppMode.ADMINISTRATIF -> "Votre appel a été classé comme démarchage non sollicité."
+                AppMode.SARCASTIQUE -> "Félicitations, vous avez atteint la boîte vocale la plus sarcastique de France."
+                AppMode.TROLL -> "Merci de patienter, votre appel est très important pour nous."
+            }
         }
+        ttsManager.setLanguage(lang)
         ttsManager.speak(phrase)
     }
 
