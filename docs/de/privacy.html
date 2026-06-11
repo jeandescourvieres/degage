@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Datenschutzerklärung — Tu dégages</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🤖</text></svg>">
+  <link rel="alternate" hreflang="fr" href="https://tudegages.fr/privacy.html">
+  <link rel="alternate" hreflang="de" href="https://tudegages.fr/de/privacy.html">
+  <link rel="alternate" hreflang="it" href="https://tudegages.fr/it/privacy.html">
+  <link rel="alternate" hreflang="x-default" href="https://tudegages.fr/privacy.html">
+  <style>
+    .privacy-content { max-width: 740px; margin: 0 auto; padding: 60px 24px 100px; }
+    .privacy-content h1 { font-size: 32px; font-weight: 900; margin-bottom: 8px; }
+    .privacy-content .updated { color: var(--text-secondary); font-size: 13px; margin-bottom: 48px; }
+    .privacy-content h2 { font-size: 18px; font-weight: 700; margin: 36px 0 12px; color: var(--green); }
+    .privacy-content p, .privacy-content li { font-size: 15px; color: #ccc; line-height: 1.75; margin-bottom: 12px; }
+    .privacy-content ul { padding-left: 20px; margin-bottom: 12px; }
+    .privacy-content li { margin-bottom: 6px; }
+    .privacy-content strong { color: var(--text); }
+    .privacy-content a { color: var(--green); }
+    .highlight-box {
+      background: var(--green-dim);
+      border: 1px solid var(--green-border);
+      border-radius: var(--radius-sm);
+      padding: 20px 24px;
+      margin: 32px 0;
+    }
+    .highlight-box p { color: var(--text); margin-bottom: 0; font-weight: 600; }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">
+    <img src="../img/robot.png" alt="" class="logo-icon">
+    <span class="nav-logo-text">TU <span style="color:var(--green)">DÉGAGES</span> !</span>
+  </a>
+  <div class="nav-links">
+    <a href="index.html">← Zurück zur Website</a>
+  </div>
+  <div class="nav-lang">
+    <a href="/privacy.html" lang="fr" hreflang="fr" title="Français">🇫🇷</a>
+    <a href="/de/privacy.html" class="active" lang="de" hreflang="de" title="Deutsch">🇩🇪</a>
+    <a href="/it/privacy.html" lang="it" hreflang="it" title="Italiano">🇮🇹</a>
+  </div>
+</nav>
+
+<div class="privacy-content">
+  <h1>Datenschutzerklärung</h1>
+  <p class="updated">Letzte Aktualisierung: Juni 2026</p>
+
+  <div class="highlight-box">
+    <p>🔒 Zusammenfassung in einem Satz: Tu dégages sammelt standardmäßig keine personenbezogenen Daten. Der Beitrag zur Community-Datenbank (nur Spam-Nummern) ist vollständig optional und standardmäßig deaktiviert.</p>
+  </div>
+
+  <h2>1. Wer sind wir?</h2>
+  <p>Tu dégages ist eine privat entwickelte Android-App. Bei Fragen zu dieser Datenschutzerklärung können Sie uns kontaktieren unter: <a href="mailto:jeandescourvieres@gmail.com">jeandescourvieres@gmail.com</a>.</p>
+
+  <h2>2. Erhobene Daten</h2>
+  <p>Tu dégages <strong>sammelt keine personenbezogenen Daten</strong> und überträgt keine an externe Server.</p>
+  <p>Die einzigen von der App verarbeiteten Daten werden <strong>ausschließlich und lokal auf Ihrem Gerät</strong> gespeichert:</p>
+  <ul>
+    <li><strong>Telefonnummern blockierter Anrufe</strong> — im lokalen Verlauf gespeichert, damit Sie sie einsehen können.</li>
+    <li><strong>Konfigurierte Sprachnachrichten</strong> — die Sätze, die Sie für Ihren KI-Sprachassistenten verfassen.</li>
+    <li><strong>Benutzereinstellungen</strong> — aktiver Modus, Spracheinstellungen, Konfigurationsoptionen.</li>
+    <li><strong>Spam-Nummerndatenbank</strong> — lokal gespeicherte Nummern, um zukünftige Ablehnungen zu beschleunigen.</li>
+  </ul>
+  <p>Diese Daten werden in der lokalen Datenbank der App (SQLite/Room) und in den Geräteeinstellungen (DataStore) gespeichert. Sie werden gelöscht, wenn Sie die App deinstallieren.</p>
+
+  <h2>3. Verwendete Berechtigungen</h2>
+  <p>Tu dégages benötigt die folgenden Android-Berechtigungen aus den angegebenen Gründen:</p>
+  <ul>
+    <li><strong>READ_PHONE_STATE</strong> — feststellen, ob ein eingehender Anruf läuft.</li>
+    <li><strong>READ_CALL_LOG</strong> — eingehende Nummern erkennen, um sie mit der Spam-Datenbank abzugleichen.</li>
+    <li><strong>ANSWER_PHONE_CALLS</strong> — den Anruf abfangen und die Sprachantwort auslösen, bevor das Telefon klingelt.</li>
+    <li><strong>INTERNET &amp; ACCESS_NETWORK_STATE</strong> — Synchronisierung der öffentlichen Listen unerwünschter Nummern (phoneblock.net, Signal-Spam). Bei dieser Synchronisierung werden keine personenbezogenen Daten übertragen.</li>
+    <li><strong>CALL_SCREENING-Rolle</strong> — von Android benötigte Systemrolle zum Filtern eingehender Anrufe. Diese Rolle ersetzt nicht Ihre Standard-Telefon-App.</li>
+  </ul>
+
+  <h2>4. Community-Datenbank (Opt-in)</h2>
+  <p>Tu dégages bietet eine <strong>vollständig optionale</strong> Funktion zum Beitrag zu einer zwischen Nutzern geteilten Spam-Nummerndatenbank. Diese Funktion ist <strong>standardmäßig deaktiviert</strong> und wird nur aktiviert, wenn Sie in den Einstellungen explizit „Zur Community-Datenbank beitragen“ aktivieren.</p>
+  <p>Wenn Sie diese Funktion aktivieren, werden die Telefonnummern von Anrufern, die als Spam identifiziert wurden, an unsere Supabase-Datenbank (gehostet in Europa — Ireland West) übermittelt. Diese Nummern sind die der <strong>Spammer, die Sie kontaktiert haben</strong>, nicht Ihre eigene. Sie werden mit allen Nutzern von Tu dégages geteilt, um die kollektive Erkennung zu verbessern.</p>
+  <p>Sie können diesen Beitrag jederzeit in den Einstellungen deaktivieren.</p>
+
+  <h2>5. Weitergabe an Dritte</h2>
+  <p>Tu dégages <strong>gibt keine personenbezogenen Daten</strong> an Dritte, Werbetreibende oder Geschäftspartner weiter.</p>
+  <p>Bei der Synchronisierung der Anti-Spam-Datenbank sendet die App HTTP-Anfragen an öffentliche Dienste (phoneblock.net, signal-spam.fr, Supabase-Community-Datenbank). Diese Anfragen enthalten keine Daten über Sie.</p>
+
+  <h2>6. Datensicherheit</h2>
+  <p>Alle Daten werden lokal auf Ihrem Gerät gespeichert und durch die Standard-Sicherheitsmechanismen von Android geschützt (App-Isolation, Speicherverschlüsselung, falls auf Ihrem Gerät aktiviert).</p>
+
+  <h2>7. Aufbewahrungsdauer</h2>
+  <p>Die Daten werden so lange aufbewahrt, wie die App auf Ihrem Gerät installiert ist. Sie können:</p>
+  <ul>
+    <li>Den Verlauf blockierter Anrufe über den Bildschirm Verlauf löschen.</li>
+    <li>Alle Daten durch Deinstallation der App löschen.</li>
+  </ul>
+
+  <h2>8. Rechte der Nutzer (DSGVO)</h2>
+  <p>Da keine personenbezogenen Daten an unsere Server übermittelt werden (wir haben keine), können Sie Ihre Rechte auf Auskunft, Berichtigung und Löschung direkt über die App-Oberfläche oder durch Deinstallation ausüben.</p>
+  <p>Bei Fragen kontaktieren Sie uns unter <a href="mailto:jeandescourvieres@gmail.com">jeandescourvieres@gmail.com</a>.</p>
+
+  <h2>9. Kinder</h2>
+  <p>Tu dégages richtet sich nicht an Kinder unter 13 Jahren und sammelt wissentlich keine Daten über sie.</p>
+
+  <h2>10. Änderungen</h2>
+  <p>Diese Richtlinie kann aktualisiert werden. Das Datum der letzten Änderung wird oben auf dieser Seite angezeigt. Wenn Sie die App nach einer Änderung weiterhin nutzen, akzeptieren Sie die aktualisierte Richtlinie.</p>
+
+  <h2>11. Kontakt</h2>
+  <p>Bei Fragen zu dieser Datenschutzerklärung:<br>
+  <a href="mailto:jeandescourvieres@gmail.com">jeandescourvieres@gmail.com</a></p>
+</div>
+
+<footer>
+  <div class="footer-bottom" style="max-width:740px;margin:0 auto;border-top:1px solid rgba(255,255,255,0.06);padding:24px 24px;">
+    <p>© 2026 Tu dégages</p>
+    <p><a href="index.html">Zurück zur Website</a></p>
+  </div>
+</footer>
+
+<!-- ── BARRE DE NAVIGATION FIXE ────────────────────────────────────────── -->
+<nav class="app-bottom-nav">
+  <a href="index.html" class="app-nav-item">
+    <span class="app-nav-icon">🏠</span>
+    <span>Start</span>
+  </a>
+  <a href="index.html#modes" class="app-nav-item">
+    <span class="app-nav-icon">🛡️</span>
+    <span>Schutz</span>
+  </a>
+  <a href="index.html#base-spam" class="app-nav-item">
+    <span class="app-nav-icon">🕐</span>
+    <span>Verlauf</span>
+  </a>
+  <a href="index.html#communaute" class="app-nav-item">
+    <span class="app-nav-icon">👤</span>
+    <span>Profil</span>
+  </a>
+</nav>
+
+</body>
+</html>
