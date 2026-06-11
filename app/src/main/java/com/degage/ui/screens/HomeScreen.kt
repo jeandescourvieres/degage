@@ -139,6 +139,14 @@ fun HomeScreen(
                     )
                     Spacer(modifier = Modifier.height(6.dp))
                     Text(
+                        text = stringResource(R.string.home_hero_badge),
+                        fontSize = 12.sp,
+                        fontWeight = FontWeight.SemiBold,
+                        color = NeonGreen,
+                        textAlign = TextAlign.Center
+                    )
+                    Spacer(modifier = Modifier.height(6.dp))
+                    Text(
                         buildAnnotatedString {
                             append(stringResource(R.string.home_hero_line1))
                             withStyle(SpanStyle(color = NeonGreen, fontWeight = FontWeight.Black)) {

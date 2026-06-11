@@ -278,6 +278,7 @@
     <string name="home_info_content">Tu dégages schützt Ihr Telefon vor Werbeanrufen.\n\n• Der EIN/AUS-Schalter aktiviert oder deaktiviert den Schutz.\n• Die Zähler zeigen Ihre Blockierstatistiken.\n• Die Liste unten zeigt die zuletzt blockierten Anrufe.</string>
     <string name="home_title">TU DÉGAGES !</string>
     <string name="home_subtitle">Die KI, die Ihren Spammern antwortet</string>
+    <string name="home_hero_badge">🤖 Die App für intelligente Spam-Blockierung mit KI-Antwort</string>
     <string name="home_hero_line1">Werbeanrufer lieben es, Sie anzurufen?\n</string>
     <string name="home_hero_line2">TU DÉGAGES, Ihre neue KI, antwortet ihnen gerne!</string>
     <string name="home_badge_others_block">❌ Andere Apps blockieren den Anruf.</string>
