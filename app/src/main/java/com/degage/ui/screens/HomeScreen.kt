@@ -1,5 +1,6 @@
 package com.degage.ui.screens
 
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
@@ -15,8 +16,10 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.buildAnnotatedString
@@ -113,7 +116,13 @@ fun HomeScreen(
                     .padding(14.dp)
             ) {
                 Column(horizontalAlignment = Alignment.CenterHorizontally, modifier = Modifier.fillMaxWidth()) {
-                    Text("🤖", fontSize = 32.sp, textAlign = TextAlign.Center)
+                    Image(
+                        painter = painterResource(R.drawable.robot),
+                        contentDescription = null,
+                        modifier = Modifier
+                            .size(48.dp)
+                            .clip(RoundedCornerShape(12.dp))
+                    )
                     Spacer(modifier = Modifier.height(6.dp))
                     Text(
                         buildAnnotatedString {
@@ -121,7 +130,6 @@ fun HomeScreen(
                             withStyle(SpanStyle(color = NeonGreen)) {
                                 append("DÉGAGES")
                             }
-                            append(" !")
                         },
                         fontSize = 22.sp,
                         fontWeight = FontWeight.Black,

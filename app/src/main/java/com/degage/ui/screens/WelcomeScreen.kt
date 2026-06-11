@@ -5,6 +5,7 @@ import androidx.compose.animation.core.animateFloat
 import androidx.compose.animation.core.infiniteRepeatable
 import androidx.compose.animation.core.rememberInfiniteTransition
 import androidx.compose.animation.core.tween
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.*
@@ -17,7 +18,9 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.buildAnnotatedString
@@ -91,7 +94,13 @@ fun WelcomeScreen(
                         .padding(24.dp),
                     horizontalAlignment = Alignment.CenterHorizontally
                 ) {
-                    Text("🤖", fontSize = 48.sp)
+                    Image(
+                        painter = painterResource(R.drawable.robot),
+                        contentDescription = null,
+                        modifier = Modifier
+                            .size(64.dp)
+                            .clip(RoundedCornerShape(16.dp))
+                    )
                     Spacer(modifier = Modifier.height(12.dp))
                     Text(
                         buildAnnotatedString {
@@ -99,7 +108,6 @@ fun WelcomeScreen(
                             withStyle(SpanStyle(color = NeonGreen)) {
                                 append("DÉGAGES")
                             }
-                            append(" !")
                         },
                         fontSize = 28.sp,
                         fontWeight = FontWeight.Black,
