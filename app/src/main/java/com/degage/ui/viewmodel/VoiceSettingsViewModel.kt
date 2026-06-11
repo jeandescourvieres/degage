@@ -1,3 +1,5 @@
+@file:OptIn(kotlinx.coroutines.ExperimentalCoroutinesApi::class)
+
 package com.degage.ui.viewmodel
 
 import android.app.Application
@@ -14,8 +16,12 @@ class VoiceSettingsViewModel(app: Application) : AndroidViewModel(app) {
     private val prefs = AppPreferences(app)
     private val ttsManager = TtsManager(app)
 
-    private val _voices = MutableStateFlow<List<Voice>>(emptyList())
-    val voices: StateFlow<List<Voice>> = _voices.asStateFlow()
+    val replyLanguage: StateFlow<String> = prefs.replyLanguage
+        .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5000), "FR")
+
+    val voices: StateFlow<List<Voice>> = combine(replyLanguage, ttsManager.isReady) { lang, ready ->
+        if (ready) ttsManager.getAvailableVoices(lang) else emptyList()
+    }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(5000), emptyList())
 
     val speechRate: StateFlow<Float> = prefs.speechRate
         .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5000), 1.0f)
@@ -23,25 +29,26 @@ class VoiceSettingsViewModel(app: Application) : AndroidViewModel(app) {
     val pitch: StateFlow<Float> = prefs.pitch
         .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5000), 1.0f)
 
-    val selectedVoiceName: StateFlow<String> = prefs.voiceName
-        .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5000), "")
-
-    init {
-        // Attendre que TTS soit prêt pour récupérer les voix disponibles
-        viewModelScope.launch {
-            ttsManager.isReady.filter { it }.first()
-            _voices.value = ttsManager.getAvailableVoices()
-        }
-    }
+    val selectedVoiceName: StateFlow<String> = replyLanguage.flatMapLatest { lang ->
+        prefs.voiceNameFor(lang)
+    }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(5000), "")
 
     fun previewVoice(voiceName: String, rate: Float, pitch: Float) = viewModelScope.launch {
+        val lang = replyLanguage.value
+        val phrase = when (lang) {
+            "DE" -> "Hallo. Diese Leitung nimmt keine kommerziellen Werbeanrufe entgegen."
+            "IT" -> "Salve. Questa linea non accetta sollecitazioni commerciali."
+            "EN" -> "Hello. This line does not accept commercial solicitations."
+            else -> "Bonjour. Cette ligne est allergique au démarchage. À pas bientôt."
+        }
+        ttsManager.setLanguage(lang)
         ttsManager.applySettings(rate, pitch, voiceName)
-        ttsManager.speak("Bonjour. Cette ligne est allergique au démarchage. À pas bientôt.")
+        ttsManager.speak(phrase)
     }
 
     fun setRate(value: Float) = viewModelScope.launch { prefs.setSpeechRate(value) }
     fun setPitch(value: Float) = viewModelScope.launch { prefs.setPitch(value) }
-    fun setVoice(name: String) = viewModelScope.launch { prefs.setVoiceName(name) }
+    fun setVoice(name: String) = viewModelScope.launch { prefs.setVoiceNameFor(replyLanguage.value, name) }
 
     override fun onCleared() {
         super.onCleared()

@@ -178,10 +178,10 @@ class DegageCallScreeningService : CallScreeningService() {
 
             val rate = prefs.speechRate.first()
             val pitch = prefs.pitch.first()
-            val voiceName = prefs.voiceName.first().ifBlank { null }
+            val voiceName = prefs.voiceNameFor(replyLanguage).first().ifBlank { null }
             val monitorLive = prefs.monitorLive.first()
             ttsManager.setLanguage(replyLanguage)
-            ttsManager.applySettings(rate, pitch, if (replyLanguage == "FR") voiceName else null)
+            ttsManager.applySettings(rate, pitch, voiceName)
 
             val audioManager = getSystemService(Context.AUDIO_SERVICE) as AudioManager
             if (monitorLive) {

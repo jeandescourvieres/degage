@@ -115,6 +115,7 @@ fun MessageBuilderScreen(
             val langLabel = when (replyLanguage) {
                 "DE" -> stringResource(R.string.reply_lang_de)
                 "IT" -> stringResource(R.string.reply_lang_it)
+                "EN" -> stringResource(R.string.reply_lang_en)
                 else -> replyLanguage
             }
             Row(

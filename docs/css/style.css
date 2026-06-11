@@ -236,21 +236,21 @@ nav {
   margin: 0 auto;
 }
 
-.diff-vs {
-  font-size: 11px;
-  font-weight: 800;
-  letter-spacing: 3px;
-  text-transform: uppercase;
-  color: var(--text-secondary);
+.diff-other {
+  font-size: clamp(18px, 3vw, 26px);
+  font-weight: 500;
   margin-bottom: 12px;
 }
 
-.diff-other {
-  font-size: clamp(18px, 3vw, 26px);
+.diff-line-no {
   color: var(--text-secondary);
   text-decoration: line-through;
   text-decoration-color: rgba(255,255,255,0.25);
-  font-weight: 500;
+}
+
+.diff-line-yes {
+  color: var(--green);
+  font-weight: 800;
   margin-bottom: 32px;
 }
 

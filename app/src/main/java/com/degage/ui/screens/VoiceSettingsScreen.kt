@@ -31,6 +31,7 @@ fun VoiceSettingsScreen(
     selectedVoiceName: String,
     speechRate: Float,
     pitch: Float,
+    replyLanguageLabel: String,
     onBack: () -> Unit,
     onSelectVoice: (String) -> Unit,
     onRateChange: (Float) -> Unit,
@@ -103,7 +104,7 @@ fun VoiceSettingsScreen(
 
             // Liste des voix disponibles
             item {
-                Text(stringResource(R.string.voice_available_title), fontSize = 15.sp, fontWeight = FontWeight.SemiBold, color = Color.White)
+                Text(stringResource(R.string.voice_available_title, replyLanguageLabel), fontSize = 15.sp, fontWeight = FontWeight.SemiBold, color = Color.White)
                 if (voices.isEmpty()) {
                     Spacer(modifier = Modifier.height(8.dp))
                     Text(
@@ -218,6 +219,7 @@ fun VoiceSettingsPreview() {
             selectedVoiceName = "",
             speechRate = 1.0f,
             pitch = 1.0f,
+            replyLanguageLabel = "français",
             onBack = {},
             onSelectVoice = {},
             onRateChange = {},

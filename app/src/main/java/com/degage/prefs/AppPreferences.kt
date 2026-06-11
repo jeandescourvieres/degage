@@ -46,7 +46,14 @@ class AppPreferences(private val context: Context) {
     val blockAfterReply: Flow<Boolean> = context.dataStore.data.map { it[KEY_BLOCK_AFTER_REPLY] ?: true }
     val speechRate: Flow<Float> = context.dataStore.data.map { it[KEY_SPEECH_RATE] ?: 1.0f }
     val pitch: Flow<Float> = context.dataStore.data.map { it[KEY_PITCH] ?: 1.0f }
-    val voiceName: Flow<String> = context.dataStore.data.map { it[KEY_VOICE_NAME] ?: "" }
+    // Voix choisie pour une langue de messages vocaux donnée (FR/DE/IT/EN).
+    // Pour FR, retombe sur l'ancienne clé unique KEY_VOICE_NAME (migration).
+    fun voiceNameFor(lang: String): Flow<String> {
+        val key = stringPreferencesKey("voice_name_$lang")
+        return context.dataStore.data.map { prefs ->
+            prefs[key] ?: if (lang == "FR") prefs[KEY_VOICE_NAME] ?: "" else ""
+        }
+    }
     val welcomeShown: Flow<Boolean> = context.dataStore.data.map { it[KEY_WELCOME_SHOWN] ?: false }
     val lastSpamSync: Flow<Long> = context.dataStore.data.map { it[KEY_LAST_SPAM_SYNC] ?: 0L }
     val bundledLoaded: Flow<Boolean> = context.dataStore.data.map { it[KEY_BUNDLED_LOADED] ?: false }
@@ -67,7 +74,8 @@ class AppPreferences(private val context: Context) {
     suspend fun setBlockAfterReply(value: Boolean) = context.dataStore.edit { it[KEY_BLOCK_AFTER_REPLY] = value }
     suspend fun setSpeechRate(value: Float) = context.dataStore.edit { it[KEY_SPEECH_RATE] = value }
     suspend fun setPitch(value: Float) = context.dataStore.edit { it[KEY_PITCH] = value }
-    suspend fun setVoiceName(value: String) = context.dataStore.edit { it[KEY_VOICE_NAME] = value }
+    suspend fun setVoiceNameFor(lang: String, value: String) =
+        context.dataStore.edit { it[stringPreferencesKey("voice_name_$lang")] = value }
     suspend fun setWelcomeShown(value: Boolean) = context.dataStore.edit { it[KEY_WELCOME_SHOWN] = value }
     suspend fun setLastSpamSync(ts: Long) = context.dataStore.edit { it[KEY_LAST_SPAM_SYNC] = ts }
     suspend fun setBundledLoaded() = context.dataStore.edit { it[KEY_BUNDLED_LOADED] = true }

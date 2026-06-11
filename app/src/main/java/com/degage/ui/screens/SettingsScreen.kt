@@ -1,5 +1,6 @@
 package com.degage.ui.screens
 
+import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
@@ -103,6 +104,12 @@ fun SettingsScreen(
             ReplyLanguageSelectorRow(language = replyLanguage, isPremium = isPremium, onSetLanguage = onSetReplyLanguage, onUpgrade = onUpgrade)
         }
         item {
+            SettingsGroupHelpCard(
+                title = stringResource(R.string.settings_help_protection_title),
+                text = stringResource(R.string.settings_help_protection)
+            )
+        }
+        item {
             SettingsToggleRow(label = stringResource(R.string.settings_toggle_protection), checked = isEnabled, onToggle = onToggleEnabled)
         }
         item {
@@ -127,22 +134,48 @@ fun SettingsScreen(
         item { Spacer(modifier = Modifier.height(16.dp)) }
 
         item {
-            SettingsNavRow(label = highlightBrand(stringResource(R.string.settings_nav_message_builder)), locked = !isPremium, onClick = onNavigateMessageBuilder, onUpgrade = onUpgrade)
+            SettingsNavRow(
+                label = highlightBrand(stringResource(R.string.settings_nav_message_builder)),
+                locked = !isPremium,
+                helpText = stringResource(R.string.settings_help_message_builder),
+                onClick = onNavigateMessageBuilder,
+                onUpgrade = onUpgrade
+            )
         }
         item {
-            SettingsNavRow(label = highlightBrand(stringResource(R.string.settings_nav_voice)), locked = !isPremium, onClick = onNavigateVoiceSettings, onUpgrade = onUpgrade)
+            SettingsNavRow(
+                label = highlightBrand(stringResource(R.string.settings_nav_voice)),
+                locked = !isPremium,
+                helpText = stringResource(R.string.settings_help_voice),
+                onClick = onNavigateVoiceSettings,
+                onUpgrade = onUpgrade
+            )
         }
         item {
-            SettingsNavRow(label = highlightBrand(stringResource(R.string.settings_nav_custom_blocks)), locked = !isPremium, onClick = onNavigateCustomBlocks, onUpgrade = onUpgrade)
+            SettingsNavRow(
+                label = highlightBrand(stringResource(R.string.settings_nav_custom_blocks)),
+                locked = !isPremium,
+                helpText = stringResource(R.string.settings_help_custom_blocks),
+                onClick = onNavigateCustomBlocks,
+                onUpgrade = onUpgrade
+            )
         }
         item {
-            SettingsNavRow(label = highlightBrand(stringResource(R.string.settings_nav_premium)), onClick = onUpgrade)
+            SettingsNavRow(
+                label = highlightBrand(stringResource(R.string.settings_nav_premium)),
+                helpText = stringResource(R.string.settings_help_premium),
+                onClick = onUpgrade
+            )
         }
 
         item { Spacer(modifier = Modifier.height(8.dp)) }
 
         item {
-            SettingsInfoRow(label = stringResource(R.string.settings_community_db_label), value = stringResource(R.string.settings_community_db_value))
+            SettingsInfoRow(
+                label = stringResource(R.string.settings_community_db_label),
+                value = stringResource(R.string.settings_community_db_value),
+                helpText = stringResource(R.string.settings_help_community_db)
+            )
         }
         item {
             SpamSyncRow(isSyncing = isSyncing, onClick = onSyncSpamList)
@@ -186,17 +219,24 @@ fun SettingsToggleRow(label: String, checked: Boolean, onToggle: () -> Unit) {
 }
 
 @Composable
-fun SettingsInfoRow(label: String, value: String) {
-    Row(
+fun SettingsInfoRow(label: String, value: String, helpText: String? = null) {
+    Column(
         modifier = Modifier
             .fillMaxWidth()
             .background(CardBg, RoundedCornerShape(14.dp))
-            .padding(horizontal = 20.dp, vertical = 16.dp),
-        horizontalArrangement = Arrangement.SpaceBetween,
-        verticalAlignment = Alignment.CenterVertically
+            .padding(horizontal = 20.dp, vertical = 16.dp)
     ) {
-        Text(label, color = Color.White, fontSize = 15.sp)
-        Text(value, color = TextSecondary, fontSize = 13.sp)
+        Row(
+            modifier = Modifier.fillMaxWidth(),
+            horizontalArrangement = Arrangement.SpaceBetween,
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            Text(label, color = Color.White, fontSize = 15.sp)
+            Text(value, color = TextSecondary, fontSize = 13.sp)
+        }
+        if (helpText != null) {
+            SettingsHelpToggle(helpText)
+        }
     }
 }
 
@@ -258,6 +298,7 @@ fun CountrySelectorRow(country: String, isPremium: Boolean = true, onSetCountry:
             )
             if (chLocked) PremiumBadge()
         }
+        SettingsHelpToggle(stringResource(R.string.settings_help_country))
     }
 }
 
@@ -288,6 +329,7 @@ fun AppLanguageSelectorRow(language: String, onSetLanguage: (String) -> Unit) {
             CountryChip(stringResource(R.string.lang_it), selected = language == "IT", onClick = { onSetLanguage("IT") })
             CountryChip(stringResource(R.string.lang_en), selected = language == "EN", onClick = { onSetLanguage("EN") })
         }
+        SettingsHelpToggle(stringResource(R.string.settings_help_app_lang))
     }
 }
 
@@ -331,6 +373,51 @@ fun ReplyLanguageSelectorRow(language: String, isPremium: Boolean = true, onSetL
             )
             if (locked) PremiumBadge()
         }
+        SettingsHelpToggle(stringResource(R.string.settings_help_reply_lang))
+    }
+}
+
+// Petit accordéon "Pourquoi ce réglage ?" repliable, à placer dans une section de paramètres.
+@Composable
+fun SettingsHelpToggle(text: String) {
+    var expanded by remember { mutableStateOf(false) }
+    Column(modifier = Modifier.padding(top = 8.dp)) {
+        Row(
+            verticalAlignment = Alignment.CenterVertically,
+            modifier = Modifier.clickable { expanded = !expanded }
+        ) {
+            Icon(Icons.Default.Info, contentDescription = null, tint = NeonGreen, modifier = Modifier.size(14.dp))
+            Spacer(modifier = Modifier.width(6.dp))
+            Text(
+                stringResource(if (expanded) R.string.settings_help_hide else R.string.settings_help_show),
+                color = NeonGreen,
+                fontSize = 11.sp,
+                fontWeight = FontWeight.SemiBold
+            )
+        }
+        AnimatedVisibility(visible = expanded) {
+            Text(
+                highlightBrand(text),
+                color = TextSecondary,
+                fontSize = 12.sp,
+                lineHeight = 18.sp,
+                modifier = Modifier.padding(top = 8.dp)
+            )
+        }
+    }
+}
+
+// Carte d'introduction repliable pour un groupe de réglages (ex. section Protection).
+@Composable
+fun SettingsGroupHelpCard(title: String, text: String) {
+    Column(
+        modifier = Modifier
+            .fillMaxWidth()
+            .background(CardBg, RoundedCornerShape(14.dp))
+            .padding(horizontal = 20.dp, vertical = 14.dp)
+    ) {
+        Text(title, color = Color.White, fontSize = 15.sp, fontWeight = FontWeight.SemiBold)
+        SettingsHelpToggle(text)
     }
 }
 
@@ -350,67 +437,77 @@ private fun CountryChip(label: String, selected: Boolean, onClick: () -> Unit) {
 
 @Composable
 fun BlockHiddenNumbersRow(checked: Boolean, onToggle: () -> Unit) {
-    Row(
+    Column(
         modifier = Modifier
             .fillMaxWidth()
             .background(if (checked) NeonGreenDim.copy(alpha = 0.15f) else CardBg, RoundedCornerShape(14.dp))
-            .padding(horizontal = 20.dp, vertical = 10.dp),
-        horizontalArrangement = Arrangement.SpaceBetween,
-        verticalAlignment = Alignment.CenterVertically
+            .padding(horizontal = 20.dp, vertical = 10.dp)
     ) {
-        Column(modifier = Modifier.weight(1f)) {
-            Text(stringResource(R.string.settings_block_hidden_label), color = Color.White, fontSize = 15.sp)
-            Text(
-                stringResource(R.string.settings_block_hidden_desc),
-                color = TextSecondary,
-                fontSize = 11.sp,
-                lineHeight = 16.sp
+        Row(
+            horizontalArrangement = Arrangement.SpaceBetween,
+            verticalAlignment = Alignment.CenterVertically,
+            modifier = Modifier.fillMaxWidth()
+        ) {
+            Column(modifier = Modifier.weight(1f)) {
+                Text(stringResource(R.string.settings_block_hidden_label), color = Color.White, fontSize = 15.sp)
+                Text(
+                    stringResource(R.string.settings_block_hidden_desc),
+                    color = TextSecondary,
+                    fontSize = 11.sp,
+                    lineHeight = 16.sp
+                )
+            }
+            Spacer(modifier = Modifier.width(12.dp))
+            Switch(
+                checked = checked,
+                onCheckedChange = { onToggle() },
+                colors = SwitchDefaults.colors(
+                    checkedThumbColor = Color.Black,
+                    checkedTrackColor = NeonGreen,
+                    uncheckedThumbColor = TextSecondary,
+                    uncheckedTrackColor = CardBgAlt
+                )
             )
         }
-        Spacer(modifier = Modifier.width(12.dp))
-        Switch(
-            checked = checked,
-            onCheckedChange = { onToggle() },
-            colors = SwitchDefaults.colors(
-                checkedThumbColor = Color.Black,
-                checkedTrackColor = NeonGreen,
-                uncheckedThumbColor = TextSecondary,
-                uncheckedTrackColor = CardBgAlt
-            )
-        )
+        SettingsHelpToggle(stringResource(R.string.settings_help_block_hidden))
     }
 }
 
 @Composable
 fun MonitorLiveRow(checked: Boolean, onToggle: () -> Unit) {
-    Row(
+    Column(
         modifier = Modifier
             .fillMaxWidth()
             .background(if (checked) NeonGreenDim.copy(alpha = 0.15f) else CardBg, RoundedCornerShape(14.dp))
-            .padding(horizontal = 20.dp, vertical = 10.dp),
-        horizontalArrangement = Arrangement.SpaceBetween,
-        verticalAlignment = Alignment.CenterVertically
+            .padding(horizontal = 20.dp, vertical = 10.dp)
     ) {
-        Column(modifier = Modifier.weight(1f)) {
-            Text(stringResource(R.string.settings_monitor_live_label), color = Color.White, fontSize = 15.sp)
-            Text(
-                stringResource(R.string.settings_monitor_live_desc),
-                color = TextSecondary,
-                fontSize = 11.sp,
-                lineHeight = 16.sp
+        Row(
+            horizontalArrangement = Arrangement.SpaceBetween,
+            verticalAlignment = Alignment.CenterVertically,
+            modifier = Modifier.fillMaxWidth()
+        ) {
+            Column(modifier = Modifier.weight(1f)) {
+                Text(stringResource(R.string.settings_monitor_live_label), color = Color.White, fontSize = 15.sp)
+                Text(
+                    stringResource(R.string.settings_monitor_live_desc),
+                    color = TextSecondary,
+                    fontSize = 11.sp,
+                    lineHeight = 16.sp
+                )
+            }
+            Spacer(modifier = Modifier.width(12.dp))
+            Switch(
+                checked = checked,
+                onCheckedChange = { onToggle() },
+                colors = SwitchDefaults.colors(
+                    checkedThumbColor = Color.Black,
+                    checkedTrackColor = NeonGreen,
+                    uncheckedThumbColor = TextSecondary,
+                    uncheckedTrackColor = CardBgAlt
+                )
             )
         }
-        Spacer(modifier = Modifier.width(12.dp))
-        Switch(
-            checked = checked,
-            onCheckedChange = { onToggle() },
-            colors = SwitchDefaults.colors(
-                checkedThumbColor = Color.Black,
-                checkedTrackColor = NeonGreen,
-                uncheckedThumbColor = TextSecondary,
-                uncheckedTrackColor = CardBgAlt
-            )
-        )
+        SettingsHelpToggle(stringResource(R.string.settings_help_monitor_live))
     }
 }
 
@@ -505,18 +602,28 @@ private fun ContributeBadge(label: String) {
 }
 
 @Composable
-fun SettingsNavRow(label: AnnotatedString, locked: Boolean = false, onClick: () -> Unit, onUpgrade: () -> Unit = {}) {
-    Row(
+fun SettingsNavRow(label: AnnotatedString, locked: Boolean = false, helpText: String? = null, onClick: () -> Unit, onUpgrade: () -> Unit = {}) {
+    Column(
         modifier = Modifier
             .fillMaxWidth()
             .background(CardBg, RoundedCornerShape(14.dp))
-            .clickable { if (locked) onUpgrade() else onClick() }
-            .padding(horizontal = 20.dp, vertical = 16.dp),
-        horizontalArrangement = Arrangement.SpaceBetween,
-        verticalAlignment = Alignment.CenterVertically
     ) {
-        Text(label, color = Color.White, fontSize = 15.sp)
-        if (locked) PremiumBadge() else Icon(Icons.Default.ChevronRight, contentDescription = null, tint = TextSecondary)
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .clickable { if (locked) onUpgrade() else onClick() }
+                .padding(horizontal = 20.dp, vertical = 16.dp),
+            horizontalArrangement = Arrangement.SpaceBetween,
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            Text(label, color = Color.White, fontSize = 15.sp)
+            if (locked) PremiumBadge() else Icon(Icons.Default.ChevronRight, contentDescription = null, tint = TextSecondary)
+        }
+        if (helpText != null) {
+            Box(modifier = Modifier.padding(horizontal = 20.dp).padding(bottom = 12.dp)) {
+                SettingsHelpToggle(helpText)
+            }
+        }
     }
 }
 

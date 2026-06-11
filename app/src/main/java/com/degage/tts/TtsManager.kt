@@ -54,15 +54,22 @@ class TtsManager(context: Context) {
         }
     }
 
-    // Retourne les voix françaises installées, triées par nom
-    fun getAvailableVoices(): List<Voice> =
-        tts?.voices
+    // Retourne les voix installées pour la langue donnée ("FR", "DE", "IT" ou "EN"), triées par nom
+    fun getAvailableVoices(languageCode: String = "FR"): List<Voice> {
+        val isoLanguage = when (languageCode) {
+            "DE" -> "de"
+            "IT" -> "it"
+            "EN" -> "en"
+            else -> "fr"
+        }
+        return tts?.voices
             ?.filter { voice ->
-                voice.locale.language == "fr" &&
+                voice.locale.language == isoLanguage &&
                 voice.features?.contains(TextToSpeech.Engine.KEY_FEATURE_NOT_INSTALLED) != true
             }
             ?.sortedBy { it.name }
             ?.toList() ?: emptyList()
+    }
 
     suspend fun speak(text: String): Boolean = suspendCancellableCoroutine { cont ->
         if (!_isReady.value) { cont.resume(false); return@suspendCancellableCoroutine }

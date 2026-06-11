@@ -14,7 +14,9 @@ import com.degage.database.entities.WhitelistEntry
 import com.degage.modes.AppMode
 import com.degage.prefs.AppPreferences
 import com.degage.spam.SpamSyncManager
+import com.degage.tts.HoldMusicPlayer
 import com.degage.tts.TtsManager
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
 import java.time.Instant
@@ -26,6 +28,7 @@ class MainViewModel(app: Application) : AndroidViewModel(app) {
     private val db = AppDatabase.getInstance(app)
     private val prefs = AppPreferences(app)
     private val ttsManager = TtsManager(app)
+    private val holdMusicPlayer = HoldMusicPlayer()
 
     fun previewMode(mode: AppMode) = viewModelScope.launch {
         val lang = prefs.replyLanguage.first()
@@ -57,11 +60,17 @@ class MainViewModel(app: Application) : AndroidViewModel(app) {
         }
         ttsManager.setLanguage(lang)
         ttsManager.speak(phrase)
+        if (mode == AppMode.TROLL) {
+            holdMusicPlayer.start()
+            delay(5_000L)
+            holdMusicPlayer.stop()
+        }
     }
 
     override fun onCleared() {
         super.onCleared()
         ttsManager.shutdown()
+        holdMusicPlayer.stop()
     }
 
     val isEnabled: StateFlow<Boolean> = prefs.isEnabled

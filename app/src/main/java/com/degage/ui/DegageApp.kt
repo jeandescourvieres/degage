@@ -18,6 +18,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
+import com.degage.R
 import com.degage.modes.AppMode
 import com.degage.modes.localizedLabel
 import com.degage.replies.MessagePart
@@ -244,11 +245,19 @@ fun DegageApp(
                     val rate by voiceVm.speechRate.collectAsStateWithLifecycle()
                     val pitch by voiceVm.pitch.collectAsStateWithLifecycle()
                     val voiceName by voiceVm.selectedVoiceName.collectAsStateWithLifecycle()
+                    val replyLanguage by voiceVm.replyLanguage.collectAsStateWithLifecycle()
+                    val replyLanguageLabel = when (replyLanguage) {
+                        "DE" -> stringResource(R.string.reply_lang_de)
+                        "IT" -> stringResource(R.string.reply_lang_it)
+                        "EN" -> stringResource(R.string.reply_lang_en)
+                        else -> stringResource(R.string.reply_lang_fr)
+                    }
                     VoiceSettingsScreen(
                         voices = voices,
                         selectedVoiceName = voiceName,
                         speechRate = rate,
                         pitch = pitch,
+                        replyLanguageLabel = replyLanguageLabel,
                         onBack = { navController.popBackStack() },
                         onSelectVoice = voiceVm::setVoice,
                         onRateChange = voiceVm::setRate,
