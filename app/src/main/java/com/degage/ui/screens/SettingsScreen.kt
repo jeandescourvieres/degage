@@ -3,7 +3,9 @@ package com.degage.ui.screens
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
@@ -275,7 +277,11 @@ fun AppLanguageSelectorRow(language: String, onSetLanguage: (String) -> Unit) {
             lineHeight = 16.sp
         )
         Spacer(modifier = Modifier.height(10.dp))
-        Row(horizontalArrangement = Arrangement.spacedBy(8.dp), verticalAlignment = Alignment.CenterVertically) {
+        Row(
+            modifier = Modifier.horizontalScroll(rememberScrollState()),
+            horizontalArrangement = Arrangement.spacedBy(8.dp),
+            verticalAlignment = Alignment.CenterVertically
+        ) {
             CountryChip(stringResource(R.string.lang_system), selected = language == "", onClick = { onSetLanguage("") })
             CountryChip(stringResource(R.string.lang_fr), selected = language == "FR", onClick = { onSetLanguage("FR") })
             CountryChip(stringResource(R.string.lang_de), selected = language == "DE", onClick = { onSetLanguage("DE") })
@@ -300,7 +306,11 @@ fun ReplyLanguageSelectorRow(language: String, isPremium: Boolean = true, onSetL
             lineHeight = 16.sp
         )
         Spacer(modifier = Modifier.height(10.dp))
-        Row(horizontalArrangement = Arrangement.spacedBy(8.dp), verticalAlignment = Alignment.CenterVertically) {
+        Row(
+            modifier = Modifier.horizontalScroll(rememberScrollState()),
+            horizontalArrangement = Arrangement.spacedBy(8.dp),
+            verticalAlignment = Alignment.CenterVertically
+        ) {
             CountryChip(stringResource(R.string.lang_fr), selected = language == "FR", onClick = { onSetLanguage("FR") })
             val locked = !isPremium
             CountryChip(
