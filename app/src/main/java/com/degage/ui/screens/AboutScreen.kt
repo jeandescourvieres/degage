@@ -13,11 +13,13 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.degage.R
 import com.degage.ui.theme.*
 
 @Composable
@@ -32,9 +34,9 @@ fun AboutScreen(onBack: () -> Unit) {
             verticalAlignment = Alignment.CenterVertically
         ) {
             IconButton(onClick = onBack) {
-                Icon(Icons.Default.ArrowBack, contentDescription = "Retour", tint = Color.White)
+                Icon(Icons.Default.ArrowBack, contentDescription = stringResource(R.string.cd_back), tint = Color.White)
             }
-            Text("À propos", fontSize = 20.sp, fontWeight = FontWeight.Bold, color = Color.White)
+            Text(stringResource(R.string.about_title), fontSize = 20.sp, fontWeight = FontWeight.Bold, color = Color.White)
         }
 
         Column(
@@ -51,25 +53,25 @@ fun AboutScreen(onBack: () -> Unit) {
             }
 
             Spacer(modifier = Modifier.height(16.dp))
-            Text("Tu dégages", fontSize = 32.sp, fontWeight = FontWeight.Black, color = Color.White)
+            Text(stringResource(R.string.about_app_name), fontSize = 32.sp, fontWeight = FontWeight.Black, color = Color.White)
             Text("v1.0.0", color = TextSecondary, fontSize = 14.sp)
             Spacer(modifier = Modifier.height(8.dp))
             Text(
-                "L'app qui envoie bouler\nles démarcheurs.",
+                stringResource(R.string.about_tagline),
                 color = NeonGreen, fontSize = 16.sp, textAlign = TextAlign.Center, lineHeight = 24.sp
             )
         }
 
         Column(modifier = Modifier.padding(horizontal = 16.dp), verticalArrangement = Arrangement.spacedBy(2.dp)) {
-            AboutRow(label = "Version", value = "1.0.0")
-            AboutNavRow(label = "Mentions légales")
-            AboutNavRow(label = "Politique de confidentialité")
+            AboutRow(label = stringResource(R.string.about_version_label), value = "1.0.0")
+            AboutNavRow(label = stringResource(R.string.about_legal_mentions))
+            AboutNavRow(label = stringResource(R.string.about_privacy_policy))
         }
 
         Spacer(modifier = Modifier.weight(1f))
 
         Text(
-            "Made in France 🇫🇷",
+            stringResource(R.string.about_made_in_france),
             modifier = Modifier.fillMaxWidth().padding(bottom = 32.dp),
             textAlign = TextAlign.Center,
             color = TextSecondary,

@@ -1,0 +1,386 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Tu dégages</string>
+
+    <!-- ── Generale ──────────────────────────────────────────────────────── -->
+    <string name="cd_back">Indietro</string>
+    <string name="cd_help">Aiuto</string>
+    <string name="cd_add">Aggiungi</string>
+    <string name="cd_delete">Elimina</string>
+
+    <!-- ── Navigazione (barra inferiore) ──────────────────────────────────────── -->
+    <string name="nav_home">Home</string>
+    <string name="nav_modes">Modalità</string>
+    <string name="nav_statistics">Statistiche</string>
+    <string name="nav_history">Cronologia</string>
+    <string name="nav_settings">Impostazioni</string>
+
+    <!-- ── Modalità (AppMode) ─────────────────────────────────────────────── -->
+    <string name="mode_poli">Cortese</string>
+    <string name="mode_administratif">Amministrativo</string>
+    <string name="mode_sarcastique">Sarcastico</string>
+    <string name="mode_troll">Troll</string>
+
+    <!-- ── Parti del messaggio (MessagePart) ───────────────────────────── -->
+    <string name="msgpart_salutation">Saluto</string>
+    <string name="msgpart_body">Corpo del messaggio</string>
+    <string name="msgpart_ending">Formula di chiusura</string>
+
+    <!-- ── Risposte per modalità (schermata legacy) ──────────────────────────── -->
+    <string name="replies_subtitle">Frasi di risposta</string>
+    <string name="replies_add_placeholder">Aggiungi una frase personalizzata…</string>
+
+    <!-- ── Schermata Modalità ─────────────────────────────────────────────── -->
+    <string name="modes_title">Modalità di risposta</string>
+    <string name="modes_subtitle">Non riagganciare più. Lascia che la tua IA risponda.</string>
+    <string name="modes_info_title">Modalità di risposta</string>
+    <string name="modes_info_content">Le modalità definiscono il tono della risposta data ai call center prima di riagganciare.\n\n🤝 Cortese — risposta cortese ma ferma. Ideale per restare discreti.\n\n📋 Amministrativo — tono freddo e ufficiale, come un servizio legale.\n\n😏 Sarcastico — risposta scherzosa per i venditori che se la meritano.\n\n🎭 Troll — fa attendere il call center 10 secondi prima di riagganciare. Gli fa perdere tempo.\n\nTocca una modalità per selezionarla, poi tocca \"Ascolta un\'anteprima\" per sentirla.</string>
+    <string name="modes_preview_button">Ascolta un\'anteprima</string>
+    <string name="mode_poli_desc">Cortese ma fermo.\nIdeale per restare puliti.</string>
+    <string name="mode_poli_example">"Questa linea non accetta sollecitazioni commerciali."</string>
+    <string name="mode_administratif_desc">Freddo, ufficiale, dissuasivo.</string>
+    <string name="mode_administratif_example">"La sua chiamata è stata classificata come teleselling non richiesto."</string>
+    <string name="mode_sarcastique_desc">Per chi se lo merita davvero.</string>
+    <string name="mode_sarcastique_example">"Congratulazioni, ha raggiunto la segreteria più sarcastica di Francia."</string>
+    <string name="mode_troll_desc">Fagli perdere tempo… tanto tempo.</string>
+    <string name="mode_troll_example">"La preghiamo di attendere, la sua chiamata è molto importante per noi."</string>
+
+    <!-- ── Schermata Numeri bloccati manualmente ─────────────────────────────── -->
+    <string name="custom_block_title">Numeri bloccati manualmente</string>
+    <string name="custom_block_info_title">Numeri bloccati manualmente</string>
+    <string name="custom_block_info_content">Aggiungi le tue regole di blocco, in aggiunta al database spam automatico:\n\n• Numero esatto: blocca solo questo numero preciso (es. 0612345678).\n• Prefisso: blocca tutti i numeri che iniziano con questa sequenza di cifre (es. 0033612 blocca tutti i numeri che iniziano così).\n\nOgni chiamata corrispondente a una regola viene rifiutata immediatamente, senza messaggio vocale.</string>
+    <string name="custom_block_add_rule">Aggiungi una regola</string>
+    <string name="custom_block_placeholder_prefix">Es. 0033612</string>
+    <string name="custom_block_placeholder_exact">Es. 0612345678</string>
+    <string name="custom_block_toggle_prefix">Blocca come prefisso</string>
+    <string name="custom_block_add_button">Aggiungi</string>
+    <string name="custom_block_empty">Nessuna regola personalizzata</string>
+    <string name="custom_block_prefix_label">Prefisso — blocca tutti i numeri che iniziano così</string>
+    <string name="custom_block_exact_label">Numero esatto</string>
+
+    <!-- ── Schermata Premium ───────────────────────────────────────────────── -->
+    <string name="premium_title">Tu dégages Premium</string>
+    <string name="premium_hero_title">Vai oltre con Premium</string>
+    <string name="premium_hero_subtitle">La protezione di base resta gratuita, per sempre. Premium aggiunge personalizzazione e comodità.</string>
+    <string-array name="premium_features">
+        <item>🎭 Le modalità Amministrativo, Sarcastico e Troll</item>
+        <item>💬 Personalizzazione completa dei messaggi (creatore, frasi personalizzate)</item>
+        <item>🎙️ Impostazioni vocali (voce, velocità, tono)</item>
+        <item>🌍 Database della community (sincronizzazione e contributo)</item>
+        <item>🚫 Blocco manuale di numeri e prefissi</item>
+        <item>⬇️ Esportazione CSV della cronologia</item>
+        <item>🇨🇭 Modalità Svizzera (numeri OFCOM)</item>
+        <item>🇩🇪🇮🇹 Risposte vocali in tedesco e italiano</item>
+    </string-array>
+    <string name="premium_price_monthly">1 €</string>
+    <string name="premium_price_monthly_period">/ mese</string>
+    <string name="premium_price_yearly">10 €</string>
+    <string name="premium_price_yearly_period">/ anno</string>
+    <string name="premium_best_price">MIGLIOR PREZZO</string>
+    <string name="premium_coming_soon">Disponibile a breve</string>
+    <string name="premium_coming_soon_detail">L\'abbonamento sarà disponibile al lancio sul Google Play Store.</string>
+    <string name="premium_dev_mode_title">🛠️ Modalità sviluppatore</string>
+    <string name="premium_dev_mode_desc">Attiva Premium localmente per testare le funzionalità, in attesa dell\'abbonamento reale.</string>
+
+    <!-- ── Schermata Creatore di messaggi ──────────────────────────── -->
+    <string name="mb_header_title">Personalizza le risposte</string>
+    <string name="mb_active_mode_label">Modalità attiva</string>
+    <string name="mb_active_mode_hint">Corpo adattato\na questa modalità →</string>
+    <string name="mb_lang_banner">Le frasi qui sotto sono in %1$s, la lingua scelta per i tuoi messaggi vocali. Seleziona quelle che preferisci.</string>
+    <string name="reply_lang_de">tedesco</string>
+    <string name="reply_lang_it">italiano</string>
+    <string name="mb_intro_title">Come comporre il tuo messaggio?</string>
+    <string name="mb_intro_desc">Tu dégages assembla automaticamente un messaggio in 3 parti prima di riagganciare. Scegli liberamente un\'opzione per ogni sezione:</string>
+    <string name="mb_explain_salutation_title">Saluto</string>
+    <string name="mb_explain_salutation_desc">La frase di apertura. Comune a tutte le modalità.</string>
+    <string name="mb_explain_body_title">Corpo</string>
+    <string name="mb_explain_body_desc">La risposta principale. Varia in base alla modalità attiva (%1$s).</string>
+    <string name="mb_explain_ending_title">Formula di chiusura</string>
+    <string name="mb_explain_ending_desc">La frase di chiusura. Comune a tutte le modalità.</string>
+    <string name="mb_intro_footer">Puoi anche creare le tue formule personalizzate in fondo a ogni sezione.</string>
+    <string name="mb_preview_label">Anteprima del messaggio assemblato</string>
+    <string name="mb_section_salutation_desc">La frase di apertura letta per prima da Tu dégages. Seleziona quella che corrisponde al tuo stile — una sola alla volta.</string>
+    <string name="mb_section_body_desc">Il cuore della risposta, adattato alla modalità %1$s %2$s. È la frase principale ascoltata dal call center. Una sola alla volta.</string>
+    <string name="mb_section_ending_desc">La formula di chiusura pronunciata appena prima di riagganciare. Una sola alla volta.</string>
+    <string name="mb_add_part_placeholder">Aggiungi un %1$s…</string>
+
+    <!-- ── Schermata Cronologia ────────────────────────────────────────────── -->
+    <string name="history_title">Cronologia</string>
+    <string name="history_info_title">Cronologia</string>
+    <string name="history_info_content">Registro di tutte le chiamate bloccate da Tu dégages.\n\n• Ogni riga mostra il numero rilevato, la data/ora, la modalità utilizzata e il messaggio riprodotto.\n• Usa i filtri in alto (Tutte / Bloccate / Risposte / Manuali) per ordinare la visualizzazione.\n• Tocca l\'icona ✅ se questo numero è stato bloccato per errore: non sarà mai più bloccato.\n• Tocca l\'icona 🗑️ per eliminare una voce dalla cronologia.\n• Tocca l\'icona ⬇️ per esportare la cronologia in un file CSV (da salvare o inviare via e-mail).</string>
+    <string name="history_export_csv">Esporta in CSV</string>
+    <string name="history_filter_all">Tutte</string>
+    <string name="history_filter_blocked">Bloccate</string>
+    <string name="history_filter_replies">Risposte</string>
+    <string name="history_filter_manual">Manuali</string>
+    <string name="history_empty">Nessuna chiamata bloccata</string>
+    <string name="history_not_spam">Non è spam</string>
+
+    <!-- ── Schermata Impostazioni vocali ─────────────────────────────────── -->
+    <string name="voice_title">Impostazioni vocali</string>
+    <string name="voice_rate_label">Velocità di lettura</string>
+    <string name="voice_pitch_label">Tono della voce (pitch)</string>
+    <string name="voice_test_button">Prova la voce</string>
+    <string name="voice_available_title">Voci disponibili</string>
+    <string name="voice_none_found">Nessuna voce francese trovata.\nVerifica le impostazioni TTS di Android.</string>
+    <string name="voice_speed_slow">Lenta</string>
+    <string name="voice_speed_normal">Normale</string>
+    <string name="voice_speed_fast">Veloce</string>
+
+    <!-- ── Schermata Statistiche ──────────────────────────────────────────── -->
+    <string name="stats_title">Statistiche</string>
+    <string name="stats_period">Ultimi 7 giorni</string>
+    <string name="stats_info_title">Statistiche</string>
+    <string name="stats_info_content">Il tuo bilancio anti-spam:\n\n• Il grafico circolare rappresenta il tempo risparmiato in 24h.\n• Spammer bloccati: numero totale di chiamate intercettate dall\'installazione.\n• Chiamate evitate/giorno: media giornaliera negli ultimi 7 giorni.\n• Durata media evitata: durata media di una chiamata di teleselling.</string>
+    <string name="stats_time_saved">Tempo risparmiato</string>
+    <string name="stats_time_saved_hours">%1$dh %2$02d</string>
+    <string name="stats_time_saved_minutes">%1$dmin</string>
+    <string name="stats_blocked_label">Spammer bloccati</string>
+    <string name="stats_avg_avoided_label">Chiamate evitate / giorno (media)</string>
+    <string name="stats_avg_duration_value">4,8 min</string>
+    <string name="stats_avg_duration_label">Durata media evitata</string>
+    <string name="stats_memorized_label">Numeri memorizzati (rifiuto automatico)</string>
+    <string name="stats_sync_never">Mai sincronizzata</string>
+    <string name="stats_sync_now">Adesso</string>
+    <string name="stats_sync_minutes">%1$d min fa</string>
+    <string name="stats_sync_hours">%1$d h fa</string>
+    <string name="stats_sync_days">%1$d g fa</string>
+    <string name="stats_sources_title">Fonti integrate</string>
+    <string name="stats_source_arcep_name">Intervalli ARCEP documentati</string>
+    <string name="stats_source_arcep_desc">52 prefissi FR sempre attivi</string>
+    <string name="stats_source_phoneblock_name">phoneblock.net</string>
+    <string name="stats_source_phoneblock_desc">Database comunitario europeo open source</string>
+    <string name="stats_source_signalspam_name">Signal-Spam France</string>
+    <string name="stats_source_signalspam_desc">Associazione francese certificata anti-spam</string>
+    <string name="stats_source_user_name">Le tue segnalazioni</string>
+    <string name="stats_source_user_desc">Ogni numero bloccato da te viene memorizzato</string>
+    <string name="stats_source_active">ATTIVO</string>
+    <string name="stats_last_sync_label">Ultima sincronizzazione</string>
+    <string name="stats_sync_update_hint">Aggiornamento disponibile in Impostazioni → Aggiorna il database spam</string>
+    <string name="stats_legal_title">Perché non condividiamo i tuoi dati?</string>
+    <string name="stats_legal_p1">Un numero di telefono è un dato personale protetto dal GDPR. Trasmettere la tua lista di numeri bloccati a terzi — anche per aiutare altri utenti — è vietato senza consenso esplicito.</string>
+    <string name="stats_legal_p2">Per questo Tu dégages memorizza tutto localmente sul tuo dispositivo e consulta solo fonti pubbliche ufficiali (ARCEP, Signal-Spam). I tuoi dati non lasciano mai il telefono.</string>
+    <string name="stats_legal_tip">Per segnalare un numero alla community nazionale: signal-spam.fr</string>
+
+    <!-- ── Schermata Onboarding ────────────────────────────────────────────── -->
+    <string name="onboarding_welcome_tagline">L\'app che manda a quel paese\ni call center.</string>
+    <string name="onboarding_your_time_is">Il tuo tempo è </string>
+    <string name="onboarding_precious">prezioso.</string>
+    <string name="onboarding_start_button">Inizia</string>
+    <string name="onboarding_essential_features">✓ Funzioni essenziali incluse</string>
+    <string name="onboarding_how_it_works">Come funziona?</string>
+    <string name="onboarding_feature_detection_title">Rilevamento automatico</string>
+    <string name="onboarding_feature_detection_desc">Tu dégages riconosce i numeri di call center conosciuti e intercetta la chiamata prima che il telefono squilli.</string>
+    <string name="onboarding_feature_voice_title">Risposta vocale</string>
+    <string name="onboarding_feature_voice_desc">Una voce sintetica risponde allo spammer al posto tuo, poi riaggancia. 4 toni disponibili: cortese, amministrativo, sarcastico o troll.</string>
+    <string name="onboarding_feature_stats_title">Statistiche e Cronologia</string>
+    <string name="onboarding_feature_stats_desc">Consulta il numero di chiamate bloccate, il tempo risparmiato e la cronologia dettagliata di ogni interazione.</string>
+    <string name="onboarding_feature_custom_title">Completamente personalizzabile</string>
+    <string name="onboarding_feature_custom_desc">Crea i tuoi messaggi, regola la voce, la velocità e il tono. Tu dégages si adatta al tuo stile.</string>
+    <string name="onboarding_next_button">Avanti</string>
+    <string name="onboarding_permission_title">È richiesta un\'autorizzazione</string>
+    <string name="onboarding_permission_intro">Android mostrerà un popup di sistema intitolato:</string>
+    <string name="onboarding_permission_popup_text">"\"Imposta come app predefinita per l\'ID chiamante e lo spam\""</string>
+    <string name="onboarding_permission_steps">👉  Seleziona \"Tu dégages\" nell\'elenco\n\n👉  Poi tocca \"Imposta come predefinita\"</string>
+    <string name="onboarding_permission_warning">Senza questa autorizzazione, Tu dégages non può intercettare le chiamate dei call center.</string>
+    <string name="onboarding_permission_button">Mostra il popup di autorizzazione</string>
+
+    <!-- ── Schermata Benvenuto (Welcome) ───────────────────────────────────── -->
+    <string name="welcome_title">Benvenuto su Tu dégages</string>
+    <string name="welcome_hero_title">I call center adorano\nchiamarti?</string>
+    <string name="welcome_hero_subtitle">La tua IA adorerà\nrispondere loro!</string>
+    <string name="welcome_hero_desc">Non limitarti più a riagganciare. Lascia che la tua IA personale risponda con l\'umorismo che preferisci.</string>
+    <string name="welcome_section1_title">🤖 Blocco intelligente con risposta IA</string>
+    <string name="welcome_section1_body">Tu dégages filtra le chiamate indesiderate e le reindirizza al tuo assistente vocale IA personalizzato — prima di terminare la conversazione. Il call center parla con la tua IA, non con te.</string>
+    <string name="welcome_section2_title">🎭 Diversa dalle altre app</string>
+    <string name="welcome_section2_body">Le app classiche bloccano le chiamate. La nostra permette alla tua IA di rispondere con il tono che scegli — Cortese, Amministrativo, Sarcastico o Troll — prima di riagganciare.</string>
+    <string name="welcome_section3_title">💬 La tua IA, la tua voce</string>
+    <string name="welcome_section3_body">Componi le tue formule, scegli il tono, regola la voce. La tua IA ti somiglia. I call center meritano una risposta all\'altezza.</string>
+    <string name="welcome_section4_title">📊 Ogni battaglia conta</string>
+    <string name="welcome_section4_body">Cronologia completa, tempo risparmiato, numeri memorizzati per il rifiuto immediato. Saprai esattamente quante volte la tua IA ha vinto.</string>
+    <string name="welcome_section5_title">🇫🇷🇨🇭 Adatta alla Francia e alla Svizzera</string>
+    <string name="welcome_section5_body">Scegli il tuo paese in Impostazioni: il database dei numeri indesiderati si adatta automaticamente (prefissi ARCEP in Francia, numeri a valore aggiunto e numeri aziendali OFCOM in Svizzera).</string>
+    <string name="welcome_tip_title">💡 Da sapere</string>
+    <string name="welcome_tip_body">Puoi rivedere questa presentazione in qualsiasi momento da Impostazioni → Rivedi la presentazione.</string>
+    <string name="welcome_dismiss_button">Ho capito, non mostrare più</string>
+
+    <!-- ── Schermata Impostazioni ────────────────────────────────────────────── -->
+    <string name="settings_title">Impostazioni</string>
+    <string name="settings_info_title">Impostazioni</string>
+    <string name="settings_info_content">Configura il comportamento di Tu dégages:\n\n• Protezione: attiva/disattiva il filtraggio globale delle chiamate.\n• Risposta automatica: risponde alla chiamata senza far squillare il telefono (consigliato).\n• Blocca dopo la risposta: aggiunge il numero alla lista nera dopo ogni interazione.\n• Notifiche: ti avvisa a ogni chiamata bloccata.\n• Personalizza le risposte: crea e gestisci i tuoi messaggi.\n• Impostazioni vocali: cambia voce, velocità e tono.</string>
+    <string name="settings_toggle_protection">Protezione</string>
+    <string name="settings_toggle_auto_reject">Risposta automatica</string>
+    <string name="settings_toggle_block_after_reply">Blocca il numero dopo la risposta</string>
+    <string name="settings_toggle_notifications">Notifiche</string>
+    <string name="settings_nav_message_builder">💬 Personalizza le risposte</string>
+    <string name="settings_nav_voice">🎙️ Impostazioni vocali</string>
+    <string name="settings_nav_custom_blocks">🚫 Numeri bloccati manualmente</string>
+    <string name="settings_nav_premium">⭐ Tu dégages Premium</string>
+    <string name="settings_community_db_label">Database della community</string>
+    <string name="settings_community_db_value">Aggiornato: oggi alle 08:15</string>
+    <string name="settings_nav_manual">📖 Manuale d\'uso</string>
+    <string name="settings_nav_welcome">👋 Rivedi la presentazione</string>
+    <string name="settings_nav_about">Informazioni</string>
+
+    <string name="settings_country_label">Paese</string>
+    <string name="settings_country_desc">Adatta il database dei numeri indesiderati rilevati al tuo paese.</string>
+    <string name="country_fr">🇫🇷 Francia</string>
+    <string name="country_ch">🇨🇭 Svizzera</string>
+
+    <string name="settings_app_lang_label">Lingua dell\'app</string>
+    <string name="settings_app_lang_desc">Lingua dell\'interfaccia di Tu dégages.</string>
+    <string name="lang_system">📱 Sistema</string>
+    <string name="lang_fr">🇫🇷 Français</string>
+    <string name="lang_de">🇩🇪 Deutsch</string>
+    <string name="lang_it">🇮🇹 Italiano</string>
+
+    <string name="settings_reply_lang_label">Lingua dei messaggi vocali</string>
+    <string name="settings_reply_lang_desc">Lingua in cui Tu dégages risponde ai call center (utile nella Svizzera tedesca o italiana).</string>
+
+    <string name="settings_block_hidden_label">📵 Blocca le chiamate nascoste</string>
+    <string name="settings_block_hidden_desc">Rifiuta automaticamente, senza messaggio vocale, le chiamate senza numero visualizzato (nascosto, privato, sconosciuto).</string>
+
+    <string name="settings_monitor_live_label">🔊 Ascolta la risposta IA in diretta</string>
+    <string name="settings_monitor_live_desc">Ascolta cosa dice la tua IA allo spammer dal tuo altoparlante</string>
+
+    <string name="settings_contribute_label">Database della community</string>
+    <string name="settings_contribute_title_prefix">La pietra angolare di\n</string>
+    <string name="settings_contribute_desc">Ogni spammer bloccato da un utente viene segnalato a tutta la community. A ogni connessione, la tua app scarica automaticamente i nuovi numeri segnalati da tutti gli utenti — e li aggiunge al tuo database locale. Più siamo, più il database diventa efficace contro gli spammer.</string>
+    <string name="contribute_badge_shared">🤝 Condiviso tra tutti</string>
+    <string name="contribute_badge_optin">🔒 Opt-in</string>
+    <string name="contribute_badge_server">🇫🇷 Server UE</string>
+    <string name="settings_contribute_footer">Viene trasmesso solo il numero del chiamante spam — mai i tuoi dati personali.</string>
+
+    <string name="settings_sync_label">🛡️ Aggiorna il database spam</string>
+    <string name="settings_sync_sources">phoneblock.net • Signal-Spam France • ARCEP</string>
+    <string name="settings_sync_button">Sincr.</string>
+
+    <!-- ── Schermata Home ───────────────────────────────────────────────── -->
+    <string name="home_info_title">Schermata iniziale</string>
+    <string name="home_info_content">Tu dégages protegge il tuo telefono dalle chiamate di teleselling.\n\n• Il pulsante ON/OFF attiva o disattiva la protezione.\n• I contatori mostrano le tue statistiche di blocco.\n• L\'elenco in basso mostra le ultime chiamate bloccate.</string>
+    <string name="home_title">Tu dégages !</string>
+    <string name="home_subtitle">L\'IA che risponde ai tuoi spammer</string>
+    <string name="home_hero_line1">I call center adorano chiamarti?\n</string>
+    <string name="home_hero_line2">La tua IA adorerà rispondere loro!</string>
+    <string name="home_badge_others_block">❌ Gli altri bloccano</string>
+    <string name="home_badge_we_reply">✅ Noi rispondiamo</string>
+    <string name="home_badge_offline">📡 Funziona anche offline</string>
+    <string name="home_badge_countries">🇫🇷🇨🇭 Adatta a Francia e Svizzera</string>
+    <string name="home_status_active">PROTEZIONE ATTIVA</string>
+    <string name="home_status_inactive">PROTEZIONE INATTIVA</string>
+    <string name="home_status_active_desc">La tua IA risponde al posto tuo.\nI call center non passano più.</string>
+    <string name="home_status_inactive_desc">Attiva la protezione per iniziare.</string>
+    <string name="home_mode_label">Modalità: %1$s</string>
+    <string name="home_stat_blocked">Spammer bloccati</string>
+    <string name="home_stat_time_saved">Tempo recuperato</string>
+    <string name="home_recent_calls_title">Ultime chiamate bloccate</string>
+    <string name="home_recent_calls_see_all">Vedi tutto →</string>
+    <string name="home_recent_calls_empty">Nessuna chiamata bloccata per ora\nAttiva la protezione e attendi… 😏</string>
+    <string name="home_call_today_prefix">Oggi</string>
+    <string name="home_call_yesterday_prefix">Ieri</string>
+
+    <!-- ── Manuale d'uso ─────────────────────────────────────────── -->
+    <string name="manual_title">Manuale d\'uso</string>
+
+    <string name="manual_cat_db">📋 Database dei numeri bloccati</string>
+    <string name="manual_cat_usage">📱 Utilizzo</string>
+    <string name="manual_cat_issues">🔧 Problemi</string>
+    <string name="manual_cat_tech">⚙️ Funzionalità e tecnica</string>
+    <string name="manual_cat_other">❓ Altro</string>
+
+    <string name="manual_q1_title">⭐ Cosa è gratuito e cosa è Premium?</string>
+    <string name="manual_q1_body">🆓 GRATIS, PER SEMPRE — la protezione:\n\n• Blocco automatico degli spam noti (database ARCEP/OFCOM + apprendimento dalla tua cronologia)\n• Modalità di risposta Cortese\n• Cronologia delle chiamate bloccate\n• I tuoi contatti non vengono mai bloccati\n• «Non è spam»: correzione di un blocco errato con un tap\n• Notifiche a ogni chiamata bloccata\n\nLa sicurezza e la protezione contro i falsi positivi non saranno MAI a pagamento.\n\n⭐ PREMIUM (1 €/mese o 10 €/anno) — comodità e personalizzazione:\n\n• Le modalità Amministrativo, Sarcastico e Troll\n• Personalizzazione completa dei messaggi (creatore, frasi personalizzate)\n• Impostazioni vocali (voce, velocità, tono)\n• Database della community (sincronizzazione e contributo)\n• Blocco manuale di numeri e prefissi\n• Esportazione CSV della cronologia\n• Modalità Svizzera (numeri OFCOM)\n• Risposte vocali in tedesco e italiano\n\nUn lucchetto 🔒 appare su ogni funzionalità Premium nell\'app. Toccalo per vedere i dettagli dell\'offerta in Impostazioni → «⭐ Tu dégages Premium».</string>
+
+    <string name="manual_q2_title">👤 I miei contatti possono essere bloccati per errore?</string>
+    <string name="manual_q2_body">No. Se un numero che ti chiama corrisponde a un contatto salvato sul tuo telefono, Tu dégages lascia sempre passare la chiamata — anche se quel numero è presente nel database spam o nelle tue regole personalizzate.\n\nQuesta verifica richiede l\'autorizzazione di accesso ai contatti, richiesta al primo avvio dell\'app.</string>
+
+    <string name="manual_q3_title">📞 Aspetto una richiamata da un numero sconosciuto (ordine, preventivo...): rischia di essere bloccata?</string>
+    <string name="manual_q3_body">Il rischio è basso: un numero sconosciuto viene bloccato solo se compare nel database spam (prefissi noti, segnalazioni della community) o in una delle tue regole manuali — non un normale numero di assistenza clienti o di un corriere.\n\nSe la chiamata viene comunque bloccata, resta visibile nella scheda Cronologia con numero e orario: puoi richiamare, poi toccare ✅ «Non è spam» perché non venga mai più bloccato.\n\nSe aspetti una chiamata importante e preferisci non correre rischi, disattiva temporaneamente la protezione dalla schermata principale per la durata della chiamata, poi riattivala.</string>
+
+    <string name="manual_q4_title">🛡️ A cosa serve Tu dégages?</string>
+    <string name="manual_q4_body">Tu dégages intercetta automaticamente le chiamate provenienti da numeri di call center conosciuti, riproduce loro un messaggio vocale, poi riaggancia — senza che il tuo telefono abbia squillato.\n\nRisparmi tempo ed energia non dovendo più rispondere per sentire un robot proporti una cucina componibile.</string>
+
+    <string name="manual_q5_title">🎯 Perché non blocchiamo «un intero operatore»?</string>
+    <string name="manual_q5_body">Alcune app concorrenti dichiarano di bloccare in blocco i numeri appartenenti a operatori VoIP (Aircall, Vonage, Manifone, Tata Communications, CM Telecom, ecc.).\n\nTu dégages ha fatto la scelta opposta, ed ecco perché:\n\nQuesti operatori sono fornitori VoIP generalisti, non «operatori spam». Sono utilizzati:\n❌ da call center per il teleselling,\n✅ ma anche da aziende legittime: assistenza clienti, consegne, appuntamenti medici, artigiani, ecc.\n\nSe bloccassimo «tutto Aircall» o «tutto Vonage», bloccheremmo anche queste chiamate legittime — alto rischio di falsi positivi e reclami («perché il mio corriere non riesce a chiamarmi?!»).\n\nL\'approccio giusto è quello che abbiamo costruito: il database della community (vedi sotto) cattura i numeri effettivamente segnalati come spam dagli utenti, indipendentemente dall\'operatore dietro di essi — senza mai bloccare gli usi legittimi dello stesso operatore.\n\nTu dégages preferisce un blocco preciso e affidabile piuttosto che un rifiuto generico fatto per fare colpo.</string>
+
+    <string name="manual_q6_title">🔁 Un numero mi richiama più volte in poco tempo: cosa succede?</string>
+    <string name="manual_q6_body">È una tecnica frequente dei call center: richiamano più volte di seguito se non rispondi, a volte con numeri non ancora noti come spam.\n\nTu dégages rileva automaticamente queste raffiche: se lo stesso numero sconosciuto ti chiama 3 o più volte in meno di 30 minuti, viene aggiunto automaticamente al tuo database spam personale e tutte le sue chiamate successive vengono rifiutate silenziosamente.\n\nQuesto meccanismo riguarda solo i numeri che chiamano a raffica — una chiamata isolata di un corriere, di un medico o di un conoscente non viene mai influenzata. E come sempre, se un numero viene bloccato per errore, l\'icona ✅ «Non è spam» nella Cronologia permette di sbloccarlo con un tap.</string>
+
+    <string name="manual_q7_title">⚡ Avvio rapido</string>
+    <string name="manual_q7_body">1. Apri Tu dégages.\n2. Assicurati che il pulsante di protezione sia su ON (verde) nella schermata principale.\n3. Tutto qui. Tu dégages lavora in background.</string>
+
+    <string name="manual_q8_title">🎭 Le 4 modalità di risposta</string>
+    <string name="manual_q8_body">Apri la scheda «Modalità» per scegliere il tono della risposta:\n\n🤝 Cortese — risposta cortese ma ferma. Ideale se preferisci restare discreto.\n\n📋 Amministrativo — tono freddo e ufficiale, come un servizio legale. Mette in difficoltà gli operatori dei call center.\n\n😏 Sarcastico — risposta scherzosa. Per i call center che meritano un po\' di ironia.\n\n🎭 Troll — fa attendere lo spammer per 10 secondi di musica d\'attesa prima di riagganciare. Gli fa perdere tempo e denaro.</string>
+
+    <string name="manual_q9_title">💬 Personalizzare i messaggi</string>
+    <string name="manual_q9_body">In Impostazioni → Personalizza le risposte, puoi:\n\n• Attivare o disattivare ogni frase esistente.\n• Aggiungere le tue frasi personalizzate.\n• Usare il Creatore di messaggi per comporre un messaggio in 3 parti: saluto + corpo + conclusione.</string>
+
+    <string name="manual_q10_title">🎙️ Impostazioni vocali</string>
+    <string name="manual_q10_body">In Impostazioni → Impostazioni vocali:\n\n• Scegli la voce (in base alle voci installate sul tuo telefono).\n• Regola la velocità di lettura (da lenta a veloce).\n• Modifica il tono della voce (grave o acuto).\n• Prova il risultato con il pulsante di anteprima.</string>
+
+    <string name="manual_q11_title">🇫🇷🇨🇭 Tu dégages funziona in Svizzera?</string>
+    <string name="manual_q11_body">Sì! In Impostazioni, scegli il tuo paese (🇫🇷 Francia o 🇨🇭 Svizzera) in cima all\'elenco.\n\nIn Svizzera, Tu dégages rileva in particolare:\n\n• I numeri a valore aggiunto (0900, 0901, 0906) — business, marketing e intrattenimento, assegnati individualmente dall\'OFCOM.\n• I numeri aziendali nazionali a costo condiviso (0840, 0842, 0844, 0848, 0878) — spesso usati come numeri di reindirizzamento da call center e hotline commerciali.\n\nIl database della community e la tua cronologia personale funzionano esattamente allo stesso modo, qualunque sia il paese scelto.</string>
+
+    <string name="manual_q12_title">🇩🇪🇮🇹 Si può rispondere in tedesco o in italiano (altre regioni della Svizzera)?</string>
+    <string name="manual_q12_body">Sì. In Impostazioni, subito sotto il selettore del paese, scegli la «Lingua dei messaggi vocali»: 🇫🇷 Français, 🇩🇪 Deutsch o 🇮🇹 Italiano.\n\nNella lingua scelta, Tu dégages riproduce un messaggio fisso adattato alla modalità attiva (Cortese, Amministrativo, Sarcastico o Troll), con una voce corrispondente se il tuo telefono ne offre una.\n\nQuesta impostazione non cambia la lingua dell\'app stessa, che resta in francese — cambia solo il messaggio ascoltato dal call center.</string>
+
+    <string name="manual_q13_title">Quali numeri vengono bloccati?</string>
+    <string name="manual_q13_body">Tu dégages combina più fonti:\n\n• Intervalli ARCEP documentati: 52 prefissi francesi ufficialmente assegnati al teleselling.\n• phoneblock.net: database comunitario europeo open source.\n• Signal-Spam France: associazione francese di lotta contro lo spam.\n• Database della community Tu dégages: numeri segnalati dagli utenti (opt-in).\n• La tua cronologia personale: ogni numero che ti ha già chiamato ed è stato trattato come spam.</string>
+
+    <string name="manual_q14_title">A cosa serve segnalare un numero?</string>
+    <string name="manual_q14_body">Quando blocchi un numero e hai attivato «Database della community» nelle Impostazioni, questo numero viene trasmesso — in modo anonimo, senza nessuno dei tuoi dati — a un server condiviso.\n\nTutti gli altri utenti di Tu dégages recuperano poi questo numero e lo rifiutano automaticamente, senza nemmeno riprodurre il messaggio vocale. Più utenti ci sono, più il database diventa efficace per tutti.\n\nQuesto recupero avviene automaticamente, in silenzio, una volta al giorno all\'apertura dell\'app — non devi fare nulla. Il pulsante «Aggiorna il database spam» nelle Impostazioni serve semplicemente a forzare un aggiornamento immediato.</string>
+
+    <string name="manual_q15_title">Come vengono scelti i numeri bloccati?</string>
+    <string name="manual_q15_body">Un numero viene bloccato se appartiene a un intervallo ARCEP noto per il teleselling, se compare in phoneblock.net o Signal-Spam, se ti ha già chiamato ed è stato trattato come spam, oppure se è stato segnalato dalla community.\n\nTu dégages non blocca mai un numero semplicemente perché appartiene a un determinato operatore di telecomunicazioni — vedi «Perché non blocchiamo un intero operatore» più sopra.</string>
+
+    <string name="manual_q16_title">🚫 Posso bloccare io stesso un numero o un prefisso?</string>
+    <string name="manual_q16_body">Sì! In Impostazioni → Numeri bloccati manualmente, puoi aggiungere le tue regole:\n\n• Numero esatto: blocca solo questo numero preciso (es. 0612345678).\n• Prefisso: blocca tutti i numeri che iniziano con questa sequenza di cifre (es. 0033612 blocca tutti i numeri che iniziano così).\n\nQueste regole si aggiungono al database spam automatico: ogni chiamata corrispondente viene rifiutata immediatamente, senza messaggio vocale. Puoi eliminare una regola in qualsiasi momento dalla stessa schermata.</string>
+
+    <string name="manual_q17_title">📋 Cronologia</string>
+    <string name="manual_q17_body">La scheda Cronologia elenca tutte le chiamate bloccate:\n\n• Numero di telefono rilevato.\n• Data e ora del blocco.\n• Modalità utilizzata per rispondere.\n• Messaggio esatto riprodotto al chiamante.\n\nUsa i filtri (Tutte / Bloccate / Risposte / Manuali) per affinare la visualizzazione. Elimina una voce con l\'icona 🗑️.</string>
+
+    <string name="manual_q18_title">⬇️ Si può scaricare l\'elenco dei numeri bloccati?</string>
+    <string name="manual_q18_body">Sì. Nella scheda Cronologia, tocca l\'icona ⬇️ in alto: viene generato un file CSV (numero, data, modalità, messaggio riprodotto) che puoi salvare o inviare via e-mail tramite il menu di condivisione di Android.\n\nQuesta esportazione è puramente personale: serve come traccia o prova, ad esempio per una segnalazione ufficiale. Non trasmette nulla a Tu dégages né a chiunque altro.</string>
+
+    <string name="manual_q19_title">📊 Statistiche</string>
+    <string name="manual_q19_body">La scheda Statistiche mostra:\n\n• Il tempo totale risparmiato (grafico circolare).\n• Il numero totale di spammer bloccati dall\'installazione.\n• La media di chiamate evitate al giorno.\n• La durata media di una chiamata di teleselling evitata.</string>
+
+    <string name="manual_q20_title">⚙️ Opzioni avanzate</string>
+    <string name="manual_q20_body">In Impostazioni:\n\n• Risposta automatica: Tu dégages risponde alla chiamata senza far squillare il telefono (consigliato).\n• Blocca dopo la risposta: aggiunge il numero alla tua lista nera personale dopo ogni interazione.\n• Notifiche: se attivate, ricevi una notifica Android a ogni chiamata bloccata (numero e motivo del blocco).</string>
+
+    <string name="manual_q21_title">🟢 Riquadro impostazioni rapide</string>
+    <string name="manual_q21_body">Tu dégages aggiunge un riquadro nel pannello delle impostazioni rapide di Android (quello che si apre scorrendo con due dita dall\'alto dello schermo, accanto al Wi-Fi e al Bluetooth).\n\nPer aggiungerlo: apri il pannello delle impostazioni rapide, tocca la matita ✏️ (o «Modifica»), poi trascina il riquadro «Tu dégages» tra i tuoi riquadri attivi.\n\nUn tocco sul riquadro attiva o disattiva istantaneamente la protezione, senza dover aprire l\'app.</string>
+
+    <string name="manual_q22_title">Cosa fare se un numero viene bloccato per errore?</string>
+    <string name="manual_q22_body">Vai nella scheda Cronologia, individua la chiamata interessata e tocca l\'icona ✅ «Non è spam».\n\nQuesto numero viene immediatamente rimosso dal tuo database spam e dalle tue regole personali, e aggiunto alla tua lista bianca locale: non sarà mai più bloccato sul tuo telefono, anche se un aggiornamento del database spam lo reinserisce.\n\nNessuna e-mail da inviare, nessuna attesa: tutto avviene direttamente sul tuo telefono, nel tuo database locale — funziona anche senza connessione internet e ha effetto dalla prossima chiamata.\n\nSe aspetti una chiamata importante da un numero sconosciuto, puoi anche disattivare temporaneamente la protezione (schermata principale) per la durata della chiamata.</string>
+
+    <string name="manual_q23_title">Cosa fare in caso di spoofing o di furto del numero?</string>
+    <string name="manual_q23_body">Lo spoofing (uno spammer che mostra un numero falso, a volte il tuo o quello di un conoscente) è un problema della rete telefonica che Tu dégages non può risolvere: l\'app vede solo il numero mostrato dall\'operatore.\n\nSe ricevi chiamate con il tuo numero o un numero usurpato, segnalarlo al tuo operatore o all\'autorità competente contro le frodi resta la soluzione più efficace.</string>
+
+    <string name="manual_q24_title">Un numero spam non viene bloccato, cosa fare?</string>
+    <string name="manual_q24_body">1. Verifica che la protezione sia attiva (schermata principale).\n2. Verifica che Tu dégages sia impostato come servizio predefinito di identificazione chiamante e spam (Impostazioni Android → App → App di filtraggio chiamate).\n3. Aggiorna manualmente il database spam: Impostazioni → Aggiorna il database spam.\n4. Se il numero continua a chiamare dopo questo, verrà memorizzato dal primo blocco e rifiutato automaticamente la volta successiva.</string>
+
+    <string name="manual_q25_title">I chiamanti possono lasciare un messaggio vocale?</string>
+    <string name="manual_q25_body">No. Tu dégages riproduce il proprio messaggio al chiamante e poi riaggancia la linea — il chiamante non ha accesso alla tua normale segreteria telefonica per questa chiamata.\n\nÈ voluto: un call center che non può né parlarti né lasciare un messaggio ha molte meno ragioni per richiamare.</string>
+
+    <string name="manual_q26_title">❓ Perché il blocco non funziona?</string>
+    <string name="manual_q26_body">Se Tu dégages non blocca le chiamate, verifica:\n\n1. La protezione è su ON (schermata principale).\n2. Tu dégages è impostato come servizio di filtraggio chiamate: Impostazioni Android → App → App predefinite → Servizio di identificazione chiamante e anti-spam → Seleziona Tu dégages.\n3. I permessi telefono sono concessi a Tu dégages.</string>
+
+    <string name="manual_q27_title">Tu dégages consuma molta batteria?</string>
+    <string name="manual_q27_body">No. Tu dégages non gira costantemente in background: Android riattiva l\'app solo nel momento preciso in cui arriva una chiamata, tramite il servizio di filtraggio chiamate del sistema.\n\nAl di fuori delle chiamate, l\'app è completamente inattiva. L\'unica attività di rete avviene durante l\'aggiornamento del database spam (manuale o all\'apertura dell\'app).</string>
+
+    <string name="manual_q28_title">Come viene protetta la mia privacy?</string>
+    <string name="manual_q28_body">Per impostazione predefinita, Tu dégages non raccoglie né trasmette alcun dato: tutto resta sul tuo telefono.\n\nSe attivi il database della community (opt-in), viene trasmesso solo il numero del chiamante spam a un server ospitato in Europa — mai il tuo numero o le tue informazioni personali. I dettagli completi sono in Informazioni → Informativa sulla privacy.</string>
+
+    <string name="manual_q29_title">Come segnalare un bug o dare un feedback?</string>
+    <string name="manual_q29_body">Puoi scriverci direttamente all\'indirizzo di contatto indicato in Informazioni. Descrivi il problema riscontrato (modello di telefono, versione di Android, cosa è successo) — ci aiuta enormemente a migliorare Tu dégages.</string>
+
+    <!-- ── Informazioni ────────────────────────────────────────────────────── -->
+    <string name="about_title">Informazioni</string>
+    <string name="about_app_name">Tu dégages</string>
+    <string name="about_tagline">L\'app che manda a quel paese\ni call center.</string>
+    <string name="about_version_label">Versione</string>
+    <string name="about_legal_mentions">Note legali</string>
+    <string name="about_privacy_policy">Informativa sulla privacy</string>
+    <string name="about_made_in_france">Made in France 🇫🇷</string>
+</resources>

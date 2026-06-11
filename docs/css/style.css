@@ -82,6 +82,16 @@ nav {
 }
 .btn-nav:hover { opacity: .85; text-decoration: none !important; }
 
+.nav-lang { display: flex; gap: 6px; align-items: center; }
+.nav-lang a {
+  font-size: 16px;
+  opacity: .45;
+  transition: opacity .2s;
+  line-height: 1;
+}
+.nav-lang a:hover { opacity: .8; text-decoration: none; }
+.nav-lang a.active { opacity: 1; }
+
 /* ── HERO ────────────────────────────────────────────────────────────── */
 .hero {
   min-height: 92vh;

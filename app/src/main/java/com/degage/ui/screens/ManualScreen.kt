@@ -11,9 +11,11 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.degage.R
 import com.degage.ui.theme.*
 
 @Composable
@@ -30,9 +32,9 @@ fun ManualScreen(onBack: () -> Unit) {
             verticalAlignment = Alignment.CenterVertically
         ) {
             IconButton(onClick = onBack) {
-                Icon(Icons.Default.ArrowBack, contentDescription = "Retour", tint = Color.White)
+                Icon(Icons.Default.ArrowBack, contentDescription = stringResource(R.string.cd_back), tint = Color.White)
             }
-            Text("Mode d'emploi", fontSize = 20.sp, fontWeight = FontWeight.Bold, color = Color.White)
+            Text(stringResource(R.string.manual_title), fontSize = 20.sp, fontWeight = FontWeight.Bold, color = Color.White)
         }
 
         LazyColumn(
@@ -41,186 +43,186 @@ fun ManualScreen(onBack: () -> Unit) {
         ) {
             item {
                 ManualSection(
-                    title = "⭐ Qu'est-ce qui est gratuit et qu'est-ce qui est Premium ?",
-                    body = "🆓 GRATUIT, POUR TOUJOURS — la protection :\n\n• Blocage automatique des spams connus (base ARCEP/OFCOM + apprentissage de votre historique)\n• Mode de réponse Poli\n• Historique des appels bloqués\n• Vos contacts ne sont jamais bloqués\n• « Pas un spam » : correction d'un blocage à tort, en un tap\n• Notifications à chaque appel bloqué\n\nLa sécurité et la protection contre les faux positifs ne seront JAMAIS payantes.\n\n⭐ PREMIUM (1 €/mois ou 10 €/an) — le confort et la personnalisation :\n\n• Les modes Administratif, Sarcastique et Troll\n• Personnalisation complète des messages (constructeur, phrases perso)\n• Réglages de la voix (voix, vitesse, hauteur)\n• Base communautaire (synchronisation et contribution)\n• Blocage manuel de numéros et préfixes\n• Export CSV de l'historique\n• Mode Suisse (numéros OFCOM)\n• Réponses vocales en allemand et en italien\n\nUn cadenas 🔒 apparaît sur chaque fonctionnalité Premium dans l'application. Appuyez dessus pour voir le détail de l'offre dans Paramètres → « ⭐ Tu dégages Premium »."
+                    title = stringResource(R.string.manual_q1_title),
+                    body = stringResource(R.string.manual_q1_body)
                 )
             }
             item {
                 ManualSection(
-                    title = "👤 Mes contacts peuvent-ils être bloqués par erreur ?",
-                    body = "Non. Si un numéro qui vous appelle correspond à un contact enregistré sur votre téléphone, Tu dégages laisse toujours passer l'appel — même si ce numéro figure par ailleurs dans la base spam ou dans vos règles personnalisées.\n\nCette vérification nécessite l'autorisation d'accès aux contacts, demandée au premier lancement de l'application."
+                    title = stringResource(R.string.manual_q2_title),
+                    body = stringResource(R.string.manual_q2_body)
                 )
             }
             item {
                 ManualSection(
-                    title = "📞 J'attends un rappel d'un numéro inconnu (commande, devis...) : risque-t-il d'être bloqué ?",
-                    body = "Le risque est faible : un numéro inconnu n'est bloqué que s'il figure dans la base spam (préfixes connus, signalements communautaires) ou dans une de vos règles manuelles — pas un numéro de service client ou de livreur classique.\n\nSi malgré tout l'appel est bloqué, il reste visible dans l'onglet Historique avec le numéro et l'heure : vous pouvez le rappeler, puis appuyer sur ✅ « Pas un spam » pour qu'il ne soit plus jamais bloqué.\n\nSi vous attendez un appel important et préférez ne prendre aucun risque, désactivez temporairement la protection depuis l'écran d'accueil le temps de l'appel, puis réactivez-la ensuite."
+                    title = stringResource(R.string.manual_q3_title),
+                    body = stringResource(R.string.manual_q3_body)
                 )
             }
             item {
                 ManualSection(
-                    title = "🛡️ À quoi sert Tu dégages ?",
-                    body = "Tu dégages intercepte automatiquement les appels provenant de numéros de démarcheurs connus, leur joue un message vocal, puis raccroche — sans que votre téléphone ait sonné.\n\nVous économisez du temps et de l'énergie en n'ayant plus jamais à décrocher pour entendre un robot vous proposer une cuisine équipée."
+                    title = stringResource(R.string.manual_q4_title),
+                    body = stringResource(R.string.manual_q4_body)
                 )
             }
             item {
                 ManualSection(
-                    title = "🎯 Pourquoi on ne bloque pas « tout un opérateur » ?",
-                    body = "Certaines applis concurrentes annoncent bloquer en bloc des numéros appartenant à des opérateurs VoIP (Aircall, Vonage, Manifone, Tata Communications, CM Telecom, etc.).\n\nTu dégages a fait le choix inverse, et voici pourquoi :\n\nCes opérateurs sont des fournisseurs VoIP généralistes, pas des « opérateurs spam ». Ils sont utilisés :\n❌ par des centres d'appels de démarchage,\n✅ mais aussi par des entreprises légitimes : support client, livraisons, rendez-vous médicaux, artisans, etc.\n\nSi on bloquait « tout Aircall » ou « tout Vonage », on bloquerait aussi ces appels légitimes — gros risque de faux positifs et de plaintes (« pourquoi mon livreur n'arrive pas à m'appeler ?! »).\n\nLa bonne approche, c'est celle qu'on a construite : la base communautaire (voir plus bas) capture les numéros réellement signalés comme spam par les utilisateurs, peu importe l'opérateur derrière — sans jamais bloquer les usages légitimes du même opérateur.\n\nTu dégages préfère un blocage précis et fiable plutôt qu'un rejet à l'arrache fait pour impressionner."
+                    title = stringResource(R.string.manual_q5_title),
+                    body = stringResource(R.string.manual_q5_body)
                 )
             }
             item {
                 ManualSection(
-                    title = "🔁 Un numéro me rappelle plusieurs fois en peu de temps : que se passe-t-il ?",
-                    body = "C'est une technique fréquente des centres d'appels de démarchage : ils rappellent plusieurs fois de suite si vous ne décrochez pas, parfois avec des numéros qui ne sont pas (encore) connus comme spam.\n\nTu dégages détecte automatiquement ces rafales : si un même numéro inconnu vous appelle 3 fois ou plus en moins de 30 minutes, il est automatiquement ajouté à votre base spam personnelle et tous ses appels suivants sont rejetés silencieusement.\n\nCe mécanisme ne concerne que les numéros qui appellent en rafale — un appel isolé d'un livreur, d'un médecin ou d'un proche n'est jamais affecté. Et comme toujours, si un numéro est bloqué à tort, l'icône ✅ « Pas un spam » dans l'Historique permet de le débloquer en un tap."
+                    title = stringResource(R.string.manual_q6_title),
+                    body = stringResource(R.string.manual_q6_body)
                 )
             }
             item {
                 ManualSection(
-                    title = "⚡ Démarrage rapide",
-                    body = "1. Ouvrez Tu dégages.\n2. Assurez-vous que le bouton de protection est sur ON (vert) sur l'écran d'accueil.\n3. C'est tout. Tu dégages travaille en arrière-plan."
+                    title = stringResource(R.string.manual_q7_title),
+                    body = stringResource(R.string.manual_q7_body)
                 )
             }
             item {
                 ManualSection(
-                    title = "🎭 Les 4 modes de réponse",
-                    body = "Accédez à l'onglet « Modes » pour choisir le ton de la réponse :\n\n🤝 Poli — réponse courtoise et ferme. Idéal si vous préférez rester discret.\n\n📋 Administratif — ton froid et officiel, comme un service juridique. Déstabilise les opérateurs de centres d'appels.\n\n😏 Sarcastique — réponse humoristique. Pour les démarcheurs qui méritent un peu d'ironie.\n\n🎭 Troll — fait patienter le spammeur pendant 10 secondes de musique d'attente avant de raccrocher. Leur fait perdre du temps et de l'argent."
+                    title = stringResource(R.string.manual_q8_title),
+                    body = stringResource(R.string.manual_q8_body)
                 )
             }
             item {
                 ManualSection(
-                    title = "💬 Personnaliser les messages",
-                    body = "Dans Paramètres → Personnaliser les réponses, vous pouvez :\n\n• Activer ou désactiver chaque phrase existante.\n• Ajouter vos propres phrases personnalisées.\n• Utiliser le Constructeur de messages pour composer un message en 3 parties : salutation + corps + conclusion."
+                    title = stringResource(R.string.manual_q9_title),
+                    body = stringResource(R.string.manual_q9_body)
                 )
             }
             item {
                 ManualSection(
-                    title = "🎙️ Paramètres vocaux",
-                    body = "Dans Paramètres → Paramètres vocaux :\n\n• Choisissez la voix (selon les voix installées sur votre téléphone).\n• Ajustez la vitesse de lecture (de lent à rapide).\n• Modifiez la hauteur de la voix (grave ou aiguë).\n• Testez le rendu avec le bouton de prévisualisation."
-                )
-            }
-
-            item { CategoryHeader("📋 Base de numéros bloqués") }
-            item {
-                ManualSection(
-                    title = "🇫🇷🇨🇭 Tu dégages fonctionne-t-il en Suisse ?",
-                    body = "Oui ! Dans Paramètres, choisissez votre pays (🇫🇷 France ou 🇨🇭 Suisse) tout en haut de la liste.\n\nEn Suisse, Tu dégages détecte notamment :\n\n• Les numéros à valeur ajoutée (0900, 0901, 0906) — business, marketing et divertissement, attribués individuellement par l'OFCOM.\n• Les numéros d'entreprise nationaux à coût partagé (0840, 0842, 0844, 0848, 0878) — souvent utilisés comme numéros de redirection par des centres d'appels et hotlines commerciales.\n\nLa base communautaire et votre historique personnel fonctionnent exactement de la même façon, quel que soit le pays choisi."
-                )
-            }
-            item {
-                ManualSection(
-                    title = "🇩🇪🇮🇹 Peut-on répondre en allemand ou en italien (autres régions de Suisse) ?",
-                    body = "Oui. Dans Paramètres, juste sous le sélecteur de pays, choisissez la « Langue des messages vocaux » : 🇫🇷 Français, 🇩🇪 Deutsch ou 🇮🇹 Italiano.\n\nDans la langue choisie, Tu dégages joue un message fixe adapté au mode actif (Poli, Administratif, Sarcastique ou Troll), avec une voix correspondante si votre téléphone en propose une.\n\nCe réglage ne change pas la langue de l'application elle-même, qui reste en français — seul le message entendu par le démarcheur change."
-                )
-            }
-            item {
-                ManualSection(
-                    title = "Quels numéros sont bloqués ?",
-                    body = "Tu dégages combine plusieurs sources :\n\n• Plages ARCEP documentées : 52 préfixes français officiellement attribués au démarchage téléphonique.\n• phoneblock.net : base communautaire européenne open source.\n• Signal-Spam France : association française de lutte contre le spam.\n• Base communautaire Tu dégages : numéros signalés par les utilisateurs (opt-in).\n• Votre historique personnel : tout numéro qui vous a déjà appelé et a été traité comme spam."
-                )
-            }
-            item {
-                ManualSection(
-                    title = "À quoi sert le signalement d'un numéro ?",
-                    body = "Quand vous bloquez un numéro et que vous avez activé « Base communautaire » dans les Paramètres, ce numéro est transmis — anonymement, sans aucune de vos données — à un serveur partagé.\n\nTous les autres utilisateurs de Tu dégages récupèrent ensuite ce numéro et le rejettent automatiquement, sans même jouer le message vocal. Plus il y a d'utilisateurs, plus la base est efficace pour tout le monde.\n\nCette récupération se fait automatiquement, en silence, une fois par jour à l'ouverture de l'application — vous n'avez rien à faire. Le bouton « Mettre à jour la base spam » dans Paramètres permet simplement de forcer une mise à jour immédiate."
-                )
-            }
-            item {
-                ManualSection(
-                    title = "Comment sont choisis les numéros bloqués ?",
-                    body = "Un numéro est bloqué s'il appartient à une plage ARCEP connue pour le démarchage, s'il figure dans phoneblock.net ou Signal-Spam, s'il vous a déjà appelé et a été traité comme spam, ou s'il a été signalé par la communauté.\n\nTu dégages ne bloque jamais un numéro simplement parce qu'il appartient à tel ou tel opérateur télécom — voir « Pourquoi on ne bloque pas tout un opérateur » plus haut."
-                )
-            }
-            item {
-                ManualSection(
-                    title = "🚫 Puis-je bloquer moi-même un numéro ou un préfixe ?",
-                    body = "Oui ! Dans Paramètres → Numéros bloqués manuellement, vous pouvez ajouter vos propres règles :\n\n• Numéro exact : bloque uniquement ce numéro précis (ex. 0612345678).\n• Préfixe : bloque tous les numéros commençant par cette suite de chiffres (ex. 0033612 bloque tous les numéros commençant ainsi).\n\nCes règles s'ajoutent à la base spam automatique : tout appel correspondant est rejeté immédiatement, sans message vocal. Vous pouvez supprimer une règle à tout moment depuis le même écran."
+                    title = stringResource(R.string.manual_q10_title),
+                    body = stringResource(R.string.manual_q10_body)
                 )
             }
 
-            item { CategoryHeader("📱 Utilisation") }
+            item { CategoryHeader(stringResource(R.string.manual_cat_db)) }
             item {
                 ManualSection(
-                    title = "📋 Historique",
-                    body = "L'onglet Historique liste tous les appels bloqués :\n\n• Numéro de téléphone détecté.\n• Date et heure du blocage.\n• Mode utilisé pour répondre.\n• Message exact joué à l'appelant.\n\nUtilisez les filtres (Tous / Bloqués / Réponses / Manuels) pour affiner l'affichage. Supprimez une entrée avec l'icône 🗑️."
+                    title = stringResource(R.string.manual_q11_title),
+                    body = stringResource(R.string.manual_q11_body)
                 )
             }
             item {
                 ManualSection(
-                    title = "⬇️ Peut-on télécharger la liste des numéros bloqués ?",
-                    body = "Oui. Dans l'onglet Historique, appuyez sur l'icône ⬇️ en haut de l'écran : un fichier CSV (numéro, date, mode, message joué) est généré et vous pouvez l'enregistrer ou l'envoyer par e-mail via le menu de partage Android.\n\nCet export est purement personnel : il sert de trace ou de preuve, par exemple pour un signalement officiel. Il ne transmet rien à Tu dégages ni à qui que ce soit d'autre."
+                    title = stringResource(R.string.manual_q12_title),
+                    body = stringResource(R.string.manual_q12_body)
                 )
             }
             item {
                 ManualSection(
-                    title = "📊 Statistiques",
-                    body = "L'onglet Statistiques affiche :\n\n• Le temps total économisé (graphique circulaire).\n• Le nombre total de spammeurs bloqués depuis l'installation.\n• La moyenne d'appels évités par jour.\n• La durée moyenne d'un appel de démarchage évitée."
+                    title = stringResource(R.string.manual_q13_title),
+                    body = stringResource(R.string.manual_q13_body)
                 )
             }
             item {
                 ManualSection(
-                    title = "⚙️ Options avancées",
-                    body = "Dans Paramètres :\n\n• Décroche automatique : Tu dégages répond à l'appel sans faire sonner votre téléphone (recommandé).\n• Bloquer après réponse : ajoute le numéro à votre liste noire personnelle après chaque interaction.\n• Notifications : si activé, vous recevez une notification Android à chaque appel bloqué (numéro et raison du blocage)."
+                    title = stringResource(R.string.manual_q14_title),
+                    body = stringResource(R.string.manual_q14_body)
                 )
             }
             item {
                 ManualSection(
-                    title = "🟢 Tuile de réglages rapides",
-                    body = "Tu dégages ajoute une tuile dans le panneau de réglages rapides d'Android (celui qu'on ouvre en glissant deux doigts depuis le haut de l'écran, à côté du Wi-Fi et du Bluetooth).\n\nPour l'ajouter : ouvrez le panneau de réglages rapides, appuyez sur le crayon ✏️ (ou « Modifier »), puis glissez la tuile « Tu dégages » vers vos tuiles actives.\n\nUn appui sur la tuile active ou désactive instantanément la protection, sans avoir besoin d'ouvrir l'application."
-                )
-            }
-
-            item { CategoryHeader("🔧 Problèmes") }
-            item {
-                ManualSection(
-                    title = "Que faire si un numéro est bloqué à tort ?",
-                    body = "Allez dans l'onglet Historique, repérez l'appel concerné et appuyez sur l'icône ✅ « Pas un spam ».\n\nCe numéro est alors immédiatement retiré de votre base spam et de vos règles personnelles, et ajouté à votre liste blanche locale : il ne sera plus jamais bloqué sur votre téléphone, même si une mise à jour de la base spam le réintègre.\n\nAucun e-mail à envoyer, aucune attente : tout se passe directement sur votre téléphone, dans votre base de données locale — ça fonctionne même sans connexion internet et prend effet dès le prochain appel.\n\nSi vous attendez un appel important d'un numéro inconnu, vous pouvez aussi désactiver temporairement la protection (écran d'accueil) le temps de l'appel."
+                    title = stringResource(R.string.manual_q15_title),
+                    body = stringResource(R.string.manual_q15_body)
                 )
             }
             item {
                 ManualSection(
-                    title = "Que faire si je suis victime de spoofing ou d'usurpation de numéro ?",
-                    body = "Le spoofing (un spammeur qui affiche un faux numéro, parfois le vôtre ou celui d'un proche) est un problème du réseau téléphonique que Tu dégages ne peut pas corriger : l'appli ne voit que le numéro affiché par l'opérateur.\n\nSi vous recevez des appels avec votre propre numéro ou un numéro usurpé, le signalement à votre opérateur ou au 33700 (service anti-arnaque SMS/appels) reste la solution la plus efficace."
-                )
-            }
-            item {
-                ManualSection(
-                    title = "Un numéro spam n'est pas bloqué, que faire ?",
-                    body = "1. Vérifiez que la protection est activée (écran d'accueil).\n2. Vérifiez que Tu dégages est bien défini comme service d'identification d'appel par défaut (Paramètres Android → Applications → Application de filtrage des appels).\n3. Mettez à jour la base spam manuellement : Paramètres → Mettre à jour la base spam.\n4. Si le numéro continue d'appeler après ça, il sera mémorisé dès le premier blocage et rejeté automatiquement la fois suivante."
-                )
-            }
-            item {
-                ManualSection(
-                    title = "Les appelants peuvent-ils laisser un message vocal ?",
-                    body = "Non. Tu dégages joue son propre message à l'appelant puis raccroche la ligne — l'appelant n'a pas accès à votre messagerie vocale habituelle pour cet appel.\n\nC'est volontaire : un démarcheur qui ne peut ni vous parler ni laisser de message a beaucoup moins de raisons de rappeler."
-                )
-            }
-            item {
-                ManualSection(
-                    title = "❓ Pourquoi le blocage ne fonctionne pas ?",
-                    body = "Si Tu dégages ne bloque pas les appels, vérifiez :\n\n1. La protection est bien sur ON (écran d'accueil).\n2. Tu dégages est bien défini comme service de filtrage d'appels : Paramètres Android → Applications → Applications par défaut → Service d'identification de l'appelant et anti-spam → Sélectionner Tu dégages.\n3. Les permissions téléphone sont accordées à Tu dégages."
+                    title = stringResource(R.string.manual_q16_title),
+                    body = stringResource(R.string.manual_q16_body)
                 )
             }
 
-            item { CategoryHeader("⚙️ Fonctionnalités & technique") }
+            item { CategoryHeader(stringResource(R.string.manual_cat_usage)) }
             item {
                 ManualSection(
-                    title = "Tu dégages consomme-t-il beaucoup de batterie ?",
-                    body = "Non. Tu dégages ne tourne pas en permanence en arrière-plan : Android ne réveille l'appli qu'au moment précis où un appel arrive, via le service de filtrage d'appels du système.\n\nEn dehors des appels, l'appli est totalement inactive. La seule activité réseau a lieu lors de la mise à jour de la base spam (manuelle ou à l'ouverture de l'appli)."
+                    title = stringResource(R.string.manual_q17_title),
+                    body = stringResource(R.string.manual_q17_body)
+                )
+            }
+            item {
+                ManualSection(
+                    title = stringResource(R.string.manual_q18_title),
+                    body = stringResource(R.string.manual_q18_body)
+                )
+            }
+            item {
+                ManualSection(
+                    title = stringResource(R.string.manual_q19_title),
+                    body = stringResource(R.string.manual_q19_body)
+                )
+            }
+            item {
+                ManualSection(
+                    title = stringResource(R.string.manual_q20_title),
+                    body = stringResource(R.string.manual_q20_body)
+                )
+            }
+            item {
+                ManualSection(
+                    title = stringResource(R.string.manual_q21_title),
+                    body = stringResource(R.string.manual_q21_body)
                 )
             }
 
-            item { CategoryHeader("❓ Autres") }
+            item { CategoryHeader(stringResource(R.string.manual_cat_issues)) }
             item {
                 ManualSection(
-                    title = "Comment est protégée ma vie privée ?",
-                    body = "Par défaut, Tu dégages ne collecte et ne transmet aucune donnée : tout reste sur votre téléphone.\n\nSi vous activez la base communautaire (opt-in), seul le numéro de l'appelant spam est transmis à un serveur hébergé en Europe — jamais votre numéro ni vos informations personnelles. Le détail complet est dans À propos → Politique de confidentialité."
+                    title = stringResource(R.string.manual_q22_title),
+                    body = stringResource(R.string.manual_q22_body)
                 )
             }
             item {
                 ManualSection(
-                    title = "Comment signaler un bug ou donner un avis ?",
-                    body = "Vous pouvez nous écrire directement à l'adresse de contact indiquée dans À propos. Décrivez le problème rencontré (modèle de téléphone, version d'Android, ce qui s'est passé) — ça nous aide énormément à améliorer Tu dégages."
+                    title = stringResource(R.string.manual_q23_title),
+                    body = stringResource(R.string.manual_q23_body)
+                )
+            }
+            item {
+                ManualSection(
+                    title = stringResource(R.string.manual_q24_title),
+                    body = stringResource(R.string.manual_q24_body)
+                )
+            }
+            item {
+                ManualSection(
+                    title = stringResource(R.string.manual_q25_title),
+                    body = stringResource(R.string.manual_q25_body)
+                )
+            }
+            item {
+                ManualSection(
+                    title = stringResource(R.string.manual_q26_title),
+                    body = stringResource(R.string.manual_q26_body)
+                )
+            }
+
+            item { CategoryHeader(stringResource(R.string.manual_cat_tech)) }
+            item {
+                ManualSection(
+                    title = stringResource(R.string.manual_q27_title),
+                    body = stringResource(R.string.manual_q27_body)
+                )
+            }
+
+            item { CategoryHeader(stringResource(R.string.manual_cat_other)) }
+            item {
+                ManualSection(
+                    title = stringResource(R.string.manual_q28_title),
+                    body = stringResource(R.string.manual_q28_body)
+                )
+            }
+            item {
+                ManualSection(
+                    title = stringResource(R.string.manual_q29_title),
+                    body = stringResource(R.string.manual_q29_body)
                 )
             }
 

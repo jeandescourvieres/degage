@@ -18,26 +18,39 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.degage.R
 import com.degage.modes.AppMode
+import com.degage.modes.localizedLabel
 import com.degage.ui.components.PremiumBadge
 import com.degage.ui.theme.*
 
-data class ModeInfo(
-    val mode: AppMode,
-    val description: String,
-    val examplePhrase: String
+val modeInfoList = listOf(
+    AppMode.POLI,
+    AppMode.ADMINISTRATIF,
+    AppMode.SARCASTIQUE,
+    AppMode.TROLL,
 )
 
-val modeInfoList = listOf(
-    ModeInfo(AppMode.POLI, "Courtois mais ferme.\nIdéal pour rester clean.", "\"Cette ligne n'accepte pas les sollicitations commerciales.\""),
-    ModeInfo(AppMode.ADMINISTRATIF, "Froid, officiel, dissuasif.", "\"Votre appel a été classé comme démarchage non sollicité.\""),
-    ModeInfo(AppMode.SARCASTIQUE, "Pour les relous assumés.", "\"Félicitations, vous avez atteint la boîte vocale la plus sarcastique de France.\""),
-    ModeInfo(AppMode.TROLL, "Faites perdre du temps… beaucoup de temps.", "\"Merci de patienter, votre appel est très important pour nous.\""),
-)
+@Composable
+fun AppMode.localizedDescription(): String = when (this) {
+    AppMode.POLI -> stringResource(R.string.mode_poli_desc)
+    AppMode.ADMINISTRATIF -> stringResource(R.string.mode_administratif_desc)
+    AppMode.SARCASTIQUE -> stringResource(R.string.mode_sarcastique_desc)
+    AppMode.TROLL -> stringResource(R.string.mode_troll_desc)
+}
+
+@Composable
+fun AppMode.localizedExample(): String = when (this) {
+    AppMode.POLI -> stringResource(R.string.mode_poli_example)
+    AppMode.ADMINISTRATIF -> stringResource(R.string.mode_administratif_example)
+    AppMode.SARCASTIQUE -> stringResource(R.string.mode_sarcastique_example)
+    AppMode.TROLL -> stringResource(R.string.mode_troll_example)
+}
 
 @Composable
 fun ModesScreen(
@@ -56,8 +69,8 @@ fun ModesScreen(
     ) {
         var showInfo by remember { mutableStateOf(false) }
         if (showInfo) InfoDialog(
-            title = "Modes de réponse",
-            content = "Les modes définissent le ton de la réponse donnée aux spammeurs avant de raccrocher.\n\n🤝 Poli — réponse courtoise et ferme. Idéal pour rester discret.\n\n📋 Administratif — ton froid et officiel, comme un service juridique.\n\n😏 Sarcastique — réponse humoristique pour les démarcheurs qui le méritent.\n\n🎭 Troll — fait patienter le spammeur 10 secondes avant de raccrocher. Leur fait perdre du temps.\n\nTouchez un mode pour le sélectionner, puis tapez \"Écouter un aperçu\" pour l'entendre.",
+            title = stringResource(R.string.modes_info_title),
+            content = stringResource(R.string.modes_info_content),
             onDismiss = { showInfo = false }
         )
         Row(
@@ -65,26 +78,26 @@ fun ModesScreen(
             verticalAlignment = Alignment.CenterVertically
         ) {
             IconButton(onClick = onBack) {
-                Icon(Icons.Default.ArrowBack, contentDescription = "Retour", tint = Color.White)
+                Icon(Icons.Default.ArrowBack, contentDescription = stringResource(R.string.cd_back), tint = Color.White)
             }
             Column(modifier = Modifier.weight(1f)) {
-                Text("Modes de réponse", fontSize = 20.sp, fontWeight = FontWeight.Bold, color = Color.White)
-                Text("Ne raccrochez plus. Faites répondre votre IA.", color = TextSecondary, fontSize = 13.sp)
+                Text(stringResource(R.string.modes_title), fontSize = 20.sp, fontWeight = FontWeight.Bold, color = Color.White)
+                Text(stringResource(R.string.modes_subtitle), color = TextSecondary, fontSize = 13.sp)
             }
             IconButton(onClick = { showInfo = true }) {
-                Icon(Icons.Default.Info, contentDescription = "Aide", tint = NeonGreen, modifier = Modifier.size(26.dp))
+                Icon(Icons.Default.Info, contentDescription = stringResource(R.string.cd_help), tint = NeonGreen, modifier = Modifier.size(26.dp))
             }
         }
         Spacer(modifier = Modifier.height(12.dp))
 
         LazyColumn(verticalArrangement = Arrangement.spacedBy(12.dp)) {
-            items(modeInfoList) { info ->
-                val locked = !isPremium && info.mode != AppMode.POLI
+            items(modeInfoList) { mode ->
+                val locked = !isPremium && mode != AppMode.POLI
                 ModeCard(
-                    info = info,
-                    isSelected = activeMode == info.mode,
+                    mode = mode,
+                    isSelected = activeMode == mode,
                     locked = locked,
-                    onClick = { if (locked) onUpgrade() else onSelectMode(info.mode) }
+                    onClick = { if (locked) onUpgrade() else onSelectMode(mode) }
                 )
             }
 
@@ -100,7 +113,7 @@ fun ModesScreen(
                 ) {
                     Icon(Icons.Default.VolumeUp, contentDescription = null, tint = Color.Black)
                     Spacer(modifier = Modifier.width(8.dp))
-                    Text("Écouter un aperçu", color = Color.Black, fontWeight = FontWeight.Bold)
+                    Text(stringResource(R.string.modes_preview_button), color = Color.Black, fontWeight = FontWeight.Bold)
                 }
                 Spacer(modifier = Modifier.height(80.dp))
             }
@@ -109,7 +122,7 @@ fun ModesScreen(
 }
 
 @Composable
-fun ModeCard(info: ModeInfo, isSelected: Boolean, locked: Boolean = false, onClick: () -> Unit) {
+fun ModeCard(mode: AppMode, isSelected: Boolean, locked: Boolean = false, onClick: () -> Unit) {
     val borderColor = if (isSelected) NeonGreen else Color.Transparent
     Row(
         modifier = Modifier
@@ -120,13 +133,13 @@ fun ModeCard(info: ModeInfo, isSelected: Boolean, locked: Boolean = false, onCli
             .padding(16.dp),
         verticalAlignment = Alignment.CenterVertically
     ) {
-        Text(text = info.mode.emoji, fontSize = 32.sp, modifier = Modifier.alpha(if (locked) 0.4f else 1f))
+        Text(text = mode.emoji, fontSize = 32.sp, modifier = Modifier.alpha(if (locked) 0.4f else 1f))
         Spacer(modifier = Modifier.width(14.dp))
         Column(modifier = Modifier.weight(1f).alpha(if (locked) 0.4f else 1f)) {
-            Text(info.mode.label, fontWeight = FontWeight.Bold, color = Color.White, fontSize = 16.sp)
-            Text(info.description, color = TextSecondary, fontSize = 12.sp, lineHeight = 18.sp)
+            Text(mode.localizedLabel(), fontWeight = FontWeight.Bold, color = Color.White, fontSize = 16.sp)
+            Text(mode.localizedDescription(), color = TextSecondary, fontSize = 12.sp, lineHeight = 18.sp)
             Spacer(modifier = Modifier.height(6.dp))
-            Text(info.examplePhrase, color = Color(0xFF6A6A6A), fontSize = 11.sp, fontStyle = androidx.compose.ui.text.font.FontStyle.Italic)
+            Text(mode.localizedExample(), color = Color(0xFF6A6A6A), fontSize = 11.sp, fontStyle = androidx.compose.ui.text.font.FontStyle.Italic)
         }
         if (locked) {
             PremiumBadge()

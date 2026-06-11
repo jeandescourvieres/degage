@@ -8,6 +8,7 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
@@ -18,6 +19,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.degage.modes.AppMode
+import com.degage.modes.localizedLabel
 import com.degage.replies.MessagePart
 import com.degage.ui.navigation.Screen
 import com.degage.ui.navigation.bottomNavItems
@@ -61,6 +63,7 @@ fun DegageApp(
     val customBlocks by viewModel.customBlocks.collectAsStateWithLifecycle()
     val isPremium by viewModel.isPremium.collectAsStateWithLifecycle()
     val replyLanguage by viewModel.replyLanguage.collectAsStateWithLifecycle()
+    val appLanguage by viewModel.appLanguage.collectAsStateWithLifecycle()
 
     val startDestination = when {
         !onboardingDone -> Screen.Onboarding.route
@@ -85,8 +88,8 @@ fun DegageApp(
                                     restoreState = true
                                 }
                             },
-                            icon = { Icon(item.icon, contentDescription = item.label) },
-                            label = { Text(item.label, maxLines = 1) },
+                            icon = { Icon(item.icon, contentDescription = stringResource(item.labelRes)) },
+                            label = { Text(stringResource(item.labelRes), maxLines = 1) },
                             colors = NavigationBarItemDefaults.colors(
                                 selectedIconColor = NeonGreen,
                                 selectedTextColor = NeonGreen,
@@ -125,7 +128,7 @@ fun DegageApp(
                         totalBlocked = totalBlocked,
                         todayCount = todayCount,
                         timeSavedMinutes = timeSaved,
-                        activeMode = activeMode.label,
+                        activeMode = activeMode.localizedLabel(),
                         recentCalls = allCalls,
                         onToggle = viewModel::toggleEnabled,
                         onNavigateSettings = { navController.navigate(Screen.Settings.route) },
@@ -179,6 +182,7 @@ fun DegageApp(
                         blockHiddenNumbers = blockHiddenNumbers,
                         country = country,
                         replyLanguage = replyLanguage,
+                        appLanguage = appLanguage,
                         isPremium = isPremium,
                         onUpgrade = { navController.navigate(Screen.Premium.route) },
                         onToggleEnabled = viewModel::toggleEnabled,
@@ -190,6 +194,7 @@ fun DegageApp(
                         onToggleBlockHiddenNumbers = { viewModel.setBlockHiddenNumbers(!blockHiddenNumbers) },
                         onSetCountry = { viewModel.setCountry(it) },
                         onSetReplyLanguage = { viewModel.setReplyLanguage(it) },
+                        onSetAppLanguage = { viewModel.setAppLanguage(it) },
                         onNavigateAbout = { navController.navigate(Screen.About.route) },
                         onNavigateMessageBuilder = { navController.navigate(Screen.MessageBuilder.route) },
                         onNavigateVoiceSettings = { navController.navigate(Screen.VoiceSettings.route) },

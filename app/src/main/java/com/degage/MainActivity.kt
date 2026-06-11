@@ -4,11 +4,12 @@ import android.Manifest
 import android.app.role.RoleManager
 import android.os.Build
 import android.os.Bundle
-import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.annotation.RequiresApi
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
+import com.degage.locale.LocaleHelper
 import com.degage.prefs.AppPreferences
 import com.degage.ui.DegageApp
 import com.degage.ui.viewmodel.MainViewModel
@@ -17,7 +18,7 @@ import com.degage.ui.theme.DegageTheme
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
 
-class MainActivity : ComponentActivity() {
+class MainActivity : AppCompatActivity() {
 
     private val prefs by lazy { AppPreferences(this) }
     private val viewModel: MainViewModel by viewModels()
@@ -41,6 +42,7 @@ class MainActivity : ComponentActivity() {
         viewModel.autoSyncIfNeeded()
 
         lifecycleScope.launch {
+            LocaleHelper.applyLanguage(prefs.appLanguage.first())
             val onboardingDone = prefs.onboardingDone.first()
             val welcomeShown = prefs.welcomeShown.first()
             setContent {

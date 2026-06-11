@@ -16,13 +16,16 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.degage.R
 import com.degage.database.entities.ReplyEntity
 import com.degage.modes.AppMode
+import com.degage.modes.localizedLabel
 import com.degage.ui.theme.*
 
 @Composable
@@ -49,11 +52,11 @@ fun RepliesScreen(
             verticalAlignment = Alignment.CenterVertically
         ) {
             IconButton(onClick = onBack) {
-                Icon(Icons.Default.ArrowBack, contentDescription = "Retour", tint = Color.White)
+                Icon(Icons.Default.ArrowBack, contentDescription = stringResource(R.string.cd_back), tint = Color.White)
             }
             Column {
-                Text("${mode.emoji} ${mode.label}", fontSize = 20.sp, fontWeight = FontWeight.Bold, color = Color.White)
-                Text("Phrases de réponse", fontSize = 13.sp, color = TextSecondary)
+                Text("${mode.emoji} ${mode.localizedLabel()}", fontSize = 20.sp, fontWeight = FontWeight.Bold, color = Color.White)
+                Text(stringResource(R.string.replies_subtitle), fontSize = 13.sp, color = TextSecondary)
             }
         }
 
@@ -77,7 +80,7 @@ fun RepliesScreen(
                         value = newText,
                         onValueChange = { newText = it },
                         modifier = Modifier.weight(1f),
-                        placeholder = { Text("Ajouter une phrase personnalisée…", color = TextSecondary, fontSize = 13.sp) },
+                        placeholder = { Text(stringResource(R.string.replies_add_placeholder), color = TextSecondary, fontSize = 13.sp) },
                         colors = OutlinedTextFieldDefaults.colors(
                             focusedBorderColor = NeonGreen,
                             unfocusedBorderColor = CardBgAlt,
@@ -99,7 +102,7 @@ fun RepliesScreen(
                             .background(NeonGreen, RoundedCornerShape(12.dp))
                             .size(52.dp)
                     ) {
-                        Icon(Icons.Default.Add, contentDescription = "Ajouter", tint = Color.Black)
+                        Icon(Icons.Default.Add, contentDescription = stringResource(R.string.cd_add), tint = Color.Black)
                     }
                 }
                 Spacer(modifier = Modifier.height(80.dp))
@@ -125,7 +128,7 @@ fun ReplyRow(reply: ReplyEntity, onToggle: () -> Unit, onDelete: () -> Unit) {
         )
         if (reply.isCustom) {
             IconButton(onClick = onDelete, modifier = Modifier.size(32.dp)) {
-                Icon(Icons.Default.Delete, contentDescription = "Supprimer", tint = TextSecondary, modifier = Modifier.size(16.dp))
+                Icon(Icons.Default.Delete, contentDescription = stringResource(R.string.cd_delete), tint = TextSecondary, modifier = Modifier.size(16.dp))
             }
         }
         Switch(

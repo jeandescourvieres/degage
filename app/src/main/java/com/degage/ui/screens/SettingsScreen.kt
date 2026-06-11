@@ -20,10 +20,12 @@ import com.degage.ui.components.PremiumBadge
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.degage.R
 import com.degage.ui.theme.*
 
 @Composable
@@ -37,6 +39,7 @@ fun SettingsScreen(
     blockHiddenNumbers: Boolean = false,
     country: String = "FR",
     replyLanguage: String = "FR",
+    appLanguage: String = "",
     isPremium: Boolean = true,
     onUpgrade: () -> Unit = {},
     onToggleEnabled: () -> Unit,
@@ -48,6 +51,7 @@ fun SettingsScreen(
     onToggleBlockHiddenNumbers: () -> Unit = {},
     onSetCountry: (String) -> Unit = {},
     onSetReplyLanguage: (String) -> Unit = {},
+    onSetAppLanguage: (String) -> Unit = {},
     onNavigateAbout: () -> Unit,
     onNavigateMessageBuilder: () -> Unit,
     onNavigateVoiceSettings: () -> Unit,
@@ -60,8 +64,8 @@ fun SettingsScreen(
 ) {
     var showInfo by remember { mutableStateOf(false) }
     if (showInfo) InfoDialog(
-        title = "Paramètres",
-        content = "Configurez le comportement de DÉGAGE :\n\n• Protection : active/désactive le filtrage global des appels.\n• Décroche automatique : répond à l'appel sans que le téléphone sonne (recommandé).\n• Bloquer après réponse : ajoute le numéro à la liste noire après chaque interaction.\n• Notifications : vous avertit à chaque appel bloqué.\n• Personnaliser les réponses : créez et gérez vos propres messages.\n• Paramètres vocaux : changez la voix, la vitesse et la hauteur.",
+        title = stringResource(R.string.settings_info_title),
+        content = stringResource(R.string.settings_info_content),
         onDismiss = { showInfo = false }
     )
     LazyColumn(
@@ -77,16 +81,19 @@ fun SettingsScreen(
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 IconButton(onClick = onBack) {
-                    Icon(Icons.Default.ArrowBack, contentDescription = "Retour", tint = Color.White)
+                    Icon(Icons.Default.ArrowBack, contentDescription = stringResource(R.string.cd_back), tint = Color.White)
                 }
-                Text("Paramètres", fontSize = 20.sp, fontWeight = FontWeight.Bold, color = Color.White, modifier = Modifier.weight(1f))
+                Text(stringResource(R.string.settings_title), fontSize = 20.sp, fontWeight = FontWeight.Bold, color = Color.White, modifier = Modifier.weight(1f))
                 IconButton(onClick = { showInfo = true }) {
-                    Icon(Icons.Default.Info, contentDescription = "Aide", tint = NeonGreen, modifier = Modifier.size(26.dp))
+                    Icon(Icons.Default.Info, contentDescription = stringResource(R.string.cd_help), tint = NeonGreen, modifier = Modifier.size(26.dp))
                 }
             }
             Spacer(modifier = Modifier.height(12.dp))
         }
 
+        item {
+            AppLanguageSelectorRow(language = appLanguage, onSetLanguage = onSetAppLanguage)
+        }
         item {
             CountrySelectorRow(country = country, isPremium = isPremium, onSetCountry = onSetCountry, onUpgrade = onUpgrade)
         }
@@ -94,16 +101,16 @@ fun SettingsScreen(
             ReplyLanguageSelectorRow(language = replyLanguage, isPremium = isPremium, onSetLanguage = onSetReplyLanguage, onUpgrade = onUpgrade)
         }
         item {
-            SettingsToggleRow(label = "Protection", checked = isEnabled, onToggle = onToggleEnabled)
+            SettingsToggleRow(label = stringResource(R.string.settings_toggle_protection), checked = isEnabled, onToggle = onToggleEnabled)
         }
         item {
-            SettingsToggleRow(label = "Décroche automatique", checked = autoReject, onToggle = onToggleAutoReject)
+            SettingsToggleRow(label = stringResource(R.string.settings_toggle_auto_reject), checked = autoReject, onToggle = onToggleAutoReject)
         }
         item {
-            SettingsToggleRow(label = "Bloquer le numéro après réponse", checked = blockAfterReply, onToggle = onToggleBlockAfterReply)
+            SettingsToggleRow(label = stringResource(R.string.settings_toggle_block_after_reply), checked = blockAfterReply, onToggle = onToggleBlockAfterReply)
         }
         item {
-            SettingsToggleRow(label = "Notifications", checked = notifications, onToggle = onToggleNotifications)
+            SettingsToggleRow(label = stringResource(R.string.settings_toggle_notifications), checked = notifications, onToggle = onToggleNotifications)
         }
         item {
             BlockHiddenNumbersRow(checked = blockHiddenNumbers, onToggle = onToggleBlockHiddenNumbers)
@@ -118,37 +125,34 @@ fun SettingsScreen(
         item { Spacer(modifier = Modifier.height(16.dp)) }
 
         item {
-            SettingsNavRow(label = "💬 Personnaliser les réponses", locked = !isPremium, onClick = onNavigateMessageBuilder, onUpgrade = onUpgrade)
+            SettingsNavRow(label = stringResource(R.string.settings_nav_message_builder), locked = !isPremium, onClick = onNavigateMessageBuilder, onUpgrade = onUpgrade)
         }
         item {
-            SettingsNavRow(label = "🎙️ Paramètres vocaux", locked = !isPremium, onClick = onNavigateVoiceSettings, onUpgrade = onUpgrade)
+            SettingsNavRow(label = stringResource(R.string.settings_nav_voice), locked = !isPremium, onClick = onNavigateVoiceSettings, onUpgrade = onUpgrade)
         }
         item {
-            SettingsNavRow(label = "🚫 Numéros bloqués manuellement", locked = !isPremium, onClick = onNavigateCustomBlocks, onUpgrade = onUpgrade)
+            SettingsNavRow(label = stringResource(R.string.settings_nav_custom_blocks), locked = !isPremium, onClick = onNavigateCustomBlocks, onUpgrade = onUpgrade)
         }
         item {
-            SettingsNavRow(label = "⭐ Tu dégages Premium", onClick = onUpgrade)
+            SettingsNavRow(label = stringResource(R.string.settings_nav_premium), onClick = onUpgrade)
         }
 
         item { Spacer(modifier = Modifier.height(8.dp)) }
 
         item {
-            SettingsInfoRow(label = "Base communautaire", value = "Mise à jour : aujourd'hui 08:15")
-        }
-        item {
-            SettingsInfoRow(label = "Langue", value = "Français")
+            SettingsInfoRow(label = stringResource(R.string.settings_community_db_label), value = stringResource(R.string.settings_community_db_value))
         }
         item {
             SpamSyncRow(isSyncing = isSyncing, onClick = onSyncSpamList)
         }
         item {
-            SettingsNavRow(label = "📖 Mode d'emploi", onClick = onNavigateManual)
+            SettingsNavRow(label = stringResource(R.string.settings_nav_manual), onClick = onNavigateManual)
         }
         item {
-            SettingsNavRow(label = "👋 Revoir la présentation", onClick = onNavigateWelcome)
+            SettingsNavRow(label = stringResource(R.string.settings_nav_welcome), onClick = onNavigateWelcome)
         }
         item {
-            SettingsNavRow(label = "À propos", onClick = onNavigateAbout)
+            SettingsNavRow(label = stringResource(R.string.settings_nav_about), onClick = onNavigateAbout)
         }
 
         item { Spacer(modifier = Modifier.height(80.dp)) }
@@ -206,9 +210,9 @@ fun SpamSyncRow(isSyncing: Boolean, onClick: () -> Unit) {
         verticalAlignment = Alignment.CenterVertically
     ) {
         Column(modifier = Modifier.weight(1f)) {
-            Text("🛡️ Mettre à jour la base spam", color = Color.White, fontSize = 15.sp)
+            Text(stringResource(R.string.settings_sync_label), color = Color.White, fontSize = 15.sp)
             Text(
-                "phoneblock.net • Signal-Spam France • ARCEP",
+                stringResource(R.string.settings_sync_sources),
                 color = TextSecondary,
                 fontSize = 11.sp
             )
@@ -220,7 +224,7 @@ fun SpamSyncRow(isSyncing: Boolean, onClick: () -> Unit) {
                 strokeWidth = 2.dp
             )
         } else {
-            Text("Sync", color = NeonGreen, fontSize = 13.sp, fontWeight = FontWeight.SemiBold)
+            Text(stringResource(R.string.settings_sync_button), color = NeonGreen, fontSize = 13.sp, fontWeight = FontWeight.SemiBold)
         }
     }
 }
@@ -233,24 +237,49 @@ fun CountrySelectorRow(country: String, isPremium: Boolean = true, onSetCountry:
             .background(CardBg, RoundedCornerShape(14.dp))
             .padding(horizontal = 20.dp, vertical = 14.dp)
     ) {
-        Text("Pays", color = Color.White, fontSize = 15.sp)
+        Text(stringResource(R.string.settings_country_label), color = Color.White, fontSize = 15.sp)
         Text(
-            "Adapte la base de numéros indésirables détectés à votre pays.",
+            stringResource(R.string.settings_country_desc),
             color = TextSecondary,
             fontSize = 11.sp,
             lineHeight = 16.sp
         )
         Spacer(modifier = Modifier.height(10.dp))
         Row(horizontalArrangement = Arrangement.spacedBy(8.dp), verticalAlignment = Alignment.CenterVertically) {
-            CountryChip("🇫🇷 France", selected = country == "FR", onClick = { onSetCountry("FR") })
+            CountryChip(stringResource(R.string.country_fr), selected = country == "FR", onClick = { onSetCountry("FR") })
             val chSelected = country == "CH"
             val chLocked = !isPremium
             CountryChip(
-                "🇨🇭 Suisse",
+                stringResource(R.string.country_ch),
                 selected = chSelected && !chLocked,
                 onClick = { if (chLocked) onUpgrade() else onSetCountry("CH") }
             )
             if (chLocked) PremiumBadge()
+        }
+    }
+}
+
+@Composable
+fun AppLanguageSelectorRow(language: String, onSetLanguage: (String) -> Unit) {
+    Column(
+        modifier = Modifier
+            .fillMaxWidth()
+            .background(CardBg, RoundedCornerShape(14.dp))
+            .padding(horizontal = 20.dp, vertical = 14.dp)
+    ) {
+        Text(stringResource(R.string.settings_app_lang_label), color = Color.White, fontSize = 15.sp)
+        Text(
+            stringResource(R.string.settings_app_lang_desc),
+            color = TextSecondary,
+            fontSize = 11.sp,
+            lineHeight = 16.sp
+        )
+        Spacer(modifier = Modifier.height(10.dp))
+        Row(horizontalArrangement = Arrangement.spacedBy(8.dp), verticalAlignment = Alignment.CenterVertically) {
+            CountryChip(stringResource(R.string.lang_system), selected = language == "", onClick = { onSetLanguage("") })
+            CountryChip(stringResource(R.string.lang_fr), selected = language == "FR", onClick = { onSetLanguage("FR") })
+            CountryChip(stringResource(R.string.lang_de), selected = language == "DE", onClick = { onSetLanguage("DE") })
+            CountryChip(stringResource(R.string.lang_it), selected = language == "IT", onClick = { onSetLanguage("IT") })
         }
     }
 }
@@ -263,24 +292,24 @@ fun ReplyLanguageSelectorRow(language: String, isPremium: Boolean = true, onSetL
             .background(CardBg, RoundedCornerShape(14.dp))
             .padding(horizontal = 20.dp, vertical = 14.dp)
     ) {
-        Text("Langue des messages vocaux", color = Color.White, fontSize = 15.sp)
+        Text(stringResource(R.string.settings_reply_lang_label), color = Color.White, fontSize = 15.sp)
         Text(
-            "Langue dans laquelle Tu dégages répond aux démarcheurs (utile en Suisse alémanique ou italophone).",
+            stringResource(R.string.settings_reply_lang_desc),
             color = TextSecondary,
             fontSize = 11.sp,
             lineHeight = 16.sp
         )
         Spacer(modifier = Modifier.height(10.dp))
         Row(horizontalArrangement = Arrangement.spacedBy(8.dp), verticalAlignment = Alignment.CenterVertically) {
-            CountryChip("🇫🇷 Français", selected = language == "FR", onClick = { onSetLanguage("FR") })
+            CountryChip(stringResource(R.string.lang_fr), selected = language == "FR", onClick = { onSetLanguage("FR") })
             val locked = !isPremium
             CountryChip(
-                "🇩🇪 Deutsch",
+                stringResource(R.string.lang_de),
                 selected = language == "DE" && !locked,
                 onClick = { if (locked) onUpgrade() else onSetLanguage("DE") }
             )
             CountryChip(
-                "🇮🇹 Italiano",
+                stringResource(R.string.lang_it),
                 selected = language == "IT" && !locked,
                 onClick = { if (locked) onUpgrade() else onSetLanguage("IT") }
             )
@@ -314,9 +343,9 @@ fun BlockHiddenNumbersRow(checked: Boolean, onToggle: () -> Unit) {
         verticalAlignment = Alignment.CenterVertically
     ) {
         Column(modifier = Modifier.weight(1f)) {
-            Text("📵 Bloquer les appels masqués", color = Color.White, fontSize = 15.sp)
+            Text(stringResource(R.string.settings_block_hidden_label), color = Color.White, fontSize = 15.sp)
             Text(
-                "Rejette automatiquement, sans message vocal, les appels sans numéro affiché (masqué, privé, inconnu).",
+                stringResource(R.string.settings_block_hidden_desc),
                 color = TextSecondary,
                 fontSize = 11.sp,
                 lineHeight = 16.sp
@@ -347,9 +376,9 @@ fun MonitorLiveRow(checked: Boolean, onToggle: () -> Unit) {
         verticalAlignment = Alignment.CenterVertically
     ) {
         Column(modifier = Modifier.weight(1f)) {
-            Text("🔊 Écouter la réponse IA en direct", color = Color.White, fontSize = 15.sp)
+            Text(stringResource(R.string.settings_monitor_live_label), color = Color.White, fontSize = 15.sp)
             Text(
-                "Entendez ce que votre IA dit au spammeur sur votre haut-parleur",
+                stringResource(R.string.settings_monitor_live_desc),
                 color = TextSecondary,
                 fontSize = 11.sp,
                 lineHeight = 16.sp
@@ -392,15 +421,15 @@ fun ContributeDbRow(checked: Boolean, isPremium: Boolean = true, onToggle: () ->
             Spacer(modifier = Modifier.width(12.dp))
             Column(modifier = Modifier.weight(1f)) {
                 Text(
-                    "Base communautaire",
+                    stringResource(R.string.settings_contribute_label),
                     color = NeonGreen,
                     fontSize = 13.sp,
                     fontWeight = FontWeight.Bold
                 )
                 Text(
                     buildAnnotatedString {
-                        append("La clé de voûte de\n")
-                        withStyle(SpanStyle(color = NeonGreen)) { append("Tu dégages") }
+                        append(stringResource(R.string.settings_contribute_title_prefix))
+                        withStyle(SpanStyle(color = NeonGreen)) { append(stringResource(R.string.app_name)) }
                     },
                     color = Color.White,
                     fontSize = 17.sp,
@@ -425,22 +454,20 @@ fun ContributeDbRow(checked: Boolean, isPremium: Boolean = true, onToggle: () ->
         }
         Spacer(modifier = Modifier.height(14.dp))
         Text(
-            "Chaque spammeur bloqué par un utilisateur est signalé à toute la communauté. " +
-            "À chaque connexion, votre appli télécharge automatiquement les nouveaux numéros signalés par tous les utilisateurs — " +
-            "et les ajoute à votre base locale. Plus on est nombreux, plus la base devient redoutable contre les spammeurs.",
+            stringResource(R.string.settings_contribute_desc),
             color = TextSecondary,
             fontSize = 13.sp,
             lineHeight = 20.sp
         )
         Spacer(modifier = Modifier.height(12.dp))
         Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-            ContributeBadge("🤝 Partagé entre tous")
-            ContributeBadge("🔒 Opt-in")
-            ContributeBadge("🇫🇷 Serveur EU")
+            ContributeBadge(stringResource(R.string.contribute_badge_shared))
+            ContributeBadge(stringResource(R.string.contribute_badge_optin))
+            ContributeBadge(stringResource(R.string.contribute_badge_server))
         }
         Spacer(modifier = Modifier.height(12.dp))
         Text(
-            "Seul le numéro de l'appelant spam est transmis — jamais vos données personnelles.",
+            stringResource(R.string.settings_contribute_footer),
             color = TextSecondary.copy(alpha = 0.7f),
             fontSize = 11.sp,
             lineHeight = 16.sp

@@ -23,15 +23,19 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.degage.R
 import com.degage.database.entities.ReplyEntity
 import com.degage.modes.AppMode
+import com.degage.modes.localizedLabel
 import com.degage.replies.MessagePart
+import com.degage.replies.localizedLabel
 import com.degage.ui.theme.*
 
 @Composable
@@ -67,10 +71,10 @@ fun MessageBuilderScreen(
             verticalAlignment = Alignment.CenterVertically
         ) {
             IconButton(onClick = onBack) {
-                Icon(Icons.Default.ArrowBack, contentDescription = "Retour", tint = Color.White)
+                Icon(Icons.Default.ArrowBack, contentDescription = stringResource(R.string.cd_back), tint = Color.White)
             }
             Text(
-                "Personnaliser les réponses",
+                stringResource(R.string.mb_header_title),
                 fontSize = 18.sp,
                 fontWeight = FontWeight.Bold,
                 color = Color.White
@@ -89,9 +93,9 @@ fun MessageBuilderScreen(
         ) {
             Text(activeMode.emoji, fontSize = 28.sp)
             Column {
-                Text("Mode actif", fontSize = 11.sp, color = NeonGreen, fontWeight = FontWeight.SemiBold)
+                Text(stringResource(R.string.mb_active_mode_label), fontSize = 11.sp, color = NeonGreen, fontWeight = FontWeight.SemiBold)
                 Text(
-                    activeMode.label,
+                    activeMode.localizedLabel(),
                     fontSize = 20.sp,
                     fontWeight = FontWeight.Black,
                     color = Color.White
@@ -99,7 +103,7 @@ fun MessageBuilderScreen(
             }
             Spacer(modifier = Modifier.weight(1f))
             Text(
-                "Corps adapté\nà ce mode →",
+                stringResource(R.string.mb_active_mode_hint),
                 fontSize = 10.sp,
                 color = TextSecondary,
                 textAlign = TextAlign.End,
@@ -109,8 +113,8 @@ fun MessageBuilderScreen(
 
         if (replyLanguage != "FR") {
             val langLabel = when (replyLanguage) {
-                "DE" -> "allemand"
-                "IT" -> "italien"
+                "DE" -> stringResource(R.string.reply_lang_de)
+                "IT" -> stringResource(R.string.reply_lang_it)
                 else -> replyLanguage
             }
             Row(
@@ -124,7 +128,7 @@ fun MessageBuilderScreen(
             ) {
                 Text("🌐", fontSize = 18.sp)
                 Text(
-                    "Les phrases ci-dessous sont en $langLabel, la langue choisie pour vos messages vocaux. Sélectionnez celles qui vous correspondent.",
+                    stringResource(R.string.mb_lang_banner, langLabel),
                     fontSize = 12.sp,
                     color = TextSecondary,
                     lineHeight = 18.sp
@@ -148,22 +152,22 @@ fun MessageBuilderScreen(
                     verticalArrangement = Arrangement.spacedBy(10.dp)
                 ) {
                     Text(
-                        "Comment composer votre message ?",
+                        stringResource(R.string.mb_intro_title),
                         fontSize = 14.sp,
                         fontWeight = FontWeight.Bold,
                         color = Color.White
                     )
                     Text(
-                        "Tu dégages assemble automatiquement un message en 3 parties avant de raccrocher. Vous choisissez librement une option par section :",
+                        stringResource(R.string.mb_intro_desc),
                         fontSize = 13.sp,
                         color = TextSecondary,
                         lineHeight = 20.sp
                     )
-                    MessagePartExplainRow("👋", "Salutation", "La phrase d'ouverture. Commune à tous les modes.")
-                    MessagePartExplainRow("💬", "Corps", "La réponse principale. Varie selon le mode actif (${activeMode.label}).")
-                    MessagePartExplainRow("🔚", "Formule de fin", "La phrase de clôture. Commune à tous les modes.")
+                    MessagePartExplainRow("👋", stringResource(R.string.mb_explain_salutation_title), stringResource(R.string.mb_explain_salutation_desc))
+                    MessagePartExplainRow("💬", stringResource(R.string.mb_explain_body_title), stringResource(R.string.mb_explain_body_desc, activeMode.localizedLabel()))
+                    MessagePartExplainRow("🔚", stringResource(R.string.mb_explain_ending_title), stringResource(R.string.mb_explain_ending_desc))
                     Text(
-                        "Vous pouvez aussi créer vos propres formules en bas de chaque section.",
+                        stringResource(R.string.mb_intro_footer),
                         fontSize = 12.sp,
                         color = NeonGreen.copy(alpha = 0.8f),
                         lineHeight = 18.sp
@@ -180,7 +184,7 @@ fun MessageBuilderScreen(
                         .border(1.dp, NeonGreen.copy(alpha = 0.4f), RoundedCornerShape(16.dp))
                         .padding(16.dp)
                 ) {
-                    Text("Aperçu du message assemblé", fontSize = 12.sp, color = NeonGreen, fontWeight = FontWeight.SemiBold)
+                    Text(stringResource(R.string.mb_preview_label), fontSize = 12.sp, color = NeonGreen, fontWeight = FontWeight.SemiBold)
                     Spacer(modifier = Modifier.height(6.dp))
                     Text(
                         text = "\"$previewText\"",
@@ -196,7 +200,7 @@ fun MessageBuilderScreen(
             item {
                 PartSection(
                     part = MessagePart.SALUTATION,
-                    description = "La phrase d'ouverture lue en premier par Tu dégages. Sélectionnez celle qui correspond à votre style — une seule à la fois.",
+                    description = stringResource(R.string.mb_section_salutation_desc),
                     isExpanded = expandedSection == MessagePart.SALUTATION,
                     onToggleExpand = {
                         expandedSection = if (expandedSection == MessagePart.SALUTATION) null else MessagePart.SALUTATION
@@ -216,7 +220,7 @@ fun MessageBuilderScreen(
             item {
                 PartSection(
                     part = MessagePart.BODY,
-                    description = "Le cœur de la réponse, adapté au mode ${activeMode.emoji} ${activeMode.label}. C'est la phrase principale entendue par le démarcheur. Une seule à la fois.",
+                    description = stringResource(R.string.mb_section_body_desc, activeMode.emoji, activeMode.localizedLabel()),
                     isExpanded = expandedSection == MessagePart.BODY,
                     onToggleExpand = {
                         expandedSection = if (expandedSection == MessagePart.BODY) null else MessagePart.BODY
@@ -236,7 +240,7 @@ fun MessageBuilderScreen(
             item {
                 PartSection(
                     part = MessagePart.ENDING,
-                    description = "La formule de clôture prononcée juste avant de raccrocher. Une seule à la fois.",
+                    description = stringResource(R.string.mb_section_ending_desc),
                     isExpanded = expandedSection == MessagePart.ENDING,
                     onToggleExpand = {
                         expandedSection = if (expandedSection == MessagePart.ENDING) null else MessagePart.ENDING
@@ -297,7 +301,7 @@ private fun PartSection(
             Row(verticalAlignment = Alignment.CenterVertically) {
                 Text(part.emoji, fontSize = 20.sp)
                 Spacer(modifier = Modifier.width(12.dp))
-                Text(part.label, color = Color.White, fontWeight = FontWeight.SemiBold, fontSize = 15.sp)
+                Text(part.localizedLabel(), color = Color.White, fontWeight = FontWeight.SemiBold, fontSize = 15.sp)
             }
             Icon(
                 imageVector = if (isExpanded) Icons.Default.ExpandLess else Icons.Default.ExpandMore,
@@ -342,7 +346,7 @@ private fun PartItemRow(item: ReplyEntity, onSelect: () -> Unit, onDelete: () ->
         )
         if (item.isCustom) {
             IconButton(onClick = onDelete, modifier = Modifier.size(28.dp)) {
-                Icon(Icons.Default.Delete, contentDescription = "Supprimer", tint = TextSecondary, modifier = Modifier.size(14.dp))
+                Icon(Icons.Default.Delete, contentDescription = stringResource(R.string.cd_delete), tint = TextSecondary, modifier = Modifier.size(14.dp))
             }
         }
     }
@@ -360,7 +364,7 @@ private fun AddPartField(part: MessagePart, onAdd: (String) -> Unit) {
             value = text,
             onValueChange = { text = it },
             modifier = Modifier.weight(1f),
-            placeholder = { Text("Ajouter une ${part.label.lowercase()}…", color = TextSecondary, fontSize = 12.sp) },
+            placeholder = { Text(stringResource(R.string.mb_add_part_placeholder, part.localizedLabel().lowercase()), color = TextSecondary, fontSize = 12.sp) },
             colors = OutlinedTextFieldDefaults.colors(
                 focusedBorderColor = NeonGreen,
                 unfocusedBorderColor = CardBgAlt,
@@ -379,7 +383,7 @@ private fun AddPartField(part: MessagePart, onAdd: (String) -> Unit) {
             onClick = { if (text.isNotBlank()) { onAdd(text.trim()); text = "" } },
             modifier = Modifier.background(NeonGreen, RoundedCornerShape(12.dp)).size(52.dp)
         ) {
-            Icon(Icons.Default.Add, contentDescription = "Ajouter", tint = Color.Black)
+            Icon(Icons.Default.Add, contentDescription = stringResource(R.string.cd_add), tint = Color.Black)
         }
     }
 }

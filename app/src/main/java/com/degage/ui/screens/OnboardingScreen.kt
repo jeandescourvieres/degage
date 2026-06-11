@@ -20,11 +20,13 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.degage.R
 import com.degage.ui.theme.DegageTheme
 import com.degage.ui.theme.NeonGreen
 
@@ -57,7 +59,7 @@ private fun OnboardingFeaturesScreen(onNext: () -> Unit) {
 
             Column(horizontalAlignment = Alignment.CenterHorizontally) {
                 Text(
-                    text = "Comment ça marche ?",
+                    text = stringResource(R.string.onboarding_how_it_works),
                     fontSize = 26.sp,
                     fontWeight = FontWeight.Bold,
                     color = Color.White,
@@ -65,13 +67,13 @@ private fun OnboardingFeaturesScreen(onNext: () -> Unit) {
                 )
                 Spacer(modifier = Modifier.height(32.dp))
 
-                FeatureRow(emoji = "📞", title = "Détection automatique", desc = "Tu dégages reconnaît les numéros de démarcheurs connus et intercepte l'appel avant que votre téléphone sonne.")
+                FeatureRow(emoji = "📞", title = stringResource(R.string.onboarding_feature_detection_title), desc = stringResource(R.string.onboarding_feature_detection_desc))
                 Spacer(modifier = Modifier.height(16.dp))
-                FeatureRow(emoji = "🎙️", title = "Réponse vocale", desc = "Une voix synthétique répond au spammeur à votre place, puis raccroche. 4 tons disponibles : poli, administratif, sarcastique ou troll.")
+                FeatureRow(emoji = "🎙️", title = stringResource(R.string.onboarding_feature_voice_title), desc = stringResource(R.string.onboarding_feature_voice_desc))
                 Spacer(modifier = Modifier.height(16.dp))
-                FeatureRow(emoji = "📊", title = "Statistiques & Historique", desc = "Consultez le nombre d'appels bloqués, le temps économisé et l'historique détaillé de chaque interaction.")
+                FeatureRow(emoji = "📊", title = stringResource(R.string.onboarding_feature_stats_title), desc = stringResource(R.string.onboarding_feature_stats_desc))
                 Spacer(modifier = Modifier.height(16.dp))
-                FeatureRow(emoji = "✏️", title = "Totalement personnalisable", desc = "Créez vos propres messages, ajustez la voix, la vitesse et le ton. Tu dégages s'adapte à votre style.")
+                FeatureRow(emoji = "✏️", title = stringResource(R.string.onboarding_feature_custom_title), desc = stringResource(R.string.onboarding_feature_custom_desc))
             }
 
             Column(horizontalAlignment = Alignment.CenterHorizontally) {
@@ -83,7 +85,7 @@ private fun OnboardingFeaturesScreen(onNext: () -> Unit) {
                     shape = RoundedCornerShape(16.dp),
                     colors = ButtonDefaults.buttonColors(containerColor = NeonGreen)
                 ) {
-                    Text("Suivant", fontSize = 18.sp, fontWeight = FontWeight.Bold, color = Color.Black)
+                    Text(stringResource(R.string.onboarding_next_button), fontSize = 18.sp, fontWeight = FontWeight.Bold, color = Color.Black)
                 }
                 Spacer(modifier = Modifier.height(32.dp))
             }
@@ -143,7 +145,7 @@ private fun PermissionExplanationScreen(onAuthorize: () -> Unit) {
                 Spacer(modifier = Modifier.height(24.dp))
 
                 Text(
-                    text = "Une autorisation requise",
+                    text = stringResource(R.string.onboarding_permission_title),
                     fontSize = 24.sp,
                     fontWeight = FontWeight.Bold,
                     color = Color.White,
@@ -153,7 +155,7 @@ private fun PermissionExplanationScreen(onAuthorize: () -> Unit) {
                 Spacer(modifier = Modifier.height(24.dp))
 
                 Text(
-                    text = "Android va afficher une popup système intitulée :",
+                    text = stringResource(R.string.onboarding_permission_intro),
                     fontSize = 15.sp,
                     color = Color(0xFF8A8A8A),
                     textAlign = TextAlign.Center
@@ -168,7 +170,7 @@ private fun PermissionExplanationScreen(onAuthorize: () -> Unit) {
                         .padding(16.dp)
                 ) {
                     Text(
-                        text = "\"Définir comme appli par défaut pour l'affichage du numéro de l'appelant et du spam\"",
+                        text = stringResource(R.string.onboarding_permission_popup_text),
                         fontSize = 14.sp,
                         color = NeonGreen,
                         textAlign = TextAlign.Center,
@@ -179,7 +181,7 @@ private fun PermissionExplanationScreen(onAuthorize: () -> Unit) {
                 Spacer(modifier = Modifier.height(20.dp))
 
                 Text(
-                    text = "👉  Sélectionnez \"Tu dégages\" dans la liste\n\n👉  Puis appuyez sur \"Définir par défaut\"",
+                    text = stringResource(R.string.onboarding_permission_steps),
                     fontSize = 16.sp,
                     color = Color.White,
                     textAlign = TextAlign.Center,
@@ -189,7 +191,7 @@ private fun PermissionExplanationScreen(onAuthorize: () -> Unit) {
                 Spacer(modifier = Modifier.height(16.dp))
 
                 Text(
-                    text = "Sans cette autorisation, Tu dégages ne peut pas intercepter les appels des démarcheurs.",
+                    text = stringResource(R.string.onboarding_permission_warning),
                     fontSize = 13.sp,
                     color = Color(0xFF8A8A8A),
                     textAlign = TextAlign.Center,
@@ -207,7 +209,7 @@ private fun PermissionExplanationScreen(onAuthorize: () -> Unit) {
                     colors = ButtonDefaults.buttonColors(containerColor = NeonGreen)
                 ) {
                     Text(
-                        text = "Afficher la popup d'autorisation",
+                        text = stringResource(R.string.onboarding_permission_button),
                         fontSize = 16.sp,
                         fontWeight = FontWeight.Bold,
                         color = Color.Black
@@ -263,7 +265,7 @@ private fun OnboardingWelcomeScreen(onNext: () -> Unit) {
                 Spacer(modifier = Modifier.height(8.dp))
 
                 Text(
-                    text = "L'app qui envoie bouler\nles démarcheurs.",
+                    text = stringResource(R.string.onboarding_welcome_tagline),
                     fontSize = 18.sp,
                     color = NeonGreen,
                     textAlign = TextAlign.Center,
@@ -273,13 +275,13 @@ private fun OnboardingWelcomeScreen(onNext: () -> Unit) {
 
             Column(horizontalAlignment = Alignment.CenterHorizontally) {
                 Text(
-                    text = "Votre temps est ",
+                    text = stringResource(R.string.onboarding_your_time_is),
                     fontSize = 22.sp,
                     color = Color.White,
                     fontWeight = FontWeight.Medium
                 )
                 Text(
-                    text = "précieux.",
+                    text = stringResource(R.string.onboarding_precious),
                     fontSize = 22.sp,
                     color = NeonGreen,
                     fontWeight = FontWeight.Bold
@@ -296,7 +298,7 @@ private fun OnboardingWelcomeScreen(onNext: () -> Unit) {
                     colors = ButtonDefaults.buttonColors(containerColor = NeonGreen)
                 ) {
                     Text(
-                        text = "Commencer",
+                        text = stringResource(R.string.onboarding_start_button),
                         fontSize = 18.sp,
                         fontWeight = FontWeight.Bold,
                         color = Color.Black
@@ -306,7 +308,7 @@ private fun OnboardingWelcomeScreen(onNext: () -> Unit) {
                 Spacer(modifier = Modifier.height(16.dp))
 
                 Text(
-                    text = "✓ Fonctions essentielles incluses",
+                    text = stringResource(R.string.onboarding_essential_features),
                     color = Color(0xFF8A8A8A),
                     fontSize = 13.sp
                 )

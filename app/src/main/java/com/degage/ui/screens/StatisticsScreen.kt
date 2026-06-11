@@ -20,10 +20,12 @@ import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.StrokeCap
 import androidx.compose.ui.graphics.drawscope.Stroke
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.degage.R
 import com.degage.ui.theme.*
 
 @Composable
@@ -37,15 +39,15 @@ fun StatisticsScreen(
 ) {
     var showInfo by remember { mutableStateOf(false) }
     if (showInfo) InfoDialog(
-        title = "Statistiques",
-        content = "Votre bilan anti-spam :\n\n• Le graphique circulaire représente le temps économisé sur 24h.\n• Spammeurs bloqués : nombre total d'appels interceptés depuis l'installation.\n• Appels évités/jour : moyenne quotidienne sur les 7 derniers jours.\n• Durée moyenne évitée : temps moyen d'un appel de démarchage.",
+        title = stringResource(R.string.stats_info_title),
+        content = stringResource(R.string.stats_info_content),
         onDismiss = { showInfo = false }
     )
 
     val timeSavedLabel = run {
         val h = timeSavedMinutes / 60
         val m = timeSavedMinutes % 60
-        if (h > 0) "${h}h ${m.toString().padStart(2, '0')}" else "${m}min"
+        if (h > 0) stringResource(R.string.stats_time_saved_hours, h, m) else stringResource(R.string.stats_time_saved_minutes, m)
     }
 
     Column(
@@ -61,12 +63,12 @@ fun StatisticsScreen(
             verticalAlignment = Alignment.CenterVertically
         ) {
             IconButton(onClick = onBack) {
-                Icon(Icons.Default.ArrowBack, contentDescription = "Retour", tint = Color.White)
+                Icon(Icons.Default.ArrowBack, contentDescription = stringResource(R.string.cd_back), tint = Color.White)
             }
-            Text("Statistiques", fontSize = 20.sp, fontWeight = FontWeight.Bold, color = Color.White, modifier = Modifier.weight(1f))
-            Text("7 derniers jours", color = TextSecondary, fontSize = 13.sp)
+            Text(stringResource(R.string.stats_title), fontSize = 20.sp, fontWeight = FontWeight.Bold, color = Color.White, modifier = Modifier.weight(1f))
+            Text(stringResource(R.string.stats_period), color = TextSecondary, fontSize = 13.sp)
             IconButton(onClick = { showInfo = true }) {
-                Icon(Icons.Default.Info, contentDescription = "Aide", tint = NeonGreen, modifier = Modifier.size(26.dp))
+                Icon(Icons.Default.Info, contentDescription = stringResource(R.string.cd_help), tint = NeonGreen, modifier = Modifier.size(26.dp))
             }
         }
 
@@ -99,20 +101,20 @@ fun StatisticsScreen(
             }
             Column(horizontalAlignment = Alignment.CenterHorizontally) {
                 Text(timeSavedLabel, fontSize = 36.sp, fontWeight = FontWeight.Black, color = NeonGreen)
-                Text("Temps économisé", fontSize = 13.sp, color = TextSecondary)
+                Text(stringResource(R.string.stats_time_saved), fontSize = 13.sp, color = TextSecondary)
             }
         }
 
         Spacer(modifier = Modifier.height(32.dp))
 
         // Stat rows
-        StatRow(emoji = "🚫", value = totalBlocked.toString(), label = "Spammeurs bloqués")
+        StatRow(emoji = "🚫", value = totalBlocked.toString(), label = stringResource(R.string.stats_blocked_label))
         Spacer(modifier = Modifier.height(12.dp))
-        StatRow(emoji = "😊", value = todayCount.toString(), label = "Appels évités / jour (moy.)")
+        StatRow(emoji = "😊", value = todayCount.toString(), label = stringResource(R.string.stats_avg_avoided_label))
         Spacer(modifier = Modifier.height(12.dp))
-        StatRow(emoji = "👤", value = "4,8 min", label = "Durée moyenne évitée")
+        StatRow(emoji = "👤", value = stringResource(R.string.stats_avg_duration_value), label = stringResource(R.string.stats_avg_duration_label))
         Spacer(modifier = Modifier.height(12.dp))
-        StatRow(emoji = "🛡️", value = spamDbCount.toString(), label = "Numéros mémorisés (rejet auto)")
+        StatRow(emoji = "🛡️", value = spamDbCount.toString(), label = stringResource(R.string.stats_memorized_label))
         Spacer(modifier = Modifier.height(12.dp))
         SpamDbInfoRow(lastSpamSync = lastSpamSync)
         Spacer(modifier = Modifier.height(12.dp))
@@ -139,13 +141,13 @@ fun StatRow(emoji: String, value: String, label: String) {
 
 @Composable
 private fun SpamDbInfoRow(lastSpamSync: Long) {
-    val syncLabel = if (lastSpamSync == 0L) "Jamais synchronisée" else {
+    val syncLabel = if (lastSpamSync == 0L) stringResource(R.string.stats_sync_never) else {
         val diff = System.currentTimeMillis() - lastSpamSync
         when {
-            diff < 60_000 -> "À l'instant"
-            diff < 3_600_000 -> "Il y a ${diff / 60_000} min"
-            diff < 86_400_000 -> "Il y a ${diff / 3_600_000} h"
-            else -> "Il y a ${diff / 86_400_000} j"
+            diff < 60_000 -> stringResource(R.string.stats_sync_now)
+            diff < 3_600_000 -> stringResource(R.string.stats_sync_minutes, diff / 60_000)
+            diff < 86_400_000 -> stringResource(R.string.stats_sync_hours, diff / 3_600_000)
+            else -> stringResource(R.string.stats_sync_days, diff / 86_400_000)
         }
     }
 
@@ -157,12 +159,12 @@ private fun SpamDbInfoRow(lastSpamSync: Long) {
             .padding(horizontal = 16.dp, vertical = 14.dp),
         verticalArrangement = Arrangement.spacedBy(10.dp)
     ) {
-        Text("Sources intégrées", fontSize = 13.sp, fontWeight = FontWeight.Bold, color = NeonGreen)
+        Text(stringResource(R.string.stats_sources_title), fontSize = 13.sp, fontWeight = FontWeight.Bold, color = NeonGreen)
 
-        SpamSourceRow("📋", "Plages ARCEP documentées", "52 préfixes FR actifs en permanence", alwaysActive = true)
-        SpamSourceRow("🌍", "phoneblock.net", "Base communautaire européenne open source")
-        SpamSourceRow("🇫🇷", "Signal-Spam France", "Association certifiée anti-spam française")
-        SpamSourceRow("👤", "Vos signalements", "Chaque numéro bloqué par vous est mémorisé")
+        SpamSourceRow("📋", stringResource(R.string.stats_source_arcep_name), stringResource(R.string.stats_source_arcep_desc), alwaysActive = true)
+        SpamSourceRow("🌍", stringResource(R.string.stats_source_phoneblock_name), stringResource(R.string.stats_source_phoneblock_desc))
+        SpamSourceRow("🇫🇷", stringResource(R.string.stats_source_signalspam_name), stringResource(R.string.stats_source_signalspam_desc))
+        SpamSourceRow("👤", stringResource(R.string.stats_source_user_name), stringResource(R.string.stats_source_user_desc))
 
         HorizontalDivider(color = NeonGreen.copy(alpha = 0.15f), thickness = 1.dp)
 
@@ -171,11 +173,11 @@ private fun SpamDbInfoRow(lastSpamSync: Long) {
             horizontalArrangement = Arrangement.SpaceBetween,
             verticalAlignment = Alignment.CenterVertically
         ) {
-            Text("Dernière synchronisation", fontSize = 12.sp, color = TextSecondary)
+            Text(stringResource(R.string.stats_last_sync_label), fontSize = 12.sp, color = TextSecondary)
             Text(syncLabel, fontSize = 12.sp, color = Color.White, fontWeight = FontWeight.SemiBold)
         }
         Text(
-            "Mise à jour disponible dans Paramètres → Mettre à jour la base spam",
+            stringResource(R.string.stats_sync_update_hint),
             fontSize = 11.sp,
             color = TextSecondary.copy(alpha = 0.7f),
             lineHeight = 16.sp
@@ -195,7 +197,7 @@ private fun SpamSourceRow(emoji: String, name: String, desc: String, alwaysActiv
             Text(desc, fontSize = 11.sp, color = TextSecondary, lineHeight = 15.sp)
         }
         if (alwaysActive) {
-            Text("ACTIF", fontSize = 9.sp, color = NeonGreen, fontWeight = FontWeight.Bold,
+            Text(stringResource(R.string.stats_source_active), fontSize = 9.sp, color = NeonGreen, fontWeight = FontWeight.Bold,
                 modifier = Modifier
                     .background(NeonGreen.copy(alpha = 0.15f), RoundedCornerShape(4.dp))
                     .padding(horizontal = 6.dp, vertical = 2.dp))
@@ -215,16 +217,14 @@ private fun LegalNoteCard() {
     ) {
         Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(8.dp)) {
             Text("⚖️", fontSize = 16.sp)
-            Text("Pourquoi on ne partage pas vos données ?", fontSize = 13.sp, fontWeight = FontWeight.Bold, color = Color.White)
+            Text(stringResource(R.string.stats_legal_title), fontSize = 13.sp, fontWeight = FontWeight.Bold, color = Color.White)
         }
         Text(
-            "Un numéro de téléphone est une donnée personnelle protégée par le RGPD. " +
-            "Transmettre votre liste de numéros bloqués à un tiers — même pour aider d'autres utilisateurs — est interdit sans consentement explicite.",
+            stringResource(R.string.stats_legal_p1),
             fontSize = 12.sp, color = TextSecondary, lineHeight = 18.sp
         )
         Text(
-            "C'est pourquoi Tu dégages stocke tout localement sur votre appareil et ne consulte que des sources publiques officielles (ARCEP, Signal-Spam). " +
-            "Vos données ne quittent jamais votre téléphone.",
+            stringResource(R.string.stats_legal_p2),
             fontSize = 12.sp, color = TextSecondary, lineHeight = 18.sp
         )
         Row(
@@ -236,7 +236,7 @@ private fun LegalNoteCard() {
         ) {
             Text("💡", fontSize = 12.sp)
             Text(
-                "Pour signaler un numéro à la communauté nationale : signal-spam.fr",
+                stringResource(R.string.stats_legal_tip),
                 fontSize = 11.sp, color = NeonGreen, lineHeight = 16.sp
             )
         }

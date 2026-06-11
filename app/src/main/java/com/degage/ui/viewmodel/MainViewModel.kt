@@ -97,6 +97,14 @@ class MainViewModel(app: Application) : AndroidViewModel(app) {
     val replyLanguage: StateFlow<String> = prefs.replyLanguage
         .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5000), "FR")
 
+    val appLanguage: StateFlow<String> = prefs.appLanguage
+        .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5000), "")
+
+    fun setAppLanguage(value: String) = viewModelScope.launch {
+        prefs.setAppLanguage(value)
+        com.degage.locale.LocaleHelper.applyLanguage(value)
+    }
+
     val customBlocks: StateFlow<List<CustomBlockEntity>> = db.customBlockDao().getAll()
         .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5000), emptyList())
 

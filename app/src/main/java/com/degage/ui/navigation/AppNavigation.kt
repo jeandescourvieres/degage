@@ -1,5 +1,6 @@
 package com.degage.ui.navigation
 
+import androidx.annotation.StringRes
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.BarChart
 import androidx.compose.material.icons.filled.History
@@ -7,6 +8,7 @@ import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.Settings
 import androidx.compose.material.icons.filled.Tune
 import androidx.compose.ui.graphics.vector.ImageVector
+import com.degage.R
 
 sealed class Screen(val route: String) {
     data object Onboarding : Screen("onboarding")
@@ -29,14 +31,14 @@ sealed class Screen(val route: String) {
 
 data class BottomNavItem(
     val screen: Screen,
-    val label: String,
+    @StringRes val labelRes: Int,
     val icon: ImageVector
 )
 
 val bottomNavItems = listOf(
-    BottomNavItem(Screen.Home, "Accueil", Icons.Default.Home),
-    BottomNavItem(Screen.Modes, "Modes", Icons.Default.Tune),
-    BottomNavItem(Screen.Statistics, "Statistiques", Icons.Default.BarChart),
-    BottomNavItem(Screen.History, "Historique", Icons.Default.History),
-    BottomNavItem(Screen.Settings, "Paramètres", Icons.Default.Settings),
+    BottomNavItem(Screen.Home, R.string.nav_home, Icons.Default.Home),
+    BottomNavItem(Screen.Modes, R.string.nav_modes, Icons.Default.Tune),
+    BottomNavItem(Screen.Statistics, R.string.nav_statistics, Icons.Default.BarChart),
+    BottomNavItem(Screen.History, R.string.nav_history, Icons.Default.History),
+    BottomNavItem(Screen.Settings, R.string.nav_settings, Icons.Default.Settings),
 )

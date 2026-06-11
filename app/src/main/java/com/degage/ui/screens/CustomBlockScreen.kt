@@ -15,11 +15,13 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.degage.R
 import com.degage.database.entities.CustomBlockEntity
 import com.degage.ui.components.InfoDialog
 import com.degage.ui.theme.*
@@ -36,11 +38,8 @@ fun CustomBlockScreen(
     var isPrefix by remember { mutableStateOf(false) }
 
     if (showInfo) InfoDialog(
-        title = "Numéros bloqués manuellement",
-        content = "Ajoutez vos propres règles de blocage, en plus de la base spam automatique :\n\n" +
-            "• Numéro exact : bloque uniquement ce numéro précis (ex. 0612345678).\n" +
-            "• Préfixe : bloque tous les numéros commençant par cette suite de chiffres (ex. 0033612 bloque tous les numéros commençant ainsi).\n\n" +
-            "Tout appel correspondant à une règle est rejeté immédiatement, sans message vocal.",
+        title = stringResource(R.string.custom_block_info_title),
+        content = stringResource(R.string.custom_block_info_content),
         onDismiss = { showInfo = false }
     )
 
@@ -55,11 +54,11 @@ fun CustomBlockScreen(
             verticalAlignment = Alignment.CenterVertically
         ) {
             IconButton(onClick = onBack) {
-                Icon(Icons.Default.ArrowBack, contentDescription = "Retour", tint = Color.White)
+                Icon(Icons.Default.ArrowBack, contentDescription = stringResource(R.string.cd_back), tint = Color.White)
             }
-            Text("Numéros bloqués manuellement", fontSize = 18.sp, fontWeight = FontWeight.Bold, color = Color.White, modifier = Modifier.weight(1f))
+            Text(stringResource(R.string.custom_block_title), fontSize = 18.sp, fontWeight = FontWeight.Bold, color = Color.White, modifier = Modifier.weight(1f))
             IconButton(onClick = { showInfo = true }) {
-                Icon(Icons.Default.Info, contentDescription = "Aide", tint = NeonGreen, modifier = Modifier.size(26.dp))
+                Icon(Icons.Default.Info, contentDescription = stringResource(R.string.cd_help), tint = NeonGreen, modifier = Modifier.size(26.dp))
             }
         }
         Spacer(modifier = Modifier.height(12.dp))
@@ -71,12 +70,12 @@ fun CustomBlockScreen(
                 .background(CardBg, RoundedCornerShape(14.dp))
                 .padding(16.dp)
         ) {
-            Text("Ajouter une règle", color = Color.White, fontSize = 15.sp, fontWeight = FontWeight.SemiBold)
+            Text(stringResource(R.string.custom_block_add_rule), color = Color.White, fontSize = 15.sp, fontWeight = FontWeight.SemiBold)
             Spacer(modifier = Modifier.height(10.dp))
             OutlinedTextField(
                 value = input,
                 onValueChange = { input = it },
-                placeholder = { Text(if (isPrefix) "Ex. 0033612" else "Ex. 0612345678") },
+                placeholder = { Text(if (isPrefix) stringResource(R.string.custom_block_placeholder_prefix) else stringResource(R.string.custom_block_placeholder_exact)) },
                 singleLine = true,
                 keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Phone),
                 modifier = Modifier.fillMaxWidth(),
@@ -90,7 +89,7 @@ fun CustomBlockScreen(
             )
             Spacer(modifier = Modifier.height(10.dp))
             Row(verticalAlignment = Alignment.CenterVertically) {
-                Text("Bloquer comme préfixe", color = TextSecondary, fontSize = 13.sp, modifier = Modifier.weight(1f))
+                Text(stringResource(R.string.custom_block_toggle_prefix), color = TextSecondary, fontSize = 13.sp, modifier = Modifier.weight(1f))
                 Switch(
                     checked = isPrefix,
                     onCheckedChange = { isPrefix = it },
@@ -114,7 +113,7 @@ fun CustomBlockScreen(
                 modifier = Modifier.fillMaxWidth(),
                 colors = ButtonDefaults.buttonColors(containerColor = NeonGreen, contentColor = Color.Black)
             ) {
-                Text("Ajouter", fontWeight = FontWeight.SemiBold)
+                Text(stringResource(R.string.custom_block_add_button), fontWeight = FontWeight.SemiBold)
             }
         }
 
@@ -122,7 +121,7 @@ fun CustomBlockScreen(
 
         if (blocks.isEmpty()) {
             Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
-                Text("Aucune règle personnalisée", color = TextSecondary)
+                Text(stringResource(R.string.custom_block_empty), color = TextSecondary)
             }
         } else {
             LazyColumn(verticalArrangement = Arrangement.spacedBy(10.dp)) {
@@ -147,13 +146,13 @@ fun CustomBlockRow(block: CustomBlockEntity, onDelete: () -> Unit) {
         Column(modifier = Modifier.weight(1f)) {
             Text(block.value, fontWeight = FontWeight.SemiBold, color = Color.White, fontSize = 15.sp)
             Text(
-                if (block.isPrefix) "Préfixe — bloque tous les numéros commençant ainsi" else "Numéro exact",
+                if (block.isPrefix) stringResource(R.string.custom_block_prefix_label) else stringResource(R.string.custom_block_exact_label),
                 color = NeonGreen,
                 fontSize = 12.sp
             )
         }
         IconButton(onClick = onDelete) {
-            Icon(Icons.Default.Delete, contentDescription = "Supprimer", tint = TextSecondary, modifier = Modifier.size(18.dp))
+            Icon(Icons.Default.Delete, contentDescription = stringResource(R.string.cd_delete), tint = TextSecondary, modifier = Modifier.size(18.dp))
         }
     }
 }

@@ -16,10 +16,12 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.degage.R
 import com.degage.ui.theme.*
 import kotlin.math.roundToInt
 
@@ -50,9 +52,9 @@ fun VoiceSettingsScreen(
             verticalAlignment = Alignment.CenterVertically
         ) {
             IconButton(onClick = onBack) {
-                Icon(Icons.Default.ArrowBack, contentDescription = "Retour", tint = Color.White)
+                Icon(Icons.Default.ArrowBack, contentDescription = stringResource(R.string.cd_back), tint = Color.White)
             }
-            Text("Paramètres vocaux", fontSize = 20.sp, fontWeight = FontWeight.Bold, color = Color.White)
+            Text(stringResource(R.string.voice_title), fontSize = 20.sp, fontWeight = FontWeight.Bold, color = Color.White)
         }
 
         LazyColumn(
@@ -62,7 +64,7 @@ fun VoiceSettingsScreen(
             // Sliders vitesse + pitch
             item {
                 VoiceSliderCard(
-                    label = "Vitesse de lecture",
+                    label = stringResource(R.string.voice_rate_label),
                     value = localRate,
                     range = 0.5f..2.0f,
                     displayValue = "${(localRate * 100).roundToInt()}%",
@@ -74,7 +76,7 @@ fun VoiceSettingsScreen(
             }
             item {
                 VoiceSliderCard(
-                    label = "Hauteur de voix (pitch)",
+                    label = stringResource(R.string.voice_pitch_label),
                     value = localPitch,
                     range = 0.5f..2.0f,
                     displayValue = "${(localPitch * 100).roundToInt()}%",
@@ -95,17 +97,17 @@ fun VoiceSettingsScreen(
                 ) {
                     Icon(Icons.Default.VolumeUp, contentDescription = null, tint = Color.Black)
                     Spacer(modifier = Modifier.width(8.dp))
-                    Text("Tester la voix", color = Color.Black, fontWeight = FontWeight.Bold)
+                    Text(stringResource(R.string.voice_test_button), color = Color.Black, fontWeight = FontWeight.Bold)
                 }
             }
 
             // Liste des voix disponibles
             item {
-                Text("Voix disponibles", fontSize = 15.sp, fontWeight = FontWeight.SemiBold, color = Color.White)
+                Text(stringResource(R.string.voice_available_title), fontSize = 15.sp, fontWeight = FontWeight.SemiBold, color = Color.White)
                 if (voices.isEmpty()) {
                     Spacer(modifier = Modifier.height(8.dp))
                     Text(
-                        "Aucune voix française trouvée.\nVérifiez vos paramètres TTS Android.",
+                        stringResource(R.string.voice_none_found),
                         color = TextSecondary, fontSize = 13.sp, lineHeight = 20.sp
                     )
                 }
@@ -165,9 +167,9 @@ private fun VoiceSliderCard(
             modifier = Modifier.fillMaxWidth(),
             horizontalArrangement = Arrangement.SpaceBetween
         ) {
-            Text("Lent", color = TextSecondary, fontSize = 11.sp)
-            Text("Normal", color = TextSecondary, fontSize = 11.sp)
-            Text("Rapide", color = TextSecondary, fontSize = 11.sp)
+            Text(stringResource(R.string.voice_speed_slow), color = TextSecondary, fontSize = 11.sp)
+            Text(stringResource(R.string.voice_speed_normal), color = TextSecondary, fontSize = 11.sp)
+            Text(stringResource(R.string.voice_speed_fast), color = TextSecondary, fontSize = 11.sp)
         }
     }
 }

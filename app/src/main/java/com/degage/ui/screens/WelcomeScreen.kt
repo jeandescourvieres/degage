@@ -12,10 +12,12 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.degage.R
 import com.degage.ui.theme.*
 
 @Composable
@@ -37,13 +39,13 @@ fun WelcomeScreen(
         ) {
             if (onBack != null) {
                 IconButton(onClick = onBack) {
-                    Icon(Icons.Default.ArrowBack, contentDescription = "Retour", tint = Color.White)
+                    Icon(Icons.Default.ArrowBack, contentDescription = stringResource(R.string.cd_back), tint = Color.White)
                 }
             } else {
                 Spacer(modifier = Modifier.width(48.dp))
             }
             Text(
-                text = "Bienvenue sur Tu dégages",
+                text = stringResource(R.string.welcome_title),
                 fontSize = 20.sp,
                 fontWeight = FontWeight.Bold,
                 color = Color.White,
@@ -71,7 +73,7 @@ fun WelcomeScreen(
                     Text("🤖", fontSize = 48.sp)
                     Spacer(modifier = Modifier.height(12.dp))
                     Text(
-                        text = "Les spammeurs adorent\nvous appeler ?",
+                        text = stringResource(R.string.welcome_hero_title),
                         fontSize = 20.sp,
                         fontWeight = FontWeight.Bold,
                         color = Color.White,
@@ -79,7 +81,7 @@ fun WelcomeScreen(
                         lineHeight = 28.sp
                     )
                     Text(
-                        text = "Votre IA va adorer\nleur répondre !",
+                        text = stringResource(R.string.welcome_hero_subtitle),
                         fontSize = 22.sp,
                         fontWeight = FontWeight.Black,
                         color = NeonGreen,
@@ -88,7 +90,7 @@ fun WelcomeScreen(
                     )
                     Spacer(modifier = Modifier.height(12.dp))
                     Text(
-                        text = "Ne vous contentez plus de raccrocher. Faites répondre votre IA personnelle avec l'humour de votre choix.",
+                        text = stringResource(R.string.welcome_hero_desc),
                         fontSize = 14.sp,
                         color = TextSecondary,
                         textAlign = TextAlign.Center,
@@ -99,32 +101,32 @@ fun WelcomeScreen(
 
             item {
                 WelcomeSection(
-                    "🤖 Blocage intelligent avec réponse IA",
-                    "Tu dégages filtre les appels indésirables et les redirige vers votre assistant vocal IA personnalisé — avant de mettre fin à la conversation. Le démarcheur parle à votre IA, pas à vous."
+                    stringResource(R.string.welcome_section1_title),
+                    stringResource(R.string.welcome_section1_body)
                 )
             }
             item {
                 WelcomeSection(
-                    "🎭 Pas comme les autres applis",
-                    "Les applications classiques bloquent les appels. La nôtre permet à votre IA de répondre avec le ton que vous choisissez — Poli, Administratif, Sarcastique ou Troll — avant de raccrocher."
+                    stringResource(R.string.welcome_section2_title),
+                    stringResource(R.string.welcome_section2_body)
                 )
             }
             item {
                 WelcomeSection(
-                    "💬 Votre IA, votre voix",
-                    "Composez vos propres formules, choisissez le ton, réglez la voix. Votre IA vous ressemble. Les spammeurs méritent une réponse à la hauteur."
+                    stringResource(R.string.welcome_section3_title),
+                    stringResource(R.string.welcome_section3_body)
                 )
             }
             item {
                 WelcomeSection(
-                    "📊 Chaque bataille comptée",
-                    "Historique complet, temps économisé, numéros mémorisés pour rejet immédiat. Vous saurez exactement combien de fois votre IA a gagné."
+                    stringResource(R.string.welcome_section4_title),
+                    stringResource(R.string.welcome_section4_body)
                 )
             }
             item {
                 WelcomeSection(
-                    "🇫🇷🇨🇭 Adapté à la France et à la Suisse",
-                    "Choisissez votre pays dans Paramètres : la base de numéros indésirables s'adapte automatiquement (préfixes ARCEP en France, numéros à valeur ajoutée et numéros d'entreprise OFCOM en Suisse)."
+                    stringResource(R.string.welcome_section5_title),
+                    stringResource(R.string.welcome_section5_body)
                 )
             }
 
@@ -137,14 +139,14 @@ fun WelcomeScreen(
                         .padding(16.dp)
                 ) {
                     Text(
-                        text = "💡 Bon à savoir",
+                        text = stringResource(R.string.welcome_tip_title),
                         fontSize = 13.sp,
                         fontWeight = FontWeight.Bold,
                         color = NeonGreen
                     )
                     Spacer(modifier = Modifier.height(6.dp))
                     Text(
-                        text = "Vous pouvez revoir cette présentation à tout moment depuis Paramètres → Revoir la présentation.",
+                        text = stringResource(R.string.welcome_tip_body),
                         fontSize = 14.sp,
                         color = Color.White,
                         lineHeight = 21.sp
@@ -171,7 +173,7 @@ fun WelcomeScreen(
                 colors = ButtonDefaults.buttonColors(containerColor = NeonGreen)
             ) {
                 Text(
-                    text = "J'ai compris, ne plus afficher",
+                    text = stringResource(R.string.welcome_dismiss_button),
                     fontSize = 16.sp,
                     fontWeight = FontWeight.Bold,
                     color = Color.Black

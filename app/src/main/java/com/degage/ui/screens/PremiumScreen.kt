@@ -13,22 +13,14 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringArrayResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.degage.R
 import com.degage.ui.theme.*
-
-private val premiumFeatures = listOf(
-    "🎭 Les modes Administratif, Sarcastique et Troll",
-    "💬 Personnalisation complète des messages (constructeur, phrases perso)",
-    "🎙️ Paramètres vocaux (voix, vitesse, hauteur)",
-    "🌍 Base communautaire (synchronisation et contribution)",
-    "🚫 Blocage manuel de numéros et préfixes",
-    "⬇️ Export CSV de l'historique",
-    "🇨🇭 Mode Suisse (numéros OFCOM)",
-    "🇩🇪🇮🇹 Réponses vocales en allemand et en italien",
-)
 
 @Composable
 fun PremiumScreen(
@@ -36,6 +28,7 @@ fun PremiumScreen(
     onBack: () -> Unit = {},
     onToggleDevPremium: (Boolean) -> Unit = {},
 ) {
+    val premiumFeatures = stringArrayResource(R.array.premium_features)
     LazyColumn(
         modifier = Modifier
             .fillMaxSize()
@@ -49,9 +42,9 @@ fun PremiumScreen(
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 IconButton(onClick = onBack) {
-                    Icon(Icons.Default.ArrowBack, contentDescription = "Retour", tint = Color.White)
+                    Icon(Icons.Default.ArrowBack, contentDescription = stringResource(R.string.cd_back), tint = Color.White)
                 }
-                Text("Tu dégages Premium", fontSize = 20.sp, fontWeight = FontWeight.Bold, color = Color.White)
+                Text(stringResource(R.string.premium_title), fontSize = 20.sp, fontWeight = FontWeight.Bold, color = Color.White)
             }
             Spacer(modifier = Modifier.height(4.dp))
         }
@@ -65,10 +58,10 @@ fun PremiumScreen(
             ) {
                 Text("⭐", fontSize = 32.sp)
                 Spacer(modifier = Modifier.height(8.dp))
-                Text("Allez plus loin avec Premium", color = Color.White, fontSize = 18.sp, fontWeight = FontWeight.Bold)
+                Text(stringResource(R.string.premium_hero_title), color = Color.White, fontSize = 18.sp, fontWeight = FontWeight.Bold)
                 Spacer(modifier = Modifier.height(4.dp))
                 Text(
-                    "La protection de base reste gratuite, pour toujours. Premium ajoute la personnalisation et le confort.",
+                    stringResource(R.string.premium_hero_subtitle),
                     color = TextSecondary,
                     fontSize = 13.sp,
                     lineHeight = 19.sp
@@ -93,8 +86,8 @@ fun PremiumScreen(
         item {
             Spacer(modifier = Modifier.height(8.dp))
             Row(horizontalArrangement = Arrangement.spacedBy(12.dp)) {
-                PriceCard(modifier = Modifier.weight(1f), price = "1 €", period = "/ mois")
-                PriceCard(modifier = Modifier.weight(1f), price = "10 €", period = "/ an", highlight = true)
+                PriceCard(modifier = Modifier.weight(1f), price = stringResource(R.string.premium_price_monthly), period = stringResource(R.string.premium_price_monthly_period))
+                PriceCard(modifier = Modifier.weight(1f), price = stringResource(R.string.premium_price_yearly), period = stringResource(R.string.premium_price_yearly_period), highlight = true)
             }
         }
 
@@ -106,11 +99,11 @@ fun PremiumScreen(
                 shape = RoundedCornerShape(14.dp),
                 colors = ButtonDefaults.buttonColors(containerColor = NeonGreen, disabledContainerColor = CardBgAlt)
             ) {
-                Text("Bientôt disponible", color = TextSecondary, fontWeight = FontWeight.Bold)
+                Text(stringResource(R.string.premium_coming_soon), color = TextSecondary, fontWeight = FontWeight.Bold)
             }
             Spacer(modifier = Modifier.height(4.dp))
             Text(
-                "L'abonnement sera disponible au lancement sur le Google Play Store.",
+                stringResource(R.string.premium_coming_soon_detail),
                 color = TextSecondary,
                 fontSize = 11.sp,
                 modifier = Modifier.fillMaxWidth(),
@@ -131,9 +124,9 @@ fun PremiumScreen(
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 Column(modifier = Modifier.weight(1f)) {
-                    Text("🛠️ Mode développeur", color = Color.White, fontSize = 14.sp, fontWeight = FontWeight.SemiBold)
+                    Text(stringResource(R.string.premium_dev_mode_title), color = Color.White, fontSize = 14.sp, fontWeight = FontWeight.SemiBold)
                     Text(
-                        "Active Premium localement pour tester les fonctionnalités, en attendant l'abonnement réel.",
+                        stringResource(R.string.premium_dev_mode_desc),
                         color = TextSecondary,
                         fontSize = 11.sp,
                         lineHeight = 16.sp
@@ -166,7 +159,7 @@ private fun PriceCard(modifier: Modifier = Modifier, price: String, period: Stri
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         if (highlight) {
-            Text("MEILLEUR PRIX", color = NeonGreen, fontSize = 10.sp, fontWeight = FontWeight.Bold)
+            Text(stringResource(R.string.premium_best_price), color = NeonGreen, fontSize = 10.sp, fontWeight = FontWeight.Bold)
             Spacer(modifier = Modifier.height(4.dp))
         }
         Text(price, color = Color.White, fontSize = 24.sp, fontWeight = FontWeight.Black)

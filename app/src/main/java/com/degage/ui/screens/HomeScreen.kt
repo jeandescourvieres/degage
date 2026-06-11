@@ -17,6 +17,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.font.FontWeight
@@ -25,6 +26,7 @@ import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.degage.R
 import com.degage.database.entities.BlockedCallEntity
 import com.degage.ui.components.InfoDialog
 import com.degage.ui.components.StatCard
@@ -44,15 +46,13 @@ fun HomeScreen(
     onNavigateSettings: () -> Unit,
     onNavigateHistory: () -> Unit,
 ) {
-    val timeSavedLabel = remember(timeSavedMinutes) {
-        val h = timeSavedMinutes / 60
-        val m = timeSavedMinutes % 60
-        if (h > 0) "${h}h ${m.toString().padStart(2, '0')}" else "${m}min"
-    }
+    val h = timeSavedMinutes / 60
+    val m = timeSavedMinutes % 60
+    val timeSavedLabel = if (h > 0) stringResource(R.string.stats_time_saved_hours, h, m) else stringResource(R.string.stats_time_saved_minutes, m)
     var showInfo by remember { mutableStateOf(false) }
     if (showInfo) InfoDialog(
-        title = "Écran d'accueil",
-        content = "Tu dégages protège votre téléphone contre les appels de démarchage.\n\n• Le bouton ON/OFF active ou désactive la protection.\n• Les compteurs affichent vos statistiques de blocage.\n• La liste en bas montre les derniers appels bloqués.",
+        title = stringResource(R.string.home_info_title),
+        content = stringResource(R.string.home_info_content),
         onDismiss = { showInfo = false }
     )
 
@@ -75,13 +75,13 @@ fun HomeScreen(
             ) {
                 Column {
                     Text(
-                        text = "Tu dégages !",
+                        text = stringResource(R.string.home_title),
                         fontSize = 26.sp,
                         fontWeight = FontWeight.Black,
                         color = Color.White
                     )
                     Text(
-                        text = "L'IA qui répond à vos spammeurs",
+                        text = stringResource(R.string.home_subtitle),
                         fontSize = 11.sp,
                         color = NeonGreen,
                         fontWeight = FontWeight.SemiBold
@@ -89,10 +89,10 @@ fun HomeScreen(
                 }
                 Row {
                     IconButton(onClick = { showInfo = true }) {
-                        Icon(Icons.Default.Info, contentDescription = "Aide", tint = NeonGreen, modifier = Modifier.size(24.dp))
+                        Icon(Icons.Default.Info, contentDescription = stringResource(R.string.cd_help), tint = NeonGreen, modifier = Modifier.size(24.dp))
                     }
                     IconButton(onClick = onNavigateSettings) {
-                        Icon(Icons.Default.Settings, contentDescription = "Paramètres", tint = TextSecondary)
+                        Icon(Icons.Default.Settings, contentDescription = stringResource(R.string.settings_title), tint = TextSecondary)
                     }
                 }
             }
@@ -117,9 +117,9 @@ fun HomeScreen(
                     Spacer(modifier = Modifier.height(10.dp))
                     Text(
                         buildAnnotatedString {
-                            append("Les spammeurs adorent vous appeler ?\n")
+                            append(stringResource(R.string.home_hero_line1))
                             withStyle(SpanStyle(color = NeonGreen, fontWeight = FontWeight.Black)) {
-                                append("Votre IA va adorer leur répondre !")
+                                append(stringResource(R.string.home_hero_line2))
                             }
                         },
                         fontSize = 16.sp,
@@ -133,14 +133,14 @@ fun HomeScreen(
                         modifier = Modifier.fillMaxWidth(),
                         horizontalArrangement = Arrangement.Center
                     ) {
-                        IntroBadge("❌ Les autres bloquent")
+                        IntroBadge(stringResource(R.string.home_badge_others_block))
                         Spacer(modifier = Modifier.width(8.dp))
-                        IntroBadge("✅ Nous, on répond")
+                        IntroBadge(stringResource(R.string.home_badge_we_reply))
                     }
                     Spacer(modifier = Modifier.height(8.dp))
-                    IntroBadge("📡 Fonctionne même hors ligne")
+                    IntroBadge(stringResource(R.string.home_badge_offline))
                     Spacer(modifier = Modifier.height(8.dp))
-                    IntroBadge("🇫🇷🇨🇭 Adapté France & Suisse")
+                    IntroBadge(stringResource(R.string.home_badge_countries))
                 }
             }
         }
@@ -165,7 +165,7 @@ fun HomeScreen(
                 Text(if (isEnabled) "🛡️" else "😴", fontSize = 52.sp)
                 Spacer(modifier = Modifier.height(8.dp))
                 Text(
-                    text = if (isEnabled) "PROTECTION ACTIVE" else "PROTECTION INACTIVE",
+                    text = if (isEnabled) stringResource(R.string.home_status_active) else stringResource(R.string.home_status_inactive),
                     fontSize = 18.sp,
                     fontWeight = FontWeight.Black,
                     color = if (isEnabled) NeonGreen else TextSecondary,
@@ -174,9 +174,9 @@ fun HomeScreen(
                 Spacer(modifier = Modifier.height(4.dp))
                 Text(
                     text = if (isEnabled)
-                        "Votre IA répond à votre place.\nLes spammeurs ne passent plus."
+                        stringResource(R.string.home_status_active_desc)
                     else
-                        "Activez la protection pour démarrer.",
+                        stringResource(R.string.home_status_inactive_desc),
                     fontSize = 13.sp,
                     color = TextSecondary,
                     textAlign = TextAlign.Center,
@@ -204,7 +204,7 @@ fun HomeScreen(
                     ) {
                         Text("🎭", fontSize = 13.sp)
                         Text(
-                            "Mode : $activeMode",
+                            stringResource(R.string.home_mode_label, activeMode),
                             color = NeonGreen,
                             fontSize = 12.sp,
                             fontWeight = FontWeight.Bold
@@ -222,13 +222,13 @@ fun HomeScreen(
             ) {
                 BigStatCard(
                     value = totalBlocked.toString(),
-                    label = "Spammeurs bloqués",
+                    label = stringResource(R.string.home_stat_blocked),
                     emoji = "🛡️",
                     modifier = Modifier.weight(1f)
                 )
                 BigStatCard(
                     value = timeSavedLabel,
-                    label = "Temps récupéré",
+                    label = stringResource(R.string.home_stat_time_saved),
                     emoji = "⏰",
                     modifier = Modifier.weight(1f)
                 )
@@ -242,9 +242,9 @@ fun HomeScreen(
                 horizontalArrangement = Arrangement.SpaceBetween,
                 verticalAlignment = Alignment.CenterVertically
             ) {
-                Text("Derniers appels bloqués", fontWeight = FontWeight.SemiBold, color = Color.White, fontSize = 14.sp)
+                Text(stringResource(R.string.home_recent_calls_title), fontWeight = FontWeight.SemiBold, color = Color.White, fontSize = 14.sp)
                 Text(
-                    text = "Voir tout →",
+                    text = stringResource(R.string.home_recent_calls_see_all),
                     color = NeonGreen,
                     fontSize = 13.sp,
                     modifier = Modifier.clickable { onNavigateHistory() }
@@ -261,7 +261,7 @@ fun HomeScreen(
                         .padding(32.dp),
                     contentAlignment = Alignment.Center
                 ) {
-                    Text("Aucun appel bloqué pour l'instant\nActivez la protection et attendez… 😏",
+                    Text(stringResource(R.string.home_recent_calls_empty),
                         color = TextSecondary, fontSize = 13.sp, textAlign = TextAlign.Center, lineHeight = 20.sp)
                 }
             }
@@ -305,11 +305,13 @@ private fun BigStatCard(value: String, label: String, emoji: String, modifier: M
 
 @Composable
 fun BlockedCallRow(call: BlockedCallEntity) {
+    val todayPrefix = stringResource(R.string.home_call_today_prefix)
+    val yesterdayPrefix = stringResource(R.string.home_call_yesterday_prefix)
     val dateStr = remember(call.timestamp) {
         val sdf = SimpleDateFormat("HH:mm", Locale.FRENCH)
         val today = SimpleDateFormat("dd/MM/yyyy", Locale.FRENCH).format(Date())
         val callDay = SimpleDateFormat("dd/MM/yyyy", Locale.FRENCH).format(Date(call.timestamp))
-        val prefix = if (today == callDay) "Aujourd'hui" else "Hier"
+        val prefix = if (today == callDay) todayPrefix else yesterdayPrefix
         "$prefix ${sdf.format(Date(call.timestamp))}"
     }
 
