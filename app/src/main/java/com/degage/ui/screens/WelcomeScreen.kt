@@ -98,8 +98,8 @@ fun WelcomeScreen(
                         painter = painterResource(R.drawable.robot),
                         contentDescription = null,
                         modifier = Modifier
-                            .size(64.dp)
-                            .clip(RoundedCornerShape(16.dp))
+                            .size(96.dp)
+                            .clip(RoundedCornerShape(20.dp))
                     )
                     Spacer(modifier = Modifier.height(12.dp))
                     Text(

@@ -120,8 +120,8 @@ fun HomeScreen(
                         painter = painterResource(R.drawable.robot),
                         contentDescription = null,
                         modifier = Modifier
-                            .size(48.dp)
-                            .clip(RoundedCornerShape(12.dp))
+                            .size(72.dp)
+                            .clip(RoundedCornerShape(16.dp))
                     )
                     Spacer(modifier = Modifier.height(6.dp))
                     Text(
