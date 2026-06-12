@@ -52,6 +52,28 @@ val SPAM_PREFIXES_CH = listOf(
     "0840", "0842", "0844", "0848", "0878",
 )
 
+// ── Mode strict : plages entières des opérateurs VoIP non géographiques ─────
+// Mêmes plages que celles bloquées intégralement par certaines apps concurrentes
+// (utilisées par Aircall, Vonage, Manifone, Tata Communications, CM Telecom…).
+// Couvre TOUTE la plage, y compris les numéros d'entreprises légitimes qui les utilisent.
+val SPAM_PREFIXES_STRICT_FR: List<String> = buildList {
+    for (i in 70..89) add("01$i")          // 01 70–89 : VoIP non géographique national
+    for (i in 70..79) {                    // X0 70–79 régionaux : VoIP non géographique
+        add("02$i")
+        add("03$i")
+        add("04$i")
+        add("05$i")
+    }
+    for (i in 40..99) add("09$i")          // 09 40–99 : VoIP/centres d'appels non géographiques
+}
+
+// ── Mode strict Suisse : plages à valeur ajoutée et 084x élargies ───────────
+val SPAM_PREFIXES_STRICT_CH: List<String> = buildList {
+    for (i in 0..9) add("084$i")
+    add("0878")
+    for (i in 0..9) add("090$i")
+}
+
 private val UNKNOWN_MARKERS = listOf(
     "inconnu", "unknown", "privé", "private",
     "masqué", "hidden", "anonymous", "withheld"
@@ -60,6 +82,12 @@ private val UNKNOWN_MARKERS = listOf(
 fun String.isSpamNumber(country: String = "FR"): Boolean {
     val normalized = this.replace(" ", "").replace("-", "").replace(".", "")
     val prefixes = if (country == "CH") SPAM_PREFIXES_CH else SPAM_PREFIXES
+    return prefixes.any { normalized.startsWith(it) }
+}
+
+fun String.isStrictVoipNumber(country: String = "FR"): Boolean {
+    val normalized = this.replace(" ", "").replace("-", "").replace(".", "")
+    val prefixes = if (country == "CH") SPAM_PREFIXES_STRICT_CH else SPAM_PREFIXES_STRICT_FR
     return prefixes.any { normalized.startsWith(it) }
 }
 

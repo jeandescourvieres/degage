@@ -226,6 +226,7 @@
     <string name="settings_help_protection_title">Protection et blocage</string>
     <string name="settings_help_protection">« Protection » est l\'interrupteur principal : désactivé, Tu dégages laisse sonner tous les appels normalement, sans rien filtrer. « Décroche automatique » répond aux appels suspects sans faire sonner votre téléphone. « Bloquer le numéro après réponse » ajoute le numéro à votre liste noire après lui avoir répondu, pour qu\'il soit rejeté instantanément la prochaine fois. « Notifications » vous prévient à chaque appel bloqué.</string>
     <string name="settings_help_block_hidden">Quand cette option est activée, tout appel sans numéro affiché (masqué, privé ou inconnu) est rejeté immédiatement et silencieusement, sans message vocal. Pratique contre les appels masqués indésirables, mais attention : certains correspondants légitimes (médecins, écoles…) appellent parfois en numéro masqué.</string>
+    <string name="settings_help_strict_mode">Cette option fait l\'inverse de la philosophie habituelle de Tu dégages (voir « Pourquoi on ne bloque pas tout un opérateur » dans le mode d\'emploi) : elle bloque silencieusement TOUTES les plages de numéros utilisées par les opérateurs VoIP préférés des centres d\'appels (Aircall, Vonage, Manifone, Tata Communications, CM Telecom…), comme le font certaines applis concurrentes.\n\n⚠️ Conséquence : des appels légitimes (support client, livreurs, artisans, rendez-vous médicaux…) passant par ces mêmes opérateurs seront eux aussi bloqués sans message vocal.\n\nÀ activer uniquement si vous préférez ne plus jamais recevoir AUCUN appel de ces plages de numéros, même au prix de quelques faux positifs. Désactivé par défaut.</string>
     <string name="settings_help_monitor_live">Active le haut-parleur pendant la lecture du message vocal envoyé au démarcheur, pour que vous puissiez entendre en direct ce que dit Tu dégages. Utile pour vérifier que tout fonctionne, mais peut être gênant en public.</string>
     <string name="settings_help_message_builder">Cette section permet de personnaliser le contenu exact des messages vocaux joués aux démarcheurs : la formule d\'accueil, le corps du message (différent pour chaque mode Poli/Administratif/Sarcastique/Troll) et la formule de fin. Choisissez parmi plusieurs phrases prédéfinies ou écrivez les vôtres.</string>
     <string name="settings_help_voice">Réglez la vitesse, la hauteur (pitch) et la voix utilisées par Tu dégages pour parler aux démarcheurs. La liste des voix disponibles dépend de la langue choisie dans « Langue des messages vocaux » et des voix installées sur votre téléphone.</string>
@@ -260,6 +261,9 @@
 
     <string name="settings_block_hidden_label">📵 Bloquer les appels masqués</string>
     <string name="settings_block_hidden_desc">Rejette automatiquement, sans message vocal, les appels sans numéro affiché (masqué, privé, inconnu).</string>
+
+    <string name="settings_strict_mode_label">⚠️ Mode strict (bloquer les opérateurs VoIP)</string>
+    <string name="settings_strict_mode_desc">Bloque toutes les plages de numéros des opérateurs VoIP utilisés par les centres d\'appels. Réservé aux utilisateurs intransigeants : risque de faux positifs.</string>
 
     <string name="settings_monitor_live_label">🔊 Écouter la réponse IA en direct</string>
     <string name="settings_monitor_live_desc">Entendez ce que votre IA dit au spammeur sur votre haut-parleur</string>

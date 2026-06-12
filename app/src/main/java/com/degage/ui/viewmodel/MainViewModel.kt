@@ -122,6 +122,9 @@ class MainViewModel(app: Application) : AndroidViewModel(app) {
     val blockHiddenNumbers: StateFlow<Boolean> = prefs.blockHiddenNumbers
         .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5000), false)
 
+    val strictMode: StateFlow<Boolean> = prefs.strictMode
+        .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5000), false)
+
     val country: StateFlow<String> = prefs.country
         .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5000), "FR")
 
@@ -250,6 +253,7 @@ class MainViewModel(app: Application) : AndroidViewModel(app) {
     fun setMonitorLive(v: Boolean) = viewModelScope.launch { prefs.setMonitorLive(v) }
     fun setContributeDb(v: Boolean) = viewModelScope.launch { prefs.setContributeDb(v) }
     fun setBlockHiddenNumbers(v: Boolean) = viewModelScope.launch { prefs.setBlockHiddenNumbers(v) }
+    fun setStrictMode(v: Boolean) = viewModelScope.launch { prefs.setStrictMode(v) }
     fun setCountry(v: String) = viewModelScope.launch { prefs.setCountry(v) }
     fun setReplyLanguage(v: String) = viewModelScope.launch { prefs.setReplyLanguage(v) }
 

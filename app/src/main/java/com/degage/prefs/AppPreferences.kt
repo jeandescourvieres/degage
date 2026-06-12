@@ -32,6 +32,7 @@ class AppPreferences(private val context: Context) {
         val KEY_MONITOR_LIVE = booleanPreferencesKey("monitor_live")
         val KEY_CONTRIBUTE_DB = booleanPreferencesKey("contribute_db")
         val KEY_BLOCK_HIDDEN = booleanPreferencesKey("block_hidden_numbers")
+        val KEY_STRICT_MODE = booleanPreferencesKey("strict_mode")
         val KEY_COUNTRY = stringPreferencesKey("country")
         val KEY_IS_PREMIUM = booleanPreferencesKey("is_premium")
         val KEY_REPLY_LANGUAGE = stringPreferencesKey("reply_language")
@@ -60,6 +61,7 @@ class AppPreferences(private val context: Context) {
     val monitorLive: Flow<Boolean> = context.dataStore.data.map { it[KEY_MONITOR_LIVE] ?: false }
     val contributeDb: Flow<Boolean> = context.dataStore.data.map { it[KEY_CONTRIBUTE_DB] ?: false }
     val blockHiddenNumbers: Flow<Boolean> = context.dataStore.data.map { it[KEY_BLOCK_HIDDEN] ?: false }
+    val strictMode: Flow<Boolean> = context.dataStore.data.map { it[KEY_STRICT_MODE] ?: false }
     val country: Flow<String> = context.dataStore.data.map { it[KEY_COUNTRY] ?: "FR" }
     val isPremium: Flow<Boolean> = context.dataStore.data.map { it[KEY_IS_PREMIUM] ?: false }
     val replyLanguage: Flow<String> = context.dataStore.data.map { it[KEY_REPLY_LANGUAGE] ?: "FR" }
@@ -82,6 +84,7 @@ class AppPreferences(private val context: Context) {
     suspend fun setMonitorLive(value: Boolean) = context.dataStore.edit { it[KEY_MONITOR_LIVE] = value }
     suspend fun setContributeDb(value: Boolean) = context.dataStore.edit { it[KEY_CONTRIBUTE_DB] = value }
     suspend fun setBlockHiddenNumbers(value: Boolean) = context.dataStore.edit { it[KEY_BLOCK_HIDDEN] = value }
+    suspend fun setStrictMode(value: Boolean) = context.dataStore.edit { it[KEY_STRICT_MODE] = value }
     suspend fun setCountry(value: String) = context.dataStore.edit { it[KEY_COUNTRY] = value }
     suspend fun setPremium(value: Boolean) = context.dataStore.edit { it[KEY_IS_PREMIUM] = value }
     suspend fun setReplyLanguage(value: String) = context.dataStore.edit { it[KEY_REPLY_LANGUAGE] = value }

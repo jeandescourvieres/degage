@@ -42,6 +42,7 @@ fun SettingsScreen(
     monitorLive: Boolean = false,
     contributeDb: Boolean = false,
     blockHiddenNumbers: Boolean = false,
+    strictMode: Boolean = false,
     country: String = "FR",
     replyLanguage: String = "FR",
     appLanguage: String = "",
@@ -54,6 +55,7 @@ fun SettingsScreen(
     onToggleMonitorLive: () -> Unit = {},
     onToggleContributeDb: () -> Unit = {},
     onToggleBlockHiddenNumbers: () -> Unit = {},
+    onToggleStrictMode: () -> Unit = {},
     onSetCountry: (String) -> Unit = {},
     onSetReplyLanguage: (String) -> Unit = {},
     onSetAppLanguage: (String) -> Unit = {},
@@ -86,6 +88,7 @@ fun SettingsScreen(
     val labelBlockAfterReply = stringResource(R.string.settings_toggle_block_after_reply)
     val labelNotifications = stringResource(R.string.settings_toggle_notifications)
     val labelBlockHidden = stringResource(R.string.settings_block_hidden_label)
+    val labelStrictMode = stringResource(R.string.settings_strict_mode_label)
     val labelMonitorLive = stringResource(R.string.settings_monitor_live_label)
     val labelContribute = stringResource(R.string.settings_contribute_label)
     val labelMessageBuilder = stringResource(R.string.settings_nav_message_builder)
@@ -171,6 +174,9 @@ fun SettingsScreen(
         }
         if (matches(labelBlockHidden)) item {
             BlockHiddenNumbersRow(checked = blockHiddenNumbers, onToggle = onToggleBlockHiddenNumbers)
+        }
+        if (matches(labelStrictMode)) item {
+            StrictModeRow(checked = strictMode, onToggle = onToggleStrictMode)
         }
         if (matches(labelMonitorLive)) item {
             MonitorLiveRow(checked = monitorLive, onToggle = onToggleMonitorLive)
@@ -530,6 +536,44 @@ fun BlockHiddenNumbersRow(checked: Boolean, onToggle: () -> Unit) {
             )
         }
         SettingsHelpToggle(stringResource(R.string.settings_help_block_hidden))
+    }
+}
+
+@Composable
+fun StrictModeRow(checked: Boolean, onToggle: () -> Unit) {
+    Column(
+        modifier = Modifier
+            .fillMaxWidth()
+            .background(if (checked) RedAlert.copy(alpha = 0.15f) else CardBg, RoundedCornerShape(14.dp))
+            .padding(horizontal = 20.dp, vertical = 10.dp)
+    ) {
+        Row(
+            horizontalArrangement = Arrangement.SpaceBetween,
+            verticalAlignment = Alignment.CenterVertically,
+            modifier = Modifier.fillMaxWidth()
+        ) {
+            Column(modifier = Modifier.weight(1f)) {
+                Text(stringResource(R.string.settings_strict_mode_label), color = Color.White, fontSize = 15.sp)
+                Text(
+                    stringResource(R.string.settings_strict_mode_desc),
+                    color = TextSecondary,
+                    fontSize = 11.sp,
+                    lineHeight = 16.sp
+                )
+            }
+            Spacer(modifier = Modifier.width(12.dp))
+            Switch(
+                checked = checked,
+                onCheckedChange = { onToggle() },
+                colors = SwitchDefaults.colors(
+                    checkedThumbColor = Color.Black,
+                    checkedTrackColor = RedAlert,
+                    uncheckedThumbColor = TextSecondary,
+                    uncheckedTrackColor = CardBgAlt
+                )
+            )
+        }
+        SettingsHelpToggle(stringResource(R.string.settings_help_strict_mode))
     }
 }
 

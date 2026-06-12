@@ -88,6 +88,24 @@ class DegageCallScreeningService : CallScreeningService() {
                 return@launch
             }
 
+            // ── Mode strict → rejet de toute la plage des opérateurs VoIP ────
+            if (!isUnknown && normalized.isNotBlank() && prefs.strictMode.first() && rawNumber!!.isStrictVoipNumber(country)) {
+                silentReject(callDetails)
+                db.blockedCallDao().insert(
+                    BlockedCallEntity(
+                        phoneNumber = rawNumber.displayNumber(),
+                        timestamp = System.currentTimeMillis(),
+                        modeName = "Auto",
+                        replyUsed = "Rejet automatique — mode strict (plage opérateur VoIP)"
+                    )
+                )
+                if (notificationsEnabled) {
+                    NotificationHelper.notifyBlockedCall(applicationContext, rawNumber.displayNumber(), "mode strict")
+                }
+                if (contributeDb) SupabaseClient.reportNumber(normalized)
+                return@launch
+            }
+
             // ── Numéro correspondant à une règle personnalisée → rejet immédiat ──
             if (!isUnknown && normalized.isNotBlank()) {
                 val isCustomExact = db.customBlockDao().isExactBlocked(normalized)

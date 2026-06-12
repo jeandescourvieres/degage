@@ -226,6 +226,7 @@
     <string name="settings_help_protection_title">Protezione e blocco</string>
     <string name="settings_help_protection">"Protezione" è l\'interruttore principale: se disattivato, Tu dégages lascia squillare normalmente tutte le chiamate, senza filtrare nulla. "Risposta automatica" risponde alle chiamate sospette senza far squillare il telefono. "Blocca il numero dopo la risposta" aggiunge il numero alla lista nera dopo avergli risposto, così verrà rifiutato istantaneamente la prossima volta. "Notifiche" ti avvisa ad ogni chiamata bloccata.</string>
     <string name="settings_help_block_hidden">Quando questa opzione è attiva, ogni chiamata senza numero visualizzato (nascosto, privato o sconosciuto) viene rifiutata immediatamente e silenziosamente, senza messaggio vocale. Utile contro le chiamate anonime indesiderate, ma attenzione: alcuni interlocutori legittimi (medici, scuole…) a volte chiamano con numero nascosto.</string>
+    <string name="settings_help_strict_mode">Questa opzione inverte la filosofia abituale di Tu dégages (vedi „Perché non blocchiamo «un intero operatore»“ nel manuale): blocca silenziosamente TUTTE le fasce di numeri usate dagli operatori VoIP preferiti dai call center (Aircall, Vonage, Manifone, Tata Communications, CM Telecom…), come fanno alcune app concorrenti.\n\n⚠️ Conseguenza: anche le chiamate legittime (assistenza clienti, corrieri, artigiani, appuntamenti medici…) che passano dagli stessi operatori verranno bloccate senza messaggio vocale.\n\nAttivatela solo se preferite non ricevere PIÙ alcuna chiamata da queste fasce di numeri, anche a costo di qualche falso positivo. Disattivata per impostazione predefinita.</string>
     <string name="settings_help_monitor_live">Attiva l\'altoparlante durante la riproduzione del messaggio vocale inviato al call center, così puoi sentire in diretta cosa dice Tu dégages. Utile per verificare che tutto funzioni, ma può essere fastidioso in pubblico.</string>
     <string name="settings_help_message_builder">Questa sezione permette di personalizzare il contenuto esatto dei messaggi vocali riprodotti ai call center: il saluto iniziale, il corpo del messaggio (diverso per ogni modalità Cortese/Amministrativo/Sarcastico/Troll) e la formula di chiusura. Scegli tra diverse frasi predefinite o scrivi le tue.</string>
     <string name="settings_help_voice">Regola velocità, tono (pitch) e voce usati da Tu dégages per parlare ai call center. L\'elenco delle voci disponibili dipende dalla lingua scelta in "Lingua dei messaggi vocali" e dalle voci installate sul telefono.</string>
@@ -260,6 +261,9 @@
 
     <string name="settings_block_hidden_label">📵 Blocca le chiamate nascoste</string>
     <string name="settings_block_hidden_desc">Rifiuta automaticamente, senza messaggio vocale, le chiamate senza numero visualizzato (nascosto, privato, sconosciuto).</string>
+
+    <string name="settings_strict_mode_label">⚠️ Modalità severa (blocca operatori VoIP)</string>
+    <string name="settings_strict_mode_desc">Blocca tutte le fasce di numeri degli operatori VoIP usati dai call center. Riservata agli utenti intransigenti: rischio di falsi positivi.</string>
 
     <string name="settings_monitor_live_label">🔊 Ascolta la risposta IA in diretta</string>
     <string name="settings_monitor_live_desc">Ascolta cosa dice la tua IA allo spammer dal tuo altoparlante</string>

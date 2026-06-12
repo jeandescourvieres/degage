@@ -226,6 +226,7 @@
     <string name="settings_help_protection_title">Protection and blocking</string>
     <string name="settings_help_protection">"Protection" is the master switch: when off, Tu dégages lets every call ring normally without filtering anything. "Auto-answer" answers suspicious calls without making your phone ring. "Block number after reply" adds the number to your blacklist after replying to it, so it gets rejected instantly next time. "Notifications" alerts you for every blocked call.</string>
     <string name="settings_help_block_hidden">When this option is on, any call without a displayed number (hidden, private, or unknown) is rejected immediately and silently, with no voice message. Useful against unwanted anonymous calls, but be careful: some legitimate callers (doctors, schools…) sometimes call with a hidden number.</string>
+    <string name="settings_help_strict_mode">This option reverses Tu dégages\' usual philosophy (see "Why we don\'t block 'an entire operator'" in the manual): it silently blocks ALL number ranges used by the VoIP operators favoured by call centers (Aircall, Vonage, Manifone, Tata Communications, CM Telecom…), just like some competing apps do.\n\n⚠️ Consequence: legitimate calls (customer support, delivery drivers, tradespeople, medical appointments…) using the same operators will also be blocked with no voice reply.\n\nOnly enable this if you\'d rather receive NO calls at all from these number ranges, even at the cost of some false positives. Off by default.</string>
     <string name="settings_help_monitor_live">Turns on the speakerphone while the voice message is played to the telemarketer, so you can hear live what Tu dégages says. Useful to check everything works, but can be awkward in public.</string>
     <string name="settings_help_message_builder">This section lets you customize the exact content of the voice messages played to telemarketers: the greeting, the body (different for each mode — Polite/Administrative/Sarcastic/Troll) and the closing line. Pick from several preset sentences or write your own.</string>
     <string name="settings_help_voice">Adjust the speed, pitch and voice Tu dégages uses to speak to telemarketers. The list of available voices depends on the language chosen in "Voice message language" and the voices installed on your phone.</string>
@@ -260,6 +261,9 @@
 
     <string name="settings_block_hidden_label">📵 Block hidden calls</string>
     <string name="settings_block_hidden_desc">Automatically rejects, without a voice message, calls without a displayed number (hidden, private, unknown).</string>
+
+    <string name="settings_strict_mode_label">⚠️ Strict mode (block VoIP operators)</string>
+    <string name="settings_strict_mode_desc">Blocks entire number ranges of VoIP operators used by call centers. For uncompromising users only: risk of false positives.</string>
 
     <string name="settings_monitor_live_label">🔊 Listen to the AI reply live</string>
     <string name="settings_monitor_live_desc">Hear what your AI says to the spammer through your speaker</string>

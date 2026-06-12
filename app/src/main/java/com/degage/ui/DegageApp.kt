@@ -60,6 +60,7 @@ fun DegageApp(
     val monitorLive by viewModel.monitorLive.collectAsStateWithLifecycle()
     val contributeDb by viewModel.contributeDb.collectAsStateWithLifecycle()
     val blockHiddenNumbers by viewModel.blockHiddenNumbers.collectAsStateWithLifecycle()
+    val strictMode by viewModel.strictMode.collectAsStateWithLifecycle()
     val country by viewModel.country.collectAsStateWithLifecycle()
     val customBlocks by viewModel.customBlocks.collectAsStateWithLifecycle()
     val isPremium by viewModel.isPremium.collectAsStateWithLifecycle()
@@ -185,6 +186,7 @@ fun DegageApp(
                         monitorLive = monitorLive,
                         contributeDb = contributeDb,
                         blockHiddenNumbers = blockHiddenNumbers,
+                        strictMode = strictMode,
                         country = country,
                         replyLanguage = replyLanguage,
                         appLanguage = appLanguage,
@@ -197,6 +199,7 @@ fun DegageApp(
                         onToggleMonitorLive = { viewModel.setMonitorLive(!monitorLive) },
                         onToggleContributeDb = { viewModel.setContributeDb(!contributeDb) },
                         onToggleBlockHiddenNumbers = { viewModel.setBlockHiddenNumbers(!blockHiddenNumbers) },
+                        onToggleStrictMode = { viewModel.setStrictMode(!strictMode) },
                         onSetCountry = { viewModel.setCountry(it) },
                         onSetReplyLanguage = { viewModel.setReplyLanguage(it) },
                         onSetAppLanguage = { viewModel.setAppLanguage(it) },
