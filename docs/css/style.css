@@ -145,8 +145,8 @@ nav {
 .hero-welcome span { color: var(--green); }
 
 .hero-logo-wrap {
-  width: clamp(106px, 16vw, 174px);
-  height: clamp(106px, 16vw, 174px);
+  width: clamp(122px, 18vw, 198px);
+  height: clamp(122px, 18vw, 198px);
   margin: 0 auto 20px;
   display: flex;
   align-items: center;
