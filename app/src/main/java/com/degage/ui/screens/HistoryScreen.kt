@@ -116,7 +116,7 @@ fun HistoryScreen(
 
         Spacer(modifier = Modifier.height(16.dp))
 
-        if (recentUnblockedCalls.isNotEmpty()) {
+        if (filter == HistoryFilter.TOUS && recentUnblockedCalls.isNotEmpty()) {
             Text(
                 stringResource(R.string.history_recent_title),
                 fontSize = 13.sp,
@@ -132,13 +132,20 @@ fun HistoryScreen(
             Spacer(modifier = Modifier.height(16.dp))
         }
 
-        if (calls.isEmpty()) {
+        val filteredCalls = when (filter) {
+            HistoryFilter.TOUS -> calls
+            HistoryFilter.BLOQUES -> calls.filter { it.modeName == "Auto" }
+            HistoryFilter.REPONSES -> calls.filter { it.modeName != "Auto" }
+            HistoryFilter.MANUELS -> calls.filter { it.replyUsed.contains("règle personnalisée") }
+        }
+
+        if (filteredCalls.isEmpty()) {
             Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
                 Text(stringResource(R.string.history_empty), color = TextSecondary)
             }
         } else {
             LazyColumn(verticalArrangement = Arrangement.spacedBy(10.dp)) {
-                items(calls, key = { it.id }) { call ->
+                items(filteredCalls, key = { it.id }) { call ->
                     HistoryRow(call = call, onDelete = { onDelete(call.id) }, onMarkNotSpam = { onMarkNotSpam(call) })
                 }
                 item { Spacer(modifier = Modifier.height(80.dp)) }
