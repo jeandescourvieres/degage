@@ -185,6 +185,7 @@ nav {
   white-space: nowrap;
 }
 .hero-appname span { color: var(--green); }
+.hero-appname-accent { color: var(--green); }
 
 .hero-badge {
   display: inline-flex;
