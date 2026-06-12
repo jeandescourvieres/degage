@@ -186,7 +186,7 @@ fun HomeScreen(
                     Spacer(modifier = Modifier.height(22.dp))
                     Text(
                         text = stringResource(R.string.home_hero_badge),
-                        fontSize = 12.sp,
+                        fontSize = 14.sp,
                         fontWeight = FontWeight.SemiBold,
                         color = NeonGreen,
                         textAlign = TextAlign.Center
