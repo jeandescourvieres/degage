@@ -1,10 +1,13 @@
 package com.degage.ui.screens
 
+import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.core.RepeatMode
 import androidx.compose.animation.core.animateFloat
 import androidx.compose.animation.core.infiniteRepeatable
 import androidx.compose.animation.core.rememberInfiniteTransition
 import androidx.compose.animation.core.tween
+import androidx.compose.animation.fadeIn
+import androidx.compose.animation.slideInHorizontally
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -74,33 +77,40 @@ fun HomeScreen(
 
         // ── HEADER ────────────────────────────────────────────────────────
         item {
-            Row(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(top = 20.dp),
-                horizontalArrangement = Arrangement.SpaceBetween,
-                verticalAlignment = Alignment.CenterVertically
+            var headerVisible by remember { mutableStateOf(false) }
+            LaunchedEffect(Unit) { headerVisible = true }
+            AnimatedVisibility(
+                visible = headerVisible,
+                enter = slideInHorizontally(initialOffsetX = { -it }) + fadeIn()
             ) {
-                Column {
-                    Text(
-                        text = stringResource(R.string.home_title),
-                        fontSize = 20.sp,
-                        fontWeight = FontWeight.Black,
-                        color = Color.White
-                    )
-                    Text(
-                        text = stringResource(R.string.home_subtitle),
-                        fontSize = 11.sp,
-                        color = NeonGreen,
-                        fontWeight = FontWeight.SemiBold
-                    )
-                }
-                Row {
-                    IconButton(onClick = { showInfo = true }) {
-                        Icon(Icons.Default.Info, contentDescription = stringResource(R.string.cd_help), tint = NeonGreen, modifier = Modifier.size(24.dp))
+                Row(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(top = 20.dp),
+                    horizontalArrangement = Arrangement.SpaceBetween,
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    Column {
+                        Text(
+                            text = stringResource(R.string.home_title),
+                            fontSize = 20.sp,
+                            fontWeight = FontWeight.Black,
+                            color = Color.White
+                        )
+                        Text(
+                            text = stringResource(R.string.home_subtitle),
+                            fontSize = 11.sp,
+                            color = NeonGreen,
+                            fontWeight = FontWeight.SemiBold
+                        )
                     }
-                    IconButton(onClick = onNavigateSettings) {
-                        Icon(Icons.Default.Settings, contentDescription = stringResource(R.string.settings_title), tint = NeonGreen, modifier = Modifier.size(24.dp))
+                    Row {
+                        IconButton(onClick = { showInfo = true }) {
+                            Icon(Icons.Default.Info, contentDescription = stringResource(R.string.cd_help), tint = NeonGreen, modifier = Modifier.size(24.dp))
+                        }
+                        IconButton(onClick = onNavigateSettings) {
+                            Icon(Icons.Default.Settings, contentDescription = stringResource(R.string.settings_title), tint = NeonGreen, modifier = Modifier.size(24.dp))
+                        }
                     }
                 }
             }
