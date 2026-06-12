@@ -59,11 +59,11 @@ fun WelcomeScreen(
             }
             Text(
                 text = highlightBrand(stringResource(R.string.welcome_title)),
-                fontSize = 20.sp,
+                fontSize = 23.sp,
                 fontWeight = FontWeight.Bold,
                 color = Color.White,
                 textAlign = TextAlign.Center,
-                lineHeight = 26.sp,
+                lineHeight = 28.sp,
                 modifier = Modifier.weight(1f)
             )
             Spacer(modifier = Modifier.width(48.dp))
