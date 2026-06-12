@@ -78,29 +78,39 @@ fun WelcomeScreen(
             item {
                 // Hero
                 val heroFlash = rememberInfiniteTransition(label = "heroFlash")
-                val heroFlashAlpha by heroFlash.animateFloat(
-                    initialValue = 0.15f,
-                    targetValue = 0.4f,
+                val heroPulse by heroFlash.animateFloat(
+                    initialValue = 0f,
+                    targetValue = 1f,
                     animationSpec = infiniteRepeatable(
                         animation = tween(900),
                         repeatMode = RepeatMode.Reverse
                     ),
-                    label = "heroFlashAlpha"
+                    label = "heroPulse"
                 )
                 Column(
                     modifier = Modifier
                         .fillMaxWidth()
-                        .background(NeonGreenDim.copy(alpha = heroFlashAlpha), RoundedCornerShape(20.dp))
+                        .background(NeonGreenDim.copy(alpha = 0.15f), RoundedCornerShape(20.dp))
                         .padding(24.dp),
                     horizontalAlignment = Alignment.CenterHorizontally
                 ) {
-                    Image(
-                        painter = painterResource(R.drawable.robot),
-                        contentDescription = null,
+                    Box(
                         modifier = Modifier
                             .size(96.dp)
-                            .clip(RoundedCornerShape(20.dp))
-                    )
+                            .background(
+                                RedAlert.copy(alpha = 0.2f + 0.8f * heroPulse),
+                                RoundedCornerShape(20.dp)
+                            ),
+                        contentAlignment = Alignment.Center
+                    ) {
+                        Image(
+                            painter = painterResource(R.drawable.robot),
+                            contentDescription = null,
+                            modifier = Modifier
+                                .size(84.dp)
+                                .clip(RoundedCornerShape(16.dp))
+                        )
+                    }
                     Spacer(modifier = Modifier.height(12.dp))
                     Text(
                         buildAnnotatedString {
