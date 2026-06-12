@@ -199,7 +199,7 @@ fun HomeScreen(
                                 append(stringResource(R.string.home_hero_line2))
                             }
                         },
-                        fontSize = 14.sp,
+                        fontSize = 16.sp,
                         fontWeight = FontWeight.Bold,
                         color = Color.White,
                         textAlign = TextAlign.Center,
