@@ -281,7 +281,7 @@
     <string name="home_title">TU DÉGAGES</string>
     <string name="home_subtitle">L\'IA qui répond à vos spammeurs</string>
     <string name="home_hero_welcome">vous souhaite la bienvenue !</string>
-    <string name="home_hero_badge">🤖 L\'appli de blocage intelligent de spams avec réponse IA</string>
+    <string name="home_hero_badge">🤖 Application de blocage intelligent de spams avec réponse IA</string>
     <string name="home_hero_line1">Les spammeurs adorent vous appeler ?\n</string>
     <string name="home_hero_line2">TU DÉGAGES, votre nouvelle IA, va adorer leur répondre !</string>
     <string name="home_badge_others_block">❌ Les autres applications bloquent l\'appel.</string>
