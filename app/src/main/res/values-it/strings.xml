@@ -211,6 +211,7 @@
 
     <!-- ── Schermata Impostazioni ────────────────────────────────────────────── -->
     <string name="settings_title">Impostazioni</string>
+    <string name="settings_search_placeholder">Cerca un\'impostazione…</string>
     <string name="settings_info_title">Impostazioni</string>
     <string name="settings_info_content">Configura il comportamento di Tu dégages:\n\n• Protezione: attiva/disattiva il filtraggio globale delle chiamate.\n• Risposta automatica: risponde alla chiamata senza far squillare il telefono (consigliato).\n• Blocca dopo la risposta: aggiunge il numero alla lista nera dopo ogni interazione.\n• Notifiche: ti avvisa a ogni chiamata bloccata.\n• Personalizza le risposte: crea e gestisci i tuoi messaggi.\n• Impostazioni vocali: cambia voce, velocità e tono.</string>
     <string name="settings_toggle_protection">Protezione</string>
@@ -274,6 +275,7 @@
     <string name="settings_sync_label">🛡️ Aggiorna il database spam</string>
     <string name="settings_sync_sources">phoneblock.net • Signal-Spam France • ARCEP</string>
     <string name="settings_sync_button">Sincr.</string>
+    <string name="settings_sync_success">✅ Database aggiornato!</string>
 
     <!-- ── Schermata Home ───────────────────────────────────────────────── -->
     <string name="home_info_title">Schermata iniziale</string>

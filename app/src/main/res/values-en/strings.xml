@@ -211,6 +211,7 @@
 
     <!-- ── Settings screen ────────────────────────────────────────────── -->
     <string name="settings_title">Settings</string>
+    <string name="settings_search_placeholder">Search settings…</string>
     <string name="settings_info_title">Settings</string>
     <string name="settings_info_content">Configure how Tu dégages behaves:\n\n• Protection: enables/disables global call filtering.\n• Auto-answer: answers the call without making the phone ring (recommended).\n• Block after reply: adds the number to the blacklist after each interaction.\n• Notifications: alerts you for every blocked call.\n• Customize replies: create and manage your own messages.\n• Voice settings: change the voice, speed and pitch.</string>
     <string name="settings_toggle_protection">Protection</string>
@@ -274,6 +275,7 @@
     <string name="settings_sync_label">🛡️ Update spam database</string>
     <string name="settings_sync_sources">phoneblock.net • Signal-Spam France • ARCEP</string>
     <string name="settings_sync_button">Sync</string>
+    <string name="settings_sync_success">✅ Database updated!</string>
 
     <!-- ── Home screen ───────────────────────────────────────────────── -->
     <string name="home_info_title">Home screen</string>

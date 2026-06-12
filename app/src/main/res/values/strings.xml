@@ -211,6 +211,7 @@
 
     <!-- ── Écran Paramètres ────────────────────────────────────────────── -->
     <string name="settings_title">Paramètres</string>
+    <string name="settings_search_placeholder">Rechercher un réglage…</string>
     <string name="settings_info_title">Paramètres</string>
     <string name="settings_info_content">Configurez le comportement de DÉGAGE :\n\n• Protection : active/désactive le filtrage global des appels.\n• Décroche automatique : répond à l\'appel sans que le téléphone sonne (recommandé).\n• Bloquer après réponse : ajoute le numéro à la liste noire après chaque interaction.\n• Notifications : vous avertit à chaque appel bloqué.\n• Personnaliser les réponses : créez et gérez vos propres messages.\n• Paramètres vocaux : changez la voix, la vitesse et la hauteur.</string>
     <string name="settings_toggle_protection">Protection</string>
@@ -274,6 +275,7 @@
     <string name="settings_sync_label">🛡️ Mettre à jour la base spam</string>
     <string name="settings_sync_sources">phoneblock.net • Signal-Spam France • ARCEP</string>
     <string name="settings_sync_button">Sync</string>
+    <string name="settings_sync_success">✅ Base mise à jour !</string>
 
     <!-- ── Écran Accueil ───────────────────────────────────────────────── -->
     <string name="home_info_title">Écran d\'accueil</string>

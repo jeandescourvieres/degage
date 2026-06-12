@@ -211,6 +211,7 @@
 
     <!-- ── Bildschirm Einstellungen ────────────────────────────────────────── -->
     <string name="settings_title">Einstellungen</string>
+    <string name="settings_search_placeholder">Einstellung suchen…</string>
     <string name="settings_info_title">Einstellungen</string>
     <string name="settings_info_content">Konfigurieren Sie das Verhalten von Tu dégages:\n\n• Schutz: aktiviert/deaktiviert die globale Anruffilterung.\n• Automatische Annahme: nimmt den Anruf an, ohne dass das Telefon klingelt (empfohlen).\n• Nach Antwort blockieren: fügt die Nummer nach jeder Interaktion zur Sperrliste hinzu.\n• Benachrichtigungen: informiert Sie bei jedem blockierten Anruf.\n• Antworten anpassen: erstellen und verwalten Sie eigene Nachrichten.\n• Spracheinstellungen: ändern Sie Stimme, Geschwindigkeit und Tonhöhe.</string>
     <string name="settings_toggle_protection">Schutz</string>
@@ -274,6 +275,7 @@
     <string name="settings_sync_label">🛡️ Spam-Datenbank aktualisieren</string>
     <string name="settings_sync_sources">phoneblock.net • Signal-Spam France • ARCEP</string>
     <string name="settings_sync_button">Sync</string>
+    <string name="settings_sync_success">✅ Datenbank aktualisiert!</string>
 
     <!-- ── Startbildschirm ───────────────────────────────────────────────── -->
     <string name="home_info_title">Startbildschirm</string>

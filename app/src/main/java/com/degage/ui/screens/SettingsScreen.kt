@@ -11,8 +11,10 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material.icons.filled.ChevronRight
 import androidx.compose.material.icons.filled.Info
+import androidx.compose.material.icons.filled.Search
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
+import kotlinx.coroutines.delay
 import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.SpanStyle
@@ -71,6 +73,31 @@ fun SettingsScreen(
         content = stringResource(R.string.settings_info_content),
         onDismiss = { showInfo = false }
     )
+
+    var searchQuery by remember { mutableStateOf("") }
+    fun matches(vararg texts: String) =
+        searchQuery.isBlank() || texts.any { it.contains(searchQuery, ignoreCase = true) }
+
+    val labelAppLang = stringResource(R.string.settings_app_lang_label)
+    val labelCountry = stringResource(R.string.settings_country_label)
+    val labelReplyLang = stringResource(R.string.settings_reply_lang_label)
+    val labelProtection = stringResource(R.string.settings_toggle_protection)
+    val labelAutoReject = stringResource(R.string.settings_toggle_auto_reject)
+    val labelBlockAfterReply = stringResource(R.string.settings_toggle_block_after_reply)
+    val labelNotifications = stringResource(R.string.settings_toggle_notifications)
+    val labelBlockHidden = stringResource(R.string.settings_block_hidden_label)
+    val labelMonitorLive = stringResource(R.string.settings_monitor_live_label)
+    val labelContribute = stringResource(R.string.settings_contribute_label)
+    val labelMessageBuilder = stringResource(R.string.settings_nav_message_builder)
+    val labelVoice = stringResource(R.string.settings_nav_voice)
+    val labelCustomBlocks = stringResource(R.string.settings_nav_custom_blocks)
+    val labelPremium = stringResource(R.string.settings_nav_premium)
+    val labelCommunityDb = stringResource(R.string.settings_community_db_label)
+    val labelSync = stringResource(R.string.settings_sync_label)
+    val labelManual = stringResource(R.string.settings_nav_manual)
+    val labelWelcome = stringResource(R.string.settings_nav_welcome)
+    val labelAbout = stringResource(R.string.settings_nav_about)
+
     LazyColumn(
         modifier = Modifier
             .fillMaxSize()
@@ -95,74 +122,95 @@ fun SettingsScreen(
         }
 
         item {
+            OutlinedTextField(
+                value = searchQuery,
+                onValueChange = { searchQuery = it },
+                modifier = Modifier.fillMaxWidth().padding(bottom = 12.dp),
+                placeholder = { Text(stringResource(R.string.settings_search_placeholder), color = TextSecondary) },
+                leadingIcon = { Icon(Icons.Default.Search, contentDescription = null, tint = NeonGreen) },
+                singleLine = true,
+                shape = RoundedCornerShape(14.dp),
+                colors = OutlinedTextFieldDefaults.colors(
+                    focusedBorderColor = NeonGreen,
+                    unfocusedBorderColor = CardBgAlt,
+                    focusedTextColor = Color.White,
+                    unfocusedTextColor = Color.White,
+                    cursorColor = NeonGreen,
+                    focusedContainerColor = CardBg,
+                    unfocusedContainerColor = CardBg
+                )
+            )
+        }
+
+        if (matches(labelAppLang)) item {
             AppLanguageSelectorRow(language = appLanguage, onSetLanguage = onSetAppLanguage)
         }
-        item {
+        if (matches(labelCountry)) item {
             CountrySelectorRow(country = country, isPremium = isPremium, onSetCountry = onSetCountry, onUpgrade = onUpgrade)
         }
-        item {
+        if (matches(labelReplyLang)) item {
             ReplyLanguageSelectorRow(language = replyLanguage, isPremium = isPremium, onSetLanguage = onSetReplyLanguage, onUpgrade = onUpgrade)
         }
-        item {
+        if (matches(labelProtection, labelAutoReject, labelBlockAfterReply, labelNotifications)) item {
             SettingsGroupHelpCard(
                 title = stringResource(R.string.settings_help_protection_title),
                 text = stringResource(R.string.settings_help_protection)
             )
         }
-        item {
-            SettingsToggleRow(label = stringResource(R.string.settings_toggle_protection), checked = isEnabled, onToggle = onToggleEnabled)
+        if (matches(labelProtection)) item {
+            SettingsToggleRow(label = labelProtection, checked = isEnabled, onToggle = onToggleEnabled)
         }
-        item {
-            SettingsToggleRow(label = stringResource(R.string.settings_toggle_auto_reject), checked = autoReject, onToggle = onToggleAutoReject)
+        if (matches(labelAutoReject)) item {
+            SettingsToggleRow(label = labelAutoReject, checked = autoReject, onToggle = onToggleAutoReject)
         }
-        item {
-            SettingsToggleRow(label = stringResource(R.string.settings_toggle_block_after_reply), checked = blockAfterReply, onToggle = onToggleBlockAfterReply)
+        if (matches(labelBlockAfterReply)) item {
+            SettingsToggleRow(label = labelBlockAfterReply, checked = blockAfterReply, onToggle = onToggleBlockAfterReply)
         }
-        item {
-            SettingsToggleRow(label = stringResource(R.string.settings_toggle_notifications), checked = notifications, onToggle = onToggleNotifications)
+        if (matches(labelNotifications)) item {
+            SettingsToggleRow(label = labelNotifications, checked = notifications, onToggle = onToggleNotifications)
         }
-        item {
+        if (matches(labelBlockHidden)) item {
             BlockHiddenNumbersRow(checked = blockHiddenNumbers, onToggle = onToggleBlockHiddenNumbers)
         }
-        item {
+        if (matches(labelMonitorLive)) item {
             MonitorLiveRow(checked = monitorLive, onToggle = onToggleMonitorLive)
         }
-        item {
+        if (matches(labelContribute)) item {
             ContributeDbRow(checked = contributeDb, isPremium = isPremium, onToggle = onToggleContributeDb, onUpgrade = onUpgrade)
         }
 
         item { Spacer(modifier = Modifier.height(16.dp)) }
 
-        item {
+        if (matches(labelMessageBuilder)) item {
             SettingsNavRow(
-                label = highlightBrand(stringResource(R.string.settings_nav_message_builder)),
+                label = highlightBrand(labelMessageBuilder),
                 locked = !isPremium,
                 helpText = stringResource(R.string.settings_help_message_builder),
                 onClick = onNavigateMessageBuilder,
                 onUpgrade = onUpgrade
             )
         }
-        item {
+        if (matches(labelVoice)) item {
             SettingsNavRow(
-                label = highlightBrand(stringResource(R.string.settings_nav_voice)),
+                label = highlightBrand(labelVoice),
                 locked = !isPremium,
                 helpText = stringResource(R.string.settings_help_voice),
                 onClick = onNavigateVoiceSettings,
                 onUpgrade = onUpgrade
             )
         }
-        item {
+        if (matches(labelCustomBlocks)) item {
             SettingsNavRow(
-                label = highlightBrand(stringResource(R.string.settings_nav_custom_blocks)),
+                label = highlightBrand(labelCustomBlocks),
                 locked = !isPremium,
                 helpText = stringResource(R.string.settings_help_custom_blocks),
                 onClick = onNavigateCustomBlocks,
                 onUpgrade = onUpgrade
             )
         }
-        item {
+        if (matches(labelPremium)) item {
             SettingsNavRow(
-                label = highlightBrand(stringResource(R.string.settings_nav_premium)),
+                label = highlightBrand(labelPremium),
                 helpText = stringResource(R.string.settings_help_premium),
                 onClick = onUpgrade
             )
@@ -170,24 +218,24 @@ fun SettingsScreen(
 
         item { Spacer(modifier = Modifier.height(8.dp)) }
 
-        item {
+        if (matches(labelCommunityDb)) item {
             SettingsInfoRow(
-                label = stringResource(R.string.settings_community_db_label),
+                label = labelCommunityDb,
                 value = stringResource(R.string.settings_community_db_value),
                 helpText = stringResource(R.string.settings_help_community_db)
             )
         }
-        item {
+        if (matches(labelSync)) item {
             SpamSyncRow(isSyncing = isSyncing, onClick = onSyncSpamList)
         }
-        item {
-            SettingsNavRow(label = highlightBrand(stringResource(R.string.settings_nav_manual)), onClick = onNavigateManual)
+        if (matches(labelManual)) item {
+            SettingsNavRow(label = highlightBrand(labelManual), onClick = onNavigateManual)
         }
-        item {
-            SettingsNavRow(label = highlightBrand(stringResource(R.string.settings_nav_welcome)), onClick = onNavigateWelcome)
+        if (matches(labelWelcome)) item {
+            SettingsNavRow(label = highlightBrand(labelWelcome), onClick = onNavigateWelcome)
         }
-        item {
-            SettingsNavRow(label = highlightBrand(stringResource(R.string.settings_nav_about)), onClick = onNavigateAbout)
+        if (matches(labelAbout)) item {
+            SettingsNavRow(label = highlightBrand(labelAbout), onClick = onNavigateAbout)
         }
 
         item { Spacer(modifier = Modifier.height(80.dp)) }
@@ -242,6 +290,16 @@ fun SettingsInfoRow(label: String, value: String, helpText: String? = null) {
 
 @Composable
 fun SpamSyncRow(isSyncing: Boolean, onClick: () -> Unit) {
+    var showSuccess by remember { mutableStateOf(false) }
+    var wasSyncing by remember { mutableStateOf(false) }
+    LaunchedEffect(isSyncing) {
+        if (wasSyncing && !isSyncing) {
+            showSuccess = true
+            delay(2500)
+            showSuccess = false
+        }
+        wasSyncing = isSyncing
+    }
     Row(
         modifier = Modifier
             .fillMaxWidth()
@@ -255,9 +313,10 @@ fun SpamSyncRow(isSyncing: Boolean, onClick: () -> Unit) {
         Column(modifier = Modifier.weight(1f)) {
             Text(stringResource(R.string.settings_sync_label), color = NeonGreen, fontSize = 15.sp, fontWeight = FontWeight.Bold)
             Text(
-                stringResource(R.string.settings_sync_sources),
-                color = TextSecondary,
-                fontSize = 11.sp
+                if (showSuccess) stringResource(R.string.settings_sync_success) else stringResource(R.string.settings_sync_sources),
+                color = if (showSuccess) NeonGreen else TextSecondary,
+                fontSize = 11.sp,
+                fontWeight = if (showSuccess) FontWeight.Bold else FontWeight.Normal
             )
         }
         if (isSyncing) {
