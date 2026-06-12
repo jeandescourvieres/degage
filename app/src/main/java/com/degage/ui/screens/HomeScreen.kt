@@ -1,5 +1,10 @@
 package com.degage.ui.screens
 
+import androidx.compose.animation.core.RepeatMode
+import androidx.compose.animation.core.animateFloat
+import androidx.compose.animation.core.infiniteRepeatable
+import androidx.compose.animation.core.rememberInfiniteTransition
+import androidx.compose.animation.core.tween
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -19,6 +24,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.lerp
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.SpanStyle
@@ -103,12 +109,25 @@ fun HomeScreen(
 
         // ── INTRO HERO ────────────────────────────────────────────────────
         item {
+            val heroFlash = rememberInfiniteTransition(label = "heroFlash")
+            val heroPulse by heroFlash.animateFloat(
+                initialValue = 0f,
+                targetValue = 1f,
+                animationSpec = infiniteRepeatable(
+                    animation = tween(900),
+                    repeatMode = RepeatMode.Reverse
+                ),
+                label = "heroPulse"
+            )
             Box(
                 modifier = Modifier
                     .fillMaxWidth()
                     .background(
                         Brush.verticalGradient(
-                            listOf(NeonGreen.copy(alpha = 0.12f), NeonGreen.copy(alpha = 0.04f))
+                            listOf(
+                                NeonGreen.copy(alpha = 0.08f + 0.08f * heroPulse),
+                                NeonGreen.copy(alpha = 0.02f + 0.04f * heroPulse)
+                            )
                         ),
                         RoundedCornerShape(20.dp)
                     )
@@ -130,13 +149,23 @@ fun HomeScreen(
                         textAlign = TextAlign.Center
                     )
                     Spacer(modifier = Modifier.height(6.dp))
-                    Image(
-                        painter = painterResource(R.drawable.robot),
-                        contentDescription = null,
+                    Box(
                         modifier = Modifier
-                            .size(72.dp)
-                            .clip(RoundedCornerShape(16.dp))
-                    )
+                            .size(84.dp)
+                            .background(
+                                lerp(NeonGreenDim, RedAlert, heroPulse).copy(alpha = 0.4f),
+                                RoundedCornerShape(20.dp)
+                            ),
+                        contentAlignment = Alignment.Center
+                    ) {
+                        Image(
+                            painter = painterResource(R.drawable.robot),
+                            contentDescription = null,
+                            modifier = Modifier
+                                .size(72.dp)
+                                .clip(RoundedCornerShape(16.dp))
+                        )
+                    }
                     Spacer(modifier = Modifier.height(6.dp))
                     Text(
                         text = stringResource(R.string.home_hero_welcome),
