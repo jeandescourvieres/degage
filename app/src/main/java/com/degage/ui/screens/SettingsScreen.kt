@@ -245,14 +245,15 @@ fun SpamSyncRow(isSyncing: Boolean, onClick: () -> Unit) {
     Row(
         modifier = Modifier
             .fillMaxWidth()
-            .background(CardBg, RoundedCornerShape(14.dp))
+            .background(NeonGreenDim.copy(alpha = 0.15f), RoundedCornerShape(14.dp))
+            .border(1.dp, NeonGreen.copy(alpha = 0.4f), RoundedCornerShape(14.dp))
             .clickable(enabled = !isSyncing) { onClick() }
             .padding(horizontal = 20.dp, vertical = 14.dp),
         horizontalArrangement = Arrangement.SpaceBetween,
         verticalAlignment = Alignment.CenterVertically
     ) {
         Column(modifier = Modifier.weight(1f)) {
-            Text(stringResource(R.string.settings_sync_label), color = Color.White, fontSize = 15.sp)
+            Text(stringResource(R.string.settings_sync_label), color = NeonGreen, fontSize = 15.sp, fontWeight = FontWeight.Bold)
             Text(
                 stringResource(R.string.settings_sync_sources),
                 color = TextSecondary,
@@ -266,7 +267,7 @@ fun SpamSyncRow(isSyncing: Boolean, onClick: () -> Unit) {
                 strokeWidth = 2.dp
             )
         } else {
-            Text(stringResource(R.string.settings_sync_button), color = NeonGreen, fontSize = 13.sp, fontWeight = FontWeight.SemiBold)
+            Text(stringResource(R.string.settings_sync_button), color = NeonGreen, fontSize = 13.sp, fontWeight = FontWeight.Bold)
         }
     }
 }
