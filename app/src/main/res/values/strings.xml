@@ -269,7 +269,7 @@
     <string name="settings_contribute_desc">Chaque spammeur bloqué par un utilisateur est signalé à toute la communauté. À chaque connexion, votre appli télécharge automatiquement les nouveaux numéros signalés par tous les utilisateurs — et les ajoute à votre base locale. Plus on est nombreux, plus la base devient redoutable contre les spammeurs.</string>
     <string name="contribute_badge_shared">🤝 Partagé entre tous</string>
     <string name="contribute_badge_optin">🔒 Opt-in</string>
-    <string name="contribute_badge_server">🇫🇷 Serveur EU</string>
+    <string name="contribute_badge_server">🇪🇺 Serveur EU</string>
     <string name="settings_contribute_footer">Seul le numéro de l\'appelant spam est transmis — jamais vos données personnelles.</string>
 
     <string name="settings_sync_label">🛡️ Mettre à jour la base spam</string>

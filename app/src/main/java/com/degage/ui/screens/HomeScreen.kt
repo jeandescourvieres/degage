@@ -24,7 +24,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.lerp
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.SpanStyle
@@ -133,8 +132,8 @@ fun HomeScreen(
                             .background(
                                 Brush.verticalGradient(
                                     listOf(
-                                        NeonGreen.copy(alpha = 0.10f + 0.10f * heroPulse),
-                                        NeonGreen.copy(alpha = 0.02f + 0.05f * heroPulse)
+                                        NeonGreen.copy(alpha = 0.10f),
+                                        NeonGreen.copy(alpha = 0.02f)
                                     )
                                 ),
                                 RoundedCornerShape(18.dp)
@@ -161,7 +160,7 @@ fun HomeScreen(
                                 modifier = Modifier
                                     .size(84.dp)
                                     .background(
-                                        lerp(NeonGreenDim, RedAlert, heroPulse).copy(alpha = 0.4f),
+                                        RedAlert.copy(alpha = 0.2f + 0.8f * heroPulse),
                                         RoundedCornerShape(20.dp)
                                     ),
                                 contentAlignment = Alignment.Center
