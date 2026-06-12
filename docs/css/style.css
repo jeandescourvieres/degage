@@ -110,15 +110,19 @@ nav {
   overflow: hidden;
 }
 
-.hero::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(ellipse 60% 50% at 50% 30%, rgba(170, 255, 0, 0.07) 0%, transparent 70%);
-  pointer-events: none;
+.hero-inner { max-width: 720px; position: relative; }
+
+.hero-glow {
+  position: relative;
 }
 
-.hero-inner { max-width: 720px; position: relative; }
+.hero-glow::before {
+  content: '';
+  position: absolute;
+  inset: -20px;
+  background: radial-gradient(ellipse 70% 65% at 50% 40%, rgba(170, 255, 0, 0.07) 0%, transparent 70%);
+  pointer-events: none;
+}
 
 .hero-welcome {
   font-size: clamp(14px, 4vw, 36px);
@@ -172,7 +176,7 @@ nav {
   flex-wrap: wrap;
   justify-content: center;
   gap: 10px;
-  margin-top: -14px;
+  margin-top: 14px;
   margin-bottom: 28px;
 }
 
