@@ -122,58 +122,68 @@ fun HomeScreen(
             Box(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .background(
-                        Brush.verticalGradient(
-                            listOf(
-                                NeonGreen.copy(alpha = 0.08f + 0.08f * heroPulse),
-                                NeonGreen.copy(alpha = 0.02f + 0.04f * heroPulse)
-                            )
-                        ),
-                        RoundedCornerShape(20.dp)
-                    )
+                    .background(NeonGreen.copy(alpha = 0.04f), RoundedCornerShape(20.dp))
                     .border(1.dp, NeonGreen.copy(alpha = 0.25f), RoundedCornerShape(20.dp))
                     .padding(14.dp)
             ) {
                 Column(horizontalAlignment = Alignment.CenterHorizontally, modifier = Modifier.fillMaxWidth()) {
-                    Text(
-                        buildAnnotatedString {
-                            append("TU ")
-                            withStyle(SpanStyle(color = NeonGreen)) {
-                                append("DÉGAGES")
-                            }
-                        },
-                        fontSize = 22.sp,
-                        fontWeight = FontWeight.Black,
-                        color = Color.White,
-                        letterSpacing = 2.sp,
-                        textAlign = TextAlign.Center
-                    )
-                    Spacer(modifier = Modifier.height(6.dp))
                     Box(
                         modifier = Modifier
-                            .size(84.dp)
+                            .fillMaxWidth()
                             .background(
-                                lerp(NeonGreenDim, RedAlert, heroPulse).copy(alpha = 0.4f),
-                                RoundedCornerShape(20.dp)
-                            ),
-                        contentAlignment = Alignment.Center
+                                Brush.verticalGradient(
+                                    listOf(
+                                        NeonGreen.copy(alpha = 0.10f + 0.10f * heroPulse),
+                                        NeonGreen.copy(alpha = 0.02f + 0.05f * heroPulse)
+                                    )
+                                ),
+                                RoundedCornerShape(18.dp)
+                            )
+                            .border(1.dp, NeonGreen.copy(alpha = 0.3f), RoundedCornerShape(18.dp))
+                            .padding(vertical = 16.dp, horizontal = 14.dp)
                     ) {
-                        Image(
-                            painter = painterResource(R.drawable.robot),
-                            contentDescription = null,
-                            modifier = Modifier
-                                .size(72.dp)
-                                .clip(RoundedCornerShape(16.dp))
-                        )
+                        Column(horizontalAlignment = Alignment.CenterHorizontally, modifier = Modifier.fillMaxWidth()) {
+                            Text(
+                                buildAnnotatedString {
+                                    append("TU ")
+                                    withStyle(SpanStyle(color = NeonGreen)) {
+                                        append("DÉGAGES")
+                                    }
+                                },
+                                fontSize = 22.sp,
+                                fontWeight = FontWeight.Black,
+                                color = Color.White,
+                                letterSpacing = 2.sp,
+                                textAlign = TextAlign.Center
+                            )
+                            Spacer(modifier = Modifier.height(6.dp))
+                            Box(
+                                modifier = Modifier
+                                    .size(84.dp)
+                                    .background(
+                                        lerp(NeonGreenDim, RedAlert, heroPulse).copy(alpha = 0.4f),
+                                        RoundedCornerShape(20.dp)
+                                    ),
+                                contentAlignment = Alignment.Center
+                            ) {
+                                Image(
+                                    painter = painterResource(R.drawable.robot),
+                                    contentDescription = null,
+                                    modifier = Modifier
+                                        .size(72.dp)
+                                        .clip(RoundedCornerShape(16.dp))
+                                )
+                            }
+                            Spacer(modifier = Modifier.height(6.dp))
+                            Text(
+                                text = stringResource(R.string.home_hero_welcome),
+                                fontSize = 14.sp,
+                                fontWeight = FontWeight.SemiBold,
+                                color = Color.White,
+                                textAlign = TextAlign.Center
+                            )
+                        }
                     }
-                    Spacer(modifier = Modifier.height(6.dp))
-                    Text(
-                        text = stringResource(R.string.home_hero_welcome),
-                        fontSize = 14.sp,
-                        fontWeight = FontWeight.SemiBold,
-                        color = Color.White,
-                        textAlign = TextAlign.Center
-                    )
                     Spacer(modifier = Modifier.height(22.dp))
                     Text(
                         text = stringResource(R.string.home_hero_badge),
