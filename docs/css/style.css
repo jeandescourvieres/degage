@@ -114,14 +114,29 @@ nav {
 
 .hero-glow {
   position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: rgba(170, 255, 0, 0.04);
+  border: 1px solid var(--green-border);
+  border-radius: 32px;
+  padding: 40px 32px;
+  margin-bottom: 28px;
+  overflow: hidden;
 }
 
 .hero-glow::before {
   content: '';
   position: absolute;
   inset: -20px;
-  background: radial-gradient(ellipse 70% 65% at 50% 40%, rgba(170, 255, 0, 0.07) 0%, transparent 70%);
+  background: radial-gradient(ellipse 70% 65% at 50% 40%, rgba(170, 255, 0, 0.16) 0%, transparent 70%);
   pointer-events: none;
+  animation: heroGlowPulse 1.8s ease-in-out infinite alternate;
+}
+
+@keyframes heroGlowPulse {
+  from { opacity: 0.45; }
+  to { opacity: 1; }
 }
 
 .hero-welcome {
@@ -129,7 +144,7 @@ nav {
   font-weight: 900;
   letter-spacing: 1px;
   color: var(--text);
-  margin-bottom: 36px;
+  margin-bottom: 0;
   white-space: nowrap;
 }
 .hero-welcome span { color: var(--green); }
