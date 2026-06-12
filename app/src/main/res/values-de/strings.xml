@@ -289,7 +289,7 @@
     <string name="home_badge_others_block">❌ Andere Apps blockieren den Anruf.</string>
     <string name="home_badge_we_reply">✅ Wir antworten!</string>
     <string name="home_badge_offline">📡 Funktioniert auch offline</string>
-    <string name="home_badge_countries">🇫🇷🇨🇭 Angepasst für Frankreich &amp; Schweiz</string>
+    <string name="home_badge_countries">🇫🇷🇨🇭 Frankreich &amp; Schweiz</string>
     <string name="home_status_active">SCHUTZ AKTIV</string>
     <string name="home_status_inactive">SCHUTZ INAKTIV</string>
     <string name="home_status_active_desc">Ihre KI antwortet für Sie.\nWerbeanrufer kommen nicht mehr durch.</string>

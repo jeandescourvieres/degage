@@ -289,7 +289,7 @@
     <string name="home_badge_others_block">❌ Les autres applications bloquent l\'appel.</string>
     <string name="home_badge_we_reply">✅ Nous, on répond, c\'est plus fun !</string>
     <string name="home_badge_offline">📡 Fonctionne même hors ligne</string>
-    <string name="home_badge_countries">🇫🇷🇨🇭 Adapté France &amp; Suisse</string>
+    <string name="home_badge_countries">🇫🇷🇨🇭 France &amp; Suisse</string>
     <string name="home_status_active">PROTECTION ACTIVE</string>
     <string name="home_status_inactive">PROTECTION INACTIVE</string>
     <string name="home_status_active_desc">Votre IA répond à votre place.\nLes spammeurs ne passent plus.</string>

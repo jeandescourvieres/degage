@@ -289,7 +289,7 @@
     <string name="home_badge_others_block">❌ Le altre app bloccano la chiamata.</string>
     <string name="home_badge_we_reply">✅ Noi rispondiamo!</string>
     <string name="home_badge_offline">📡 Funziona anche offline</string>
-    <string name="home_badge_countries">🇫🇷🇨🇭 Adatta a Francia e Svizzera</string>
+    <string name="home_badge_countries">🇫🇷🇨🇭 Francia e Svizzera</string>
     <string name="home_status_active">PROTEZIONE ATTIVA</string>
     <string name="home_status_inactive">PROTEZIONE INATTIVA</string>
     <string name="home_status_active_desc">La tua IA risponde al posto tuo.\nI call center non passano più.</string>
