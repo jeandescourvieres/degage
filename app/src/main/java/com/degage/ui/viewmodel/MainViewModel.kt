@@ -5,6 +5,9 @@ package com.degage.ui.viewmodel
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
+import com.degage.callscreen.RecentCallEntry
+import com.degage.callscreen.getRecentIncomingCalls
+import com.degage.callscreen.isNumberInContacts
 import com.degage.callscreen.normalizeNumber
 import com.degage.database.AppDatabase
 import com.degage.database.entities.BlockedCallEntity
@@ -271,5 +274,28 @@ class MainViewModel(app: Application) : AndroidViewModel(app) {
         db.spamDao().deleteByNumber(normalized)
         db.customBlockDao().deleteExactByValue(normalized)
         db.whitelistDao().insert(WhitelistEntry(number = normalized))
+    }
+
+    private val _recentUnblockedCalls = MutableStateFlow<List<RecentCallEntry>>(emptyList())
+    val recentUnblockedCalls: StateFlow<List<RecentCallEntry>> = _recentUnblockedCalls.asStateFlow()
+
+    /** Liste les derniers appels reçus qui n'ont pas été bloqués par Tu dégages,
+     *  pour permettre de les ajouter en un tap aux numéros bloqués manuellement. */
+    fun loadRecentUnblockedCalls() = viewModelScope.launch {
+        val context = getApplication<Application>()
+        val alreadyBlocked = allCalls.value.map { it.phoneNumber.normalizeNumber() }.toSet()
+        val entries = context.getRecentIncomingCalls(20).filter { entry ->
+            entry.normalized !in alreadyBlocked &&
+                !db.customBlockDao().isExactBlocked(entry.normalized) &&
+                !db.whitelistDao().isWhitelisted(entry.normalized) &&
+                !context.isNumberInContacts(entry.number)
+        }
+        _recentUnblockedCalls.value = entries.take(5)
+    }
+
+    /** Ajoute le numéro d'un appel récent non bloqué à la liste personnelle de blocage. */
+    fun blockRecentCall(entry: RecentCallEntry) = viewModelScope.launch {
+        db.customBlockDao().insert(CustomBlockEntity(value = entry.normalized, isPrefix = false))
+        _recentUnblockedCalls.value = _recentUnblockedCalls.value.filter { it != entry }
     }
 }

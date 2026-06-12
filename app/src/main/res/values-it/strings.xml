@@ -109,8 +109,10 @@
     <!-- ── Schermata Cronologia ────────────────────────────────────────────── -->
     <string name="history_title">Cronologia</string>
     <string name="history_info_title">Cronologia</string>
-    <string name="history_info_content">Registro di tutte le chiamate bloccate da Tu dégages.\n\n• Ogni riga mostra il numero rilevato, la data/ora, la modalità utilizzata e il messaggio riprodotto.\n• Usa i filtri in alto (Tutte / Bloccate / Risposte / Manuali) per ordinare la visualizzazione.\n• Tocca l\'icona ✅ se questo numero è stato bloccato per errore: non sarà mai più bloccato.\n• Tocca l\'icona 🗑️ per eliminare una voce dalla cronologia.\n• Tocca l\'icona ⬇️ per esportare la cronologia in un file CSV (da salvare o inviare via e-mail).</string>
+    <string name="history_info_content">Registro di tutte le chiamate bloccate da Tu dégages.\n\n• Ogni riga mostra il numero rilevato, la data/ora, la modalità utilizzata e il messaggio riprodotto.\n• Usa i filtri in alto (Tutte / Bloccate / Risposte / Manuali) per ordinare la visualizzazione.\n• Tocca l\'icona ✅ se questo numero è stato bloccato per errore: non sarà mai più bloccato.\n• Tocca l\'icona 🗑️ per eliminare una voce dalla cronologia.\n• Tocca l\'icona ⬇️ per esportare la cronologia in un file CSV (da salvare o inviare via e-mail).\n\nSe una chiamata spam è passata senza essere bloccata, la trovi in alto nella sezione «Chiamate recenti non bloccate»: tocca «🚫 Blocca» per aggiungerla ai numeri bloccati manualmente e farla rifiutare automaticamente la prossima volta.</string>
     <string name="history_export_csv">Esporta in CSV</string>
+    <string name="history_recent_title">📵 Chiamate recenti non bloccate</string>
+    <string name="history_recent_block_button">🚫 Blocca</string>
     <string name="history_filter_all">Tutte</string>
     <string name="history_filter_blocked">Bloccate</string>
     <string name="history_filter_replies">Risposte</string>

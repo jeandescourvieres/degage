@@ -109,8 +109,10 @@
     <!-- ── Écran Historique ────────────────────────────────────────────── -->
     <string name="history_title">Historique</string>
     <string name="history_info_title">Historique</string>
-    <string name="history_info_content">Journal de tous les appels bloqués par Tu dégages.\n\n• Chaque ligne affiche le numéro détecté, la date/heure, le mode utilisé et le message joué.\n• Utilisez les filtres en haut (Tous / Bloqués / Réponses / Manuels) pour trier l\'affichage.\n• Appuyez sur l\'icône ✅ si ce numéro a été bloqué à tort : il ne sera plus jamais bloqué.\n• Appuyez sur l\'icône 🗑️ pour supprimer une entrée de l\'historique.\n• Appuyez sur l\'icône ⬇️ pour exporter l\'historique en fichier CSV (à enregistrer ou envoyer par e-mail).</string>
+    <string name="history_info_content">Journal de tous les appels bloqués par Tu dégages.\n\n• Chaque ligne affiche le numéro détecté, la date/heure, le mode utilisé et le message joué.\n• Utilisez les filtres en haut (Tous / Bloqués / Réponses / Manuels) pour trier l\'affichage.\n• Appuyez sur l\'icône ✅ si ce numéro a été bloqué à tort : il ne sera plus jamais bloqué.\n• Appuyez sur l\'icône 🗑️ pour supprimer une entrée de l\'historique.\n• Appuyez sur l\'icône ⬇️ pour exporter l\'historique en fichier CSV (à enregistrer ou envoyer par e-mail).\n\nSi un appel spam est passé sans être bloqué, retrouvez-le en haut de l\'écran dans « Appels récents non bloqués » et appuyez sur « 🚫 Bloquer » : il sera ajouté à vos numéros bloqués manuellement et rejeté automatiquement la prochaine fois.</string>
     <string name="history_export_csv">Exporter en CSV</string>
+    <string name="history_recent_title">📵 Appels récents non bloqués</string>
+    <string name="history_recent_block_button">🚫 Bloquer</string>
     <string name="history_filter_all">Tous</string>
     <string name="history_filter_blocked">Bloqués</string>
     <string name="history_filter_replies">Réponses</string>

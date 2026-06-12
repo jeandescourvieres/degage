@@ -109,8 +109,10 @@
     <!-- ── Bildschirm Verlauf ────────────────────────────────────────────── -->
     <string name="history_title">Verlauf</string>
     <string name="history_info_title">Verlauf</string>
-    <string name="history_info_content">Protokoll aller von Tu dégages blockierten Anrufe.\n\n• Jede Zeile zeigt die erkannte Nummer, Datum/Uhrzeit, den verwendeten Modus und die abgespielte Nachricht.\n• Verwenden Sie die Filter oben (Alle / Blockiert / Antworten / Manuell), um die Anzeige zu sortieren.\n• Tippen Sie auf das Symbol ✅, wenn diese Nummer fälschlicherweise blockiert wurde: sie wird nie wieder blockiert.\n• Tippen Sie auf das Symbol 🗑️, um einen Eintrag aus dem Verlauf zu löschen.\n• Tippen Sie auf das Symbol ⬇️, um den Verlauf als CSV-Datei zu exportieren (zum Speichern oder per E-Mail versenden).</string>
+    <string name="history_info_content">Protokoll aller von Tu dégages blockierten Anrufe.\n\n• Jede Zeile zeigt die erkannte Nummer, Datum/Uhrzeit, den verwendeten Modus und die abgespielte Nachricht.\n• Verwenden Sie die Filter oben (Alle / Blockiert / Antworten / Manuell), um die Anzeige zu sortieren.\n• Tippen Sie auf das Symbol ✅, wenn diese Nummer fälschlicherweise blockiert wurde: sie wird nie wieder blockiert.\n• Tippen Sie auf das Symbol 🗑️, um einen Eintrag aus dem Verlauf zu löschen.\n• Tippen Sie auf das Symbol ⬇️, um den Verlauf als CSV-Datei zu exportieren (zum Speichern oder per E-Mail versenden).\n\nWenn ein Spam-Anruf durchgekommen ist, ohne blockiert zu werden, finden Sie ihn oben im Bereich „Letzte nicht blockierte Anrufe“ und tippen auf „🚫 Blockieren“: er wird zu Ihren manuell blockierten Nummern hinzugefügt und beim nächsten Mal automatisch abgelehnt.</string>
     <string name="history_export_csv">Als CSV exportieren</string>
+    <string name="history_recent_title">📵 Letzte nicht blockierte Anrufe</string>
+    <string name="history_recent_block_button">🚫 Blockieren</string>
     <string name="history_filter_all">Alle</string>
     <string name="history_filter_blocked">Blockiert</string>
     <string name="history_filter_replies">Antworten</string>

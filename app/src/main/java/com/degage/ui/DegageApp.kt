@@ -162,10 +162,14 @@ fun DegageApp(
                 }
 
                 composable(Screen.History.route) {
+                    val recentUnblockedCalls by viewModel.recentUnblockedCalls.collectAsStateWithLifecycle()
                     HistoryScreen(
                         calls = allCalls,
                         onDelete = viewModel::deleteHistoryEntry,
                         onMarkNotSpam = viewModel::markNotSpam,
+                        recentUnblockedCalls = recentUnblockedCalls,
+                        onLoadRecentUnblocked = viewModel::loadRecentUnblockedCalls,
+                        onBlockRecentCall = viewModel::blockRecentCall,
                         isPremium = isPremium,
                         onUpgrade = { navController.navigate(Screen.Premium.route) },
                         onBack = { navController.navigateUp() }

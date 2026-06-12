@@ -6,6 +6,7 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.PhoneMissed
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material.icons.filled.Block
 import androidx.compose.material.icons.filled.CheckCircle
@@ -25,6 +26,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.degage.R
+import com.degage.callscreen.RecentCallEntry
 import com.degage.database.entities.BlockedCallEntity
 import com.degage.history.exportCallsToCsv
 import com.degage.ui.components.PremiumBadge
@@ -47,6 +49,9 @@ fun HistoryScreen(
     calls: List<BlockedCallEntity>,
     onDelete: (Long) -> Unit,
     onMarkNotSpam: (BlockedCallEntity) -> Unit = {},
+    recentUnblockedCalls: List<RecentCallEntry> = emptyList(),
+    onLoadRecentUnblocked: () -> Unit = {},
+    onBlockRecentCall: (RecentCallEntry) -> Unit = {},
     isPremium: Boolean = true,
     onUpgrade: () -> Unit = {},
     onBack: () -> Unit = {},
@@ -59,6 +64,8 @@ fun HistoryScreen(
         content = stringResource(R.string.history_info_content),
         onDismiss = { showInfo = false }
     )
+
+    LaunchedEffect(Unit) { onLoadRecentUnblocked() }
 
     Column(
         modifier = Modifier
@@ -109,6 +116,22 @@ fun HistoryScreen(
 
         Spacer(modifier = Modifier.height(16.dp))
 
+        if (recentUnblockedCalls.isNotEmpty()) {
+            Text(
+                stringResource(R.string.history_recent_title),
+                fontSize = 13.sp,
+                fontWeight = FontWeight.SemiBold,
+                color = NeonGreen
+            )
+            Spacer(modifier = Modifier.height(8.dp))
+            Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
+                recentUnblockedCalls.forEach { entry ->
+                    RecentCallRow(entry = entry, onBlock = { onBlockRecentCall(entry) })
+                }
+            }
+            Spacer(modifier = Modifier.height(16.dp))
+        }
+
         if (calls.isEmpty()) {
             Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
                 Text(stringResource(R.string.history_empty), color = TextSecondary)
@@ -120,6 +143,35 @@ fun HistoryScreen(
                 }
                 item { Spacer(modifier = Modifier.height(80.dp)) }
             }
+        }
+    }
+}
+
+@Composable
+fun RecentCallRow(entry: RecentCallEntry, onBlock: () -> Unit) {
+    val dateStr = remember(entry.timestamp) {
+        val sdf = SimpleDateFormat("dd/MM HH:mm", Locale.FRENCH)
+        sdf.format(Date(entry.timestamp))
+    }
+    Row(
+        modifier = Modifier
+            .fillMaxWidth()
+            .background(CardBg, RoundedCornerShape(14.dp))
+            .padding(horizontal = 16.dp, vertical = 12.dp),
+        verticalAlignment = Alignment.CenterVertically
+    ) {
+        Icon(Icons.Default.PhoneMissed, contentDescription = null, tint = TextSecondary, modifier = Modifier.size(20.dp))
+        Spacer(modifier = Modifier.width(12.dp))
+        Column(modifier = Modifier.weight(1f)) {
+            Text(entry.number, fontWeight = FontWeight.SemiBold, color = Color.White, fontSize = 15.sp)
+            Text(dateStr, color = TextSecondary, fontSize = 12.sp)
+        }
+        Button(
+            onClick = onBlock,
+            colors = ButtonDefaults.buttonColors(containerColor = RedAlert.copy(alpha = 0.15f), contentColor = RedAlert),
+            contentPadding = PaddingValues(horizontal = 14.dp, vertical = 6.dp)
+        ) {
+            Text(stringResource(R.string.history_recent_block_button), fontSize = 12.sp, fontWeight = FontWeight.SemiBold)
         }
     }
 }

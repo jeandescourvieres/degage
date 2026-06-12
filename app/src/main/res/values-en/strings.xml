@@ -109,8 +109,10 @@
     <!-- ── History screen ────────────────────────────────────────────── -->
     <string name="history_title">History</string>
     <string name="history_info_title">History</string>
-    <string name="history_info_content">Log of all calls blocked by Tu dégages.\n\n• Each row shows the detected number, date/time, mode used and message played.\n• Use the filters at the top (All / Blocked / Replies / Manual) to sort the display.\n• Tap the ✅ icon if this number was blocked by mistake: it will never be blocked again.\n• Tap the 🗑️ icon to delete an entry from the history.\n• Tap the ⬇️ icon to export the history as a CSV file (to save or send by email).</string>
+    <string name="history_info_content">Log of all calls blocked by Tu dégages.\n\n• Each row shows the detected number, date/time, mode used and message played.\n• Use the filters at the top (All / Blocked / Replies / Manual) to sort the display.\n• Tap the ✅ icon if this number was blocked by mistake: it will never be blocked again.\n• Tap the 🗑️ icon to delete an entry from the history.\n• Tap the ⬇️ icon to export the history as a CSV file (to save or send by email).\n\nIf a spam call got through without being blocked, find it at the top in "Recent unblocked calls" and tap "🚫 Block": it will be added to your manually blocked numbers and rejected automatically next time.</string>
     <string name="history_export_csv">Export to CSV</string>
+    <string name="history_recent_title">📵 Recent unblocked calls</string>
+    <string name="history_recent_block_button">🚫 Block</string>
     <string name="history_filter_all">All</string>
     <string name="history_filter_blocked">Blocked</string>
     <string name="history_filter_replies">Replies</string>
