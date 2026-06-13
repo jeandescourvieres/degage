@@ -416,6 +416,24 @@ section { padding: 80px 24px; }
 .mode-card h3 { font-size: 15px; font-weight: 700; margin-bottom: 6px; }
 .mode-card p { font-size: 12px; color: #bbb; line-height: 1.55; }
 .mode-card .mode-example { margin-top: 10px; font-size: 11px; color: rgba(170,255,0,0.7); font-style: italic; }
+.mode-listen-btn {
+  margin-top: 14px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(170,255,0,0.08);
+  border: 1px solid var(--green-border);
+  color: var(--green);
+  font-size: 12px;
+  font-weight: 700;
+  padding: 7px 16px;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+  font-family: inherit;
+}
+.mode-listen-btn:hover { background: rgba(170,255,0,0.18); }
+.mode-listen-btn.speaking { background: var(--green); color: #0d0d0d; }
 
 /* ── HOW IT WORKS ────────────────────────────────────────────────────── */
 .steps { display: flex; flex-direction: column; gap: 0; max-width: 620px; }

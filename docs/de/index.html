@@ -219,24 +219,28 @@
         <h3>Höflich</h3>
         <p>Höflich, aber bestimmt. Die perfekte Antwort, um elegant und gleichzeitig klar zu bleiben.</p>
         <div class="mode-example">"Diese Nummer lehnt kommerzielle Anfragen ab."</div>
+        <button class="mode-listen-btn" onclick="speakMode(this, 'Diese Nummer lehnt kommerzielle Anfragen ab.')">▶️ Anhören</button>
       </div>
       <div class="mode-card">
         <div class="mode-emoji">📋</div>
         <h3>Administrativ</h3>
         <p>Kühl, offiziell, abschreckend. Ihre KI spricht wie eine Rechtsabteilung.</p>
         <div class="mode-example">"Ihr Anruf wurde als Werbeanruf eingestuft."</div>
+        <button class="mode-listen-btn" onclick="speakMode(this, 'Ihr Anruf wurde als Werbeanruf eingestuft.')">▶️ Anhören</button>
       </div>
       <div class="mode-card active">
         <div class="mode-emoji">😏</div>
         <h3>Sarkastisch</h3>
         <p>Für Werbeanrufer, die es wirklich verdienen. Humor im Dienste des Friedens.</p>
         <div class="mode-example">"Herzlichen Glückwunsch, Sie haben die sarkastischste Mailbox Frankreichs erreicht."</div>
+        <button class="mode-listen-btn" onclick="speakMode(this, 'Herzlichen Glückwunsch, Sie haben die sarkastischste Mailbox Frankreichs erreicht.')">▶️ Anhören</button>
       </div>
       <div class="mode-card">
         <div class="mode-emoji">🎭</div>
         <h3>Troll</h3>
         <p>Der Werbeanrufer wartet 15 Sekunden mit Wartemusik. Ihre KI lässt ihn Zeit verlieren.</p>
         <div class="mode-example">"Bitte warten Sie, Ihr Anruf ist uns sehr wichtig."</div>
+        <button class="mode-listen-btn" onclick="speakMode(this, 'Bitte warten Sie, Ihr Anruf ist uns sehr wichtig.')">▶️ Anhören</button>
       </div>
     </div>
   </div>
@@ -449,6 +453,30 @@
     <span>Profil</span>
   </a>
 </nav>
+
+<script>
+function speakMode(btn, text) {
+  if (!('speechSynthesis' in window)) {
+    alert("Ihr Browser unterstützt die Sprachausgabe nicht.");
+    return;
+  }
+  if (window.speechSynthesis.speaking) {
+    window.speechSynthesis.cancel();
+    document.querySelectorAll('.mode-listen-btn.speaking').forEach(b => {
+      b.classList.remove('speaking');
+      b.textContent = '▶️ Anhören';
+    });
+    return;
+  }
+  const utterance = new SpeechSynthesisUtterance(text);
+  utterance.lang = 'de-DE';
+  utterance.onend = () => { btn.classList.remove('speaking'); btn.textContent = '▶️ Anhören'; };
+  utterance.onerror = () => { btn.classList.remove('speaking'); btn.textContent = '▶️ Anhören'; };
+  btn.classList.add('speaking');
+  btn.textContent = '⏸️ Läuft…';
+  window.speechSynthesis.speak(utterance);
+}
+</script>
 
 </body>
 </html>
