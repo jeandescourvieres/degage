@@ -1086,6 +1086,7 @@ body { padding-bottom: 64px; }
 
 /* ── RESPONSIVE ──────────────────────────────────────────────────────── */
 @media (max-width: 640px) {
+  .hero-appname-accent { display: none; }
   nav { padding: 0 16px; }
   .nav-links { display: none; }
   .nav-logo-tagline { display: none; }
