@@ -22,11 +22,8 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.text.SpanStyle
-import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.degage.R
@@ -111,20 +108,6 @@ fun WelcomeScreen(
                                 .clip(RoundedCornerShape(16.dp))
                         )
                     }
-                    Spacer(modifier = Modifier.height(12.dp))
-                    Text(
-                        buildAnnotatedString {
-                            append("TU ")
-                            withStyle(SpanStyle(color = NeonGreen)) {
-                                append("DÉGAGES")
-                            }
-                        },
-                        fontSize = 28.sp,
-                        fontWeight = FontWeight.Black,
-                        color = Color.White,
-                        letterSpacing = 2.sp,
-                        textAlign = TextAlign.Center
-                    )
                     Spacer(modifier = Modifier.height(10.dp))
                     Text(
                         text = stringResource(R.string.welcome_hero_title),
