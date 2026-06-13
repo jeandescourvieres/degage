@@ -586,7 +586,7 @@ section { padding: 80px 24px; }
 
 /* ── FEATURES : fond clair pour égayer la page ───────────────────────── */
 #features {
-  background: #f4f4ef;
+  background: linear-gradient(to bottom, #f4f4ef 0%, #f4f4ef 88%, var(--bg) 100%);
 }
 
 #features .section-label { color: #5a8a00; }
