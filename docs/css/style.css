@@ -592,10 +592,10 @@ section { padding: 80px 24px; }
   background: linear-gradient(to bottom, var(--bg) 0%, #f4f4ef 12%, #f4f4ef 88%, var(--bg) 100%);
 }
 
-#features .section-label { color: #5a8a00; }
+#features .section-label { color: #3d6300; }
 #features .section-title { color: #111111; }
 #features .section-sub { color: #555555; }
-#features .brand { color: #5a8a00; }
+#features .brand { color: #3d6300; }
 
 #features .feature-card {
   background: #ffffff;
