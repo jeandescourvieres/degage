@@ -764,6 +764,38 @@ section { padding: 80px 24px; }
 
 .philosophy-card p:last-child { margin-bottom: 0; }
 
+.philosophy-card summary {
+  cursor: pointer;
+  font-size: 17px;
+  font-weight: 600;
+  color: var(--text);
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+}
+
+.philosophy-card summary::-webkit-details-marker { display: none; }
+
+.philosophy-card summary::after {
+  content: '+';
+  flex-shrink: 0;
+  font-size: 22px;
+  font-weight: 400;
+  color: var(--green);
+}
+
+.philosophy-card details[open] summary::after { content: '−'; }
+
+.philosophy-card .accordion-body {
+  margin-top: 14px;
+}
+
+.philosophy-card .philosophy-conclusion {
+  margin-top: 16px;
+}
+
 .philosophy-conclusion {
   color: var(--green) !important;
   font-weight: 600;
