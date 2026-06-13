@@ -649,23 +649,16 @@ section { padding: 80px 24px; }
 .mode-listen-btn.speaking { background: var(--green); color: #0d0d0d; }
 
 /* ── HOW IT WORKS ────────────────────────────────────────────────────── */
-.steps { display: flex; flex-direction: column; gap: 0; max-width: 620px; }
+.steps { display: flex; flex-direction: column; gap: 16px; max-width: 620px; }
 
 .step {
   display: flex;
   gap: 20px;
   align-items: flex-start;
-  padding-bottom: 36px;
-  position: relative;
-}
-.step:not(:last-child)::after {
-  content: '';
-  position: absolute;
-  left: 19px;
-  top: 40px;
-  bottom: 0;
-  width: 2px;
-  background: linear-gradient(to bottom, var(--green-border), transparent);
+  padding: 24px;
+  border-radius: var(--radius);
+  background: radial-gradient(circle at 25% 20%, rgba(255,149,0,0.14), transparent 65%), var(--card);
+  border: 1px solid rgba(255,149,0,0.1);
 }
 
 .step-num {
