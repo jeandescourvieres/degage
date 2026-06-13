@@ -77,47 +77,42 @@ fun HomeScreen(
 
         // ── HEADER ────────────────────────────────────────────────────────
         item {
-            var headerVisible by remember { mutableStateOf(false) }
-            LaunchedEffect(Unit) { headerVisible = true }
-            AnimatedVisibility(
-                visible = headerVisible,
-                enter = slideInHorizontally(initialOffsetX = { -it }) + fadeIn()
+            Row(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(top = 20.dp),
+                horizontalArrangement = Arrangement.SpaceBetween,
+                verticalAlignment = Alignment.CenterVertically
             ) {
-                Row(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(top = 20.dp),
-                    horizontalArrangement = Arrangement.SpaceBetween,
-                    verticalAlignment = Alignment.CenterVertically
-                ) {
-                    Column {
-                        Text(
-                            text = stringResource(R.string.home_title),
-                            fontSize = 20.sp,
-                            fontWeight = FontWeight.Black,
-                            color = Color.White
-                        )
-                        Text(
-                            text = stringResource(R.string.home_subtitle),
-                            fontSize = 11.sp,
-                            color = NeonGreen,
-                            fontWeight = FontWeight.SemiBold
-                        )
+                Column {
+                    Text(
+                        text = stringResource(R.string.home_title),
+                        fontSize = 20.sp,
+                        fontWeight = FontWeight.Black,
+                        color = Color.White
+                    )
+                    Text(
+                        text = stringResource(R.string.home_subtitle),
+                        fontSize = 11.sp,
+                        color = NeonGreen,
+                        fontWeight = FontWeight.SemiBold
+                    )
+                }
+                Row {
+                    IconButton(onClick = { showInfo = true }) {
+                        Icon(Icons.Default.Info, contentDescription = stringResource(R.string.cd_help), tint = NeonGreen, modifier = Modifier.size(24.dp))
                     }
-                    Row {
-                        IconButton(onClick = { showInfo = true }) {
-                            Icon(Icons.Default.Info, contentDescription = stringResource(R.string.cd_help), tint = NeonGreen, modifier = Modifier.size(24.dp))
-                        }
-                        IconButton(onClick = onNavigateSettings) {
-                            Icon(Icons.Default.Settings, contentDescription = stringResource(R.string.settings_title), tint = NeonGreen, modifier = Modifier.size(24.dp))
-                        }
+                    IconButton(onClick = onNavigateSettings) {
+                        Icon(Icons.Default.Settings, contentDescription = stringResource(R.string.settings_title), tint = NeonGreen, modifier = Modifier.size(24.dp))
                     }
                 }
             }
         }
 
-        // ── INTRO HERO ────────────────────────────────────────────────────
+        // ── TU DÉGAGES (écusson animé) ───────────────────────────────────
         item {
+            var heroVisible by remember { mutableStateOf(false) }
+            LaunchedEffect(Unit) { heroVisible = true }
             val heroFlash = rememberInfiniteTransition(label = "heroFlash")
             val heroPulse by heroFlash.animateFloat(
                 initialValue = 0f,
@@ -128,6 +123,84 @@ fun HomeScreen(
                 ),
                 label = "heroPulse"
             )
+            AnimatedVisibility(
+                visible = heroVisible,
+                enter = slideInHorizontally(
+                    animationSpec = tween(1800),
+                    initialOffsetX = { -it }
+                ) + fadeIn(animationSpec = tween(1800))
+            ) {
+                Box(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .background(
+                            Brush.verticalGradient(
+                                listOf(
+                                    NeonGreen.copy(alpha = 0.10f),
+                                    NeonGreen.copy(alpha = 0.02f)
+                                )
+                            ),
+                            RoundedCornerShape(18.dp)
+                        )
+                        .border(1.dp, NeonGreen.copy(alpha = 0.3f), RoundedCornerShape(18.dp))
+                        .padding(vertical = 16.dp, horizontal = 14.dp)
+                ) {
+                    Column(horizontalAlignment = Alignment.CenterHorizontally, modifier = Modifier.fillMaxWidth()) {
+                        Text(
+                            buildAnnotatedString {
+                                append("TU ")
+                                withStyle(SpanStyle(color = NeonGreen)) {
+                                    append("DÉGAGES")
+                                }
+                            },
+                            fontSize = 22.sp,
+                            fontWeight = FontWeight.Black,
+                            color = Color.White,
+                            letterSpacing = 2.sp,
+                            textAlign = TextAlign.Center
+                        )
+                        Spacer(modifier = Modifier.height(6.dp))
+                        Box(
+                            modifier = Modifier
+                                .size(84.dp)
+                                .background(
+                                    RedAlert.copy(alpha = 0.2f + 0.8f * heroPulse),
+                                    RoundedCornerShape(20.dp)
+                                ),
+                            contentAlignment = Alignment.Center
+                        ) {
+                            Image(
+                                painter = painterResource(R.drawable.robot),
+                                contentDescription = null,
+                                modifier = Modifier
+                                    .size(72.dp)
+                                    .clip(RoundedCornerShape(16.dp))
+                            )
+                        }
+                        Spacer(modifier = Modifier.height(6.dp))
+                        Text(
+                            text = stringResource(R.string.home_hero_welcome),
+                            fontSize = 18.sp,
+                            fontWeight = FontWeight.Bold,
+                            color = Color.White,
+                            textAlign = TextAlign.Center
+                        )
+                    }
+                }
+            }
+        }
+
+        // ── INTRO HERO ────────────────────────────────────────────────────
+        item {
+            var introVisible by remember { mutableStateOf(false) }
+            LaunchedEffect(Unit) { introVisible = true }
+            AnimatedVisibility(
+                visible = introVisible,
+                enter = slideInHorizontally(
+                    animationSpec = tween(1800),
+                    initialOffsetX = { it }
+                ) + fadeIn(animationSpec = tween(1800))
+            ) {
             Box(
                 modifier = Modifier
                     .fillMaxWidth()
@@ -136,64 +209,6 @@ fun HomeScreen(
                     .padding(14.dp)
             ) {
                 Column(horizontalAlignment = Alignment.CenterHorizontally, modifier = Modifier.fillMaxWidth()) {
-                    Box(
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .background(
-                                Brush.verticalGradient(
-                                    listOf(
-                                        NeonGreen.copy(alpha = 0.10f),
-                                        NeonGreen.copy(alpha = 0.02f)
-                                    )
-                                ),
-                                RoundedCornerShape(18.dp)
-                            )
-                            .border(1.dp, NeonGreen.copy(alpha = 0.3f), RoundedCornerShape(18.dp))
-                            .padding(vertical = 16.dp, horizontal = 14.dp)
-                    ) {
-                        Column(horizontalAlignment = Alignment.CenterHorizontally, modifier = Modifier.fillMaxWidth()) {
-                            Text(
-                                buildAnnotatedString {
-                                    append("TU ")
-                                    withStyle(SpanStyle(color = NeonGreen)) {
-                                        append("DÉGAGES")
-                                    }
-                                },
-                                fontSize = 22.sp,
-                                fontWeight = FontWeight.Black,
-                                color = Color.White,
-                                letterSpacing = 2.sp,
-                                textAlign = TextAlign.Center
-                            )
-                            Spacer(modifier = Modifier.height(6.dp))
-                            Box(
-                                modifier = Modifier
-                                    .size(84.dp)
-                                    .background(
-                                        RedAlert.copy(alpha = 0.2f + 0.8f * heroPulse),
-                                        RoundedCornerShape(20.dp)
-                                    ),
-                                contentAlignment = Alignment.Center
-                            ) {
-                                Image(
-                                    painter = painterResource(R.drawable.robot),
-                                    contentDescription = null,
-                                    modifier = Modifier
-                                        .size(72.dp)
-                                        .clip(RoundedCornerShape(16.dp))
-                                )
-                            }
-                            Spacer(modifier = Modifier.height(6.dp))
-                            Text(
-                                text = stringResource(R.string.home_hero_welcome),
-                                fontSize = 18.sp,
-                                fontWeight = FontWeight.Bold,
-                                color = Color.White,
-                                textAlign = TextAlign.Center
-                            )
-                        }
-                    }
-                    Spacer(modifier = Modifier.height(22.dp))
                     Text(
                         text = stringResource(R.string.home_hero_badge),
                         fontSize = 14.sp,
@@ -229,6 +244,7 @@ fun HomeScreen(
                     Spacer(modifier = Modifier.height(6.dp))
                     IntroBadge(stringResource(R.string.home_badge_countries))
                 }
+            }
             }
         }
 
