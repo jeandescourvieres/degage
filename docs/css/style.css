@@ -1,7 +1,7 @@
 :root {
-  --bg: #080808;
-  --card: #121212;
-  --card-alt: #1a1a1a;
+  --bg: #101010;
+  --card: #1a1a1a;
+  --card-alt: #222222;
   --green: #aaff00;
   --green-dim: rgba(170, 255, 0, 0.12);
   --green-border: rgba(170, 255, 0, 0.35);
@@ -17,7 +17,10 @@
 html { scroll-behavior: smooth; }
 
 body {
-  background: var(--bg);
+  background-color: var(--bg);
+  background-image: radial-gradient(ellipse 70% 50% at 50% 0%, rgba(170,255,0,0.05), transparent 70%);
+  background-attachment: fixed;
+  background-repeat: no-repeat;
   color: var(--text);
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   line-height: 1.6;
@@ -442,7 +445,7 @@ nav {
 
 /* ── DIFFERENTIATOR ──────────────────────────────────────────────────── */
 .diff-section {
-  background: var(--bg);
+  background: radial-gradient(ellipse 70% 50% at 50% 0%, rgba(170,255,0,0.05), transparent 70%), var(--bg);
   border-top: 1px solid var(--green-border);
   border-bottom: 1px solid var(--green-border);
   padding: 80px 24px;
@@ -817,7 +820,7 @@ section { padding: 80px 24px; }
 
 /* ── CTA BAND ────────────────────────────────────────────────────────── */
 .cta-band {
-  background: var(--bg);
+  background: radial-gradient(ellipse 70% 50% at 50% 0%, rgba(170,255,0,0.05), transparent 70%), var(--bg);
   border-top: 1px solid var(--green-border);
   border-bottom: 1px solid var(--green-border);
   padding: 80px 24px;
@@ -864,7 +867,7 @@ section { padding: 80px 24px; }
 
 /* ── COMMUNAUTÉ ──────────────────────────────────────────────────────── */
 .community-section {
-  background: var(--bg);
+  background: radial-gradient(ellipse 70% 50% at 50% 0%, rgba(170,255,0,0.05), transparent 70%), var(--bg);
   border-top: 1px solid rgba(170,255,0,0.1);
   border-bottom: 1px solid rgba(170,255,0,0.1);
 }
