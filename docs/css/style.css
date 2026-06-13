@@ -330,6 +330,41 @@ nav {
 }
 .diff-headline span { color: var(--green); }
 
+/* ── PROOF / STATS ────────────────────────────────────────────────── */
+.proof-section {
+  padding: 56px 24px;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+
+.proof-grid {
+  max-width: 1000px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 16px;
+  text-align: center;
+}
+
+.proof-stat {
+  background: var(--card-alt);
+  border: 1px solid rgba(255,255,255,0.05);
+  border-radius: var(--radius);
+  padding: 24px 16px;
+}
+
+.proof-number {
+  font-size: 32px;
+  font-weight: 900;
+  color: var(--green);
+  margin-bottom: 6px;
+}
+
+.proof-label {
+  font-size: 13px;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
 .diff-sub {
   font-size: clamp(15px, 2vw, 18px);
   color: #bbb;
