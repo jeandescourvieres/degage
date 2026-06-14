@@ -232,6 +232,15 @@ nav {
   border: 1px solid var(--green-border);
   color: var(--text);
   font-weight: 700;
+  flex-wrap: wrap;
+  justify-content: center;
+  row-gap: 4px;
+}
+.hero-mini-badge-flags .flag-pair {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  white-space: nowrap;
 }
 .hero-mini-badge-flags .flag-icon {
   height: 18px;
@@ -1142,6 +1151,7 @@ body { padding-bottom: 64px; }
   .footer-inner { flex-direction: column; }
   .footer-bottom { flex-direction: column; text-align: center; }
   .base-spam-top { flex-direction: column; }
+  .base-spam-text, .base-spam-visual { flex-basis: auto; }
   .base-spam-visual { min-height: 200px; }
   footer { padding-bottom: 80px; }
 }
