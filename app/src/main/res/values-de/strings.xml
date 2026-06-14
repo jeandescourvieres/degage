@@ -70,7 +70,7 @@
         <item>🚫 Manuelle Blockierung von Nummern und Präfixen</item>
         <item>⬇️ CSV-Export des Verlaufs</item>
         <item>🇨🇭 Schweiz-Modus (OFCOM-Nummern)</item>
-        <item>🇩🇪🇮🇹 Sprachnachrichten auf Deutsch und Italienisch</item>
+        <item>🇩🇪🇮🇹🇬🇧 Sprachnachrichten auf Deutsch, Italienisch und Englisch</item>
     </string-array>
     <string name="premium_price_monthly">1 €</string>
     <string name="premium_price_monthly_period">/ Monat</string>
@@ -193,18 +193,24 @@
     <string name="welcome_title">TU DÉGAGES heißt Sie willkommen!</string>
     <string name="welcome_hero_title">Werbeanrufer rufen Sie\nständig an?</string>
     <string name="welcome_hero_subtitle">TU DÉGAGES, Ihre neue KI,\nantwortet ihnen gerne!</string>
-    <string name="welcome_hero_desc">Verschwenden Sie keine Zeit mehr damit, unerwünschte Anrufe entgegenzunehmen, nur um danach aufzulegen. Lassen Sie Ihre persönliche KI mit dem Humor Ihrer Wahl antworten.</string>
-    <string name="welcome_sections_intro">Entdecken Sie TU DÉGAGES im Detail:</string>
+    <string name="welcome_hero_desc">Verschwenden Sie keine Zeit mehr damit, unerwünschte Anrufe entgegenzunehmen, nur um danach aufzulegen. Lassen Sie Ihre persönliche KI mit dem Humor Ihrer Wahl antworten — sie legt auf und blockiert die Nummer für Sie.</string>
+    <string name="welcome_sections_intro">TU DÉGAGES: was bringt das eigentlich?</string>
+    <string name="welcome_details_intro">Eine kurze Tour durch die 5 Superkräfte Ihrer App – ganz ohne 50-seitige Anleitung 😄</string>
     <string name="welcome_section1_title">🤖 Intelligente Blockierung mit KI-Antwort:</string>
     <string name="welcome_section1_body">TU DÉGAGES filtert unerwünschte Anrufe und leitet sie an Ihren persönlichen KI-Sprachassistenten weiter — bevor das Gespräch beendet wird. Der Anrufer spricht mit Ihrer KI, nicht mit Ihnen.</string>
     <string name="welcome_section2_title">🎭 Anders als andere Apps:</string>
-    <string name="welcome_section2_body">Klassische Apps blockieren Anrufe. Unsere lässt Ihre KI mit dem von Ihnen gewählten Ton antworten — Höflich, Administrativ, Sarkastisch oder Troll — bevor aufgelegt wird.</string>
+    <string name="welcome_section2_body">Klassische Apps blockieren Anrufe. Unsere lässt Ihre KI mit dem von Ihnen gewählten Ton antworten — Höflich, Administrativ, Sarkastisch oder Troll — bevor aufgelegt und die Nummer blockiert wird.</string>
     <string name="welcome_section3_title">💬 Ihre KI, Ihre Stimme:</string>
-    <string name="welcome_section3_body">Verfassen Sie eigene Formulierungen, wählen Sie den Ton, stellen Sie die Stimme ein. Ihre KI gleicht Ihnen. Spammer verdienen eine angemessene Antwort. 🎤</string>
+    <string name="welcome_section3_body">Verfassen Sie eigene Formulierungen, wählen Sie den Ton und die Sprache (Französisch, Deutsch, Italienisch oder Englisch), stellen Sie die Stimme ein. Ihre KI gleicht Ihnen. Spammer verdienen eine angemessene Antwort. 🎤</string>
     <string name="welcome_section4_title">📊 Jeder Sieg zählt:</string>
     <string name="welcome_section4_body">Vollständiger Verlauf, eingesparte Zeit, gespeicherte Nummern für sofortige Ablehnung. Sie wissen genau, wie oft Ihre KI gewonnen hat.</string>
     <string name="welcome_section5_title">🇫🇷🇨🇭 Angepasst an Frankreich und die Schweiz:</string>
     <string name="welcome_section5_body">Wählen Sie Ihr Land in den Einstellungen: Die Datenbank unerwünschter Nummern passt sich automatisch an (ARCEP-Präfixe in Frankreich, Mehrwert- und OFCOM-Unternehmensnummern in der Schweiz).</string>
+    <string name="welcome_details_outro">Mehr erfahren Sie in der vollständigen Bedienungsanleitung und in den Einstellungen der App:</string>
+    <string name="welcome_settings_link">⚙️ Zu den Einstellungen</string>
+    <string name="welcome_faq_link">❓ FAQ - Häufige Fragen</string>
+    <string name="welcome_dashboard_link">📊 Mein Dashboard</string>
+    <string name="dashboard_title">Mein Dashboard</string>
     <string name="welcome_tip_title">💡 Gut zu wissen</string>
     <string name="welcome_tip_body">Sie können diese Präsentation jederzeit über Einstellungen → Präsentation erneut ansehen aufrufen.</string>
     <string name="welcome_dismiss_button">Verstanden, nicht mehr anzeigen</string>
@@ -239,7 +245,7 @@
     <string name="settings_nav_premium">⭐ TU DÉGAGES Premium</string>
     <string name="settings_community_db_label">Community-Datenbank</string>
     <string name="settings_community_db_value">Aktualisiert: heute 08:15</string>
-    <string name="settings_nav_manual">📖 Bedienungsanleitung</string>
+    <string name="settings_nav_manual">📖 Bedienungsanleitung und häufig gestellte Fragen - FAQ</string>
     <string name="settings_nav_welcome">👋 Präsentation erneut ansehen</string>
     <string name="settings_nav_about">Über die App</string>
 
@@ -291,9 +297,12 @@
     <string name="home_hero_line1">Werbeanrufer lieben es, Sie anzurufen?\n</string>
     <string name="home_hero_line2">TU DÉGAGES, Ihre neue KI, antwortet ihnen gerne!</string>
     <string name="home_badge_others_block">❌ Andere Apps blockieren den Anruf.</string>
-    <string name="home_badge_we_reply">✅ Wir antworten!</string>
-    <string name="home_badge_offline">📡 Funktioniert auch offline</string>
-    <string name="home_badge_countries">🇫🇷🇨🇭 Entwickelt für Frankreich und die Schweiz</string>
+    <string name="home_badge_we_reply">✅ „TU DÉGAGES“ geht ran, plaudert, legt auf… und blockiert dann!</string>
+    <string name="home_badge_offline">📡 Funktioniert auch offline.</string>
+    <string name="home_badge_countries">🇫🇷 Entwickelt für Frankreich.\n🇨🇭 Und die Schweiz.</string>
+    <string name="home_badge_languages">🌍 KI-Antworten auf Französisch, Deutsch, Italienisch und Englisch…</string>
+    <string name="home_protection_title">🛡️ Ihr Schutz auf einen Blick</string>
+    <string name="home_protection_intro">Sehen Sie auf einen Blick, ob TU DÉGAGES aktiv ist, und aktivieren oder deaktivieren Sie den Schutz direkt hier.</string>
     <string name="home_status_active">SCHUTZ AKTIV</string>
     <string name="home_status_inactive">SCHUTZ INAKTIV</string>
     <string name="home_status_active_desc">Ihre KI antwortet für Sie.\nWerbeanrufer kommen nicht mehr durch.</string>
@@ -301,6 +310,8 @@
     <string name="home_mode_label">Modus: %1$s</string>
     <string name="home_stat_blocked">Blockierte Spammer</string>
     <string name="home_stat_time_saved">Gewonnene Zeit</string>
+    <string name="home_dashboard_title">📊 Mein Dashboard</string>
+    <string name="home_dashboard_intro">Alles auf einen Blick: der Status Ihres Schutzes, die Anzahl neutralisierter Spammer, die zurückgewonnene Zeit … und die Liste Ihrer letzten Opfer 😏</string>
     <string name="home_recent_calls_title">Zuletzt blockierte Anrufe</string>
     <string name="home_recent_calls_see_all">Alle anzeigen →</string>
     <string name="home_recent_calls_empty">Noch kein Anruf blockiert\nAktivieren Sie den Schutz und warten Sie… 😏</string>
@@ -308,7 +319,7 @@
     <string name="home_call_yesterday_prefix">Gestern</string>
 
     <!-- ── Bedienungsanleitung ─────────────────────────────────────────── -->
-    <string name="manual_title">Bedienungsanleitung</string>
+    <string name="manual_title">FAQ - Häufig gestellte Fragen</string>
 
     <string name="manual_cat_db">📋 Datenbank blockierter Nummern</string>
     <string name="manual_cat_usage">📱 Verwendung</string>
@@ -317,7 +328,7 @@
     <string name="manual_cat_other">❓ Sonstiges</string>
 
     <string name="manual_q1_title">⭐ Was ist kostenlos und was ist Premium?</string>
-    <string name="manual_q1_body">🆓 KOSTENLOS, FÜR IMMER — der Schutz:\n\n• Automatische Blockierung bekannter Spam-Nummern (ARCEP/OFCOM-Datenbank + Lernen aus Ihrem Verlauf)\n• Höflicher Antwortmodus\n• Verlauf blockierter Anrufe\n• Ihre Kontakte werden nie blockiert\n• „Kein Spam“: Korrektur einer fälschlichen Blockierung mit einem Tap\n• Benachrichtigungen bei jedem blockierten Anruf\n\nSicherheit und Schutz vor Fehlalarmen werden NIEMALS kostenpflichtig sein.\n\n⭐ PREMIUM (1 €/Monat oder 10 €/Jahr) — Komfort und Personalisierung:\n\n• Die Modi Administrativ, Sarkastisch und Troll\n• Vollständige Personalisierung der Nachrichten (Baukasten, eigene Sätze)\n• Spracheinstellungen (Stimme, Geschwindigkeit, Tonhöhe)\n• Community-Datenbank (Synchronisierung und Beitrag)\n• Manuelle Blockierung von Nummern und Präfixen\n• CSV-Export des Verlaufs\n• Schweiz-Modus (OFCOM-Nummern)\n• Sprachnachrichten auf Deutsch und Italienisch\n\nEin Schloss-Symbol 🔒 erscheint bei jeder Premium-Funktion in der App. Tippen Sie darauf, um die Details des Angebots unter Einstellungen → „⭐ Tu dégages Premium“ zu sehen.</string>
+    <string name="manual_q1_body">🆓 KOSTENLOS, FÜR IMMER — der Schutz:\n\n• Automatische Blockierung bekannter Spam-Nummern (ARCEP/OFCOM-Datenbank + Lernen aus Ihrem Verlauf)\n• Höflicher Antwortmodus\n• Verlauf blockierter Anrufe\n• Ihre Kontakte werden nie blockiert\n• „Kein Spam“: Korrektur einer fälschlichen Blockierung mit einem Tap\n• Benachrichtigungen bei jedem blockierten Anruf\n\nSicherheit und Schutz vor Fehlalarmen werden NIEMALS kostenpflichtig sein.\n\n⭐ PREMIUM (1 €/Monat oder 10 €/Jahr) — Komfort und Personalisierung:\n\n• Die Modi Administrativ, Sarkastisch und Troll\n• Vollständige Personalisierung der Nachrichten (Baukasten, eigene Sätze)\n• Spracheinstellungen (Stimme, Geschwindigkeit, Tonhöhe)\n• Community-Datenbank (Synchronisierung und Beitrag)\n• Manuelle Blockierung von Nummern und Präfixen\n• CSV-Export des Verlaufs\n• Schweiz-Modus (OFCOM-Nummern)\n• Sprachnachrichten auf Deutsch, Italienisch und Englisch\n\nEin Schloss-Symbol 🔒 erscheint bei jeder Premium-Funktion in der App. Tippen Sie darauf, um die Details des Angebots unter Einstellungen → „⭐ Tu dégages Premium“ zu sehen.</string>
 
     <string name="manual_q2_title">👤 Können meine Kontakte versehentlich blockiert werden?</string>
     <string name="manual_q2_body">Nein. Wenn eine Nummer, die Sie anruft, einem auf Ihrem Telefon gespeicherten Kontakt entspricht, lässt Tu dégages den Anruf immer durch — selbst wenn diese Nummer ansonsten in der Spam-Datenbank oder in Ihren eigenen Regeln steht.\n\nDiese Überprüfung erfordert die Berechtigung für den Zugriff auf Kontakte, die beim ersten Start der App angefordert wird.</string>

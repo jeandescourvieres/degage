@@ -13,6 +13,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import com.degage.ui.components.highlightBrand
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -26,16 +27,24 @@ fun ManualScreen(onBack: () -> Unit) {
             .fillMaxSize()
             .background(DarkBg)
     ) {
-        Row(
+        Box(
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(horizontal = 8.dp, vertical = 12.dp),
-            verticalAlignment = Alignment.CenterVertically
+                .padding(horizontal = 8.dp, vertical = 12.dp)
         ) {
-            IconButton(onClick = onBack) {
+            IconButton(onClick = onBack, modifier = Modifier.align(Alignment.CenterStart)) {
                 Icon(Icons.Default.ArrowBack, contentDescription = stringResource(R.string.cd_back), tint = Color.White)
             }
-            Text(stringResource(R.string.manual_title), fontSize = 20.sp, fontWeight = FontWeight.Bold, color = Color.White)
+            Text(
+                text = stringResource(R.string.manual_title),
+                fontSize = 20.sp,
+                fontWeight = FontWeight.Bold,
+                color = Color.Black,
+                modifier = Modifier
+                    .align(Alignment.Center)
+                    .background(AccentPink, RoundedCornerShape(14.dp))
+                    .padding(horizontal = 16.dp, vertical = 6.dp)
+            )
         }
 
         LazyColumn(

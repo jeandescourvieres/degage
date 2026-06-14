@@ -14,59 +14,47 @@ import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Block
-import androidx.compose.material.icons.filled.Info
-import androidx.compose.material.icons.filled.Settings
+import androidx.compose.material.icons.filled.ArrowForward
 import androidx.compose.material3.*
-import androidx.compose.runtime.*
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.key
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.text.SpanStyle
-import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.text.withStyle
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.degage.R
-import com.degage.database.entities.BlockedCallEntity
-import com.degage.ui.components.InfoDialog
-import com.degage.ui.components.StatCard
+import com.degage.ui.components.highlightBrand
 import com.degage.ui.theme.*
-import java.text.SimpleDateFormat
-import java.util.*
+
+private val NavBlue = Color(0xFF3B9DFF)
+private val NavYellow = Color(0xFFFFD60A)
+private val NavCyan = Color(0xFF00E5FF)
+private val NavPink = Color(0xFFFF6FB0)
 
 @Composable
 fun HomeScreen(
+    refreshKey: Int = 0,
     isEnabled: Boolean,
-    totalBlocked: Int,
-    todayCount: Int,
-    timeSavedMinutes: Int,
     activeMode: String,
-    recentCalls: List<BlockedCallEntity>,
     onToggle: () -> Unit,
+    onNavigateDetails: () -> Unit,
     onNavigateSettings: () -> Unit,
-    onNavigateHistory: () -> Unit,
+    onNavigateFaq: () -> Unit,
+    onNavigateDashboard: () -> Unit,
 ) {
-    val h = timeSavedMinutes / 60
-    val m = timeSavedMinutes % 60
-    val timeSavedLabel = if (h > 0) stringResource(R.string.stats_time_saved_hours, h, m) else stringResource(R.string.stats_time_saved_minutes, m)
-    var showInfo by remember { mutableStateOf(false) }
-    if (showInfo) InfoDialog(
-        title = stringResource(R.string.home_info_title),
-        content = stringResource(R.string.home_info_content),
-        onDismiss = { showInfo = false }
-    )
-
     LazyColumn(
         modifier = Modifier
             .fillMaxSize()
@@ -74,45 +62,8 @@ fun HomeScreen(
             .padding(horizontal = 16.dp),
         verticalArrangement = Arrangement.spacedBy(14.dp)
     ) {
-
-        // ── HEADER ────────────────────────────────────────────────────────
         item {
-            Row(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(top = 20.dp),
-                horizontalArrangement = Arrangement.SpaceBetween,
-                verticalAlignment = Alignment.CenterVertically
-            ) {
-                Column {
-                    Text(
-                        text = stringResource(R.string.home_title),
-                        fontSize = 20.sp,
-                        fontWeight = FontWeight.Black,
-                        color = Color.White
-                    )
-                    Text(
-                        text = stringResource(R.string.home_subtitle),
-                        fontSize = 11.sp,
-                        color = NeonGreen,
-                        fontWeight = FontWeight.SemiBold
-                    )
-                }
-                Row {
-                    IconButton(onClick = { showInfo = true }) {
-                        Icon(Icons.Default.Info, contentDescription = stringResource(R.string.cd_help), tint = NeonGreen, modifier = Modifier.size(24.dp))
-                    }
-                    IconButton(onClick = onNavigateSettings) {
-                        Icon(Icons.Default.Settings, contentDescription = stringResource(R.string.settings_title), tint = NeonGreen, modifier = Modifier.size(24.dp))
-                    }
-                }
-            }
-        }
-
-        // ── TU DÉGAGES (écusson animé) ───────────────────────────────────
-        item {
-            var heroVisible by remember { mutableStateOf(false) }
-            LaunchedEffect(Unit) { heroVisible = true }
+            // Hero
             val heroFlash = rememberInfiniteTransition(label = "heroFlash")
             val heroPulse by heroFlash.animateFloat(
                 initialValue = 0f,
@@ -123,92 +74,89 @@ fun HomeScreen(
                 ),
                 label = "heroPulse"
             )
-            AnimatedVisibility(
-                visible = heroVisible,
-                enter = slideInHorizontally(
-                    animationSpec = tween(1800),
-                    initialOffsetX = { -it }
-                ) + fadeIn(animationSpec = tween(1800))
-            ) {
-                Box(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .background(
-                            Brush.verticalGradient(
-                                listOf(
-                                    NeonGreen.copy(alpha = 0.10f),
-                                    NeonGreen.copy(alpha = 0.02f)
-                                )
-                            ),
-                            RoundedCornerShape(18.dp)
-                        )
-                        .border(1.dp, NeonGreen.copy(alpha = 0.3f), RoundedCornerShape(18.dp))
-                        .padding(vertical = 16.dp, horizontal = 14.dp)
-                ) {
-                    Column(horizontalAlignment = Alignment.CenterHorizontally, modifier = Modifier.fillMaxWidth()) {
-                        Text(
-                            buildAnnotatedString {
-                                append("TU ")
-                                withStyle(SpanStyle(color = NeonGreen)) {
-                                    append("DÉGAGES")
-                                }
-                            },
-                            fontSize = 22.sp,
-                            fontWeight = FontWeight.Black,
-                            color = Color.White,
-                            letterSpacing = 2.sp,
-                            textAlign = TextAlign.Center
-                        )
-                        Spacer(modifier = Modifier.height(6.dp))
-                        Box(
-                            modifier = Modifier
-                                .size(84.dp)
-                                .background(
-                                    RedAlert.copy(alpha = 0.2f + 0.8f * heroPulse),
-                                    RoundedCornerShape(20.dp)
-                                ),
-                            contentAlignment = Alignment.Center
-                        ) {
-                            Image(
-                                painter = painterResource(R.drawable.robot),
-                                contentDescription = null,
-                                modifier = Modifier
-                                    .size(72.dp)
-                                    .clip(RoundedCornerShape(16.dp))
-                            )
-                        }
-                        Spacer(modifier = Modifier.height(6.dp))
-                        Text(
-                            text = stringResource(R.string.home_hero_welcome),
-                            fontSize = 18.sp,
-                            fontWeight = FontWeight.Bold,
-                            color = Color.White,
-                            textAlign = TextAlign.Center
-                        )
-                    }
-                }
-            }
-        }
-
-        // ── INTRO HERO ────────────────────────────────────────────────────
-        item {
-            var introVisible by remember { mutableStateOf(false) }
-            LaunchedEffect(Unit) { introVisible = true }
-            AnimatedVisibility(
-                visible = introVisible,
-                enter = slideInHorizontally(
-                    animationSpec = tween(1800),
-                    initialOffsetX = { it }
-                ) + fadeIn(animationSpec = tween(1800))
-            ) {
-            Box(
+            Column(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .background(NeonGreen.copy(alpha = 0.04f), RoundedCornerShape(20.dp))
-                    .border(1.dp, NeonGreen.copy(alpha = 0.25f), RoundedCornerShape(20.dp))
-                    .padding(14.dp)
+                    .background(NeonGreenDim.copy(alpha = 0.15f), RoundedCornerShape(20.dp))
+                    .padding(8.dp),
+                horizontalAlignment = Alignment.CenterHorizontally
             ) {
-                Column(horizontalAlignment = Alignment.CenterHorizontally, modifier = Modifier.fillMaxWidth()) {
+                key(refreshKey) {
+                var logoVisible by remember { mutableStateOf(false) }
+                LaunchedEffect(Unit) { logoVisible = true }
+                AnimatedVisibility(
+                    visible = logoVisible,
+                    enter = slideInHorizontally(
+                        animationSpec = tween(1800),
+                        initialOffsetX = { -it }
+                    ) + fadeIn(animationSpec = tween(1800))
+                ) {
+                Column(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .border(
+                            4.dp,
+                            NeonGreen.copy(alpha = 0.5f + 0.5f * heroPulse),
+                            RoundedCornerShape(14.dp)
+                        )
+                        .padding(12.dp),
+                    horizontalAlignment = Alignment.CenterHorizontally
+                ) {
+                    Text(
+                        text = "TU DÉGAGES",
+                        fontSize = 28.sp,
+                        fontWeight = FontWeight.Black,
+                        color = NeonGreen,
+                        letterSpacing = 2.sp,
+                        textAlign = TextAlign.Center
+                    )
+                    Spacer(modifier = Modifier.height(8.dp))
+                    Box(
+                        modifier = Modifier
+                            .size(96.dp)
+                            .background(
+                                RedAlert.copy(alpha = 0.2f + 0.8f * heroPulse),
+                                RoundedCornerShape(20.dp)
+                            ),
+                        contentAlignment = Alignment.Center
+                    ) {
+                        Image(
+                            painter = painterResource(R.drawable.robot),
+                            contentDescription = null,
+                            modifier = Modifier
+                                .size(84.dp)
+                                .clip(RoundedCornerShape(16.dp))
+                        )
+                    }
+                    Spacer(modifier = Modifier.height(8.dp))
+                    Text(
+                        text = stringResource(R.string.home_hero_welcome),
+                        fontSize = 22.sp,
+                        fontWeight = FontWeight.Bold,
+                        color = Color.White,
+                        textAlign = TextAlign.Center
+                    )
+                }
+                }
+                }
+                Spacer(modifier = Modifier.height(14.dp))
+                key(refreshKey) {
+                var badgeVisible by remember { mutableStateOf(false) }
+                LaunchedEffect(Unit) { badgeVisible = true }
+                AnimatedVisibility(
+                    visible = badgeVisible,
+                    enter = slideInHorizontally(
+                        animationSpec = tween(1800),
+                        initialOffsetX = { it }
+                    ) + fadeIn(animationSpec = tween(1800))
+                ) {
+                Column(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .border(1.dp, NeonGreen.copy(alpha = 0.35f), RoundedCornerShape(14.dp))
+                        .padding(12.dp),
+                    horizontalAlignment = Alignment.CenterHorizontally
+                ) {
                     Text(
                         text = stringResource(R.string.home_hero_badge),
                         fontSize = 14.sp,
@@ -216,165 +164,202 @@ fun HomeScreen(
                         color = NeonGreen,
                         textAlign = TextAlign.Center
                     )
-                    Spacer(modifier = Modifier.height(16.dp))
+                }
+                }
+                }
+                Spacer(modifier = Modifier.height(14.dp))
+                Column(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .border(1.dp, NeonGreen.copy(alpha = 0.35f), RoundedCornerShape(14.dp))
+                        .padding(12.dp),
+                    horizontalAlignment = Alignment.CenterHorizontally
+                ) {
                     Text(
-                        buildAnnotatedString {
-                            append(stringResource(R.string.home_hero_line1))
-                            withStyle(SpanStyle(color = NeonGreen, fontWeight = FontWeight.Black)) {
-                                append(stringResource(R.string.home_hero_line2))
-                            }
-                        },
-                        fontSize = 16.sp,
+                        text = stringResource(R.string.welcome_hero_title),
+                        fontSize = 20.sp,
                         fontWeight = FontWeight.Bold,
                         color = Color.White,
                         textAlign = TextAlign.Center,
-                        lineHeight = 20.sp
+                        lineHeight = 28.sp
                     )
-                    Spacer(modifier = Modifier.height(8.dp))
-                    Column(
-                        modifier = Modifier.fillMaxWidth(),
-                        horizontalAlignment = Alignment.CenterHorizontally
-                    ) {
-                        IntroBadge(stringResource(R.string.home_badge_others_block))
-                        Spacer(modifier = Modifier.height(6.dp))
-                        IntroBadge(stringResource(R.string.home_badge_we_reply))
-                    }
+                    Text(
+                        text = stringResource(R.string.welcome_hero_subtitle),
+                        fontSize = 17.sp,
+                        fontWeight = FontWeight.Black,
+                        color = NeonGreen,
+                        textAlign = TextAlign.Center,
+                        lineHeight = 23.sp
+                    )
+                }
+                Spacer(modifier = Modifier.height(12.dp))
+                Text(
+                    text = stringResource(R.string.welcome_hero_desc),
+                    fontSize = 14.sp,
+                    color = TextSecondary,
+                    textAlign = TextAlign.Center,
+                    lineHeight = 21.sp
+                )
+                Spacer(modifier = Modifier.height(12.dp))
+                Column(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .border(1.dp, NeonGreen.copy(alpha = 0.35f), RoundedCornerShape(14.dp))
+                        .padding(12.dp),
+                    horizontalAlignment = Alignment.CenterHorizontally
+                ) {
+                    IntroBadge(stringResource(R.string.home_badge_others_block))
+                    Spacer(modifier = Modifier.height(6.dp))
+                    IntroBadge(stringResource(R.string.home_badge_we_reply))
                     Spacer(modifier = Modifier.height(6.dp))
                     IntroBadge(stringResource(R.string.home_badge_offline))
+                    Spacer(modifier = Modifier.height(6.dp))
+                    IntroBadge(stringResource(R.string.home_badge_languages))
                     Spacer(modifier = Modifier.height(6.dp))
                     IntroBadge(stringResource(R.string.home_badge_countries))
                 }
             }
+        }
+
+        item {
+            Column(
+                modifier = Modifier.fillMaxWidth(),
+                verticalArrangement = Arrangement.spacedBy(10.dp)
+            ) {
+                Row(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .clickable { onNavigateDetails() }
+                        .background(NavBlue.copy(alpha = 0.85f), RoundedCornerShape(14.dp))
+                        .border(1.dp, NavBlue, RoundedCornerShape(14.dp))
+                        .padding(vertical = 12.dp, horizontal = 12.dp),
+                    horizontalArrangement = Arrangement.Center,
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    Text(
+                        text = highlightBrand(stringResource(R.string.welcome_sections_intro)),
+                        fontSize = 17.sp,
+                        fontWeight = FontWeight.Bold,
+                        color = Color.Black,
+                        textAlign = TextAlign.Center
+                    )
+                    Spacer(modifier = Modifier.width(6.dp))
+                    Icon(
+                        imageVector = Icons.Default.ArrowForward,
+                        contentDescription = null,
+                        tint = Color.Black
+                    )
+                }
+
+                Row(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .clickable { onNavigateSettings() }
+                        .background(NavYellow.copy(alpha = 0.85f), RoundedCornerShape(14.dp))
+                        .border(1.dp, NavYellow, RoundedCornerShape(14.dp))
+                        .padding(vertical = 12.dp, horizontal = 12.dp),
+                    horizontalArrangement = Arrangement.Center,
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    Text(
+                        text = stringResource(R.string.welcome_settings_link),
+                        fontSize = 17.sp,
+                        fontWeight = FontWeight.Bold,
+                        color = Color.Black,
+                        textAlign = TextAlign.Center
+                    )
+                    Spacer(modifier = Modifier.width(6.dp))
+                    Icon(
+                        imageVector = Icons.Default.ArrowForward,
+                        contentDescription = null,
+                        tint = Color.Black
+                    )
+                }
+
+                Row(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .clickable { onNavigateDashboard() }
+                        .background(NavCyan.copy(alpha = 0.85f), RoundedCornerShape(14.dp))
+                        .border(1.dp, NavCyan, RoundedCornerShape(14.dp))
+                        .padding(vertical = 12.dp, horizontal = 12.dp),
+                    horizontalArrangement = Arrangement.Center,
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    Text(
+                        text = stringResource(R.string.welcome_dashboard_link),
+                        fontSize = 17.sp,
+                        fontWeight = FontWeight.Bold,
+                        color = Color.Black,
+                        textAlign = TextAlign.Center
+                    )
+                    Spacer(modifier = Modifier.width(6.dp))
+                    Icon(
+                        imageVector = Icons.Default.ArrowForward,
+                        contentDescription = null,
+                        tint = Color.Black
+                    )
+                }
+
+                Row(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .clickable { onNavigateFaq() }
+                        .background(NavPink.copy(alpha = 0.85f), RoundedCornerShape(14.dp))
+                        .border(1.dp, NavPink, RoundedCornerShape(14.dp))
+                        .padding(vertical = 12.dp, horizontal = 12.dp),
+                    horizontalArrangement = Arrangement.Center,
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    Text(
+                        text = stringResource(R.string.welcome_faq_link),
+                        fontSize = 17.sp,
+                        fontWeight = FontWeight.Bold,
+                        color = Color.Black,
+                        textAlign = TextAlign.Center
+                    )
+                    Spacer(modifier = Modifier.width(6.dp))
+                    Icon(
+                        imageVector = Icons.Default.ArrowForward,
+                        contentDescription = null,
+                        tint = Color.Black
+                    )
+                }
             }
         }
 
-        // ── STATUT CENTRAL ────────────────────────────────────────────────
+        item { Spacer(modifier = Modifier.height(4.dp)) }
+
         item {
             Column(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .background(
-                        if (isEnabled) NeonGreenDim.copy(alpha = 0.22f) else CardBgAlt,
-                        RoundedCornerShape(24.dp)
-                    )
-                    .border(
-                        width = if (isEnabled) 1.5.dp else 1.dp,
-                        color = if (isEnabled) NeonGreen.copy(alpha = 0.5f) else TextSecondary.copy(alpha = 0.15f),
-                        shape = RoundedCornerShape(24.dp)
-                    )
-                    .padding(24.dp),
+                modifier = Modifier.fillMaxWidth(),
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
-                Text(if (isEnabled) "🛡️" else "😴", fontSize = 52.sp)
-                Spacer(modifier = Modifier.height(8.dp))
                 Text(
-                    text = if (isEnabled) stringResource(R.string.home_status_active) else stringResource(R.string.home_status_inactive),
+                    text = stringResource(R.string.home_protection_title),
                     fontSize = 18.sp,
-                    fontWeight = FontWeight.Black,
-                    color = if (isEnabled) NeonGreen else TextSecondary,
-                    letterSpacing = 1.sp
+                    fontWeight = FontWeight.Bold,
+                    color = Color.White,
+                    textAlign = TextAlign.Center
                 )
                 Spacer(modifier = Modifier.height(4.dp))
                 Text(
-                    text = if (isEnabled)
-                        stringResource(R.string.home_status_active_desc)
-                    else
-                        stringResource(R.string.home_status_inactive_desc),
-                    fontSize = 13.sp,
+                    text = stringResource(R.string.home_protection_intro),
+                    fontSize = 14.sp,
                     color = TextSecondary,
-                    textAlign = TextAlign.Center,
-                    lineHeight = 19.sp
+                    lineHeight = 20.sp,
+                    textAlign = TextAlign.Center
                 )
-                Spacer(modifier = Modifier.height(16.dp))
-                Switch(
-                    checked = isEnabled,
-                    onCheckedChange = { onToggle() },
-                    colors = SwitchDefaults.colors(
-                        checkedThumbColor = Color.Black,
-                        checkedTrackColor = NeonGreen,
-                        uncheckedThumbColor = TextSecondary,
-                        uncheckedTrackColor = CardBgAlt
-                    )
-                )
-                if (isEnabled) {
-                    Spacer(modifier = Modifier.height(12.dp))
-                    Row(
-                        modifier = Modifier
-                            .background(NeonGreen.copy(alpha = 0.1f), RoundedCornerShape(20.dp))
-                            .padding(horizontal = 14.dp, vertical = 6.dp),
-                        verticalAlignment = Alignment.CenterVertically,
-                        horizontalArrangement = Arrangement.spacedBy(6.dp)
-                    ) {
-                        Text("🎭", fontSize = 13.sp)
-                        Text(
-                            stringResource(R.string.home_mode_label, activeMode),
-                            color = NeonGreen,
-                            fontSize = 12.sp,
-                            fontWeight = FontWeight.Bold
-                        )
-                    }
-                }
-            }
-        }
-
-        // ── STATS ─────────────────────────────────────────────────────────
-        item {
-            Row(
-                modifier = Modifier.fillMaxWidth(),
-                horizontalArrangement = Arrangement.spacedBy(10.dp)
-            ) {
-                BigStatCard(
-                    value = totalBlocked.toString(),
-                    label = stringResource(R.string.home_stat_blocked),
-                    emoji = "🛡️",
-                    modifier = Modifier.weight(1f)
-                )
-                BigStatCard(
-                    value = timeSavedLabel,
-                    label = stringResource(R.string.home_stat_time_saved),
-                    emoji = "⏰",
-                    modifier = Modifier.weight(1f)
+                Spacer(modifier = Modifier.height(10.dp))
+                ProtectionStatusCard(
+                    isEnabled = isEnabled,
+                    activeMode = activeMode,
+                    onToggle = onToggle
                 )
             }
         }
 
-        // ── DERNIERS APPELS ───────────────────────────────────────────────
-        item {
-            Row(
-                modifier = Modifier.fillMaxWidth(),
-                horizontalArrangement = Arrangement.SpaceBetween,
-                verticalAlignment = Alignment.CenterVertically
-            ) {
-                Text(stringResource(R.string.home_recent_calls_title), fontWeight = FontWeight.SemiBold, color = Color.White, fontSize = 14.sp)
-                Text(
-                    text = stringResource(R.string.home_recent_calls_see_all),
-                    color = NeonGreen,
-                    fontSize = 13.sp,
-                    modifier = Modifier.clickable { onNavigateHistory() }
-                )
-            }
-        }
-
-        if (recentCalls.isEmpty()) {
-            item {
-                Box(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .background(CardBg, RoundedCornerShape(16.dp))
-                        .padding(32.dp),
-                    contentAlignment = Alignment.Center
-                ) {
-                    Text(stringResource(R.string.home_recent_calls_empty),
-                        color = TextSecondary, fontSize = 13.sp, textAlign = TextAlign.Center, lineHeight = 20.sp)
-                }
-            }
-        } else {
-            items(recentCalls.take(5)) { call ->
-                BlockedCallRow(call)
-            }
-        }
-
-        item { Spacer(modifier = Modifier.height(80.dp)) }
+        item { Spacer(modifier = Modifier.height(24.dp)) }
     }
 }
 
@@ -383,72 +368,11 @@ private fun IntroBadge(label: String) {
     Text(
         label,
         color = Color.White,
-        fontSize = 14.sp,
+        fontSize = 16.sp,
         fontWeight = FontWeight.SemiBold,
+        textAlign = TextAlign.Center,
         modifier = Modifier
             .background(CardBgAlt, RoundedCornerShape(20.dp))
             .padding(horizontal = 10.dp, vertical = 4.dp)
     )
-}
-
-@Composable
-private fun BigStatCard(value: String, label: String, emoji: String, modifier: Modifier = Modifier) {
-    Column(
-        modifier = modifier
-            .background(CardBg, RoundedCornerShape(18.dp))
-            .padding(18.dp),
-        horizontalAlignment = Alignment.CenterHorizontally
-    ) {
-        Text(emoji, fontSize = 22.sp)
-        Spacer(modifier = Modifier.height(6.dp))
-        Text(value, fontSize = 32.sp, fontWeight = FontWeight.Black, color = NeonGreen)
-        Text(label, fontSize = 11.sp, color = TextSecondary, textAlign = TextAlign.Center, lineHeight = 16.sp)
-    }
-}
-
-@Composable
-fun BlockedCallRow(call: BlockedCallEntity) {
-    val todayPrefix = stringResource(R.string.home_call_today_prefix)
-    val yesterdayPrefix = stringResource(R.string.home_call_yesterday_prefix)
-    val dateStr = remember(call.timestamp) {
-        val sdf = SimpleDateFormat("HH:mm", Locale.FRENCH)
-        val today = SimpleDateFormat("dd/MM/yyyy", Locale.FRENCH).format(Date())
-        val callDay = SimpleDateFormat("dd/MM/yyyy", Locale.FRENCH).format(Date(call.timestamp))
-        val prefix = if (today == callDay) todayPrefix else yesterdayPrefix
-        "$prefix ${sdf.format(Date(call.timestamp))}"
-    }
-
-    Row(
-        modifier = Modifier
-            .fillMaxWidth()
-            .background(CardBg, RoundedCornerShape(14.dp))
-            .padding(horizontal = 16.dp, vertical = 12.dp),
-        verticalAlignment = Alignment.CenterVertically
-    ) {
-        Icon(Icons.Default.Block, contentDescription = null, tint = RedAlert, modifier = Modifier.size(20.dp))
-        Spacer(modifier = Modifier.width(12.dp))
-        Column(modifier = Modifier.weight(1f)) {
-            Text(call.phoneNumber, fontWeight = FontWeight.SemiBold, color = Color.White, fontSize = 15.sp)
-            Text(call.modeName, color = TextSecondary, fontSize = 12.sp)
-        }
-        Text(dateStr, color = TextSecondary, fontSize = 12.sp)
-    }
-}
-
-@Preview(showBackground = true, backgroundColor = 0xFF0A0A0A)
-@Composable
-fun HomeScreenPreview() {
-    DegageTheme {
-        HomeScreen(
-            isEnabled = true,
-            totalBlocked = 128,
-            todayCount = 23,
-            timeSavedMinutes = 456,
-            activeMode = "Sarcastique",
-            recentCalls = emptyList(),
-            onToggle = {},
-            onNavigateSettings = {},
-            onNavigateHistory = {}
-        )
-    }
 }

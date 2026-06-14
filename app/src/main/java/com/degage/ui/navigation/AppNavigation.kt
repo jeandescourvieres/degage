@@ -16,7 +16,10 @@ sealed class Screen(val route: String) {
     data object Modes : Screen("modes")
     data object Statistics : Screen("statistics")
     data object History : Screen("history")
-    data object Settings : Screen("settings")
+    data object Settings : Screen("settings") {
+        const val routeWithArgs = "settings?openFaq={openFaq}"
+        fun withFaq() = "settings?openFaq=true"
+    }
     data object Replies : Screen("replies/{modeName}") {
         fun withMode(mode: String) = "replies/$mode"
     }
@@ -25,7 +28,8 @@ sealed class Screen(val route: String) {
     data object MessageBuilder : Screen("message_builder")
     data object VoiceSettings : Screen("voice_settings")
     data object Manual : Screen("manual")
-    data object Welcome : Screen("welcome")
+    data object WelcomeDetails : Screen("welcome_details")
+    data object Dashboard : Screen("dashboard")
     data object Premium : Screen("premium")
 }
 

@@ -70,7 +70,7 @@
         <item>🚫 Blocco manuale di numeri e prefissi</item>
         <item>⬇️ Esportazione CSV della cronologia</item>
         <item>🇨🇭 Modalità Svizzera (numeri OFCOM)</item>
-        <item>🇩🇪🇮🇹 Risposte vocali in tedesco e italiano</item>
+        <item>🇩🇪🇮🇹🇬🇧 Risposte vocali in tedesco, italiano e inglese</item>
     </string-array>
     <string name="premium_price_monthly">1 €</string>
     <string name="premium_price_monthly_period">/ mese</string>
@@ -193,18 +193,24 @@
     <string name="welcome_title">TU DÉGAGES ti dà il benvenuto!</string>
     <string name="welcome_hero_title">I call center adorano\nchiamarti?</string>
     <string name="welcome_hero_subtitle">TU DÉGAGES, la tua nuova IA,\nadorerà rispondere loro!</string>
-    <string name="welcome_hero_desc">Non perdere più tempo a rispondere a chiamate indesiderate per poi dover riagganciare. Lascia che la tua IA personale risponda con l\'umorismo che preferisci.</string>
-    <string name="welcome_sections_intro">Scopri TU DÉGAGES nel dettaglio:</string>
+    <string name="welcome_hero_desc">Non perdere più tempo a rispondere a chiamate indesiderate per poi dover riagganciare. Lascia che la tua IA personale risponda con l\'umorismo che preferisci — riaggancia e blocca il numero al tuo posto.</string>
+    <string name="welcome_sections_intro">TU DÉGAGES: cosa fa esattamente?</string>
+    <string name="welcome_details_intro">Un rapido giro tra i 5 superpoteri della tua app, senza il manuale di 50 pagine 😄</string>
     <string name="welcome_section1_title">🤖 Blocco intelligente con risposta IA:</string>
     <string name="welcome_section1_body">TU DÉGAGES filtra le chiamate indesiderate e le reindirizza al tuo assistente vocale IA personalizzato — prima di terminare la conversazione. Il call center parla con la tua IA, non con te.</string>
     <string name="welcome_section2_title">🎭 Diversa dalle altre app:</string>
-    <string name="welcome_section2_body">Le app classiche bloccano le chiamate. La nostra permette alla tua IA di rispondere con il tono che scegli — Cortese, Amministrativo, Sarcastico o Troll — prima di riagganciare.</string>
+    <string name="welcome_section2_body">Le app classiche bloccano le chiamate. La nostra permette alla tua IA di rispondere con il tono che scegli — Cortese, Amministrativo, Sarcastico o Troll — prima di riagganciare e bloccare il numero.</string>
     <string name="welcome_section3_title">💬 La tua IA, la tua voce:</string>
-    <string name="welcome_section3_body">Componi le tue formule, scegli il tono, regola la voce. La tua IA ti somiglia. I call center meritano una risposta all\'altezza. 🎤</string>
+    <string name="welcome_section3_body">Componi le tue formule, scegli il tono e la lingua (francese, tedesco, italiano o inglese), regola la voce. La tua IA ti somiglia. I call center meritano una risposta all\'altezza. 🎤</string>
     <string name="welcome_section4_title">📊 Ogni battaglia conta:</string>
     <string name="welcome_section4_body">Cronologia completa, tempo risparmiato, numeri memorizzati per il rifiuto immediato. Saprai esattamente quante volte la tua IA ha vinto.</string>
     <string name="welcome_section5_title">🇫🇷🇨🇭 Adatta alla Francia e alla Svizzera:</string>
     <string name="welcome_section5_body">Scegli il tuo paese in Impostazioni: il database dei numeri indesiderati si adatta automaticamente (prefissi ARCEP in Francia, numeri a valore aggiunto e numeri aziendali OFCOM in Svizzera).</string>
+    <string name="welcome_details_outro">Per saperne di più, consulta il manuale completo e le impostazioni dell\'app:</string>
+    <string name="welcome_settings_link">⚙️ Accesso alle impostazioni</string>
+    <string name="welcome_faq_link">❓ FAQ - Domande frequenti</string>
+    <string name="welcome_dashboard_link">📊 La mia dashboard</string>
+    <string name="dashboard_title">La mia dashboard</string>
     <string name="welcome_tip_title">💡 Da sapere</string>
     <string name="welcome_tip_body">Puoi rivedere questa presentazione in qualsiasi momento da Impostazioni → Rivedi la presentazione.</string>
     <string name="welcome_dismiss_button">Ho capito, non mostrare più</string>
@@ -239,7 +245,7 @@
     <string name="settings_nav_premium">⭐ TU DÉGAGES Premium</string>
     <string name="settings_community_db_label">Database della community</string>
     <string name="settings_community_db_value">Aggiornato: oggi alle 08:15</string>
-    <string name="settings_nav_manual">📖 Manuale d\'uso</string>
+    <string name="settings_nav_manual">📖 Manuale d\'uso e domande frequenti - FAQ</string>
     <string name="settings_nav_welcome">👋 Rivedi la presentazione</string>
     <string name="settings_nav_about">Informazioni</string>
 
@@ -291,9 +297,12 @@
     <string name="home_hero_line1">I call center adorano chiamarti?\n</string>
     <string name="home_hero_line2">TU DÉGAGES, la tua nuova IA, adorerà rispondere loro!</string>
     <string name="home_badge_others_block">❌ Le altre app bloccano la chiamata.</string>
-    <string name="home_badge_we_reply">✅ Noi rispondiamo!</string>
-    <string name="home_badge_offline">📡 Funziona anche offline</string>
-    <string name="home_badge_countries">🇫🇷🇨🇭 Sviluppato per la Francia e la Svizzera</string>
+    <string name="home_badge_we_reply">✅ «TU DÉGAGES» risponde, chiacchiera, chiude… e poi blocca!</string>
+    <string name="home_badge_offline">📡 Funziona anche offline.</string>
+    <string name="home_badge_countries">🇫🇷 Sviluppato per la Francia.\n🇨🇭 E la Svizzera.</string>
+    <string name="home_badge_languages">🌍 Risposte IA in francese, tedesco, italiano e inglese…</string>
+    <string name="home_protection_title">🛡️ La tua protezione a colpo d\'occhio</string>
+    <string name="home_protection_intro">Verifica a colpo d\'occhio se TU DÉGAGES è attivo, e attiva o disattiva la protezione direttamente da qui.</string>
     <string name="home_status_active">PROTEZIONE ATTIVA</string>
     <string name="home_status_inactive">PROTEZIONE INATTIVA</string>
     <string name="home_status_active_desc">La tua IA risponde al posto tuo.\nI call center non passano più.</string>
@@ -301,6 +310,8 @@
     <string name="home_mode_label">Modalità: %1$s</string>
     <string name="home_stat_blocked">Spammer bloccati</string>
     <string name="home_stat_time_saved">Tempo recuperato</string>
+    <string name="home_dashboard_title">📊 La mia dashboard</string>
+    <string name="home_dashboard_intro">Tutto in un colpo d\'occhio: lo stato della tua protezione, il numero di spammer neutralizzati, il tempo recuperato… e la lista delle tue ultime vittime 😏</string>
     <string name="home_recent_calls_title">Ultime chiamate bloccate</string>
     <string name="home_recent_calls_see_all">Vedi tutto →</string>
     <string name="home_recent_calls_empty">Nessuna chiamata bloccata per ora\nAttiva la protezione e attendi… 😏</string>
@@ -308,7 +319,7 @@
     <string name="home_call_yesterday_prefix">Ieri</string>
 
     <!-- ── Manuale d'uso ─────────────────────────────────────────── -->
-    <string name="manual_title">Manuale d\'uso</string>
+    <string name="manual_title">FAQ - Domande frequenti</string>
 
     <string name="manual_cat_db">📋 Database dei numeri bloccati</string>
     <string name="manual_cat_usage">📱 Utilizzo</string>
@@ -317,7 +328,7 @@
     <string name="manual_cat_other">❓ Altro</string>
 
     <string name="manual_q1_title">⭐ Cosa è gratuito e cosa è Premium?</string>
-    <string name="manual_q1_body">🆓 GRATIS, PER SEMPRE — la protezione:\n\n• Blocco automatico degli spam noti (database ARCEP/OFCOM + apprendimento dalla tua cronologia)\n• Modalità di risposta Cortese\n• Cronologia delle chiamate bloccate\n• I tuoi contatti non vengono mai bloccati\n• «Non è spam»: correzione di un blocco errato con un tap\n• Notifiche a ogni chiamata bloccata\n\nLa sicurezza e la protezione contro i falsi positivi non saranno MAI a pagamento.\n\n⭐ PREMIUM (1 €/mese o 10 €/anno) — comodità e personalizzazione:\n\n• Le modalità Amministrativo, Sarcastico e Troll\n• Personalizzazione completa dei messaggi (creatore, frasi personalizzate)\n• Impostazioni vocali (voce, velocità, tono)\n• Database della community (sincronizzazione e contributo)\n• Blocco manuale di numeri e prefissi\n• Esportazione CSV della cronologia\n• Modalità Svizzera (numeri OFCOM)\n• Risposte vocali in tedesco e italiano\n\nUn lucchetto 🔒 appare su ogni funzionalità Premium nell\'app. Toccalo per vedere i dettagli dell\'offerta in Impostazioni → «⭐ Tu dégages Premium».</string>
+    <string name="manual_q1_body">🆓 GRATIS, PER SEMPRE — la protezione:\n\n• Blocco automatico degli spam noti (database ARCEP/OFCOM + apprendimento dalla tua cronologia)\n• Modalità di risposta Cortese\n• Cronologia delle chiamate bloccate\n• I tuoi contatti non vengono mai bloccati\n• «Non è spam»: correzione di un blocco errato con un tap\n• Notifiche a ogni chiamata bloccata\n\nLa sicurezza e la protezione contro i falsi positivi non saranno MAI a pagamento.\n\n⭐ PREMIUM (1 €/mese o 10 €/anno) — comodità e personalizzazione:\n\n• Le modalità Amministrativo, Sarcastico e Troll\n• Personalizzazione completa dei messaggi (creatore, frasi personalizzate)\n• Impostazioni vocali (voce, velocità, tono)\n• Database della community (sincronizzazione e contributo)\n• Blocco manuale di numeri e prefissi\n• Esportazione CSV della cronologia\n• Modalità Svizzera (numeri OFCOM)\n• Risposte vocali in tedesco, italiano e inglese\n\nUn lucchetto 🔒 appare su ogni funzionalità Premium nell\'app. Toccalo per vedere i dettagli dell\'offerta in Impostazioni → «⭐ Tu dégages Premium».</string>
 
     <string name="manual_q2_title">👤 I miei contatti possono essere bloccati per errore?</string>
     <string name="manual_q2_body">No. Se un numero che ti chiama corrisponde a un contatto salvato sul tuo telefono, Tu dégages lascia sempre passare la chiamata — anche se quel numero è presente nel database spam o nelle tue regole personalizzate.\n\nQuesta verifica richiede l\'autorizzazione di accesso ai contatti, richiesta al primo avvio dell\'app.</string>

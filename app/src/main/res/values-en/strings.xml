@@ -70,7 +70,7 @@
         <item>🚫 Manual blocking of numbers and prefixes</item>
         <item>⬇️ CSV export of history</item>
         <item>🇨🇭 Switzerland mode (OFCOM numbers)</item>
-        <item>🇩🇪🇮🇹 Voice replies in German and Italian</item>
+        <item>🇩🇪🇮🇹🇬🇧 Voice replies in German, Italian and English</item>
     </string-array>
     <string name="premium_price_monthly">€1</string>
     <string name="premium_price_monthly_period">/ month</string>
@@ -193,18 +193,24 @@
     <string name="welcome_title">TU DÉGAGES welcomes you!</string>
     <string name="welcome_hero_title">Telemarketers love\ncalling you?</string>
     <string name="welcome_hero_subtitle">TU DÉGAGES, your new AI,\nwill love answering them!</string>
-    <string name="welcome_hero_desc">Stop wasting time answering unwanted calls just to hang up afterwards. Let your personal AI answer with the humor of your choice.</string>
-    <string name="welcome_sections_intro">Discover TU DÉGAGES in detail:</string>
+    <string name="welcome_hero_desc">Stop wasting time answering unwanted calls just to hang up afterwards. Let your personal AI answer with the humor of your choice — it hangs up and blocks the number for you.</string>
+    <string name="welcome_sections_intro">TU DÉGAGES: what does it actually do?</string>
+    <string name="welcome_details_intro">A quick tour of your app\'s 5 superpowers, no 50-page manual required 😄</string>
     <string name="welcome_section1_title">🤖 Smart blocking with AI reply:</string>
     <string name="welcome_section1_body">TU DÉGAGES filters unwanted calls and redirects them to your personalized AI voice assistant — before ending the conversation. The telemarketer talks to your AI, not to you.</string>
     <string name="welcome_section2_title">🎭 Not like other apps:</string>
-    <string name="welcome_section2_body">Classic apps just block calls. Ours lets your AI answer with the tone you choose — Polite, Administrative, Sarcastic or Troll — before hanging up.</string>
+    <string name="welcome_section2_body">Classic apps just block calls. Ours lets your AI answer with the tone you choose — Polite, Administrative, Sarcastic or Troll — before hanging up and blocking the number.</string>
     <string name="welcome_section3_title">💬 Your AI, your voice:</string>
-    <string name="welcome_section3_body">Write your own phrases, choose the tone, adjust the voice. Your AI sounds like you. Spammers deserve a reply that matches. 🎤</string>
+    <string name="welcome_section3_body">Write your own phrases, choose the tone and language (French, German, Italian or English), adjust the voice. Your AI sounds like you. Spammers deserve a reply that matches. 🎤</string>
     <string name="welcome_section4_title">📊 Every battle counted:</string>
     <string name="welcome_section4_body">Full history, time saved, numbers memorized for instant rejection. You\'ll know exactly how many times your AI has won.</string>
     <string name="welcome_section5_title">🇫🇷🇨🇭 Tailored for France and Switzerland:</string>
     <string name="welcome_section5_body">Choose your country in Settings: the unwanted-number database adapts automatically (ARCEP prefixes in France, premium-rate and OFCOM business numbers in Switzerland).</string>
+    <string name="welcome_details_outro">To learn more, check out the full user manual and the app settings:</string>
+    <string name="welcome_settings_link">⚙️ Go to Settings</string>
+    <string name="welcome_faq_link">❓ FAQ - Frequently Asked Questions</string>
+    <string name="welcome_dashboard_link">📊 My dashboard</string>
+    <string name="dashboard_title">My dashboard</string>
     <string name="welcome_tip_title">💡 Good to know</string>
     <string name="welcome_tip_body">You can review this presentation at any time from Settings → Review presentation.</string>
     <string name="welcome_dismiss_button">Got it, don\'t show again</string>
@@ -239,7 +245,7 @@
     <string name="settings_nav_premium">⭐ TU DÉGAGES Premium</string>
     <string name="settings_community_db_label">Community database</string>
     <string name="settings_community_db_value">Updated: today 08:15</string>
-    <string name="settings_nav_manual">📖 User manual</string>
+    <string name="settings_nav_manual">📖 User manual and frequently asked questions - FAQ</string>
     <string name="settings_nav_welcome">👋 Review presentation</string>
     <string name="settings_nav_about">About</string>
 
@@ -291,9 +297,12 @@
     <string name="home_hero_line1">Telemarketers love calling you?\n</string>
     <string name="home_hero_line2">TU DÉGAGES, your new AI, will love answering them!</string>
     <string name="home_badge_others_block">❌ Other apps just block the call.</string>
-    <string name="home_badge_we_reply">✅ We answer!</string>
-    <string name="home_badge_offline">📡 Works even offline</string>
-    <string name="home_badge_countries">🇫🇷🇨🇭 Developed for France and Switzerland</string>
+    <string name="home_badge_we_reply">✅ "TU DÉGAGES" picks up, chats, hangs up… then blocks!</string>
+    <string name="home_badge_offline">📡 Works even offline.</string>
+    <string name="home_badge_countries">🇫🇷 Developed for France.\n🇨🇭 And Switzerland.</string>
+    <string name="home_badge_languages">🌍 AI replies in French, German, Italian and English…</string>
+    <string name="home_protection_title">🛡️ Your protection at a glance</string>
+    <string name="home_protection_intro">Check at a glance whether TU DÉGAGES is active, and turn protection on or off directly here.</string>
     <string name="home_status_active">PROTECTION ACTIVE</string>
     <string name="home_status_inactive">PROTECTION INACTIVE</string>
     <string name="home_status_active_desc">Your AI answers for you.\nSpammers no longer get through.</string>
@@ -301,6 +310,8 @@
     <string name="home_mode_label">Mode: %1$s</string>
     <string name="home_stat_blocked">Spammers blocked</string>
     <string name="home_stat_time_saved">Time recovered</string>
+    <string name="home_dashboard_title">📊 My dashboard</string>
+    <string name="home_dashboard_intro">Everything at a glance: your protection status, the number of spammers neutralized, the time you\'ve recovered… and the list of your latest victims 😏</string>
     <string name="home_recent_calls_title">Latest blocked calls</string>
     <string name="home_recent_calls_see_all">See all →</string>
     <string name="home_recent_calls_empty">No blocked calls yet\nEnable protection and wait… 😏</string>
@@ -308,7 +319,7 @@
     <string name="home_call_yesterday_prefix">Yesterday</string>
 
     <!-- ── User manual screen ─────────────────────────────────────────── -->
-    <string name="manual_title">User manual</string>
+    <string name="manual_title">FAQ - Frequently Asked Questions</string>
 
     <string name="manual_cat_db">📋 Blocked numbers database</string>
     <string name="manual_cat_usage">📱 Usage</string>
@@ -317,7 +328,7 @@
     <string name="manual_cat_other">❓ Other</string>
 
     <string name="manual_q1_title">⭐ What\'s free and what\'s Premium?</string>
-    <string name="manual_q1_body">🆓 FREE, FOREVER — protection:\n\n• Automatic blocking of known spam (ARCEP/OFCOM database + learning from your history)\n• Polite reply mode\n• History of blocked calls\n• Your contacts are never blocked\n• \"Not spam\": fix a wrong block in one tap\n• Notifications for every blocked call\n\nSecurity and protection against false positives will NEVER be paid.\n\n⭐ PREMIUM (€1/month or €10/year) — comfort and personalization:\n\n• Administrative, Sarcastic and Troll modes\n• Full message customization (builder, custom phrases)\n• Voice settings (voice, speed, pitch)\n• Community database (sync and contribution)\n• Manual blocking of numbers and prefixes\n• CSV export of history\n• Switzerland mode (OFCOM numbers)\n• Voice replies in German and Italian\n\nA 🔒 lock appears on every Premium feature in the app. Tap it to see the offer details in Settings → \"⭐ Tu dégages Premium\".</string>
+    <string name="manual_q1_body">🆓 FREE, FOREVER — protection:\n\n• Automatic blocking of known spam (ARCEP/OFCOM database + learning from your history)\n• Polite reply mode\n• History of blocked calls\n• Your contacts are never blocked\n• \"Not spam\": fix a wrong block in one tap\n• Notifications for every blocked call\n\nSecurity and protection against false positives will NEVER be paid.\n\n⭐ PREMIUM (€1/month or €10/year) — comfort and personalization:\n\n• Administrative, Sarcastic and Troll modes\n• Full message customization (builder, custom phrases)\n• Voice settings (voice, speed, pitch)\n• Community database (sync and contribution)\n• Manual blocking of numbers and prefixes\n• CSV export of history\n• Switzerland mode (OFCOM numbers)\n• Voice replies in German, Italian and English\n\nA 🔒 lock appears on every Premium feature in the app. Tap it to see the offer details in Settings → \"⭐ Tu dégages Premium\".</string>
 
     <string name="manual_q2_title">👤 Can my contacts be blocked by mistake?</string>
     <string name="manual_q2_body">No. If a number calling you matches a contact saved on your phone, Tu dégages always lets the call through — even if that number is also in the spam database or in your custom rules.\n\nThis check requires contacts access permission, requested the first time you launch the app.</string>

@@ -19,6 +19,8 @@ val AccentBlue = Color(0xFF3B9DFF)
 val AccentPurple = Color(0xFFB084FF)
 val AccentOrange = Color(0xFFFFA53B)
 val AccentPink = Color(0xFFFF6FB0)
+val AccentCyan = Color(0xFF00E5FF)
+val AccentYellow = Color(0xFFFFD60A)
 
 private val DegageColorScheme = darkColorScheme(
     primary = NeonGreen,

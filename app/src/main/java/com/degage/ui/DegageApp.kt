@@ -14,10 +14,12 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavDestination.Companion.hierarchy
 import androidx.navigation.NavGraph.Companion.findStartDestination
+import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
+import androidx.navigation.navArgument
 import com.degage.R
 import com.degage.modes.AppMode
 import com.degage.modes.localizedLabel
@@ -37,13 +39,12 @@ import com.degage.ui.viewmodel.VoiceSettingsViewModel
 fun DegageApp(
     viewModel: MainViewModel = viewModel(),
     onboardingDone: Boolean,
-    welcomeShown: Boolean,
     onOnboardingComplete: () -> Unit,
-    onWelcomeDismiss: () -> Unit,
 ) {
     val navController = rememberNavController()
     val navBackStackEntry by navController.currentBackStackEntryAsState()
     val currentDestination = navBackStackEntry?.destination
+    var homeRefreshKey by remember { mutableStateOf(0) }
 
     val isEnabled by viewModel.isEnabled.collectAsStateWithLifecycle()
     val activeMode by viewModel.activeMode.collectAsStateWithLifecycle()
@@ -69,7 +70,6 @@ fun DegageApp(
 
     val startDestination = when {
         !onboardingDone -> Screen.Onboarding.route
-        !welcomeShown -> Screen.Welcome.route
         else -> Screen.Home.route
     }
     val showBottomBar = currentDestination?.route in bottomNavItems.map { it.screen.route }
@@ -84,10 +84,14 @@ fun DegageApp(
                         NavigationBarItem(
                             selected = selected,
                             onClick = {
-                                navController.navigate(item.screen.route) {
-                                    popUpTo(navController.graph.findStartDestination().id) { saveState = true }
-                                    launchSingleTop = true
-                                    restoreState = true
+                                if (item.screen.route == Screen.Home.route && selected) {
+                                    homeRefreshKey++
+                                } else {
+                                    navController.navigate(item.screen.route) {
+                                        popUpTo(navController.graph.findStartDestination().id) { saveState = true }
+                                        launchSingleTop = true
+                                        restoreState = true
+                                    }
                                 }
                             },
                             icon = { Icon(item.icon, contentDescription = stringResource(item.labelRes)) },
@@ -126,15 +130,14 @@ fun DegageApp(
 
                 composable(Screen.Home.route) {
                     HomeScreen(
+                        refreshKey = homeRefreshKey,
                         isEnabled = isEnabled,
-                        totalBlocked = totalBlocked,
-                        todayCount = todayCount,
-                        timeSavedMinutes = timeSaved,
                         activeMode = activeMode.localizedLabel(),
-                        recentCalls = allCalls,
                         onToggle = viewModel::toggleEnabled,
+                        onNavigateDetails = { navController.navigate(Screen.WelcomeDetails.route) },
                         onNavigateSettings = { navController.navigate(Screen.Settings.route) },
-                        onNavigateHistory = { navController.navigate(Screen.History.route) }
+                        onNavigateFaq = { navController.navigate(Screen.Manual.route) },
+                        onNavigateDashboard = { navController.navigate(Screen.Dashboard.route) }
                     )
                 }
 
@@ -177,8 +180,13 @@ fun DegageApp(
                     )
                 }
 
-                composable(Screen.Settings.route) {
+                composable(
+                    Screen.Settings.routeWithArgs,
+                    arguments = listOf(navArgument("openFaq") { type = NavType.BoolType; defaultValue = false })
+                ) { backStackEntry ->
+                    val openFaq = backStackEntry.arguments?.getBoolean("openFaq") ?: false
                     SettingsScreen(
+                        initialShowInfo = openFaq,
                         isEnabled = isEnabled,
                         autoReject = autoReject,
                         blockAfterReply = blockAfterReply,
@@ -208,7 +216,6 @@ fun DegageApp(
                         onNavigateVoiceSettings = { navController.navigate(Screen.VoiceSettings.route) },
                         onNavigateManual = { navController.navigate(Screen.Manual.route) },
                         onNavigateCustomBlocks = { navController.navigate(Screen.CustomBlocks.route) },
-                        onNavigateWelcome = { navController.navigate(Screen.Welcome.route) },
                         onSyncSpamList = viewModel::syncSpamList,
                         isSyncing = isSyncing,
                         onBack = { navController.navigateUp() }
@@ -273,15 +280,24 @@ fun DegageApp(
                     )
                 }
 
-                composable(Screen.Welcome.route) {
-                    WelcomeScreen(
-                        onDismiss = {
-                            onWelcomeDismiss()
-                            navController.navigate(Screen.Home.route) {
-                                popUpTo(Screen.Welcome.route) { inclusive = true }
-                            }
-                        },
-                        onBack = if (welcomeShown) ({ navController.popBackStack() }) else null
+                composable(Screen.WelcomeDetails.route) {
+                    WelcomeDetailsScreen(
+                        onBack = { navController.popBackStack() },
+                        onNavigateSettings = { navController.navigate(Screen.Settings.route) },
+                        onNavigateFaq = { navController.navigate(Screen.Manual.route) }
+                    )
+                }
+
+                composable(Screen.Dashboard.route) {
+                    DashboardScreen(
+                        isEnabled = isEnabled,
+                        totalBlocked = totalBlocked,
+                        timeSavedLabel = if (timeSaved / 60 > 0) stringResource(R.string.stats_time_saved_hours, timeSaved / 60, timeSaved % 60) else stringResource(R.string.stats_time_saved_minutes, timeSaved % 60),
+                        activeMode = activeMode.localizedLabel(),
+                        recentCalls = allCalls,
+                        onToggle = viewModel::toggleEnabled,
+                        onNavigateHistory = { navController.navigate(Screen.History.route) },
+                        onBack = { navController.popBackStack() }
                     )
                 }
 

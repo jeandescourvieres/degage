@@ -26,7 +26,6 @@ class AppPreferences(private val context: Context) {
         val KEY_SPEECH_RATE = floatPreferencesKey("speech_rate")
         val KEY_PITCH = floatPreferencesKey("pitch")
         val KEY_VOICE_NAME = stringPreferencesKey("voice_name")
-        val KEY_WELCOME_SHOWN = booleanPreferencesKey("welcome_shown")
         val KEY_LAST_SPAM_SYNC = longPreferencesKey("last_spam_sync")
         val KEY_BUNDLED_LOADED = booleanPreferencesKey("bundled_spam_loaded")
         val KEY_MONITOR_LIVE = booleanPreferencesKey("monitor_live")
@@ -55,7 +54,6 @@ class AppPreferences(private val context: Context) {
             prefs[key] ?: if (lang == "FR") prefs[KEY_VOICE_NAME] ?: "" else ""
         }
     }
-    val welcomeShown: Flow<Boolean> = context.dataStore.data.map { it[KEY_WELCOME_SHOWN] ?: false }
     val lastSpamSync: Flow<Long> = context.dataStore.data.map { it[KEY_LAST_SPAM_SYNC] ?: 0L }
     val bundledLoaded: Flow<Boolean> = context.dataStore.data.map { it[KEY_BUNDLED_LOADED] ?: false }
     val monitorLive: Flow<Boolean> = context.dataStore.data.map { it[KEY_MONITOR_LIVE] ?: false }
@@ -78,7 +76,6 @@ class AppPreferences(private val context: Context) {
     suspend fun setPitch(value: Float) = context.dataStore.edit { it[KEY_PITCH] = value }
     suspend fun setVoiceNameFor(lang: String, value: String) =
         context.dataStore.edit { it[stringPreferencesKey("voice_name_$lang")] = value }
-    suspend fun setWelcomeShown(value: Boolean) = context.dataStore.edit { it[KEY_WELCOME_SHOWN] = value }
     suspend fun setLastSpamSync(ts: Long) = context.dataStore.edit { it[KEY_LAST_SPAM_SYNC] = ts }
     suspend fun setBundledLoaded() = context.dataStore.edit { it[KEY_BUNDLED_LOADED] = true }
     suspend fun setMonitorLive(value: Boolean) = context.dataStore.edit { it[KEY_MONITOR_LIVE] = value }

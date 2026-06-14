@@ -27,6 +27,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -64,12 +65,12 @@ fun SettingsScreen(
     onNavigateVoiceSettings: () -> Unit,
     onNavigateManual: () -> Unit,
     onNavigateCustomBlocks: () -> Unit = {},
-    onNavigateWelcome: () -> Unit = {},
     onSyncSpamList: () -> Unit = {},
     isSyncing: Boolean = false,
+    initialShowInfo: Boolean = false,
     onBack: () -> Unit = {},
 ) {
-    var showInfo by remember { mutableStateOf(false) }
+    var showInfo by remember { mutableStateOf(initialShowInfo) }
     if (showInfo) InfoDialog(
         title = stringResource(R.string.settings_info_title),
         content = stringResource(R.string.settings_info_content),
@@ -98,7 +99,6 @@ fun SettingsScreen(
     val labelCommunityDb = stringResource(R.string.settings_community_db_label)
     val labelSync = stringResource(R.string.settings_sync_label)
     val labelManual = stringResource(R.string.settings_nav_manual)
-    val labelWelcome = stringResource(R.string.settings_nav_welcome)
     val labelAbout = stringResource(R.string.settings_nav_about)
 
     LazyColumn(
@@ -116,7 +116,20 @@ fun SettingsScreen(
                 IconButton(onClick = onBack) {
                     Icon(Icons.Default.ArrowBack, contentDescription = stringResource(R.string.cd_back), tint = Color.White)
                 }
-                Text(stringResource(R.string.settings_title), fontSize = 20.sp, fontWeight = FontWeight.Bold, color = Color.White, modifier = Modifier.weight(1f))
+                Box(
+                    modifier = Modifier.weight(1f),
+                    contentAlignment = Alignment.Center
+                ) {
+                    Text(
+                        text = stringResource(R.string.settings_title),
+                        fontSize = 20.sp,
+                        fontWeight = FontWeight.Bold,
+                        color = Color.Black,
+                        modifier = Modifier
+                            .background(AccentYellow, RoundedCornerShape(14.dp))
+                            .padding(horizontal = 16.dp, vertical = 6.dp)
+                    )
+                }
                 IconButton(onClick = { showInfo = true }) {
                     Icon(Icons.Default.Info, contentDescription = stringResource(R.string.cd_help), tint = NeonGreen, modifier = Modifier.size(26.dp))
                 }
@@ -236,9 +249,6 @@ fun SettingsScreen(
         }
         if (matches(labelManual)) item {
             SettingsNavRow(label = highlightBrand(labelManual), onClick = onNavigateManual)
-        }
-        if (matches(labelWelcome)) item {
-            SettingsNavRow(label = highlightBrand(labelWelcome), onClick = onNavigateWelcome)
         }
         if (matches(labelAbout)) item {
             SettingsNavRow(label = highlightBrand(labelAbout), onClick = onNavigateAbout)

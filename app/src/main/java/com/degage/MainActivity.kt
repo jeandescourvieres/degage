@@ -44,17 +44,12 @@ class MainActivity : AppCompatActivity() {
         lifecycleScope.launch {
             LocaleHelper.applyLanguage(prefs.appLanguage.first())
             val onboardingDone = prefs.onboardingDone.first()
-            val welcomeShown = prefs.welcomeShown.first()
             setContent {
                 DegageTheme {
                     DegageApp(
                         onboardingDone = onboardingDone,
-                        welcomeShown = welcomeShown,
                         onOnboardingComplete = {
                             lifecycleScope.launch { prefs.setOnboardingDone() }
-                        },
-                        onWelcomeDismiss = {
-                            lifecycleScope.launch { prefs.setWelcomeShown(true) }
                         }
                     )
                 }
