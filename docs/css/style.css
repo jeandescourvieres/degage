@@ -236,6 +236,11 @@ nav {
   justify-content: center;
   row-gap: 4px;
 }
+.hero-mini-badge-flags .flag-pairs {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
 .hero-mini-badge-flags .flag-pair {
   display: inline-flex;
   align-items: center;
@@ -1114,6 +1119,7 @@ body { padding-bottom: 64px; }
 @media (max-width: 640px) {
   nav { padding: 0 16px; }
   .nav-logo-tagline { display: none; }
+  .hero-badge { font-size: 12px; padding: 7px 14px; }
   .nav-toggle-btn { display: flex; align-items: center; }
   .nav-links {
     display: flex;
