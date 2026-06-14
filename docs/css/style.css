@@ -115,14 +115,15 @@ nav {
 
 .nav-lang { display: flex; gap: 6px; align-items: center; margin-left: 24px; }
 .nav-lang a {
-  font-size: 19px;
-  opacity: .6;
-  transition: opacity .2s, background .2s;
+  font-size: 20px;
+  opacity: .9;
+  transition: opacity .2s, background .2s, border-color .2s;
   line-height: 1;
-  padding: 6px;
+  padding: 6px 8px;
   border-radius: 8px;
+  border: 1px solid rgba(255,255,255,0.08);
 }
-.nav-lang a:hover { opacity: 1; background: rgba(255,255,255,0.08); text-decoration: none; }
+.nav-lang a:hover { opacity: 1; background: rgba(255,255,255,0.08); border-color: rgba(255,255,255,0.18); text-decoration: none; }
 .nav-lang a.active {
   opacity: 1;
   background: rgba(170,255,0,0.12);
@@ -881,16 +882,17 @@ section { padding: 80px 24px; }
   display: inline-flex;
   align-items: center;
   gap: 12px;
-  background: var(--card);
-  border: 1px solid rgba(255,255,255,0.12);
+  background: var(--green-dim);
+  border: 1px solid var(--green-border);
   border-radius: 14px;
   padding: 14px 24px;
   font-size: 14px;
   font-weight: 600;
   color: var(--text);
-  transition: border-color .2s;
+  box-shadow: 0 0 24px rgba(170,255,0,0.15);
+  transition: border-color .2s, transform .15s, box-shadow .2s;
 }
-.store-badge:hover { border-color: var(--green-border); text-decoration: none; }
+.store-badge:hover { border-color: var(--green); transform: translateY(-1px); box-shadow: 0 0 32px rgba(170,255,0,0.25); text-decoration: none; }
 .store-badge .store-icon { font-size: 28px; }
 
 .coming-soon {
