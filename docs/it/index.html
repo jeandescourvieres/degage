@@ -27,6 +27,7 @@
       <span class="nav-logo-tagline">L'IA che risponde ai tuoi spammer.</span>
     </div>
   </div>
+  <input type="checkbox" id="nav-toggle" class="nav-toggle-checkbox">
   <div class="nav-links">
     <a href="#fonctionnement">Come funziona</a>
     <a href="#modes">Le modalità</a>
@@ -40,6 +41,7 @@
     <a href="/it/" class="active" lang="it" hreflang="it" title="Italiano">🇮🇹</a>
     <a href="/en/" lang="en" hreflang="en" title="English">🇬🇧</a>
   </div>
+  <label for="nav-toggle" class="nav-toggle-btn" aria-label="Menu">☰</label>
 </nav>
 
 <!-- ── HERO ────────────────────────────────────────────────────────────── -->
@@ -527,6 +529,12 @@ function speakMode(btn, text) {
   btn.textContent = '⏸️ In corso…';
   window.speechSynthesis.speak(utterance);
 }
+
+document.querySelectorAll('.nav-links a').forEach(link => {
+  link.addEventListener('click', () => {
+    document.getElementById('nav-toggle').checked = false;
+  });
+});
 </script>
 
 </body>
