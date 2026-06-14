@@ -31,6 +31,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
@@ -210,7 +211,7 @@ fun HomeScreen(
                 ) {
                     IntroBadge(stringResource(R.string.home_badge_others_block))
                     Spacer(modifier = Modifier.height(6.dp))
-                    IntroBadge(stringResource(R.string.home_badge_we_reply))
+                    IntroBadge(highlightBrand(stringResource(R.string.home_badge_we_reply)))
                     Spacer(modifier = Modifier.height(6.dp))
                     IntroBadge(stringResource(R.string.home_badge_offline))
                     Spacer(modifier = Modifier.height(6.dp))
@@ -365,6 +366,11 @@ fun HomeScreen(
 
 @Composable
 private fun IntroBadge(label: String) {
+    IntroBadge(AnnotatedString(label))
+}
+
+@Composable
+private fun IntroBadge(label: AnnotatedString) {
     Text(
         label,
         color = Color.White,

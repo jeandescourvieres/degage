@@ -112,10 +112,14 @@ fun WelcomeDetailsScreen(
                 Spacer(modifier = Modifier.height(4.dp))
                 Text(
                     text = stringResource(R.string.welcome_details_outro),
-                    fontSize = 15.sp,
-                    color = TextSecondary,
-                    lineHeight = 21.sp,
-                    modifier = Modifier.padding(bottom = 8.dp)
+                    fontSize = 16.sp,
+                    fontWeight = FontWeight.Bold,
+                    color = Color.White,
+                    textAlign = TextAlign.Center,
+                    lineHeight = 22.sp,
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(bottom = 12.dp)
                 )
                 Row(
                     modifier = Modifier
