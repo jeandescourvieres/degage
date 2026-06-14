@@ -202,7 +202,7 @@ fun ProtectionStatusCard(
             )
             .border(
                 width = if (isEnabled) 1.5.dp else 1.dp,
-                color = if (isEnabled) NeonGreen.copy(alpha = 0.5f) else TextSecondary.copy(alpha = 0.15f),
+                color = if (isEnabled) NeonGreen.copy(alpha = 0.5f) else TextSecondary.copy(alpha = 0.4f),
                 shape = RoundedCornerShape(24.dp)
             )
             .padding(16.dp),

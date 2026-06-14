@@ -345,7 +345,7 @@ fun HomeScreen(
                 )
                 Spacer(modifier = Modifier.height(4.dp))
                 Text(
-                    text = stringResource(R.string.home_protection_intro),
+                    text = highlightBrand(stringResource(R.string.home_protection_intro)),
                     fontSize = 14.sp,
                     color = TextSecondary,
                     lineHeight = 20.sp,
