@@ -1103,7 +1103,6 @@ body { padding-bottom: 64px; }
 
 /* ── RESPONSIVE ──────────────────────────────────────────────────────── */
 @media (max-width: 640px) {
-  .hero-appname-accent { display: none; }
   nav { padding: 0 16px; }
   .nav-logo-tagline { display: none; }
   .nav-toggle-btn { display: flex; align-items: center; }
