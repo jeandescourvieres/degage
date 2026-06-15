@@ -126,6 +126,7 @@
     <string name="voice_pitch_label">Hauteur de voix (pitch)</string>
     <string name="voice_test_button">Tester la voix</string>
     <string name="voice_available_title">Voix disponibles (%1$s)</string>
+    <string name="voice_generic_label">Voix %1$d</string>
     <string name="voice_none_found">Aucune voix trouvée pour cette langue.\nVérifiez vos paramètres TTS Android.</string>
     <string name="voice_speed_slow">Lent</string>
     <string name="voice_speed_normal">Normal</string>

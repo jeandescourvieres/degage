@@ -6,7 +6,7 @@ import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
@@ -114,9 +114,10 @@ fun VoiceSettingsScreen(
                 }
             }
 
-            items(voices, key = { it.name }) { voice ->
+            itemsIndexed(voices, key = { _, voice -> voice.name }) { index, voice ->
                 VoiceRow(
                     voice = voice,
+                    label = stringResource(R.string.voice_generic_label, index + 1),
                     isSelected = localVoice == voice.name,
                     onClick = {
                         localVoice = voice.name
@@ -176,7 +177,7 @@ private fun VoiceSliderCard(
 }
 
 @Composable
-private fun VoiceRow(voice: Voice, isSelected: Boolean, onClick: () -> Unit) {
+private fun VoiceRow(voice: Voice, label: String, isSelected: Boolean, onClick: () -> Unit) {
     Row(
         modifier = Modifier
             .fillMaxWidth()
@@ -189,7 +190,7 @@ private fun VoiceRow(voice: Voice, isSelected: Boolean, onClick: () -> Unit) {
     ) {
         Column {
             Text(
-                text = voice.name.replace("fr-fr-", "").replace("-", " ").replaceFirstChar { it.uppercase() },
+                text = label,
                 color = if (isSelected) NeonGreen else Color.White,
                 fontSize = 14.sp,
                 fontWeight = if (isSelected) FontWeight.SemiBold else FontWeight.Normal

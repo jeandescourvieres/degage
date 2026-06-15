@@ -67,6 +67,10 @@ class TtsManager(context: Context) {
                 voice.locale.language == isoLanguage &&
                 voice.features?.contains(TextToSpeech.Engine.KEY_FEATURE_NOT_INSTALLED) != true
             }
+            // Les variantes "-local" et "-network" d'une même voix sonnent identiquement :
+            // on ne garde qu'une entrée par voix, en privilégiant la version locale (hors-ligne).
+            ?.groupBy { it.name.removeSuffix("-network").removeSuffix("-local") }
+            ?.map { (_, group) -> group.firstOrNull { it.name.endsWith("-local") } ?: group.first() }
             ?.sortedBy { it.name }
             ?.toList() ?: emptyList()
     }
