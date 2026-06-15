@@ -1,5 +1,6 @@
 package com.degage.ui.screens
 
+import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
@@ -12,12 +13,15 @@ import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material.icons.filled.Block
 import androidx.compose.material.icons.filled.CheckCircle
 import androidx.compose.material.icons.filled.ChevronRight
+import androidx.compose.material.icons.filled.ExpandLess
+import androidx.compose.material.icons.filled.ExpandMore
 import androidx.compose.material.icons.filled.Delete
 import androidx.compose.material.icons.filled.FileDownload
 import androidx.compose.material.icons.filled.Info
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import com.degage.ui.components.InfoDialog
+import com.degage.ui.components.highlightBrand
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -120,7 +124,36 @@ fun HistoryScreen(
         Spacer(modifier = Modifier.height(16.dp))
 
         if (filter == HistoryFilter.TOUS) {
+            HistoryReadingGuide(
+                title = stringResource(R.string.history_tous_help_title),
+                content = stringResource(R.string.history_tous_help_content)
+            )
+            Spacer(modifier = Modifier.height(16.dp))
             CustomBlocksLinkCard(locked = !isPremium, onClick = onNavigateCustomBlocks, onUpgrade = onUpgrade)
+            Spacer(modifier = Modifier.height(16.dp))
+        }
+
+        if (filter == HistoryFilter.BLOQUES) {
+            HistoryReadingGuide(
+                title = stringResource(R.string.history_bloques_help_title),
+                content = stringResource(R.string.history_bloques_help_content)
+            )
+            Spacer(modifier = Modifier.height(16.dp))
+        }
+
+        if (filter == HistoryFilter.REPONSES) {
+            HistoryReadingGuide(
+                title = stringResource(R.string.history_reponses_help_title),
+                content = stringResource(R.string.history_reponses_help_content)
+            )
+            Spacer(modifier = Modifier.height(16.dp))
+        }
+
+        if (filter == HistoryFilter.MANUELS) {
+            HistoryReadingGuide(
+                title = stringResource(R.string.history_manuels_help_title),
+                content = stringResource(R.string.history_manuels_help_content)
+            )
             Spacer(modifier = Modifier.height(16.dp))
         }
 
@@ -158,6 +191,40 @@ fun HistoryScreen(
                 }
                 item { Spacer(modifier = Modifier.height(80.dp)) }
             }
+        }
+    }
+}
+
+@Composable
+fun HistoryReadingGuide(title: String, content: String) {
+    var expanded by remember { mutableStateOf(false) }
+    Column(
+        modifier = Modifier
+            .fillMaxWidth()
+            .background(CardBg, RoundedCornerShape(14.dp))
+            .clickable { expanded = !expanded }
+            .padding(horizontal = 20.dp, vertical = 14.dp)
+    ) {
+        Row(
+            modifier = Modifier.fillMaxWidth(),
+            horizontalArrangement = Arrangement.SpaceBetween,
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            Text(title, color = Color.White, fontSize = 15.sp, fontWeight = FontWeight.SemiBold)
+            Icon(
+                if (expanded) Icons.Default.ExpandLess else Icons.Default.ExpandMore,
+                contentDescription = null,
+                tint = TextSecondary
+            )
+        }
+        AnimatedVisibility(visible = expanded) {
+            Text(
+                highlightBrand(content),
+                color = TextSecondary,
+                fontSize = 12.sp,
+                lineHeight = 17.sp,
+                modifier = Modifier.padding(top = 10.dp)
+            )
         }
     }
 }

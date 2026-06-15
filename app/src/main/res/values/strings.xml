@@ -119,6 +119,14 @@
     <string name="history_filter_manual">Manuels</string>
     <string name="history_custom_blocks_title">🚫 Numéros bloqués manuellement</string>
     <string name="history_custom_blocks_desc">Retrouvez ici tous les numéros que vous avez bloqués vous-même — depuis le bouton « Bloquer » ci-dessus ou ailleurs dans l\'application. Vous pouvez les consulter ou les retirer à tout moment.</string>
+    <string name="history_tous_help_title">ℹ️ Qu\'allez-vous voir dans cet écran ?</string>
+    <string name="history_tous_help_content">🚫 Numéros bloqués manuellement — accès direct à la liste des numéros que vous avez bloqués vous-même.\n\n📵 Appels récents non bloqués — les derniers appels suspects qui ont sonné normalement chez vous ; appuyez sur « Bloquer » pour qu\'ils soient rejetés automatiquement la prochaine fois.\n\n📜 Historique complet — tous les appels traités par TU DÉGAGES, du plus récent au plus ancien.</string>
+    <string name="history_bloques_help_title">ℹ️ Que voyez-vous ici ?</string>
+    <string name="history_bloques_help_content">Cette liste regroupe les appels rejetés directement, sans même faire sonner votre téléphone ni faire parler l\'IA.\n\nCela arrive quand le numéro était déjà reconnu comme spam : liste personnelle, base communautaire, numéro masqué, règle personnalisée, ou plusieurs appels répétés en peu de temps (rafale).</string>
+    <string name="history_reponses_help_title">ℹ️ Que voyez-vous ici ?</string>
+    <string name="history_reponses_help_content">Cette liste regroupe les appels pour lesquels votre IA a répondu au démarcheur avec le mode choisi (Poli, Administratif, Sarcastique ou Troll), avant de raccrocher.\n\nCela arrive quand le numéro n\'était pas déjà reconnu comme spam : l\'IA prend l\'appel, joue son message, puis met fin à la conversation et mémorise le numéro pour la prochaine fois.</string>
+    <string name="history_manuels_help_title">ℹ️ Que voyez-vous ici ?</string>
+    <string name="history_manuels_help_content">Cette liste regroupe les appels rejetés à cause d\'une de vos règles personnalisées — un numéro ou un préfixe que vous avez vous-même ajouté dans « 🚫 Numéros bloqués manuellement ».\n\nC\'est différent des numéros bloqués automatiquement par TU DÉGAGES grâce à la base spam : ici, c\'est vous qui avez décidé du blocage.</string>
     <string name="history_empty">Aucun appel bloqué</string>
     <string name="history_not_spam">Pas un spam</string>
 
