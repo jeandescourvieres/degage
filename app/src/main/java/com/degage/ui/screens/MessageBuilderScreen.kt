@@ -20,6 +20,7 @@ import androidx.compose.material.icons.filled.ExpandLess
 import androidx.compose.material.icons.filled.ExpandMore
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
+import com.degage.ui.components.highlightBrand
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -159,7 +160,7 @@ fun MessageBuilderScreen(
                         color = Color.White
                     )
                     Text(
-                        stringResource(R.string.mb_intro_desc),
+                        highlightBrand(stringResource(R.string.mb_intro_desc)),
                         fontSize = 13.sp,
                         color = TextSecondary,
                         lineHeight = 20.sp
