@@ -126,6 +126,8 @@ nav {
 }
 .nav-lang a:hover { opacity: 1; background: rgba(255,255,255,0.08); border-color: rgba(255,255,255,0.18); text-decoration: none; }
 .nav-lang .flag-icon { height: 16px; width: auto; border-radius: 2px; box-shadow: 0 0 0 1px rgba(255,255,255,0.15); }
+.nav-lang-label { margin-left: 5px; font-size: 12px; font-weight: 700; color: var(--text-secondary); }
+.nav-lang a:hover .nav-lang-label, .nav-lang a.active .nav-lang-label { color: var(--text); }
 .nav-lang a.active {
   opacity: 1;
   background: rgba(170,255,0,0.12);
