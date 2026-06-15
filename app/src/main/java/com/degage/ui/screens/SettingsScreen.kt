@@ -158,6 +158,23 @@ fun SettingsScreen(
             )
         }
 
+        if (searchQuery.isBlank()) item {
+            Column(
+                modifier = Modifier.fillMaxWidth().padding(bottom = 16.dp),
+                verticalArrangement = Arrangement.spacedBy(8.dp)
+            ) {
+                Text(
+                    stringResource(R.string.settings_quick_access_title),
+                    color = Color.White,
+                    fontSize = 15.sp,
+                    fontWeight = FontWeight.SemiBold
+                )
+                QuickAccessRow(label = labelMessageBuilder, locked = !isPremium, onClick = onNavigateMessageBuilder, onUpgrade = onUpgrade)
+                QuickAccessRow(label = labelVoice, locked = !isPremium, onClick = onNavigateVoiceSettings, onUpgrade = onUpgrade)
+                QuickAccessRow(label = labelCustomBlocks, locked = !isPremium, onClick = onNavigateCustomBlocks, onUpgrade = onUpgrade)
+            }
+        }
+
         if (matches(labelAppLang)) item {
             AppLanguageSelectorRow(language = appLanguage, onSetLanguage = onSetAppLanguage)
         }
@@ -713,6 +730,22 @@ private fun ContributeBadge(label: String) {
             .background(NeonGreen.copy(alpha = 0.1f), RoundedCornerShape(20.dp))
             .padding(horizontal = 8.dp, vertical = 4.dp)
     )
+}
+
+@Composable
+fun QuickAccessRow(label: String, locked: Boolean, onClick: () -> Unit, onUpgrade: () -> Unit) {
+    Row(
+        modifier = Modifier
+            .fillMaxWidth()
+            .background(AccentCyan, RoundedCornerShape(14.dp))
+            .clickable { if (locked) onUpgrade() else onClick() }
+            .padding(horizontal = 20.dp, vertical = 16.dp),
+        horizontalArrangement = Arrangement.SpaceBetween,
+        verticalAlignment = Alignment.CenterVertically
+    ) {
+        Text(label, color = Color.Black, fontSize = 15.sp, fontWeight = FontWeight.SemiBold)
+        if (locked) PremiumBadge() else Icon(Icons.Default.ChevronRight, contentDescription = null, tint = Color.Black)
+    }
 }
 
 @Composable

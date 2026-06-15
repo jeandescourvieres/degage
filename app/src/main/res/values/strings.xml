@@ -250,6 +250,7 @@
     <string name="settings_help_custom_blocks">Ajoutez ici des numéros ou préfixes que vous voulez bloquer systématiquement, en plus de la base de spam automatique. Idéal pour un numéro précis qui vous dérange, ou tout un préfixe (ex. l\'indicatif d\'un centre d\'appels).</string>
     <string name="settings_help_premium">Premium débloque les langues de messages vocaux allemand/italien/anglais, la personnalisation complète des réponses, le choix de la voix, le blocage de numéros personnalisés et la contribution à la base communautaire de spam.</string>
     <string name="settings_help_community_db">En activant la contribution (case « Base communautaire » plus haut), chaque numéro que Tu dégages bloque sur votre téléphone est signalé anonymement. En retour, votre app télécharge régulièrement les nouveaux numéros signalés par les autres utilisateurs pour enrichir votre propre base de blocage.</string>
+    <string name="settings_quick_access_title">⚡ Accès rapides</string>
     <string name="settings_nav_message_builder">💬 Personnaliser les réponses</string>
     <string name="settings_nav_voice">🎙️ Paramètres vocaux</string>
     <string name="settings_nav_custom_blocks">🚫 Numéros bloqués manuellement</string>
