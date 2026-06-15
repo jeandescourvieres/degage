@@ -117,6 +117,8 @@
     <string name="history_filter_blocked">Bloqués</string>
     <string name="history_filter_replies">Réponses</string>
     <string name="history_filter_manual">Manuels</string>
+    <string name="history_custom_blocks_title">🚫 Numéros bloqués manuellement</string>
+    <string name="history_custom_blocks_desc">Retrouvez ici tous les numéros que vous avez bloqués vous-même — depuis le bouton « Bloquer » ci-dessus ou ailleurs dans l\'application. Vous pouvez les consulter ou les retirer à tout moment.</string>
     <string name="history_empty">Aucun appel bloqué</string>
     <string name="history_not_spam">Pas un spam</string>
 

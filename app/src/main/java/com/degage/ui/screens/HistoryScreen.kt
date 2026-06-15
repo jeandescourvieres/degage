@@ -1,6 +1,7 @@
 package com.degage.ui.screens
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
@@ -10,6 +11,7 @@ import androidx.compose.material.icons.filled.PhoneMissed
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material.icons.filled.Block
 import androidx.compose.material.icons.filled.CheckCircle
+import androidx.compose.material.icons.filled.ChevronRight
 import androidx.compose.material.icons.filled.Delete
 import androidx.compose.material.icons.filled.FileDownload
 import androidx.compose.material.icons.filled.Info
@@ -52,6 +54,7 @@ fun HistoryScreen(
     recentUnblockedCalls: List<RecentCallEntry> = emptyList(),
     onLoadRecentUnblocked: () -> Unit = {},
     onBlockRecentCall: (RecentCallEntry) -> Unit = {},
+    onNavigateCustomBlocks: () -> Unit = {},
     isPremium: Boolean = true,
     onUpgrade: () -> Unit = {},
     onBack: () -> Unit = {},
@@ -116,6 +119,11 @@ fun HistoryScreen(
 
         Spacer(modifier = Modifier.height(16.dp))
 
+        if (filter == HistoryFilter.TOUS) {
+            CustomBlocksLinkCard(locked = !isPremium, onClick = onNavigateCustomBlocks, onUpgrade = onUpgrade)
+            Spacer(modifier = Modifier.height(16.dp))
+        }
+
         if (filter == HistoryFilter.TOUS && recentUnblockedCalls.isNotEmpty()) {
             Text(
                 stringResource(R.string.history_recent_title),
@@ -151,6 +159,26 @@ fun HistoryScreen(
                 item { Spacer(modifier = Modifier.height(80.dp)) }
             }
         }
+    }
+}
+
+@Composable
+fun CustomBlocksLinkCard(locked: Boolean, onClick: () -> Unit, onUpgrade: () -> Unit) {
+    Row(
+        modifier = Modifier
+            .fillMaxWidth()
+            .background(CardBg, RoundedCornerShape(14.dp))
+            .clickable { if (locked) onUpgrade() else onClick() }
+            .padding(horizontal = 20.dp, vertical = 14.dp),
+        verticalAlignment = Alignment.CenterVertically
+    ) {
+        Column(modifier = Modifier.weight(1f)) {
+            Text(stringResource(R.string.history_custom_blocks_title), color = Color.White, fontSize = 15.sp, fontWeight = FontWeight.SemiBold)
+            Spacer(modifier = Modifier.height(4.dp))
+            Text(stringResource(R.string.history_custom_blocks_desc), color = TextSecondary, fontSize = 12.sp, lineHeight = 16.sp)
+        }
+        Spacer(modifier = Modifier.width(8.dp))
+        if (locked) PremiumBadge() else Icon(Icons.Default.ChevronRight, contentDescription = null, tint = TextSecondary)
     }
 }
 

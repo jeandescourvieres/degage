@@ -174,6 +174,7 @@ fun DegageApp(
                         recentUnblockedCalls = recentUnblockedCalls,
                         onLoadRecentUnblocked = viewModel::loadRecentUnblockedCalls,
                         onBlockRecentCall = viewModel::blockRecentCall,
+                        onNavigateCustomBlocks = { navController.navigate(Screen.CustomBlocks.route) },
                         isPremium = isPremium,
                         onUpgrade = { navController.navigate(Screen.Premium.route) },
                         onBack = { navController.navigateUp() }
