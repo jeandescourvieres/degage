@@ -521,7 +521,7 @@ nav {
   background: radial-gradient(ellipse 70% 50% at 50% 0%, rgba(170,255,0,0.09), transparent 70%), var(--bg);
   border-top: 1px solid var(--green-border);
   border-bottom: 1px solid var(--green-border);
-  padding: 80px 24px;
+  padding: 120px 24px 80px;
   text-align: center;
 }
 
