@@ -491,16 +491,16 @@ nav {
 .btn-primary:hover { opacity: .88; transform: translateY(-1px); text-decoration: none; }
 
 .btn-secondary {
-  background: var(--card);
-  color: var(--text);
-  font-weight: 600;
+  background: #00E5FF;
+  color: #000;
+  font-weight: 800;
   font-size: 15px;
   padding: 14px 28px;
   border-radius: 12px;
   border: 1px solid rgba(255,255,255,0.1);
-  transition: border-color .2s;
+  transition: opacity .2s, transform .2s;
 }
-.btn-secondary:hover { border-color: rgba(255,255,255,0.3); text-decoration: none; }
+.btn-secondary:hover { opacity: .88; transform: translateY(-1px); text-decoration: none; }
 
 .btn-faq-highlight {
   display: inline-block;
