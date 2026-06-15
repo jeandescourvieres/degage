@@ -92,7 +92,7 @@
     <string name="reply_lang_en">anglais</string>
     <string name="reply_lang_fr">français</string>
     <string name="mb_intro_title">Comment composer votre message ?</string>
-    <string name="mb_intro_desc">Tu dégages assemble automatiquement un message en 3 parties avant de raccrocher. Vous choisissez librement une option par section :</string>
+    <string name="mb_intro_desc">Tu dégages assemble automatiquement un message en 3 sections avant de raccrocher. L\'application propose déjà des modèles pour chaque section, mais vous pouvez tout modifier à votre convenance, comme expliqué à chaque étape :</string>
     <string name="mb_explain_salutation_title">Salutation</string>
     <string name="mb_explain_salutation_desc">La phrase d\'ouverture. Commune à tous les modes.</string>
     <string name="mb_explain_body_title">Corps</string>
