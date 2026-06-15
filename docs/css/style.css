@@ -163,14 +163,26 @@ nav {
   flex-direction: column;
   align-items: center;
   background: rgba(170, 255, 0, 0.04);
-  border: 1px solid var(--green-border);
+  border: 2px solid var(--green);
   border-radius: 32px;
   padding: 40px 32px;
   margin-bottom: 28px;
+  animation: heroGlowPulse 0.9s ease-in-out infinite alternate;
+}
+
+@keyframes heroGlowPulse {
+  from {
+    border-color: rgba(170, 255, 0, 0.35);
+    box-shadow: 0 0 0 rgba(170, 255, 0, 0);
+  }
+  to {
+    border-color: rgba(170, 255, 0, 1);
+    box-shadow: 0 0 24px rgba(170, 255, 0, 0.5);
+  }
 }
 
 .hero-welcome {
-  font-size: clamp(14px, 4vw, 36px);
+  font-size: clamp(22px, 5vw, 36px);
   font-weight: 900;
   letter-spacing: 1px;
   color: var(--text);
@@ -1191,6 +1203,8 @@ body { padding-bottom: 64px; }
   .diff-section, .cta-band { padding: 48px 16px; }
   .section-sub { margin-bottom: 32px; }
   .hero { padding: 48px 16px 32px; }
+  .hero-glow { padding: 28px 16px; }
+  .hero-welcome { white-space: normal; font-size: clamp(18px, 5.5vw, 36px); }
   .footer-inner { flex-direction: column; }
   .footer-bottom { flex-direction: column; text-align: center; }
   .base-spam-top { flex-direction: column; }
