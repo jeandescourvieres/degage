@@ -194,7 +194,7 @@
     <string name="welcome_title">TU DÉGAGES vous souhaite la bienvenue !</string>
     <string name="welcome_hero_title">Les spammeurs adorent\nvous appeler ?</string>
     <string name="welcome_hero_subtitle">TU DÉGAGES, votre nouvelle IA,\nva adorer leur répondre !</string>
-    <string name="welcome_hero_desc">Ne perdez plus de temps à répondre aux appels indésirables pour devoir raccrocher ensuite. Faites répondre votre IA personnelle avec l\'humour de votre choix — elle raccroche et bloque le numéro à votre place.</string>
+    <string name="welcome_hero_desc">Ne perdez plus de temps à répondre aux appels indésirables pour devoir raccrocher ensuite. Et prendre le risque que les mêmes vous rappellent... Faites répondre votre IA personnelle avec la voix et l\'humour de votre choix. Elle raccrochera ensuite et bloquera le numéro à votre place.</string>
     <string name="welcome_sections_intro">TU DÉGAGES : c\'est quoi le principe ?</string>
     <string name="welcome_details_intro">Petit tour des 5 super-pouvoirs de votre application, sans la notice de 50 pages 😄</string>
     <string name="welcome_section1_title">🤖 Blocage intelligent avec réponse IA :</string>
@@ -303,7 +303,7 @@
     <string name="home_badge_countries">🇫🇷 Développé pour la France.\n🇨🇭 Et la Suisse.</string>
     <string name="home_badge_languages">🌍 Réponses IA en français, allemand, italien et anglais…</string>
     <string name="home_protection_title">🛡️ Votre protection en un coup d\'œil</string>
-    <string name="home_protection_intro">Vérifiez en un clin d\'œil ci-dessous si TU DÉGAGES est actif. L\'activation ou la désactivation de la protection se fait directement ici.</string>
+    <string name="home_protection_intro">Vérifiez en un clin d\'œil ci-dessous si TU DÉGAGES est actif. L\'activation (ou la désactivation) de la protection se fait directement ici.</string>
     <string name="home_status_active">PROTECTION ACTIVE</string>
     <string name="home_status_inactive">PROTECTION INACTIVE</string>
     <string name="home_status_active_desc">Votre IA répond à votre place.\nLes spammeurs ne passent plus.</string>
