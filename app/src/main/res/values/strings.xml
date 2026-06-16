@@ -204,7 +204,11 @@
     <string name="welcome_title">TU DÉGAGES vous souhaite la bienvenue !</string>
     <string name="welcome_hero_title">Les spammeurs adorent\nvous appeler ?</string>
     <string name="welcome_hero_subtitle">TU DÉGAGES, votre nouvelle IA,\nva adorer leur répondre !</string>
-    <string name="welcome_hero_desc">Ne perdez plus de temps à répondre aux appels indésirables pour devoir raccrocher ensuite. Et prendre le risque que les mêmes vous rappellent un peu plus tard... Faites répondre votre IA personnelle avec le message, la voix et l\'humour de votre choix. Elle raccrochera ensuite automatiquement et bloquera le numéro à votre place.</string>
+    <string name="welcome_hero_headline">Stop aux appels indésirables. Définitivement.</string>
+    <string name="welcome_hero_desc">Laissez votre IA personnelle répondre à votre place, avec le message, la voix et le ton de votre choix. Elle raccroche et bloque le numéro automatiquement.</string>
+    <string name="welcome_hero_desc_more">Pourquoi perdre votre temps à décrocher pour raccrocher quelques secondes plus tard ?\n\nChoisissez votre message, votre voix et votre style : poli, administratif, sarcastique ou carrément troll. À chaque appel indésirable, votre IA prend le relais, délivre le message que vous avez choisi, puis raccroche automatiquement.\n\nEt ce n\'est pas tout : le numéro est immédiatement bloqué pour éviter qu\'on vous rappelle encore et encore.\n\n✅ Votre message personnalisé\n✅ Votre voix, dans plusieurs langues\n✅ Votre ton de réponse préféré\n✅ Configuration en quelques clics, en une seule fois\n✅ Modifiable à tout moment\n\nVotre IA répond. Raccroche. Bloque.\n\nVous gagnez du temps. Vous gardez votre tranquillité.</string>
+    <string name="common_read_more">Lire la suite ▾</string>
+    <string name="common_read_less">Réduire ▴</string>
     <string name="welcome_sections_intro">TU DÉGAGES : c\'est quoi le principe ?</string>
     <string name="welcome_details_intro">Petit tour des 5 super-pouvoirs de votre application, sans la notice de 50 pages 😄</string>
     <string name="welcome_section1_title">🤖 Blocage intelligent avec réponse IA :</string>

@@ -64,8 +64,9 @@ class MainViewModel(app: Application) : AndroidViewModel(app) {
         ttsManager.setLanguage(lang)
         ttsManager.speak(phrase)
         if (mode == AppMode.TROLL) {
+            delay(300L)
             holdMusicPlayer.start()
-            delay(5_000L)
+            delay(20_000L)
             holdMusicPlayer.stop()
         }
     }

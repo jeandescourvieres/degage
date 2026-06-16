@@ -194,12 +194,41 @@ fun HomeScreen(
                     )
                 }
                 Spacer(modifier = Modifier.height(12.dp))
+                var heroDescExpanded by remember { mutableStateOf(false) }
+                Text(
+                    text = stringResource(R.string.welcome_hero_headline),
+                    fontSize = 22.sp,
+                    fontWeight = FontWeight.Black,
+                    color = NeonGreen,
+                    textAlign = TextAlign.Center,
+                    lineHeight = 28.sp
+                )
+                Spacer(modifier = Modifier.height(8.dp))
                 Text(
                     text = stringResource(R.string.welcome_hero_desc),
                     fontSize = 14.sp,
                     color = TextSecondary,
                     textAlign = TextAlign.Center,
                     lineHeight = 21.sp
+                )
+                AnimatedVisibility(visible = heroDescExpanded) {
+                    Text(
+                        text = stringResource(R.string.welcome_hero_desc_more),
+                        fontSize = 14.sp,
+                        color = TextSecondary,
+                        textAlign = TextAlign.Center,
+                        lineHeight = 21.sp,
+                        modifier = Modifier.padding(top = 12.dp)
+                    )
+                }
+                Spacer(modifier = Modifier.height(6.dp))
+                Text(
+                    text = stringResource(if (heroDescExpanded) R.string.common_read_less else R.string.common_read_more),
+                    fontSize = 13.sp,
+                    fontWeight = FontWeight.SemiBold,
+                    color = NeonGreen,
+                    textAlign = TextAlign.Center,
+                    modifier = Modifier.clickable { heroDescExpanded = !heroDescExpanded }
                 )
                 Spacer(modifier = Modifier.height(12.dp))
                 Column(
