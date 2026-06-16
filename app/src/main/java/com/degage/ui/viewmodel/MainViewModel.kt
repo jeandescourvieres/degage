@@ -141,6 +141,19 @@ class MainViewModel(app: Application) : AndroidViewModel(app) {
     fun setAppLanguage(value: String) = viewModelScope.launch {
         prefs.setAppLanguage(value)
         com.degage.locale.LocaleHelper.applyLanguage(value)
+        val replyLang = when (value) {
+            "DE" -> "DE"
+            "IT" -> "IT"
+            "EN" -> "EN"
+            "FR" -> "FR"
+            else -> when (java.util.Locale.getDefault().language) {
+                "de" -> "DE"
+                "it" -> "IT"
+                "en" -> "EN"
+                else -> "FR"
+            }
+        }
+        prefs.setReplyLanguage(replyLang)
     }
 
     val customBlocks: StateFlow<List<CustomBlockEntity>> = db.customBlockDao().getAll()

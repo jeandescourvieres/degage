@@ -62,7 +62,14 @@ class AppPreferences(private val context: Context) {
     val strictMode: Flow<Boolean> = context.dataStore.data.map { it[KEY_STRICT_MODE] ?: false }
     val country: Flow<String> = context.dataStore.data.map { it[KEY_COUNTRY] ?: "FR" }
     val isPremium: Flow<Boolean> = context.dataStore.data.map { it[KEY_IS_PREMIUM] ?: false }
-    val replyLanguage: Flow<String> = context.dataStore.data.map { it[KEY_REPLY_LANGUAGE] ?: "FR" }
+    val replyLanguage: Flow<String> = context.dataStore.data.map {
+        it[KEY_REPLY_LANGUAGE] ?: when (java.util.Locale.getDefault().language) {
+            "de" -> "DE"
+            "it" -> "IT"
+            "en" -> "EN"
+            else -> "FR"
+        }
+    }
     // "" = suit la langue du système (parmi FR/DE/IT/EN, sinon FR par défaut)
     val appLanguage: Flow<String> = context.dataStore.data.map { it[KEY_APP_LANGUAGE] ?: "" }
 

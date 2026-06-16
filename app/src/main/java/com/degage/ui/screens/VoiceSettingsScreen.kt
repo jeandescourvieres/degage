@@ -49,13 +49,16 @@ fun VoiceSettingsScreen(
     ) {
         // Header
         Row(
-            modifier = Modifier.padding(horizontal = 8.dp, vertical = 16.dp),
+            modifier = Modifier
+                .fillMaxWidth()
+                .background(AccentCyan)
+                .padding(horizontal = 8.dp, vertical = 8.dp),
             verticalAlignment = Alignment.CenterVertically
         ) {
             IconButton(onClick = onBack) {
-                Icon(Icons.Default.ArrowBack, contentDescription = stringResource(R.string.cd_back), tint = Color.White)
+                Icon(Icons.Default.ArrowBack, contentDescription = stringResource(R.string.cd_back), tint = Color.Black)
             }
-            Text(stringResource(R.string.voice_title), fontSize = 20.sp, fontWeight = FontWeight.Bold, color = Color.White)
+            Text(stringResource(R.string.voice_title), fontSize = 20.sp, fontWeight = FontWeight.Bold, color = Color.Black)
         }
 
         LazyColumn(

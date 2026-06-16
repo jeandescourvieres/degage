@@ -68,17 +68,20 @@ fun MessageBuilderScreen(
     ) {
         // ── Header ───────────────────────────────────────────────────────
         Row(
-            modifier = Modifier.padding(start = 8.dp, end = 8.dp, top = 16.dp, bottom = 8.dp),
+            modifier = Modifier
+                .fillMaxWidth()
+                .background(AccentCyan)
+                .padding(start = 8.dp, end = 8.dp, top = 8.dp, bottom = 8.dp),
             verticalAlignment = Alignment.CenterVertically
         ) {
             IconButton(onClick = onBack) {
-                Icon(Icons.Default.ArrowBack, contentDescription = stringResource(R.string.cd_back), tint = Color.White)
+                Icon(Icons.Default.ArrowBack, contentDescription = stringResource(R.string.cd_back), tint = Color.Black)
             }
             Text(
                 stringResource(R.string.mb_header_title),
                 fontSize = 18.sp,
                 fontWeight = FontWeight.Bold,
-                color = Color.White
+                color = Color.Black
             )
         }
 

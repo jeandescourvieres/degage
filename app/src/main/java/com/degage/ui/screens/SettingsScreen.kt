@@ -737,9 +737,9 @@ fun QuickAccessRow(label: String, locked: Boolean, onClick: () -> Unit, onUpgrad
     Row(
         modifier = Modifier
             .fillMaxWidth()
-            .background(AccentCyan, RoundedCornerShape(14.dp))
+            .background(AccentCyan, RoundedCornerShape(10.dp))
             .clickable { if (locked) onUpgrade() else onClick() }
-            .padding(horizontal = 20.dp, vertical = 16.dp),
+            .padding(horizontal = 16.dp, vertical = 8.dp),
         horizontalArrangement = Arrangement.SpaceBetween,
         verticalAlignment = Alignment.CenterVertically
     ) {
