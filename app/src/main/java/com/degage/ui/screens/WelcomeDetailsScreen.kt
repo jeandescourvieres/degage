@@ -50,7 +50,7 @@ fun WelcomeDetailsScreen(
                 Icon(Icons.Default.ArrowBack, contentDescription = stringResource(R.string.cd_back), tint = Color.White)
             }
             Text(
-                text = stringResource(R.string.welcome_sections_intro),
+                text = highlightBrand(stringResource(R.string.welcome_sections_intro)),
                 fontSize = 17.sp,
                 fontWeight = FontWeight.Bold,
                 color = Color.Black,

@@ -231,7 +231,7 @@
     <string name="welcome_dismiss_button">J\'ai compris, ne plus afficher</string>
 
     <!-- ── Écran Paramètres ────────────────────────────────────────────── -->
-    <string name="settings_title">Paramètres</string>
+    <string name="settings_title">Les paramètres</string>
     <string name="settings_search_placeholder">Rechercher un réglage…</string>
     <string name="settings_info_title">Paramètres</string>
     <string name="settings_info_content">Configurez le comportement de DÉGAGE :\n\n• Protection : active/désactive le filtrage global des appels.\n• Décroche automatique : répond à l\'appel sans que le téléphone sonne (recommandé).\n• Bloquer après réponse : ajoute le numéro à la liste noire après chaque interaction.\n• Notifications : vous avertit à chaque appel bloqué.\n• Personnaliser les réponses : créez et gérez vos propres messages.\n• Paramètres vocaux : changez la voix, la vitesse et la hauteur.</string>
@@ -335,7 +335,7 @@
     <string name="home_call_yesterday_prefix">Hier</string>
 
     <!-- ── Écran Mode d'emploi ─────────────────────────────────────────── -->
-    <string name="manual_title">FAQ - Foire aux questions</string>
+    <string name="manual_title">FAQ - La foire aux questions</string>
 
     <string name="manual_cat_db">📋 Base de numéros bloqués</string>
     <string name="manual_cat_usage">📱 Utilisation</string>
