@@ -50,15 +50,24 @@ fun CustomBlockScreen(
             .padding(horizontal = 16.dp)
     ) {
         Row(
-            modifier = Modifier.fillMaxWidth().background(AccentCyan).padding(top = 8.dp, bottom = 8.dp),
+            modifier = Modifier.fillMaxWidth().padding(top = 8.dp, bottom = 8.dp),
             verticalAlignment = Alignment.CenterVertically
         ) {
             IconButton(onClick = onBack) {
-                Icon(Icons.Default.ArrowBack, contentDescription = stringResource(R.string.cd_back), tint = Color.Black)
+                Icon(Icons.Default.ArrowBack, contentDescription = stringResource(R.string.cd_back), tint = Color.White)
             }
-            Text(stringResource(R.string.custom_block_title), fontSize = 18.sp, fontWeight = FontWeight.Bold, color = Color.Black, modifier = Modifier.weight(1f))
+            Text(
+                stringResource(R.string.custom_block_title),
+                fontSize = 18.sp,
+                fontWeight = FontWeight.Bold,
+                color = Color.Black,
+                modifier = Modifier
+                    .weight(1f)
+                    .background(AccentCyan, RoundedCornerShape(8.dp))
+                    .padding(horizontal = 12.dp, vertical = 4.dp)
+            )
             IconButton(onClick = { showInfo = true }) {
-                Icon(Icons.Default.Info, contentDescription = stringResource(R.string.cd_help), tint = Color.Black, modifier = Modifier.size(26.dp))
+                Icon(Icons.Default.Info, contentDescription = stringResource(R.string.cd_help), tint = NeonGreen, modifier = Modifier.size(26.dp))
             }
         }
         Spacer(modifier = Modifier.height(12.dp))
