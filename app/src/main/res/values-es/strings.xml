@@ -220,7 +220,7 @@
     <string name="welcome_section3_body">Compón tus propias frases, elige el tono y el idioma (francés, alemán, italiano, inglés o español), ajusta la voz. Tu IA suena como tú. Los spammers merecen una respuesta a la altura. 🎤 😂</string>
     <string name="welcome_section4_title">📊 Cada batalla contada:</string>
     <string name="welcome_section4_body">Historial completo, tiempo ahorrado, números memorizados para rechazo inmediato. Sabrás exactamente cuántas veces ha ganado tu IA.</string>
-    <string name="welcome_section5_title">🇫🇷🇨🇭 Adaptado a Francia y Suiza:</string>
+    <string name="welcome_section5_title">🇫🇷🇨🇭 Adaptado a Francia y Suiza. Y a otros países: 🇩🇪🇪🇸🇮🇹🇬🇧</string>
     <string name="welcome_section5_body">Elige tu país en Ajustes: la base de números indeseados se adapta automáticamente (prefijos ARCEP en Francia, números de tarificación adicional y números empresariales OFCOM en Suiza).</string>
     <string name="welcome_details_outro">Para saber más, consulta a continuación los ajustes de la aplicación, o la FAQ - Preguntas frecuentes.</string>
     <string name="welcome_settings_link">⚙️ Ver los ajustes</string>

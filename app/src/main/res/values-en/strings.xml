@@ -210,7 +210,7 @@
     <string name="welcome_section3_body">Write your own phrases, choose the tone and language (French, German, Italian or English), adjust the voice. Your AI sounds like you. Spammers deserve a reply that matches. 🎤 😂</string>
     <string name="welcome_section4_title">📊 Every battle counted:</string>
     <string name="welcome_section4_body">Full history, time saved, numbers memorized for instant rejection. You\'ll know exactly how many times your AI has won.</string>
-    <string name="welcome_section5_title">🇫🇷🇨🇭 Tailored for France and Switzerland:</string>
+    <string name="welcome_section5_title">🇫🇷🇨🇭 Tailored for France and Switzerland. And other countries: 🇩🇪🇪🇸🇮🇹🇬🇧</string>
     <string name="welcome_section5_body">Choose your country in Settings: the unwanted-number database adapts automatically (ARCEP prefixes in France, premium-rate and OFCOM business numbers in Switzerland).</string>
     <string name="welcome_details_outro">To learn more, check out the full user manual and the app settings:</string>
     <string name="welcome_settings_link">⚙️ Go to Settings</string>
