@@ -118,6 +118,16 @@
     <string name="history_filter_blocked">Blockiert</string>
     <string name="history_filter_replies">Antworten</string>
     <string name="history_filter_manual">Manuell</string>
+    <string name="history_custom_blocks_title">🚫 Manuell blockierte Nummern</string>
+    <string name="history_custom_blocks_desc">Hier finden Sie alle Nummern, die Sie selbst blockiert haben — über die Schaltfläche „Blockieren" oben oder anderswo in der App. Sie können sie jederzeit einsehen oder entfernen.</string>
+    <string name="history_tous_help_title">ℹ️ Was sehen Sie auf diesem Bildschirm?</string>
+    <string name="history_tous_help_content">🚫 Manuell blockierte Nummern — direkter Zugriff auf die Liste der Nummern, die Sie selbst blockiert haben.\n\n📵 Zuletzt nicht blockierte Anrufe — die letzten verdächtigen Anrufe, die normal bei Ihnen geklingelt haben; tippen Sie auf „Blockieren", damit sie beim nächsten Mal automatisch abgelehnt werden.\n\n📜 Vollständiger Verlauf — alle von TU DÉGAGES bearbeiteten Anrufe, vom neuesten zum ältesten.</string>
+    <string name="history_bloques_help_title">ℹ️ Was sehen Sie hier?</string>
+    <string name="history_bloques_help_content">Diese Liste fasst Anrufe zusammen, die direkt abgelehnt wurden, ohne dass Ihr Telefon geklingelt hat oder die KI gesprochen hat.\n\nDas passiert, wenn die Nummer bereits als Spam erkannt war: persönliche Liste, Community-Datenbank, unterdrückte Nummer, eigene Regel, oder mehrere Anrufe in kurzer Zeit (Anrufserie).</string>
+    <string name="history_reponses_help_title">ℹ️ Was sehen Sie hier?</string>
+    <string name="history_reponses_help_content">Diese Liste fasst Anrufe zusammen, bei denen Ihre KI dem Werbeanrufer im gewählten Modus geantwortet hat (Höflich, Administrativ, Sarkastisch oder Troll), bevor aufgelegt wurde.\n\nDas passiert, wenn die Nummer noch nicht als Spam erkannt war: die KI nimmt den Anruf an, spielt ihre Nachricht ab, beendet dann das Gespräch und merkt sich die Nummer für das nächste Mal.</string>
+    <string name="history_manuels_help_title">ℹ️ Was sehen Sie hier?</string>
+    <string name="history_manuels_help_content">Diese Liste fasst Anrufe zusammen, die aufgrund einer Ihrer eigenen Regeln abgelehnt wurden — eine Nummer oder ein Präfix, das Sie selbst unter „🚫 Manuell blockierte Nummern" hinzugefügt haben.\n\nDas unterscheidet sich von Nummern, die TU DÉGAGES automatisch über die Spam-Datenbank blockiert: hier haben Sie selbst über die Blockierung entschieden.</string>
     <string name="history_empty">Kein Anruf blockiert</string>
     <string name="history_not_spam">Kein Spam</string>
 
@@ -245,6 +255,7 @@
     <string name="settings_help_custom_blocks">Fügen Sie hier Nummern oder Vorwahlen hinzu, die Sie systematisch blockieren möchten, zusätzlich zur automatischen Spam-Datenbank. Ideal für eine bestimmte störende Nummer oder eine ganze Vorwahl (z. B. die eines Callcenters).</string>
     <string name="settings_help_premium">Premium schaltet die Sprachnachrichten auf Deutsch/Italienisch/Englisch/Spanisch frei, die vollständige Anpassung der Antworten, die Wahl der Stimme, das Blockieren eigener Nummern und den Beitrag zur Community-Spam-Datenbank.</string>
     <string name="settings_help_community_db">Wenn Sie den Beitrag aktivieren (Kästchen „Community-Datenbank" oben), wird jede von Tu dégages auf Ihrem Telefon blockierte Nummer anonym gemeldet. Im Gegenzug lädt Ihre App regelmäßig neue, von anderen Nutzern gemeldete Nummern herunter, um Ihre eigene Blockierliste zu erweitern.</string>
+    <string name="settings_quick_access_title">⚡ Schnellzugriff</string>
     <string name="settings_nav_message_builder">💬 Antworten anpassen</string>
     <string name="settings_nav_voice">🎙️ Spracheinstellungen</string>
     <string name="settings_nav_custom_blocks">🚫 Manuell blockierte Nummern</string>

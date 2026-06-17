@@ -118,6 +118,16 @@
     <string name="history_filter_blocked">Blocked</string>
     <string name="history_filter_replies">Replies</string>
     <string name="history_filter_manual">Manual</string>
+    <string name="history_custom_blocks_title">🚫 Manually blocked numbers</string>
+    <string name="history_custom_blocks_desc">Find here all the numbers you have blocked yourself — using the "Block" button above or elsewhere in the app. You can view or remove them at any time.</string>
+    <string name="history_tous_help_title">ℹ️ What will you see on this screen?</string>
+    <string name="history_tous_help_content">🚫 Manually blocked numbers — direct access to the list of numbers you have blocked yourself.\n\n📵 Recent unblocked calls — the latest suspicious calls that rang normally on your phone; tap "Block" so they get rejected automatically next time.\n\n📜 Full history — all calls handled by TU DÉGAGES, from most recent to oldest.</string>
+    <string name="history_bloques_help_title">ℹ️ What do you see here?</string>
+    <string name="history_bloques_help_content">This list groups calls rejected directly, without even making your phone ring or having the AI speak.\n\nThis happens when the number was already recognized as spam: personal list, community database, hidden number, custom rule, or several repeated calls in a short time (burst).</string>
+    <string name="history_reponses_help_title">ℹ️ What do you see here?</string>
+    <string name="history_reponses_help_content">This list groups calls for which your AI replied to the telemarketer with the chosen mode (Polite, Administrative, Sarcastic or Troll), before hanging up.\n\nThis happens when the number wasn\'t already recognized as spam: the AI takes the call, plays its message, then ends the conversation and remembers the number for next time.</string>
+    <string name="history_manuels_help_title">ℹ️ What do you see here?</string>
+    <string name="history_manuels_help_content">This list groups calls rejected because of one of your custom rules — a number or prefix you added yourself in "🚫 Manually blocked numbers".\n\nThis is different from numbers blocked automatically by TU DÉGAGES via the spam database: here, you decided the block.</string>
     <string name="history_empty">No blocked calls</string>
     <string name="history_not_spam">Not spam</string>
 
@@ -245,6 +255,7 @@
     <string name="settings_help_custom_blocks">Add numbers or prefixes here that you want to block systematically, in addition to the automatic spam database. Ideal for a specific annoying number, or a whole prefix (e.g. a call center\'s area code).</string>
     <string name="settings_help_premium">Premium unlocks German/Italian/English/Spanish voice messages, full customization of replies, voice selection, custom number blocking, and contributing to the community spam database.</string>
     <string name="settings_help_community_db">Turning on contribution (the "Community database" toggle above) anonymously reports every number Tu dégages blocks on your phone. In return, your app regularly downloads new numbers reported by other users to grow your own blocklist.</string>
+    <string name="settings_quick_access_title">⚡ Quick access</string>
     <string name="settings_nav_message_builder">💬 Customize replies</string>
     <string name="settings_nav_voice">🎙️ Voice settings</string>
     <string name="settings_nav_custom_blocks">🚫 Manually blocked numbers</string>

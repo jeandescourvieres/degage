@@ -118,6 +118,16 @@
     <string name="history_filter_blocked">Bloccate</string>
     <string name="history_filter_replies">Risposte</string>
     <string name="history_filter_manual">Manuali</string>
+    <string name="history_custom_blocks_title">🚫 Numeri bloccati manualmente</string>
+    <string name="history_custom_blocks_desc">Qui trovi tutti i numeri che hai bloccato tu stesso — dal pulsante «Blocca» qui sopra o altrove nell\'app. Puoi consultarli o rimuoverli in qualsiasi momento.</string>
+    <string name="history_tous_help_title">ℹ️ Cosa vedrai in questa schermata?</string>
+    <string name="history_tous_help_content">🚫 Numeri bloccati manualmente — accesso diretto all\'elenco dei numeri che hai bloccato tu stesso.\n\n📵 Chiamate recenti non bloccate — le ultime chiamate sospette che hanno squillato normalmente sul tuo telefono; tocca «Blocca» perché vengano rifiutate automaticamente la prossima volta.\n\n📜 Cronologia completa — tutte le chiamate gestite da TU DÉGAGES, dalla più recente alla più vecchia.</string>
+    <string name="history_bloques_help_title">ℹ️ Cosa vedi qui?</string>
+    <string name="history_bloques_help_content">Questo elenco raggruppa le chiamate rifiutate direttamente, senza nemmeno far squillare il telefono o far parlare l\'IA.\n\nQuesto accade quando il numero era già riconosciuto come spam: lista personale, database della community, numero nascosto, regola personalizzata, oppure più chiamate ripetute in poco tempo (raffica).</string>
+    <string name="history_reponses_help_title">ℹ️ Cosa vedi qui?</string>
+    <string name="history_reponses_help_content">Questo elenco raggruppa le chiamate per cui la tua IA ha risposto al call center con la modalità scelta (Cortese, Amministrativo, Sarcastico o Troll), prima di riagganciare.\n\nQuesto accade quando il numero non era ancora riconosciuto come spam: l\'IA risponde alla chiamata, riproduce il suo messaggio, poi termina la conversazione e memorizza il numero per la prossima volta.</string>
+    <string name="history_manuels_help_title">ℹ️ Cosa vedi qui?</string>
+    <string name="history_manuels_help_content">Questo elenco raggruppa le chiamate rifiutate a causa di una delle tue regole personalizzate — un numero o un prefisso che hai aggiunto tu stesso in «🚫 Numeri bloccati manualmente».\n\nQuesto è diverso dai numeri bloccati automaticamente da TU DÉGAGES grazie al database spam: qui sei stato tu a decidere il blocco.</string>
     <string name="history_empty">Nessuna chiamata bloccata</string>
     <string name="history_not_spam">Non è spam</string>
 
@@ -245,6 +255,7 @@
     <string name="settings_help_custom_blocks">Aggiungi qui numeri o prefissi che vuoi bloccare sistematicamente, in aggiunta al database spam automatico. Ideale per un numero specifico fastidioso o per un intero prefisso (es. quello di un call center).</string>
     <string name="settings_help_premium">Premium sblocca le lingue dei messaggi vocali tedesco/italiano/inglese/spagnolo, la personalizzazione completa delle risposte, la scelta della voce, il blocco di numeri personalizzati e il contributo al database spam della community.</string>
     <string name="settings_help_community_db">Attivando il contributo (casella "Database della community" sopra), ogni numero bloccato da Tu dégages sul tuo telefono viene segnalato in modo anonimo. In cambio, la tua app scarica regolarmente i nuovi numeri segnalati dagli altri utenti per arricchire il tuo database di blocco.</string>
+    <string name="settings_quick_access_title">⚡ Accesso rapido</string>
     <string name="settings_nav_message_builder">💬 Personalizza le risposte</string>
     <string name="settings_nav_voice">🎙️ Impostazioni vocali</string>
     <string name="settings_nav_custom_blocks">🚫 Numeri bloccati manualmente</string>
