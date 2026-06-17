@@ -13,14 +13,17 @@ import java.net.URL
 object SupabaseClient {
 
     private const val BASE = "https://omnbalnsrvvxnoqskxza.supabase.co/rest/v1"
+    private const val FUNCTIONS_BASE = "https://omnbalnsrvvxnoqskxza.supabase.co/functions/v1"
     private const val KEY = "sb_publishable_tqaA4jrnGVPVFEWNVE4rnQ_PJAQlfBK"
     private const val TAG = "SupabaseClient"
 
     // Ne récupère que les numéros de l'indicatif pays demandé (ex. "33" pour la France), pour
     // éviter de télécharger et de faire correspondre des numéros d'autres pays sans rapport.
+    // report_count>=2 : un signalement isolé ne suffit plus à propager un numéro à toute la
+    // communauté (l'Edge Function report-number ne compte qu'une fois par IP et par numéro).
     suspend fun fetchSpamNumbers(callingCode: String): List<String> = withContext(Dispatchers.IO) {
         try {
-            val conn = (URL("$BASE/spam_numbers?select=number&number=like.%2B$callingCode*").openConnection() as HttpURLConnection).apply {
+            val conn = (URL("$BASE/spam_numbers?select=number&number=like.%2B$callingCode*&report_count=gte.2").openConnection() as HttpURLConnection).apply {
                 requestMethod = "GET"
                 connectTimeout = 10_000
                 readTimeout = 20_000
@@ -43,24 +46,22 @@ object SupabaseClient {
         }
     }
 
+    // Passe par l'Edge Function plutôt qu'un insert REST direct : la table n'accepte plus
+    // d'écriture anon (RLS), la validation et la dédup anti-abus par IP se font côté serveur
+    // avec la clé service_role, jamais exposée au client.
     suspend fun reportNumber(number: String): Unit = withContext(Dispatchers.IO) {
         try {
-            val now = System.currentTimeMillis()
             val json = JSONObject().apply {
                 put("number", number)
-                put("report_count", 1)
-                put("first_seen", now)
-                put("last_seen", now)
             }.toString().toByteArray(Charsets.UTF_8)
 
-            val conn = (URL("$BASE/spam_numbers").openConnection() as HttpURLConnection).apply {
+            val conn = (URL("$FUNCTIONS_BASE/report-number").openConnection() as HttpURLConnection).apply {
                 requestMethod = "POST"
                 connectTimeout = 10_000
                 readTimeout = 10_000
                 setRequestProperty("apikey", KEY)
                 setRequestProperty("Authorization", "Bearer $KEY")
                 setRequestProperty("Content-Type", "application/json")
-                setRequestProperty("Prefer", "resolution=ignore-duplicates")
                 doOutput = true
                 outputStream.write(json)
             }
