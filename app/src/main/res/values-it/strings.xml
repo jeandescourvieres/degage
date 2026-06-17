@@ -164,10 +164,8 @@
     <string name="stats_sources_title">Fonti integrate</string>
     <string name="stats_source_arcep_name">Intervalli ARCEP documentati</string>
     <string name="stats_source_arcep_desc">52 prefissi FR sempre attivi</string>
-    <string name="stats_source_phoneblock_name">phoneblock.net</string>
-    <string name="stats_source_phoneblock_desc">Database comunitario europeo open source</string>
-    <string name="stats_source_signalspam_name">Signal-Spam France</string>
-    <string name="stats_source_signalspam_desc">Associazione francese certificata anti-spam</string>
+    <string name="stats_source_community_name">Database della community Tu dégages</string>
+    <string name="stats_source_community_desc">Numeri segnalati dagli utenti, separati per paese</string>
     <string name="stats_source_user_name">Le tue segnalazioni</string>
     <string name="stats_source_user_desc">Ogni numero bloccato da te viene memorizzato</string>
     <string name="stats_source_active">ATTIVO</string>
@@ -175,8 +173,8 @@
     <string name="stats_sync_update_hint">Aggiornamento disponibile in Impostazioni → Aggiorna il database spam</string>
     <string name="stats_legal_title">Perché non condividiamo i tuoi dati?</string>
     <string name="stats_legal_p1">Un numero di telefono è un dato personale protetto dal GDPR. Trasmettere la tua lista di numeri bloccati a terzi — anche per aiutare altri utenti — è vietato senza consenso esplicito.</string>
-    <string name="stats_legal_p2">Per questo Tu dégages memorizza tutto localmente sul tuo dispositivo e consulta solo fonti pubbliche ufficiali (ARCEP, Signal-Spam). I tuoi dati non lasciano mai il telefono.</string>
-    <string name="stats_legal_tip">Per segnalare un numero alla community nazionale: signal-spam.fr</string>
+    <string name="stats_legal_p2">Per questo Tu dégages memorizza tutto localmente sul tuo dispositivo e consulta solo fonti pubbliche ufficiali (ARCEP) e il database condiviso della community. I tuoi dati non lasciano mai il telefono.</string>
+    <string name="stats_legal_tip">Attiva il contributo al database della community in Impostazioni per aiutare tutti.</string>
 
     <!-- ── Schermata Onboarding ────────────────────────────────────────────── -->
     <string name="onboarding_welcome_tagline">L\'app che manda a quel paese\ni call center.</string>
@@ -305,7 +303,7 @@
     <string name="settings_contribute_footer">Viene trasmesso solo il numero del chiamante spam — mai i tuoi dati personali.</string>
 
     <string name="settings_sync_label">🛡️ Aggiorna il database spam</string>
-    <string name="settings_sync_sources">phoneblock.net • Signal-Spam France • ARCEP</string>
+    <string name="settings_sync_sources">ARCEP • Database della community</string>
     <string name="settings_sync_button">Sincr.</string>
     <string name="settings_sync_success">✅ Database aggiornato!</string>
 
@@ -387,7 +385,7 @@
     <string name="manual_q12_body">Sì. In Impostazioni, subito sotto il selettore del paese, scegli la «Lingua dei messaggi vocali»: 🇫🇷 Français, 🇩🇪 Deutsch, 🇮🇹 Italiano, 🇬🇧 English o 🇪🇸 Español.\n\nNella lingua scelta, Tu dégages riproduce un messaggio fisso adattato alla modalità attiva (Cortese, Amministrativo, Sarcastico o Troll), con una voce corrispondente se il tuo telefono ne offre una.\n\nQuesta impostazione non cambia la lingua dell\'app stessa, che resta in francese — cambia solo il messaggio ascoltato dal call center.</string>
 
     <string name="manual_q13_title">Quali numeri vengono bloccati?</string>
-    <string name="manual_q13_body">Tu dégages combina più fonti:\n\n• Intervalli ARCEP documentati: 52 prefissi francesi ufficialmente assegnati al teleselling.\n• phoneblock.net: database comunitario europeo open source.\n• Signal-Spam France: associazione francese di lotta contro lo spam.\n• Database della community Tu dégages: numeri segnalati dagli utenti (opt-in).\n• La tua cronologia personale: ogni numero che ti ha già chiamato ed è stato trattato come spam.</string>
+    <string name="manual_q13_body">Tu dégages combina più fonti:\n\n• Intervalli ARCEP documentati: 52 prefissi francesi ufficialmente assegnati al teleselling.\n• Database della community Tu dégages: numeri segnalati dagli utenti (opt-in).\n• La tua cronologia personale: ogni numero che ti ha già chiamato ed è stato trattato come spam.</string>
 
     <string name="manual_q14_title">A cosa serve segnalare un numero?</string>
     <string name="manual_q14_body">Quando blocchi un numero e hai attivato «Database della community» nelle Impostazioni, questo numero viene trasmesso — in modo anonimo, senza nessuno dei tuoi dati — a un server condiviso.\n\nTutti gli altri utenti di Tu dégages recuperano poi questo numero e lo rifiutano automaticamente, senza nemmeno riprodurre il messaggio vocale. Più utenti ci sono, più il database diventa efficace per tutti.\n\nQuesto recupero avviene automaticamente, in silenzio, una volta al giorno all\'apertura dell\'app — non devi fare nulla. Il pulsante «Aggiorna il database spam» nelle Impostazioni serve semplicemente a forzare un aggiornamento immediato.</string>
@@ -396,7 +394,7 @@
     <string name="manual_q34_body">No. Ogni numero segnalato è associato al prefisso internazionale del suo paese (+33 Francia, +39 Italia, +41 Svizzera, +44 Regno Unito, +49 Germania, +34 Spagna). Il tuo telefono scarica e confronta esclusivamente i numeri del tuo paese.\n\nQuesta separazione evita qualsiasi confusione tra paesi: due numeri che si somigliano in due paesi diversi (ad esempio un numero francese e uno tedesco con esattamente la stessa sequenza di cifre in scrittura nazionale) non verranno mai mescolati. Il database della community resta affidabile e preciso, indipendentemente da quanti paesi utilizzano Tu dégages.</string>
 
     <string name="manual_q15_title">Come vengono scelti i numeri bloccati?</string>
-    <string name="manual_q15_body">Un numero viene bloccato se appartiene a un intervallo ARCEP noto per il teleselling, se compare in phoneblock.net o Signal-Spam, se ti ha già chiamato ed è stato trattato come spam, oppure se è stato segnalato dalla community.\n\nTu dégages non blocca mai un numero semplicemente perché appartiene a un determinato operatore di telecomunicazioni — vedi «Perché non blocchiamo un intero operatore» più sopra.</string>
+    <string name="manual_q15_body">Un numero viene bloccato se appartiene a un intervallo ARCEP noto per il teleselling, se ti ha già chiamato ed è stato trattato come spam, oppure se è stato segnalato dalla community.\n\nTu dégages non blocca mai un numero semplicemente perché appartiene a un determinato operatore di telecomunicazioni — vedi «Perché non blocchiamo un intero operatore» più sopra.</string>
 
     <string name="manual_q16_title">🚫 Posso bloccare io stesso un numero o un prefisso?</string>
     <string name="manual_q16_body">Sì! In Impostazioni → Numeri bloccati manualmente, puoi aggiungere le tue regole:\n\n• Numero esatto: blocca solo questo numero preciso (es. 0612345678).\n• Prefisso: blocca tutti i numeri che iniziano con questa sequenza di cifre (es. 0033612 blocca tutti i numeri che iniziano così).\n\nQueste regole si aggiungono al database spam automatico: ogni chiamata corrispondente viene rifiutata immediatamente, senza messaggio vocale. Puoi eliminare una regola in qualsiasi momento dalla stessa schermata.</string>

@@ -164,10 +164,8 @@
     <string name="stats_sources_title">Sources intégrées</string>
     <string name="stats_source_arcep_name">Plages ARCEP documentées</string>
     <string name="stats_source_arcep_desc">52 préfixes FR actifs en permanence</string>
-    <string name="stats_source_phoneblock_name">phoneblock.net</string>
-    <string name="stats_source_phoneblock_desc">Base communautaire européenne open source</string>
-    <string name="stats_source_signalspam_name">Signal-Spam France</string>
-    <string name="stats_source_signalspam_desc">Association certifiée anti-spam française</string>
+    <string name="stats_source_community_name">Base communautaire Tu dégages</string>
+    <string name="stats_source_community_desc">Numéros signalés par les utilisateurs, partagés par pays</string>
     <string name="stats_source_user_name">Vos signalements</string>
     <string name="stats_source_user_desc">Chaque numéro bloqué par vous est mémorisé</string>
     <string name="stats_source_active">ACTIF</string>
@@ -175,8 +173,8 @@
     <string name="stats_sync_update_hint">Mise à jour disponible dans Paramètres → Mettre à jour la base spam</string>
     <string name="stats_legal_title">Pourquoi on ne partage pas vos données ?</string>
     <string name="stats_legal_p1">Un numéro de téléphone est une donnée personnelle protégée par le RGPD. Transmettre votre liste de numéros bloqués à un tiers — même pour aider d\'autres utilisateurs — est interdit sans consentement explicite.</string>
-    <string name="stats_legal_p2">C\'est pourquoi Tu dégages stocke tout localement sur votre appareil et ne consulte que des sources publiques officielles (ARCEP, Signal-Spam). Vos données ne quittent jamais votre téléphone.</string>
-    <string name="stats_legal_tip">Pour signaler un numéro à la communauté nationale : signal-spam.fr</string>
+    <string name="stats_legal_p2">C\'est pourquoi Tu dégages stocke tout localement sur votre appareil et ne consulte que des sources publiques officielles (ARCEP) et la base communautaire partagée. Vos données ne quittent jamais votre téléphone.</string>
+    <string name="stats_legal_tip">Activez la contribution à la base communautaire dans Réglages pour aider tout le monde.</string>
 
     <!-- ── Écran Onboarding ────────────────────────────────────────────── -->
     <string name="onboarding_welcome_tagline">L\'app qui envoie bouler\nles démarcheurs.</string>
@@ -305,7 +303,7 @@
     <string name="settings_contribute_footer">Seul le numéro de l\'appelant spam est transmis — jamais vos données personnelles.</string>
 
     <string name="settings_sync_label">🛡️ Mettre à jour la base spam</string>
-    <string name="settings_sync_sources">phoneblock.net • Signal-Spam France • ARCEP</string>
+    <string name="settings_sync_sources">ARCEP • Base communautaire</string>
     <string name="settings_sync_button">Sync</string>
     <string name="settings_sync_success">✅ Base mise à jour !</string>
 
@@ -387,7 +385,7 @@
     <string name="manual_q12_body">Oui. Dans Paramètres, juste sous le sélecteur de pays, choisissez la « Langue des messages vocaux » : 🇫🇷 Français, 🇩🇪 Deutsch, 🇮🇹 Italiano, 🇬🇧 English ou 🇪🇸 Español.\n\nDans la langue choisie, Tu dégages joue un message fixe adapté au mode actif (Poli, Administratif, Sarcastique ou Troll), avec une voix correspondante si votre téléphone en propose une.\n\nCe réglage ne change pas la langue de l\'application elle-même, qui reste en français — seul le message entendu par le démarcheur change.</string>
 
     <string name="manual_q13_title">Quels numéros sont bloqués ?</string>
-    <string name="manual_q13_body">Tu dégages combine plusieurs sources :\n\n• Plages ARCEP documentées : 52 préfixes français officiellement attribués au démarchage téléphonique.\n• phoneblock.net : base communautaire européenne open source.\n• Signal-Spam France : association française de lutte contre le spam.\n• Base communautaire Tu dégages : numéros signalés par les utilisateurs (opt-in).\n• Votre historique personnel : tout numéro qui vous a déjà appelé et a été traité comme spam.</string>
+    <string name="manual_q13_body">Tu dégages combine plusieurs sources :\n\n• Plages ARCEP documentées : 52 préfixes français officiellement attribués au démarchage téléphonique.\n• Base communautaire Tu dégages : numéros signalés par les utilisateurs (opt-in).\n• Votre historique personnel : tout numéro qui vous a déjà appelé et a été traité comme spam.</string>
 
     <string name="manual_q14_title">À quoi sert le signalement d\'un numéro ?</string>
     <string name="manual_q14_body">Quand vous bloquez un numéro et que vous avez activé « Base communautaire » dans les Paramètres, ce numéro est transmis — anonymement, sans aucune de vos données — à un serveur partagé.\n\nTous les autres utilisateurs de Tu dégages récupèrent ensuite ce numéro et le rejettent automatiquement, sans même jouer le message vocal. Plus il y a d\'utilisateurs, plus la base est efficace pour tout le monde.\n\nCette récupération se fait automatiquement, en silence, une fois par jour à l\'ouverture de l\'application — vous n\'avez rien à faire. Le bouton « Mettre à jour la base spam » dans Paramètres permet simplement de forcer une mise à jour immédiate.</string>
@@ -396,7 +394,7 @@
     <string name="manual_q34_body">Non. Chaque numéro signalé est associé à l\'indicatif international de son pays (+33 France, +41 Suisse, +44 Royaume-Uni, +49 Allemagne, +39 Italie, +34 Espagne). Votre téléphone ne télécharge et ne compare jamais que les numéros de votre propre pays.\n\nCette isolation évite tout risque de confusion entre pays : deux numéros qui se ressemblent dans deux pays différents (par exemple un numéro français et un numéro allemand avec exactement la même suite de chiffres en écriture nationale) ne seront jamais mélangés. La base communautaire reste fiable et précise, quel que soit le nombre de pays utilisant Tu dégages.</string>
 
     <string name="manual_q15_title">Comment sont choisis les numéros bloqués ?</string>
-    <string name="manual_q15_body">Un numéro est bloqué s\'il appartient à une plage ARCEP connue pour le démarchage, s\'il figure dans phoneblock.net ou Signal-Spam, s\'il vous a déjà appelé et a été traité comme spam, ou s\'il a été signalé par la communauté.\n\nTu dégages ne bloque jamais un numéro simplement parce qu\'il appartient à tel ou tel opérateur télécom — voir « Pourquoi on ne bloque pas tout un opérateur » plus haut.</string>
+    <string name="manual_q15_body">Un numéro est bloqué s\'il appartient à une plage ARCEP connue pour le démarchage, s\'il vous a déjà appelé et a été traité comme spam, ou s\'il a été signalé par la communauté.\n\nTu dégages ne bloque jamais un numéro simplement parce qu\'il appartient à tel ou tel opérateur télécom — voir « Pourquoi on ne bloque pas tout un opérateur » plus haut.</string>
 
     <string name="manual_q16_title">🚫 Puis-je bloquer moi-même un numéro ou un préfixe ?</string>
     <string name="manual_q16_body">Oui ! Dans Paramètres → Numéros bloqués manuellement, vous pouvez ajouter vos propres règles :\n\n• Numéro exact : bloque uniquement ce numéro précis (ex. 0612345678).\n• Préfixe : bloque tous les numéros commençant par cette suite de chiffres (ex. 0033612 bloque tous les numéros commençant ainsi).\n\nCes règles s\'ajoutent à la base spam automatique : tout appel correspondant est rejeté immédiatement, sans message vocal. Vous pouvez supprimer une règle à tout moment depuis le même écran.</string>

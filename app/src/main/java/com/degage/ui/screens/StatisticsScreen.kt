@@ -163,8 +163,7 @@ private fun SpamDbInfoRow(lastSpamSync: Long) {
         Text(stringResource(R.string.stats_sources_title), fontSize = 13.sp, fontWeight = FontWeight.Bold, color = NeonGreen)
 
         SpamSourceRow("📋", stringResource(R.string.stats_source_arcep_name), stringResource(R.string.stats_source_arcep_desc), alwaysActive = true)
-        SpamSourceRow("🌍", stringResource(R.string.stats_source_phoneblock_name), stringResource(R.string.stats_source_phoneblock_desc))
-        SpamSourceRow("🇫🇷", stringResource(R.string.stats_source_signalspam_name), stringResource(R.string.stats_source_signalspam_desc))
+        SpamSourceRow("🌍", stringResource(R.string.stats_source_community_name), stringResource(R.string.stats_source_community_desc), alwaysActive = true)
         SpamSourceRow("👤", stringResource(R.string.stats_source_user_name), stringResource(R.string.stats_source_user_desc))
 
         HorizontalDivider(color = NeonGreen.copy(alpha = 0.15f), thickness = 1.dp)

@@ -196,8 +196,6 @@ class MainViewModel(app: Application) : AndroidViewModel(app) {
         }
         // Sync base communautaire Supabase
         SpamSyncManager.syncFromSupabase(getApplication(), prefs.country.first())
-        // Sync depuis les sources réseau publiques
-        SpamSyncManager.syncAll(getApplication())
         prefs.setLastSpamSync(System.currentTimeMillis())
         _isSyncing.value = false
     }
