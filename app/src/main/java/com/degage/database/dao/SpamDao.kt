@@ -19,6 +19,12 @@ interface SpamDao {
     @Query("UPDATE spam_entries SET reportCount = reportCount + 1, lastSeen = :now WHERE number = :number")
     suspend fun incrementReport(number: String, now: Long = System.currentTimeMillis())
 
+    @Query("UPDATE spam_entries SET lastSeen = :now WHERE number = :number")
+    suspend fun touchLastSeen(number: String, now: Long = System.currentTimeMillis())
+
+    @Query("DELETE FROM spam_entries WHERE lastSeen < :before")
+    suspend fun purgeStale(before: Long): Int
+
     @Query("SELECT COUNT(*) FROM spam_entries")
     fun getCount(): Flow<Int>
 
