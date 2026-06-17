@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tu dégages — La IA que responde a tus spammers</title>
+  <meta name="description" content="Las apps clásicas solo bloquean llamadas. La nuestra deja que tu IA responda con el tono que elijas. Anti-spam inteligente para Android.">
+  <meta property="og:title" content="Tu dégages — La IA que responde a tus spammers">
+  <meta property="og:description" content="Deja de limitarte a colgar. Que tu IA personal responda por ti, con el humor que prefieras.">
+  <meta property="og:type" content="website">
+  <link rel="stylesheet" href="../css/style.css?v=10">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🤖</text></svg>">
+  <link rel="alternate" hreflang="fr" href="https://tudegages.fr/">
+  <link rel="alternate" hreflang="de" href="https://tudegages.fr/de/">
+  <link rel="alternate" hreflang="it" href="https://tudegages.fr/it/">
+  <link rel="alternate" hreflang="en" href="https://tudegages.fr/en/">
+  <link rel="alternate" hreflang="es" href="https://tudegages.fr/es/">
+  <link rel="alternate" hreflang="x-default" href="https://tudegages.fr/">
+</head>
+<body>
+
+<!-- ── NAVIGATION ──────────────────────────────────────────────────────── -->
+<nav>
+  <div class="nav-logo">
+    <img src="../img/robot.png" alt="" class="logo-icon">
+    <div class="nav-logo-text">
+      <span class="nav-logo-accent">TU DÉGAGES</span>
+      <span class="nav-logo-tagline">La IA que responde a tus spammers.</span>
+    </div>
+  </div>
+  <input type="checkbox" id="nav-toggle" class="nav-toggle-checkbox">
+  <div class="nav-links">
+    <a href="#fonctionnement">Cómo funciona</a>
+    <a href="#modes">Modos</a>
+    <a href="#base-spam">Base anti-spam</a>
+    <a href="#communaute">Comunidad</a>
+    <a href="#telecharger" class="btn-nav">Descargar</a>
+  </div>
+  <div class="nav-lang">
+    <a href="/" lang="fr" hreflang="fr" title="Français"><img src="../img/flag-fr.svg" class="flag-icon" alt="FR"><span class="nav-lang-label">FR</span></a>
+    <a href="/de/" lang="de" hreflang="de" title="Deutsch"><img src="../img/flag-de.svg" class="flag-icon" alt="DE"><span class="nav-lang-label">D</span></a>
+    <a href="/it/" lang="it" hreflang="it" title="Italiano"><img src="../img/flag-it.svg" class="flag-icon" alt="IT"><span class="nav-lang-label">IT</span></a>
+    <a href="/en/" lang="en" hreflang="en" title="English"><img src="../img/flag-gb.svg" class="flag-icon" alt="GB"><span class="nav-lang-label">GB</span></a>
+    <a href="/es/" class="active" lang="es" hreflang="es" title="Español"><img src="../img/flag-es.svg" class="flag-icon" alt="ES"><span class="nav-lang-label">ES</span></a>
+  </div>
+  <label for="nav-toggle" class="nav-toggle-btn" aria-label="Menu">☰</label>
+</nav>
+
+<!-- ── HERO ────────────────────────────────────────────────────────────── -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-glow">
+      <div class="hero-appname hero-appname-accent">TU DÉGAGES</div>
+      <div class="hero-appname-translation">(Lárgate)</div>
+      <div class="hero-logo-wrap"><img src="../img/robot.png" alt="" class="hero-logo"></div>
+      <p class="hero-welcome">¡Te da la bienvenida!</p>
+    </div>
+    <div class="hero-badge">🤖 La app de bloqueo inteligente de spam con respuesta IA</div>
+    <div class="hero-badge-row">
+      <span class="hero-mini-badge">📡 Funciona sin conexión</span>
+      <span class="hero-mini-badge hero-mini-badge-flags">📵 Bloqueo de números ocultos <span class="flag-pairs"><span class="flag-pair">· FR <img src="../img/flag-fr.svg" alt="FR" class="flag-icon"></span> <span class="flag-pair">· CH <img src="../img/flag-ch.svg" alt="CH" class="flag-icon"></span> <span class="flag-pair">· UK <img src="../img/flag-gb.svg" alt="UK" class="flag-icon"></span> <span class="flag-pair">· DE <img src="../img/flag-de.svg" alt="DE" class="flag-icon"></span> <span class="flag-pair">· IT <img src="../img/flag-it.svg" alt="IT" class="flag-icon"></span> <span class="flag-pair">· ES <img src="../img/flag-es.svg" alt="ES" class="flag-icon"></span></span></span>
+    </div>
+    <h1>
+      ¿A los teleoperadores les encanta<br>llamarte?
+      <span class="line-green">¡A tu IA le encantará<br>responderles!</span>
+    </h1>
+    <p class="hero-sub">
+      Deja de limitarte a colgar. Que tu IA personal responda por ti,
+      con el humor que prefieras — antes de terminar la llamada.
+    </p>
+    <div class="hero-cta">
+      <a href="#telecharger" class="btn-primary">
+        📱 Descargar gratis
+      </a>
+      <a href="#fonctionnement" class="btn-secondary">
+        Cómo funciona →
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ── VISTA PREVIA DE LLAMADA ─────────────────────────────────────────── -->
+<section class="device-section">
+  <div class="device-mockup reveal">
+    <div class="device-notch"></div>
+    <div class="device-screen">
+      <div>
+        <p class="device-label">Llamada entrante</p>
+        <div class="device-caller-icon">📵</div>
+        <p class="device-caller">Número desconocido</p>
+      </div>
+      <div class="device-middle">
+        <div class="device-ai-badge"><span class="pulse-dot"></span> TU DÉGAGES responde por ti</div>
+        <p class="device-mode-chip">🎭 Modo: Sarcástico</p>
+        <div class="device-waveform">
+          <span></span><span></span><span></span><span></span><span></span>
+        </div>
+      </div>
+      <div class="device-bottom">
+        <div class="device-end-call">📞</div>
+        <p class="device-end-label">Llamada terminada y número bloqueado automáticamente</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── DIFERENCIACIÓN ──────────────────────────────────────────────────── -->
+<section class="diff-section">
+  <div class="diff-inner reveal">
+    <p class="diff-other diff-line-no">❌ Otras apps solo bloquean la llamada</p>
+    <p class="diff-other diff-line-yes">✅ ¡Nosotros respondemos por ti!</p>
+    <h2 class="diff-headline">Que tu IA responda.<br><span>Los spammers hablan con ella. No contigo.</span></h2>
+    <p class="diff-sub">Tú eliges tu voz.<br>Tú eliges tu tono — Educado, Administrativo, Sarcástico o Troll.<br>Tu IA se encarga de la llamada. Tú no haces nada.</p>
+  </div>
+</section>
+
+<!-- ── PRUEBA / DATOS CLAVE ────────────────────────────────────────────── -->
+<section class="proof-section">
+  <div class="proof-grid reveal">
+    <div class="proof-stat">
+      <div class="proof-number">4</div>
+      <div class="proof-label">tonos de respuesta IA<br>a elegir</div>
+    </div>
+    <div class="proof-stat">
+      <div class="proof-number">100%</div>
+      <div class="proof-label">sin conexión<br>ningún dato enviado</div>
+    </div>
+    <div class="proof-stat">
+      <div class="proof-number">5</div>
+      <div class="proof-label">idiomas disponibles<br>FR · DE · IT · EN · ES</div>
+    </div>
+    <div class="proof-stat">
+      <div class="proof-number">0 €</div>
+      <div class="proof-label">gratis<br>sin anuncios</div>
+    </div>
+  </div>
+</section>
+
+<!-- ── CARACTERÍSTICAS ─────────────────────────────────────────────────── -->
+<section id="features">
+  <div class="section-inner reveal">
+    <p class="section-label">Características</p>
+    <h2 class="section-title">Tu IA, tus reglas</h2>
+    <p class="section-sub"><span class="brand">Tu dégages</span> filtra, responde y cuelga. Tú no haces nada.</p>
+    <div class="feature-grid">
+      <div class="feature-card reveal">
+        <div class="feature-icon">🤖</div>
+        <h3>Respuesta IA personalizada</h3>
+        <p>La llamada se intercepta, se reproduce un mensaje de voz IA al spammer y luego se corta la línea. Tu teléfono ni siquiera suena.</p>
+      </div>
+      <div class="feature-card reveal">
+        <div class="feature-icon">💬</div>
+        <h3>Mensajes 100 % personalizables</h3>
+        <p>Edita cada frase, añade las tuyas, ajusta la voz, la velocidad y el tono. Tu IA suena exactamente como tú.</p>
+      </div>
+      <div class="feature-card reveal">
+        <div class="feature-icon">🎭</div>
+        <h3>4 tonos de respuesta</h3>
+        <p>Educado, Administrativo, Sarcástico o Troll. Elige el tono que merecen tus teleoperadores.</p>
+      </div>
+      <div class="feature-card reveal">
+        <div class="feature-icon">🧠</div>
+        <h3>Aprendizaje automático</h3>
+        <p>Cada número bloqueado se memoriza. En la siguiente llamada: rechazo instantáneo y silencioso — sin mensaje de voz, sin demora. La base crece por sí sola.</p>
+      </div>
+      <div class="feature-card reveal">
+        <div class="feature-icon">🛡️</div>
+        <h3>Base de datos integrada</h3>
+        <p>52 prefijos ARCEP documentados, siempre activos. Sincronizada con phoneblock.net y Signal-Spam France. Miles de números ya identificados.</p>
+      </div>
+      <div class="feature-card reveal">
+        <div class="feature-icon">🔒</div>
+        <h3>100 % privado, cero nube</h3>
+        <p>Ningún dato sale de tu teléfono. Sin cuenta, sin servidor. Todo permanece en tu dispositivo.</p>
+      </div>
+      <div class="feature-card reveal">
+        <div class="feature-icon">📡</div>
+        <h3>Funciona sin conexión</h3>
+        <p>La detección, el bloqueo y las respuestas de voz IA funcionan sin conexión a internet. La red solo se usa para actualizar la base de spam.</p>
+      </div>
+      <div class="feature-card reveal">
+        <div class="feature-icon">📵</div>
+        <h3>Bloqueo de llamadas ocultas</h3>
+        <p>Opción para rechazar automáticamente y en silencio todas las llamadas sin número visible — oculto, privado o desconocido.</p>
+      </div>
+      <div class="feature-card reveal">
+        <div class="feature-icon feature-icon-flags">🇫🇷🇨🇭</div>
+        <h3>Adaptado a Francia y Suiza</h3>
+        <p>Elige tu país en los ajustes: la base de números no deseados se adapta automáticamente (prefijos ARCEP en Francia, números de tarificación adicional y números empresariales OFCOM en Suiza).</p>
+      </div>
+      <div class="feature-card reveal">
+        <div class="feature-icon feature-icon-flags">🇬🇧🇩🇪🇮🇹</div>
+        <h3>Respuestas de voz en inglés, alemán e italiano</h3>
+        <p>Elige el idioma del mensaje de voz reproducido al interlocutor, independientemente del idioma de la interfaz — útil para la Suiza plurilingüe o las llamadas internacionales. <span class="brand">Premium</span>.</p>
+      </div>
+      <div class="feature-card reveal">
+        <div class="feature-icon">🎙️</div>
+        <h3>Ajustes de voz avanzados</h3>
+        <p>Ajusta la voz, la velocidad y el tono de tu IA para que suene como tú. <span class="brand">Premium</span>.</p>
+      </div>
+      <div class="feature-card reveal">
+        <div class="feature-icon">🚫</div>
+        <h3>Tus propias reglas de bloqueo</h3>
+        <p>Añade un número exacto o un prefijo completo para bloquear manualmente, además de la base de spam automática. Gestionable y eliminable en cualquier momento.</p>
+      </div>
+      <div class="feature-card reveal">
+        <div class="feature-icon">🔔</div>
+        <h3>Notificaciones en cada bloqueo</h3>
+        <p>Activa las notificaciones para que se te avise en tiempo real de cada llamada bloqueada — con el número y el motivo del rechazo.</p>
+      </div>
+      <div class="feature-card reveal">
+        <div class="feature-icon">✅</div>
+        <h3>¿Falso positivo? Basta un toque</h3>
+        <p>¿Un número bloqueado por error? Márcalo como «No es spam» en el historial: pasa a tu lista blanca local y nunca volverá a bloquearse — al instante, sin conexión, sin correo electrónico.</p>
+      </div>
+      <div class="feature-card reveal">
+        <div class="feature-icon">👤</div>
+        <h3>Tus contactos siempre protegidos</h3>
+        <p>Un número guardado en tus contactos nunca se bloquea, aunque figure en la base de spam o en tus reglas personalizadas.</p>
+      </div>
+      <div class="feature-card reveal">
+        <div class="feature-icon">⬇️</div>
+        <h3>Exporta tu historial</h3>
+        <p>Descarga tu historial de llamadas bloqueadas en CSV (número, fecha, modo, mensaje) y compártelo o guárdalo como prueba, en un toque.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── CÓMO FUNCIONA ───────────────────────────────────────────────────── -->
+<section id="fonctionnement">
+  <div class="section-inner reveal">
+    <p class="section-label">Cómo funciona</p>
+    <h2 class="section-title">Sencillo como un clic.<br>Radical como <span class="brand">Tu dégages</span>.</h2>
+    <p class="section-sub">En menos de 2 segundos, tu spammer obtiene una respuesta. Tú no has hecho nada.</p>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-body">
+          <h3>Un spammer llama</h3>
+          <p><span class="brand">Tu dégages</span> intercepta la llamada antes de que tu teléfono suene. Comprueba si el número es conocido en su base de datos — si es así, rechazo instantáneo y silencioso. Si no, tu IA entra en acción.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-body">
+          <h3>Tu IA toma la palabra</h3>
+          <p>Se reproduce un mensaje de voz personalizado al spammer, en el tono que hayas elegido. Escucha a tu IA, no a ti. En modo Troll, incluso espera 15 segundos con música de espera.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-body">
+          <h3>Colgado. Memorizado.</h3>
+          <p>Al final del mensaje, se corta la línea. El número se añade a tu base de datos personal. La próxima vez que llame, rechazo instantáneo — sin siquiera reproducir el mensaje.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── MODOS ───────────────────────────────────────────────────────────── -->
+<section id="modes">
+  <div class="section-inner reveal">
+    <p class="section-label">Los modos</p>
+    <h2 class="section-title">4 formas de decir no.</h2>
+    <p class="section-sub">Elige el registro de tu IA. Cámbialo cuando quieras.</p>
+    <div class="modes-grid">
+      <div class="mode-card reveal">
+        <div class="mode-emoji">🤝</div>
+        <h3>Educado</h3>
+        <p>Cortés pero firme. La respuesta perfecta para mantener la elegancia siendo claro.</p>
+        <div class="mode-example">"Esta línea no acepta solicitudes comerciales."</div>
+        <button class="mode-listen-btn" onclick="speakMode(this, 'Esta línea no acepta solicitudes comerciales.')">▶️ Escuchar</button>
+      </div>
+      <div class="mode-card reveal">
+        <div class="mode-emoji">📋</div>
+        <h3>Administrativo</h3>
+        <p>Frío, oficial, disuasorio. Tu IA habla como un departamento jurídico.</p>
+        <div class="mode-example">"Su llamada ha sido identificada como teleoperación comercial."</div>
+        <button class="mode-listen-btn" onclick="speakMode(this, 'Su llamada ha sido identificada como teleoperación comercial.')">▶️ Escuchar</button>
+      </div>
+      <div class="mode-card active reveal">
+        <div class="mode-emoji">😏</div>
+        <h3>Sarcástico</h3>
+        <p>Para los teleoperadores que realmente se lo merecen. El humor al servicio de la paz.</p>
+        <div class="mode-example">"Felicidades, ha alcanzado el buzón de voz más sarcástico de Francia."</div>
+        <button class="mode-listen-btn" onclick="speakMode(this, 'Felicidades, ha alcanzado el buzón de voz más sarcástico de Francia.')">▶️ Escuchar</button>
+      </div>
+      <div class="mode-card reveal">
+        <div class="mode-emoji">🎭</div>
+        <h3>Troll</h3>
+        <p>El teleoperador espera 15 segundos con música de espera. Tu IA le hace perder el tiempo.</p>
+        <div class="mode-example">"Espere por favor, su llamada es muy importante para nosotros."</div>
+        <button class="mode-listen-btn" onclick="speakMode(this, 'Espere por favor, su llamada es muy importante para nosotros.')">▶️ Escuchar</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── BASE DE SPAM ─────────────────────────────────────────────────────── -->
+<section id="base-spam">
+  <div class="section-inner reveal">
+    <div class="base-spam-top">
+      <div class="base-spam-text">
+        <p class="section-label">Base anti-spam</p>
+        <h2 class="section-title">Miles de spammers<br>ya identificados.</h2>
+        <p class="section-sub" style="margin-bottom:0"><span class="brand">Tu dégages</span> integra varias fuentes públicas de números no deseados, sincronizadas automáticamente.</p>
+      </div>
+      <div class="base-spam-visual">
+        <div class="spam-shield">
+          <svg viewBox="0 0 100 100" aria-hidden="true">
+            <path d="M50 4 L90 18 V46 C90 70 73 88 50 96 C27 88 10 70 10 46 V18 Z" fill="#0d0d0d" stroke="#aaff00" stroke-width="4"/>
+            <path d="M34 50 L46 62 L68 38" fill="none" stroke="#aaff00" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <div class="phone-mockup">
+          <div class="phone-row"><span>👤 01 23 45 67 89</span><span class="phone-block">🚫</span></div>
+          <div class="phone-row"><span>👤 03 12 34 56 78</span><span class="phone-block">🚫</span></div>
+          <div class="phone-row"><span>👤 07 89 01 23 45</span><span class="phone-block">🚫</span></div>
+          <div class="phone-status"><span class="dot"></span> Base actualizada en tiempo real</div>
+        </div>
+      </div>
+    </div>
+    <div class="sources-grid">
+      <div class="source-card reveal">
+        <div class="source-icon">📋</div>
+        <div>
+          <h4>Rangos ARCEP documentados</h4>
+          <p>52 prefijos franceses utilizados oficialmente por centros de teleoperación.</p>
+          <span class="badge-active">Siempre activo</span>
+        </div>
+      </div>
+      <div class="source-card reveal">
+        <div class="source-icon">🇨🇭</div>
+        <div>
+          <h4>Rangos OFCOM (Suiza)</h4>
+          <p>Números de tarificación adicional (0900/0901/0906) y números empresariales nacionales (084x/0878) documentados por la OFCOM.</p>
+          <span class="badge-active">Modo Suiza</span>
+        </div>
+      </div>
+      <div class="source-card reveal">
+        <div class="source-icon">🌍</div>
+        <div>
+          <h4>phoneblock.net</h4>
+          <p>Base de datos comunitaria europea de código abierto. Actualizada continuamente por la comunidad.</p>
+        </div>
+      </div>
+      <div class="source-card reveal">
+        <div class="source-icon">🇫🇷</div>
+        <div>
+          <h4>Signal-Spam France</h4>
+          <p>Asociación francesa certificada de lucha contra el spam telefónico y por correo electrónico.</p>
+        </div>
+      </div>
+      <div class="source-card reveal">
+        <div class="source-icon">👤</div>
+        <div>
+          <h4>Tus reportes</h4>
+          <p>Cada número que bloqueas se memoriza. Rechazo instantáneo en la siguiente llamada.</p>
+          <span class="badge-active">Autoaprendizaje</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── COMUNIDAD ───────────────────────────────────────────────────────── -->
+<section id="communaute" class="community-section">
+  <div class="section-inner reveal">
+    <p class="section-label">Base de datos comunitaria</p>
+    <h2 class="section-title">La piedra angular de<br><span class="brand">Tu dégages</span>.</h2>
+    <p class="section-sub">Cada usuario refuerza la protección de todos. Juntos somos imparables.</p>
+    <div class="community-card">
+      <div class="community-how">
+        <div class="community-step">
+          <div class="comm-icon">📱</div>
+          <div>
+            <strong>Un spammer llama</strong>
+            <p><span class="brand">Tu dégages</span> bloquea la llamada y reproduce el mensaje IA.</p>
+          </div>
+        </div>
+        <div class="community-arrow">→</div>
+        <div class="community-step">
+          <div class="comm-icon">🌍</div>
+          <div>
+            <strong>El número se reporta</strong>
+            <p>Con tu consentimiento, el número se une a la base de datos compartida.</p>
+          </div>
+        </div>
+        <div class="community-arrow">→</div>
+        <div class="community-step">
+          <div class="comm-icon">⚡</div>
+          <div>
+            <strong>Rechazo instantáneo para todos</strong>
+            <p>Todos los usuarios rechazan este número en silencio, sin siquiera reproducir el mensaje.</p>
+          </div>
+        </div>
+      </div>
+      <div class="community-badges">
+        <span class="comm-badge">🤝 Compartido entre todos los usuarios</span>
+        <span class="comm-badge">🔒 Opt-in — desactivado por defecto</span>
+        <span class="comm-badge">🇪🇺 Alojado en Europa</span>
+        <span class="comm-badge">⚖️ RGPD — sin datos personales</span>
+      </div>
+    </div>
+    <p class="community-note">Solo se transmite el número del spammer — nunca tu número, nunca tus datos. Contribuir es <strong>opt-in</strong> y puede desactivarse en un toque desde los Ajustes.</p>
+
+    <div class="philosophy-card">
+      <details>
+        <summary>🎯 ¿Por qué no bloqueamos «un operador entero»?</summary>
+        <div class="accordion-body">
+          <p>Algunas apps de la competencia afirman bloquear, en bloque, números pertenecientes a operadores VoIP (Aircall, Vonage, Manifone, Tata Communications, CM Telecom, etc.). <span class="brand">Tu dégages</span> ha tomado la decisión contraria.</p>
+          <p>Estos operadores son proveedores VoIP generalistas, no «operadores de spam». Los utilizan tanto centros de teleoperación ❌ como empresas legítimas — atención al cliente, entregas, citas médicas, autónomos ✅. Bloquear «todo Aircall» o «todo Vonage» bloquearía también estas llamadas legítimas.</p>
+          <p>El enfoque correcto es la base de datos comunitaria descrita arriba: captura los números <strong>realmente reportados como spam</strong>, sea cual sea el operador detrás — sin penalizar nunca los usos legítimos del mismo operador.</p>
+        </div>
+      </details>
+      <p class="philosophy-conclusion">Un bloqueo preciso y fiable, en lugar de un rechazo a lo bruto para impresionar.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ── FAQ ─────────────────────────────────────────────────────────────── -->
+<section id="faq">
+  <div class="section-inner reveal">
+    <p class="section-label">FAQ</p>
+    <h2 class="section-title">Preguntas frecuentes.</h2>
+    <div style="text-align:center;margin-bottom:32px">
+      <a href="faq.html" class="btn-faq-highlight">Ver todas las preguntas de la FAQ</a>
+    </div>
+    <div class="faq-grid">
+      <div class="faq-card reveal">
+        <h4>📞 Estoy esperando una llamada de vuelta de un número desconocido (pedido, presupuesto...): ¿corre el riesgo de ser bloqueada?</h4>
+        <p>El riesgo es bajo: un número desconocido solo se bloquea si figura en la base de spam (prefijos conocidos, reportes de la comunidad) o en una de tus reglas manuales — no un número habitual de atención al cliente o de reparto.<br><br>
+        Si aun así la llamada se bloquea, sigue visible en el Historial con el número y la hora: puedes devolver la llamada y luego tocar ✅ «No es spam» para que nunca más se bloquee.<br><br>
+        Si esperas una llamada importante y prefieres no correr ningún riesgo, desactiva temporalmente la protección desde la pantalla de inicio durante la llamada y vuelve a activarla después.</p>
+      </div>
+      <div class="faq-card reveal">
+        <h4>👤 ¿Pueden bloquearse mis contactos por error?</h4>
+        <p>No. Si un número que te llama coincide con un contacto guardado en tu teléfono, <span class="brand">Tu dégages</span> siempre deja pasar la llamada — aunque ese número figure también en la base de spam o en tus reglas personalizadas.</p>
+      </div>
+      <div class="faq-card reveal">
+        <h4>✅ ¿Qué pasa si un número se bloquea por error?</h4>
+        <p>Ve a la pestaña Historial, busca la llamada en cuestión y toca el icono ✅ «No es spam». El número se elimina inmediatamente de tu base de spam y de tus reglas personalizadas, y se añade a tu lista blanca local: nunca volverá a bloquearse — al instante, sin conexión, sin enviar ningún correo electrónico.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── CTA ─────────────────────────────────────────────────────────────── -->
+<section id="telecharger" class="cta-band reveal">
+  <h2>¿Listo para que <span>tu IA responda</span>?</h2>
+  <p>Gratis. Sin cuenta. Sin anuncios. Premium opcional.</p>
+  <a href="../downloads/tu-degages.apk" class="store-badge" download>
+    <span class="store-icon">📲</span>
+    <div style="text-align:left">
+      <div style="font-size:10px;color:#888;text-transform:uppercase;letter-spacing:.5px">Versión beta</div>
+      <div style="font-size:16px;font-weight:800">Descargar el APK</div>
+    </div>
+  </a>
+  <br>
+  <span class="coming-soon">Android · instalación manual (orígenes desconocidos)</span>
+</section>
+
+<!-- ── FOOTER ──────────────────────────────────────────────────────────── -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <div class="logo">TU <span>DÉGAGES</span></div>
+      <p>La IA que responde a tus spammers. Porque tu tiempo vale más que eso.</p>
+    </div>
+    <div class="footer-links">
+      <h4>App</h4>
+      <ul>
+        <li><a href="#features">Características</a></li>
+        <li><a href="#modes">Modos</a></li>
+        <li><a href="#fonctionnement">Cómo funciona</a></li>
+        <li><a href="#telecharger">Descargar</a></li>
+      </ul>
+    </div>
+    <div class="footer-links">
+      <h4>Legal</h4>
+      <ul>
+        <li><a href="privacy.html">Política de privacidad</a></li>
+        <li><a href="mailto:jeandescourvieres@gmail.com">Contacto</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2026 Tu dégages. App Android gratuita.</p>
+    <p>Hecho con ❤️ en Francia por JDS.</p>
+  </div>
+</footer>
+
+<!-- ── BARRA DE NAVEGACIÓN FIJA ─────────────────────────────────────────── -->
+<nav class="app-bottom-nav">
+  <a href="#" class="app-nav-item active">
+    <span class="app-nav-icon">🏠</span>
+    <span>Inicio</span>
+  </a>
+  <a href="#modes" class="app-nav-item">
+    <span class="app-nav-icon">🛡️</span>
+    <span>Protección</span>
+  </a>
+  <a href="#base-spam" class="app-nav-item">
+    <span class="app-nav-icon">🕐</span>
+    <span>Historial</span>
+  </a>
+  <a href="#communaute" class="app-nav-item">
+    <span class="app-nav-icon">👤</span>
+    <span>Perfil</span>
+  </a>
+</nav>
+
+<script>
+function speakMode(btn, text) {
+  if (!('speechSynthesis' in window)) {
+    alert("Tu navegador no admite la lectura en voz alta.");
+    return;
+  }
+  if (window.speechSynthesis.speaking) {
+    window.speechSynthesis.cancel();
+    document.querySelectorAll('.mode-listen-btn.speaking').forEach(b => {
+      b.classList.remove('speaking');
+      b.textContent = '▶️ Escuchar';
+    });
+    return;
+  }
+  const utterance = new SpeechSynthesisUtterance(text);
+  utterance.lang = 'es-ES';
+  utterance.onend = () => { btn.classList.remove('speaking'); btn.textContent = '▶️ Escuchar'; };
+  utterance.onerror = () => { btn.classList.remove('speaking'); btn.textContent = '▶️ Escuchar'; };
+  btn.classList.add('speaking');
+  btn.textContent = '⏸️ Reproduciendo…';
+  window.speechSynthesis.speak(utterance);
+}
+
+document.querySelectorAll('.nav-links a').forEach(link => {
+  link.addEventListener('click', () => {
+    document.getElementById('nav-toggle').checked = false;
+  });
+});
+
+const revealEls = document.querySelectorAll('.reveal');
+if ('IntersectionObserver' in window) {
+  const revealObserver = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15 });
+  revealEls.forEach(el => revealObserver.observe(el));
+} else {
+  revealEls.forEach(el => el.classList.add('visible'));
+}
+</script>
+</body>
+</html>

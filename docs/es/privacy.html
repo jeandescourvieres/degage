@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Política de privacidad — Tu dégages</title>
+  <link rel="stylesheet" href="../css/style.css?v=10">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🤖</text></svg>">
+  <link rel="alternate" hreflang="fr" href="https://tudegages.fr/privacy.html">
+  <link rel="alternate" hreflang="de" href="https://tudegages.fr/de/privacy.html">
+  <link rel="alternate" hreflang="it" href="https://tudegages.fr/it/privacy.html">
+  <link rel="alternate" hreflang="en" href="https://tudegages.fr/en/privacy.html">
+  <link rel="alternate" hreflang="es" href="https://tudegages.fr/es/privacy.html">
+  <link rel="alternate" hreflang="x-default" href="https://tudegages.fr/privacy.html">
+  <style>
+    .privacy-content { max-width: 740px; margin: 0 auto; padding: 60px 24px 100px; }
+    .privacy-content h1 { font-size: 32px; font-weight: 900; margin-bottom: 8px; }
+    .privacy-content .updated { color: var(--text-secondary); font-size: 13px; margin-bottom: 48px; }
+    .privacy-content h2 { font-size: 18px; font-weight: 700; margin: 36px 0 12px; color: var(--green); }
+    .privacy-content p, .privacy-content li { font-size: 15px; color: #ccc; line-height: 1.75; margin-bottom: 12px; }
+    .privacy-content ul { padding-left: 20px; margin-bottom: 12px; }
+    .privacy-content li { margin-bottom: 6px; }
+    .privacy-content strong { color: var(--text); }
+    .privacy-content a { color: var(--green); }
+    .highlight-box {
+      background: var(--green-dim);
+      border: 1px solid var(--green-border);
+      border-radius: var(--radius-sm);
+      padding: 20px 24px;
+      margin: 32px 0;
+    }
+    .highlight-box p { color: var(--text); margin-bottom: 0; font-weight: 600; }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">
+    <img src="../img/robot.png" alt="" class="logo-icon">
+    <span class="nav-logo-text">TU <span style="color:var(--green)">DÉGAGES</span> !</span>
+  </a>
+  <div class="nav-links">
+    <a href="index.html">← Volver al sitio</a>
+  </div>
+  <div class="nav-lang">
+    <a href="/privacy.html" lang="fr" hreflang="fr" title="Français"><img src="../img/flag-fr.svg" class="flag-icon" alt="FR"></a>
+    <a href="/de/privacy.html" lang="de" hreflang="de" title="Deutsch"><img src="../img/flag-de.svg" class="flag-icon" alt="DE"></a>
+    <a href="/it/privacy.html" lang="it" hreflang="it" title="Italiano"><img src="../img/flag-it.svg" class="flag-icon" alt="IT"></a>
+    <a href="/en/privacy.html" lang="en" hreflang="en" title="English"><img src="../img/flag-gb.svg" class="flag-icon" alt="GB"></a>
+    <a href="/es/privacy.html" class="active" lang="es" hreflang="es" title="Español"><img src="../img/flag-es.svg" class="flag-icon" alt="ES"></a>
+  </div>
+</nav>
+
+<div class="privacy-content">
+  <h1>Política de privacidad</h1>
+  <p class="updated">Última actualización: junio de 2026</p>
+
+  <div class="highlight-box">
+    <p>🔒 Resumen en una frase: Tu dégages no recopila ningún dato personal por defecto. Contribuir a la base de datos comunitaria (solo números de spam) es totalmente opcional y está desactivado por defecto.</p>
+  </div>
+
+  <h2>1. Quiénes somos</h2>
+  <p>Tu dégages es una aplicación Android desarrollada a título personal. Para cualquier pregunta sobre esta política de privacidad, puedes contactarnos en: <a href="mailto:jeandescourvieres@gmail.com">jeandescourvieres@gmail.com</a>.</p>
+
+  <h2>2. Datos recopilados</h2>
+  <p>Tu dégages <strong>no recopila ningún dato personal</strong> ni transmite ninguno a servidores externos.</p>
+  <p>Los únicos datos tratados por la aplicación se almacenan <strong>exclusiva y localmente en tu dispositivo</strong>:</p>
+  <ul>
+    <li><strong>Números de teléfono de las llamadas bloqueadas</strong> — guardados en el historial local para que puedas consultarlos.</li>
+    <li><strong>Mensajes de voz configurados</strong> — las frases que redactas para tu asistente de voz IA.</li>
+    <li><strong>Preferencias del usuario</strong> — modo activo, ajustes de voz, opciones de configuración.</li>
+    <li><strong>Base de números de spam</strong> — números memorizados localmente para acelerar futuros rechazos.</li>
+  </ul>
+  <p>Estos datos se almacenan en la base de datos local de la aplicación (SQLite/Room) y en las preferencias del dispositivo (DataStore). Se eliminan al desinstalar la aplicación.</p>
+
+  <h2>3. Permisos utilizados</h2>
+  <p>Tu dégages requiere los siguientes permisos de Android, por los motivos indicados:</p>
+  <ul>
+    <li><strong>READ_PHONE_STATE</strong> — determinar si hay una llamada entrante en curso.</li>
+    <li><strong>READ_CALL_LOG</strong> — identificar los números entrantes para compararlos con la base de spam.</li>
+    <li><strong>ANSWER_PHONE_CALLS</strong> — interceptar la llamada y activar la respuesta de voz antes de que el teléfono suene.</li>
+    <li><strong>INTERNET y ACCESS_NETWORK_STATE</strong> — sincronizar las listas públicas de números no deseados (phoneblock.net, Signal-Spam). Ningún dato personal se transmite durante esta sincronización.</li>
+    <li><strong>Rol CALL_SCREENING</strong> — rol del sistema Android necesario para filtrar las llamadas entrantes. Este rol no sustituye a tu aplicación de teléfono predeterminada.</li>
+  </ul>
+
+  <h2>4. Base de datos comunitaria (opt-in)</h2>
+  <p>Tu dégages ofrece una función <strong>totalmente opcional</strong> de contribución a una base de números de spam compartida entre usuarios. Esta función está <strong>desactivada por defecto</strong> y solo se activa si marcas explícitamente «Contribuir a la base de datos comunitaria» en Ajustes.</p>
+  <p>Si la activas, los números de teléfono de quienes llaman identificados como spam se transmitirán a nuestra base de datos Supabase (alojada en Europa — Irlanda Oeste). Estos números son los de los <strong>spammers que te han contactado</strong>, no los tuyos. Se comparten con todos los usuarios de Tu dégages para mejorar la detección colectiva.</p>
+  <p>Puedes desactivar esta contribución en cualquier momento desde Ajustes.</p>
+
+  <h2>5. Compartición con terceros</h2>
+  <p>Tu dégages <strong>no comparte ningún dato personal</strong> con terceros, anunciantes o socios comerciales.</p>
+  <p>Al sincronizar la base anti-spam, la aplicación realiza solicitudes HTTP a servicios públicos (phoneblock.net, signal-spam.fr, base de datos comunitaria Supabase). Estas solicitudes no contienen ningún dato sobre ti.</p>
+
+  <h2>6. Seguridad de los datos</h2>
+  <p>Todos los datos se almacenan localmente en tu dispositivo y están protegidos por los mecanismos de seguridad estándar de Android (aislamiento de aplicaciones, cifrado del almacenamiento si está activado en tu dispositivo).</p>
+
+  <h2>7. Plazo de conservación</h2>
+  <p>Los datos se conservan mientras la aplicación esté instalada en tu dispositivo. Puedes:</p>
+  <ul>
+    <li>Eliminar el historial de llamadas bloqueadas desde la pantalla Historial.</li>
+    <li>Eliminar todos los datos desinstalando la aplicación.</li>
+  </ul>
+
+  <h2>8. Derechos de los usuarios (RGPD)</h2>
+  <p>En la medida en que ningún dato personal se transmite a nuestros servidores (no disponemos de ninguno), tus derechos de acceso, rectificación y eliminación se ejercen directamente desde la interfaz de la aplicación o desinstalándola.</p>
+  <p>Para cualquier pregunta, contáctanos en <a href="mailto:jeandescourvieres@gmail.com">jeandescourvieres@gmail.com</a>.</p>
+
+  <h2>9. Menores</h2>
+  <p>Tu dégages no está destinada a menores de 13 años y no recopila conscientemente ningún dato sobre ellos.</p>
+
+  <h2>10. Modificaciones</h2>
+  <p>Esta política puede actualizarse. La fecha de la última modificación se indica en la parte superior de esta página. Si continúas usando la aplicación después de una modificación, aceptas la política actualizada.</p>
+
+  <h2>11. Contacto</h2>
+  <p>Para cualquier pregunta sobre esta política de privacidad:<br>
+  <a href="mailto:jeandescourvieres@gmail.com">jeandescourvieres@gmail.com</a></p>
+</div>
+
+<footer>
+  <div class="footer-bottom" style="max-width:740px;margin:0 auto;border-top:1px solid rgba(255,255,255,0.06);padding:24px 24px;">
+    <p>© 2026 Tu dégages</p>
+    <p><a href="index.html">Volver al sitio</a></p>
+  </div>
+</footer>
+
+<!-- ── BARRA DE NAVEGACIÓN FIJA ─────────────────────────────────────────── -->
+<nav class="app-bottom-nav">
+  <a href="index.html" class="app-nav-item">
+    <span class="app-nav-icon">🏠</span>
+    <span>Inicio</span>
+  </a>
+  <a href="index.html#modes" class="app-nav-item">
+    <span class="app-nav-icon">🛡️</span>
+    <span>Protección</span>
+  </a>
+  <a href="index.html#base-spam" class="app-nav-item">
+    <span class="app-nav-icon">🕐</span>
+    <span>Historial</span>
+  </a>
+  <a href="index.html#communaute" class="app-nav-item">
+    <span class="app-nav-icon">👤</span>
+    <span>Perfil</span>
+  </a>
+</nav>
+
+</body>
+</html>
