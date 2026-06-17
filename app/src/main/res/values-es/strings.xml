@@ -174,6 +174,7 @@
     <string name="stats_legal_title">¿Por qué no compartimos tus datos?</string>
     <string name="stats_legal_p1">Un número de teléfono es un dato personal protegido por el RGPD. Transmitir tu lista de números bloqueados a un tercero — incluso para ayudar a otros usuarios — está prohibido sin consentimiento explícito.</string>
     <string name="stats_legal_p2">Por eso Tu dégages almacena todo localmente en tu dispositivo y solo consulta fuentes públicas oficiales (ARCEP) y la base de datos comunitaria compartida. Tus datos nunca salen de tu teléfono.</string>
+    <string name="stats_legal_p3">Los números bloqueados automáticamente caducan tras 18 meses sin confirmación de actividad, para evitar bloquear indefinidamente un número reciclado hacia un nuevo abonado.</string>
     <string name="stats_legal_tip">Activa la contribución a la base de datos comunitaria en Ajustes para ayudar a todos.</string>
 
     <!-- ── Pantalla Onboarding ────────────────────────────────────────────── -->

@@ -227,6 +227,10 @@ private fun LegalNoteCard() {
             highlightBrand(stringResource(R.string.stats_legal_p2)),
             fontSize = 12.sp, color = TextSecondary, lineHeight = 18.sp
         )
+        Text(
+            stringResource(R.string.stats_legal_p3),
+            fontSize = 12.sp, color = TextSecondary, lineHeight = 18.sp
+        )
         Row(
             modifier = Modifier
                 .background(NeonGreen.copy(alpha = 0.08f), RoundedCornerShape(8.dp))

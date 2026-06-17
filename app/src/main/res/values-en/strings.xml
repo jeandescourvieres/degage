@@ -174,6 +174,7 @@
     <string name="stats_legal_title">Why don\'t we share your data?</string>
     <string name="stats_legal_p1">A phone number is personal data protected by GDPR. Sharing your list of blocked numbers with a third party — even to help other users — is forbidden without explicit consent.</string>
     <string name="stats_legal_p2">That\'s why Tu dégages stores everything locally on your device and only consults official public sources (ARCEP) and the shared community database. Your data never leaves your phone.</string>
+    <string name="stats_legal_p3">Automatically blocked numbers expire after 18 months with no confirmed activity, to avoid indefinitely blocking a number recycled to a new subscriber.</string>
     <string name="stats_legal_tip">Turn on community database contribution in Settings to help everyone.</string>
 
     <!-- ── Onboarding screen ────────────────────────────────────────────── -->

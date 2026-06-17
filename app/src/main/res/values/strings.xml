@@ -174,6 +174,7 @@
     <string name="stats_legal_title">Pourquoi on ne partage pas vos données ?</string>
     <string name="stats_legal_p1">Un numéro de téléphone est une donnée personnelle protégée par le RGPD. Transmettre votre liste de numéros bloqués à un tiers — même pour aider d\'autres utilisateurs — est interdit sans consentement explicite.</string>
     <string name="stats_legal_p2">C\'est pourquoi Tu dégages stocke tout localement sur votre appareil et ne consulte que des sources publiques officielles (ARCEP) et la base communautaire partagée. Vos données ne quittent jamais votre téléphone.</string>
+    <string name="stats_legal_p3">Les numéros bloqués automatiquement expirent après 18 mois sans confirmation d\'activité, pour éviter de bloquer indéfiniment un numéro recyclé vers un nouvel abonné.</string>
     <string name="stats_legal_tip">Activez la contribution à la base communautaire dans Réglages pour aider tout le monde.</string>
 
     <!-- ── Écran Onboarding ────────────────────────────────────────────── -->
