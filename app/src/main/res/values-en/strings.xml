@@ -392,6 +392,9 @@
     <string name="manual_q14_title">What is the purpose of reporting a number?</string>
     <string name="manual_q14_body">When you block a number and have enabled \"Community database\" in Settings, that number is sent — anonymously, without any of your data — to a shared server.\n\nAll other Tu dégages users then retrieve this number and automatically reject it, without even playing the voice message. The more users there are, the more effective the database is for everyone.\n\nThis retrieval happens automatically, silently, once a day when the app is opened — you don\'t have to do anything. The \"Update spam database\" button in Settings simply forces an immediate update.</string>
 
+    <string name="manual_q34_title">🌍 Does the community database mix up numbers from different countries?</string>
+    <string name="manual_q34_body">No. Every reported number is tagged with its country\'s international calling code (+33 France, +41 Switzerland, +44 United Kingdom, +49 Germany, +39 Italy, +34 Spain). Your phone only ever downloads and compares numbers from your own country.\n\nThis isolation rules out any cross-country mix-up: two numbers that look alike in two different countries (for example, a French number and a German number with exactly the same digit sequence in national format) will never be confused with each other. The community database stays accurate and reliable, no matter how many countries use Tu dégages.</string>
+
     <string name="manual_q15_title">How are blocked numbers chosen?</string>
     <string name="manual_q15_body">A number is blocked if it belongs to a known telemarketing ARCEP range, if it appears in phoneblock.net or Signal-Spam, if it has already called you and been treated as spam, or if it has been reported by the community.\n\nTu dégages never blocks a number simply because it belongs to a particular telecom carrier — see \"Why don\'t we block an entire carrier\" above.</string>
 
