@@ -442,6 +442,7 @@ fun AppLanguageSelectorRow(language: String, onSetLanguage: (String) -> Unit) {
             CountryChip(stringResource(R.string.lang_de), selected = language == "DE", onClick = { onSetLanguage("DE") })
             CountryChip(stringResource(R.string.lang_it), selected = language == "IT", onClick = { onSetLanguage("IT") })
             CountryChip(stringResource(R.string.lang_en), selected = language == "EN", onClick = { onSetLanguage("EN") })
+            CountryChip(stringResource(R.string.lang_es), selected = language == "ES", onClick = { onSetLanguage("ES") })
         }
         SettingsHelpToggle(stringResource(R.string.settings_help_app_lang))
     }

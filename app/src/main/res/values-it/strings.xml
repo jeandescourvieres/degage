@@ -70,7 +70,7 @@
         <item>🚫 Blocco manuale di numeri e prefissi</item>
         <item>⬇️ Esportazione CSV della cronologia</item>
         <item>🌍 Paesi aggiuntivi disponibili (oltre al tuo, già incluso gratuitamente)</item>
-        <item>🇩🇪🇮🇹🇬🇧 Risposte vocali in tedesco, italiano e inglese</item>
+        <item>🇩🇪🇮🇹🇬🇧🇪🇸 Risposte vocali in tedesco, italiano, inglese e spagnolo</item>
     </string-array>
     <string name="premium_price_monthly">1 €</string>
     <string name="premium_price_monthly_period">/ mese</string>
@@ -234,7 +234,7 @@
     <string name="settings_help_hide">Nascondi la spiegazione</string>
     <string name="settings_help_app_lang">Questa impostazione cambia solo la lingua dell\'interfaccia (menu, pulsanti, schermate dell\'app). Non ha alcun effetto sulla lingua parlata ai call center: per quello vedi "Lingua dei messaggi vocali" più in basso. Scegli "Sistema" affinché l\'app segua automaticamente la lingua del telefono.</string>
     <string name="settings_help_country">Il paese selezionato adatta il database dei numeri indesiderati e i formati dei numeri monitorati per il rilevamento automatico dello spam.\n\nIl tuo paese (rilevato dalla tua SIM) è gratuito. Gli altri paesi sono un\'opzione Premium — utile se ricevi anche chiamate da call center di un altro paese (doppia nazionalità, espatrio, numeri di confine...).</string>
-    <string name="settings_help_reply_lang">È la lingua in cui Tu dégages risponde a voce ai call center durante una chiamata filtrata. È indipendente dalla lingua dell\'app: puoi avere l\'app in francese e i messaggi vocali in tedesco. Le lingue tedesco, italiano e inglese sono riservate a Premium.</string>
+    <string name="settings_help_reply_lang">È la lingua in cui Tu dégages risponde a voce ai call center durante una chiamata filtrata. È indipendente dalla lingua dell\'app: puoi avere l\'app in francese e i messaggi vocali in tedesco. Le lingue tedesco, italiano, inglese e spagnolo sono riservate a Premium.</string>
     <string name="settings_help_protection_title">Protezione e blocco</string>
     <string name="settings_help_protection">"Protezione" è l\'interruttore principale: se disattivato, Tu dégages lascia squillare normalmente tutte le chiamate, senza filtrare nulla. "Risposta automatica" risponde alle chiamate sospette senza far squillare il telefono. "Blocca il numero dopo la risposta" aggiunge il numero alla lista nera dopo avergli risposto, così verrà rifiutato istantaneamente la prossima volta. "Notifiche" ti avvisa ad ogni chiamata bloccata.</string>
     <string name="settings_help_block_hidden">Quando questa opzione è attiva, ogni chiamata senza numero visualizzato (nascosto, privato o sconosciuto) viene rifiutata immediatamente e silenziosamente, senza messaggio vocale. Utile contro le chiamate anonime indesiderate, ma attenzione: alcuni interlocutori legittimi (medici, scuole…) a volte chiamano con numero nascosto.</string>
@@ -243,7 +243,7 @@
     <string name="settings_help_message_builder">Questa sezione permette di personalizzare il contenuto esatto dei messaggi vocali riprodotti ai call center: il saluto iniziale, il corpo del messaggio (diverso per ogni modalità Cortese/Amministrativo/Sarcastico/Troll) e la formula di chiusura. Scegli tra diverse frasi predefinite o scrivi le tue.</string>
     <string name="settings_help_voice">Regola velocità, tono (pitch) e voce usati da Tu dégages per parlare ai call center. L\'elenco delle voci disponibili dipende dalla lingua scelta in "Lingua dei messaggi vocali" e dalle voci installate sul telefono.</string>
     <string name="settings_help_custom_blocks">Aggiungi qui numeri o prefissi che vuoi bloccare sistematicamente, in aggiunta al database spam automatico. Ideale per un numero specifico fastidioso o per un intero prefisso (es. quello di un call center).</string>
-    <string name="settings_help_premium">Premium sblocca le lingue dei messaggi vocali tedesco/italiano/inglese, la personalizzazione completa delle risposte, la scelta della voce, il blocco di numeri personalizzati e il contributo al database spam della community.</string>
+    <string name="settings_help_premium">Premium sblocca le lingue dei messaggi vocali tedesco/italiano/inglese/spagnolo, la personalizzazione completa delle risposte, la scelta della voce, il blocco di numeri personalizzati e il contributo al database spam della community.</string>
     <string name="settings_help_community_db">Attivando il contributo (casella "Database della community" sopra), ogni numero bloccato da Tu dégages sul tuo telefono viene segnalato in modo anonimo. In cambio, la tua app scarica regolarmente i nuovi numeri segnalati dagli altri utenti per arricchire il tuo database di blocco.</string>
     <string name="settings_nav_message_builder">💬 Personalizza le risposte</string>
     <string name="settings_nav_voice">🎙️ Impostazioni vocali</string>
@@ -312,7 +312,7 @@
     <string name="home_badge_we_reply">✅ TU DÉGAGES risponde, chiacchiera, chiude… e poi blocca!</string>
     <string name="home_badge_offline">📡 Funziona anche offline.</string>
     <string name="home_badge_countries">🇫🇷 Sviluppato per la Francia.\n🇨🇭 E la Svizzera.</string>
-    <string name="home_badge_languages">🌍 Risposte IA in francese, tedesco, italiano e inglese…</string>
+    <string name="home_badge_languages">🌍 Risposte IA in francese, tedesco, italiano, inglese e spagnolo…</string>
     <string name="home_protection_title">🛡️ La tua protezione a colpo d\'occhio</string>
     <string name="home_protection_intro">Verifica a colpo d\'occhio se TU DÉGAGES è attivo, e attiva o disattiva la protezione direttamente da qui.</string>
     <string name="home_status_active">PROTEZIONE ATTIVA</string>
@@ -340,7 +340,7 @@
     <string name="manual_cat_other">❓ Altro</string>
 
     <string name="manual_q1_title">⭐ Cosa è gratuito e cosa è Premium?</string>
-    <string name="manual_q1_body">🆓 GRATIS, PER SEMPRE — la protezione:\n\n• Blocco automatico degli spam noti (database ARCEP/OFCOM + apprendimento dalla tua cronologia)\n• Modalità di risposta Cortese\n• Cronologia delle chiamate bloccate\n• I tuoi contatti non vengono mai bloccati\n• «Non è spam»: correzione di un blocco errato con un tap\n• Notifiche a ogni chiamata bloccata\n\nLa sicurezza e la protezione contro i falsi positivi non saranno MAI a pagamento.\n\n⭐ PREMIUM (1 €/mese o 10 €/anno) — comodità e personalizzazione:\n\n• Le modalità Amministrativo, Sarcastico e Troll\n• Personalizzazione completa dei messaggi (creatore, frasi personalizzate)\n• Impostazioni vocali (voce, velocità, tono)\n• Database della community (sincronizzazione e contributo)\n• Blocco manuale di numeri e prefissi\n• Esportazione CSV della cronologia\n• Modalità Svizzera (numeri OFCOM)\n• Risposte vocali in tedesco, italiano e inglese\n\nUn lucchetto 🔒 appare su ogni funzionalità Premium nell\'app. Toccalo per vedere i dettagli dell\'offerta in Impostazioni → «⭐ Tu dégages Premium».</string>
+    <string name="manual_q1_body">🆓 GRATIS, PER SEMPRE — la protezione:\n\n• Blocco automatico degli spam noti (database ARCEP/OFCOM + apprendimento dalla tua cronologia)\n• Modalità di risposta Cortese\n• Cronologia delle chiamate bloccate\n• I tuoi contatti non vengono mai bloccati\n• «Non è spam»: correzione di un blocco errato con un tap\n• Notifiche a ogni chiamata bloccata\n\nLa sicurezza e la protezione contro i falsi positivi non saranno MAI a pagamento.\n\n⭐ PREMIUM (1 €/mese o 10 €/anno) — comodità e personalizzazione:\n\n• Le modalità Amministrativo, Sarcastico e Troll\n• Personalizzazione completa dei messaggi (creatore, frasi personalizzate)\n• Impostazioni vocali (voce, velocità, tono)\n• Database della community (sincronizzazione e contributo)\n• Blocco manuale di numeri e prefissi\n• Esportazione CSV della cronologia\n• Modalità Svizzera (numeri OFCOM)\n• Risposte vocali in tedesco, italiano, inglese e spagnolo\n\nUn lucchetto 🔒 appare su ogni funzionalità Premium nell\'app. Toccalo per vedere i dettagli dell\'offerta in Impostazioni → «⭐ Tu dégages Premium».</string>
 
     <string name="manual_q2_title">👤 I miei contatti possono essere bloccati per errore?</string>
     <string name="manual_q2_body">No. Se un numero che ti chiama corrisponde a un contatto salvato sul tuo telefono, Tu dégages lascia sempre passare la chiamata — anche se quel numero è presente nel database spam o nelle tue regole personalizzate.\n\nQuesta verifica richiede l\'autorizzazione di accesso ai contatti, richiesta al primo avvio dell\'app.</string>

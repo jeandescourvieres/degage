@@ -70,7 +70,7 @@
         <item>🚫 Manual blocking of numbers and prefixes</item>
         <item>⬇️ CSV export of history</item>
         <item>🌍 Extra countries available (on top of your own, already included for free)</item>
-        <item>🇩🇪🇮🇹🇬🇧 Voice replies in German, Italian and English</item>
+        <item>🇩🇪🇮🇹🇬🇧🇪🇸 Voice replies in German, Italian, English and Spanish</item>
     </string-array>
     <string name="premium_price_monthly">€1</string>
     <string name="premium_price_monthly_period">/ month</string>
@@ -234,7 +234,7 @@
     <string name="settings_help_hide">Hide explanation</string>
     <string name="settings_help_app_lang">This setting only changes the language of the interface (menus, buttons, app screens). It has no effect on the language spoken to telemarketers — for that, see "Voice message language" below. Choose "System" so the app automatically follows your phone\'s language.</string>
     <string name="settings_help_country">The selected country adapts the unwanted-number database and the phone number formats monitored for automatic spam detection.\n\nYour country (detected from your SIM card) is free. Other countries are a Premium option — useful if you also receive telemarketing calls from another country (dual nationality, expatriation, cross-border numbers...).</string>
-    <string name="settings_help_reply_lang">This is the language Tu dégages speaks aloud to telemarketers during a screened call. It\'s independent from the app\'s language: you can have the app in French while voice messages are in German. German, Italian and English are Premium-only.</string>
+    <string name="settings_help_reply_lang">This is the language Tu dégages speaks aloud to telemarketers during a screened call. It\'s independent from the app\'s language: you can have the app in French while voice messages are in German. German, Italian, English and Spanish are Premium-only.</string>
     <string name="settings_help_protection_title">Protection and blocking</string>
     <string name="settings_help_protection">"Protection" is the master switch: when off, Tu dégages lets every call ring normally without filtering anything. "Auto-answer" answers suspicious calls without making your phone ring. "Block number after reply" adds the number to your blacklist after replying to it, so it gets rejected instantly next time. "Notifications" alerts you for every blocked call.</string>
     <string name="settings_help_block_hidden">When this option is on, any call without a displayed number (hidden, private, or unknown) is rejected immediately and silently, with no voice message. Useful against unwanted anonymous calls, but be careful: some legitimate callers (doctors, schools…) sometimes call with a hidden number.</string>
@@ -243,7 +243,7 @@
     <string name="settings_help_message_builder">This section lets you customize the exact content of the voice messages played to telemarketers: the greeting, the body (different for each mode — Polite/Administrative/Sarcastic/Troll) and the closing line. Pick from several preset sentences or write your own.</string>
     <string name="settings_help_voice">Adjust the speed, pitch and voice Tu dégages uses to speak to telemarketers. The list of available voices depends on the language chosen in "Voice message language" and the voices installed on your phone.</string>
     <string name="settings_help_custom_blocks">Add numbers or prefixes here that you want to block systematically, in addition to the automatic spam database. Ideal for a specific annoying number, or a whole prefix (e.g. a call center\'s area code).</string>
-    <string name="settings_help_premium">Premium unlocks German/Italian/English voice messages, full customization of replies, voice selection, custom number blocking, and contributing to the community spam database.</string>
+    <string name="settings_help_premium">Premium unlocks German/Italian/English/Spanish voice messages, full customization of replies, voice selection, custom number blocking, and contributing to the community spam database.</string>
     <string name="settings_help_community_db">Turning on contribution (the "Community database" toggle above) anonymously reports every number Tu dégages blocks on your phone. In return, your app regularly downloads new numbers reported by other users to grow your own blocklist.</string>
     <string name="settings_nav_message_builder">💬 Customize replies</string>
     <string name="settings_nav_voice">🎙️ Voice settings</string>
@@ -312,7 +312,7 @@
     <string name="home_badge_we_reply">✅ TU DÉGAGES picks up, chats, hangs up… then blocks!</string>
     <string name="home_badge_offline">📡 Works even offline.</string>
     <string name="home_badge_countries">🇫🇷 Developed for France.\n🇨🇭 And Switzerland.</string>
-    <string name="home_badge_languages">🌍 AI replies in French, German, Italian and English…</string>
+    <string name="home_badge_languages">🌍 AI replies in French, German, Italian, English and Spanish…</string>
     <string name="home_protection_title">🛡️ Your protection at a glance</string>
     <string name="home_protection_intro">Check at a glance whether TU DÉGAGES is active, and turn protection on or off directly here.</string>
     <string name="home_status_active">PROTECTION ACTIVE</string>
@@ -340,7 +340,7 @@
     <string name="manual_cat_other">❓ Other</string>
 
     <string name="manual_q1_title">⭐ What\'s free and what\'s Premium?</string>
-    <string name="manual_q1_body">🆓 FREE, FOREVER — protection:\n\n• Automatic blocking of known spam (ARCEP/OFCOM database + learning from your history)\n• Polite reply mode\n• History of blocked calls\n• Your contacts are never blocked\n• \"Not spam\": fix a wrong block in one tap\n• Notifications for every blocked call\n\nSecurity and protection against false positives will NEVER be paid.\n\n⭐ PREMIUM (€1/month or €10/year) — comfort and personalization:\n\n• Administrative, Sarcastic and Troll modes\n• Full message customization (builder, custom phrases)\n• Voice settings (voice, speed, pitch)\n• Community database (sync and contribution)\n• Manual blocking of numbers and prefixes\n• CSV export of history\n• Switzerland mode (OFCOM numbers)\n• Voice replies in German, Italian and English\n\nA 🔒 lock appears on every Premium feature in the app. Tap it to see the offer details in Settings → \"⭐ Tu dégages Premium\".</string>
+    <string name="manual_q1_body">🆓 FREE, FOREVER — protection:\n\n• Automatic blocking of known spam (ARCEP/OFCOM database + learning from your history)\n• Polite reply mode\n• History of blocked calls\n• Your contacts are never blocked\n• \"Not spam\": fix a wrong block in one tap\n• Notifications for every blocked call\n\nSecurity and protection against false positives will NEVER be paid.\n\n⭐ PREMIUM (€1/month or €10/year) — comfort and personalization:\n\n• Administrative, Sarcastic and Troll modes\n• Full message customization (builder, custom phrases)\n• Voice settings (voice, speed, pitch)\n• Community database (sync and contribution)\n• Manual blocking of numbers and prefixes\n• CSV export of history\n• Switzerland mode (OFCOM numbers)\n• Voice replies in German, Italian, English and Spanish\n\nA 🔒 lock appears on every Premium feature in the app. Tap it to see the offer details in Settings → \"⭐ Tu dégages Premium\".</string>
 
     <string name="manual_q2_title">👤 Can my contacts be blocked by mistake?</string>
     <string name="manual_q2_body">No. If a number calling you matches a contact saved on your phone, Tu dégages always lets the call through — even if that number is also in the spam database or in your custom rules.\n\nThis check requires contacts access permission, requested the first time you launch the app.</string>

@@ -161,6 +161,7 @@ class MainViewModel(app: Application) : AndroidViewModel(app) {
             "DE" -> "DE"
             "IT" -> "IT"
             "EN" -> "EN"
+            "ES" -> "ES"
             "FR" -> "FR"
             else -> when (java.util.Locale.getDefault().language) {
                 "de" -> "DE"

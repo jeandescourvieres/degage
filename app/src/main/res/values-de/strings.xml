@@ -70,7 +70,7 @@
         <item>🚫 Manuelle Blockierung von Nummern und Präfixen</item>
         <item>⬇️ CSV-Export des Verlaufs</item>
         <item>🌍 Weitere Länder optional (zusätzlich zu Ihrem eigenen, das bereits kostenlos enthalten ist)</item>
-        <item>🇩🇪🇮🇹🇬🇧 Sprachnachrichten auf Deutsch, Italienisch und Englisch</item>
+        <item>🇩🇪🇮🇹🇬🇧🇪🇸 Sprachnachrichten auf Deutsch, Italienisch, Englisch und Spanisch</item>
     </string-array>
     <string name="premium_price_monthly">1 €</string>
     <string name="premium_price_monthly_period">/ Monat</string>
@@ -234,7 +234,7 @@
     <string name="settings_help_hide">Erklärung ausblenden</string>
     <string name="settings_help_app_lang">Diese Einstellung ändert nur die Sprache der Benutzeroberfläche (Menüs, Schaltflächen, Bildschirme der App). Sie hat keinen Einfluss auf die Sprache, die zu Werbeanrufern gesprochen wird – dafür siehe „Sprache der Sprachnachrichten" weiter unten. Wählen Sie „System", damit die App automatisch die Sprache Ihres Telefons übernimmt.</string>
     <string name="settings_help_country">Das ausgewählte Land passt die Datenbank unerwünschter Nummern und die überwachten Nummernformate für die automatische Spam-Erkennung an.\n\nIhr Land (über Ihre SIM-Karte erkannt) ist kostenlos. Andere Länder sind eine Premium-Option — nützlich, wenn Sie auch Werbeanrufe aus einem anderen Land erhalten (doppelte Staatsbürgerschaft, Auslandsaufenthalt, Grenznummern...).</string>
-    <string name="settings_help_reply_lang">Dies ist die Sprache, in der Tu dégages Werbeanrufern bei einem gefilterten Anruf laut antwortet. Sie ist unabhängig von der Sprache der App: Die App kann auf Französisch eingestellt sein, während die Sprachnachrichten auf Deutsch sind. Die Sprachen Deutsch, Italienisch und Englisch sind Premium vorbehalten.</string>
+    <string name="settings_help_reply_lang">Dies ist die Sprache, in der Tu dégages Werbeanrufern bei einem gefilterten Anruf laut antwortet. Sie ist unabhängig von der Sprache der App: Die App kann auf Französisch eingestellt sein, während die Sprachnachrichten auf Deutsch sind. Die Sprachen Deutsch, Italienisch, Englisch und Spanisch sind Premium vorbehalten.</string>
     <string name="settings_help_protection_title">Schutz und Blockierung</string>
     <string name="settings_help_protection">„Schutz" ist der Hauptschalter: Ist er deaktiviert, lässt Tu dégages alle Anrufe normal klingeln, ohne zu filtern. „Automatische Annahme" beantwortet verdächtige Anrufe, ohne dass Ihr Telefon klingelt. „Nummer nach Antwort blockieren" fügt die Nummer nach der Antwort zu Ihrer schwarzen Liste hinzu, damit sie beim nächsten Mal sofort abgelehnt wird. „Benachrichtigungen" informiert Sie bei jedem blockierten Anruf.</string>
     <string name="settings_help_block_hidden">Wenn diese Option aktiviert ist, wird jeder Anruf ohne angezeigte Nummer (unterdrückt, privat oder unbekannt) sofort und lautlos abgelehnt, ohne Sprachnachricht. Praktisch gegen unerwünschte anonyme Anrufe, aber Achtung: Manche legitime Anrufer (Ärzte, Schulen…) rufen manchmal mit unterdrückter Nummer an.</string>
@@ -243,7 +243,7 @@
     <string name="settings_help_message_builder">In diesem Bereich können Sie den genauen Inhalt der Sprachnachrichten an Werbeanrufer anpassen: die Begrüßung, den Hauptteil (unterschiedlich für jeden Modus Höflich/Administrativ/Sarkastisch/Troll) und die Abschlussformel. Wählen Sie aus mehreren vorgefertigten Sätzen oder schreiben Sie eigene.</string>
     <string name="settings_help_voice">Stellen Sie Geschwindigkeit, Tonhöhe (Pitch) und die Stimme ein, mit der Tu dégages zu Werbeanrufern spricht. Die Liste der verfügbaren Stimmen hängt von der unter „Sprache der Sprachnachrichten" gewählten Sprache und den auf Ihrem Telefon installierten Stimmen ab.</string>
     <string name="settings_help_custom_blocks">Fügen Sie hier Nummern oder Vorwahlen hinzu, die Sie systematisch blockieren möchten, zusätzlich zur automatischen Spam-Datenbank. Ideal für eine bestimmte störende Nummer oder eine ganze Vorwahl (z. B. die eines Callcenters).</string>
-    <string name="settings_help_premium">Premium schaltet die Sprachnachrichten auf Deutsch/Italienisch/Englisch frei, die vollständige Anpassung der Antworten, die Wahl der Stimme, das Blockieren eigener Nummern und den Beitrag zur Community-Spam-Datenbank.</string>
+    <string name="settings_help_premium">Premium schaltet die Sprachnachrichten auf Deutsch/Italienisch/Englisch/Spanisch frei, die vollständige Anpassung der Antworten, die Wahl der Stimme, das Blockieren eigener Nummern und den Beitrag zur Community-Spam-Datenbank.</string>
     <string name="settings_help_community_db">Wenn Sie den Beitrag aktivieren (Kästchen „Community-Datenbank" oben), wird jede von Tu dégages auf Ihrem Telefon blockierte Nummer anonym gemeldet. Im Gegenzug lädt Ihre App regelmäßig neue, von anderen Nutzern gemeldete Nummern herunter, um Ihre eigene Blockierliste zu erweitern.</string>
     <string name="settings_nav_message_builder">💬 Antworten anpassen</string>
     <string name="settings_nav_voice">🎙️ Spracheinstellungen</string>
@@ -312,7 +312,7 @@
     <string name="home_badge_we_reply">✅ TU DÉGAGES geht ran, plaudert, legt auf… und blockiert dann!</string>
     <string name="home_badge_offline">📡 Funktioniert auch offline.</string>
     <string name="home_badge_countries">🇫🇷 Entwickelt für Frankreich.\n🇨🇭 Und die Schweiz.</string>
-    <string name="home_badge_languages">🌍 KI-Antworten auf Französisch, Deutsch, Italienisch und Englisch…</string>
+    <string name="home_badge_languages">🌍 KI-Antworten auf Französisch, Deutsch, Italienisch, Englisch und Spanisch…</string>
     <string name="home_protection_title">🛡️ Ihr Schutz auf einen Blick</string>
     <string name="home_protection_intro">Sehen Sie auf einen Blick, ob TU DÉGAGES aktiv ist, und aktivieren oder deaktivieren Sie den Schutz direkt hier.</string>
     <string name="home_status_active">SCHUTZ AKTIV</string>
@@ -340,7 +340,7 @@
     <string name="manual_cat_other">❓ Sonstiges</string>
 
     <string name="manual_q1_title">⭐ Was ist kostenlos und was ist Premium?</string>
-    <string name="manual_q1_body">🆓 KOSTENLOS, FÜR IMMER — der Schutz:\n\n• Automatische Blockierung bekannter Spam-Nummern (ARCEP/OFCOM-Datenbank + Lernen aus Ihrem Verlauf)\n• Höflicher Antwortmodus\n• Verlauf blockierter Anrufe\n• Ihre Kontakte werden nie blockiert\n• „Kein Spam“: Korrektur einer fälschlichen Blockierung mit einem Tap\n• Benachrichtigungen bei jedem blockierten Anruf\n\nSicherheit und Schutz vor Fehlalarmen werden NIEMALS kostenpflichtig sein.\n\n⭐ PREMIUM (1 €/Monat oder 10 €/Jahr) — Komfort und Personalisierung:\n\n• Die Modi Administrativ, Sarkastisch und Troll\n• Vollständige Personalisierung der Nachrichten (Baukasten, eigene Sätze)\n• Spracheinstellungen (Stimme, Geschwindigkeit, Tonhöhe)\n• Community-Datenbank (Synchronisierung und Beitrag)\n• Manuelle Blockierung von Nummern und Präfixen\n• CSV-Export des Verlaufs\n• Schweiz-Modus (OFCOM-Nummern)\n• Sprachnachrichten auf Deutsch, Italienisch und Englisch\n\nEin Schloss-Symbol 🔒 erscheint bei jeder Premium-Funktion in der App. Tippen Sie darauf, um die Details des Angebots unter Einstellungen → „⭐ Tu dégages Premium“ zu sehen.</string>
+    <string name="manual_q1_body">🆓 KOSTENLOS, FÜR IMMER — der Schutz:\n\n• Automatische Blockierung bekannter Spam-Nummern (ARCEP/OFCOM-Datenbank + Lernen aus Ihrem Verlauf)\n• Höflicher Antwortmodus\n• Verlauf blockierter Anrufe\n• Ihre Kontakte werden nie blockiert\n• „Kein Spam“: Korrektur einer fälschlichen Blockierung mit einem Tap\n• Benachrichtigungen bei jedem blockierten Anruf\n\nSicherheit und Schutz vor Fehlalarmen werden NIEMALS kostenpflichtig sein.\n\n⭐ PREMIUM (1 €/Monat oder 10 €/Jahr) — Komfort und Personalisierung:\n\n• Die Modi Administrativ, Sarkastisch und Troll\n• Vollständige Personalisierung der Nachrichten (Baukasten, eigene Sätze)\n• Spracheinstellungen (Stimme, Geschwindigkeit, Tonhöhe)\n• Community-Datenbank (Synchronisierung und Beitrag)\n• Manuelle Blockierung von Nummern und Präfixen\n• CSV-Export des Verlaufs\n• Schweiz-Modus (OFCOM-Nummern)\n• Sprachnachrichten auf Deutsch, Italienisch, Englisch und Spanisch\n\nEin Schloss-Symbol 🔒 erscheint bei jeder Premium-Funktion in der App. Tippen Sie darauf, um die Details des Angebots unter Einstellungen → „⭐ Tu dégages Premium“ zu sehen.</string>
 
     <string name="manual_q2_title">👤 Können meine Kontakte versehentlich blockiert werden?</string>
     <string name="manual_q2_body">Nein. Wenn eine Nummer, die Sie anruft, einem auf Ihrem Telefon gespeicherten Kontakt entspricht, lässt Tu dégages den Anruf immer durch — selbst wenn diese Nummer ansonsten in der Spam-Datenbank oder in Ihren eigenen Regeln steht.\n\nDiese Überprüfung erfordert die Berechtigung für den Zugriff auf Kontakte, die beim ersten Start der App angefordert wird.</string>

@@ -70,7 +70,7 @@
         <item>🚫 Blocage manuel de numéros et préfixes</item>
         <item>⬇️ Export CSV de l\'historique</item>
         <item>🌍 Pays supplémentaires en option (en plus du vôtre, déjà inclus gratuitement)</item>
-        <item>🇩🇪🇮🇹🇬🇧 Réponses vocales en allemand, en italien et en anglais</item>
+        <item>🇩🇪🇮🇹🇬🇧🇪🇸 Réponses vocales en allemand, en italien, en anglais et en espagnol</item>
     </string-array>
     <string name="premium_price_monthly">1 €</string>
     <string name="premium_price_monthly_period">/ mois</string>
@@ -244,7 +244,7 @@
     <string name="settings_help_hide">Masquer l\'explication</string>
     <string name="settings_help_app_lang">Ce réglage change uniquement la langue de l\'interface (menus, boutons, écrans de l\'application). Il n\'a aucun effet sur la langue parlée aux démarcheurs : pour ça, voir « Langue des messages vocaux » plus bas. Choisissez « Système » pour que l\'appli suive automatiquement la langue de votre téléphone.</string>
     <string name="settings_help_country">Le pays sélectionné adapte la base de numéros indésirables et les formats de numéros surveillés pour la détection automatique du spam.\n\nVotre pays (détecté via votre carte SIM) est gratuit. Les autres pays sont une option Premium — utile si vous recevez aussi des appels de démarcheurs depuis un autre pays (double nationalité, expatriation, numéros frontaliers...).</string>
-    <string name="settings_help_reply_lang">C\'est la langue dans laquelle Tu dégages répond à voix haute aux démarcheurs lors d\'un appel filtré. Elle est indépendante de la langue de l\'application : vous pouvez très bien avoir une appli en français et des messages vocaux en allemand. Les langues allemand, italien et anglais sont réservées à Premium.</string>
+    <string name="settings_help_reply_lang">C\'est la langue dans laquelle Tu dégages répond à voix haute aux démarcheurs lors d\'un appel filtré. Elle est indépendante de la langue de l\'application : vous pouvez très bien avoir une appli en français et des messages vocaux en allemand. Les langues allemand, italien, anglais et espagnol sont réservées à Premium.</string>
     <string name="settings_help_protection_title">Protection et blocage</string>
     <string name="settings_help_protection">« Protection » est l\'interrupteur principal : désactivé, Tu dégages laisse sonner tous les appels normalement, sans rien filtrer. « Décroche automatique » répond aux appels suspects sans faire sonner votre téléphone. « Bloquer le numéro après réponse » ajoute le numéro à votre liste noire après lui avoir répondu, pour qu\'il soit rejeté instantanément la prochaine fois. « Notifications » vous prévient à chaque appel bloqué.</string>
     <string name="settings_help_block_hidden">Quand cette option est activée, tout appel sans numéro affiché (masqué, privé ou inconnu) est rejeté immédiatement et silencieusement, sans message vocal. Pratique contre les appels masqués indésirables, mais attention : certains correspondants légitimes (médecins, écoles…) appellent parfois en numéro masqué.</string>
@@ -253,7 +253,7 @@
     <string name="settings_help_message_builder">Cette section permet de personnaliser le contenu exact des messages vocaux joués aux démarcheurs : la formule d\'accueil, le corps du message (différent pour chaque mode Poli/Administratif/Sarcastique/Troll) et la formule de fin. Choisissez parmi plusieurs phrases prédéfinies ou écrivez les vôtres.</string>
     <string name="settings_help_voice">Réglez la vitesse, la hauteur (pitch) et la voix utilisées par Tu dégages pour parler aux démarcheurs. La liste des voix disponibles dépend de la langue choisie dans « Langue des messages vocaux » et des voix installées sur votre téléphone.</string>
     <string name="settings_help_custom_blocks">Ajoutez ici des numéros ou préfixes que vous voulez bloquer systématiquement, en plus de la base de spam automatique. Idéal pour un numéro précis qui vous dérange, ou tout un préfixe (ex. l\'indicatif d\'un centre d\'appels).</string>
-    <string name="settings_help_premium">Premium débloque les langues de messages vocaux allemand/italien/anglais, la personnalisation complète des réponses, le choix de la voix, le blocage de numéros personnalisés et la contribution à la base communautaire de spam.</string>
+    <string name="settings_help_premium">Premium débloque les langues de messages vocaux allemand/italien/anglais/espagnol, la personnalisation complète des réponses, le choix de la voix, le blocage de numéros personnalisés et la contribution à la base communautaire de spam.</string>
     <string name="settings_help_community_db">En activant la contribution (case « Base communautaire » plus haut), chaque numéro que Tu dégages bloque sur votre téléphone est signalé anonymement. En retour, votre app télécharge régulièrement les nouveaux numéros signalés par les autres utilisateurs pour enrichir votre propre base de blocage.</string>
     <string name="settings_quick_access_title">⚡ Accès rapides</string>
     <string name="settings_nav_message_builder">💬 Personnaliser les réponses</string>
@@ -323,7 +323,7 @@
     <string name="home_badge_we_reply">✅ TU DÉGAGES décroche, papote, raccroche… et puis bloque !</string>
     <string name="home_badge_offline">📡 Fonctionne même hors ligne.</string>
     <string name="home_badge_countries">🇫🇷 Développé pour la France.\n🇨🇭 Et la Suisse.</string>
-    <string name="home_badge_languages">🌍 Réponses IA en français, allemand, italien et anglais…</string>
+    <string name="home_badge_languages">🌍 Réponses IA en français, allemand, italien, anglais et espagnol…</string>
     <string name="home_protection_title">🛡️ Votre protection en un coup d\'œil</string>
     <string name="home_protection_intro">Vérifiez en un clin d\'œil ci-dessous si TU DÉGAGES est actif. L\'activation (ou la désactivation) de la protection se fait directement ici.</string>
     <string name="home_status_active">PROTECTION ACTIVE</string>
@@ -351,7 +351,7 @@
     <string name="manual_cat_other">❓ Autres</string>
 
     <string name="manual_q1_title">⭐ Qu\'est-ce qui est gratuit et qu\'est-ce qui est Premium ?</string>
-    <string name="manual_q1_body">🆓 GRATUIT, POUR TOUJOURS — la protection :\n\n• Blocage automatique des spams connus (base ARCEP/OFCOM + apprentissage de votre historique)\n• Mode de réponse Poli\n• Historique des appels bloqués\n• Vos contacts ne sont jamais bloqués\n• « Pas un spam » : correction d\'un blocage à tort, en un tap\n• Notifications à chaque appel bloqué\n\nLa sécurité et la protection contre les faux positifs ne seront JAMAIS payantes.\n\n⭐ PREMIUM (1 €/mois ou 10 €/an) — le confort et la personnalisation :\n\n• Les modes Administratif, Sarcastique et Troll\n• Personnalisation complète des messages (constructeur, phrases perso)\n• Réglages de la voix (voix, vitesse, hauteur)\n• Base communautaire (synchronisation et contribution)\n• Blocage manuel de numéros et préfixes\n• Export CSV de l\'historique\n• Mode Suisse (numéros OFCOM)\n• Réponses vocales en allemand, en italien et en anglais\n\nUn cadenas 🔒 apparaît sur chaque fonctionnalité Premium dans l\'application. Appuyez dessus pour voir le détail de l\'offre dans Paramètres → « ⭐ Tu dégages Premium ».</string>
+    <string name="manual_q1_body">🆓 GRATUIT, POUR TOUJOURS — la protection :\n\n• Blocage automatique des spams connus (base ARCEP/OFCOM + apprentissage de votre historique)\n• Mode de réponse Poli\n• Historique des appels bloqués\n• Vos contacts ne sont jamais bloqués\n• « Pas un spam » : correction d\'un blocage à tort, en un tap\n• Notifications à chaque appel bloqué\n\nLa sécurité et la protection contre les faux positifs ne seront JAMAIS payantes.\n\n⭐ PREMIUM (1 €/mois ou 10 €/an) — le confort et la personnalisation :\n\n• Les modes Administratif, Sarcastique et Troll\n• Personnalisation complète des messages (constructeur, phrases perso)\n• Réglages de la voix (voix, vitesse, hauteur)\n• Base communautaire (synchronisation et contribution)\n• Blocage manuel de numéros et préfixes\n• Export CSV de l\'historique\n• Mode Suisse (numéros OFCOM)\n• Réponses vocales en allemand, en italien, en anglais et en espagnol\n\nUn cadenas 🔒 apparaît sur chaque fonctionnalité Premium dans l\'application. Appuyez dessus pour voir le détail de l\'offre dans Paramètres → « ⭐ Tu dégages Premium ».</string>
 
     <string name="manual_q2_title">👤 Mes contacts peuvent-ils être bloqués par erreur ?</string>
     <string name="manual_q2_body">Non. Si un numéro qui vous appelle correspond à un contact enregistré sur votre téléphone, Tu dégages laisse toujours passer l\'appel — même si ce numéro figure par ailleurs dans la base spam ou dans vos règles personnalisées.\n\nCette vérification nécessite l\'autorisation d\'accès aux contacts, demandée au premier lancement de l\'application.</string>
