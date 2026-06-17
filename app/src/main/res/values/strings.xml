@@ -69,7 +69,7 @@
         <item>🌍 Base communautaire (synchronisation et contribution)</item>
         <item>🚫 Blocage manuel de numéros et préfixes</item>
         <item>⬇️ Export CSV de l\'historique</item>
-        <item>🇨🇭 Mode Suisse (numéros OFCOM)</item>
+        <item>🌍 Pays supplémentaires en option (en plus du vôtre, déjà inclus gratuitement)</item>
         <item>🇩🇪🇮🇹🇬🇧 Réponses vocales en allemand, en italien et en anglais</item>
     </string-array>
     <string name="premium_price_monthly">1 €</string>
@@ -242,7 +242,7 @@
     <string name="settings_help_show">Pourquoi ce réglage ?</string>
     <string name="settings_help_hide">Masquer l\'explication</string>
     <string name="settings_help_app_lang">Ce réglage change uniquement la langue de l\'interface (menus, boutons, écrans de l\'application). Il n\'a aucun effet sur la langue parlée aux démarcheurs : pour ça, voir « Langue des messages vocaux » plus bas. Choisissez « Système » pour que l\'appli suive automatiquement la langue de votre téléphone.</string>
-    <string name="settings_help_country">Le pays sélectionné adapte la base de numéros indésirables et les formats de numéros surveillés pour la détection automatique du spam. Choisissez « Suisse » si vous recevez surtout des appels de démarcheurs suisses.</string>
+    <string name="settings_help_country">Le pays sélectionné adapte la base de numéros indésirables et les formats de numéros surveillés pour la détection automatique du spam.\n\nVotre pays (détecté via votre carte SIM) est gratuit. Les autres pays sont une option Premium — utile si vous recevez aussi des appels de démarcheurs depuis un autre pays (double nationalité, expatriation, numéros frontaliers...).</string>
     <string name="settings_help_reply_lang">C\'est la langue dans laquelle Tu dégages répond à voix haute aux démarcheurs lors d\'un appel filtré. Elle est indépendante de la langue de l\'application : vous pouvez très bien avoir une appli en français et des messages vocaux en allemand. Les langues allemand, italien et anglais sont réservées à Premium.</string>
     <string name="settings_help_protection_title">Protection et blocage</string>
     <string name="settings_help_protection">« Protection » est l\'interrupteur principal : désactivé, Tu dégages laisse sonner tous les appels normalement, sans rien filtrer. « Décroche automatique » répond aux appels suspects sans faire sonner votre téléphone. « Bloquer le numéro après réponse » ajoute le numéro à votre liste noire après lui avoir répondu, pour qu\'il soit rejeté instantanément la prochaine fois. « Notifications » vous prévient à chaque appel bloqué.</string>
@@ -266,17 +266,21 @@
     <string name="settings_nav_about">À propos</string>
 
     <string name="settings_country_label">Pays</string>
-    <string name="settings_country_desc">Adapte la base de numéros indésirables détectés à votre pays.</string>
+    <string name="settings_country_desc">Adapte la base de numéros indésirables à votre pays. Le pays détecté sur votre téléphone est inclus gratuitement.</string>
     <string name="country_fr">🇫🇷 France</string>
     <string name="country_ch">🇨🇭 Suisse</string>
+    <string name="country_uk">🇬🇧 Royaume-Uni</string>
+    <string name="country_de">🇩🇪 Allemagne</string>
+    <string name="country_it">🇮🇹 Italie</string>
+    <string name="country_es">🇪🇸 Espagne</string>
 
     <string name="settings_app_lang_label">Langue de l\'application</string>
     <string name="settings_app_lang_desc">Langue de l\'interface de Tu dégages.</string>
     <string name="lang_system">📱 Système</string>
     <string name="lang_fr">🇫🇷 Français</string>
-    <string name="lang_de">🇩🇪 Deutsch</string>
-    <string name="lang_it">🇮🇹 Italiano</string>
-    <string name="lang_en">🇬🇧 English</string>
+    <string name="lang_de">🇩🇪 Allemand</string>
+    <string name="lang_it">🇮🇹 Italien</string>
+    <string name="lang_en">🇬🇧 Anglais</string>
 
     <string name="settings_reply_lang_label">Langue des messages vocaux</string>
     <string name="settings_reply_lang_desc">Langue dans laquelle Tu dégages répond aux démarcheurs (utile en Suisse alémanique ou italophone).</string>
@@ -307,6 +311,7 @@
     <string name="home_info_title">Écran d\'accueil</string>
     <string name="home_info_content">Tu dégages protège votre téléphone contre les appels de démarchage.\n\n• Le bouton ON/OFF active ou désactive la protection.\n• Les compteurs affichent vos statistiques de blocage.\n• La liste en bas montre les derniers appels bloqués.</string>
     <string name="home_title">TU DÉGAGES</string>
+    <string name="home_title_translation"></string>
     <string name="home_subtitle">L\'IA qui répond à vos spammeurs</string>
     <string name="home_hero_welcome">vous souhaite la bienvenue !</string>
     <string name="home_hero_badge">🤖 Blocage intelligent de spams avec réponse IA</string>
@@ -429,6 +434,16 @@
 
     <string name="manual_q29_title">Comment signaler un bug ou donner un avis ?</string>
     <string name="manual_q29_body">Vous pouvez nous écrire directement à l\'adresse de contact indiquée dans À propos. Décrivez le problème rencontré (modèle de téléphone, version d\'Android, ce qui s\'est passé) — ça nous aide énormément à améliorer Tu dégages.</string>
+
+    <string name="manual_q30_title"></string>
+    <string name="manual_q30_body"></string>
+    <string name="manual_q31_title"></string>
+    <string name="manual_q31_body"></string>
+    <string name="manual_q32_title"></string>
+    <string name="manual_q32_body"></string>
+
+    <string name="manual_q33_title">🇪🇸 Pourquoi Tu dégages ne bloque pas tout automatiquement en Espagne ?</string>
+    <string name="manual_q33_body">L\'Espagne dispose de sources officielles utiles — l\'AEPD (protection des données), la Lista Robinson (équivalent de Bloctel) et le Ministerio para la Transformación Digital — mais aucune ne publie une liste de numéros spam prête à intégrer : la Lista Robinson recense les numéros des consommateurs qui refusent le démarchage, pas les numéros des démarcheurs.\n\nDepuis 2025, la réglementation espagnole interdit l\'usage des préfixes mobiles classiques (6 et 7) pour les campagnes commerciales et renforce la lutte contre le spoofing — une bonne nouvelle, mais ça ne donne pas non plus de base de numéros téléchargeable.\n\nTu dégages utilise les tranches espagnoles à tarification additionnelle (803, 806, 807, 907), nettement plus fiables, et s\'appuie surtout sur la base communautaire : signalez les numéros qui vous démarchent pour qu\'ils soient bloqués pour tout le monde.</string>
 
     <!-- ── À propos ────────────────────────────────────────────────────── -->
     <string name="about_title">À propos</string>

@@ -45,6 +45,7 @@ fun SettingsScreen(
     blockHiddenNumbers: Boolean = false,
     strictMode: Boolean = false,
     country: String = "FR",
+    homeCountry: String = "",
     replyLanguage: String = "FR",
     appLanguage: String = "",
     isPremium: Boolean = true,
@@ -179,7 +180,7 @@ fun SettingsScreen(
             AppLanguageSelectorRow(language = appLanguage, onSetLanguage = onSetAppLanguage)
         }
         if (matches(labelCountry)) item {
-            CountrySelectorRow(country = country, isPremium = isPremium, onSetCountry = onSetCountry, onUpgrade = onUpgrade)
+            CountrySelectorRow(country = country, homeCountry = homeCountry, isPremium = isPremium, onSetCountry = onSetCountry, onUpgrade = onUpgrade)
         }
         if (matches(labelReplyLang)) item {
             ReplyLanguageSelectorRow(language = replyLanguage, isPremium = isPremium, onSetLanguage = onSetReplyLanguage, onUpgrade = onUpgrade)
@@ -364,8 +365,9 @@ fun SpamSyncRow(isSyncing: Boolean, onClick: () -> Unit) {
     }
 }
 
+@OptIn(androidx.compose.foundation.layout.ExperimentalLayoutApi::class)
 @Composable
-fun CountrySelectorRow(country: String, isPremium: Boolean = true, onSetCountry: (String) -> Unit, onUpgrade: () -> Unit = {}) {
+fun CountrySelectorRow(country: String, homeCountry: String = "", isPremium: Boolean = true, onSetCountry: (String) -> Unit, onUpgrade: () -> Unit = {}) {
     Column(
         modifier = Modifier
             .fillMaxWidth()
@@ -380,18 +382,37 @@ fun CountrySelectorRow(country: String, isPremium: Boolean = true, onSetCountry:
             lineHeight = 16.sp
         )
         Spacer(modifier = Modifier.height(10.dp))
-        Row(horizontalArrangement = Arrangement.spacedBy(8.dp), verticalAlignment = Alignment.CenterVertically) {
-            CountryChip(stringResource(R.string.country_fr), selected = country == "FR", onClick = { onSetCountry("FR") })
-            val chSelected = country == "CH"
-            val chLocked = !isPremium
-            CountryChip(
-                stringResource(R.string.country_ch),
-                selected = chSelected && !chLocked,
-                onClick = { if (chLocked) onUpgrade() else onSetCountry("CH") }
-            )
-            if (chLocked) PremiumBadge()
+        FlowRow(horizontalArrangement = Arrangement.spacedBy(8.dp), verticalArrangement = Arrangement.spacedBy(8.dp)) {
+            CountryOption(stringResource(R.string.country_fr), "FR", country, homeCountry, isPremium, onSetCountry, onUpgrade)
+            CountryOption(stringResource(R.string.country_ch), "CH", country, homeCountry, isPremium, onSetCountry, onUpgrade)
+            CountryOption(stringResource(R.string.country_uk), "UK", country, homeCountry, isPremium, onSetCountry, onUpgrade)
+            CountryOption(stringResource(R.string.country_de), "DE", country, homeCountry, isPremium, onSetCountry, onUpgrade)
+            CountryOption(stringResource(R.string.country_it), "IT", country, homeCountry, isPremium, onSetCountry, onUpgrade)
+            CountryOption(stringResource(R.string.country_es), "ES", country, homeCountry, isPremium, onSetCountry, onUpgrade)
         }
         SettingsHelpToggle(stringResource(R.string.settings_help_country))
+    }
+}
+
+@Composable
+private fun CountryOption(
+    label: String,
+    code: String,
+    country: String,
+    homeCountry: String,
+    isPremium: Boolean,
+    onSetCountry: (String) -> Unit,
+    onUpgrade: () -> Unit
+) {
+    val locked = !isPremium && code != homeCountry
+    val isFree = !isPremium && code == homeCountry
+    Row(verticalAlignment = Alignment.CenterVertically) {
+        CountryChip(
+            if (isFree) "$label 🆓" else label,
+            selected = country == code && !locked,
+            onClick = { if (locked) onUpgrade() else onSetCountry(code) }
+        )
+        if (locked) PremiumBadge()
     }
 }
 

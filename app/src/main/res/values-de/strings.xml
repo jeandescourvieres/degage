@@ -69,7 +69,7 @@
         <item>🌍 Community-Datenbank (Synchronisierung und Beitrag)</item>
         <item>🚫 Manuelle Blockierung von Nummern und Präfixen</item>
         <item>⬇️ CSV-Export des Verlaufs</item>
-        <item>🇨🇭 Schweiz-Modus (OFCOM-Nummern)</item>
+        <item>🌍 Weitere Länder optional (zusätzlich zu Ihrem eigenen, das bereits kostenlos enthalten ist)</item>
         <item>🇩🇪🇮🇹🇬🇧 Sprachnachrichten auf Deutsch, Italienisch und Englisch</item>
     </string-array>
     <string name="premium_price_monthly">1 €</string>
@@ -232,7 +232,7 @@
     <string name="settings_help_show">Wozu dient diese Einstellung?</string>
     <string name="settings_help_hide">Erklärung ausblenden</string>
     <string name="settings_help_app_lang">Diese Einstellung ändert nur die Sprache der Benutzeroberfläche (Menüs, Schaltflächen, Bildschirme der App). Sie hat keinen Einfluss auf die Sprache, die zu Werbeanrufern gesprochen wird – dafür siehe „Sprache der Sprachnachrichten" weiter unten. Wählen Sie „System", damit die App automatisch die Sprache Ihres Telefons übernimmt.</string>
-    <string name="settings_help_country">Das ausgewählte Land passt die Datenbank unerwünschter Nummern und die überwachten Nummernformate für die automatische Spam-Erkennung an. Wählen Sie „Schweiz", wenn Sie hauptsächlich Anrufe von Schweizer Werbeanrufern erhalten.</string>
+    <string name="settings_help_country">Das ausgewählte Land passt die Datenbank unerwünschter Nummern und die überwachten Nummernformate für die automatische Spam-Erkennung an.\n\nIhr Land (über Ihre SIM-Karte erkannt) ist kostenlos. Andere Länder sind eine Premium-Option — nützlich, wenn Sie auch Werbeanrufe aus einem anderen Land erhalten (doppelte Staatsbürgerschaft, Auslandsaufenthalt, Grenznummern...).</string>
     <string name="settings_help_reply_lang">Dies ist die Sprache, in der Tu dégages Werbeanrufern bei einem gefilterten Anruf laut antwortet. Sie ist unabhängig von der Sprache der App: Die App kann auf Französisch eingestellt sein, während die Sprachnachrichten auf Deutsch sind. Die Sprachen Deutsch, Italienisch und Englisch sind Premium vorbehalten.</string>
     <string name="settings_help_protection_title">Schutz und Blockierung</string>
     <string name="settings_help_protection">„Schutz" ist der Hauptschalter: Ist er deaktiviert, lässt Tu dégages alle Anrufe normal klingeln, ohne zu filtern. „Automatische Annahme" beantwortet verdächtige Anrufe, ohne dass Ihr Telefon klingelt. „Nummer nach Antwort blockieren" fügt die Nummer nach der Antwort zu Ihrer schwarzen Liste hinzu, damit sie beim nächsten Mal sofort abgelehnt wird. „Benachrichtigungen" informiert Sie bei jedem blockierten Anruf.</string>
@@ -255,17 +255,21 @@
     <string name="settings_nav_about">Über die App</string>
 
     <string name="settings_country_label">Land</string>
-    <string name="settings_country_desc">Passt die Datenbank erkannter unerwünschter Nummern an Ihr Land an.</string>
+    <string name="settings_country_desc">Passt die Datenbank erkannter unerwünschter Nummern an Ihr Land an. Das auf Ihrem Telefon erkannte Land ist kostenlos enthalten.</string>
     <string name="country_fr">🇫🇷 Frankreich</string>
     <string name="country_ch">🇨🇭 Schweiz</string>
+    <string name="country_uk">🇬🇧 Vereinigtes Königreich</string>
+    <string name="country_de">🇩🇪 Deutschland</string>
+    <string name="country_it">🇮🇹 Italien</string>
+    <string name="country_es">🇪🇸 Spanien</string>
 
     <string name="settings_app_lang_label">Sprache der App</string>
     <string name="settings_app_lang_desc">Sprache der Benutzeroberfläche von Tu dégages.</string>
     <string name="lang_system">📱 System</string>
-    <string name="lang_fr">🇫🇷 Français</string>
+    <string name="lang_fr">🇫🇷 Französisch</string>
     <string name="lang_de">🇩🇪 Deutsch</string>
-    <string name="lang_it">🇮🇹 Italiano</string>
-    <string name="lang_en">🇬🇧 English</string>
+    <string name="lang_it">🇮🇹 Italienisch</string>
+    <string name="lang_en">🇬🇧 Englisch</string>
 
     <string name="settings_reply_lang_label">Sprache der Sprachnachrichten</string>
     <string name="settings_reply_lang_desc">Sprache, in der Tu dégages Werbeanrufern antwortet (nützlich in der deutsch- oder italienischsprachigen Schweiz).</string>
@@ -296,6 +300,7 @@
     <string name="home_info_title">Startbildschirm</string>
     <string name="home_info_content">Tu dégages schützt Ihr Telefon vor Werbeanrufen.\n\n• Der EIN/AUS-Schalter aktiviert oder deaktiviert den Schutz.\n• Die Zähler zeigen Ihre Blockierstatistiken.\n• Die Liste unten zeigt die zuletzt blockierten Anrufe.</string>
     <string name="home_title">TU DÉGAGES</string>
+    <string name="home_title_translation">Verschwinde</string>
     <string name="home_subtitle">Die KI, die Ihren Spammern antwortet</string>
     <string name="home_hero_welcome">heißt Sie willkommen!</string>
     <string name="home_hero_badge">🤖 Die App für intelligente Spam-Blockierung mit KI-Antwort</string>
@@ -418,6 +423,17 @@
 
     <string name="manual_q29_title">Wie kann ich einen Fehler melden oder Feedback geben?</string>
     <string name="manual_q29_body">Sie können uns direkt unter der in Über die App angegebenen Kontaktadresse schreiben. Beschreiben Sie das Problem (Telefonmodell, Android-Version, was passiert ist) — das hilft uns enorm, Tu dégages zu verbessern.</string>
+
+    <string name="manual_q30_title"></string>
+    <string name="manual_q30_body"></string>
+
+    <string name="manual_q31_title">🇩🇪 Warum blockiert Tu dégages in Deutschland nicht automatisch alles?</string>
+    <string name="manual_q31_body">Die Bundesnetzagentur ist deutlich aktiver als vergleichbare Behörden anderer Länder: Sie veröffentlicht regelmäßig Zahlen zu unerlaubter Telefonwerbung und Rufnummernmissbrauch (über 37.000 Beschwerden zu Werbeanrufen 2024, über 85.000 zu Rufnummernmissbrauch 2025) und schaltet einzelne Missbrauchsnummern per Verwaltungsakt ab.\n\nDas sind aber Einzelentscheidungen und Statistiken, keine fertige, maschinenlesbare Sperrliste, die sich direkt in eine App einbinden lässt. Die Verbraucherzentrale gibt nützliche Hinweise zu Betrugsmustern, liefert aber ebenfalls keine Nummern-Datenbank.\n\nDeshalb stützt sich der Schutz in Deutschland aktuell vor allem auf die Community-Datenbank: Melden Sie Spam-Nummern, sobald Sie sie erhalten — sie werden dann auch für alle anderen blockiert.</string>
+    <string name="manual_q32_title"></string>
+    <string name="manual_q32_body"></string>
+
+    <string name="manual_q33_title">🇪🇸 Warum blockiert Tu dégages in Spanien nicht automatisch alles?</string>
+    <string name="manual_q33_body">Spanien hat nützliche offizielle Quellen — die AEPD (Datenschutzbehörde), die Lista Robinson (das spanische Pendant zu Bloctel/TPS) und das Ministerio para la Transformación Digital — aber keine davon veröffentlicht eine fertige, einbindbare Spam-Nummernliste: Die Lista Robinson listet Verbraucher, die Werbeanrufe abgelehnt haben, nicht die Nummern der Anrufer selbst.\n\nSeit 2025 verbietet die spanische Regulierung die Nutzung gewöhnlicher Mobilfunk-Vorwahlen (6 und 7) für Werbekampagnen und verschärft die Spoofing-Bekämpfung — gute Nachrichten, aber immer noch keine herunterladbare Nummerndatenbank.\n\nTu dégages nutzt die schmalen spanischen Mehrwertdienst-Bereiche (803, 806, 807, 907), die deutlich zuverlässiger sind, und stützt sich vor allem auf die Community-Datenbank: Melden Sie Nummern, die Sie anrufen, damit sie auch für alle anderen blockiert werden.</string>
 
     <!-- ── Über die App ────────────────────────────────────────────────────── -->
     <string name="about_title">Über die App</string>

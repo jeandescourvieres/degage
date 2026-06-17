@@ -111,6 +111,20 @@ fun HomeScreen(
                         letterSpacing = 2.sp,
                         textAlign = TextAlign.Center
                     )
+                    val titleTranslation = stringResource(R.string.home_title_translation)
+                    if (titleTranslation.isNotBlank()) {
+                        Spacer(modifier = Modifier.height(4.dp))
+                        Text(
+                            text = "($titleTranslation)",
+                            fontSize = 19.sp,
+                            fontWeight = FontWeight.Bold,
+                            color = Color.Black,
+                            textAlign = TextAlign.Center,
+                            modifier = Modifier
+                                .background(NeonGreen, RoundedCornerShape(20.dp))
+                                .padding(horizontal = 16.dp, vertical = 6.dp)
+                        )
+                    }
                     Spacer(modifier = Modifier.height(8.dp))
                     Box(
                         modifier = Modifier
@@ -262,7 +276,7 @@ fun HomeScreen(
                         .clickable { onNavigateDetails() }
                         .background(NavBlue.copy(alpha = 0.85f), RoundedCornerShape(14.dp))
                         .border(1.dp, NavBlue, RoundedCornerShape(14.dp))
-                        .padding(vertical = 12.dp, horizontal = 12.dp),
+                        .padding(vertical = 7.dp, horizontal = 12.dp),
                     horizontalArrangement = Arrangement.Center,
                     verticalAlignment = Alignment.CenterVertically
                 ) {
@@ -287,7 +301,7 @@ fun HomeScreen(
                         .clickable { onNavigateSettings() }
                         .background(NavYellow.copy(alpha = 0.85f), RoundedCornerShape(14.dp))
                         .border(1.dp, NavYellow, RoundedCornerShape(14.dp))
-                        .padding(vertical = 12.dp, horizontal = 12.dp),
+                        .padding(vertical = 7.dp, horizontal = 12.dp),
                     horizontalArrangement = Arrangement.Center,
                     verticalAlignment = Alignment.CenterVertically
                 ) {
@@ -312,7 +326,7 @@ fun HomeScreen(
                         .clickable { onNavigateDashboard() }
                         .background(NavCyan.copy(alpha = 0.85f), RoundedCornerShape(14.dp))
                         .border(1.dp, NavCyan, RoundedCornerShape(14.dp))
-                        .padding(vertical = 12.dp, horizontal = 12.dp),
+                        .padding(vertical = 7.dp, horizontal = 12.dp),
                     horizontalArrangement = Arrangement.Center,
                     verticalAlignment = Alignment.CenterVertically
                 ) {
@@ -337,7 +351,7 @@ fun HomeScreen(
                         .clickable { onNavigateFaq() }
                         .background(NavPink.copy(alpha = 0.85f), RoundedCornerShape(14.dp))
                         .border(1.dp, NavPink, RoundedCornerShape(14.dp))
-                        .padding(vertical = 12.dp, horizontal = 12.dp),
+                        .padding(vertical = 7.dp, horizontal = 12.dp),
                     horizontalArrangement = Arrangement.Center,
                     verticalAlignment = Alignment.CenterVertically
                 ) {

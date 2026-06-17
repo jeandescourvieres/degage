@@ -27,24 +27,30 @@ fun ManualScreen(onBack: () -> Unit) {
             .fillMaxSize()
             .background(DarkBg)
     ) {
-        Box(
+        Row(
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(horizontal = 8.dp, vertical = 12.dp)
+                .padding(horizontal = 8.dp, vertical = 12.dp),
+            verticalAlignment = Alignment.CenterVertically
         ) {
-            IconButton(onClick = onBack, modifier = Modifier.align(Alignment.CenterStart)) {
+            IconButton(onClick = onBack) {
                 Icon(Icons.Default.ArrowBack, contentDescription = stringResource(R.string.cd_back), tint = Color.White)
             }
-            Text(
-                text = stringResource(R.string.manual_title),
-                fontSize = 20.sp,
-                fontWeight = FontWeight.Bold,
-                color = Color.Black,
-                modifier = Modifier
-                    .align(Alignment.Center)
-                    .background(AccentPink, RoundedCornerShape(14.dp))
-                    .padding(horizontal = 16.dp, vertical = 6.dp)
-            )
+            Box(
+                modifier = Modifier.weight(1f),
+                contentAlignment = Alignment.Center
+            ) {
+                Text(
+                    text = stringResource(R.string.manual_title),
+                    fontSize = 20.sp,
+                    fontWeight = FontWeight.Bold,
+                    color = Color.Black,
+                    modifier = Modifier
+                        .background(AccentPink, RoundedCornerShape(14.dp))
+                        .padding(horizontal = 16.dp, vertical = 6.dp)
+                )
+            }
+            Spacer(modifier = Modifier.size(48.dp))
         }
 
         LazyColumn(
@@ -123,6 +129,33 @@ fun ManualScreen(onBack: () -> Unit) {
                 ManualSection(
                     title = stringResource(R.string.manual_q12_title),
                     body = stringResource(R.string.manual_q12_body)
+                )
+            }
+            item {
+                val ukTitle = stringResource(R.string.manual_q30_title)
+                val ukBody = stringResource(R.string.manual_q30_body)
+                if (ukTitle.isNotBlank()) {
+                    ManualSection(title = ukTitle, body = ukBody)
+                }
+            }
+            item {
+                val deTitle = stringResource(R.string.manual_q31_title)
+                val deBody = stringResource(R.string.manual_q31_body)
+                if (deTitle.isNotBlank()) {
+                    ManualSection(title = deTitle, body = deBody)
+                }
+            }
+            item {
+                val itTitle = stringResource(R.string.manual_q32_title)
+                val itBody = stringResource(R.string.manual_q32_body)
+                if (itTitle.isNotBlank()) {
+                    ManualSection(title = itTitle, body = itBody)
+                }
+            }
+            item {
+                ManualSection(
+                    title = stringResource(R.string.manual_q33_title),
+                    body = stringResource(R.string.manual_q33_body)
                 )
             }
             item {

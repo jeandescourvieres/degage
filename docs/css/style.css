@@ -236,6 +236,18 @@ nav {
 .hero-appname span { color: var(--green); }
 .hero-appname-accent { color: var(--green); }
 
+.hero-appname-translation {
+  display: inline-block;
+  font-size: clamp(18px, 3vw, 28px);
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  color: #04140a;
+  background: var(--green);
+  padding: 8px 24px;
+  border-radius: 999px;
+  margin: -8px 0 16px;
+}
+
 .hero-badge {
   display: inline-flex;
   align-items: center;

@@ -52,6 +52,16 @@ val SPAM_PREFIXES_CH = listOf(
     "0840", "0842", "0844", "0848", "0878",
 )
 
+// Préfixes espagnols documentés comme sources fréquentes d'appels indésirables.
+// Source : plan de numérotation CNMC — tranches à tarification additionnelle.
+// Note : pas de 0 de tronc en Espagne, les numéros nationaux s'écrivent sans préfixe 0.
+val SPAM_PREFIXES_ES = listOf(
+    // ── Tarification additionnelle (803/806/807/907) ─────────────────────
+    // Tranches étroites réservées aux services à valeur ajoutée/adultes, peu utilisées
+    // par des entreprises légitimes — contrairement aux mobiles 6xx/7xx, trop larges pour être fiables.
+    "803", "806", "807", "907",
+)
+
 // ── Mode strict : plages entières des opérateurs VoIP non géographiques ─────
 // Mêmes plages que celles bloquées intégralement par certaines apps concurrentes
 // (utilisées par Aircall, Vonage, Manifone, Tata Communications, CM Telecom…).
@@ -74,6 +84,11 @@ val SPAM_PREFIXES_STRICT_CH: List<String> = buildList {
     for (i in 0..9) add("090$i")
 }
 
+// ── Mode strict Espagne : tarification spéciale 901/902 ─────────────────────
+// Coût partagé, légitimes pour du service client mais aussi très exploités par
+// des centres d'appels — d'où le rattachement au mode strict plutôt qu'au défaut.
+val SPAM_PREFIXES_STRICT_ES = listOf("901", "902")
+
 private val UNKNOWN_MARKERS = listOf(
     "inconnu", "unknown", "privé", "private",
     "masqué", "hidden", "anonymous", "withheld"
@@ -81,13 +96,23 @@ private val UNKNOWN_MARKERS = listOf(
 
 fun String.isSpamNumber(country: String = "FR"): Boolean {
     val normalized = this.replace(" ", "").replace("-", "").replace(".", "")
-    val prefixes = if (country == "CH") SPAM_PREFIXES_CH else SPAM_PREFIXES
+    val prefixes = when (country) {
+        "CH" -> SPAM_PREFIXES_CH
+        "FR" -> SPAM_PREFIXES
+        "ES" -> SPAM_PREFIXES_ES
+        else -> emptyList() // UK/DE/IT : pas de préfixes fiables, on s'appuie sur la base communautaire
+    }
     return prefixes.any { normalized.startsWith(it) }
 }
 
 fun String.isStrictVoipNumber(country: String = "FR"): Boolean {
     val normalized = this.replace(" ", "").replace("-", "").replace(".", "")
-    val prefixes = if (country == "CH") SPAM_PREFIXES_STRICT_CH else SPAM_PREFIXES_STRICT_FR
+    val prefixes = when (country) {
+        "CH" -> SPAM_PREFIXES_STRICT_CH
+        "FR" -> SPAM_PREFIXES_STRICT_FR
+        "ES" -> SPAM_PREFIXES_STRICT_ES
+        else -> emptyList()
+    }
     return prefixes.any { normalized.startsWith(it) }
 }
 

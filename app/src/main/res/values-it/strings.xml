@@ -69,7 +69,7 @@
         <item>🌍 Database della community (sincronizzazione e contributo)</item>
         <item>🚫 Blocco manuale di numeri e prefissi</item>
         <item>⬇️ Esportazione CSV della cronologia</item>
-        <item>🇨🇭 Modalità Svizzera (numeri OFCOM)</item>
+        <item>🌍 Paesi aggiuntivi disponibili (oltre al tuo, già incluso gratuitamente)</item>
         <item>🇩🇪🇮🇹🇬🇧 Risposte vocali in tedesco, italiano e inglese</item>
     </string-array>
     <string name="premium_price_monthly">1 €</string>
@@ -232,7 +232,7 @@
     <string name="settings_help_show">Perché questa impostazione?</string>
     <string name="settings_help_hide">Nascondi la spiegazione</string>
     <string name="settings_help_app_lang">Questa impostazione cambia solo la lingua dell\'interfaccia (menu, pulsanti, schermate dell\'app). Non ha alcun effetto sulla lingua parlata ai call center: per quello vedi "Lingua dei messaggi vocali" più in basso. Scegli "Sistema" affinché l\'app segua automaticamente la lingua del telefono.</string>
-    <string name="settings_help_country">Il paese selezionato adatta il database dei numeri indesiderati e i formati dei numeri monitorati per il rilevamento automatico dello spam. Scegli "Svizzera" se ricevi soprattutto chiamate da call center svizzeri.</string>
+    <string name="settings_help_country">Il paese selezionato adatta il database dei numeri indesiderati e i formati dei numeri monitorati per il rilevamento automatico dello spam.\n\nIl tuo paese (rilevato dalla tua SIM) è gratuito. Gli altri paesi sono un\'opzione Premium — utile se ricevi anche chiamate da call center di un altro paese (doppia nazionalità, espatrio, numeri di confine...).</string>
     <string name="settings_help_reply_lang">È la lingua in cui Tu dégages risponde a voce ai call center durante una chiamata filtrata. È indipendente dalla lingua dell\'app: puoi avere l\'app in francese e i messaggi vocali in tedesco. Le lingue tedesco, italiano e inglese sono riservate a Premium.</string>
     <string name="settings_help_protection_title">Protezione e blocco</string>
     <string name="settings_help_protection">"Protezione" è l\'interruttore principale: se disattivato, Tu dégages lascia squillare normalmente tutte le chiamate, senza filtrare nulla. "Risposta automatica" risponde alle chiamate sospette senza far squillare il telefono. "Blocca il numero dopo la risposta" aggiunge il numero alla lista nera dopo avergli risposto, così verrà rifiutato istantaneamente la prossima volta. "Notifiche" ti avvisa ad ogni chiamata bloccata.</string>
@@ -255,17 +255,21 @@
     <string name="settings_nav_about">Informazioni</string>
 
     <string name="settings_country_label">Paese</string>
-    <string name="settings_country_desc">Adatta il database dei numeri indesiderati rilevati al tuo paese.</string>
+    <string name="settings_country_desc">Adatta il database dei numeri indesiderati al tuo paese. Il paese rilevato sul tuo telefono è incluso gratuitamente.</string>
     <string name="country_fr">🇫🇷 Francia</string>
     <string name="country_ch">🇨🇭 Svizzera</string>
+    <string name="country_uk">🇬🇧 Regno Unito</string>
+    <string name="country_de">🇩🇪 Germania</string>
+    <string name="country_it">🇮🇹 Italia</string>
+    <string name="country_es">🇪🇸 Spagna</string>
 
     <string name="settings_app_lang_label">Lingua dell\'app</string>
     <string name="settings_app_lang_desc">Lingua dell\'interfaccia di Tu dégages.</string>
     <string name="lang_system">📱 Sistema</string>
-    <string name="lang_fr">🇫🇷 Français</string>
-    <string name="lang_de">🇩🇪 Deutsch</string>
+    <string name="lang_fr">🇫🇷 Francese</string>
+    <string name="lang_de">🇩🇪 Tedesco</string>
     <string name="lang_it">🇮🇹 Italiano</string>
-    <string name="lang_en">🇬🇧 English</string>
+    <string name="lang_en">🇬🇧 Inglese</string>
 
     <string name="settings_reply_lang_label">Lingua dei messaggi vocali</string>
     <string name="settings_reply_lang_desc">Lingua in cui Tu dégages risponde ai call center (utile nella Svizzera tedesca o italiana).</string>
@@ -296,6 +300,7 @@
     <string name="home_info_title">Schermata iniziale</string>
     <string name="home_info_content">Tu dégages protegge il tuo telefono dalle chiamate di teleselling.\n\n• Il pulsante ON/OFF attiva o disattiva la protezione.\n• I contatori mostrano le tue statistiche di blocco.\n• L\'elenco in basso mostra le ultime chiamate bloccate.</string>
     <string name="home_title">TU DÉGAGES</string>
+    <string name="home_title_translation">Vattene</string>
     <string name="home_subtitle">L\'IA che risponde ai tuoi spammer</string>
     <string name="home_hero_welcome">ti dà il benvenuto!</string>
     <string name="home_hero_badge">🤖 L\'app di blocco intelligente dello spam con risposta IA</string>
@@ -418,6 +423,17 @@
 
     <string name="manual_q29_title">Come segnalare un bug o dare un feedback?</string>
     <string name="manual_q29_body">Puoi scriverci direttamente all\'indirizzo di contatto indicato in Informazioni. Descrivi il problema riscontrato (modello di telefono, versione di Android, cosa è successo) — ci aiuta enormemente a migliorare Tu dégages.</string>
+
+    <string name="manual_q30_title"></string>
+    <string name="manual_q30_body"></string>
+    <string name="manual_q31_title"></string>
+    <string name="manual_q31_body"></string>
+
+    <string name="manual_q32_title">🇮🇹 Perché Tu dégages non blocca tutto automaticamente in Italia?</string>
+    <string name="manual_q32_body">L\'Italia ha diverse fonti ufficiali interessanti — l\'AGCOM (autorità per le comunicazioni), il Registro Pubblico delle Opposizioni (l\'equivalente italiano di Bloctel/TPS) e il Garante per la Protezione dei Dati Personali — ma nessuna pubblica un elenco di numeri spam scaricabile e pronto per essere integrato in un\'app.\n\nL\'RPO regola le chiamate di marketing verso i numeri iscritti, ma non è una lista di numeri da bloccare. Il Garante pubblica sanzioni e decisioni sul telemarketing aggressivo, non un database di numeri. Siti come Tellows Italia o Chi Chiama permettono di verificare un singolo numero, ma non offrono un elenco completo da importare.\n\nPer questo la protezione in Italia si basa soprattutto sul database della community: segnala i numeri spam che ricevi, e verranno bloccati anche per tutti gli altri.</string>
+
+    <string name="manual_q33_title">🇪🇸 Perché Tu dégages non blocca tutto automaticamente in Spagna?</string>
+    <string name="manual_q33_body">La Spagna ha fonti ufficiali utili — l\'AEPD (autorità per la protezione dei dati), la Lista Robinson (l\'equivalente spagnolo di Bloctel/TPS) e il Ministerio para la Transformación Digital — ma nessuna pubblica un elenco di numeri spam pronto da integrare: la Lista Robinson elenca i consumatori che hanno rifiutato le chiamate di marketing, non i numeri di chi chiama.\n\nDal 2025 la normativa spagnola vieta l\'uso dei prefissi mobili classici (6 e 7) per le campagne commerciali e rafforza la lotta allo spoofing — buone notizie, ma comunque non un database scaricabile.\n\nTu dégages usa le fasce spagnole a tariffazione aggiuntiva (803, 806, 807, 907), molto più affidabili, e si basa soprattutto sul database della community: segnala i numeri che ti chiamano per farli bloccare anche per tutti gli altri.</string>
 
     <!-- ── Informazioni ────────────────────────────────────────────────────── -->
     <string name="about_title">Informazioni</string>

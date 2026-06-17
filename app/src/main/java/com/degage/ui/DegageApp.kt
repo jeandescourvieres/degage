@@ -63,6 +63,7 @@ fun DegageApp(
     val blockHiddenNumbers by viewModel.blockHiddenNumbers.collectAsStateWithLifecycle()
     val strictMode by viewModel.strictMode.collectAsStateWithLifecycle()
     val country by viewModel.country.collectAsStateWithLifecycle()
+    val homeCountry by viewModel.homeCountry.collectAsStateWithLifecycle()
     val customBlocks by viewModel.customBlocks.collectAsStateWithLifecycle()
     val isPremium by viewModel.isPremium.collectAsStateWithLifecycle()
     val replyLanguage by viewModel.replyLanguage.collectAsStateWithLifecycle()
@@ -197,6 +198,7 @@ fun DegageApp(
                         blockHiddenNumbers = blockHiddenNumbers,
                         strictMode = strictMode,
                         country = country,
+                        homeCountry = homeCountry,
                         replyLanguage = replyLanguage,
                         appLanguage = appLanguage,
                         isPremium = isPremium,

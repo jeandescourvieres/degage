@@ -40,6 +40,7 @@ class MainActivity : AppCompatActivity() {
         com.degage.notifications.NotificationHelper.ensureChannel(this)
         viewModel.ensureBundledListLoaded()
         viewModel.autoSyncIfNeeded()
+        viewModel.ensureHomeCountryDetected()
 
         lifecycleScope.launch {
             LocaleHelper.applyLanguage(prefs.appLanguage.first())

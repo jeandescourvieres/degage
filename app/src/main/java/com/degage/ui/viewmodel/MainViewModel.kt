@@ -138,6 +138,16 @@ class MainViewModel(app: Application) : AndroidViewModel(app) {
     val appLanguage: StateFlow<String> = prefs.appLanguage
         .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5000), "")
 
+    val homeCountry: StateFlow<String> = prefs.homeCountry
+        .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5000), "")
+
+    /** Détecte le pays de l'utilisateur (SIM, sinon région système) et le fige une seule fois. */
+    fun ensureHomeCountryDetected() = viewModelScope.launch {
+        if (prefs.homeCountry.first().isBlank()) {
+            prefs.setHomeCountry(com.degage.locale.CountryDetector.detectHomeCountry(getApplication()))
+        }
+    }
+
     fun setAppLanguage(value: String) = viewModelScope.launch {
         prefs.setAppLanguage(value)
         com.degage.locale.LocaleHelper.applyLanguage(value)

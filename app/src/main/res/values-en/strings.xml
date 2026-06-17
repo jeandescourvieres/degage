@@ -69,7 +69,7 @@
         <item>🌍 Community database (sync and contribution)</item>
         <item>🚫 Manual blocking of numbers and prefixes</item>
         <item>⬇️ CSV export of history</item>
-        <item>🇨🇭 Switzerland mode (OFCOM numbers)</item>
+        <item>🌍 Extra countries available (on top of your own, already included for free)</item>
         <item>🇩🇪🇮🇹🇬🇧 Voice replies in German, Italian and English</item>
     </string-array>
     <string name="premium_price_monthly">€1</string>
@@ -232,7 +232,7 @@
     <string name="settings_help_show">Why this setting?</string>
     <string name="settings_help_hide">Hide explanation</string>
     <string name="settings_help_app_lang">This setting only changes the language of the interface (menus, buttons, app screens). It has no effect on the language spoken to telemarketers — for that, see "Voice message language" below. Choose "System" so the app automatically follows your phone\'s language.</string>
-    <string name="settings_help_country">The selected country adapts the unwanted-number database and the phone number formats monitored for automatic spam detection. Choose "Switzerland" if you mostly receive calls from Swiss telemarketers.</string>
+    <string name="settings_help_country">The selected country adapts the unwanted-number database and the phone number formats monitored for automatic spam detection.\n\nYour country (detected from your SIM card) is free. Other countries are a Premium option — useful if you also receive telemarketing calls from another country (dual nationality, expatriation, cross-border numbers...).</string>
     <string name="settings_help_reply_lang">This is the language Tu dégages speaks aloud to telemarketers during a screened call. It\'s independent from the app\'s language: you can have the app in French while voice messages are in German. German, Italian and English are Premium-only.</string>
     <string name="settings_help_protection_title">Protection and blocking</string>
     <string name="settings_help_protection">"Protection" is the master switch: when off, Tu dégages lets every call ring normally without filtering anything. "Auto-answer" answers suspicious calls without making your phone ring. "Block number after reply" adds the number to your blacklist after replying to it, so it gets rejected instantly next time. "Notifications" alerts you for every blocked call.</string>
@@ -255,16 +255,20 @@
     <string name="settings_nav_about">About</string>
 
     <string name="settings_country_label">Country</string>
-    <string name="settings_country_desc">Adapts the unwanted-number database to your country.</string>
+    <string name="settings_country_desc">Adapts the unwanted-number database to your country. The country detected on your phone is included for free.</string>
     <string name="country_fr">🇫🇷 France</string>
     <string name="country_ch">🇨🇭 Switzerland</string>
+    <string name="country_uk">🇬🇧 United Kingdom</string>
+    <string name="country_de">🇩🇪 Germany</string>
+    <string name="country_it">🇮🇹 Italy</string>
+    <string name="country_es">🇪🇸 Spain</string>
 
     <string name="settings_app_lang_label">App language</string>
     <string name="settings_app_lang_desc">Interface language of Tu dégages.</string>
     <string name="lang_system">📱 System</string>
-    <string name="lang_fr">🇫🇷 Français</string>
-    <string name="lang_de">🇩🇪 Deutsch</string>
-    <string name="lang_it">🇮🇹 Italiano</string>
+    <string name="lang_fr">🇫🇷 French</string>
+    <string name="lang_de">🇩🇪 German</string>
+    <string name="lang_it">🇮🇹 Italian</string>
     <string name="lang_en">🇬🇧 English</string>
 
     <string name="settings_reply_lang_label">Voice message language</string>
@@ -296,6 +300,7 @@
     <string name="home_info_title">Home screen</string>
     <string name="home_info_content">Tu dégages protects your phone against telemarketing calls.\n\n• The ON/OFF button enables or disables protection.\n• The counters show your blocking statistics.\n• The list at the bottom shows the most recent blocked calls.</string>
     <string name="home_title">TU DÉGAGES</string>
+    <string name="home_title_translation">Get lost</string>
     <string name="home_subtitle">The AI that answers your spammers</string>
     <string name="home_hero_welcome">welcomes you!</string>
     <string name="home_hero_badge">🤖 The smart spam-blocking app with AI replies</string>
@@ -418,6 +423,16 @@
 
     <string name="manual_q29_title">How do I report a bug or give feedback?</string>
     <string name="manual_q29_body">You can write to us directly at the contact address shown in About. Describe the issue (phone model, Android version, what happened) — it helps us a lot to improve Tu dégages.</string>
+
+    <string name="manual_q30_title">🇬🇧 Why doesn\'t Tu dégages block everything automatically in the UK?</string>
+    <string name="manual_q30_body">Unlike France or Switzerland, the UK has no single public database of spam numbers that an app can simply plug into. Ofcom, the ICO and the TPS are regulators and opt-out registries — not downloadable blocklists.\n\nBroad prefixes such as 020 (the whole of London), 07 (every UK mobile number) or 0800 (also used by legitimate freephone lines) can\'t be turned into automatic blocking rules without flagging thousands of innocent calls — unlike the narrow premium-rate or VoIP prefixes used for France and Switzerland.\n\nThat\'s why protection in the UK currently relies mainly on the community database: report spam numbers as you receive them, and they get blocked for everyone else too.</string>
+    <string name="manual_q31_title"></string>
+    <string name="manual_q31_body"></string>
+    <string name="manual_q32_title"></string>
+    <string name="manual_q32_body"></string>
+
+    <string name="manual_q33_title">🇪🇸 Why doesn\'t Tu dégages block everything automatically in Spain?</string>
+    <string name="manual_q33_body">Spain has useful official sources — the AEPD (data protection authority), the Lista Robinson (Spain\'s equivalent of Bloctel/TPS) and the Ministerio para la Transformación Digital — but none of them publish a ready-to-use spam number list: the Lista Robinson lists consumers who opted out of marketing calls, not the numbers of the telemarketers themselves.\n\nSince 2025, Spanish regulation bans the use of regular mobile prefixes (6 and 7) for commercial campaigns and strengthens anti-spoofing rules — good news, but still not a downloadable number database.\n\nTu dégages uses Spain\'s narrow premium-rate ranges (803, 806, 807, 907), which are far more reliable, and relies mainly on the community database: report the numbers that call you so they get blocked for everyone else too.</string>
 
     <!-- ── About ────────────────────────────────────────────────────── -->
     <string name="about_title">About</string>

@@ -36,6 +36,7 @@ class AppPreferences(private val context: Context) {
         val KEY_IS_PREMIUM = booleanPreferencesKey("is_premium")
         val KEY_REPLY_LANGUAGE = stringPreferencesKey("reply_language")
         val KEY_APP_LANGUAGE = stringPreferencesKey("app_language")
+        val KEY_HOME_COUNTRY = stringPreferencesKey("home_country")
     }
 
     val isEnabled: Flow<Boolean> = context.dataStore.data.map { it[KEY_ENABLED] ?: true }
@@ -72,6 +73,8 @@ class AppPreferences(private val context: Context) {
     }
     // "" = suit la langue du système (parmi FR/DE/IT/EN, sinon FR par défaut)
     val appLanguage: Flow<String> = context.dataStore.data.map { it[KEY_APP_LANGUAGE] ?: "" }
+    // Pays détecté (SIM/région) et figé au premier lancement — "" = pas encore détecté.
+    val homeCountry: Flow<String> = context.dataStore.data.map { it[KEY_HOME_COUNTRY] ?: "" }
 
     suspend fun setEnabled(value: Boolean) = context.dataStore.edit { it[KEY_ENABLED] = value }
     suspend fun setActiveMode(mode: String) = context.dataStore.edit { it[KEY_MODE] = mode }
@@ -93,4 +96,5 @@ class AppPreferences(private val context: Context) {
     suspend fun setPremium(value: Boolean) = context.dataStore.edit { it[KEY_IS_PREMIUM] = value }
     suspend fun setReplyLanguage(value: String) = context.dataStore.edit { it[KEY_REPLY_LANGUAGE] = value }
     suspend fun setAppLanguage(value: String) = context.dataStore.edit { it[KEY_APP_LANGUAGE] = value }
+    suspend fun setHomeCountry(value: String) = context.dataStore.edit { it[KEY_HOME_COUNTRY] = value }
 }
