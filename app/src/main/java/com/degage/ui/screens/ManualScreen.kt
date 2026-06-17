@@ -184,6 +184,12 @@ fun ManualScreen(onBack: () -> Unit) {
             }
             item {
                 ManualSection(
+                    title = stringResource(R.string.manual_q35_title),
+                    body = stringResource(R.string.manual_q35_body)
+                )
+            }
+            item {
+                ManualSection(
                     title = stringResource(R.string.manual_q16_title),
                     body = stringResource(R.string.manual_q16_body)
                 )

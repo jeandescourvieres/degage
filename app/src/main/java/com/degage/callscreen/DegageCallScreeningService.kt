@@ -106,6 +106,25 @@ class DegageCallScreeningService : CallScreeningService() {
                 return@launch
             }
 
+            // ── Indicatif international à risque (arnaque Wangiri) → rejet immédiat, sans
+            // sonnerie ni message : l'arnaque repose sur l'appel manqué qui incite à
+            // rappeler, donc le seul fait de ne jamais le montrer comme manqué la neutralise.
+            if (!isUnknown && normalized.isNotBlank() && rawNumber!!.isWangiriRiskNumber()) {
+                silentReject(callDetails)
+                db.blockedCallDao().insert(
+                    BlockedCallEntity(
+                        phoneNumber = rawNumber.displayNumber(),
+                        timestamp = System.currentTimeMillis(),
+                        modeName = "Auto",
+                        replyUsed = "Rejet automatique — indicatif international à risque (Wangiri)"
+                    )
+                )
+                if (notificationsEnabled) {
+                    NotificationHelper.notifyBlockedCall(applicationContext, rawNumber.displayNumber(), "indicatif à risque")
+                }
+                return@launch
+            }
+
             // ── Numéro correspondant à une règle personnalisée → rejet immédiat ──
             if (!isUnknown && normalized.isNotBlank()) {
                 val isCustomExact = db.customBlockDao().isExactBlocked(normalized)

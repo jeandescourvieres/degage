@@ -89,6 +89,38 @@ val SPAM_PREFIXES_STRICT_CH: List<String> = buildList {
 // des centres d'appels — d'où le rattachement au mode strict plutôt qu'au défaut.
 val SPAM_PREFIXES_STRICT_ES = listOf("901", "902")
 
+// Indicatifs internationaux les plus cités par l'ARCEP/33700 pour l'arnaque « Wangiri »
+// (un appel, raccroché immédiatement, sur un numéro surtaxé, pour inciter la victime à
+// rappeler). Volontairement limité aux indicatifs sans diaspora significative en Europe
+// (Maroc, Tunisie, Sénégal... sont exclus pour éviter de bloquer des appels familiaux légitimes).
+private val WANGIRI_RISK_CALLING_CODES = listOf(
+    "371", // Lettonie
+    "373", // Moldavie
+    "675", // Papouasie-Nouvelle-Guinée
+    "676", // Tonga
+    "677", // Îles Salomon
+    "678", // Vanuatu
+    "679", // Fidji
+    "681", // Wallis-et-Futuna
+    "683", // Niue
+    "685", // Samoa
+    "686", // Kiribati
+    "688", // Tuvalu
+    "870", // Inmarsat (téléphonie satellite)
+)
+
+// Un appel Wangiri se présente toujours en international (+ ou 00), jamais au format
+// national : pas de risque de confondre avec un numéro domestique du pays de l'utilisateur.
+fun String.isWangiriRiskNumber(): Boolean {
+    val clean = this.replace(" ", "").replace("-", "").replace(".", "")
+    val intl = when {
+        clean.startsWith("+") -> clean.drop(1)
+        clean.startsWith("00") -> clean.drop(2)
+        else -> return false
+    }
+    return WANGIRI_RISK_CALLING_CODES.any { intl.startsWith(it) }
+}
+
 private val UNKNOWN_MARKERS = listOf(
     "inconnu", "unknown", "privé", "private",
     "masqué", "hidden", "anonymous", "withheld"
