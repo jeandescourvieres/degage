@@ -311,7 +311,7 @@
     <string name="home_badge_others_block">❌ Le altre app bloccano la chiamata.</string>
     <string name="home_badge_we_reply">✅ TU DÉGAGES risponde, chiacchiera, chiude… e poi blocca!</string>
     <string name="home_badge_offline">📡 Funziona anche offline.</string>
-    <string name="home_badge_countries">🇫🇷 Sviluppato per la Francia.\n🇨🇭 E la Svizzera.</string>
+    <string name="home_badge_countries">🇫🇷 Sviluppato per la Francia.\n🇨🇭 E la Svizzera.\nE per altri paesi. 🇩🇪🇪🇸🇮🇹🇬🇧</string>
     <string name="home_badge_languages">🌍 Risposte IA in francese, tedesco, italiano, inglese e spagnolo…</string>
     <string name="home_protection_title">🛡️ La tua protezione a colpo d\'occhio</string>
     <string name="home_protection_intro">Verifica a colpo d\'occhio se TU DÉGAGES è attivo, e attiva o disattiva la protezione direttamente da qui.</string>

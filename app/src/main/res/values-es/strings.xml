@@ -322,7 +322,7 @@
     <string name="home_badge_others_block">❌ Las demás aplicaciones bloquean la llamada.</string>
     <string name="home_badge_we_reply">✅ ¡TU DÉGAGES descuelga, charla, cuelga… y bloquea!</string>
     <string name="home_badge_offline">📡 Funciona incluso sin conexión.</string>
-    <string name="home_badge_countries">🇫🇷 Desarrollada para Francia.\n🇨🇭 Y Suiza.</string>
+    <string name="home_badge_countries">🇫🇷 Desarrollada para Francia.\n🇨🇭 Y Suiza.\nY para otros países. 🇩🇪🇪🇸🇮🇹🇬🇧</string>
     <string name="home_badge_languages">🌍 Respuestas IA en francés, alemán, italiano, inglés y español…</string>
     <string name="home_protection_title">🛡️ Tu protección de un vistazo</string>
     <string name="home_protection_intro">Comprueba de un vistazo a continuación si TU DÉGAGES está activa. La activación (o desactivación) de la protección se hace directamente aquí.</string>

@@ -322,7 +322,7 @@
     <string name="home_badge_others_block">❌ Les autres applications bloquent l\'appel.</string>
     <string name="home_badge_we_reply">✅ TU DÉGAGES décroche, papote, raccroche… et puis bloque !</string>
     <string name="home_badge_offline">📡 Fonctionne même hors ligne.</string>
-    <string name="home_badge_countries">🇫🇷 Développé pour la France.\n🇨🇭 Et la Suisse.</string>
+    <string name="home_badge_countries">🇫🇷 Développé pour la France.\n🇨🇭 Et la Suisse.\nEt pour d\'autres pays. 🇩🇪🇪🇸🇮🇹🇬🇧</string>
     <string name="home_badge_languages">🌍 Réponses IA en français, allemand, italien, anglais et espagnol…</string>
     <string name="home_protection_title">🛡️ Votre protection en un coup d\'œil</string>
     <string name="home_protection_intro">Vérifiez en un clin d\'œil ci-dessous si TU DÉGAGES est actif. L\'activation (ou la désactivation) de la protection se fait directement ici.</string>

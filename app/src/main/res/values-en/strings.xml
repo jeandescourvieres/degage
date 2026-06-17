@@ -311,7 +311,7 @@
     <string name="home_badge_others_block">❌ Other apps just block the call.</string>
     <string name="home_badge_we_reply">✅ TU DÉGAGES picks up, chats, hangs up… then blocks!</string>
     <string name="home_badge_offline">📡 Works even offline.</string>
-    <string name="home_badge_countries">🇫🇷 Developed for France.\n🇨🇭 And Switzerland.</string>
+    <string name="home_badge_countries">🇫🇷 Developed for France.\n🇨🇭 And Switzerland.\nAnd for other countries. 🇩🇪🇪🇸🇮🇹🇬🇧</string>
     <string name="home_badge_languages">🌍 AI replies in French, German, Italian, English and Spanish…</string>
     <string name="home_protection_title">🛡️ Your protection at a glance</string>
     <string name="home_protection_intro">Check at a glance whether TU DÉGAGES is active, and turn protection on or off directly here.</string>
