@@ -54,6 +54,12 @@ class MainViewModel(app: Application) : AndroidViewModel(app) {
                 AppMode.SARCASTIQUE -> "Congratulations, you've reached the most sarcastic voicemail in the country."
                 AppMode.TROLL -> "Please hold, your call is very important to us."
             }
+            "ES" -> when (mode) {
+                AppMode.POLI -> "Esta línea no acepta solicitudes comerciales."
+                AppMode.ADMINISTRATIF -> "Su llamada ha sido clasificada como publicidad no solicitada."
+                AppMode.SARCASTIQUE -> "Felicidades, ha alcanzado el buzón de voz más sarcástico de España."
+                AppMode.TROLL -> "Espere por favor, su llamada es muy importante para nosotros."
+            }
             else -> when (mode) {
                 AppMode.POLI -> "Cette ligne n'accepte pas les sollicitations commerciales."
                 AppMode.ADMINISTRATIF -> "Votre appel a été classé comme démarchage non sollicité."
@@ -160,6 +166,7 @@ class MainViewModel(app: Application) : AndroidViewModel(app) {
                 "de" -> "DE"
                 "it" -> "IT"
                 "en" -> "EN"
+                "es" -> "ES"
                 else -> "FR"
             }
         }

@@ -90,6 +90,7 @@
     <string name="reply_lang_de">tedesco</string>
     <string name="reply_lang_it">italiano</string>
     <string name="reply_lang_en">inglese</string>
+    <string name="reply_lang_es">spagnolo</string>
     <string name="reply_lang_fr">francese</string>
     <string name="mb_intro_title">Come comporre il tuo messaggio?</string>
     <string name="mb_intro_desc">Tu dégages assembla automaticamente un messaggio in 3 parti prima di riagganciare. Scegli liberamente un\'opzione per ogni sezione:</string>
@@ -270,6 +271,7 @@
     <string name="lang_de">🇩🇪 Tedesco</string>
     <string name="lang_it">🇮🇹 Italiano</string>
     <string name="lang_en">🇬🇧 Inglese</string>
+    <string name="lang_es">🇪🇸 Spagnolo</string>
 
     <string name="settings_reply_lang_label">Lingua dei messaggi vocali</string>
     <string name="settings_reply_lang_desc">Lingua in cui Tu dégages risponde ai call center (utile nella Svizzera tedesca o italiana).</string>
@@ -370,8 +372,8 @@
     <string name="manual_q11_title">🇫🇷🇨🇭 Tu dégages funziona in Svizzera?</string>
     <string name="manual_q11_body">Sì! In Impostazioni, scegli il tuo paese (🇫🇷 Francia o 🇨🇭 Svizzera) in cima all\'elenco.\n\nIn Svizzera, Tu dégages rileva in particolare:\n\n• I numeri a valore aggiunto (0900, 0901, 0906) — business, marketing e intrattenimento, assegnati individualmente dall\'OFCOM.\n• I numeri aziendali nazionali a costo condiviso (0840, 0842, 0844, 0848, 0878) — spesso usati come numeri di reindirizzamento da call center e hotline commerciali.\n\nIl database della community e la tua cronologia personale funzionano esattamente allo stesso modo, qualunque sia il paese scelto.</string>
 
-    <string name="manual_q12_title">🇩🇪🇮🇹 Si può rispondere in tedesco o in italiano (altre regioni della Svizzera)?</string>
-    <string name="manual_q12_body">Sì. In Impostazioni, subito sotto il selettore del paese, scegli la «Lingua dei messaggi vocali»: 🇫🇷 Français, 🇩🇪 Deutsch o 🇮🇹 Italiano.\n\nNella lingua scelta, Tu dégages riproduce un messaggio fisso adattato alla modalità attiva (Cortese, Amministrativo, Sarcastico o Troll), con una voce corrispondente se il tuo telefono ne offre una.\n\nQuesta impostazione non cambia la lingua dell\'app stessa, che resta in francese — cambia solo il messaggio ascoltato dal call center.</string>
+    <string name="manual_q12_title">🇩🇪🇮🇹🇬🇧🇪🇸 Si può rispondere in tedesco, in italiano, in inglese o in spagnolo?</string>
+    <string name="manual_q12_body">Sì. In Impostazioni, subito sotto il selettore del paese, scegli la «Lingua dei messaggi vocali»: 🇫🇷 Français, 🇩🇪 Deutsch, 🇮🇹 Italiano, 🇬🇧 English o 🇪🇸 Español.\n\nNella lingua scelta, Tu dégages riproduce un messaggio fisso adattato alla modalità attiva (Cortese, Amministrativo, Sarcastico o Troll), con una voce corrispondente se il tuo telefono ne offre una.\n\nQuesta impostazione non cambia la lingua dell\'app stessa, che resta in francese — cambia solo il messaggio ascoltato dal call center.</string>
 
     <string name="manual_q13_title">Quali numeri vengono bloccati?</string>
     <string name="manual_q13_body">Tu dégages combina più fonti:\n\n• Intervalli ARCEP documentati: 52 prefissi francesi ufficialmente assegnati al teleselling.\n• phoneblock.net: database comunitario europeo open source.\n• Signal-Spam France: associazione francese di lotta contro lo spam.\n• Database della community Tu dégages: numeri segnalati dagli utenti (opt-in).\n• La tua cronologia personale: ogni numero che ti ha già chiamato ed è stato trattato come spam.</string>

@@ -36,12 +36,13 @@ class TtsManager(context: Context) {
         }
     }
 
-    // Bascule la langue de synthèse vocale ("FR", "DE", "IT" ou "EN")
+    // Bascule la langue de synthèse vocale ("FR", "DE", "IT", "EN" ou "ES")
     fun setLanguage(languageCode: String) {
         val locale = when (languageCode) {
             "DE" -> Locale.GERMAN
             "IT" -> Locale.ITALIAN
             "EN" -> Locale.UK
+            "ES" -> Locale("es", "ES")
             else -> Locale.FRENCH
         }
         tts?.language = locale
@@ -54,12 +55,13 @@ class TtsManager(context: Context) {
         }
     }
 
-    // Retourne les voix installées pour la langue donnée ("FR", "DE", "IT" ou "EN"), triées par nom
+    // Retourne les voix installées pour la langue donnée ("FR", "DE", "IT", "EN" ou "ES"), triées par nom
     fun getAvailableVoices(languageCode: String = "FR"): List<Voice> {
         val isoLanguage = when (languageCode) {
             "DE" -> "de"
             "IT" -> "it"
             "EN" -> "en"
+            "ES" -> "es"
             else -> "fr"
         }
         return tts?.voices

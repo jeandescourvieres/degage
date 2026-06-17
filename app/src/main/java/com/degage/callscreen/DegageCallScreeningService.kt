@@ -185,6 +185,7 @@ class DegageCallScreeningService : CallScreeningService() {
                 "DE" -> "Diese Nummer wünscht keine Werbeanrufe."
                 "IT" -> "Questo numero non desidera ricevere chiamate pubblicitarie."
                 "EN" -> "This line does not accept commercial solicitations."
+                "ES" -> "Este número no desea recibir llamadas publicitarias."
                 else -> "Cette ligne refuse les sollicitations commerciales."
             }
             val salutation = db.replyDao().getEnabledGlobalByPart(MessagePart.SALUTATION.name, replyLanguage).firstOrNull()?.text ?: ""

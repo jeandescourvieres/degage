@@ -90,6 +90,7 @@
     <string name="reply_lang_de">allemand</string>
     <string name="reply_lang_it">italien</string>
     <string name="reply_lang_en">anglais</string>
+    <string name="reply_lang_es">espagnol</string>
     <string name="reply_lang_fr">français</string>
     <string name="mb_intro_title">Comment composer votre message ?</string>
     <string name="mb_intro_desc">Tu dégages assemble automatiquement un message en 3 sections avant de raccrocher. L\'application propose déjà des modèles pour chaque section, mais vous pouvez tout modifier à votre convenance, comme expliqué à chaque étape :</string>
@@ -281,6 +282,7 @@
     <string name="lang_de">🇩🇪 Allemand</string>
     <string name="lang_it">🇮🇹 Italien</string>
     <string name="lang_en">🇬🇧 Anglais</string>
+    <string name="lang_es">🇪🇸 Espagnol</string>
 
     <string name="settings_reply_lang_label">Langue des messages vocaux</string>
     <string name="settings_reply_lang_desc">Langue dans laquelle Tu dégages répond aux démarcheurs (utile en Suisse alémanique ou italophone).</string>
@@ -381,8 +383,8 @@
     <string name="manual_q11_title">🇫🇷🇨🇭 Tu dégages fonctionne-t-il en Suisse ?</string>
     <string name="manual_q11_body">Oui ! Dans Paramètres, choisissez votre pays (🇫🇷 France ou 🇨🇭 Suisse) tout en haut de la liste.\n\nEn Suisse, Tu dégages détecte notamment :\n\n• Les numéros à valeur ajoutée (0900, 0901, 0906) — business, marketing et divertissement, attribués individuellement par l\'OFCOM.\n• Les numéros d\'entreprise nationaux à coût partagé (0840, 0842, 0844, 0848, 0878) — souvent utilisés comme numéros de redirection par des centres d\'appels et hotlines commerciales.\n\nLa base communautaire et votre historique personnel fonctionnent exactement de la même façon, quel que soit le pays choisi.</string>
 
-    <string name="manual_q12_title">🇩🇪🇮🇹 Peut-on répondre en allemand ou en italien (autres régions de Suisse) ?</string>
-    <string name="manual_q12_body">Oui. Dans Paramètres, juste sous le sélecteur de pays, choisissez la « Langue des messages vocaux » : 🇫🇷 Français, 🇩🇪 Deutsch ou 🇮🇹 Italiano.\n\nDans la langue choisie, Tu dégages joue un message fixe adapté au mode actif (Poli, Administratif, Sarcastique ou Troll), avec une voix correspondante si votre téléphone en propose une.\n\nCe réglage ne change pas la langue de l\'application elle-même, qui reste en français — seul le message entendu par le démarcheur change.</string>
+    <string name="manual_q12_title">🇩🇪🇮🇹🇬🇧🇪🇸 Peut-on répondre en allemand, en italien, en anglais ou en espagnol ?</string>
+    <string name="manual_q12_body">Oui. Dans Paramètres, juste sous le sélecteur de pays, choisissez la « Langue des messages vocaux » : 🇫🇷 Français, 🇩🇪 Deutsch, 🇮🇹 Italiano, 🇬🇧 English ou 🇪🇸 Español.\n\nDans la langue choisie, Tu dégages joue un message fixe adapté au mode actif (Poli, Administratif, Sarcastique ou Troll), avec une voix correspondante si votre téléphone en propose une.\n\nCe réglage ne change pas la langue de l\'application elle-même, qui reste en français — seul le message entendu par le démarcheur change.</string>
 
     <string name="manual_q13_title">Quels numéros sont bloqués ?</string>
     <string name="manual_q13_body">Tu dégages combine plusieurs sources :\n\n• Plages ARCEP documentées : 52 préfixes français officiellement attribués au démarchage téléphonique.\n• phoneblock.net : base communautaire européenne open source.\n• Signal-Spam France : association française de lutte contre le spam.\n• Base communautaire Tu dégages : numéros signalés par les utilisateurs (opt-in).\n• Votre historique personnel : tout numéro qui vous a déjà appelé et a été traité comme spam.</string>

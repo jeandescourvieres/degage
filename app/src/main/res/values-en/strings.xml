@@ -90,6 +90,7 @@
     <string name="reply_lang_de">German</string>
     <string name="reply_lang_it">Italian</string>
     <string name="reply_lang_en">English</string>
+    <string name="reply_lang_es">Spanish</string>
     <string name="reply_lang_fr">French</string>
     <string name="mb_intro_title">How is your message put together?</string>
     <string name="mb_intro_desc">Tu dégages automatically assembles a message in 3 parts before hanging up. You freely choose one option per section:</string>
@@ -270,6 +271,7 @@
     <string name="lang_de">🇩🇪 German</string>
     <string name="lang_it">🇮🇹 Italian</string>
     <string name="lang_en">🇬🇧 English</string>
+    <string name="lang_es">🇪🇸 Spanish</string>
 
     <string name="settings_reply_lang_label">Voice message language</string>
     <string name="settings_reply_lang_desc">Language in which Tu dégages replies to telemarketers (useful in German- or Italian-speaking Switzerland).</string>
@@ -370,8 +372,8 @@
     <string name="manual_q11_title">🇫🇷🇨🇭 Does Tu dégages work in Switzerland?</string>
     <string name="manual_q11_body">Yes! In Settings, choose your country (🇫🇷 France or 🇨🇭 Switzerland) at the top of the list.\n\nIn Switzerland, Tu dégages notably detects:\n\n• Premium-rate numbers (0900, 0901, 0906) — business, marketing and entertainment, individually assigned by OFCOM.\n• National shared-cost business numbers (0840, 0842, 0844, 0848, 0878) — often used as redirect numbers by call centers and commercial hotlines.\n\nThe community database and your personal history work exactly the same way, regardless of the chosen country.</string>
 
-    <string name="manual_q12_title">🇩🇪🇮🇹 Can it reply in German or Italian (other regions of Switzerland)?</string>
-    <string name="manual_q12_body">Yes. In Settings, just below the country selector, choose the \"Voice message language\": 🇫🇷 Français, 🇩🇪 Deutsch or 🇮🇹 Italiano.\n\nIn the chosen language, Tu dégages plays a fixed message adapted to the active mode (Polite, Administrative, Sarcastic or Troll), with a matching voice if your phone offers one.\n\nThis setting does not change the language of the app itself, which stays in your chosen interface language — only the message heard by the telemarketer changes.</string>
+    <string name="manual_q12_title">🇩🇪🇮🇹🇬🇧🇪🇸 Can it reply in German, Italian, English or Spanish?</string>
+    <string name="manual_q12_body">Yes. In Settings, just below the country selector, choose the \"Voice message language\": 🇫🇷 Français, 🇩🇪 Deutsch, 🇮🇹 Italiano, 🇬🇧 English or 🇪🇸 Español.\n\nIn the chosen language, Tu dégages plays a fixed message adapted to the active mode (Polite, Administrative, Sarcastic or Troll), with a matching voice if your phone offers one.\n\nThis setting does not change the language of the app itself, which stays in your chosen interface language — only the message heard by the telemarketer changes.</string>
 
     <string name="manual_q13_title">Which numbers are blocked?</string>
     <string name="manual_q13_body">Tu dégages combines several sources:\n\n• Documented ARCEP ranges: 52 French prefixes officially assigned to telemarketing.\n• phoneblock.net: open-source European community database.\n• Signal-Spam France: French anti-spam association.\n• Tu dégages community database: numbers reported by users (opt-in).\n• Your personal history: any number that has called you and been treated as spam.</string>

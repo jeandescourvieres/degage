@@ -68,6 +68,7 @@ class AppPreferences(private val context: Context) {
             "de" -> "DE"
             "it" -> "IT"
             "en" -> "EN"
+            "es" -> "ES"
             else -> "FR"
         }
     }

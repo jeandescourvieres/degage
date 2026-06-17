@@ -90,6 +90,7 @@
     <string name="reply_lang_de">Deutsch</string>
     <string name="reply_lang_it">Italienisch</string>
     <string name="reply_lang_en">Englisch</string>
+    <string name="reply_lang_es">Spanisch</string>
     <string name="reply_lang_fr">Französisch</string>
     <string name="mb_intro_title">Wie setzt sich Ihre Nachricht zusammen?</string>
     <string name="mb_intro_desc">Tu dégages stellt automatisch eine Nachricht aus 3 Teilen zusammen, bevor aufgelegt wird. Sie wählen frei eine Option pro Abschnitt:</string>
@@ -270,6 +271,7 @@
     <string name="lang_de">🇩🇪 Deutsch</string>
     <string name="lang_it">🇮🇹 Italienisch</string>
     <string name="lang_en">🇬🇧 Englisch</string>
+    <string name="lang_es">🇪🇸 Spanisch</string>
 
     <string name="settings_reply_lang_label">Sprache der Sprachnachrichten</string>
     <string name="settings_reply_lang_desc">Sprache, in der Tu dégages Werbeanrufern antwortet (nützlich in der deutsch- oder italienischsprachigen Schweiz).</string>
@@ -370,8 +372,8 @@
     <string name="manual_q11_title">🇫🇷🇨🇭 Funktioniert Tu dégages in der Schweiz?</string>
     <string name="manual_q11_body">Ja! Wählen Sie in den Einstellungen ganz oben in der Liste Ihr Land (🇫🇷 Frankreich oder 🇨🇭 Schweiz).\n\nIn der Schweiz erkennt Tu dégages insbesondere:\n\n• Mehrwertdienstnummern (0900, 0901, 0906) — Business, Marketing und Unterhaltung, individuell vom BAKOM (OFCOM) vergeben.\n• Nationale Geschäftsnummern mit geteilten Kosten (0840, 0842, 0844, 0848, 0878) — oft als Weiterleitungsnummern von Callcentern und kommerziellen Hotlines genutzt.\n\nDie Community-Datenbank und Ihr persönlicher Verlauf funktionieren unabhängig vom gewählten Land genau gleich.</string>
 
-    <string name="manual_q12_title">🇩🇪🇮🇹 Kann auf Deutsch oder Italienisch geantwortet werden (andere Regionen der Schweiz)?</string>
-    <string name="manual_q12_body">Ja. Wählen Sie in den Einstellungen direkt unter der Länderauswahl die „Sprache der Sprachnachrichten“: 🇫🇷 Français, 🇩🇪 Deutsch oder 🇮🇹 Italiano.\n\nIn der gewählten Sprache spielt Tu dégages eine feste, an den aktiven Modus (Höflich, Administrativ, Sarkastisch oder Troll) angepasste Nachricht ab, mit einer entsprechenden Stimme, falls Ihr Telefon eine anbietet.\n\nDiese Einstellung ändert nicht die Sprache der App selbst, die auf Französisch bleibt — nur die vom Anrufer gehörte Nachricht ändert sich.</string>
+    <string name="manual_q12_title">🇩🇪🇮🇹🇬🇧🇪🇸 Kann auf Deutsch, Italienisch, Englisch oder Spanisch geantwortet werden?</string>
+    <string name="manual_q12_body">Ja. Wählen Sie in den Einstellungen direkt unter der Länderauswahl die „Sprache der Sprachnachrichten“: 🇫🇷 Français, 🇩🇪 Deutsch, 🇮🇹 Italiano, 🇬🇧 English oder 🇪🇸 Español.\n\nIn der gewählten Sprache spielt Tu dégages eine feste, an den aktiven Modus (Höflich, Administrativ, Sarkastisch oder Troll) angepasste Nachricht ab, mit einer entsprechenden Stimme, falls Ihr Telefon eine anbietet.\n\nDiese Einstellung ändert nicht die Sprache der App selbst, die auf Französisch bleibt — nur die vom Anrufer gehörte Nachricht ändert sich.</string>
 
     <string name="manual_q13_title">Welche Nummern werden blockiert?</string>
     <string name="manual_q13_body">Tu dégages kombiniert mehrere Quellen:\n\n• Dokumentierte ARCEP-Bereiche: 52 französische Präfixe, die offiziell für Telefonwerbung vergeben sind.\n• phoneblock.net: europäische Open-Source-Community-Datenbank.\n• Signal-Spam France: französischer Verband zur Spam-Bekämpfung.\n• Tu dégages Community-Datenbank: von Nutzern gemeldete Nummern (Opt-in).\n• Ihr persönlicher Verlauf: jede Nummer, die Sie bereits angerufen und als Spam behandelt hat.</string>

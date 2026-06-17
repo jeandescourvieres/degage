@@ -39,6 +39,7 @@ class VoiceSettingsViewModel(app: Application) : AndroidViewModel(app) {
             "DE" -> "Hallo. Diese Leitung nimmt keine kommerziellen Werbeanrufe entgegen."
             "IT" -> "Salve. Questa linea non accetta sollecitazioni commerciali."
             "EN" -> "Hello. This line does not accept commercial solicitations."
+            "ES" -> "Hola. Esta línea no acepta solicitudes comerciales."
             else -> "Bonjour, vous êtes bien en communication avec un assistant IA. Votre appel a été identifié comme indésirable. Au revoir."
         }
         ttsManager.setLanguage(lang)

@@ -29,7 +29,7 @@ import kotlinx.coroutines.launch
 
 @Database(
     entities = [BlockedCallEntity::class, ReplyEntity::class, SpamEntry::class, CustomBlockEntity::class, WhitelistEntry::class, CallAttemptEntity::class],
-    version = 8,
+    version = 9,
     exportSchema = false
 )
 abstract class AppDatabase : RoomDatabase() {
@@ -107,6 +107,12 @@ abstract class AppDatabase : RoomDatabase() {
             }
         }
 
+        private val MIGRATION_8_9 = object : Migration(8, 9) {
+            override fun migrate(database: SupportSQLiteDatabase) {
+                DEFAULT_REPLIES_ES.forEach { insertReply(database, it) }
+            }
+        }
+
         private fun insertReply(database: SupportSQLiteDatabase, reply: ReplyEntity) {
             val values = ContentValues().apply {
                 put("text", reply.text)
@@ -122,13 +128,13 @@ abstract class AppDatabase : RoomDatabase() {
         fun getInstance(context: Context): AppDatabase {
             return INSTANCE ?: synchronized(this) {
                 Room.databaseBuilder(context, AppDatabase::class.java, "degage.db")
-                    .addMigrations(MIGRATION_2_3, MIGRATION_3_4, MIGRATION_4_5, MIGRATION_5_6, MIGRATION_6_7, MIGRATION_7_8)
+                    .addMigrations(MIGRATION_2_3, MIGRATION_3_4, MIGRATION_4_5, MIGRATION_5_6, MIGRATION_6_7, MIGRATION_7_8, MIGRATION_8_9)
                     .addCallback(object : Callback() {
                         override fun onCreate(db: SupportSQLiteDatabase) {
                             super.onCreate(db)
                             CoroutineScope(Dispatchers.IO).launch {
                                 getInstance(context).replyDao().let { dao ->
-                                    (DEFAULT_REPLIES + DEFAULT_REPLIES_DE + DEFAULT_REPLIES_IT + DEFAULT_REPLIES_EN).forEach { dao.insert(it) }
+                                    (DEFAULT_REPLIES + DEFAULT_REPLIES_DE + DEFAULT_REPLIES_IT + DEFAULT_REPLIES_EN + DEFAULT_REPLIES_ES).forEach { dao.insert(it) }
                                 }
                             }
                         }
@@ -255,6 +261,34 @@ abstract class AppDatabase : RoomDatabase() {
             ReplyEntity(text = "Goodbye.", modeName = MODE_GLOBAL, partType = MessagePart.ENDING.name, language = "EN"),
             ReplyEntity(text = "Please don't call again.", modeName = MODE_GLOBAL, partType = MessagePart.ENDING.name, isEnabled = false, language = "EN"),
             ReplyEntity(text = "Please forget this number.", modeName = MODE_GLOBAL, partType = MessagePart.ENDING.name, isEnabled = false, language = "EN"),
+        )
+
+        private val DEFAULT_REPLIES_ES = listOf(
+            // ── Salutations globales (espagnol) ───────────────────────────
+            ReplyEntity(text = "Buenos días.", modeName = MODE_GLOBAL, partType = MessagePart.SALUTATION.name, language = "ES"),
+            ReplyEntity(text = "Buenos días y bienvenido.", modeName = MODE_GLOBAL, partType = MessagePart.SALUTATION.name, isEnabled = false, language = "ES"),
+            ReplyEntity(text = "Buenos días. Esta línea está protegida.", modeName = MODE_GLOBAL, partType = MessagePart.SALUTATION.name, isEnabled = false, language = "ES"),
+
+            // ── Corps — Poli (espagnol) ────────────────────────────────────
+            ReplyEntity(text = "Este número no desea recibir llamadas publicitarias.", modeName = AppMode.POLI.name, partType = MessagePart.BODY.name, language = "ES"),
+            ReplyEntity(text = "Por favor, elimine este número de sus listas.", modeName = AppMode.POLI.name, partType = MessagePart.BODY.name, isEnabled = false, language = "ES"),
+
+            // ── Corps — Administratif (espagnol) ──────────────────────────
+            ReplyEntity(text = "Esta llamada ha sido clasificada como publicidad y rechazada automáticamente.", modeName = AppMode.ADMINISTRATIF.name, partType = MessagePart.BODY.name, language = "ES"),
+            ReplyEntity(text = "Las llamadas comerciales no son bienvenidas en esta línea.", modeName = AppMode.ADMINISTRATIF.name, partType = MessagePart.BODY.name, isEnabled = false, language = "ES"),
+
+            // ── Corps — Sarcastique (espagnol) ─────────────────────────────
+            ReplyEntity(text = "Por favor, cuelgue antes de que esto se vuelva incómodo.", modeName = AppMode.SARCASTIQUE.name, partType = MessagePart.BODY.name, language = "ES"),
+            ReplyEntity(text = "Esta línea es alérgica a las llamadas publicitarias.", modeName = AppMode.SARCASTIQUE.name, partType = MessagePart.BODY.name, isEnabled = false, language = "ES"),
+
+            // ── Corps — Troll (espagnol) ───────────────────────────────────
+            ReplyEntity(text = "Espere por favor, su llamada está siendo transferida…", modeName = AppMode.TROLL.name, partType = MessagePart.BODY.name, language = "ES"),
+            ReplyEntity(text = "Un momento por favor, le estamos conectando…", modeName = AppMode.TROLL.name, partType = MessagePart.BODY.name, isEnabled = false, language = "ES"),
+
+            // ── Formules de fin globales (espagnol) ───────────────────────
+            ReplyEntity(text = "Adiós.", modeName = MODE_GLOBAL, partType = MessagePart.ENDING.name, language = "ES"),
+            ReplyEntity(text = "Por favor, no vuelva a llamar.", modeName = MODE_GLOBAL, partType = MessagePart.ENDING.name, isEnabled = false, language = "ES"),
+            ReplyEntity(text = "Por favor, olvide este número.", modeName = MODE_GLOBAL, partType = MessagePart.ENDING.name, isEnabled = false, language = "ES"),
         )
     }
 }

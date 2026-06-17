@@ -120,6 +120,7 @@ fun MessageBuilderScreen(
                 "DE" -> stringResource(R.string.reply_lang_de)
                 "IT" -> stringResource(R.string.reply_lang_it)
                 "EN" -> stringResource(R.string.reply_lang_en)
+                "ES" -> stringResource(R.string.reply_lang_es)
                 else -> replyLanguage
             }
             Row(

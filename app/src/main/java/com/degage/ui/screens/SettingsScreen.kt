@@ -485,6 +485,11 @@ fun ReplyLanguageSelectorRow(language: String, isPremium: Boolean = true, onSetL
                 selected = language == "EN" && !locked,
                 onClick = { if (locked) onUpgrade() else onSetLanguage("EN") }
             )
+            CountryChip(
+                stringResource(R.string.lang_es),
+                selected = language == "ES" && !locked,
+                onClick = { if (locked) onUpgrade() else onSetLanguage("ES") }
+            )
             if (locked) PremiumBadge()
         }
         SettingsHelpToggle(stringResource(R.string.settings_help_reply_lang))
