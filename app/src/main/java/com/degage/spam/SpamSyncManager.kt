@@ -2,6 +2,7 @@ package com.degage.spam
 
 import android.content.Context
 import android.util.Log
+import com.degage.callscreen.fromE164
 import com.degage.database.AppDatabase
 import com.degage.database.entities.SpamEntry
 import kotlinx.coroutines.Dispatchers
@@ -64,13 +65,14 @@ object SpamSyncManager {
         SyncResult("bundled", added)
     }
 
-    suspend fun syncFromSupabase(context: Context): SyncResult = withContext(Dispatchers.IO) {
-        val numbers = SupabaseClient.fetchSpamNumbers()
+    suspend fun syncFromSupabase(context: Context, country: String): SyncResult = withContext(Dispatchers.IO) {
+        val callingCode = com.degage.callscreen.callingCodeFor(country) ?: return@withContext SyncResult("community", 0)
+        val numbers = SupabaseClient.fetchSpamNumbers(callingCode)
         if (numbers.isEmpty()) return@withContext SyncResult("community", 0)
         val db = AppDatabase.getInstance(context)
         var added = 0
         numbers.forEach { number ->
-            val normalized = number.normalizeNumber()
+            val normalized = number.fromE164(country) ?: return@forEach
             if (normalized.length >= 6) {
                 db.spamDao().insert(SpamEntry(number = normalized, source = "community"))
                 added++

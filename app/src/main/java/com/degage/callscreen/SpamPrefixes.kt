@@ -127,3 +127,32 @@ fun String?.displayNumber(): String =
 
 fun String?.normalizeNumber(): String =
     this?.replace(" ", "")?.replace("-", "")?.replace(".", "") ?: ""
+
+// Indicatifs téléphoniques internationaux des pays supportés.
+private val COUNTRY_CALLING_CODES = mapOf(
+    "FR" to "33", "CH" to "41", "UK" to "44", "DE" to "49", "IT" to "39", "ES" to "34"
+)
+
+fun callingCodeFor(country: String): String? = COUNTRY_CALLING_CODES[country]
+
+// Convertit un numéro national normalisé (format local affiché par l'OS) en E.164, avant de le
+// signaler à la base communautaire partagée entre tous les pays — sans ça, un numéro français et
+// un numéro allemand au même enchaînement de chiffres seraient confondus et bloqués pour tous.
+// Cas particulier de l'Italie : le 0 de tronc des numéros fixes est conservé en format
+// international (ex. +39 06 1234567), donc on ne le retire pas.
+fun String.toE164(country: String): String {
+    if (this.startsWith("+")) return this
+    val code = callingCodeFor(country) ?: return this
+    val national = if (country == "IT") this else this.removePrefix("0")
+    return "+$code$national"
+}
+
+// Inverse de toE164 : ne convertit que si le numéro correspond à l'indicatif du pays demandé,
+// pour retrouver le format national local utilisé pour comparer avec les appels entrants.
+fun String.fromE164(country: String): String? {
+    val code = callingCodeFor(country) ?: return null
+    val prefix = "+$code"
+    if (!this.startsWith(prefix)) return null
+    val national = this.removePrefix(prefix)
+    return if (country == "IT") national else "0$national"
+}

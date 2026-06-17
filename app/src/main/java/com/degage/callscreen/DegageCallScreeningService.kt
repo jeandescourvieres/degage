@@ -102,7 +102,7 @@ class DegageCallScreeningService : CallScreeningService() {
                 if (notificationsEnabled) {
                     NotificationHelper.notifyBlockedCall(applicationContext, rawNumber.displayNumber(), "mode strict")
                 }
-                if (contributeDb) SupabaseClient.reportNumber(normalized)
+                if (contributeDb) SupabaseClient.reportNumber(normalized.toE164(country))
                 return@launch
             }
 
@@ -142,7 +142,7 @@ class DegageCallScreeningService : CallScreeningService() {
                 if (notificationsEnabled) {
                     NotificationHelper.notifyBlockedCall(applicationContext, rawNumber.displayNumber(), "numéro connu")
                 }
-                if (contributeDb) SupabaseClient.reportNumber(normalized)
+                if (contributeDb) SupabaseClient.reportNumber(normalized.toE164(country))
                 return@launch
             }
 
@@ -168,7 +168,7 @@ class DegageCallScreeningService : CallScreeningService() {
                         if (notificationsEnabled) {
                             NotificationHelper.notifyBlockedCall(applicationContext, rawNumber.displayNumber(), "appels répétés")
                         }
-                        if (contributeDb) SupabaseClient.reportNumber(normalized)
+                        if (contributeDb) SupabaseClient.reportNumber(normalized.toE164(country))
                         return@launch
                     }
                 }
@@ -244,7 +244,7 @@ class DegageCallScreeningService : CallScreeningService() {
             // ── Mémoriser ce numéro pour rejet immédiat la prochaine fois ────
             if (normalized.isNotBlank()) {
                 db.spamDao().insert(SpamEntry(number = normalized, source = "auto_block"))
-                if (contributeDb) SupabaseClient.reportNumber(normalized)
+                if (contributeDb) SupabaseClient.reportNumber(normalized.toE164(country))
             }
         }
     }

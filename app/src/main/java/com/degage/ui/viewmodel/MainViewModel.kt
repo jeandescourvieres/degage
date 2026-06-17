@@ -195,7 +195,7 @@ class MainViewModel(app: Application) : AndroidViewModel(app) {
             prefs.setBundledLoaded()
         }
         // Sync base communautaire Supabase
-        SpamSyncManager.syncFromSupabase(getApplication())
+        SpamSyncManager.syncFromSupabase(getApplication(), prefs.country.first())
         // Sync depuis les sources réseau publiques
         SpamSyncManager.syncAll(getApplication())
         prefs.setLastSpamSync(System.currentTimeMillis())

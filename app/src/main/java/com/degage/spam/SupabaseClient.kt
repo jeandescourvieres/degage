@@ -16,9 +16,11 @@ object SupabaseClient {
     private const val KEY = "sb_publishable_tqaA4jrnGVPVFEWNVE4rnQ_PJAQlfBK"
     private const val TAG = "SupabaseClient"
 
-    suspend fun fetchSpamNumbers(): List<String> = withContext(Dispatchers.IO) {
+    // Ne récupère que les numéros de l'indicatif pays demandé (ex. "33" pour la France), pour
+    // éviter de télécharger et de faire correspondre des numéros d'autres pays sans rapport.
+    suspend fun fetchSpamNumbers(callingCode: String): List<String> = withContext(Dispatchers.IO) {
         try {
-            val conn = (URL("$BASE/spam_numbers?select=number").openConnection() as HttpURLConnection).apply {
+            val conn = (URL("$BASE/spam_numbers?select=number&number=like.%2B$callingCode*").openConnection() as HttpURLConnection).apply {
                 requestMethod = "GET"
                 connectTimeout = 10_000
                 readTimeout = 20_000
