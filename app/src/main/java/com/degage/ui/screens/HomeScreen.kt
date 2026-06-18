@@ -105,7 +105,7 @@ fun HomeScreen(
                     horizontalAlignment = Alignment.CenterHorizontally
                 ) {
                     Text(
-                        text = "TU DÉGAGES",
+                        text = "TU DÉGAGES!",
                         fontSize = 28.sp,
                         fontWeight = FontWeight.Black,
                         color = NeonGreen,
@@ -116,7 +116,7 @@ fun HomeScreen(
                     if (titleTranslation.isNotBlank()) {
                         Spacer(modifier = Modifier.height(4.dp))
                         Text(
-                            text = "($titleTranslation)",
+                            text = "$titleTranslation !",
                             fontSize = 19.sp,
                             fontWeight = FontWeight.Bold,
                             color = Color.Black,
