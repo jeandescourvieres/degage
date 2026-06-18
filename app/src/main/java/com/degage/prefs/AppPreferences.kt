@@ -37,6 +37,7 @@ class AppPreferences(private val context: Context) {
         val KEY_REPLY_LANGUAGE = stringPreferencesKey("reply_language")
         val KEY_APP_LANGUAGE = stringPreferencesKey("app_language")
         val KEY_HOME_COUNTRY = stringPreferencesKey("home_country")
+        val KEY_FIRST_LAUNCH = longPreferencesKey("first_launch")
     }
 
     val isEnabled: Flow<Boolean> = context.dataStore.data.map { it[KEY_ENABLED] ?: true }
@@ -76,6 +77,8 @@ class AppPreferences(private val context: Context) {
     val appLanguage: Flow<String> = context.dataStore.data.map { it[KEY_APP_LANGUAGE] ?: "" }
     // Pays détecté (SIM/région) et figé au premier lancement — "" = pas encore détecté.
     val homeCountry: Flow<String> = context.dataStore.data.map { it[KEY_HOME_COUNTRY] ?: "" }
+    // 0L = jamais encore enregistré (avant le tout premier appel à setFirstLaunchIfNeeded)
+    val firstLaunch: Flow<Long> = context.dataStore.data.map { it[KEY_FIRST_LAUNCH] ?: 0L }
 
     suspend fun setEnabled(value: Boolean) = context.dataStore.edit { it[KEY_ENABLED] = value }
     suspend fun setActiveMode(mode: String) = context.dataStore.edit { it[KEY_MODE] = mode }
@@ -98,4 +101,9 @@ class AppPreferences(private val context: Context) {
     suspend fun setReplyLanguage(value: String) = context.dataStore.edit { it[KEY_REPLY_LANGUAGE] = value }
     suspend fun setAppLanguage(value: String) = context.dataStore.edit { it[KEY_APP_LANGUAGE] = value }
     suspend fun setHomeCountry(value: String) = context.dataStore.edit { it[KEY_HOME_COUNTRY] = value }
+    // Ne fixe la date que la toute premiere fois : un appel repete ne doit jamais repousser
+    // le depart de l'essai gratuit.
+    suspend fun setFirstLaunchIfNeeded() = context.dataStore.edit {
+        if (it[KEY_FIRST_LAUNCH] == null) it[KEY_FIRST_LAUNCH] = System.currentTimeMillis()
+    }
 }

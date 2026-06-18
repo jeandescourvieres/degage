@@ -41,6 +41,7 @@ class MainActivity : AppCompatActivity() {
         viewModel.ensureBundledListLoaded()
         viewModel.autoSyncIfNeeded()
         viewModel.ensureHomeCountryDetected()
+        viewModel.ensureFirstLaunchRecorded()
 
         lifecycleScope.launch {
             LocaleHelper.applyLanguage(prefs.appLanguage.first())

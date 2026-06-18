@@ -62,6 +62,7 @@
     <string name="premium_title">TU DÉGAGES Premium</string>
     <string name="premium_hero_title">Mit Premium noch weiter gehen</string>
     <string name="premium_hero_subtitle">Der Basisschutz bleibt für immer kostenlos. Premium bringt Personalisierung und Komfort.</string>
+    <string name="premium_trial_banner">Premium-Testphase aktiv: noch %1$d Tage, bevor es zu den kostenlosen Funktionen zurückgeht.</string>
     <string-array name="premium_features">
         <item>🎭 Die Modi Administrativ, Sarkastisch und Troll</item>
         <item>💬 Vollständige Personalisierung der Nachrichten (Baukasten, eigene Sätze)</item>

@@ -25,6 +25,7 @@ import com.degage.ui.theme.*
 @Composable
 fun PremiumScreen(
     isPremium: Boolean,
+    trialDaysRemaining: Int = 0,
     onBack: () -> Unit = {},
     onToggleDevPremium: (Boolean) -> Unit = {},
 ) {
@@ -66,6 +67,27 @@ fun PremiumScreen(
                     fontSize = 13.sp,
                     lineHeight = 19.sp
                 )
+            }
+        }
+
+        if (!isPremium && trialDaysRemaining > 0) {
+            item {
+                Row(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .background(NeonGreen.copy(alpha = 0.12f), RoundedCornerShape(14.dp))
+                        .padding(horizontal = 16.dp, vertical = 12.dp),
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    Text("🎁", fontSize = 16.sp)
+                    Spacer(modifier = Modifier.width(10.dp))
+                    Text(
+                        stringResource(R.string.premium_trial_banner, trialDaysRemaining),
+                        color = Color.White,
+                        fontSize = 13.sp,
+                        fontWeight = FontWeight.SemiBold
+                    )
+                }
             }
         }
 

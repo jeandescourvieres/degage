@@ -66,6 +66,8 @@ fun DegageApp(
     val homeCountry by viewModel.homeCountry.collectAsStateWithLifecycle()
     val customBlocks by viewModel.customBlocks.collectAsStateWithLifecycle()
     val isPremium by viewModel.isPremium.collectAsStateWithLifecycle()
+    val isPremiumUnlocked by viewModel.isPremiumUnlocked.collectAsStateWithLifecycle()
+    val trialDaysRemaining by viewModel.trialDaysRemaining.collectAsStateWithLifecycle()
     val replyLanguage by viewModel.replyLanguage.collectAsStateWithLifecycle()
     val appLanguage by viewModel.appLanguage.collectAsStateWithLifecycle()
 
@@ -149,7 +151,7 @@ fun DegageApp(
                         onPreviewMode = { mode ->
                             viewModel.previewMode(mode)
                         },
-                        isPremium = isPremium,
+                        isPremium = isPremiumUnlocked,
                         onUpgrade = { navController.navigate(Screen.Premium.route) },
                         onBack = { navController.navigateUp() }
                     )
@@ -176,7 +178,7 @@ fun DegageApp(
                         onLoadRecentUnblocked = viewModel::loadRecentUnblockedCalls,
                         onBlockRecentCall = viewModel::blockRecentCall,
                         onNavigateCustomBlocks = { navController.navigate(Screen.CustomBlocks.route) },
-                        isPremium = isPremium,
+                        isPremium = isPremiumUnlocked,
                         onUpgrade = { navController.navigate(Screen.Premium.route) },
                         onBack = { navController.navigateUp() }
                     )
@@ -201,7 +203,7 @@ fun DegageApp(
                         homeCountry = homeCountry,
                         replyLanguage = replyLanguage,
                         appLanguage = appLanguage,
-                        isPremium = isPremium,
+                        isPremium = isPremiumUnlocked,
                         onUpgrade = { navController.navigate(Screen.Premium.route) },
                         onToggleEnabled = viewModel::toggleEnabled,
                         onToggleAutoReject = { viewModel.setAutoReject(!autoReject) },
@@ -325,6 +327,7 @@ fun DegageApp(
                 composable(Screen.Premium.route) {
                     PremiumScreen(
                         isPremium = isPremium,
+                        trialDaysRemaining = trialDaysRemaining,
                         onBack = { navController.popBackStack() },
                         onToggleDevPremium = viewModel::setPremium
                     )

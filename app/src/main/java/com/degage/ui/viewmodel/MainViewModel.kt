@@ -135,7 +135,25 @@ class MainViewModel(app: Application) : AndroidViewModel(app) {
     val country: StateFlow<String> = prefs.country
         .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5000), "FR")
 
+    // Abonnement reel (toggle dev en attendant le vrai paiement) — utilise uniquement pour
+    // l'ecran Premium lui-meme, distinct de l'acces effectif aux fonctions (cf. isPremiumUnlocked).
     val isPremium: StateFlow<Boolean> = prefs.isPremium
+        .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5000), false)
+
+    private val TRIAL_DURATION_MS = 30L * 24 * 60 * 60 * 1000
+
+    val trialDaysRemaining: StateFlow<Int> = prefs.firstLaunch.map { first ->
+        if (first == 0L) 30
+        else ((TRIAL_DURATION_MS - (System.currentTimeMillis() - first)) / (24 * 60 * 60 * 1000))
+            .toInt().coerceIn(0, 30)
+    }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(5000), 30)
+
+    private val isTrialActive: Flow<Boolean> = trialDaysRemaining.map { it > 0 }
+
+    // Acces effectif aux fonctions Premium : abonnement reel OU essai gratuit (30 jours
+    // depuis le premier lancement) encore actif. C'est cette valeur qui doit etre utilisee
+    // pour deverrouiller les ecrans, jamais isPremium directement.
+    val isPremiumUnlocked: StateFlow<Boolean> = combine(isPremium, isTrialActive) { real, trial -> real || trial }
         .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5000), false)
 
     val replyLanguage: StateFlow<String> = prefs.replyLanguage
@@ -146,6 +164,11 @@ class MainViewModel(app: Application) : AndroidViewModel(app) {
 
     val homeCountry: StateFlow<String> = prefs.homeCountry
         .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5000), "")
+
+    /** Enregistre la date du tout premier lancement, point de départ de l'essai gratuit. */
+    fun ensureFirstLaunchRecorded() = viewModelScope.launch {
+        prefs.setFirstLaunchIfNeeded()
+    }
 
     /** Détecte le pays de l'utilisateur (SIM, sinon région système) et le fige une seule fois. */
     fun ensureHomeCountryDetected() = viewModelScope.launch {
