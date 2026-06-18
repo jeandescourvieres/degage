@@ -42,12 +42,26 @@
     <string name="modes_info_title">Modos de respuesta</string>
     <string name="modes_info_content">Los modos definen el tono de la respuesta dada a los spammers antes de colgar.\n\n🤝 Educado — respuesta cortés y firme. Ideal para mantener la discreción.\n\n📋 Administrativo — tono frío y oficial, como un departamento jurídico.\n\n😏 Sarcástico — respuesta humorística para los teleoperadores que lo merecen.\n\n🎭 Troll — hace esperar al spammer 10 segundos antes de colgar. Le hace perder tiempo.\n\nToca un modo para seleccionarlo, luego toca \"Escuchar un ejemplo\" para oírlo.</string>
     <string name="modes_preview_button">Escuchar un ejemplo</string>
-    <string name="mode_poli_desc">Cortés pero firme.\nIdeal para mantener la elegancia.</string>
-    <string name="mode_poli_example">"Esta línea no acepta solicitudes comerciales."</string>
-    <string name="mode_sarcastique_desc">Para los pesados que se lo han ganado.</string>
-    <string name="mode_sarcastique_example">"Felicidades, ha alcanzado el buzón de voz más sarcástico de España."</string>
-    <string name="mode_troll_desc">Hazle perder el tiempo… mucho tiempo.</string>
-    <string name="mode_troll_example">"Espere por favor, su llamada es muy importante para nosotros."</string>
+    <string name="mode_poli_desc">Cortés pero firme. La respuesta perfecta para mantener la elegancia siendo claro.</string>
+    <string name="mode_poli_example">"Hola, gracias por su mensaje y por el interés que me ha mostrado…"</string>
+    <string name="mode_pro_desc">Formal y cuidado. La respuesta que da el pego, como un verdadero servicio de atención al cliente.</string>
+    <string name="mode_pro_example">"Hola, gracias por su contacto. Tras examinar su mensaje…"</string>
+    <string name="mode_amical_desc">Cálido y simpático. Para decir no sin ofender nunca a nadie.</string>
+    <string name="mode_amical_example">"Hola, gracias por haber pensado en mí para esta propuesta…"</string>
+    <string name="mode_direct_desc">Breve y sin rodeos. Lo mínimo necesario, nada más.</string>
+    <string name="mode_direct_example">"Hola, gracias por su mensaje. No estoy interesado en esta propuesta…"</string>
+    <string name="mode_humour_desc">Un toque de absurdo. Para convertir una llamada molesta en un momento divertido.</string>
+    <string name="mode_humour_example">"Hola, gracias por su propuesta. Tras una intensa reunión estratégica conmigo mismo…"</string>
+    <string name="mode_sarcastique_desc">Para los pesados que realmente se lo merecen. El humor mordaz al servicio de la tranquilidad.</string>
+    <string name="mode_sarcastique_example">"Hola, gracias por esta oportunidad manifiestamente excepcional…"</string>
+    <string name="mode_troll_desc">Haz perder el tiempo… mucho tiempo. Un falso procedimiento para los más insistentes.</string>
+    <string name="mode_troll_example">"Hola, su mensaje ha sido recibido y transmitido a mi comité de selección…"</string>
+    <string name="mode_robot_desc">Frío y automatizado. Una respuesta calculada en porcentaje, sin ningún sentimiento.</string>
+    <string name="mode_robot_example">"Hola. Su mensaje ha sido analizado por el sistema…"</string>
+    <string name="mode_froid_desc">Mínimo y sin calidez. Sin justificación, sin nada superfluo.</string>
+    <string name="mode_froid_example">"Hola, mensaje recibido. No estoy interesado en esta propuesta…"</string>
+    <string name="mode_cinglant_desc">Sin rodeos, casi hiriente. Para los más insistentes que no lo entendieron la primera vez.</string>
+    <string name="mode_cinglant_example">"Hola, gracias por su mensaje. Como la mayoría de las propuestas no solicitadas que recibo…"</string>
 
     <!-- ── Pantalla Números bloqueados manualmente ─────────────────────────────── -->
     <string name="custom_block_title">Números bloqueados manualmente</string>

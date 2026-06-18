@@ -42,12 +42,26 @@
     <string name="modes_info_title">Antwortmodi</string>
     <string name="modes_info_content">Die Modi bestimmen den Ton der Antwort an Werbeanrufer, bevor aufgelegt wird.\n\n🤝 Höflich — höfliche, aber bestimmte Antwort. Ideal, um diskret zu bleiben.\n\n📋 Administrativ — kühler, offizieller Ton, wie eine Rechtsabteilung.\n\n😏 Sarkastisch — humorvolle Antwort für Anrufer, die es verdienen.\n\n🎭 Troll — lässt den Spammer 10 Sekunden warten, bevor aufgelegt wird. Lässt ihn Zeit verlieren.\n\nTippen Sie auf einen Modus, um ihn auszuwählen, dann auf \"Vorschau anhören\", um ihn zu hören.</string>
     <string name="modes_preview_button">Vorschau anhören</string>
-    <string name="mode_poli_desc">Höflich, aber bestimmt.\nIdeal, um sauber zu bleiben.</string>
-    <string name="mode_poli_example">"Diese Leitung nimmt keine kommerziellen Werbeanrufe entgegen."</string>
-    <string name="mode_sarcastique_desc">Für notorische Nervensägen.</string>
-    <string name="mode_sarcastique_example">"Herzlichen Glückwunsch, Sie haben die sarkastischste Mailbox Deutschlands erreicht."</string>
-    <string name="mode_troll_desc">Lassen Sie ihn Zeit verlieren… viel Zeit.</string>
-    <string name="mode_troll_example">"Bitte warten Sie, Ihr Anruf ist uns sehr wichtig."</string>
+    <string name="mode_poli_desc">Höflich, aber bestimmt. Die perfekte Antwort, um elegant und dennoch klar zu bleiben.</string>
+    <string name="mode_poli_example">"Guten Tag, vielen Dank für Ihre Nachricht und Ihr Interesse an mir…"</string>
+    <string name="mode_pro_desc">Formell und gepflegt. Die Antwort, die wie ein echter Unternehmens-Kundendienst wirkt.</string>
+    <string name="mode_pro_example">"Guten Tag, vielen Dank für Ihre Kontaktaufnahme. Nach Prüfung Ihrer Nachricht…"</string>
+    <string name="mode_amical_desc">Herzlich und sympathisch. Um Nein zu sagen, ohne jemanden zu verletzen.</string>
+    <string name="mode_amical_example">"Guten Tag, danke, dass Sie an mich gedacht haben…"</string>
+    <string name="mode_direct_desc">Kurz und ohne Umschweife. Das Nötigste, nicht mehr.</string>
+    <string name="mode_direct_example">"Guten Tag, danke für Ihre Nachricht. Ich bin an diesem Angebot nicht interessiert…"</string>
+    <string name="mode_humour_desc">Ein Hauch von Absurdität. Um einen nervigen Anruf in einen amüsanten Moment zu verwandeln.</string>
+    <string name="mode_humour_example">"Guten Tag, danke für Ihr Angebot. Nach einer intensiven Strategiesitzung mit mir selbst…"</string>
+    <string name="mode_sarcastique_desc">Für die, die es wirklich verdient haben. Bissiger Humor im Dienst der Ruhe.</string>
+    <string name="mode_sarcastique_example">"Guten Tag, danke für diese offensichtlich außergewöhnliche Gelegenheit…"</string>
+    <string name="mode_troll_desc">Lassen Sie Zeit verschwenden… viel Zeit. Ein vorgetäuschtes Verfahren für die Hartnäckigsten.</string>
+    <string name="mode_troll_example">"Guten Tag, Ihre Nachricht wurde empfangen und an meinen Auswahlausschuss weitergeleitet…"</string>
+    <string name="mode_robot_desc">Kalt und automatisiert. Eine Antwort, berechnet auf Prozentbasis, ohne jedes Gefühl.</string>
+    <string name="mode_robot_example">"Guten Tag. Ihre Nachricht wurde vom System analysiert…"</string>
+    <string name="mode_froid_desc">Minimal und ohne Wärme. Keine Rechtfertigung, kein Überflüssiges.</string>
+    <string name="mode_froid_example">"Guten Tag, Nachricht erhalten. Ich bin an diesem Angebot nicht interessiert…"</string>
+    <string name="mode_cinglant_desc">Schonungslos, fast verletzend. Für die Hartnäckigsten, die es beim ersten Mal nicht verstanden haben.</string>
+    <string name="mode_cinglant_example">"Guten Tag, danke für Ihre Nachricht. Wie die meisten unerwünschten Anfragen, die ich erhalte…"</string>
 
     <!-- ── Bildschirm Manuell blockierte Nummern ─────────────────────────────── -->
     <string name="custom_block_title">Manuell blockierte Nummern</string>

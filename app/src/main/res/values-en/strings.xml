@@ -42,12 +42,26 @@
     <string name="modes_info_title">Reply modes</string>
     <string name="modes_info_content">Modes define the tone of the reply given to spammers before hanging up.\n\n🤝 Polite — courteous and firm reply. Ideal for staying discreet.\n\n📋 Administrative — cold, official tone, like a legal department.\n\n😏 Sarcastic — humorous reply for telemarketers who deserve it.\n\n🎭 Troll — makes the spammer wait 10 seconds before hanging up. Wastes their time.\n\nTap a mode to select it, then tap \"Listen to a preview\" to hear it.</string>
     <string name="modes_preview_button">Listen to a preview</string>
-    <string name="mode_poli_desc">Courteous but firm.\nIdeal for staying classy.</string>
-    <string name="mode_poli_example">"This line does not accept commercial solicitations."</string>
-    <string name="mode_sarcastique_desc">For callers who really deserve it.</string>
-    <string name="mode_sarcastique_example">"Congratulations, you\'ve reached the most sarcastic voicemail in the country."</string>
-    <string name="mode_troll_desc">Waste their time… a lot of time.</string>
-    <string name="mode_troll_example">"Please hold, your call is very important to us."</string>
+    <string name="mode_poli_desc">Courteous but firm. The perfect reply to stay classy while being clear.</string>
+    <string name="mode_poli_example">"Hello, thank you for your message and for your interest in me…"</string>
+    <string name="mode_pro_desc">Formal and polished. The reply that looks like a real corporate customer service.</string>
+    <string name="mode_pro_example">"Hello, thank you for reaching out. After reviewing your message…"</string>
+    <string name="mode_amical_desc">Warm and friendly. To say no without ever offending anyone.</string>
+    <string name="mode_amical_example">"Hello, thank you for thinking of me for this offer…"</string>
+    <string name="mode_direct_desc">Short and to the point. The bare minimum, nothing more.</string>
+    <string name="mode_direct_example">"Hello, thank you for your message. I\'m not interested in this offer…"</string>
+    <string name="mode_humour_desc">A touch of the absurd. To turn an annoying call into a funny moment.</string>
+    <string name="mode_humour_example">"Hello, thank you for your offer. After an intensive strategy meeting with myself…"</string>
+    <string name="mode_sarcastique_desc">For callers who really deserve it. Biting humour in the service of peace and quiet.</string>
+    <string name="mode_sarcastique_example">"Hello, thank you for this apparently exceptional opportunity…"</string>
+    <string name="mode_troll_desc">Waste their time… a lot of time. A fake procedure for the most persistent.</string>
+    <string name="mode_troll_example">"Hello, your message has been received and forwarded to my selection committee…"</string>
+    <string name="mode_robot_desc">Cold and automated. A reply calculated as a percentage, with no feelings involved.</string>
+    <string name="mode_robot_example">"Hello. Your message has been analysed by the system…"</string>
+    <string name="mode_froid_desc">Minimal and without warmth. No justification, nothing extra.</string>
+    <string name="mode_froid_example">"Hello, message received. I\'m not interested in this offer…"</string>
+    <string name="mode_cinglant_desc">Blunt, almost hurtful. For the most insistent callers who didn\'t get it the first time.</string>
+    <string name="mode_cinglant_example">"Hello, thank you for your message. Like most unsolicited offers I receive…"</string>
 
     <!-- ── Manually blocked numbers screen ─────────────────────────────── -->
     <string name="custom_block_title">Manually blocked numbers</string>

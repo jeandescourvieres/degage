@@ -42,12 +42,26 @@
     <string name="modes_info_title">Modalità di risposta</string>
     <string name="modes_info_content">Le modalità definiscono il tono della risposta data ai call center prima di riagganciare.\n\n🤝 Cortese — risposta cortese ma ferma. Ideale per restare discreti.\n\n📋 Amministrativo — tono freddo e ufficiale, come un servizio legale.\n\n😏 Sarcastico — risposta scherzosa per i venditori che se la meritano.\n\n🎭 Troll — fa attendere il call center 10 secondi prima di riagganciare. Gli fa perdere tempo.\n\nTocca una modalità per selezionarla, poi tocca \"Ascolta un\'anteprima\" per sentirla.</string>
     <string name="modes_preview_button">Ascolta un\'anteprima</string>
-    <string name="mode_poli_desc">Cortese ma fermo.\nIdeale per restare puliti.</string>
-    <string name="mode_poli_example">"Questa linea non accetta sollecitazioni commerciali."</string>
-    <string name="mode_sarcastique_desc">Per chi se lo merita davvero.</string>
-    <string name="mode_sarcastique_example">"Congratulazioni, ha raggiunto la segreteria telefonica più sarcastica d\'Italia."</string>
-    <string name="mode_troll_desc">Fagli perdere tempo… tanto tempo.</string>
-    <string name="mode_troll_example">"Attenda in linea, la sua chiamata è molto importante per noi."</string>
+    <string name="mode_poli_desc">Cortese ma fermo. La risposta perfetta per restare eleganti pur essendo chiari.</string>
+    <string name="mode_poli_example">"Buongiorno, grazie per il suo messaggio e per l\'interesse che mi ha dimostrato…"</string>
+    <string name="mode_pro_desc">Formale e curato. La risposta che fa colpo, come un vero servizio clienti aziendale.</string>
+    <string name="mode_pro_example">"Buongiorno, grazie per il suo contatto. Dopo un esame del suo messaggio…"</string>
+    <string name="mode_amical_desc">Caloroso e simpatico. Per dire no senza mai urtare nessuno.</string>
+    <string name="mode_amical_example">"Buongiorno, grazie per aver pensato a me per questa proposta…"</string>
+    <string name="mode_direct_desc">Breve e senza giri di parole. Il minimo necessario, niente di più.</string>
+    <string name="mode_direct_example">"Buongiorno, grazie per il suo messaggio. Non sono interessato a questa proposta…"</string>
+    <string name="mode_humour_desc">Un tocco di assurdo. Per trasformare una chiamata fastidiosa in un momento buffo.</string>
+    <string name="mode_humour_example">"Buongiorno, grazie per la sua proposta. Dopo una riunione strategica intensiva con me stesso…"</string>
+    <string name="mode_sarcastique_desc">Per i rompiscatole che se lo meritano davvero. L\'umorismo pungente al servizio della tranquillità.</string>
+    <string name="mode_sarcastique_example">"Buongiorno, grazie per questa opportunità a quanto pare eccezionale…"</string>
+    <string name="mode_troll_desc">Fai perdere tempo… molto tempo. Una falsa procedura per i più tenaci.</string>
+    <string name="mode_troll_example">"Buongiorno, il suo messaggio è stato ricevuto e trasmesso al mio comitato di selezione…"</string>
+    <string name="mode_robot_desc">Freddo e automatizzato. Una risposta calcolata in percentuale, senza alcuna emozione.</string>
+    <string name="mode_robot_example">"Buongiorno. Il suo messaggio è stato analizzato dal sistema…"</string>
+    <string name="mode_froid_desc">Minimo e senza calore. Nessuna giustificazione, nessun superfluo.</string>
+    <string name="mode_froid_example">"Buongiorno, messaggio ricevuto. Non sono interessato a questa proposta…"</string>
+    <string name="mode_cinglant_desc">Senza giri di parole, quasi pungente. Per i più insistenti che non hanno capito la prima volta.</string>
+    <string name="mode_cinglant_example">"Buongiorno, grazie per il suo messaggio. Come la maggior parte delle richieste non sollecitate che ricevo…"</string>
 
     <!-- ── Schermata Numeri bloccati manualmente ─────────────────────────────── -->
     <string name="custom_block_title">Numeri bloccati manualmente</string>

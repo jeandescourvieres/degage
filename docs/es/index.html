@@ -268,36 +268,78 @@
 <section id="modes">
   <div class="section-inner reveal">
     <p class="section-label">Los modos</p>
-    <h2 class="section-title">4 formas de decir no.</h2>
+    <h2 class="section-title">10 formas de decir no.</h2>
     <p class="section-sub">Elige el registro de tu IA. Cámbialo cuando quieras.</p>
     <div class="modes-grid">
       <div class="mode-card reveal">
-        <div class="mode-emoji">🤝</div>
+        <div class="mode-emoji">😇</div>
         <h3>Educado</h3>
         <p>Cortés pero firme. La respuesta perfecta para mantener la elegancia siendo claro.</p>
-        <div class="mode-example">"Esta línea no acepta solicitudes comerciales."</div>
-        <button class="mode-listen-btn" onclick="speakMode(this, 'Esta línea no acepta solicitudes comerciales.')">▶️ Escuchar</button>
+        <div class="mode-example">"Hola, gracias por su mensaje y por el interés que me ha mostrado…"</div>
+        <button class="mode-listen-btn" onclick="speakMode(this, 'Hola,\n\nGracias por su mensaje y por el interés que me ha mostrado.\n\nTras leer su propuesta, no deseo darle seguimiento por el momento.\n\nLe agradezco su comprensión y le deseo una excelente continuación.')">▶️ Escuchar</button>
       </div>
       <div class="mode-card reveal">
-        <div class="mode-emoji">📋</div>
-        <h3>Administrativo</h3>
-        <p>Frío, oficial, disuasorio. Tu IA habla como un departamento jurídico.</p>
-        <div class="mode-example">"Su llamada ha sido identificada como teleoperación comercial."</div>
-        <button class="mode-listen-btn" onclick="speakMode(this, 'Su llamada ha sido identificada como teleoperación comercial.')">▶️ Escuchar</button>
+        <div class="mode-emoji">💼</div>
+        <h3>Pro</h3>
+        <p>Formal y cuidado. La respuesta que da el pego, como un verdadero servicio de atención al cliente.</p>
+        <div class="mode-example">"Hola, gracias por su contacto. Tras examinar su mensaje…"</div>
+        <button class="mode-listen-btn" onclick="speakMode(this, 'Hola,\n\nGracias por su contacto.\n\nTras examinar su mensaje, su propuesta no corresponde a mis necesidades actuales. Por lo tanto, no deseo continuar este intercambio.\n\nLe agradezco su gestión y le deseo un buen día.\n\nAtentamente.')">▶️ Escuchar</button>
+      </div>
+      <div class="mode-card reveal">
+        <div class="mode-emoji">😊</div>
+        <h3>Amistoso</h3>
+        <p>Cálido y simpático. Para decir no sin ofender nunca a nadie.</p>
+        <div class="mode-example">"Hola, gracias por haber pensado en mí para esta propuesta…"</div>
+        <button class="mode-listen-btn" onclick="speakMode(this, 'Hola,\n\nGracias por haber pensado en mí para esta propuesta.\n\nAunque parece interesante, no es algo que me convenga actualmente, así que voy a dejarlo pasar.\n\nLe deseo de todos modos mucho éxito en sus gestiones.')">▶️ Escuchar</button>
+      </div>
+      <div class="mode-card reveal">
+        <div class="mode-emoji">⚡</div>
+        <h3>Directo</h3>
+        <p>Breve y sin rodeos. Lo mínimo necesario, nada más.</p>
+        <div class="mode-example">"Hola, gracias por su mensaje. No estoy interesado en esta propuesta…"</div>
+        <button class="mode-listen-btn" onclick="speakMode(this, 'Hola,\n\nGracias por su mensaje.\n\nNo estoy interesado en esta propuesta y no deseo que se me vuelva a contactar al respecto.\n\nBuena continuación.')">▶️ Escuchar</button>
+      </div>
+      <div class="mode-card reveal">
+        <div class="mode-emoji">😂</div>
+        <h3>Humor</h3>
+        <p>Un toque de absurdo. Para convertir una llamada molesta en un momento divertido.</p>
+        <div class="mode-example">"Hola, gracias por su propuesta. Tras una intensa reunión estratégica conmigo mismo…"</div>
+        <button class="mode-listen-btn" onclick="speakMode(this, 'Hola,\n\nGracias por su propuesta.\n\nTras una intensa reunión estratégica conmigo mismo, un café y mi agenda, hemos llegado a la conclusión de que no es el momento adecuado.\n\nPor lo tanto, voy a rechazar esta oferta.\n\nQue tenga un excelente día.')">▶️ Escuchar</button>
       </div>
       <div class="mode-card active reveal">
         <div class="mode-emoji">😏</div>
         <h3>Sarcástico</h3>
-        <p>Para los teleoperadores que realmente se lo merecen. El humor al servicio de la paz.</p>
-        <div class="mode-example">"Felicidades, ha alcanzado el buzón de voz más sarcástico de Francia."</div>
-        <button class="mode-listen-btn" onclick="speakMode(this, 'Felicidades, ha alcanzado el buzón de voz más sarcástico de Francia.')">▶️ Escuchar</button>
+        <p>Para los pesados que realmente se lo merecen. El humor mordaz al servicio de la tranquilidad.</p>
+        <div class="mode-example">"Hola, gracias por esta oportunidad manifiestamente excepcional…"</div>
+        <button class="mode-listen-btn" onclick="speakMode(this, 'Hola,\n\nGracias por esta oportunidad manifiestamente excepcional.\n\nDesgraciadamente, tras un análisis exhaustivo de unos tres segundos, he decidido no dar seguimiento a su propuesta.\n\nLe deseo no obstante buena suerte en su búsqueda de clientes más entusiastas.')">▶️ Escuchar</button>
       </div>
       <div class="mode-card reveal">
-        <div class="mode-emoji">🎭</div>
+        <div class="mode-emoji">😈</div>
         <h3>Troll</h3>
-        <p>El teleoperador espera 15 segundos con música de espera. Tu IA le hace perder el tiempo.</p>
-        <div class="mode-example">"Espere por favor, su llamada es muy importante para nosotros."</div>
-        <button class="mode-listen-btn" onclick="speakMode(this, 'Espere por favor, su llamada es muy importante para nosotros.')">▶️ Escuchar</button>
+        <p>Haz perder el tiempo… mucho tiempo. Un falso procedimiento para los más insistentes.</p>
+        <div class="mode-example">"Hola, su mensaje ha sido recibido y transmitido a mi comité de selección…"</div>
+        <button class="mode-listen-btn" onclick="speakMode(this, 'Hola,\n\nSu mensaje ha sido recibido y transmitido a mi comité de selección.\n\nTras varios debates animados, dos votos en contra, un voto en blanco y la abstención del presidente, se ha tomado la decisión: su propuesta no será aceptada.\n\nLe agradecemos su participación y le deseamos una excelente continuación.')">▶️ Escuchar</button>
+      </div>
+      <div class="mode-card reveal">
+        <div class="mode-emoji">🤖</div>
+        <h3>Robot</h3>
+        <p>Frío y automatizado. Una respuesta calculada en porcentaje, sin ningún sentimiento.</p>
+        <div class="mode-example">"Hola. Su mensaje ha sido analizado por el sistema…"</div>
+        <button class="mode-listen-btn" onclick="speakMode(this, 'Hola.\n\nSu mensaje ha sido analizado por el sistema.\n\nResultado: propuesta detectada. Nivel de interés estimado: 0,7 %.\n\nAcción ejecutada: rechazo cortés.\n\nGracias por su comprensión.\n\nFin de la transmisión.')">▶️ Escuchar</button>
+      </div>
+      <div class="mode-card reveal">
+        <div class="mode-emoji">🥶</div>
+        <h3>Frío</h3>
+        <p>Mínimo y sin calidez. Sin justificación, sin nada superfluo.</p>
+        <div class="mode-example">"Hola, mensaje recibido. No estoy interesado en esta propuesta…"</div>
+        <button class="mode-listen-btn" onclick="speakMode(this, 'Hola,\n\nMensaje recibido.\n\nNo estoy interesado en esta propuesta.\n\nNo se dará ninguna respuesta adicional.\n\nAtentamente.')">▶️ Escuchar</button>
+      </div>
+      <div class="mode-card reveal">
+        <div class="mode-emoji">🔥</div>
+        <h3>Mordaz</h3>
+        <p>Sin rodeos, casi hiriente. Para los más insistentes que no lo entendieron la primera vez.</p>
+        <div class="mode-example">"Hola, gracias por su mensaje. Como la mayoría de las propuestas no solicitadas que recibo…"</div>
+        <button class="mode-listen-btn" onclick="speakMode(this, 'Hola,\n\nGracias por su mensaje.\n\nComo la mayoría de las propuestas no solicitadas que recibo, la suya no presenta ningún interés para mí.\n\nPor lo tanto, le invito a no perder más su tiempo ni el mío continuando este intercambio.\n\nBuena continuación.')">▶️ Escuchar</button>
       </div>
     </div>
   </div>

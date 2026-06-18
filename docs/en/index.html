@@ -268,36 +268,78 @@
 <section id="modes">
   <div class="section-inner reveal">
     <p class="section-label">Modes</p>
-    <h2 class="section-title">4 ways to say no.</h2>
+    <h2 class="section-title">10 ways to say no.</h2>
     <p class="section-sub">Choose your AI's register. Change it whenever you want.</p>
     <div class="modes-grid">
       <div class="mode-card reveal">
-        <div class="mode-emoji">🤝</div>
+        <div class="mode-emoji">😇</div>
         <h3>Polite</h3>
         <p>Courteous but firm. The perfect reply to stay classy while being clear.</p>
-        <div class="mode-example">"This line does not accept commercial solicitations."</div>
-        <button class="mode-listen-btn" onclick="speakMode(this, 'This line does not accept commercial solicitations.')">▶️ Listen</button>
+        <div class="mode-example">"Hello, thank you for your message and for your interest in me…"</div>
+        <button class="mode-listen-btn" onclick="speakMode(this, 'Hello,\n\nThank you for your message and for your interest in me.\n\nHaving read your offer, I don\'t wish to pursue it for now.\n\nThank you for your understanding, and best wishes going forward.')">▶️ Listen</button>
       </div>
       <div class="mode-card reveal">
-        <div class="mode-emoji">📋</div>
-        <h3>Administrative</h3>
-        <p>Cold, official, dissuasive. Your AI talks like a legal department.</p>
-        <div class="mode-example">"Your call has been identified as telemarketing."</div>
-        <button class="mode-listen-btn" onclick="speakMode(this, 'Your call has been identified as telemarketing.')">▶️ Listen</button>
+        <div class="mode-emoji">💼</div>
+        <h3>Pro</h3>
+        <p>Formal and polished. The reply that looks like a real corporate customer service.</p>
+        <div class="mode-example">"Hello, thank you for reaching out. After reviewing your message…"</div>
+        <button class="mode-listen-btn" onclick="speakMode(this, 'Hello,\n\nThank you for reaching out.\n\nAfter reviewing your message, your offer doesn\'t match my current needs. I therefore don\'t wish to continue this exchange.\n\nThank you for your effort, and have a good day.\n\nKind regards.')">▶️ Listen</button>
+      </div>
+      <div class="mode-card reveal">
+        <div class="mode-emoji">😊</div>
+        <h3>Friendly</h3>
+        <p>Warm and friendly. To say no without ever offending anyone.</p>
+        <div class="mode-example">"Hello, thank you for thinking of me for this offer…"</div>
+        <button class="mode-listen-btn" onclick="speakMode(this, 'Hello,\n\nThank you for thinking of me for this offer.\n\nEven though it sounds interesting, it\'s not something that suits me right now, so I\'ll pass.\n\nI wish you every success with your endeavours anyway.')">▶️ Listen</button>
+      </div>
+      <div class="mode-card reveal">
+        <div class="mode-emoji">⚡</div>
+        <h3>Direct</h3>
+        <p>Short and to the point. The bare minimum, nothing more.</p>
+        <div class="mode-example">"Hello, thank you for your message. I'm not interested in this offer…"</div>
+        <button class="mode-listen-btn" onclick="speakMode(this, 'Hello,\n\nThank you for your message.\n\nI\'m not interested in this offer and don\'t wish to be contacted again about it.\n\nAll the best.')">▶️ Listen</button>
+      </div>
+      <div class="mode-card reveal">
+        <div class="mode-emoji">😂</div>
+        <h3>Humour</h3>
+        <p>A touch of the absurd. To turn an annoying call into a funny moment.</p>
+        <div class="mode-example">"Hello, thank you for your offer. After an intensive strategy meeting with myself…"</div>
+        <button class="mode-listen-btn" onclick="speakMode(this, 'Hello,\n\nThank you for your offer.\n\nAfter an intensive strategy meeting with myself, a coffee and my calendar, we concluded this isn\'t the right time.\n\nSo I\'ll decline this offer.\n\nHave an excellent day.')">▶️ Listen</button>
       </div>
       <div class="mode-card active reveal">
         <div class="mode-emoji">😏</div>
         <h3>Sarcastic</h3>
-        <p>For callers who really deserve it. Humor in the service of peace.</p>
-        <div class="mode-example">"Congratulations, you've reached the most sarcastic voicemail in France."</div>
-        <button class="mode-listen-btn" onclick="speakMode(this, 'Congratulations, you have reached the most sarcastic voicemail in France.')">▶️ Listen</button>
+        <p>For callers who really deserve it. Biting humour in the service of peace and quiet.</p>
+        <div class="mode-example">"Hello, thank you for this apparently exceptional opportunity…"</div>
+        <button class="mode-listen-btn" onclick="speakMode(this, 'Hello,\n\nThank you for this apparently exceptional opportunity.\n\nUnfortunately, after a thorough analysis lasting about three seconds, I\'ve decided not to pursue your offer.\n\nI wish you good luck finding more enthusiastic prospects nonetheless.')">▶️ Listen</button>
       </div>
       <div class="mode-card reveal">
-        <div class="mode-emoji">🎭</div>
+        <div class="mode-emoji">😈</div>
         <h3>Troll</h3>
-        <p>The caller waits 15 seconds with hold music. Your AI wastes their time.</p>
-        <div class="mode-example">"Please hold, your call is very important to us."</div>
-        <button class="mode-listen-btn" onclick="speakMode(this, 'Please hold, your call is very important to us.')">▶️ Listen</button>
+        <p>Waste their time… a lot of time. A fake procedure for the most persistent.</p>
+        <div class="mode-example">"Hello, your message has been received and forwarded to my selection committee…"</div>
+        <button class="mode-listen-btn" onclick="speakMode(this, 'Hello,\n\nYour message has been received and forwarded to my selection committee.\n\nAfter several heated debates, two votes against, one abstention and the chair\'s non-vote, a decision has been reached: your offer will not be accepted.\n\nThank you for taking part, and best wishes going forward.')">▶️ Listen</button>
+      </div>
+      <div class="mode-card reveal">
+        <div class="mode-emoji">🤖</div>
+        <h3>Robot</h3>
+        <p>Cold and automated. A reply calculated as a percentage, with no feelings involved.</p>
+        <div class="mode-example">"Hello. Your message has been analysed by the system…"</div>
+        <button class="mode-listen-btn" onclick="speakMode(this, 'Hello.\n\nYour message has been analysed by the system.\n\nResult: offer detected. Estimated interest level: 0.7%.\n\nAction taken: polite refusal.\n\nThank you for your understanding.\n\nEnd of transmission.')">▶️ Listen</button>
+      </div>
+      <div class="mode-card reveal">
+        <div class="mode-emoji">🥶</div>
+        <h3>Cold</h3>
+        <p>Minimal and without warmth. No justification, nothing extra.</p>
+        <div class="mode-example">"Hello, message received. I'm not interested in this offer…"</div>
+        <button class="mode-listen-btn" onclick="speakMode(this, 'Hello,\n\nMessage received.\n\nI\'m not interested in this offer.\n\nNo further action will be taken.\n\nKind regards.')">▶️ Listen</button>
+      </div>
+      <div class="mode-card reveal">
+        <div class="mode-emoji">🔥</div>
+        <h3>Scathing</h3>
+        <p>Blunt, almost hurtful. For the most insistent callers who didn't get it the first time.</p>
+        <div class="mode-example">"Hello, thank you for your message. Like most unsolicited offers I receive…"</div>
+        <button class="mode-listen-btn" onclick="speakMode(this, 'Hello,\n\nThank you for your message.\n\nLike most unsolicited offers I receive, yours holds no interest for me whatsoever.\n\nI\'d therefore suggest we both stop wasting time by continuing this exchange.\n\nAll the best.')">▶️ Listen</button>
       </div>
     </div>
   </div>

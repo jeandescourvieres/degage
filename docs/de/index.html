@@ -268,36 +268,78 @@
 <section id="modes">
   <div class="section-inner reveal">
     <p class="section-label">Die Modi</p>
-    <h2 class="section-title">4 Wege, Nein zu sagen.</h2>
+    <h2 class="section-title">10 Wege, Nein zu sagen.</h2>
     <p class="section-sub">Wählen Sie den Ton Ihrer KI. Ändern Sie ihn, wann immer Sie wollen.</p>
     <div class="modes-grid">
       <div class="mode-card reveal">
-        <div class="mode-emoji">🤝</div>
+        <div class="mode-emoji">😇</div>
         <h3>Höflich</h3>
-        <p>Höflich, aber bestimmt. Die perfekte Antwort, um elegant und gleichzeitig klar zu bleiben.</p>
-        <div class="mode-example">"Diese Nummer lehnt kommerzielle Anfragen ab."</div>
-        <button class="mode-listen-btn" onclick="speakMode(this, 'Diese Nummer lehnt kommerzielle Anfragen ab.')">▶️ Anhören</button>
+        <p>Höflich, aber bestimmt. Die perfekte Antwort, um elegant und dennoch klar zu bleiben.</p>
+        <div class="mode-example">"Guten Tag, vielen Dank für Ihre Nachricht und Ihr Interesse an mir…"</div>
+        <button class="mode-listen-btn" onclick="speakMode(this, 'Guten Tag,\n\nVielen Dank für Ihre Nachricht und Ihr Interesse an mir.\n\nNach Lektüre Ihres Angebots möchte ich vorerst nicht weiter darauf eingehen.\n\nVielen Dank für Ihr Verständnis und alles Gute für Ihre weiteren Vorhaben.')">▶️ Anhören</button>
       </div>
       <div class="mode-card reveal">
-        <div class="mode-emoji">📋</div>
-        <h3>Administrativ</h3>
-        <p>Kühl, offiziell, abschreckend. Ihre KI spricht wie eine Rechtsabteilung.</p>
-        <div class="mode-example">"Ihr Anruf wurde als Werbeanruf eingestuft."</div>
-        <button class="mode-listen-btn" onclick="speakMode(this, 'Ihr Anruf wurde als Werbeanruf eingestuft.')">▶️ Anhören</button>
+        <div class="mode-emoji">💼</div>
+        <h3>Pro</h3>
+        <p>Formell und gepflegt. Die Antwort, die wie ein echter Unternehmens-Kundendienst wirkt.</p>
+        <div class="mode-example">"Guten Tag, vielen Dank für Ihre Kontaktaufnahme. Nach Prüfung Ihrer Nachricht…"</div>
+        <button class="mode-listen-btn" onclick="speakMode(this, 'Guten Tag,\n\nVielen Dank für Ihre Kontaktaufnahme.\n\nNach Prüfung Ihrer Nachricht entspricht Ihr Angebot nicht meinen aktuellen Bedürfnissen. Ich möchte diesen Austausch daher nicht fortsetzen.\n\nVielen Dank für Ihre Bemühungen und einen schönen Tag noch.\n\nMit freundlichen Grüßen.')">▶️ Anhören</button>
+      </div>
+      <div class="mode-card reveal">
+        <div class="mode-emoji">😊</div>
+        <h3>Freundlich</h3>
+        <p>Herzlich und sympathisch. Um Nein zu sagen, ohne jemanden zu verletzen.</p>
+        <div class="mode-example">"Guten Tag, danke, dass Sie an mich gedacht haben…"</div>
+        <button class="mode-listen-btn" onclick="speakMode(this, 'Guten Tag,\n\nDanke, dass Sie an mich gedacht haben.\n\nAuch wenn es interessant klingt, passt es momentan nicht zu mir. Ich werde es daher vorbeiziehen lassen.\n\nIch wünsche Ihnen trotzdem viel Erfolg bei Ihren weiteren Vorhaben.')">▶️ Anhören</button>
+      </div>
+      <div class="mode-card reveal">
+        <div class="mode-emoji">⚡</div>
+        <h3>Direkt</h3>
+        <p>Kurz und ohne Umschweife. Das Nötigste, nicht mehr.</p>
+        <div class="mode-example">"Guten Tag, danke für Ihre Nachricht. Ich bin an diesem Angebot nicht interessiert…"</div>
+        <button class="mode-listen-btn" onclick="speakMode(this, 'Guten Tag,\n\nDanke für Ihre Nachricht.\n\nIch bin an diesem Angebot nicht interessiert und möchte diesbezüglich nicht erneut kontaktiert werden.\n\nAlles Gute.')">▶️ Anhören</button>
+      </div>
+      <div class="mode-card reveal">
+        <div class="mode-emoji">😂</div>
+        <h3>Humorvoll</h3>
+        <p>Ein Hauch von Absurdität. Um einen nervigen Anruf in einen amüsanten Moment zu verwandeln.</p>
+        <div class="mode-example">"Guten Tag, danke für Ihr Angebot. Nach einer intensiven Strategiesitzung mit mir selbst…"</div>
+        <button class="mode-listen-btn" onclick="speakMode(this, 'Guten Tag,\n\nDanke für Ihr Angebot.\n\nNach einer intensiven Strategiesitzung mit mir selbst, einem Kaffee und meinem Kalender sind wir zu dem Schluss gekommen, dass dies nicht der richtige Moment ist.\n\nIch werde dieses Angebot daher ablehnen.\n\nEinen ausgezeichneten Tag noch.')">▶️ Anhören</button>
       </div>
       <div class="mode-card active reveal">
         <div class="mode-emoji">😏</div>
         <h3>Sarkastisch</h3>
-        <p>Für Werbeanrufer, die es wirklich verdienen. Humor im Dienste des Friedens.</p>
-        <div class="mode-example">"Herzlichen Glückwunsch, Sie haben die sarkastischste Mailbox Frankreichs erreicht."</div>
-        <button class="mode-listen-btn" onclick="speakMode(this, 'Herzlichen Glückwunsch, Sie haben die sarkastischste Mailbox Frankreichs erreicht.')">▶️ Anhören</button>
+        <p>Für die, die es wirklich verdient haben. Bissiger Humor im Dienst der Ruhe.</p>
+        <div class="mode-example">"Guten Tag, danke für diese offensichtlich außergewöhnliche Gelegenheit…"</div>
+        <button class="mode-listen-btn" onclick="speakMode(this, 'Guten Tag,\n\nDanke für diese offensichtlich außergewöhnliche Gelegenheit.\n\nLeider habe ich nach einer gründlichen Analyse von etwa drei Sekunden beschlossen, Ihrem Angebot nicht weiter nachzugehen.\n\nIch wünsche Ihnen trotzdem viel Glück bei der Suche nach begeisterungsfähigeren Interessenten.')">▶️ Anhören</button>
       </div>
       <div class="mode-card reveal">
-        <div class="mode-emoji">🎭</div>
+        <div class="mode-emoji">😈</div>
         <h3>Troll</h3>
-        <p>Der Werbeanrufer wartet 15 Sekunden mit Wartemusik. Ihre KI lässt ihn Zeit verlieren.</p>
-        <div class="mode-example">"Bitte warten Sie, Ihr Anruf ist uns sehr wichtig."</div>
-        <button class="mode-listen-btn" onclick="speakMode(this, 'Bitte warten Sie, Ihr Anruf ist uns sehr wichtig.')">▶️ Anhören</button>
+        <p>Lassen Sie Zeit verschwenden… viel Zeit. Ein vorgetäuschtes Verfahren für die Hartnäckigsten.</p>
+        <div class="mode-example">"Guten Tag, Ihre Nachricht wurde empfangen und an meinen Auswahlausschuss weitergeleitet…"</div>
+        <button class="mode-listen-btn" onclick="speakMode(this, 'Guten Tag,\n\nIhre Nachricht wurde empfangen und an meinen Auswahlausschuss weitergeleitet.\n\nNach mehreren lebhaften Debatten, zwei Gegenstimmen, einer Enthaltung und der Stimmenthaltung des Vorsitzenden fiel die Entscheidung: Ihr Angebot wird nicht berücksichtigt.\n\nWir danken Ihnen für Ihre Teilnahme und wünschen Ihnen alles Gute.')">▶️ Anhören</button>
+      </div>
+      <div class="mode-card reveal">
+        <div class="mode-emoji">🤖</div>
+        <h3>Roboter</h3>
+        <p>Kalt und automatisiert. Eine Antwort, berechnet auf Prozentbasis, ohne jedes Gefühl.</p>
+        <div class="mode-example">"Guten Tag. Ihre Nachricht wurde vom System analysiert…"</div>
+        <button class="mode-listen-btn" onclick="speakMode(this, 'Guten Tag.\n\nIhre Nachricht wurde vom System analysiert.\n\nErgebnis: Angebot erkannt. Geschätztes Interessenniveau: 0,7 %.\n\nDurchgeführte Aktion: höfliche Ablehnung.\n\nVielen Dank für Ihr Verständnis.\n\nÜbertragung beendet.')">▶️ Anhören</button>
+      </div>
+      <div class="mode-card reveal">
+        <div class="mode-emoji">🥶</div>
+        <h3>Kühl</h3>
+        <p>Minimal und ohne Wärme. Keine Rechtfertigung, kein Überflüssiges.</p>
+        <div class="mode-example">"Guten Tag, Nachricht erhalten. Ich bin an diesem Angebot nicht interessiert…"</div>
+        <button class="mode-listen-btn" onclick="speakMode(this, 'Guten Tag,\n\nNachricht erhalten.\n\nIch bin an diesem Angebot nicht interessiert.\n\nEs wird keine weitere Reaktion erfolgen.\n\nMit freundlichen Grüßen.')">▶️ Anhören</button>
+      </div>
+      <div class="mode-card reveal">
+        <div class="mode-emoji">🔥</div>
+        <h3>Schneidend</h3>
+        <p>Schonungslos, fast verletzend. Für die Hartnäckigsten, die es beim ersten Mal nicht verstanden haben.</p>
+        <div class="mode-example">"Guten Tag, danke für Ihre Nachricht. Wie die meisten unerwünschten Anfragen, die ich erhalte…"</div>
+        <button class="mode-listen-btn" onclick="speakMode(this, 'Guten Tag,\n\nDanke für Ihre Nachricht.\n\nWie die meisten unerwünschten Anfragen, die ich erhalte, ist Ihr Angebot für mich ohne jedes Interesse.\n\nIch lade Sie daher ein, weder Ihre noch meine Zeit mit der Fortsetzung dieses Austauschs zu verschwenden.\n\nAlles Gute.')">▶️ Anhören</button>
       </div>
     </div>
   </div>
