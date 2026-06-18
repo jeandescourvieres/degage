@@ -56,6 +56,8 @@ fun HomeScreen(
     onNavigateFaq: () -> Unit,
     onNavigateDashboard: () -> Unit,
     onNavigateModes: () -> Unit = {},
+    appLanguage: String = "",
+    onSetAppLanguage: (String) -> Unit = {},
 ) {
     LazyColumn(
         modifier = Modifier
@@ -64,6 +66,10 @@ fun HomeScreen(
             .padding(horizontal = 16.dp),
         verticalArrangement = Arrangement.spacedBy(14.dp)
     ) {
+        item {
+            Spacer(modifier = Modifier.height(4.dp))
+            LanguageFlagHeader(appLanguage = appLanguage, onSetAppLanguage = onSetAppLanguage)
+        }
         item {
             // Hero
             val heroFlash = rememberInfiniteTransition(label = "heroFlash")

@@ -112,7 +112,7 @@ fun ModesScreen(
 
         LazyColumn(verticalArrangement = Arrangement.spacedBy(12.dp)) {
             item {
-                ModesLanguageHeader(appLanguage = appLanguage, onSetAppLanguage = onSetAppLanguage)
+                LanguageFlagHeader(appLanguage = appLanguage, onSetAppLanguage = onSetAppLanguage)
             }
             items(modeInfoList) { mode ->
                 val locked = !isPremium && mode != AppMode.POLI
@@ -145,25 +145,25 @@ fun ModesScreen(
 }
 
 @Composable
-private fun ModesLanguageHeader(appLanguage: String, onSetAppLanguage: (String) -> Unit) {
+fun LanguageFlagHeader(appLanguage: String, onSetAppLanguage: (String) -> Unit) {
     Row(
         modifier = Modifier.fillMaxWidth().padding(bottom = 4.dp),
         horizontalArrangement = Arrangement.End
     ) {
-        ModesLanguageChip("🇫🇷", "FR", selected = appLanguage == "FR", onClick = { onSetAppLanguage("FR") })
+        LanguageFlagChip("🇫🇷", "FR", selected = appLanguage == "FR", onClick = { onSetAppLanguage("FR") })
         Spacer(modifier = Modifier.width(6.dp))
-        ModesLanguageChip("🇩🇪", "D", selected = appLanguage == "DE", onClick = { onSetAppLanguage("DE") })
+        LanguageFlagChip("🇩🇪", "D", selected = appLanguage == "DE", onClick = { onSetAppLanguage("DE") })
         Spacer(modifier = Modifier.width(6.dp))
-        ModesLanguageChip("🇮🇹", "IT", selected = appLanguage == "IT", onClick = { onSetAppLanguage("IT") })
+        LanguageFlagChip("🇮🇹", "IT", selected = appLanguage == "IT", onClick = { onSetAppLanguage("IT") })
         Spacer(modifier = Modifier.width(6.dp))
-        ModesLanguageChip("🇬🇧", "GB", selected = appLanguage == "EN", onClick = { onSetAppLanguage("EN") })
+        LanguageFlagChip("🇬🇧", "GB", selected = appLanguage == "EN", onClick = { onSetAppLanguage("EN") })
         Spacer(modifier = Modifier.width(6.dp))
-        ModesLanguageChip("🇪🇸", "ES", selected = appLanguage == "ES", onClick = { onSetAppLanguage("ES") })
+        LanguageFlagChip("🇪🇸", "ES", selected = appLanguage == "ES", onClick = { onSetAppLanguage("ES") })
     }
 }
 
 @Composable
-private fun ModesLanguageChip(flag: String, code: String, selected: Boolean, onClick: () -> Unit) {
+private fun LanguageFlagChip(flag: String, code: String, selected: Boolean, onClick: () -> Unit) {
     Row(
         verticalAlignment = Alignment.CenterVertically,
         modifier = Modifier

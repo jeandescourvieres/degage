@@ -141,7 +141,9 @@ fun DegageApp(
                         onNavigateSettings = { navController.navigate(Screen.Settings.route) },
                         onNavigateFaq = { navController.navigate(Screen.Manual.route) },
                         onNavigateDashboard = { navController.navigate(Screen.Dashboard.route) },
-                        onNavigateModes = { navController.navigate(Screen.Modes.route) }
+                        onNavigateModes = { navController.navigate(Screen.Modes.route) },
+                        appLanguage = appLanguage,
+                        onSetAppLanguage = { viewModel.setAppLanguage(it) }
                     )
                 }
 
