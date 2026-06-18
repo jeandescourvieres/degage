@@ -144,35 +144,42 @@ fun ModesScreen(
     }
 }
 
-@OptIn(androidx.compose.foundation.layout.ExperimentalLayoutApi::class)
 @Composable
 private fun ModesLanguageHeader(appLanguage: String, onSetAppLanguage: (String) -> Unit) {
-    androidx.compose.foundation.layout.FlowRow(
+    Row(
         modifier = Modifier.fillMaxWidth().padding(bottom = 4.dp),
-        horizontalArrangement = Arrangement.spacedBy(8.dp),
-        verticalArrangement = Arrangement.spacedBy(8.dp)
+        horizontalArrangement = Arrangement.End
     ) {
-        ModesLanguageChip(stringResource(R.string.lang_system), selected = appLanguage == "", onClick = { onSetAppLanguage("") })
-        ModesLanguageChip(stringResource(R.string.lang_fr), selected = appLanguage == "FR", onClick = { onSetAppLanguage("FR") })
-        ModesLanguageChip(stringResource(R.string.lang_de), selected = appLanguage == "DE", onClick = { onSetAppLanguage("DE") })
-        ModesLanguageChip(stringResource(R.string.lang_it), selected = appLanguage == "IT", onClick = { onSetAppLanguage("IT") })
-        ModesLanguageChip(stringResource(R.string.lang_en), selected = appLanguage == "EN", onClick = { onSetAppLanguage("EN") })
-        ModesLanguageChip(stringResource(R.string.lang_es), selected = appLanguage == "ES", onClick = { onSetAppLanguage("ES") })
+        ModesLanguageChip("🇫🇷", "FR", selected = appLanguage == "FR", onClick = { onSetAppLanguage("FR") })
+        Spacer(modifier = Modifier.width(6.dp))
+        ModesLanguageChip("🇩🇪", "D", selected = appLanguage == "DE", onClick = { onSetAppLanguage("DE") })
+        Spacer(modifier = Modifier.width(6.dp))
+        ModesLanguageChip("🇮🇹", "IT", selected = appLanguage == "IT", onClick = { onSetAppLanguage("IT") })
+        Spacer(modifier = Modifier.width(6.dp))
+        ModesLanguageChip("🇬🇧", "GB", selected = appLanguage == "EN", onClick = { onSetAppLanguage("EN") })
+        Spacer(modifier = Modifier.width(6.dp))
+        ModesLanguageChip("🇪🇸", "ES", selected = appLanguage == "ES", onClick = { onSetAppLanguage("ES") })
     }
 }
 
 @Composable
-private fun ModesLanguageChip(label: String, selected: Boolean, onClick: () -> Unit) {
-    Text(
-        label,
-        color = if (selected) Color.Black else Color.White,
-        fontSize = 13.sp,
-        fontWeight = FontWeight.SemiBold,
+private fun ModesLanguageChip(flag: String, code: String, selected: Boolean, onClick: () -> Unit) {
+    Row(
+        verticalAlignment = Alignment.CenterVertically,
         modifier = Modifier
             .background(if (selected) NeonGreen else CardBgAlt, RoundedCornerShape(20.dp))
             .clickable { onClick() }
-            .padding(horizontal = 16.dp, vertical = 8.dp)
-    )
+            .padding(horizontal = 10.dp, vertical = 6.dp)
+    ) {
+        Text(flag, fontSize = 14.sp)
+        Spacer(modifier = Modifier.width(4.dp))
+        Text(
+            code,
+            color = if (selected) Color.Black else Color.White,
+            fontSize = 12.sp,
+            fontWeight = FontWeight.Bold
+        )
+    }
 }
 
 @Composable
