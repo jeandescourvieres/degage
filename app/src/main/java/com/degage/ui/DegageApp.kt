@@ -160,7 +160,8 @@ fun DegageApp(
                         onUpgrade = { navController.navigate(Screen.Premium.route) },
                         onBack = { navController.navigateUp() },
                         appLanguage = appLanguage,
-                        onSetAppLanguage = { viewModel.setAppLanguage(it) }
+                        onSetAppLanguage = { viewModel.setAppLanguage(it) },
+                        onNavigateMessageBuilder = { navController.navigate(Screen.MessageBuilder.route) }
                     )
                 }
 

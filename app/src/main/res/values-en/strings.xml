@@ -39,6 +39,7 @@
     <!-- ── Modes screen ─────────────────────────────────────────────────── -->
     <string name="modes_title">Choose your reply tone</string>
     <string name="modes_subtitle">Stop hanging up. Let your AI answer.</string>
+    <string name="modes_intro_text">Each tone below is a complete message, already written and ready to use: pick one, and it will be played as-is to the next telemarketer, with nothing to write. If none of them feels quite right, you can also build your own message from scratch — opening line, body, closing line — in Customize replies.</string>
     <string name="modes_info_title">Reply modes</string>
     <string name="modes_info_content">Modes define the tone of the reply given to spammers before hanging up.\n\n🤝 Polite — courteous and firm reply. Ideal for staying discreet.\n\n📋 Administrative — cold, official tone, like a legal department.\n\n😏 Sarcastic — humorous reply for telemarketers who deserve it.\n\n🎭 Troll — makes the spammer wait 10 seconds before hanging up. Wastes their time.\n\nTap a mode to select it, then tap \"Listen to a preview\" to hear it.</string>
     <string name="modes_preview_button">Listen to a preview</string>

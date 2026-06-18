@@ -39,6 +39,7 @@
     <!-- ── Schermata Modalità ─────────────────────────────────────────────── -->
     <string name="modes_title">Scegli il tono di risposta</string>
     <string name="modes_subtitle">Non riagganciare più. Lascia che la tua IA risponda.</string>
+    <string name="modes_intro_text">Ogni tono qui sotto corrisponde a un messaggio completo, già scritto e pronto all\'uso: selezionane uno, verrà riprodotto tale e quale al prossimo operatore, senza nulla da scrivere. Se nessuno ti convince del tutto, puoi anche comporre il tuo messaggio da zero — formula di apertura, corpo del testo, formula di chiusura — in Personalizza le risposte.</string>
     <string name="modes_info_title">Modalità di risposta</string>
     <string name="modes_info_content">Le modalità definiscono il tono della risposta data ai call center prima di riagganciare.\n\n🤝 Cortese — risposta cortese ma ferma. Ideale per restare discreti.\n\n📋 Amministrativo — tono freddo e ufficiale, come un servizio legale.\n\n😏 Sarcastico — risposta scherzosa per i venditori che se la meritano.\n\n🎭 Troll — fa attendere il call center 10 secondi prima di riagganciare. Gli fa perdere tempo.\n\nTocca una modalità per selezionarla, poi tocca \"Ascolta un\'anteprima\" per sentirla.</string>
     <string name="modes_preview_button">Ascolta un\'anteprima</string>

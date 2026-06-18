@@ -39,6 +39,7 @@
     <!-- ── Bildschirm Modi ─────────────────────────────────────────────────── -->
     <string name="modes_title">Tonfall der Antwort wählen</string>
     <string name="modes_subtitle">Nicht mehr auflegen. Lassen Sie Ihre KI antworten.</string>
+    <string name="modes_intro_text">Jeder Ton unten entspricht einer vollständigen, bereits geschriebenen und einsatzbereiten Nachricht: Wählen Sie einen aus, er wird dem nächsten Anrufer genau so vorgespielt, ohne dass Sie etwas schreiben müssen. Passt keiner perfekt, können Sie Ihre eigene Nachricht auch komplett von Grund auf zusammenstellen — Begrüßung, Textkörper, Schlussformel — unter Antworten anpassen.</string>
     <string name="modes_info_title">Antwortmodi</string>
     <string name="modes_info_content">Die Modi bestimmen den Ton der Antwort an Werbeanrufer, bevor aufgelegt wird.\n\n🤝 Höflich — höfliche, aber bestimmte Antwort. Ideal, um diskret zu bleiben.\n\n📋 Administrativ — kühler, offizieller Ton, wie eine Rechtsabteilung.\n\n😏 Sarkastisch — humorvolle Antwort für Anrufer, die es verdienen.\n\n🎭 Troll — lässt den Spammer 10 Sekunden warten, bevor aufgelegt wird. Lässt ihn Zeit verlieren.\n\nTippen Sie auf einen Modus, um ihn auszuwählen, dann auf \"Vorschau anhören\", um ihn zu hören.</string>
     <string name="modes_preview_button">Vorschau anhören</string>

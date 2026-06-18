@@ -9,6 +9,7 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
+import androidx.compose.material.icons.filled.ArrowForward
 import androidx.compose.material.icons.filled.Info
 import androidx.compose.material.icons.filled.VolumeUp
 import androidx.compose.material3.*
@@ -80,6 +81,7 @@ fun ModesScreen(
     onBack: () -> Unit = {},
     appLanguage: String = "",
     onSetAppLanguage: (String) -> Unit = {},
+    onNavigateMessageBuilder: () -> Unit = {},
 ) {
     Column(
         modifier = Modifier
@@ -113,6 +115,43 @@ fun ModesScreen(
         LazyColumn(verticalArrangement = Arrangement.spacedBy(12.dp)) {
             item {
                 LanguageFlagHeader(appLanguage = appLanguage, onSetAppLanguage = onSetAppLanguage)
+            }
+            item {
+                Column(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .background(CardBg, RoundedCornerShape(14.dp))
+                        .padding(16.dp)
+                ) {
+                    Text(
+                        text = stringResource(R.string.modes_intro_text),
+                        color = TextSecondary,
+                        fontSize = 13.sp,
+                        lineHeight = 18.sp
+                    )
+                    Row(
+                        modifier = Modifier
+                            .padding(top = 12.dp)
+                            .clickable { onNavigateMessageBuilder() }
+                            .border(1.dp, NeonGreen.copy(alpha = 0.5f), RoundedCornerShape(14.dp))
+                            .padding(vertical = 10.dp, horizontal = 16.dp),
+                        verticalAlignment = Alignment.CenterVertically
+                    ) {
+                        Text(
+                            text = stringResource(R.string.mb_header_title),
+                            fontSize = 14.sp,
+                            fontWeight = FontWeight.Bold,
+                            color = NeonGreen
+                        )
+                        Spacer(modifier = Modifier.width(6.dp))
+                        Icon(
+                            imageVector = Icons.Default.ArrowForward,
+                            contentDescription = null,
+                            tint = NeonGreen,
+                            modifier = Modifier.size(18.dp)
+                        )
+                    }
+                }
             }
             items(modeInfoList) { mode ->
                 val locked = !isPremium && mode != AppMode.POLI

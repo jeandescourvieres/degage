@@ -32,6 +32,7 @@
     <!-- ── Écran Modes ─────────────────────────────────────────────────── -->
     <string name="modes_title">Choix du ton de réponse</string>
     <string name="modes_subtitle">Ne raccrochez plus. Faites répondre votre IA.</string>
+    <string name="modes_intro_text">Chaque ton ci-dessous correspond à un message complet, déjà rédigé et prêt à l\'emploi : sélectionnez-en un, il sera joué tel quel au prochain démarcheur, sans rien à écrire. Si aucun ne vous convient parfaitement, vous pouvez aussi composer votre propre message de A à Z — formule d\'accueil, corps du texte, formule de fin — dans Personnaliser les réponses.</string>
     <string name="modes_info_title">Modes de réponse</string>
     <string name="modes_info_content">Les modes définissent le ton de la réponse donnée aux spammeurs avant de raccrocher.\n\n🤝 Poli — réponse courtoise et ferme. Idéal pour rester discret.\n\n📋 Administratif — ton froid et officiel, comme un service juridique.\n\n😏 Sarcastique — réponse humoristique pour les démarcheurs qui le méritent.\n\n🎭 Troll — fait patienter le spammeur 10 secondes avant de raccrocher. Leur fait perdre du temps.\n\nTouchez un mode pour le sélectionner, puis tapez \"Écouter un aperçu\" pour l\'entendre.</string>
     <string name="modes_preview_button">Écouter un aperçu</string>

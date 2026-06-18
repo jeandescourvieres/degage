@@ -39,6 +39,7 @@
     <!-- ── Pantalla Modos ─────────────────────────────────────────────────── -->
     <string name="modes_title">Elige el tono de respuesta</string>
     <string name="modes_subtitle">No cuelgues más. Deja que tu IA responda.</string>
+    <string name="modes_intro_text">Cada tono de abajo corresponde a un mensaje completo, ya redactado y listo para usar: elige uno y se reproducirá tal cual al próximo teleoperador, sin que tengas que escribir nada. Si ninguno te convence del todo, también puedes componer tu propio mensaje de la A a la Z — fórmula de saludo, cuerpo del texto, fórmula de cierre — en Personalizar las respuestas.</string>
     <string name="modes_info_title">Modos de respuesta</string>
     <string name="modes_info_content">Los modos definen el tono de la respuesta dada a los spammers antes de colgar.\n\n🤝 Educado — respuesta cortés y firme. Ideal para mantener la discreción.\n\n📋 Administrativo — tono frío y oficial, como un departamento jurídico.\n\n😏 Sarcástico — respuesta humorística para los teleoperadores que lo merecen.\n\n🎭 Troll — hace esperar al spammer 10 segundos antes de colgar. Le hace perder tiempo.\n\nToca un modo para seleccionarlo, luego toca \"Escuchar un ejemplo\" para oírlo.</string>
     <string name="modes_preview_button">Escuchar un ejemplo</string>
