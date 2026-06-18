@@ -140,7 +140,8 @@ fun DegageApp(
                         onNavigateDetails = { navController.navigate(Screen.WelcomeDetails.route) },
                         onNavigateSettings = { navController.navigate(Screen.Settings.route) },
                         onNavigateFaq = { navController.navigate(Screen.Manual.route) },
-                        onNavigateDashboard = { navController.navigate(Screen.Dashboard.route) }
+                        onNavigateDashboard = { navController.navigate(Screen.Dashboard.route) },
+                        onNavigateModes = { navController.navigate(Screen.Modes.route) }
                     )
                 }
 

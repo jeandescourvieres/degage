@@ -10,7 +10,7 @@
 
     <!-- ── Navigazione (barra inferiore) ──────────────────────────────────────── -->
     <string name="nav_home">Home</string>
-    <string name="nav_modes">Modalità</string>
+    <string name="nav_modes">Risposte</string>
     <string name="nav_statistics">Statistiche</string>
     <string name="nav_history">Cronologia</string>
     <string name="nav_settings">Impostazioni</string>
@@ -31,7 +31,7 @@
     <string name="replies_add_placeholder">Aggiungi una frase personalizzata…</string>
 
     <!-- ── Schermata Modalità ─────────────────────────────────────────────── -->
-    <string name="modes_title">Modalità di risposta</string>
+    <string name="modes_title">Scegli il tono di risposta</string>
     <string name="modes_subtitle">Non riagganciare più. Lascia che la tua IA risponda.</string>
     <string name="modes_info_title">Modalità di risposta</string>
     <string name="modes_info_content">Le modalità definiscono il tono della risposta data ai call center prima di riagganciare.\n\n🤝 Cortese — risposta cortese ma ferma. Ideale per restare discreti.\n\n📋 Amministrativo — tono freddo e ufficiale, come un servizio legale.\n\n😏 Sarcastico — risposta scherzosa per i venditori che se la meritano.\n\n🎭 Troll — fa attendere il call center 10 secondi prima di riagganciare. Gli fa perdere tempo.\n\nTocca una modalità per selezionarla, poi tocca \"Ascolta un\'anteprima\" per sentirla.</string>
@@ -207,7 +207,9 @@
     <string name="welcome_hero_subtitle">TU DÉGAGES, la tua nuova IA,\nadorerà rispondere loro!</string>
     <string name="welcome_hero_headline">Stop alle chiamate indesiderate. Definitivamente.</string>
     <string name="welcome_hero_desc">Lascia che la tua IA personale risponda al tuo posto, con il messaggio, la voce e il tono che preferisci. Riaggancia e blocca il numero automaticamente.</string>
-    <string name="welcome_hero_desc_more">Perché perdere tempo a rispondere solo per riagganciare qualche secondo dopo?\n\nScegli il tuo messaggio, la tua voce e il tuo stile: educato, formale, sarcastico o completamente troll. Per ogni chiamata indesiderata, la tua IA prende il controllo, riproduce il messaggio scelto e poi riaggancia automaticamente.\n\nE non è tutto: il numero viene bloccato immediatamente per evitare che ti richiamino ancora e ancora.\n\n✅ Il tuo messaggio personalizzato.\n✅ La tua voce, in più lingue.\n✅ Il tuo tono di risposta preferito.\n✅ Configurazione in pochi clic, una volta sola.\n✅ Modificabile in qualsiasi momento.\n\nLa tua IA risponde. Riaggancia. Blocca.\n\nRisparmi tempo. Mantieni la tua tranquillità.</string>
+    <string name="welcome_hero_desc_more">Perché perdere tempo a rispondere solo per riagganciare qualche secondo dopo?\n\nScegli il tuo messaggio, la tua voce e il tuo stile: educato, formale, sarcastico o completamente troll. Per ogni chiamata indesiderata, la tua IA prende il controllo, riproduce il messaggio scelto e poi riaggancia automaticamente.</string>
+    <string name="welcome_hero_modes_button">4 modi per dire no</string>
+    <string name="welcome_hero_desc_more_2">E non è tutto: il numero viene bloccato immediatamente per evitare che ti richiamino ancora e ancora.\n\n✅ Il tuo messaggio personalizzato.\n✅ La tua voce, in più lingue.\n✅ Il tuo tono di risposta preferito.\n✅ Configurazione in pochi clic, una volta sola.\n✅ Modificabile in qualsiasi momento.\n\nLa tua IA risponde. Riaggancia. Blocca.\n\nRisparmi tempo. Mantieni la tua tranquillità.</string>
     <string name="common_read_more">Leggi di più ▾</string>
     <string name="common_read_less">Riduci ▴</string>
     <string name="welcome_sections_intro">TU DÉGAGES: cosa fa esattamente?</string>

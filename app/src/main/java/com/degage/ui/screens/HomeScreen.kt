@@ -55,6 +55,7 @@ fun HomeScreen(
     onNavigateSettings: () -> Unit,
     onNavigateFaq: () -> Unit,
     onNavigateDashboard: () -> Unit,
+    onNavigateModes: () -> Unit = {},
 ) {
     LazyColumn(
         modifier = Modifier
@@ -226,14 +227,46 @@ fun HomeScreen(
                     lineHeight = 21.sp
                 )
                 AnimatedVisibility(visible = heroDescExpanded) {
-                    Text(
-                        text = stringResource(R.string.welcome_hero_desc_more),
-                        fontSize = 14.sp,
-                        color = TextSecondary,
-                        textAlign = TextAlign.Center,
-                        lineHeight = 21.sp,
-                        modifier = Modifier.padding(top = 12.dp)
-                    )
+                    Column(horizontalAlignment = Alignment.CenterHorizontally) {
+                        Text(
+                            text = stringResource(R.string.welcome_hero_desc_more),
+                            fontSize = 14.sp,
+                            color = TextSecondary,
+                            textAlign = TextAlign.Center,
+                            lineHeight = 21.sp,
+                            modifier = Modifier.padding(top = 12.dp)
+                        )
+                        Row(
+                            modifier = Modifier
+                                .padding(top = 14.dp)
+                                .clickable { onNavigateModes() }
+                                .border(1.dp, NeonGreen.copy(alpha = 0.5f), RoundedCornerShape(14.dp))
+                                .padding(vertical = 10.dp, horizontal = 16.dp),
+                            verticalAlignment = Alignment.CenterVertically
+                        ) {
+                            Text(
+                                text = stringResource(R.string.welcome_hero_modes_button),
+                                fontSize = 14.sp,
+                                fontWeight = FontWeight.Bold,
+                                color = NeonGreen
+                            )
+                            Spacer(modifier = Modifier.width(6.dp))
+                            Icon(
+                                imageVector = Icons.Default.ArrowForward,
+                                contentDescription = null,
+                                tint = NeonGreen,
+                                modifier = Modifier.size(18.dp)
+                            )
+                        }
+                        Text(
+                            text = stringResource(R.string.welcome_hero_desc_more_2),
+                            fontSize = 14.sp,
+                            color = TextSecondary,
+                            textAlign = TextAlign.Center,
+                            lineHeight = 21.sp,
+                            modifier = Modifier.padding(top = 14.dp)
+                        )
+                    }
                 }
                 Spacer(modifier = Modifier.height(6.dp))
                 Text(
