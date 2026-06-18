@@ -9,8 +9,8 @@ import kotlin.math.sin
 /** Petit jingle joue une fois a l'ouverture de l'accueil — pas de fichier audio, synthese a la volee. */
 object WelcomeChime {
 
-    // Trois bips ascendants nettement separes : Do, Mi, Sol
-    private val notes = floatArrayOf(523.25f, 659.25f, 783.99f)
+    // Six bips nettement separes : Do, Mi, Sol (montant) puis Sol, Mi, Do (descendant)
+    private val notes = floatArrayOf(523.25f, 659.25f, 783.99f, 783.99f, 659.25f, 523.25f)
 
     fun play() {
         Thread {
