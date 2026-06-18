@@ -260,6 +260,7 @@
     <string name="settings_toggle_auto_reject">Descolgar automáticamente</string>
     <string name="settings_toggle_block_after_reply">Bloquear el número tras responder</string>
     <string name="settings_toggle_notifications">Notificaciones</string>
+    <string name="settings_toggle_welcome_music">Música de bienvenida</string>
     <string name="settings_help_show">¿Por qué este ajuste?</string>
     <string name="settings_help_hide">Ocultar la explicación</string>
     <string name="settings_help_app_lang">Este ajuste solo cambia el idioma de la interfaz (menús, botones, pantallas de la aplicación). No tiene ningún efecto en el idioma hablado a los teleoperadores: para eso, ve a «Idioma de los mensajes de voz» más abajo. Elige «Sistema» para que la app siga automáticamente el idioma de tu teléfono.</string>

@@ -260,6 +260,7 @@
     <string name="settings_toggle_auto_reject">Décroche automatique</string>
     <string name="settings_toggle_block_after_reply">Bloquer le numéro après réponse</string>
     <string name="settings_toggle_notifications">Notifications</string>
+    <string name="settings_toggle_welcome_music">Musique d\'accueil</string>
     <string name="settings_help_show">Pourquoi ce réglage ?</string>
     <string name="settings_help_hide">Masquer l\'explication</string>
     <string name="settings_help_app_lang">Ce réglage change uniquement la langue de l\'interface (menus, boutons, écrans de l\'application). Il n\'a aucun effet sur la langue parlée aux démarcheurs : pour ça, voir « Langue des messages vocaux » plus bas. Choisissez « Système » pour que l\'appli suive automatiquement la langue de votre téléphone.</string>

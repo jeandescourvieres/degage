@@ -64,6 +64,7 @@ fun DegageApp(
     val strictMode by viewModel.strictMode.collectAsStateWithLifecycle()
     val country by viewModel.country.collectAsStateWithLifecycle()
     val homeCountry by viewModel.homeCountry.collectAsStateWithLifecycle()
+    val welcomeMusic by viewModel.welcomeMusic.collectAsStateWithLifecycle()
     val customBlocks by viewModel.customBlocks.collectAsStateWithLifecycle()
     val isPremium by viewModel.isPremium.collectAsStateWithLifecycle()
     val isPremiumUnlocked by viewModel.isPremiumUnlocked.collectAsStateWithLifecycle()
@@ -143,7 +144,8 @@ fun DegageApp(
                         onNavigateDashboard = { navController.navigate(Screen.Dashboard.route) },
                         onNavigateModes = { navController.navigate(Screen.Modes.route) },
                         appLanguage = appLanguage,
-                        onSetAppLanguage = { viewModel.setAppLanguage(it) }
+                        onSetAppLanguage = { viewModel.setAppLanguage(it) },
+                        welcomeMusicEnabled = welcomeMusic
                     )
                 }
 
@@ -204,6 +206,7 @@ fun DegageApp(
                         contributeDb = contributeDb,
                         blockHiddenNumbers = blockHiddenNumbers,
                         strictMode = strictMode,
+                        welcomeMusic = welcomeMusic,
                         country = country,
                         homeCountry = homeCountry,
                         replyLanguage = replyLanguage,
@@ -218,6 +221,7 @@ fun DegageApp(
                         onToggleContributeDb = { viewModel.setContributeDb(!contributeDb) },
                         onToggleBlockHiddenNumbers = { viewModel.setBlockHiddenNumbers(!blockHiddenNumbers) },
                         onToggleStrictMode = { viewModel.setStrictMode(!strictMode) },
+                        onToggleWelcomeMusic = { viewModel.setWelcomeMusic(!welcomeMusic) },
                         onSetCountry = { viewModel.setCountry(it) },
                         onSetReplyLanguage = { viewModel.setReplyLanguage(it) },
                         onSetAppLanguage = { viewModel.setAppLanguage(it) },

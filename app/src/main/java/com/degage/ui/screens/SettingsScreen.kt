@@ -44,6 +44,7 @@ fun SettingsScreen(
     contributeDb: Boolean = false,
     blockHiddenNumbers: Boolean = false,
     strictMode: Boolean = false,
+    welcomeMusic: Boolean = true,
     country: String = "FR",
     homeCountry: String = "",
     replyLanguage: String = "FR",
@@ -58,6 +59,7 @@ fun SettingsScreen(
     onToggleContributeDb: () -> Unit = {},
     onToggleBlockHiddenNumbers: () -> Unit = {},
     onToggleStrictMode: () -> Unit = {},
+    onToggleWelcomeMusic: () -> Unit = {},
     onSetCountry: (String) -> Unit = {},
     onSetReplyLanguage: (String) -> Unit = {},
     onSetAppLanguage: (String) -> Unit = {},
@@ -89,6 +91,7 @@ fun SettingsScreen(
     val labelAutoReject = stringResource(R.string.settings_toggle_auto_reject)
     val labelBlockAfterReply = stringResource(R.string.settings_toggle_block_after_reply)
     val labelNotifications = stringResource(R.string.settings_toggle_notifications)
+    val labelWelcomeMusic = stringResource(R.string.settings_toggle_welcome_music)
     val labelBlockHidden = stringResource(R.string.settings_block_hidden_label)
     val labelStrictMode = stringResource(R.string.settings_strict_mode_label)
     val labelMonitorLive = stringResource(R.string.settings_monitor_live_label)
@@ -202,6 +205,9 @@ fun SettingsScreen(
         }
         if (matches(labelNotifications)) item {
             SettingsToggleRow(label = labelNotifications, checked = notifications, onToggle = onToggleNotifications)
+        }
+        if (matches(labelWelcomeMusic)) item {
+            SettingsToggleRow(label = labelWelcomeMusic, checked = welcomeMusic, onToggle = onToggleWelcomeMusic)
         }
         if (matches(labelBlockHidden)) item {
             BlockHiddenNumbersRow(checked = blockHiddenNumbers, onToggle = onToggleBlockHiddenNumbers)

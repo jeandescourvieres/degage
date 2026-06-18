@@ -143,6 +143,11 @@ class MainViewModel(app: Application) : AndroidViewModel(app) {
     val homeCountry: StateFlow<String> = prefs.homeCountry
         .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5000), "")
 
+    val welcomeMusic: StateFlow<Boolean> = prefs.welcomeMusic
+        .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5000), true)
+
+    fun setWelcomeMusic(value: Boolean) = viewModelScope.launch { prefs.setWelcomeMusic(value) }
+
     /** Enregistre la date du tout premier lancement, point de départ de l'essai gratuit. */
     fun ensureFirstLaunchRecorded() = viewModelScope.launch {
         prefs.setFirstLaunchIfNeeded()

@@ -260,6 +260,7 @@
     <string name="settings_toggle_auto_reject">Automatische Annahme</string>
     <string name="settings_toggle_block_after_reply">Nummer nach Antwort blockieren</string>
     <string name="settings_toggle_notifications">Benachrichtigungen</string>
+    <string name="settings_toggle_welcome_music">Begrüßungsmusik</string>
     <string name="settings_help_show">Wozu dient diese Einstellung?</string>
     <string name="settings_help_hide">Erklärung ausblenden</string>
     <string name="settings_help_app_lang">Diese Einstellung ändert nur die Sprache der Benutzeroberfläche (Menüs, Schaltflächen, Bildschirme der App). Sie hat keinen Einfluss auf die Sprache, die zu Werbeanrufern gesprochen wird – dafür siehe „Sprache der Sprachnachrichten" weiter unten. Wählen Sie „System", damit die App automatisch die Sprache Ihres Telefons übernimmt.</string>

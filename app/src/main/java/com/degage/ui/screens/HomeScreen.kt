@@ -58,6 +58,7 @@ fun HomeScreen(
     onNavigateModes: () -> Unit = {},
     appLanguage: String = "",
     onSetAppLanguage: (String) -> Unit = {},
+    welcomeMusicEnabled: Boolean = true,
 ) {
     LazyColumn(
         modifier = Modifier
@@ -91,7 +92,10 @@ fun HomeScreen(
             ) {
                 key(refreshKey) {
                 var logoVisible by remember { mutableStateOf(false) }
-                LaunchedEffect(Unit) { logoVisible = true }
+                LaunchedEffect(Unit) {
+                    logoVisible = true
+                    if (welcomeMusicEnabled) com.degage.tts.WelcomeChime.play()
+                }
                 AnimatedVisibility(
                     visible = logoVisible,
                     enter = slideInHorizontally(

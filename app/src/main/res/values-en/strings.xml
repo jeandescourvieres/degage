@@ -260,6 +260,7 @@
     <string name="settings_toggle_auto_reject">Auto-answer</string>
     <string name="settings_toggle_block_after_reply">Block number after reply</string>
     <string name="settings_toggle_notifications">Notifications</string>
+    <string name="settings_toggle_welcome_music">Welcome music</string>
     <string name="settings_help_show">Why this setting?</string>
     <string name="settings_help_hide">Hide explanation</string>
     <string name="settings_help_app_lang">This setting only changes the language of the interface (menus, buttons, app screens). It has no effect on the language spoken to telemarketers — for that, see "Voice message language" below. Choose "System" so the app automatically follows your phone\'s language.</string>

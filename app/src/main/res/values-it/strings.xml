@@ -260,6 +260,7 @@
     <string name="settings_toggle_auto_reject">Risposta automatica</string>
     <string name="settings_toggle_block_after_reply">Blocca il numero dopo la risposta</string>
     <string name="settings_toggle_notifications">Notifiche</string>
+    <string name="settings_toggle_welcome_music">Musica di benvenuto</string>
     <string name="settings_help_show">Perché questa impostazione?</string>
     <string name="settings_help_hide">Nascondi la spiegazione</string>
     <string name="settings_help_app_lang">Questa impostazione cambia solo la lingua dell\'interfaccia (menu, pulsanti, schermate dell\'app). Non ha alcun effetto sulla lingua parlata ai call center: per quello vedi "Lingua dei messaggi vocali" più in basso. Scegli "Sistema" affinché l\'app segua automaticamente la lingua del telefono.</string>
