@@ -17,9 +17,15 @@
 
     <!-- ── Modos (AppMode) ─────────────────────────────────────────────── -->
     <string name="mode_poli">Educado</string>
-    <string name="mode_administratif">Administrativo</string>
+    <string name="mode_pro">Pro</string>
+    <string name="mode_amical">Amistoso</string>
+    <string name="mode_direct">Directo</string>
+    <string name="mode_humour">Humor</string>
     <string name="mode_sarcastique">Sarcástico</string>
     <string name="mode_troll">Troll</string>
+    <string name="mode_robot">Robot</string>
+    <string name="mode_froid">Frío</string>
+    <string name="mode_cinglant">Mordaz</string>
 
     <!-- ── Partes del mensaje (MessagePart) ───────────────────────────── -->
     <string name="msgpart_salutation">Saludo</string>
@@ -38,8 +44,6 @@
     <string name="modes_preview_button">Escuchar un ejemplo</string>
     <string name="mode_poli_desc">Cortés pero firme.\nIdeal para mantener la elegancia.</string>
     <string name="mode_poli_example">"Esta línea no acepta solicitudes comerciales."</string>
-    <string name="mode_administratif_desc">Frío, oficial, disuasorio.</string>
-    <string name="mode_administratif_example">"Su llamada ha sido clasificada como teleoperación no solicitada."</string>
     <string name="mode_sarcastique_desc">Para los pesados que se lo han ganado.</string>
     <string name="mode_sarcastique_example">"Felicidades, ha alcanzado el buzón de voz más sarcástico de España."</string>
     <string name="mode_troll_desc">Hazle perder el tiempo… mucho tiempo.</string>

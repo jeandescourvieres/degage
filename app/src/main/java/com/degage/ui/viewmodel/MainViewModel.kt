@@ -33,39 +33,17 @@ class MainViewModel(app: Application) : AndroidViewModel(app) {
     private val ttsManager = TtsManager(app)
     private val holdMusicPlayer = HoldMusicPlayer()
 
+    // Joue exactement le message actif pour ce mode (modele de base ou compose par
+    // l'utilisateur) plutot qu'une phrase figee : l'apercu reste toujours fidele a la realite.
     fun previewMode(mode: AppMode) = viewModelScope.launch {
         val lang = prefs.replyLanguage.first()
-        val phrase = when (lang) {
-            "DE" -> when (mode) {
-                AppMode.POLI -> "Diese Leitung nimmt keine kommerziellen Werbeanrufe entgegen."
-                AppMode.ADMINISTRATIF -> "Ihr Anruf wurde als unerwünschte Werbung eingestuft."
-                AppMode.SARCASTIQUE -> "Herzlichen Glückwunsch, Sie haben die sarkastischste Mailbox Deutschlands erreicht."
-                AppMode.TROLL -> "Bitte warten Sie, Ihr Anruf ist uns sehr wichtig."
-            }
-            "IT" -> when (mode) {
-                AppMode.POLI -> "Questa linea non accetta sollecitazioni commerciali."
-                AppMode.ADMINISTRATIF -> "La sua chiamata è stata classificata come telemarketing non richiesto."
-                AppMode.SARCASTIQUE -> "Congratulazioni, ha raggiunto la segreteria telefonica più sarcastica d'Italia."
-                AppMode.TROLL -> "Attenda in linea, la sua chiamata è molto importante per noi."
-            }
-            "EN" -> when (mode) {
-                AppMode.POLI -> "This line does not accept commercial solicitations."
-                AppMode.ADMINISTRATIF -> "Your call has been classified as unsolicited telemarketing."
-                AppMode.SARCASTIQUE -> "Congratulations, you've reached the most sarcastic voicemail in the country."
-                AppMode.TROLL -> "Please hold, your call is very important to us."
-            }
-            "ES" -> when (mode) {
-                AppMode.POLI -> "Esta línea no acepta solicitudes comerciales."
-                AppMode.ADMINISTRATIF -> "Su llamada ha sido clasificada como publicidad no solicitada."
-                AppMode.SARCASTIQUE -> "Felicidades, ha alcanzado el buzón de voz más sarcástico de España."
-                AppMode.TROLL -> "Espere por favor, su llamada es muy importante para nosotros."
-            }
-            else -> when (mode) {
-                AppMode.POLI -> "Cette ligne n'accepte pas les sollicitations commerciales."
-                AppMode.ADMINISTRATIF -> "Votre appel a été classé comme démarchage non sollicité."
-                AppMode.SARCASTIQUE -> "Félicitations, vous avez atteint la boîte vocale la plus sarcastique de France."
-                AppMode.TROLL -> "Merci de patienter, votre appel est très important pour nous."
-            }
+        val activeBody = db.replyDao().getEnabledBodyByMode(mode.name, lang).firstOrNull()
+        val phrase = activeBody?.text ?: when (lang) {
+            "DE" -> "Diese Nummer wünscht keine Werbeanrufe."
+            "IT" -> "Questo numero non desidera ricevere chiamate pubblicitarie."
+            "EN" -> "This line does not accept commercial solicitations."
+            "ES" -> "Este número no desea recibir llamadas publicitarias."
+            else -> "Cette ligne refuse les sollicitations commerciales."
         }
         ttsManager.setLanguage(lang)
         ttsManager.speak(phrase)

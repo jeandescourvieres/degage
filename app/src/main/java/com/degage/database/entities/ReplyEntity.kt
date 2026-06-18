@@ -11,5 +11,8 @@ data class ReplyEntity(
     val partType: String = "BODY",  // MessagePart.name : SALUTATION | BODY | ENDING
     val isEnabled: Boolean = true,
     val isCustom: Boolean = false,
-    val language: String = "FR"     // FR | DE | IT | EN
+    val language: String = "FR",    // FR | DE | IT | EN | ES
+    // Message complet pret a l'emploi (salutation + corps + formule de fin deja inclus) :
+    // la salutation et la formule de fin globales ne sont pas ajoutees par-dessus.
+    val isStandalone: Boolean = false
 )

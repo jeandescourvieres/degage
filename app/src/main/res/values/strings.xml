@@ -17,7 +17,6 @@
 
     <!-- ── Modes (AppMode) ─────────────────────────────────────────────── -->
     <string name="mode_poli">Poli</string>
-    <string name="mode_administratif">Administratif</string>
     <string name="mode_sarcastique">Sarcastique</string>
     <string name="mode_troll">Troll</string>
 
@@ -36,14 +35,33 @@
     <string name="modes_info_title">Modes de réponse</string>
     <string name="modes_info_content">Les modes définissent le ton de la réponse donnée aux spammeurs avant de raccrocher.\n\n🤝 Poli — réponse courtoise et ferme. Idéal pour rester discret.\n\n📋 Administratif — ton froid et officiel, comme un service juridique.\n\n😏 Sarcastique — réponse humoristique pour les démarcheurs qui le méritent.\n\n🎭 Troll — fait patienter le spammeur 10 secondes avant de raccrocher. Leur fait perdre du temps.\n\nTouchez un mode pour le sélectionner, puis tapez \"Écouter un aperçu\" pour l\'entendre.</string>
     <string name="modes_preview_button">Écouter un aperçu</string>
-    <string name="mode_poli_desc">Courtois mais ferme.\nIdéal pour rester clean.</string>
-    <string name="mode_poli_example">"Cette ligne n\'accepte pas les sollicitations commerciales."</string>
-    <string name="mode_administratif_desc">Froid, officiel, dissuasif.</string>
-    <string name="mode_administratif_example">"Votre appel a été classé comme démarchage non sollicité."</string>
-    <string name="mode_sarcastique_desc">Pour les relous assumés.</string>
-    <string name="mode_sarcastique_example">"Félicitations, vous avez atteint la boîte vocale la plus sarcastique de France."</string>
-    <string name="mode_troll_desc">Faites perdre du temps… beaucoup de temps.</string>
-    <string name="mode_troll_example">"Merci de patienter, votre appel est très important pour nous."</string>
+    <string name="mode_poli_desc">Courtois mais ferme. La réponse parfaite pour rester élégant tout en étant clair.</string>
+    <string name="mode_poli_example">"Bonjour, merci pour votre message et pour l\'intérêt que vous me portez…"</string>
+    <string name="mode_pro">Pro</string>
+    <string name="mode_pro_desc">Formel et soigné. La réponse qui fait illusion, comme un vrai service client d\'entreprise.</string>
+    <string name="mode_pro_example">"Bonjour, merci pour votre prise de contact. Après examen de votre message…"</string>
+    <string name="mode_amical">Amical</string>
+    <string name="mode_amical_desc">Chaleureux et sympathique. Pour dire non sans jamais froisser personne.</string>
+    <string name="mode_amical_example">"Bonjour, merci d\'avoir pensé à moi pour cette proposition…"</string>
+    <string name="mode_direct">Direct</string>
+    <string name="mode_direct_desc">Court et sans détour. Le minimum nécessaire, rien de plus.</string>
+    <string name="mode_direct_example">"Bonjour, merci pour votre message. Je ne suis pas intéressé par cette proposition…"</string>
+    <string name="mode_humour">Humour</string>
+    <string name="mode_humour_desc">Une touche d\'absurde. Pour transformer un appel agaçant en moment cocasse.</string>
+    <string name="mode_humour_example">"Bonjour, merci pour votre proposition. Après une réunion stratégique intensive avec moi-même…"</string>
+    <string name="mode_sarcastique_desc">Pour les relous assumés. L\'humour grinçant au service de la tranquillité.</string>
+    <string name="mode_sarcastique_example">"Bonjour, merci pour cette opportunité manifestement exceptionnelle…"</string>
+    <string name="mode_troll_desc">Faites perdre du temps… beaucoup de temps. Une fausse procédure pour les plus tenaces.</string>
+    <string name="mode_troll_example">"Bonjour, votre message a bien été reçu et transmis à mon comité de sélection…"</string>
+    <string name="mode_robot">Robot</string>
+    <string name="mode_robot_desc">Froid et automatisé. Une réponse calculée au pourcentage, sans état d\'âme.</string>
+    <string name="mode_robot_example">"Bonjour. Votre message a été analysé par le système…"</string>
+    <string name="mode_froid">Froid</string>
+    <string name="mode_froid_desc">Minimal et sans chaleur. Aucune justification, aucun superflu.</string>
+    <string name="mode_froid_example">"Bonjour, message reçu. Je ne suis pas intéressé par cette proposition…"</string>
+    <string name="mode_cinglant">Cinglant</string>
+    <string name="mode_cinglant_desc">Sans détour, presque blessant. Pour les plus insistants qui n\'ont pas compris la première fois.</string>
+    <string name="mode_cinglant_example">"Bonjour, merci pour votre message. Comme la majorité des sollicitations non demandées que je reçois…"</string>
 
     <!-- ── Écran Numéros bloqués manuellement ─────────────────────────────── -->
     <string name="custom_block_title">Numéros bloqués manuellement</string>

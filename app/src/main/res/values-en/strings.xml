@@ -17,9 +17,15 @@
 
     <!-- ── Modes (AppMode) ─────────────────────────────────────────────── -->
     <string name="mode_poli">Polite</string>
-    <string name="mode_administratif">Administrative</string>
+    <string name="mode_pro">Pro</string>
+    <string name="mode_amical">Friendly</string>
+    <string name="mode_direct">Direct</string>
+    <string name="mode_humour">Humour</string>
     <string name="mode_sarcastique">Sarcastic</string>
     <string name="mode_troll">Troll</string>
+    <string name="mode_robot">Robot</string>
+    <string name="mode_froid">Cold</string>
+    <string name="mode_cinglant">Scathing</string>
 
     <!-- ── Message parts (MessagePart) ───────────────────────────── -->
     <string name="msgpart_salutation">Greeting</string>
@@ -38,10 +44,8 @@
     <string name="modes_preview_button">Listen to a preview</string>
     <string name="mode_poli_desc">Courteous but firm.\nIdeal for staying classy.</string>
     <string name="mode_poli_example">"This line does not accept commercial solicitations."</string>
-    <string name="mode_administratif_desc">Cold, official, dissuasive.</string>
-    <string name="mode_administratif_example">"Your call has been classified as unsolicited telemarketing."</string>
     <string name="mode_sarcastique_desc">For callers who really deserve it.</string>
-    <string name="mode_sarcastique_example">"Congratulations, you\'ve reached the most sarcastic voicemail in France."</string>
+    <string name="mode_sarcastique_example">"Congratulations, you\'ve reached the most sarcastic voicemail in the country."</string>
     <string name="mode_troll_desc">Waste their time… a lot of time.</string>
     <string name="mode_troll_example">"Please hold, your call is very important to us."</string>
 

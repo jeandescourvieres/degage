@@ -17,9 +17,15 @@
 
     <!-- ── Modalità (AppMode) ─────────────────────────────────────────────── -->
     <string name="mode_poli">Cortese</string>
-    <string name="mode_administratif">Amministrativo</string>
+    <string name="mode_pro">Pro</string>
+    <string name="mode_amical">Amichevole</string>
+    <string name="mode_direct">Diretto</string>
+    <string name="mode_humour">Umorismo</string>
     <string name="mode_sarcastique">Sarcastico</string>
     <string name="mode_troll">Troll</string>
+    <string name="mode_robot">Robot</string>
+    <string name="mode_froid">Freddo</string>
+    <string name="mode_cinglant">Pungente</string>
 
     <!-- ── Parti del messaggio (MessagePart) ───────────────────────────── -->
     <string name="msgpart_salutation">Saluto</string>
@@ -38,12 +44,10 @@
     <string name="modes_preview_button">Ascolta un\'anteprima</string>
     <string name="mode_poli_desc">Cortese ma fermo.\nIdeale per restare puliti.</string>
     <string name="mode_poli_example">"Questa linea non accetta sollecitazioni commerciali."</string>
-    <string name="mode_administratif_desc">Freddo, ufficiale, dissuasivo.</string>
-    <string name="mode_administratif_example">"La sua chiamata è stata classificata come teleselling non richiesto."</string>
     <string name="mode_sarcastique_desc">Per chi se lo merita davvero.</string>
-    <string name="mode_sarcastique_example">"Congratulazioni, ha raggiunto la segreteria più sarcastica di Francia."</string>
+    <string name="mode_sarcastique_example">"Congratulazioni, ha raggiunto la segreteria telefonica più sarcastica d\'Italia."</string>
     <string name="mode_troll_desc">Fagli perdere tempo… tanto tempo.</string>
-    <string name="mode_troll_example">"La preghiamo di attendere, la sua chiamata è molto importante per noi."</string>
+    <string name="mode_troll_example">"Attenda in linea, la sua chiamata è molto importante per noi."</string>
 
     <!-- ── Schermata Numeri bloccati manualmente ─────────────────────────────── -->
     <string name="custom_block_title">Numeri bloccati manualmente</string>

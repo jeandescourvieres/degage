@@ -17,9 +17,15 @@
 
     <!-- ── Modi (AppMode) ─────────────────────────────────────────────── -->
     <string name="mode_poli">Höflich</string>
-    <string name="mode_administratif">Administrativ</string>
+    <string name="mode_pro">Pro</string>
+    <string name="mode_amical">Freundlich</string>
+    <string name="mode_direct">Direkt</string>
+    <string name="mode_humour">Humorvoll</string>
     <string name="mode_sarcastique">Sarkastisch</string>
     <string name="mode_troll">Troll</string>
+    <string name="mode_robot">Roboter</string>
+    <string name="mode_froid">Kühl</string>
+    <string name="mode_cinglant">Schneidend</string>
 
     <!-- ── Nachrichtenteile (MessagePart) ───────────────────────────── -->
     <string name="msgpart_salutation">Begrüßung</string>
@@ -37,11 +43,9 @@
     <string name="modes_info_content">Die Modi bestimmen den Ton der Antwort an Werbeanrufer, bevor aufgelegt wird.\n\n🤝 Höflich — höfliche, aber bestimmte Antwort. Ideal, um diskret zu bleiben.\n\n📋 Administrativ — kühler, offizieller Ton, wie eine Rechtsabteilung.\n\n😏 Sarkastisch — humorvolle Antwort für Anrufer, die es verdienen.\n\n🎭 Troll — lässt den Spammer 10 Sekunden warten, bevor aufgelegt wird. Lässt ihn Zeit verlieren.\n\nTippen Sie auf einen Modus, um ihn auszuwählen, dann auf \"Vorschau anhören\", um ihn zu hören.</string>
     <string name="modes_preview_button">Vorschau anhören</string>
     <string name="mode_poli_desc">Höflich, aber bestimmt.\nIdeal, um sauber zu bleiben.</string>
-    <string name="mode_poli_example">"Diese Nummer akzeptiert keine kommerziellen Anfragen."</string>
-    <string name="mode_administratif_desc">Kühl, offiziell, abschreckend.</string>
-    <string name="mode_administratif_example">"Ihr Anruf wurde als unerwünschte Werbung eingestuft."</string>
+    <string name="mode_poli_example">"Diese Leitung nimmt keine kommerziellen Werbeanrufe entgegen."</string>
     <string name="mode_sarcastique_desc">Für notorische Nervensägen.</string>
-    <string name="mode_sarcastique_example">"Herzlichen Glückwunsch, Sie haben die sarkastischste Mailbox Frankreichs erreicht."</string>
+    <string name="mode_sarcastique_example">"Herzlichen Glückwunsch, Sie haben die sarkastischste Mailbox Deutschlands erreicht."</string>
     <string name="mode_troll_desc">Lassen Sie ihn Zeit verlieren… viel Zeit.</string>
     <string name="mode_troll_example">"Bitte warten Sie, Ihr Anruf ist uns sehr wichtig."</string>
 

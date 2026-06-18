@@ -269,36 +269,78 @@
 <section id="modes">
   <div class="section-inner reveal">
     <p class="section-label">Les modes</p>
-    <h2 class="section-title">4 façons de dire non.</h2>
+    <h2 class="section-title">10 façons de dire non.</h2>
     <p class="section-sub">Choisissez le registre de votre IA. Changez-le quand vous voulez.</p>
     <div class="modes-grid">
       <div class="mode-card reveal">
-        <div class="mode-emoji">🤝</div>
+        <div class="mode-emoji">😇</div>
         <h3>Poli</h3>
         <p>Courtois mais ferme. La réponse parfaite pour rester élégant tout en étant clair.</p>
-        <div class="mode-example">"Cette ligne refuse les sollicitations commerciales."</div>
-        <button class="mode-listen-btn" onclick="speakMode(this, 'Cette ligne refuse les sollicitations commerciales.')">▶️ Écouter</button>
+        <div class="mode-example">"Bonjour, merci pour votre message et pour l'intérêt que vous me portez…"</div>
+        <button class="mode-listen-btn" onclick="speakMode(this, 'Bonjour,\n\nMerci pour votre message et pour l\'intérêt que vous me portez.\n\nAprès lecture de votre proposition, je ne souhaite pas y donner suite pour le moment.\n\nJe vous remercie de votre compréhension et vous souhaite une excellente continuation.')">▶️ Écouter</button>
       </div>
       <div class="mode-card reveal">
-        <div class="mode-emoji">📋</div>
-        <h3>Administratif</h3>
-        <p>Froid, officiel, dissuasif. Votre IA parle comme un service juridique.</p>
-        <div class="mode-example">"Votre appel a été identifié comme démarchage."</div>
-        <button class="mode-listen-btn" onclick="speakMode(this, 'Votre appel a été identifié comme démarchage.')">▶️ Écouter</button>
+        <div class="mode-emoji">💼</div>
+        <h3>Pro</h3>
+        <p>Formel et soigné. La réponse qui fait illusion, comme un vrai service client d'entreprise.</p>
+        <div class="mode-example">"Bonjour, merci pour votre prise de contact. Après examen de votre message…"</div>
+        <button class="mode-listen-btn" onclick="speakMode(this, 'Bonjour,\n\nMerci pour votre prise de contact.\n\nAprès examen de votre message, votre proposition ne correspond pas à mes besoins actuels. Je ne souhaite donc pas poursuivre cet échange.\n\nJe vous remercie pour votre démarche et vous souhaite une bonne journée.\n\nCordialement.')">▶️ Écouter</button>
+      </div>
+      <div class="mode-card reveal">
+        <div class="mode-emoji">😊</div>
+        <h3>Amical</h3>
+        <p>Chaleureux et sympathique. Pour dire non sans jamais froisser personne.</p>
+        <div class="mode-example">"Bonjour, merci d'avoir pensé à moi pour cette proposition…"</div>
+        <button class="mode-listen-btn" onclick="speakMode(this, 'Bonjour,\n\nMerci d\'avoir pensé à moi pour cette proposition.\n\nMême si elle semble intéressante, ce n\'est pas quelque chose qui me convient actuellement. Je vais donc passer mon tour.\n\nJe vous souhaite malgré tout beaucoup de succès dans vos démarches.')">▶️ Écouter</button>
+      </div>
+      <div class="mode-card reveal">
+        <div class="mode-emoji">⚡</div>
+        <h3>Direct</h3>
+        <p>Court et sans détour. Le minimum nécessaire, rien de plus.</p>
+        <div class="mode-example">"Bonjour, merci pour votre message. Je ne suis pas intéressé par cette proposition…"</div>
+        <button class="mode-listen-btn" onclick="speakMode(this, 'Bonjour,\n\nMerci pour votre message.\n\nJe ne suis pas intéressé par cette proposition et ne souhaite pas être recontacté à ce sujet.\n\nBonne continuation.')">▶️ Écouter</button>
+      </div>
+      <div class="mode-card reveal">
+        <div class="mode-emoji">😂</div>
+        <h3>Humour</h3>
+        <p>Une touche d'absurde. Pour transformer un appel agaçant en moment cocasse.</p>
+        <div class="mode-example">"Bonjour, merci pour votre proposition. Après une réunion stratégique intensive avec moi-même…"</div>
+        <button class="mode-listen-btn" onclick="speakMode(this, 'Bonjour,\n\nMerci pour votre proposition.\n\nAprès une réunion stratégique intensive avec moi-même, un café et mon agenda, nous sommes arrivés à la conclusion que ce n\'était pas le bon moment.\n\nJe vais donc décliner cette offre.\n\nExcellente journée à vous.')">▶️ Écouter</button>
       </div>
       <div class="mode-card active reveal">
         <div class="mode-emoji">😏</div>
         <h3>Sarcastique</h3>
-        <p>Pour les démarcheurs qui le méritent vraiment. L'humour au service de la paix.</p>
-        <div class="mode-example">"Félicitations, vous avez atteint la boîte vocale la plus sarcastique de France."</div>
-        <button class="mode-listen-btn" onclick="speakMode(this, 'Félicitations, vous avez atteint la boîte vocale la plus sarcastique de France.')">▶️ Écouter</button>
+        <p>Pour les relous assumés. L'humour grinçant au service de la tranquillité.</p>
+        <div class="mode-example">"Bonjour, merci pour cette opportunité manifestement exceptionnelle…"</div>
+        <button class="mode-listen-btn" onclick="speakMode(this, 'Bonjour,\n\nMerci pour cette opportunité manifestement exceptionnelle.\n\nMalheureusement, après une analyse approfondie d\'environ trois secondes, j\'ai décidé de ne pas donner suite à votre proposition.\n\nJe vous souhaite néanmoins bonne chance dans votre quête de prospects plus enthousiastes.')">▶️ Écouter</button>
       </div>
       <div class="mode-card reveal">
-        <div class="mode-emoji">🎭</div>
+        <div class="mode-emoji">😈</div>
         <h3>Troll</h3>
-        <p>Le démarcheur patiente 15 secondes avec de la musique d'attente. Votre IA lui fait perdre son temps.</p>
-        <div class="mode-example">"Merci de patienter, votre appel est très important pour nous."</div>
-        <button class="mode-listen-btn" onclick="speakMode(this, 'Merci de patienter, votre appel est très important pour nous.')">▶️ Écouter</button>
+        <p>Faites perdre du temps… beaucoup de temps. Une fausse procédure pour les plus tenaces.</p>
+        <div class="mode-example">"Bonjour, votre message a bien été reçu et transmis à mon comité de sélection…"</div>
+        <button class="mode-listen-btn" onclick="speakMode(this, 'Bonjour,\n\nVotre message a bien été reçu et transmis à mon comité de sélection.\n\nAprès plusieurs débats animés, deux votes contre, un vote blanc et l\'abstention du président, la décision est tombée : votre proposition ne sera pas retenue.\n\nNous vous remercions pour votre participation et vous souhaitons une excellente continuation.')">▶️ Écouter</button>
+      </div>
+      <div class="mode-card reveal">
+        <div class="mode-emoji">🤖</div>
+        <h3>Robot</h3>
+        <p>Froid et automatisé. Une réponse calculée au pourcentage, sans état d'âme.</p>
+        <div class="mode-example">"Bonjour. Votre message a été analysé par le système…"</div>
+        <button class="mode-listen-btn" onclick="speakMode(this, 'Bonjour.\n\nVotre message a été analysé par le système.\n\nRésultat : proposition détectée. Niveau d\'intérêt estimé : 0,7 %.\n\nAction exécutée : refus poli.\n\nMerci de votre compréhension.\n\nFin de transmission.')">▶️ Écouter</button>
+      </div>
+      <div class="mode-card reveal">
+        <div class="mode-emoji">🥶</div>
+        <h3>Froid</h3>
+        <p>Minimal et sans chaleur. Aucune justification, aucun superflu.</p>
+        <div class="mode-example">"Bonjour, message reçu. Je ne suis pas intéressé par cette proposition…"</div>
+        <button class="mode-listen-btn" onclick="speakMode(this, 'Bonjour,\n\nMessage reçu.\n\nJe ne suis pas intéressé par cette proposition.\n\nAucune suite ne sera donnée.\n\nCordialement.')">▶️ Écouter</button>
+      </div>
+      <div class="mode-card reveal">
+        <div class="mode-emoji">🔥</div>
+        <h3>Cinglant</h3>
+        <p>Sans détour, presque blessant. Pour les plus insistants qui n'ont pas compris la première fois.</p>
+        <div class="mode-example">"Bonjour, merci pour votre message. Comme la majorité des sollicitations non demandées que je reçois…"</div>
+        <button class="mode-listen-btn" onclick="speakMode(this, 'Bonjour,\n\nMerci pour votre message.\n\nComme la majorité des sollicitations non demandées que je reçois, votre proposition ne présente aucun intérêt pour moi.\n\nJe vous invite donc à ne pas perdre davantage votre temps ni le mien en poursuivant cet échange.\n\nBonne continuation.')">▶️ Écouter</button>
       </div>
     </div>
   </div>

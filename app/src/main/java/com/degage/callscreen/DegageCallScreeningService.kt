@@ -207,12 +207,18 @@ class DegageCallScreeningService : CallScreeningService() {
                 "ES" -> "Este número no desea recibir llamadas publicitarias."
                 else -> "Cette ligne refuse les sollicitations commerciales."
             }
-            val salutation = db.replyDao().getEnabledGlobalByPart(MessagePart.SALUTATION.name, replyLanguage).firstOrNull()?.text ?: ""
-            val body = db.replyDao().getEnabledBodyByMode(mode.name, replyLanguage).firstOrNull()?.text ?: defaultBody
-            val ending = db.replyDao().getEnabledGlobalByPart(MessagePart.ENDING.name, replyLanguage).firstOrNull()?.text ?: ""
-            val fullMessage = listOf(salutation, body, ending)
-                .filter { it.isNotBlank() }
-                .joinToString(" ")
+            val activeBody = db.replyDao().getEnabledBodyByMode(mode.name, replyLanguage).firstOrNull()
+            val fullMessage = if (activeBody?.isStandalone == true) {
+                // Modele de base complet : salutation et formule de fin deja incluses dans le texte.
+                activeBody.text
+            } else {
+                val salutation = db.replyDao().getEnabledGlobalByPart(MessagePart.SALUTATION.name, replyLanguage).firstOrNull()?.text ?: ""
+                val body = activeBody?.text ?: defaultBody
+                val ending = db.replyDao().getEnabledGlobalByPart(MessagePart.ENDING.name, replyLanguage).firstOrNull()?.text ?: ""
+                listOf(salutation, body, ending)
+                    .filter { it.isNotBlank() }
+                    .joinToString(" ")
+            }
 
             val rate = prefs.speechRate.first()
             val pitch = prefs.pitch.first()

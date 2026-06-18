@@ -31,25 +31,43 @@ import com.degage.ui.theme.*
 
 val modeInfoList = listOf(
     AppMode.POLI,
-    AppMode.ADMINISTRATIF,
+    AppMode.PRO,
+    AppMode.AMICAL,
+    AppMode.DIRECT,
+    AppMode.HUMOUR,
     AppMode.SARCASTIQUE,
     AppMode.TROLL,
+    AppMode.ROBOT,
+    AppMode.FROID,
+    AppMode.CINGLANT,
 )
 
 @Composable
 fun AppMode.localizedDescription(): String = when (this) {
     AppMode.POLI -> stringResource(R.string.mode_poli_desc)
-    AppMode.ADMINISTRATIF -> stringResource(R.string.mode_administratif_desc)
+    AppMode.PRO -> stringResource(R.string.mode_pro_desc)
+    AppMode.AMICAL -> stringResource(R.string.mode_amical_desc)
+    AppMode.DIRECT -> stringResource(R.string.mode_direct_desc)
+    AppMode.HUMOUR -> stringResource(R.string.mode_humour_desc)
     AppMode.SARCASTIQUE -> stringResource(R.string.mode_sarcastique_desc)
     AppMode.TROLL -> stringResource(R.string.mode_troll_desc)
+    AppMode.ROBOT -> stringResource(R.string.mode_robot_desc)
+    AppMode.FROID -> stringResource(R.string.mode_froid_desc)
+    AppMode.CINGLANT -> stringResource(R.string.mode_cinglant_desc)
 }
 
 @Composable
 fun AppMode.localizedExample(): String = when (this) {
     AppMode.POLI -> stringResource(R.string.mode_poli_example)
-    AppMode.ADMINISTRATIF -> stringResource(R.string.mode_administratif_example)
+    AppMode.PRO -> stringResource(R.string.mode_pro_example)
+    AppMode.AMICAL -> stringResource(R.string.mode_amical_example)
+    AppMode.DIRECT -> stringResource(R.string.mode_direct_example)
+    AppMode.HUMOUR -> stringResource(R.string.mode_humour_example)
     AppMode.SARCASTIQUE -> stringResource(R.string.mode_sarcastique_example)
     AppMode.TROLL -> stringResource(R.string.mode_troll_example)
+    AppMode.ROBOT -> stringResource(R.string.mode_robot_example)
+    AppMode.FROID -> stringResource(R.string.mode_froid_example)
+    AppMode.CINGLANT -> stringResource(R.string.mode_cinglant_example)
 }
 
 @Composable

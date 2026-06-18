@@ -29,7 +29,7 @@ import kotlinx.coroutines.launch
 
 @Database(
     entities = [BlockedCallEntity::class, ReplyEntity::class, SpamEntry::class, CustomBlockEntity::class, WhitelistEntry::class, CallAttemptEntity::class],
-    version = 9,
+    version = 10,
     exportSchema = false
 )
 abstract class AppDatabase : RoomDatabase() {
@@ -113,6 +113,22 @@ abstract class AppDatabase : RoomDatabase() {
             }
         }
 
+        private val MIGRATION_9_10 = object : Migration(9, 10) {
+            override fun migrate(database: SupportSQLiteDatabase) {
+                database.execSQL("ALTER TABLE replies ADD COLUMN isStandalone INTEGER NOT NULL DEFAULT 0")
+                // Administratif disparait : ses anciennes reponses (orphelines) restent en base
+                // mais ne sont plus jamais lues, aucun mode ne porte plus ce nom.
+                // Les modeles de base complets remplacent les phrases courtes comme reponse
+                // par defaut en francais ; on desactive donc les anciennes phrases composables
+                // encore actives pour ne garder qu'un seul corps actif par mode.
+                database.execSQL(
+                    "UPDATE replies SET isEnabled = 0 WHERE partType = 'BODY' AND language = 'FR' AND isEnabled = 1 " +
+                        "AND modeName IN ('POLI','SARCASTIQUE','TROLL')"
+                )
+                DEFAULT_REPLIES.filter { it.isStandalone }.forEach { insertReply(database, it) }
+            }
+        }
+
         private fun insertReply(database: SupportSQLiteDatabase, reply: ReplyEntity) {
             val values = ContentValues().apply {
                 put("text", reply.text)
@@ -121,6 +137,7 @@ abstract class AppDatabase : RoomDatabase() {
                 put("isEnabled", if (reply.isEnabled) 1 else 0)
                 put("isCustom", if (reply.isCustom) 1 else 0)
                 put("language", reply.language)
+                put("isStandalone", if (reply.isStandalone) 1 else 0)
             }
             database.insert("replies", SQLiteDatabase.CONFLICT_REPLACE, values)
         }
@@ -128,7 +145,7 @@ abstract class AppDatabase : RoomDatabase() {
         fun getInstance(context: Context): AppDatabase {
             return INSTANCE ?: synchronized(this) {
                 Room.databaseBuilder(context, AppDatabase::class.java, "degage.db")
-                    .addMigrations(MIGRATION_2_3, MIGRATION_3_4, MIGRATION_4_5, MIGRATION_5_6, MIGRATION_6_7, MIGRATION_7_8, MIGRATION_8_9)
+                    .addMigrations(MIGRATION_2_3, MIGRATION_3_4, MIGRATION_4_5, MIGRATION_5_6, MIGRATION_6_7, MIGRATION_7_8, MIGRATION_8_9, MIGRATION_9_10)
                     .addCallback(object : Callback() {
                         override fun onCreate(db: SupportSQLiteDatabase) {
                             super.onCreate(db)
@@ -151,25 +168,60 @@ abstract class AppDatabase : RoomDatabase() {
             ReplyEntity(text = "Bonjour. Cette ligne est protégée.", modeName = MODE_GLOBAL, partType = MessagePart.SALUTATION.name, isEnabled = false),
             ReplyEntity(text = "Bonjour. Votre appel est en cours d'analyse.", modeName = MODE_GLOBAL, partType = MessagePart.SALUTATION.name, isEnabled = false),
 
-            // ── Corps — Poli ──────────────────────────────────────────────
-            ReplyEntity(text = "Cette ligne refuse les sollicitations commerciales.", modeName = AppMode.POLI.name, partType = MessagePart.BODY.name),
+            // ── Corps — Poli (alternative composable, desactivee par defaut) ──
+            ReplyEntity(text = "Cette ligne n'accepte pas les sollicitations commerciales.", modeName = AppMode.POLI.name, partType = MessagePart.BODY.name, isEnabled = false),
             ReplyEntity(text = "Merci mais cette ligne ne souhaite pas être démarchée.", modeName = AppMode.POLI.name, partType = MessagePart.BODY.name, isEnabled = false),
             ReplyEntity(text = "Merci de retirer ce numéro de vos listes.", modeName = AppMode.POLI.name, partType = MessagePart.BODY.name, isEnabled = false),
 
-            // ── Corps — Administratif ─────────────────────────────────────
-            ReplyEntity(text = "Votre appel a été identifié comme démarchage.", modeName = AppMode.ADMINISTRATIF.name, partType = MessagePart.BODY.name),
-            ReplyEntity(text = "Cette ligne applique une politique anti-sollicitation.", modeName = AppMode.ADMINISTRATIF.name, partType = MessagePart.BODY.name, isEnabled = false),
-            ReplyEntity(text = "Le démarchage téléphonique n'est pas accepté sur cette ligne.", modeName = AppMode.ADMINISTRATIF.name, partType = MessagePart.BODY.name, isEnabled = false),
-
-            // ── Corps — Sarcastique ───────────────────────────────────────
-            ReplyEntity(text = "Merci de raccrocher avant que ça devienne gênant.", modeName = AppMode.SARCASTIQUE.name, partType = MessagePart.BODY.name),
+            // ── Corps — Sarcastique (alternative composable, desactivee par defaut) ──
             ReplyEntity(text = "Cette ligne pratique activement le rejet du démarchage.", modeName = AppMode.SARCASTIQUE.name, partType = MessagePart.BODY.name, isEnabled = false),
             ReplyEntity(text = "Cette ligne soutient la disparition du démarchage téléphonique.", modeName = AppMode.SARCASTIQUE.name, partType = MessagePart.BODY.name, isEnabled = false),
             ReplyEntity(text = "Cette ligne est allergique au démarchage.", modeName = AppMode.SARCASTIQUE.name, partType = MessagePart.BODY.name, isEnabled = false),
 
-            // ── Corps — Troll ─────────────────────────────────────────────
-            ReplyEntity(text = "Veuillez patienter…", modeName = AppMode.TROLL.name, partType = MessagePart.BODY.name),
+            // ── Corps — Troll (alternative composable, desactivee par defaut) ──
             ReplyEntity(text = "Transfert vers le service concerné…", modeName = AppMode.TROLL.name, partType = MessagePart.BODY.name, isEnabled = false),
+
+            // ── Modeles de base complets (standalone : salutation/fin deja incluses) ──
+            ReplyEntity(
+                text = "Bonjour,\n\nMerci pour votre message et pour l'intérêt que vous me portez.\n\nAprès lecture de votre proposition, je ne souhaite pas y donner suite pour le moment.\n\nJe vous remercie de votre compréhension et vous souhaite une excellente continuation.",
+                modeName = AppMode.POLI.name, partType = MessagePart.BODY.name, isStandalone = true
+            ),
+            ReplyEntity(
+                text = "Bonjour,\n\nMerci pour votre prise de contact.\n\nAprès examen de votre message, votre proposition ne correspond pas à mes besoins actuels. Je ne souhaite donc pas poursuivre cet échange.\n\nJe vous remercie pour votre démarche et vous souhaite une bonne journée.\n\nCordialement.",
+                modeName = AppMode.PRO.name, partType = MessagePart.BODY.name, isStandalone = true
+            ),
+            ReplyEntity(
+                text = "Bonjour,\n\nMerci d'avoir pensé à moi pour cette proposition.\n\nMême si elle semble intéressante, ce n'est pas quelque chose qui me convient actuellement. Je vais donc passer mon tour.\n\nJe vous souhaite malgré tout beaucoup de succès dans vos démarches.",
+                modeName = AppMode.AMICAL.name, partType = MessagePart.BODY.name, isStandalone = true
+            ),
+            ReplyEntity(
+                text = "Bonjour,\n\nMerci pour votre message.\n\nJe ne suis pas intéressé par cette proposition et ne souhaite pas être recontacté à ce sujet.\n\nBonne continuation.",
+                modeName = AppMode.DIRECT.name, partType = MessagePart.BODY.name, isStandalone = true
+            ),
+            ReplyEntity(
+                text = "Bonjour,\n\nMerci pour votre proposition.\n\nAprès une réunion stratégique intensive avec moi-même, un café et mon agenda, nous sommes arrivés à la conclusion que ce n'était pas le bon moment.\n\nJe vais donc décliner cette offre.\n\nExcellente journée à vous.",
+                modeName = AppMode.HUMOUR.name, partType = MessagePart.BODY.name, isStandalone = true
+            ),
+            ReplyEntity(
+                text = "Bonjour,\n\nMerci pour cette opportunité manifestement exceptionnelle.\n\nMalheureusement, après une analyse approfondie d'environ trois secondes, j'ai décidé de ne pas donner suite à votre proposition.\n\nJe vous souhaite néanmoins bonne chance dans votre quête de prospects plus enthousiastes.",
+                modeName = AppMode.SARCASTIQUE.name, partType = MessagePart.BODY.name, isStandalone = true
+            ),
+            ReplyEntity(
+                text = "Bonjour,\n\nVotre message a bien été reçu et transmis à mon comité de sélection.\n\nAprès plusieurs débats animés, deux votes contre, un vote blanc et l'abstention du président, la décision est tombée : votre proposition ne sera pas retenue.\n\nNous vous remercions pour votre participation et vous souhaitons une excellente continuation.",
+                modeName = AppMode.TROLL.name, partType = MessagePart.BODY.name, isStandalone = true
+            ),
+            ReplyEntity(
+                text = "Bonjour.\n\nVotre message a été analysé par le système.\n\nRésultat : proposition détectée. Niveau d'intérêt estimé : 0,7 %.\n\nAction exécutée : refus poli.\n\nMerci de votre compréhension.\n\nFin de transmission.",
+                modeName = AppMode.ROBOT.name, partType = MessagePart.BODY.name, isStandalone = true
+            ),
+            ReplyEntity(
+                text = "Bonjour,\n\nMessage reçu.\n\nJe ne suis pas intéressé par cette proposition.\n\nAucune suite ne sera donnée.\n\nCordialement.",
+                modeName = AppMode.FROID.name, partType = MessagePart.BODY.name, isStandalone = true
+            ),
+            ReplyEntity(
+                text = "Bonjour,\n\nMerci pour votre message.\n\nComme la majorité des sollicitations non demandées que je reçois, votre proposition ne présente aucun intérêt pour moi.\n\nJe vous invite donc à ne pas perdre davantage votre temps ni le mien en poursuivant cet échange.\n\nBonne continuation.",
+                modeName = AppMode.CINGLANT.name, partType = MessagePart.BODY.name, isStandalone = true
+            ),
 
             // ── Formules de fin globales ──────────────────────────────────
             ReplyEntity(text = "À pas bientôt.", modeName = MODE_GLOBAL, partType = MessagePart.ENDING.name),
@@ -186,19 +238,15 @@ abstract class AppDatabase : RoomDatabase() {
             ReplyEntity(text = "Guten Tag. Diese Leitung ist geschützt.", modeName = MODE_GLOBAL, partType = MessagePart.SALUTATION.name, isEnabled = false, language = "DE"),
 
             // ── Corps — Poli (allemand) ────────────────────────────────────
-            ReplyEntity(text = "Diese Nummer wünscht keine Werbeanrufe.", modeName = AppMode.POLI.name, partType = MessagePart.BODY.name, language = "DE"),
+            ReplyEntity(text = "Diese Leitung nimmt keine kommerziellen Werbeanrufe entgegen.", modeName = AppMode.POLI.name, partType = MessagePart.BODY.name, language = "DE"),
             ReplyEntity(text = "Bitte entfernen Sie diese Nummer von Ihrer Liste.", modeName = AppMode.POLI.name, partType = MessagePart.BODY.name, isEnabled = false, language = "DE"),
 
-            // ── Corps — Administratif (allemand) ──────────────────────────
-            ReplyEntity(text = "Dieser Anruf wurde als Werbung eingestuft und automatisch abgelehnt.", modeName = AppMode.ADMINISTRATIF.name, partType = MessagePart.BODY.name, language = "DE"),
-            ReplyEntity(text = "Werbeanrufe sind auf dieser Leitung nicht erwünscht.", modeName = AppMode.ADMINISTRATIF.name, partType = MessagePart.BODY.name, isEnabled = false, language = "DE"),
-
             // ── Corps — Sarcastique (allemand) ────────────────────────────
-            ReplyEntity(text = "Bitte legen Sie auf, bevor es unangenehm wird.", modeName = AppMode.SARCASTIQUE.name, partType = MessagePart.BODY.name, language = "DE"),
+            ReplyEntity(text = "Herzlichen Glückwunsch, Sie haben die sarkastischste Mailbox Deutschlands erreicht.", modeName = AppMode.SARCASTIQUE.name, partType = MessagePart.BODY.name, language = "DE"),
             ReplyEntity(text = "Diese Leitung ist allergisch gegen Werbeanrufe.", modeName = AppMode.SARCASTIQUE.name, partType = MessagePart.BODY.name, isEnabled = false, language = "DE"),
 
             // ── Corps — Troll (allemand) ──────────────────────────────────
-            ReplyEntity(text = "Bitte warten Sie, Ihr Anruf wird weitergeleitet…", modeName = AppMode.TROLL.name, partType = MessagePart.BODY.name, language = "DE"),
+            ReplyEntity(text = "Bitte warten Sie, Ihr Anruf ist uns sehr wichtig.", modeName = AppMode.TROLL.name, partType = MessagePart.BODY.name, language = "DE"),
             ReplyEntity(text = "Einen Moment bitte, Sie werden verbunden…", modeName = AppMode.TROLL.name, partType = MessagePart.BODY.name, isEnabled = false, language = "DE"),
 
             // ── Formules de fin globales (allemand) ───────────────────────
@@ -214,19 +262,15 @@ abstract class AppDatabase : RoomDatabase() {
             ReplyEntity(text = "Buongiorno. Questa linea è protetta.", modeName = MODE_GLOBAL, partType = MessagePart.SALUTATION.name, isEnabled = false, language = "IT"),
 
             // ── Corps — Poli (italien) ─────────────────────────────────────
-            ReplyEntity(text = "Questo numero non desidera ricevere chiamate pubblicitarie.", modeName = AppMode.POLI.name, partType = MessagePart.BODY.name, language = "IT"),
+            ReplyEntity(text = "Questa linea non accetta sollecitazioni commerciali.", modeName = AppMode.POLI.name, partType = MessagePart.BODY.name, language = "IT"),
             ReplyEntity(text = "La preghiamo di rimuovere questo numero dalle vostre liste.", modeName = AppMode.POLI.name, partType = MessagePart.BODY.name, isEnabled = false, language = "IT"),
 
-            // ── Corps — Administratif (italien) ───────────────────────────
-            ReplyEntity(text = "Questa chiamata è stata classificata come pubblicità e rifiutata automaticamente.", modeName = AppMode.ADMINISTRATIF.name, partType = MessagePart.BODY.name, language = "IT"),
-            ReplyEntity(text = "Le chiamate commerciali non sono gradite su questa linea.", modeName = AppMode.ADMINISTRATIF.name, partType = MessagePart.BODY.name, isEnabled = false, language = "IT"),
-
             // ── Corps — Sarcastique (italien) ─────────────────────────────
-            ReplyEntity(text = "La preghiamo di riagganciare prima che diventi imbarazzante.", modeName = AppMode.SARCASTIQUE.name, partType = MessagePart.BODY.name, language = "IT"),
+            ReplyEntity(text = "Congratulazioni, ha raggiunto la segreteria telefonica più sarcastica d'Italia.", modeName = AppMode.SARCASTIQUE.name, partType = MessagePart.BODY.name, language = "IT"),
             ReplyEntity(text = "Questa linea è allergica alle chiamate pubblicitarie.", modeName = AppMode.SARCASTIQUE.name, partType = MessagePart.BODY.name, isEnabled = false, language = "IT"),
 
             // ── Corps — Troll (italien) ────────────────────────────────────
-            ReplyEntity(text = "Attenda in linea, la sua chiamata verrà inoltrata…", modeName = AppMode.TROLL.name, partType = MessagePart.BODY.name, language = "IT"),
+            ReplyEntity(text = "Attenda in linea, la sua chiamata è molto importante per noi.", modeName = AppMode.TROLL.name, partType = MessagePart.BODY.name, language = "IT"),
             ReplyEntity(text = "Un momento, la stiamo mettendo in contatto…", modeName = AppMode.TROLL.name, partType = MessagePart.BODY.name, isEnabled = false, language = "IT"),
 
             // ── Formules de fin globales (italien) ────────────────────────
@@ -245,16 +289,12 @@ abstract class AppDatabase : RoomDatabase() {
             ReplyEntity(text = "This line does not accept commercial solicitations.", modeName = AppMode.POLI.name, partType = MessagePart.BODY.name, language = "EN"),
             ReplyEntity(text = "Please remove this number from your lists.", modeName = AppMode.POLI.name, partType = MessagePart.BODY.name, isEnabled = false, language = "EN"),
 
-            // ── Corps — Administratif (anglais) ───────────────────────────
-            ReplyEntity(text = "This call has been classified as advertising and automatically declined.", modeName = AppMode.ADMINISTRATIF.name, partType = MessagePart.BODY.name, language = "EN"),
-            ReplyEntity(text = "Commercial calls are not accepted on this line.", modeName = AppMode.ADMINISTRATIF.name, partType = MessagePart.BODY.name, isEnabled = false, language = "EN"),
-
             // ── Corps — Sarcastique (anglais) ─────────────────────────────
-            ReplyEntity(text = "Please hang up before this gets awkward.", modeName = AppMode.SARCASTIQUE.name, partType = MessagePart.BODY.name, language = "EN"),
+            ReplyEntity(text = "Congratulations, you've reached the most sarcastic voicemail in the country.", modeName = AppMode.SARCASTIQUE.name, partType = MessagePart.BODY.name, language = "EN"),
             ReplyEntity(text = "This line is allergic to telemarketing.", modeName = AppMode.SARCASTIQUE.name, partType = MessagePart.BODY.name, isEnabled = false, language = "EN"),
 
             // ── Corps — Troll (anglais) ────────────────────────────────────
-            ReplyEntity(text = "Please hold, your call is being transferred…", modeName = AppMode.TROLL.name, partType = MessagePart.BODY.name, language = "EN"),
+            ReplyEntity(text = "Please hold, your call is very important to us.", modeName = AppMode.TROLL.name, partType = MessagePart.BODY.name, language = "EN"),
             ReplyEntity(text = "One moment please, connecting you now…", modeName = AppMode.TROLL.name, partType = MessagePart.BODY.name, isEnabled = false, language = "EN"),
 
             // ── Formules de fin globales (anglais) ────────────────────────
@@ -272,10 +312,6 @@ abstract class AppDatabase : RoomDatabase() {
             // ── Corps — Poli (espagnol) ────────────────────────────────────
             ReplyEntity(text = "Este número no desea recibir llamadas publicitarias.", modeName = AppMode.POLI.name, partType = MessagePart.BODY.name, language = "ES"),
             ReplyEntity(text = "Por favor, elimine este número de sus listas.", modeName = AppMode.POLI.name, partType = MessagePart.BODY.name, isEnabled = false, language = "ES"),
-
-            // ── Corps — Administratif (espagnol) ──────────────────────────
-            ReplyEntity(text = "Esta llamada ha sido clasificada como publicidad y rechazada automáticamente.", modeName = AppMode.ADMINISTRATIF.name, partType = MessagePart.BODY.name, language = "ES"),
-            ReplyEntity(text = "Las llamadas comerciales no son bienvenidas en esta línea.", modeName = AppMode.ADMINISTRATIF.name, partType = MessagePart.BODY.name, isEnabled = false, language = "ES"),
 
             // ── Corps — Sarcastique (espagnol) ─────────────────────────────
             ReplyEntity(text = "Por favor, cuelgue antes de que esto se vuelva incómodo.", modeName = AppMode.SARCASTIQUE.name, partType = MessagePart.BODY.name, language = "ES"),
