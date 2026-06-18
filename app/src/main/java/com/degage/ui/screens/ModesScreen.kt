@@ -78,6 +78,8 @@ fun ModesScreen(
     isPremium: Boolean = true,
     onUpgrade: () -> Unit = {},
     onBack: () -> Unit = {},
+    appLanguage: String = "",
+    onSetAppLanguage: (String) -> Unit = {},
 ) {
     Column(
         modifier = Modifier
@@ -109,6 +111,9 @@ fun ModesScreen(
         Spacer(modifier = Modifier.height(12.dp))
 
         LazyColumn(verticalArrangement = Arrangement.spacedBy(12.dp)) {
+            item {
+                ModesLanguageHeader(appLanguage = appLanguage, onSetAppLanguage = onSetAppLanguage)
+            }
             items(modeInfoList) { mode ->
                 val locked = !isPremium && mode != AppMode.POLI
                 ModeCard(
@@ -137,6 +142,37 @@ fun ModesScreen(
             }
         }
     }
+}
+
+@OptIn(androidx.compose.foundation.layout.ExperimentalLayoutApi::class)
+@Composable
+private fun ModesLanguageHeader(appLanguage: String, onSetAppLanguage: (String) -> Unit) {
+    androidx.compose.foundation.layout.FlowRow(
+        modifier = Modifier.fillMaxWidth().padding(bottom = 4.dp),
+        horizontalArrangement = Arrangement.spacedBy(8.dp),
+        verticalArrangement = Arrangement.spacedBy(8.dp)
+    ) {
+        ModesLanguageChip(stringResource(R.string.lang_system), selected = appLanguage == "", onClick = { onSetAppLanguage("") })
+        ModesLanguageChip(stringResource(R.string.lang_fr), selected = appLanguage == "FR", onClick = { onSetAppLanguage("FR") })
+        ModesLanguageChip(stringResource(R.string.lang_de), selected = appLanguage == "DE", onClick = { onSetAppLanguage("DE") })
+        ModesLanguageChip(stringResource(R.string.lang_it), selected = appLanguage == "IT", onClick = { onSetAppLanguage("IT") })
+        ModesLanguageChip(stringResource(R.string.lang_en), selected = appLanguage == "EN", onClick = { onSetAppLanguage("EN") })
+        ModesLanguageChip(stringResource(R.string.lang_es), selected = appLanguage == "ES", onClick = { onSetAppLanguage("ES") })
+    }
+}
+
+@Composable
+private fun ModesLanguageChip(label: String, selected: Boolean, onClick: () -> Unit) {
+    Text(
+        label,
+        color = if (selected) Color.Black else Color.White,
+        fontSize = 13.sp,
+        fontWeight = FontWeight.SemiBold,
+        modifier = Modifier
+            .background(if (selected) NeonGreen else CardBgAlt, RoundedCornerShape(20.dp))
+            .clickable { onClick() }
+            .padding(horizontal = 16.dp, vertical = 8.dp)
+    )
 }
 
 @Composable

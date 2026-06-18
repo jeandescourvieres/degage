@@ -154,7 +154,9 @@ fun DegageApp(
                         },
                         isPremium = isPremiumUnlocked,
                         onUpgrade = { navController.navigate(Screen.Premium.route) },
-                        onBack = { navController.navigateUp() }
+                        onBack = { navController.navigateUp() },
+                        appLanguage = appLanguage,
+                        onSetAppLanguage = { viewModel.setAppLanguage(it) }
                     )
                 }
 
