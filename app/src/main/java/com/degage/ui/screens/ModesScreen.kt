@@ -150,15 +150,15 @@ fun LanguageFlagHeader(appLanguage: String, onSetAppLanguage: (String) -> Unit) 
         modifier = Modifier.fillMaxWidth().padding(bottom = 4.dp),
         horizontalArrangement = Arrangement.End
     ) {
-        LanguageFlagChip("🇫🇷", "FR", selected = appLanguage == "FR", onClick = { onSetAppLanguage("FR") })
-        Spacer(modifier = Modifier.width(6.dp))
         LanguageFlagChip("🇩🇪", "D", selected = appLanguage == "DE", onClick = { onSetAppLanguage("DE") })
-        Spacer(modifier = Modifier.width(6.dp))
-        LanguageFlagChip("🇮🇹", "IT", selected = appLanguage == "IT", onClick = { onSetAppLanguage("IT") })
-        Spacer(modifier = Modifier.width(6.dp))
-        LanguageFlagChip("🇬🇧", "GB", selected = appLanguage == "EN", onClick = { onSetAppLanguage("EN") })
-        Spacer(modifier = Modifier.width(6.dp))
+        Spacer(modifier = Modifier.width(4.dp))
         LanguageFlagChip("🇪🇸", "ES", selected = appLanguage == "ES", onClick = { onSetAppLanguage("ES") })
+        Spacer(modifier = Modifier.width(4.dp))
+        LanguageFlagChip("🇫🇷", "FR", selected = appLanguage == "FR", onClick = { onSetAppLanguage("FR") })
+        Spacer(modifier = Modifier.width(4.dp))
+        LanguageFlagChip("🇬🇧", "GB", selected = appLanguage == "EN", onClick = { onSetAppLanguage("EN") })
+        Spacer(modifier = Modifier.width(4.dp))
+        LanguageFlagChip("🇮🇹", "IT", selected = appLanguage == "IT", onClick = { onSetAppLanguage("IT") })
     }
 }
 
@@ -169,7 +169,7 @@ private fun LanguageFlagChip(flag: String, code: String, selected: Boolean, onCl
         modifier = Modifier
             .background(if (selected) NeonGreen else CardBgAlt, RoundedCornerShape(20.dp))
             .clickable { onClick() }
-            .padding(horizontal = 10.dp, vertical = 6.dp)
+            .padding(horizontal = 7.dp, vertical = 5.dp)
     ) {
         Text(flag, fontSize = 14.sp)
         Spacer(modifier = Modifier.width(4.dp))
