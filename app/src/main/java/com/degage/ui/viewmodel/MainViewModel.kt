@@ -146,6 +146,17 @@ class MainViewModel(app: Application) : AndroidViewModel(app) {
     val welcomeMusic: StateFlow<Boolean> = prefs.welcomeMusic
         .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5000), true)
 
+    // Texte integral du message actif par mode, pour la popup "voir le message complet" —
+    // meme source que previewMode(), pour eviter tout decalage avec ce qui est reellement joue.
+    val modeFullTexts: StateFlow<Map<String, String>> = replyLanguage.flatMapLatest { lang ->
+        flow {
+            val map = AppMode.values().associate { mode ->
+                mode.name to (db.replyDao().getEnabledBodyByMode(mode.name, lang).firstOrNull()?.text ?: "")
+            }
+            emit(map)
+        }
+    }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(5000), emptyMap())
+
     fun setWelcomeMusic(value: Boolean) = viewModelScope.launch { prefs.setWelcomeMusic(value) }
 
     /** Enregistre la date du tout premier lancement, point de départ de l'essai gratuit. */

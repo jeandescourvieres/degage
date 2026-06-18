@@ -65,6 +65,7 @@ fun DegageApp(
     val country by viewModel.country.collectAsStateWithLifecycle()
     val homeCountry by viewModel.homeCountry.collectAsStateWithLifecycle()
     val welcomeMusic by viewModel.welcomeMusic.collectAsStateWithLifecycle()
+    val modeFullTexts by viewModel.modeFullTexts.collectAsStateWithLifecycle()
     val customBlocks by viewModel.customBlocks.collectAsStateWithLifecycle()
     val isPremium by viewModel.isPremium.collectAsStateWithLifecycle()
     val isPremiumUnlocked by viewModel.isPremiumUnlocked.collectAsStateWithLifecycle()
@@ -161,7 +162,8 @@ fun DegageApp(
                         onBack = { navController.navigateUp() },
                         appLanguage = appLanguage,
                         onSetAppLanguage = { viewModel.setAppLanguage(it) },
-                        onNavigateMessageBuilder = { navController.navigate(Screen.MessageBuilder.route) }
+                        onNavigateMessageBuilder = { navController.navigate(Screen.MessageBuilder.route) },
+                        modeFullTexts = modeFullTexts
                     )
                 }
 

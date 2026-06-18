@@ -82,6 +82,7 @@ fun ModesScreen(
     appLanguage: String = "",
     onSetAppLanguage: (String) -> Unit = {},
     onNavigateMessageBuilder: () -> Unit = {},
+    modeFullTexts: Map<String, String> = emptyMap(),
 ) {
     Column(
         modifier = Modifier
@@ -95,6 +96,14 @@ fun ModesScreen(
             content = stringResource(R.string.modes_info_content),
             onDismiss = { showInfo = false }
         )
+        var showFullMessageFor by remember { mutableStateOf<AppMode?>(null) }
+        showFullMessageFor?.let { mode ->
+            InfoDialog(
+                title = "${mode.emoji} ${mode.localizedLabel()}",
+                content = modeFullTexts[mode.name]?.takeIf { it.isNotBlank() } ?: mode.localizedExample(),
+                onDismiss = { showFullMessageFor = null }
+            )
+        }
         Row(
             modifier = Modifier.fillMaxWidth().padding(top = 8.dp),
             verticalAlignment = Alignment.CenterVertically
@@ -159,7 +168,12 @@ fun ModesScreen(
                     mode = mode,
                     isSelected = activeMode == mode,
                     locked = locked,
-                    onClick = { if (locked) onUpgrade() else onSelectMode(mode) }
+                    onClick = {
+                        if (locked) onUpgrade() else {
+                            onSelectMode(mode)
+                            showFullMessageFor = mode
+                        }
+                    }
                 )
             }
 
