@@ -17,7 +17,7 @@
 
     <!-- ── Modalità (AppMode) ─────────────────────────────────────────────── -->
     <string name="mode_poli">Cortese</string>
-    <string name="mode_pro">Pro</string>
+    <string name="mode_pro">Amministrativo</string>
     <string name="mode_amical">Amichevole</string>
     <string name="mode_direct">Diretto</string>
     <string name="mode_humour">Umorismo</string>
@@ -226,7 +226,7 @@
     <string name="welcome_hero_subtitle">TU DÉGAGES, la tua nuova IA,\nadorerà rispondere loro!</string>
     <string name="welcome_hero_headline">Stop alle chiamate indesiderate. Definitivamente.</string>
     <string name="welcome_hero_desc">Lascia che la tua IA personale risponda al tuo posto, con il messaggio, la voce e il tono che preferisci. Riaggancia e blocca il numero automaticamente.</string>
-    <string name="welcome_hero_desc_more">Perché perdere tempo a rispondere solo per riagganciare qualche secondo dopo?\n\nScegli il tuo messaggio, la tua voce e il tuo stile: educato, formale, sarcastico o completamente troll. Per ogni chiamata indesiderata, la tua IA prende il controllo, riproduce il messaggio scelto e poi riaggancia automaticamente.</string>
+    <string name="welcome_hero_desc_more">Perché perdere tempo a rispondere solo per riagganciare qualche secondo dopo?\n\nScegli il tuo messaggio, la tua voce e il tuo stile: educato, formale, sarcastico o completamente troll, con musica d\'attesa! Per ogni chiamata indesiderata, la tua IA prende il controllo, riproduce il messaggio scelto e poi riaggancia automaticamente.</string>
     <string name="welcome_hero_modes_button">10 modi per dire no</string>
     <string name="welcome_hero_desc_more_2">E non è tutto: il numero viene bloccato immediatamente per evitare che ti richiamino ancora e ancora.\n\n✅ Il tuo messaggio personalizzato.\n✅ La tua voce, in più lingue.\n✅ Il tuo tono di risposta preferito.\n✅ Configurazione in pochi clic, una volta sola.\n✅ Modificabile in qualsiasi momento.\n\nLa tua IA risponde. Riaggancia. Blocca.\n\nRisparmi tempo. Mantieni la tua tranquillità.</string>
     <string name="common_read_more">Leggi di più ▾</string>
