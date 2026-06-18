@@ -19,11 +19,13 @@ object WelcomeChime {
             val gapDurationSec = 0.10
             val beepSamples = (sampleRate * beepDurationSec).toInt()
             val gapSamples = (sampleRate * gapDurationSec).toInt()
+            // Assez de place pour les 3 bips en entier : un buffer trop petit forcait stop()
+            // a couper la fin du dernier bip avant qu'il ait fini de jouer.
             val bufferSize = AudioTrack.getMinBufferSize(
                 sampleRate,
                 AudioFormat.CHANNEL_OUT_MONO,
                 AudioFormat.ENCODING_PCM_16BIT
-            ).coerceAtLeast((beepSamples + gapSamples) * 2)
+            ).coerceAtLeast((beepSamples + gapSamples) * notes.size * 2)
 
             val track = AudioTrack.Builder()
                 .setAudioAttributes(
@@ -58,6 +60,9 @@ object WelcomeChime {
                 for (i in beepSamples until buffer.size) buffer[i] = 0
                 track.write(buffer, 0, buffer.size)
             }
+            // Laisse le temps au dernier bip de jouer reellement avant de couper la piste :
+            // write() ne garantit que la mise en file, pas la lecture effective.
+            Thread.sleep(((beepDurationSec + gapDurationSec) * notes.size * 1000).toLong() + 80)
             track.stop()
             track.release()
         }.apply { isDaemon = true }.start()
