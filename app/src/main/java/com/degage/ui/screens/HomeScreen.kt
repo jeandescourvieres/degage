@@ -115,7 +115,7 @@ fun HomeScreen(
                     horizontalAlignment = Alignment.CenterHorizontally
                 ) {
                     Text(
-                        text = "TU DÉGAGES!",
+                        text = "TU DÉGAGES  !",
                         fontSize = 28.sp,
                         fontWeight = FontWeight.Black,
                         color = NeonGreen,
