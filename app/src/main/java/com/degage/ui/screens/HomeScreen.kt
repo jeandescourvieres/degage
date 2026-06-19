@@ -283,14 +283,18 @@ fun HomeScreen(
                         )
                     }
                 }
-                Spacer(modifier = Modifier.height(6.dp))
+                Spacer(modifier = Modifier.height(10.dp))
                 Text(
                     text = stringResource(if (heroDescExpanded) R.string.common_read_less else R.string.common_read_more),
-                    fontSize = 13.sp,
-                    fontWeight = FontWeight.SemiBold,
+                    fontSize = 14.sp,
+                    fontWeight = FontWeight.Bold,
                     color = NeonGreen,
                     textAlign = TextAlign.Center,
-                    modifier = Modifier.clickable { heroDescExpanded = !heroDescExpanded }
+                    modifier = Modifier
+                        .clickable { heroDescExpanded = !heroDescExpanded }
+                        .background(NeonGreen.copy(alpha = 0.12f), RoundedCornerShape(20.dp))
+                        .border(1.5.dp, NeonGreen.copy(alpha = 0.6f), RoundedCornerShape(20.dp))
+                        .padding(vertical = 8.dp, horizontal = 18.dp)
                 )
                 Spacer(modifier = Modifier.height(12.dp))
                 Column(
