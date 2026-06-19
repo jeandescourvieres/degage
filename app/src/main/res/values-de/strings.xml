@@ -43,6 +43,7 @@
     <string name="modes_info_title">Antwortmodi</string>
     <string name="modes_info_content">Die Modi bestimmen den Ton der Antwort an Werbeanrufer, bevor aufgelegt wird.\n\n🤝 Höflich — höfliche, aber bestimmte Antwort. Ideal, um diskret zu bleiben.\n\n📋 Administrativ — kühler, offizieller Ton, wie eine Rechtsabteilung.\n\n😏 Sarkastisch — humorvolle Antwort für Anrufer, die es verdienen.\n\n🎭 Troll — lässt den Spammer 10 Sekunden warten, bevor aufgelegt wird. Lässt ihn Zeit verlieren.\n\nTippen Sie auf einen Modus, um ihn auszuwählen, dann auf \"Vorschau anhören\", um ihn zu hören.</string>
     <string name="modes_preview_button">Vorschau anhören</string>
+    <string name="modes_card_tap_hint">👆 Tippen, um die vollständige Nachricht zu lesen</string>
     <string name="mode_poli_desc">Höflich, aber bestimmt. Die perfekte Antwort, um elegant und dennoch klar zu bleiben.</string>
     <string name="mode_poli_example">"Guten Tag, vielen Dank für Ihre Nachricht und Ihr Interesse an mir…"</string>
     <string name="mode_pro_desc">Formell und gepflegt. Die Antwort, die wie ein echter Unternehmens-Kundendienst wirkt.</string>
@@ -228,7 +229,7 @@
     <string name="welcome_hero_headline">Schluss mit unerwünschten Anrufen. Endgültig.</string>
     <string name="welcome_hero_desc">Lassen Sie Ihre persönliche KI in Ihrem Namen antworten – mit der Nachricht, Stimme und dem Ton Ihrer Wahl. Sie legt auf und blockiert die Nummer automatisch.</string>
     <string name="welcome_hero_desc_more">Warum verschwenden Sie Zeit damit, abzuheben, nur um wenige Sekunden später wieder aufzulegen?\n\nWählen Sie Ihre Nachricht, Ihre Stimme und Ihren Stil aus 10 Tönen — von höflich bis bissig, inklusive Troll mit Wartemusik! Bei jedem unerwünschten Anruf übernimmt Ihre KI, spielt Ihre Nachricht ab und legt danach automatisch auf.</string>
-    <string name="welcome_hero_modes_button">10 Arten, Nein zu sagen</string>
+    <string name="welcome_hero_modes_button">Ihre 10 Arten, Nein zu sagen</string>
     <string name="welcome_hero_desc_more_2">Und das ist noch nicht alles: Die Nummer wird sofort gesperrt, damit Sie nicht immer wieder angerufen werden.\n\n✅ Ihre persönliche Nachricht.\n✅ Ihre Stimme, in mehreren Sprachen.\n✅ Ihr bevorzugter Antwortstil.\n✅ In wenigen Klicks eingerichtet – ein einziges Mal.\n✅ Jederzeit änderbar.\n\nIhre KI antwortet. Legt auf. Sperrt.\n\nSie sparen Zeit. Sie behalten Ihre Ruhe.</string>
     <string name="common_read_more">Mehr lesen ▾</string>
     <string name="common_read_less">Weniger anzeigen ▴</string>

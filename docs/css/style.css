@@ -168,7 +168,9 @@ nav {
   border: 2px solid var(--green);
   border-radius: 32px;
   padding: 40px 32px;
-  margin-bottom: 28px;
+  margin: 0 auto 28px;
+  width: fit-content;
+  max-width: 100%;
   animation: heroGlowPulse 0.9s ease-in-out infinite alternate;
 }
 

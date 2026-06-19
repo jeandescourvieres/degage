@@ -255,22 +255,22 @@ fun HomeScreen(
                             modifier = Modifier
                                 .padding(top = 14.dp)
                                 .clickable { onNavigateModes() }
-                                .border(1.dp, NeonGreen.copy(alpha = 0.5f), RoundedCornerShape(14.dp))
-                                .padding(vertical = 10.dp, horizontal = 16.dp),
+                                .border(2.dp, NeonGreen, RoundedCornerShape(16.dp))
+                                .padding(vertical = 16.dp, horizontal = 22.dp),
                             verticalAlignment = Alignment.CenterVertically
                         ) {
                             Text(
                                 text = stringResource(R.string.welcome_hero_modes_button),
-                                fontSize = 14.sp,
+                                fontSize = 18.sp,
                                 fontWeight = FontWeight.Bold,
                                 color = NeonGreen
                             )
-                            Spacer(modifier = Modifier.width(6.dp))
+                            Spacer(modifier = Modifier.width(8.dp))
                             Icon(
                                 imageVector = Icons.Default.ArrowForward,
                                 contentDescription = null,
                                 tint = NeonGreen,
-                                modifier = Modifier.size(18.dp)
+                                modifier = Modifier.size(22.dp)
                             )
                         }
                         Text(

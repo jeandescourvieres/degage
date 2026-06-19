@@ -43,6 +43,7 @@
     <string name="modes_info_title">Reply modes</string>
     <string name="modes_info_content">Modes define the tone of the reply given to spammers before hanging up.\n\n🤝 Polite — courteous and firm reply. Ideal for staying discreet.\n\n📋 Administrative — cold, official tone, like a legal department.\n\n😏 Sarcastic — humorous reply for telemarketers who deserve it.\n\n🎭 Troll — makes the spammer wait 10 seconds before hanging up. Wastes their time.\n\nTap a mode to select it, then tap \"Listen to a preview\" to hear it.</string>
     <string name="modes_preview_button">Listen to a preview</string>
+    <string name="modes_card_tap_hint">👆 Tap to read the full message</string>
     <string name="mode_poli_desc">Courteous but firm. The perfect reply to stay classy while being clear.</string>
     <string name="mode_poli_example">"Hello, thank you for your message and for your interest in me…"</string>
     <string name="mode_pro_desc">Formal and polished. The reply that looks like a real corporate customer service.</string>
@@ -228,7 +229,7 @@
     <string name="welcome_hero_headline">Stop unwanted calls. For good.</string>
     <string name="welcome_hero_desc">Let your personal AI answer on your behalf, with the message, voice and tone of your choice. It hangs up and blocks the number automatically.</string>
     <string name="welcome_hero_desc_more">Why waste your time picking up just to hang up a few seconds later?\n\nChoose your message, your voice and your style from 10 tones — from the most polite to the most scathing, troll\'s hold music included! For every unwanted call, your AI takes over, plays your chosen message, then hangs up automatically.</string>
-    <string name="welcome_hero_modes_button">10 ways to say no</string>
+    <string name="welcome_hero_modes_button">Your 10 ways to say no</string>
     <string name="welcome_hero_desc_more_2">And that\'s not all: the number is immediately blocked so they can\'t call you back again and again.\n\n✅ Your personalised message.\n✅ Your voice, in several languages.\n✅ Your preferred response tone.\n✅ Set up in a few clicks, just once.\n✅ Editable at any time.\n\nYour AI answers. Hangs up. Blocks.\n\nYou save time. You keep your peace of mind.</string>
     <string name="common_read_more">Read more ▾</string>
     <string name="common_read_less">Show less ▴</string>

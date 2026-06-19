@@ -237,12 +237,13 @@ private fun LanguageFlagChip(flag: String, code: String, selected: Boolean, onCl
 
 @Composable
 fun ModeCard(mode: AppMode, isSelected: Boolean, locked: Boolean = false, onClick: () -> Unit) {
-    val borderColor = if (isSelected) NeonGreen else Color.Transparent
+    val borderWidth = if (isSelected) 2.dp else 1.dp
+    val borderColor = if (isSelected) NeonGreen else NeonGreen.copy(alpha = 0.25f)
     Row(
         modifier = Modifier
             .fillMaxWidth()
             .background(CardBg, RoundedCornerShape(16.dp))
-            .border(if (isSelected) 2.dp else 0.dp, borderColor, RoundedCornerShape(16.dp))
+            .border(borderWidth, borderColor, RoundedCornerShape(16.dp))
             .clickable { onClick() }
             .padding(16.dp),
         verticalAlignment = Alignment.CenterVertically
@@ -254,6 +255,10 @@ fun ModeCard(mode: AppMode, isSelected: Boolean, locked: Boolean = false, onClic
             Text(mode.localizedDescription(), color = TextSecondary, fontSize = 12.sp, lineHeight = 18.sp)
             Spacer(modifier = Modifier.height(6.dp))
             Text(mode.localizedExample(), color = Color(0xFF6A6A6A), fontSize = 11.sp, fontStyle = androidx.compose.ui.text.font.FontStyle.Italic)
+            if (!locked) {
+                Spacer(modifier = Modifier.height(4.dp))
+                Text(stringResource(R.string.modes_card_tap_hint), color = NeonGreen, fontSize = 10.sp, fontWeight = FontWeight.SemiBold)
+            }
         }
         if (locked) {
             PremiumBadge()

@@ -36,6 +36,7 @@
     <string name="modes_info_title">Modes de réponse</string>
     <string name="modes_info_content">Les modes définissent le ton de la réponse donnée aux spammeurs avant de raccrocher.\n\n🤝 Poli — réponse courtoise et ferme. Idéal pour rester discret.\n\n📋 Administratif — ton froid et officiel, comme un service juridique.\n\n😏 Sarcastique — réponse humoristique pour les démarcheurs qui le méritent.\n\n🎭 Troll — fait patienter le spammeur 10 secondes avant de raccrocher. Leur fait perdre du temps.\n\nTouchez un mode pour le sélectionner, puis tapez \"Écouter un aperçu\" pour l\'entendre.</string>
     <string name="modes_preview_button">Écouter un aperçu</string>
+    <string name="modes_card_tap_hint">👆 Touchez pour lire le message complet</string>
     <string name="mode_poli_desc">Courtois mais ferme. La réponse parfaite pour rester élégant tout en étant clair.</string>
     <string name="mode_poli_example">"Bonjour, merci pour votre message et pour l\'intérêt que vous me portez…"</string>
     <string name="mode_pro">Administratif</string>
@@ -228,7 +229,7 @@
     <string name="welcome_hero_headline">Stop aux appels indésirables. Définitivement.</string>
     <string name="welcome_hero_desc">Laissez votre IA personnelle répondre à votre place, avec le message, la voix et le ton de votre choix. Elle raccroche et bloque le numéro automatiquement.</string>
     <string name="welcome_hero_desc_more">Pourquoi perdre votre temps à décrocher pour raccrocher quelques secondes plus tard ?\n\nChoisissez votre message, votre voix et votre style parmi 10 tons — du plus poli au plus cinglant, en passant par le troll et sa musique d\'attente ! À chaque appel indésirable, votre IA prend le relais, délivre le message que vous avez choisi, puis raccroche automatiquement.</string>
-    <string name="welcome_hero_modes_button">10 façons de dire non</string>
+    <string name="welcome_hero_modes_button">Vos 10 façons de dire non</string>
     <string name="welcome_hero_desc_more_2">Et ce n\'est pas tout : le numéro est immédiatement bloqué pour éviter qu\'on vous rappelle encore et encore.\n\n✅ Votre message personnalisé\n✅ Votre voix, dans plusieurs langues\n✅ Votre ton de réponse préféré\n✅ Configuration en quelques clics, en une seule fois\n✅ Modifiable à tout moment\n\nVotre IA répond. Raccroche. Bloque.\n\nVous gagnez du temps. Vous gardez votre tranquillité.</string>
     <string name="common_read_more">Lire la suite ▾</string>
     <string name="common_read_less">Réduire ▴</string>

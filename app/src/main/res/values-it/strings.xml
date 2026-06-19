@@ -43,6 +43,7 @@
     <string name="modes_info_title">Modalità di risposta</string>
     <string name="modes_info_content">Le modalità definiscono il tono della risposta data ai call center prima di riagganciare.\n\n🤝 Cortese — risposta cortese ma ferma. Ideale per restare discreti.\n\n📋 Amministrativo — tono freddo e ufficiale, come un servizio legale.\n\n😏 Sarcastico — risposta scherzosa per i venditori che se la meritano.\n\n🎭 Troll — fa attendere il call center 10 secondi prima di riagganciare. Gli fa perdere tempo.\n\nTocca una modalità per selezionarla, poi tocca \"Ascolta un\'anteprima\" per sentirla.</string>
     <string name="modes_preview_button">Ascolta un\'anteprima</string>
+    <string name="modes_card_tap_hint">👆 Tocca per leggere il messaggio completo</string>
     <string name="mode_poli_desc">Cortese ma fermo. La risposta perfetta per restare eleganti pur essendo chiari.</string>
     <string name="mode_poli_example">"Buongiorno, grazie per il suo messaggio e per l\'interesse che mi ha dimostrato…"</string>
     <string name="mode_pro_desc">Formale e curato. La risposta che fa colpo, come un vero servizio clienti aziendale.</string>
@@ -228,7 +229,7 @@
     <string name="welcome_hero_headline">Stop alle chiamate indesiderate. Definitivamente.</string>
     <string name="welcome_hero_desc">Lascia che la tua IA personale risponda al tuo posto, con il messaggio, la voce e il tono che preferisci. Riaggancia e blocca il numero automaticamente.</string>
     <string name="welcome_hero_desc_more">Perché perdere tempo a rispondere solo per riagganciare qualche secondo dopo?\n\nScegli il tuo messaggio, la tua voce e il tuo stile tra 10 toni — dal più educato al più pungente, passando per il troll con la sua musica d\'attesa! Per ogni chiamata indesiderata, la tua IA prende il controllo, riproduce il messaggio scelto e poi riaggancia automaticamente.</string>
-    <string name="welcome_hero_modes_button">10 modi per dire no</string>
+    <string name="welcome_hero_modes_button">I tuoi 10 modi per dire no</string>
     <string name="welcome_hero_desc_more_2">E non è tutto: il numero viene bloccato immediatamente per evitare che ti richiamino ancora e ancora.\n\n✅ Il tuo messaggio personalizzato.\n✅ La tua voce, in più lingue.\n✅ Il tuo tono di risposta preferito.\n✅ Configurazione in pochi clic, una volta sola.\n✅ Modificabile in qualsiasi momento.\n\nLa tua IA risponde. Riaggancia. Blocca.\n\nRisparmi tempo. Mantieni la tua tranquillità.</string>
     <string name="common_read_more">Leggi di più ▾</string>
     <string name="common_read_less">Riduci ▴</string>
