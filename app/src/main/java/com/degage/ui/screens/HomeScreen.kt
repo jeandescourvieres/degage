@@ -59,6 +59,8 @@ fun HomeScreen(
     appLanguage: String = "",
     onSetAppLanguage: (String) -> Unit = {},
     welcomeMusicEnabled: Boolean = true,
+    shouldPlayWelcomeChime: Boolean = false,
+    onWelcomeChimePlayed: () -> Unit = {},
 ) {
     LazyColumn(
         modifier = Modifier
@@ -94,7 +96,10 @@ fun HomeScreen(
                 var logoVisible by remember { mutableStateOf(false) }
                 LaunchedEffect(Unit) {
                     logoVisible = true
-                    if (welcomeMusicEnabled) com.degage.tts.WelcomeChime.play()
+                    if (welcomeMusicEnabled && shouldPlayWelcomeChime) {
+                        com.degage.tts.WelcomeChime.play()
+                        onWelcomeChimePlayed()
+                    }
                 }
                 AnimatedVisibility(
                     visible = logoVisible,
@@ -115,7 +120,7 @@ fun HomeScreen(
                     horizontalAlignment = Alignment.CenterHorizontally
                 ) {
                     Text(
-                        text = "TU DÉGAGES  !",
+                        text = "TU DÉGAGES !",
                         fontSize = 28.sp,
                         fontWeight = FontWeight.Black,
                         color = NeonGreen,

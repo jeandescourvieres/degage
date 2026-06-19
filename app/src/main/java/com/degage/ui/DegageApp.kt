@@ -45,6 +45,7 @@ fun DegageApp(
     val navBackStackEntry by navController.currentBackStackEntryAsState()
     val currentDestination = navBackStackEntry?.destination
     var homeRefreshKey by remember { mutableStateOf(0) }
+    var welcomeChimePlayed by remember { mutableStateOf(false) }
 
     val isEnabled by viewModel.isEnabled.collectAsStateWithLifecycle()
     val activeMode by viewModel.activeMode.collectAsStateWithLifecycle()
@@ -146,7 +147,9 @@ fun DegageApp(
                         onNavigateModes = { navController.navigate(Screen.Modes.route) },
                         appLanguage = appLanguage,
                         onSetAppLanguage = { viewModel.setAppLanguage(it) },
-                        welcomeMusicEnabled = welcomeMusic
+                        welcomeMusicEnabled = welcomeMusic,
+                        shouldPlayWelcomeChime = !welcomeChimePlayed,
+                        onWelcomeChimePlayed = { welcomeChimePlayed = true }
                     )
                 }
 
