@@ -79,6 +79,7 @@
 
     <!-- ── Pantalla Premium ───────────────────────────────────────────────── -->
     <string name="premium_title">TU DÉGAGES Premium</string>
+    <string name="premium_badge_description">Función Premium</string>
     <string name="premium_hero_title">Ve más allá con Premium</string>
     <string name="premium_hero_subtitle">La protección básica sigue siendo gratuita, para siempre. Premium añade personalización y comodidad.</string>
     <string name="premium_trial_banner">Prueba gratuita Premium activa: quedan %1$d días antes de volver a las funciones gratuitas.</string>

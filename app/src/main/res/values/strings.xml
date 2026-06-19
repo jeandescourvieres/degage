@@ -79,6 +79,7 @@
 
     <!-- ── Écran Premium ───────────────────────────────────────────────── -->
     <string name="premium_title">TU DÉGAGES Premium</string>
+    <string name="premium_badge_description">Fonctionnalité Premium</string>
     <string name="premium_hero_title">Allez plus loin avec Premium</string>
     <string name="premium_hero_subtitle">La protection de base reste gratuite, pour toujours. Premium ajoute la personnalisation et le confort.</string>
     <string name="premium_trial_banner">Essai gratuit Premium actif : encore %1$d jours avant de revenir aux fonctions gratuites.</string>

@@ -79,6 +79,7 @@
 
     <!-- ── Premium screen ───────────────────────────────────────────────── -->
     <string name="premium_title">TU DÉGAGES Premium</string>
+    <string name="premium_badge_description">Premium feature</string>
     <string name="premium_hero_title">Go further with Premium</string>
     <string name="premium_hero_subtitle">Basic protection stays free, forever. Premium adds personalization and comfort.</string>
     <string name="premium_trial_banner">Free Premium trial active: %1$d days left before reverting to free features.</string>
