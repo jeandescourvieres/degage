@@ -125,10 +125,10 @@
     <string name="mb_explain_ending_desc">La phrase de clôture. Commune à tous les modes.</string>
     <string name="mb_intro_footer">Vous pouvez aussi créer vos propres formules en bas de chaque section.</string>
     <string name="mb_preview_label">Aperçu du message assemblé</string>
-    <string name="mb_section_salutation_desc">La phrase d\'ouverture lue en premier par Tu dégages. Sélectionnez celle qui correspond à votre style — une seule à la fois.</string>
-    <string name="mb_section_body_desc">Le cœur de la réponse, adapté au mode %1$s %2$s. C\'est la phrase principale entendue par le démarcheur. Une seule à la fois.</string>
+    <string name="mb_section_salutation_desc">C\'est la phrase d\'ouverture lue en premier par Tu dégages. Sélectionnez ci-dessous la salutation qui correspond à votre style — une seule à la fois. Ou sinon, créez votre propre salutation.</string>
+    <string name="mb_section_body_desc">C\'est le cœur de la réponse, adapté, comme ici, au mode %1$s %2$s. C\'est la phrase principale entendue par le démarcheur. Une seule à la fois.</string>
     <string name="mb_section_ending_desc">La formule de clôture prononcée juste avant de raccrocher. Une seule à la fois.</string>
-    <string name="mb_add_part_placeholder">Ajouter une %1$s…</string>
+    <string name="mb_add_part_placeholder">Créez votre propre %1$s…</string>
 
     <!-- ── Écran Historique ────────────────────────────────────────────── -->
     <string name="history_title">Historique</string>

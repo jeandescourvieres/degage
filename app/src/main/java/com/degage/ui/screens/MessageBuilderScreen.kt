@@ -317,7 +317,7 @@ private fun PartSection(
         }
         Spacer(modifier = Modifier.height(6.dp))
         Text(
-            text = description,
+            text = highlightBrand(description),
             color = TextSecondary,
             fontSize = 12.sp,
             lineHeight = 18.sp

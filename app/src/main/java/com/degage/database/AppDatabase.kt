@@ -29,7 +29,7 @@ import kotlinx.coroutines.launch
 
 @Database(
     entities = [BlockedCallEntity::class, ReplyEntity::class, SpamEntry::class, CustomBlockEntity::class, WhitelistEntry::class, CallAttemptEntity::class],
-    version = 11,
+    version = 12,
     exportSchema = false
 )
 abstract class AppDatabase : RoomDatabase() {
@@ -146,6 +146,22 @@ abstract class AppDatabase : RoomDatabase() {
             }
         }
 
+        private val MIGRATION_11_12 = object : Migration(11, 12) {
+            override fun migrate(database: SupportSQLiteDatabase) {
+                // La salutation et la formule de fin choisies par l'utilisateur s'appliquent
+                // maintenant aussi aux modeles de base complets : on retire la salutation
+                // integree au texte (sinon elle apparaissait en double avec celle choisie).
+                (DEFAULT_REPLIES + DEFAULT_REPLIES_DE + DEFAULT_REPLIES_IT + DEFAULT_REPLIES_EN + DEFAULT_REPLIES_ES)
+                    .filter { it.partType == MessagePart.BODY.name && it.modeName != MODE_GLOBAL && it.isEnabled }
+                    .forEach { reply ->
+                        database.execSQL(
+                            "UPDATE replies SET text = ? WHERE modeName = ? AND language = ? AND partType = 'BODY' AND isStandalone = 1",
+                            arrayOf(reply.text, reply.modeName, reply.language)
+                        )
+                    }
+            }
+        }
+
         private fun insertReply(database: SupportSQLiteDatabase, reply: ReplyEntity) {
             val values = ContentValues().apply {
                 put("text", reply.text)
@@ -162,7 +178,7 @@ abstract class AppDatabase : RoomDatabase() {
         fun getInstance(context: Context): AppDatabase {
             return INSTANCE ?: synchronized(this) {
                 Room.databaseBuilder(context, AppDatabase::class.java, "degage.db")
-                    .addMigrations(MIGRATION_2_3, MIGRATION_3_4, MIGRATION_4_5, MIGRATION_5_6, MIGRATION_6_7, MIGRATION_7_8, MIGRATION_8_9, MIGRATION_9_10, MIGRATION_10_11)
+                    .addMigrations(MIGRATION_2_3, MIGRATION_3_4, MIGRATION_4_5, MIGRATION_5_6, MIGRATION_6_7, MIGRATION_7_8, MIGRATION_8_9, MIGRATION_9_10, MIGRATION_10_11, MIGRATION_11_12)
                     .addCallback(object : Callback() {
                         override fun onCreate(db: SupportSQLiteDatabase) {
                             super.onCreate(db)
@@ -198,46 +214,46 @@ abstract class AppDatabase : RoomDatabase() {
             // ── Corps — Troll (alternative composable, desactivee par defaut) ──
             ReplyEntity(text = "Transfert vers le service concerné…", modeName = AppMode.TROLL.name, partType = MessagePart.BODY.name, isEnabled = false),
 
-            // ── Modeles de base complets (standalone : salutation/fin deja incluses) ──
+            // ── Modeles de base complets (corps detaille par mode) ──
             ReplyEntity(
-                text = "Bonjour,\n\nMerci pour votre message et pour l'intérêt que vous me portez.\n\nAprès lecture de votre proposition, je ne souhaite pas y donner suite pour le moment.\n\nJe vous remercie de votre compréhension et vous souhaite une excellente continuation.",
-                modeName = AppMode.POLI.name, partType = MessagePart.BODY.name, isStandalone = true
+                text = "Merci pour votre message et pour l'intérêt que vous me portez.\n\nAprès lecture de votre proposition, je ne souhaite pas y donner suite pour le moment.\n\nJe vous remercie de votre compréhension et vous souhaite une excellente continuation.",
+                modeName = AppMode.POLI.name, partType = MessagePart.BODY.name
             ),
             ReplyEntity(
-                text = "Bonjour,\n\nMerci pour votre prise de contact.\n\nAprès examen de votre message, votre proposition ne correspond pas à mes besoins actuels. Je ne souhaite donc pas poursuivre cet échange.\n\nJe vous remercie pour votre démarche et vous souhaite une bonne journée.\n\nCordialement.",
-                modeName = AppMode.PRO.name, partType = MessagePart.BODY.name, isStandalone = true
+                text = "Merci pour votre prise de contact.\n\nAprès examen de votre message, votre proposition ne correspond pas à mes besoins actuels. Je ne souhaite donc pas poursuivre cet échange.\n\nJe vous remercie pour votre démarche et vous souhaite une bonne journée.\n\nCordialement.",
+                modeName = AppMode.PRO.name, partType = MessagePart.BODY.name
             ),
             ReplyEntity(
-                text = "Bonjour,\n\nMerci d'avoir pensé à moi pour cette proposition.\n\nMême si elle semble intéressante, ce n'est pas quelque chose qui me convient actuellement. Je vais donc passer mon tour.\n\nJe vous souhaite malgré tout beaucoup de succès dans vos démarches.",
-                modeName = AppMode.AMICAL.name, partType = MessagePart.BODY.name, isStandalone = true
+                text = "Merci d'avoir pensé à moi pour cette proposition.\n\nMême si elle semble intéressante, ce n'est pas quelque chose qui me convient actuellement. Je vais donc passer mon tour.\n\nJe vous souhaite malgré tout beaucoup de succès dans vos démarches.",
+                modeName = AppMode.AMICAL.name, partType = MessagePart.BODY.name
             ),
             ReplyEntity(
-                text = "Bonjour,\n\nMerci pour votre message.\n\nJe ne suis pas intéressé par cette proposition et ne souhaite pas être recontacté à ce sujet.\n\nBonne continuation.",
-                modeName = AppMode.DIRECT.name, partType = MessagePart.BODY.name, isStandalone = true
+                text = "Merci pour votre message.\n\nJe ne suis pas intéressé par cette proposition et ne souhaite pas être recontacté à ce sujet.\n\nBonne continuation.",
+                modeName = AppMode.DIRECT.name, partType = MessagePart.BODY.name
             ),
             ReplyEntity(
-                text = "Bonjour,\n\nMerci pour votre proposition.\n\nAprès une réunion stratégique intensive avec moi-même, un café et mon agenda, nous sommes arrivés à la conclusion que ce n'était pas le bon moment.\n\nJe vais donc décliner cette offre.\n\nExcellente journée à vous.",
-                modeName = AppMode.HUMOUR.name, partType = MessagePart.BODY.name, isStandalone = true
+                text = "Merci pour votre proposition.\n\nAprès une réunion stratégique intensive avec moi-même, un café et mon agenda, nous sommes arrivés à la conclusion que ce n'était pas le bon moment.\n\nJe vais donc décliner cette offre.\n\nExcellente journée à vous.",
+                modeName = AppMode.HUMOUR.name, partType = MessagePart.BODY.name
             ),
             ReplyEntity(
-                text = "Bonjour,\n\nMerci pour cette opportunité manifestement exceptionnelle.\n\nMalheureusement, après une analyse approfondie d'environ trois secondes, j'ai décidé de ne pas donner suite à votre proposition.\n\nJe vous souhaite néanmoins bonne chance dans votre quête de prospects plus enthousiastes.",
-                modeName = AppMode.SARCASTIQUE.name, partType = MessagePart.BODY.name, isStandalone = true
+                text = "Merci pour cette opportunité manifestement exceptionnelle.\n\nMalheureusement, après une analyse approfondie d'environ trois secondes, j'ai décidé de ne pas donner suite à votre proposition.\n\nJe vous souhaite néanmoins bonne chance dans votre quête de prospects plus enthousiastes.",
+                modeName = AppMode.SARCASTIQUE.name, partType = MessagePart.BODY.name
             ),
             ReplyEntity(
-                text = "Bonjour,\n\nVotre message a bien été reçu et transmis à mon comité de sélection.\n\nAprès plusieurs débats animés, deux votes contre, un vote blanc et l'abstention du président, la décision est tombée : votre proposition ne sera pas retenue.\n\nNous vous remercions pour votre participation et vous souhaitons une excellente continuation.",
-                modeName = AppMode.TROLL.name, partType = MessagePart.BODY.name, isStandalone = true
+                text = "Votre message a bien été reçu et transmis à mon comité de sélection.\n\nAprès plusieurs débats animés, deux votes contre, un vote blanc et l'abstention du président, la décision est tombée : votre proposition ne sera pas retenue.\n\nNous vous remercions pour votre participation et vous souhaitons une excellente continuation.",
+                modeName = AppMode.TROLL.name, partType = MessagePart.BODY.name
             ),
             ReplyEntity(
-                text = "Bonjour.\n\nVotre message a été analysé par le système.\n\nRésultat : proposition détectée. Niveau d'intérêt estimé : 0,7 %.\n\nAction exécutée : refus poli.\n\nMerci de votre compréhension.\n\nFin de transmission.",
-                modeName = AppMode.ROBOT.name, partType = MessagePart.BODY.name, isStandalone = true
+                text = "Votre message a été analysé par le système.\n\nRésultat : proposition détectée. Niveau d'intérêt estimé : 0,7 %.\n\nAction exécutée : refus poli.\n\nMerci de votre compréhension.\n\nFin de transmission.",
+                modeName = AppMode.ROBOT.name, partType = MessagePart.BODY.name
             ),
             ReplyEntity(
-                text = "Bonjour,\n\nMessage reçu.\n\nJe ne suis pas intéressé par cette proposition.\n\nAucune suite ne sera donnée.\n\nCordialement.",
-                modeName = AppMode.FROID.name, partType = MessagePart.BODY.name, isStandalone = true
+                text = "Message reçu.\n\nJe ne suis pas intéressé par cette proposition.\n\nAucune suite ne sera donnée.\n\nCordialement.",
+                modeName = AppMode.FROID.name, partType = MessagePart.BODY.name
             ),
             ReplyEntity(
-                text = "Bonjour,\n\nMerci pour votre message.\n\nComme la majorité des sollicitations non demandées que je reçois, votre proposition ne présente aucun intérêt pour moi.\n\nJe vous invite donc à ne pas perdre davantage votre temps ni le mien en poursuivant cet échange.\n\nBonne continuation.",
-                modeName = AppMode.CINGLANT.name, partType = MessagePart.BODY.name, isStandalone = true
+                text = "Merci pour votre message.\n\nComme la majorité des sollicitations non demandées que je reçois, votre proposition ne présente aucun intérêt pour moi.\n\nJe vous invite donc à ne pas perdre davantage votre temps ni le mien en poursuivant cet échange.\n\nBonne continuation.",
+                modeName = AppMode.CINGLANT.name, partType = MessagePart.BODY.name
             ),
 
             // ── Formules de fin globales ──────────────────────────────────
@@ -267,16 +283,16 @@ abstract class AppDatabase : RoomDatabase() {
             ReplyEntity(text = "Einen Moment bitte, Sie werden verbunden…", modeName = AppMode.TROLL.name, partType = MessagePart.BODY.name, isEnabled = false, language = "DE"),
 
             // ── Modeles de base complets (allemand) ─────────────────────────
-            ReplyEntity(text = "Guten Tag,\n\nVielen Dank für Ihre Nachricht und Ihr Interesse an mir.\n\nNach Lektüre Ihres Angebots möchte ich vorerst nicht weiter darauf eingehen.\n\nVielen Dank für Ihr Verständnis und alles Gute für Ihre weiteren Vorhaben.", modeName = AppMode.POLI.name, partType = MessagePart.BODY.name, language = "DE", isStandalone = true),
-            ReplyEntity(text = "Guten Tag,\n\nVielen Dank für Ihre Kontaktaufnahme.\n\nNach Prüfung Ihrer Nachricht entspricht Ihr Angebot nicht meinen aktuellen Bedürfnissen. Ich möchte diesen Austausch daher nicht fortsetzen.\n\nVielen Dank für Ihre Bemühungen und einen schönen Tag noch.\n\nMit freundlichen Grüßen.", modeName = AppMode.PRO.name, partType = MessagePart.BODY.name, language = "DE", isStandalone = true),
-            ReplyEntity(text = "Guten Tag,\n\nDanke, dass Sie an mich gedacht haben.\n\nAuch wenn es interessant klingt, passt es momentan nicht zu mir. Ich werde es daher vorbeiziehen lassen.\n\nIch wünsche Ihnen trotzdem viel Erfolg bei Ihren weiteren Vorhaben.", modeName = AppMode.AMICAL.name, partType = MessagePart.BODY.name, language = "DE", isStandalone = true),
-            ReplyEntity(text = "Guten Tag,\n\nDanke für Ihre Nachricht.\n\nIch bin an diesem Angebot nicht interessiert und möchte diesbezüglich nicht erneut kontaktiert werden.\n\nAlles Gute.", modeName = AppMode.DIRECT.name, partType = MessagePart.BODY.name, language = "DE", isStandalone = true),
-            ReplyEntity(text = "Guten Tag,\n\nDanke für Ihr Angebot.\n\nNach einer intensiven Strategiesitzung mit mir selbst, einem Kaffee und meinem Kalender sind wir zu dem Schluss gekommen, dass dies nicht der richtige Moment ist.\n\nIch werde dieses Angebot daher ablehnen.\n\nEinen ausgezeichneten Tag noch.", modeName = AppMode.HUMOUR.name, partType = MessagePart.BODY.name, language = "DE", isStandalone = true),
-            ReplyEntity(text = "Guten Tag,\n\nDanke für diese offensichtlich außergewöhnliche Gelegenheit.\n\nLeider habe ich nach einer gründlichen Analyse von etwa drei Sekunden beschlossen, Ihrem Angebot nicht weiter nachzugehen.\n\nIch wünsche Ihnen trotzdem viel Glück bei der Suche nach begeisterungsfähigeren Interessenten.", modeName = AppMode.SARCASTIQUE.name, partType = MessagePart.BODY.name, language = "DE", isStandalone = true),
-            ReplyEntity(text = "Guten Tag,\n\nIhre Nachricht wurde empfangen und an meinen Auswahlausschuss weitergeleitet.\n\nNach mehreren lebhaften Debatten, zwei Gegenstimmen, einer Enthaltung und der Stimmenthaltung des Vorsitzenden fiel die Entscheidung: Ihr Angebot wird nicht berücksichtigt.\n\nWir danken Ihnen für Ihre Teilnahme und wünschen Ihnen alles Gute.", modeName = AppMode.TROLL.name, partType = MessagePart.BODY.name, language = "DE", isStandalone = true),
-            ReplyEntity(text = "Guten Tag.\n\nIhre Nachricht wurde vom System analysiert.\n\nErgebnis: Angebot erkannt. Geschätztes Interessenniveau: 0,7 %.\n\nDurchgeführte Aktion: höfliche Ablehnung.\n\nVielen Dank für Ihr Verständnis.\n\nÜbertragung beendet.", modeName = AppMode.ROBOT.name, partType = MessagePart.BODY.name, language = "DE", isStandalone = true),
-            ReplyEntity(text = "Guten Tag,\n\nNachricht erhalten.\n\nIch bin an diesem Angebot nicht interessiert.\n\nEs wird keine weitere Reaktion erfolgen.\n\nMit freundlichen Grüßen.", modeName = AppMode.FROID.name, partType = MessagePart.BODY.name, language = "DE", isStandalone = true),
-            ReplyEntity(text = "Guten Tag,\n\nDanke für Ihre Nachricht.\n\nWie die meisten unerwünschten Anfragen, die ich erhalte, ist Ihr Angebot für mich ohne jedes Interesse.\n\nIch lade Sie daher ein, weder Ihre noch meine Zeit mit der Fortsetzung dieses Austauschs zu verschwenden.\n\nAlles Gute.", modeName = AppMode.CINGLANT.name, partType = MessagePart.BODY.name, language = "DE", isStandalone = true),
+            ReplyEntity(text = "Vielen Dank für Ihre Nachricht und Ihr Interesse an mir.\n\nNach Lektüre Ihres Angebots möchte ich vorerst nicht weiter darauf eingehen.\n\nVielen Dank für Ihr Verständnis und alles Gute für Ihre weiteren Vorhaben.", modeName = AppMode.POLI.name, partType = MessagePart.BODY.name, language = "DE"),
+            ReplyEntity(text = "Vielen Dank für Ihre Kontaktaufnahme.\n\nNach Prüfung Ihrer Nachricht entspricht Ihr Angebot nicht meinen aktuellen Bedürfnissen. Ich möchte diesen Austausch daher nicht fortsetzen.\n\nVielen Dank für Ihre Bemühungen und einen schönen Tag noch.\n\nMit freundlichen Grüßen.", modeName = AppMode.PRO.name, partType = MessagePart.BODY.name, language = "DE"),
+            ReplyEntity(text = "Danke, dass Sie an mich gedacht haben.\n\nAuch wenn es interessant klingt, passt es momentan nicht zu mir. Ich werde es daher vorbeiziehen lassen.\n\nIch wünsche Ihnen trotzdem viel Erfolg bei Ihren weiteren Vorhaben.", modeName = AppMode.AMICAL.name, partType = MessagePart.BODY.name, language = "DE"),
+            ReplyEntity(text = "Danke für Ihre Nachricht.\n\nIch bin an diesem Angebot nicht interessiert und möchte diesbezüglich nicht erneut kontaktiert werden.\n\nAlles Gute.", modeName = AppMode.DIRECT.name, partType = MessagePart.BODY.name, language = "DE"),
+            ReplyEntity(text = "Danke für Ihr Angebot.\n\nNach einer intensiven Strategiesitzung mit mir selbst, einem Kaffee und meinem Kalender sind wir zu dem Schluss gekommen, dass dies nicht der richtige Moment ist.\n\nIch werde dieses Angebot daher ablehnen.\n\nEinen ausgezeichneten Tag noch.", modeName = AppMode.HUMOUR.name, partType = MessagePart.BODY.name, language = "DE"),
+            ReplyEntity(text = "Danke für diese offensichtlich außergewöhnliche Gelegenheit.\n\nLeider habe ich nach einer gründlichen Analyse von etwa drei Sekunden beschlossen, Ihrem Angebot nicht weiter nachzugehen.\n\nIch wünsche Ihnen trotzdem viel Glück bei der Suche nach begeisterungsfähigeren Interessenten.", modeName = AppMode.SARCASTIQUE.name, partType = MessagePart.BODY.name, language = "DE"),
+            ReplyEntity(text = "Ihre Nachricht wurde empfangen und an meinen Auswahlausschuss weitergeleitet.\n\nNach mehreren lebhaften Debatten, zwei Gegenstimmen, einer Enthaltung und der Stimmenthaltung des Vorsitzenden fiel die Entscheidung: Ihr Angebot wird nicht berücksichtigt.\n\nWir danken Ihnen für Ihre Teilnahme und wünschen Ihnen alles Gute.", modeName = AppMode.TROLL.name, partType = MessagePart.BODY.name, language = "DE"),
+            ReplyEntity(text = "Ihre Nachricht wurde vom System analysiert.\n\nErgebnis: Angebot erkannt. Geschätztes Interessenniveau: 0,7 %.\n\nDurchgeführte Aktion: höfliche Ablehnung.\n\nVielen Dank für Ihr Verständnis.\n\nÜbertragung beendet.", modeName = AppMode.ROBOT.name, partType = MessagePart.BODY.name, language = "DE"),
+            ReplyEntity(text = "Nachricht erhalten.\n\nIch bin an diesem Angebot nicht interessiert.\n\nEs wird keine weitere Reaktion erfolgen.\n\nMit freundlichen Grüßen.", modeName = AppMode.FROID.name, partType = MessagePart.BODY.name, language = "DE"),
+            ReplyEntity(text = "Danke für Ihre Nachricht.\n\nWie die meisten unerwünschten Anfragen, die ich erhalte, ist Ihr Angebot für mich ohne jedes Interesse.\n\nIch lade Sie daher ein, weder Ihre noch meine Zeit mit der Fortsetzung dieses Austauschs zu verschwenden.\n\nAlles Gute.", modeName = AppMode.CINGLANT.name, partType = MessagePart.BODY.name, language = "DE"),
 
             // ── Formules de fin globales (allemand) ───────────────────────
             ReplyEntity(text = "Auf Wiederhören.", modeName = MODE_GLOBAL, partType = MessagePart.ENDING.name, language = "DE"),
@@ -303,16 +319,16 @@ abstract class AppDatabase : RoomDatabase() {
             ReplyEntity(text = "Un momento, la stiamo mettendo in contatto…", modeName = AppMode.TROLL.name, partType = MessagePart.BODY.name, isEnabled = false, language = "IT"),
 
             // ── Modeles de base complets (italien) ──────────────────────────
-            ReplyEntity(text = "Buongiorno,\n\nGrazie per il suo messaggio e per l'interesse che mi ha dimostrato.\n\nDopo aver letto la sua proposta, per il momento non desidero darle seguito.\n\nLa ringrazio per la comprensione e le auguro un'ottima continuazione.", modeName = AppMode.POLI.name, partType = MessagePart.BODY.name, language = "IT", isStandalone = true),
-            ReplyEntity(text = "Buongiorno,\n\nGrazie per il suo contatto.\n\nDopo un esame del suo messaggio, la sua proposta non corrisponde alle mie attuali esigenze. Non desidero quindi proseguire questo scambio.\n\nLa ringrazio per il suo impegno e le auguro una buona giornata.\n\nCordiali saluti.", modeName = AppMode.PRO.name, partType = MessagePart.BODY.name, language = "IT", isStandalone = true),
-            ReplyEntity(text = "Buongiorno,\n\nGrazie per aver pensato a me per questa proposta.\n\nAnche se sembra interessante, al momento non è qualcosa che mi convince. Passerò quindi il mio turno.\n\nLe auguro comunque molto successo nelle sue iniziative.", modeName = AppMode.AMICAL.name, partType = MessagePart.BODY.name, language = "IT", isStandalone = true),
-            ReplyEntity(text = "Buongiorno,\n\nGrazie per il suo messaggio.\n\nNon sono interessato a questa proposta e non desidero essere ricontattato in merito.\n\nBuona continuazione.", modeName = AppMode.DIRECT.name, partType = MessagePart.BODY.name, language = "IT", isStandalone = true),
-            ReplyEntity(text = "Buongiorno,\n\nGrazie per la sua proposta.\n\nDopo una riunione strategica intensiva con me stesso, un caffè e la mia agenda, siamo giunti alla conclusione che non è il momento giusto.\n\nDeclinerò quindi questa offerta.\n\nOttima giornata a lei.", modeName = AppMode.HUMOUR.name, partType = MessagePart.BODY.name, language = "IT", isStandalone = true),
-            ReplyEntity(text = "Buongiorno,\n\nGrazie per questa opportunità a quanto pare eccezionale.\n\nPurtroppo, dopo un'analisi approfondita di circa tre secondi, ho deciso di non dare seguito alla sua proposta.\n\nLe auguro comunque buona fortuna nella ricerca di clienti più entusiasti.", modeName = AppMode.SARCASTIQUE.name, partType = MessagePart.BODY.name, language = "IT", isStandalone = true),
-            ReplyEntity(text = "Buongiorno,\n\nIl suo messaggio è stato ricevuto e trasmesso al mio comitato di selezione.\n\nDopo diversi dibattiti animati, due voti contrari, una scheda bianca e l'astensione del presidente, la decisione è stata presa: la sua proposta non sarà accolta.\n\nLa ringraziamo per la partecipazione e le auguriamo un'ottima continuazione.", modeName = AppMode.TROLL.name, partType = MessagePart.BODY.name, language = "IT", isStandalone = true),
-            ReplyEntity(text = "Buongiorno.\n\nIl suo messaggio è stato analizzato dal sistema.\n\nRisultato: proposta rilevata. Livello di interesse stimato: 0,7 %.\n\nAzione eseguita: rifiuto cortese.\n\nGrazie per la comprensione.\n\nFine della trasmissione.", modeName = AppMode.ROBOT.name, partType = MessagePart.BODY.name, language = "IT", isStandalone = true),
-            ReplyEntity(text = "Buongiorno,\n\nMessaggio ricevuto.\n\nNon sono interessato a questa proposta.\n\nNon sarà data alcuna risposta ulteriore.\n\nCordiali saluti.", modeName = AppMode.FROID.name, partType = MessagePart.BODY.name, language = "IT", isStandalone = true),
-            ReplyEntity(text = "Buongiorno,\n\nGrazie per il suo messaggio.\n\nCome la maggior parte delle richieste non sollecitate che ricevo, la sua proposta non presenta alcun interesse per me.\n\nLa invito quindi a non perdere ulteriormente il suo tempo né il mio continuando questo scambio.\n\nBuona continuazione.", modeName = AppMode.CINGLANT.name, partType = MessagePart.BODY.name, language = "IT", isStandalone = true),
+            ReplyEntity(text = "Grazie per il suo messaggio e per l'interesse che mi ha dimostrato.\n\nDopo aver letto la sua proposta, per il momento non desidero darle seguito.\n\nLa ringrazio per la comprensione e le auguro un'ottima continuazione.", modeName = AppMode.POLI.name, partType = MessagePart.BODY.name, language = "IT"),
+            ReplyEntity(text = "Grazie per il suo contatto.\n\nDopo un esame del suo messaggio, la sua proposta non corrisponde alle mie attuali esigenze. Non desidero quindi proseguire questo scambio.\n\nLa ringrazio per il suo impegno e le auguro una buona giornata.\n\nCordiali saluti.", modeName = AppMode.PRO.name, partType = MessagePart.BODY.name, language = "IT"),
+            ReplyEntity(text = "Grazie per aver pensato a me per questa proposta.\n\nAnche se sembra interessante, al momento non è qualcosa che mi convince. Passerò quindi il mio turno.\n\nLe auguro comunque molto successo nelle sue iniziative.", modeName = AppMode.AMICAL.name, partType = MessagePart.BODY.name, language = "IT"),
+            ReplyEntity(text = "Grazie per il suo messaggio.\n\nNon sono interessato a questa proposta e non desidero essere ricontattato in merito.\n\nBuona continuazione.", modeName = AppMode.DIRECT.name, partType = MessagePart.BODY.name, language = "IT"),
+            ReplyEntity(text = "Grazie per la sua proposta.\n\nDopo una riunione strategica intensiva con me stesso, un caffè e la mia agenda, siamo giunti alla conclusione che non è il momento giusto.\n\nDeclinerò quindi questa offerta.\n\nOttima giornata a lei.", modeName = AppMode.HUMOUR.name, partType = MessagePart.BODY.name, language = "IT"),
+            ReplyEntity(text = "Grazie per questa opportunità a quanto pare eccezionale.\n\nPurtroppo, dopo un'analisi approfondita di circa tre secondi, ho deciso di non dare seguito alla sua proposta.\n\nLe auguro comunque buona fortuna nella ricerca di clienti più entusiasti.", modeName = AppMode.SARCASTIQUE.name, partType = MessagePart.BODY.name, language = "IT"),
+            ReplyEntity(text = "Il suo messaggio è stato ricevuto e trasmesso al mio comitato di selezione.\n\nDopo diversi dibattiti animati, due voti contrari, una scheda bianca e l'astensione del presidente, la decisione è stata presa: la sua proposta non sarà accolta.\n\nLa ringraziamo per la partecipazione e le auguriamo un'ottima continuazione.", modeName = AppMode.TROLL.name, partType = MessagePart.BODY.name, language = "IT"),
+            ReplyEntity(text = "Il suo messaggio è stato analizzato dal sistema.\n\nRisultato: proposta rilevata. Livello di interesse stimato: 0,7 %.\n\nAzione eseguita: rifiuto cortese.\n\nGrazie per la comprensione.\n\nFine della trasmissione.", modeName = AppMode.ROBOT.name, partType = MessagePart.BODY.name, language = "IT"),
+            ReplyEntity(text = "Messaggio ricevuto.\n\nNon sono interessato a questa proposta.\n\nNon sarà data alcuna risposta ulteriore.\n\nCordiali saluti.", modeName = AppMode.FROID.name, partType = MessagePart.BODY.name, language = "IT"),
+            ReplyEntity(text = "Grazie per il suo messaggio.\n\nCome la maggior parte delle richieste non sollecitate che ricevo, la sua proposta non presenta alcun interesse per me.\n\nLa invito quindi a non perdere ulteriormente il suo tempo né il mio continuando questo scambio.\n\nBuona continuazione.", modeName = AppMode.CINGLANT.name, partType = MessagePart.BODY.name, language = "IT"),
 
             // ── Formules de fin globales (italien) ────────────────────────
             ReplyEntity(text = "Arrivederci.", modeName = MODE_GLOBAL, partType = MessagePart.ENDING.name, language = "IT"),
@@ -339,16 +355,16 @@ abstract class AppDatabase : RoomDatabase() {
             ReplyEntity(text = "One moment please, connecting you now…", modeName = AppMode.TROLL.name, partType = MessagePart.BODY.name, isEnabled = false, language = "EN"),
 
             // ── Modeles de base complets (anglais) ──────────────────────────
-            ReplyEntity(text = "Hello,\n\nThank you for your message and for your interest in me.\n\nHaving read your offer, I don't wish to pursue it for now.\n\nThank you for your understanding, and best wishes going forward.", modeName = AppMode.POLI.name, partType = MessagePart.BODY.name, language = "EN", isStandalone = true),
-            ReplyEntity(text = "Hello,\n\nThank you for reaching out.\n\nAfter reviewing your message, your offer doesn't match my current needs. I therefore don't wish to continue this exchange.\n\nThank you for your effort, and have a good day.\n\nKind regards.", modeName = AppMode.PRO.name, partType = MessagePart.BODY.name, language = "EN", isStandalone = true),
-            ReplyEntity(text = "Hello,\n\nThank you for thinking of me for this offer.\n\nEven though it sounds interesting, it's not something that suits me right now, so I'll pass.\n\nI wish you every success with your endeavours anyway.", modeName = AppMode.AMICAL.name, partType = MessagePart.BODY.name, language = "EN", isStandalone = true),
-            ReplyEntity(text = "Hello,\n\nThank you for your message.\n\nI'm not interested in this offer and don't wish to be contacted again about it.\n\nAll the best.", modeName = AppMode.DIRECT.name, partType = MessagePart.BODY.name, language = "EN", isStandalone = true),
-            ReplyEntity(text = "Hello,\n\nThank you for your offer.\n\nAfter an intensive strategy meeting with myself, a coffee and my calendar, we concluded this isn't the right time.\n\nSo I'll decline this offer.\n\nHave an excellent day.", modeName = AppMode.HUMOUR.name, partType = MessagePart.BODY.name, language = "EN", isStandalone = true),
-            ReplyEntity(text = "Hello,\n\nThank you for this apparently exceptional opportunity.\n\nUnfortunately, after a thorough analysis lasting about three seconds, I've decided not to pursue your offer.\n\nI wish you good luck finding more enthusiastic prospects nonetheless.", modeName = AppMode.SARCASTIQUE.name, partType = MessagePart.BODY.name, language = "EN", isStandalone = true),
-            ReplyEntity(text = "Hello,\n\nYour message has been received and forwarded to my selection committee.\n\nAfter several heated debates, two votes against, one abstention and the chair's non-vote, a decision has been reached: your offer will not be accepted.\n\nThank you for taking part, and best wishes going forward.", modeName = AppMode.TROLL.name, partType = MessagePart.BODY.name, language = "EN", isStandalone = true),
-            ReplyEntity(text = "Hello.\n\nYour message has been analysed by the system.\n\nResult: offer detected. Estimated interest level: 0.7%.\n\nAction taken: polite refusal.\n\nThank you for your understanding.\n\nEnd of transmission.", modeName = AppMode.ROBOT.name, partType = MessagePart.BODY.name, language = "EN", isStandalone = true),
-            ReplyEntity(text = "Hello,\n\nMessage received.\n\nI'm not interested in this offer.\n\nNo further action will be taken.\n\nKind regards.", modeName = AppMode.FROID.name, partType = MessagePart.BODY.name, language = "EN", isStandalone = true),
-            ReplyEntity(text = "Hello,\n\nThank you for your message.\n\nLike most unsolicited offers I receive, yours holds no interest for me whatsoever.\n\nI'd therefore suggest we both stop wasting time by continuing this exchange.\n\nAll the best.", modeName = AppMode.CINGLANT.name, partType = MessagePart.BODY.name, language = "EN", isStandalone = true),
+            ReplyEntity(text = "Thank you for your message and for your interest in me.\n\nHaving read your offer, I don't wish to pursue it for now.\n\nThank you for your understanding, and best wishes going forward.", modeName = AppMode.POLI.name, partType = MessagePart.BODY.name, language = "EN"),
+            ReplyEntity(text = "Thank you for reaching out.\n\nAfter reviewing your message, your offer doesn't match my current needs. I therefore don't wish to continue this exchange.\n\nThank you for your effort, and have a good day.\n\nKind regards.", modeName = AppMode.PRO.name, partType = MessagePart.BODY.name, language = "EN"),
+            ReplyEntity(text = "Thank you for thinking of me for this offer.\n\nEven though it sounds interesting, it's not something that suits me right now, so I'll pass.\n\nI wish you every success with your endeavours anyway.", modeName = AppMode.AMICAL.name, partType = MessagePart.BODY.name, language = "EN"),
+            ReplyEntity(text = "Thank you for your message.\n\nI'm not interested in this offer and don't wish to be contacted again about it.\n\nAll the best.", modeName = AppMode.DIRECT.name, partType = MessagePart.BODY.name, language = "EN"),
+            ReplyEntity(text = "Thank you for your offer.\n\nAfter an intensive strategy meeting with myself, a coffee and my calendar, we concluded this isn't the right time.\n\nSo I'll decline this offer.\n\nHave an excellent day.", modeName = AppMode.HUMOUR.name, partType = MessagePart.BODY.name, language = "EN"),
+            ReplyEntity(text = "Thank you for this apparently exceptional opportunity.\n\nUnfortunately, after a thorough analysis lasting about three seconds, I've decided not to pursue your offer.\n\nI wish you good luck finding more enthusiastic prospects nonetheless.", modeName = AppMode.SARCASTIQUE.name, partType = MessagePart.BODY.name, language = "EN"),
+            ReplyEntity(text = "Your message has been received and forwarded to my selection committee.\n\nAfter several heated debates, two votes against, one abstention and the chair's non-vote, a decision has been reached: your offer will not be accepted.\n\nThank you for taking part, and best wishes going forward.", modeName = AppMode.TROLL.name, partType = MessagePart.BODY.name, language = "EN"),
+            ReplyEntity(text = "Your message has been analysed by the system.\n\nResult: offer detected. Estimated interest level: 0.7%.\n\nAction taken: polite refusal.\n\nThank you for your understanding.\n\nEnd of transmission.", modeName = AppMode.ROBOT.name, partType = MessagePart.BODY.name, language = "EN"),
+            ReplyEntity(text = "Message received.\n\nI'm not interested in this offer.\n\nNo further action will be taken.\n\nKind regards.", modeName = AppMode.FROID.name, partType = MessagePart.BODY.name, language = "EN"),
+            ReplyEntity(text = "Thank you for your message.\n\nLike most unsolicited offers I receive, yours holds no interest for me whatsoever.\n\nI'd therefore suggest we both stop wasting time by continuing this exchange.\n\nAll the best.", modeName = AppMode.CINGLANT.name, partType = MessagePart.BODY.name, language = "EN"),
 
             // ── Formules de fin globales (anglais) ────────────────────────
             ReplyEntity(text = "Goodbye.", modeName = MODE_GLOBAL, partType = MessagePart.ENDING.name, language = "EN"),
@@ -375,16 +391,16 @@ abstract class AppDatabase : RoomDatabase() {
             ReplyEntity(text = "Un momento por favor, le estamos conectando…", modeName = AppMode.TROLL.name, partType = MessagePart.BODY.name, isEnabled = false, language = "ES"),
 
             // ── Modeles de base complets (espagnol) ─────────────────────────
-            ReplyEntity(text = "Hola,\n\nGracias por su mensaje y por el interés que me ha mostrado.\n\nTras leer su propuesta, no deseo darle seguimiento por el momento.\n\nLe agradezco su comprensión y le deseo una excelente continuación.", modeName = AppMode.POLI.name, partType = MessagePart.BODY.name, language = "ES", isStandalone = true),
-            ReplyEntity(text = "Hola,\n\nGracias por su contacto.\n\nTras examinar su mensaje, su propuesta no corresponde a mis necesidades actuales. Por lo tanto, no deseo continuar este intercambio.\n\nLe agradezco su gestión y le deseo un buen día.\n\nAtentamente.", modeName = AppMode.PRO.name, partType = MessagePart.BODY.name, language = "ES", isStandalone = true),
-            ReplyEntity(text = "Hola,\n\nGracias por haber pensado en mí para esta propuesta.\n\nAunque parece interesante, no es algo que me convenga actualmente, así que voy a dejarlo pasar.\n\nLe deseo de todos modos mucho éxito en sus gestiones.", modeName = AppMode.AMICAL.name, partType = MessagePart.BODY.name, language = "ES", isStandalone = true),
-            ReplyEntity(text = "Hola,\n\nGracias por su mensaje.\n\nNo estoy interesado en esta propuesta y no deseo que se me vuelva a contactar al respecto.\n\nBuena continuación.", modeName = AppMode.DIRECT.name, partType = MessagePart.BODY.name, language = "ES", isStandalone = true),
-            ReplyEntity(text = "Hola,\n\nGracias por su propuesta.\n\nTras una intensa reunión estratégica conmigo mismo, un café y mi agenda, hemos llegado a la conclusión de que no es el momento adecuado.\n\nPor lo tanto, voy a rechazar esta oferta.\n\nQue tenga un excelente día.", modeName = AppMode.HUMOUR.name, partType = MessagePart.BODY.name, language = "ES", isStandalone = true),
-            ReplyEntity(text = "Hola,\n\nGracias por esta oportunidad manifiestamente excepcional.\n\nDesgraciadamente, tras un análisis exhaustivo de unos tres segundos, he decidido no dar seguimiento a su propuesta.\n\nLe deseo no obstante buena suerte en su búsqueda de clientes más entusiastas.", modeName = AppMode.SARCASTIQUE.name, partType = MessagePart.BODY.name, language = "ES", isStandalone = true),
-            ReplyEntity(text = "Hola,\n\nSu mensaje ha sido recibido y transmitido a mi comité de selección.\n\nTras varios debates animados, dos votos en contra, un voto en blanco y la abstención del presidente, se ha tomado la decisión: su propuesta no será aceptada.\n\nLe agradecemos su participación y le deseamos una excelente continuación.", modeName = AppMode.TROLL.name, partType = MessagePart.BODY.name, language = "ES", isStandalone = true),
-            ReplyEntity(text = "Hola.\n\nSu mensaje ha sido analizado por el sistema.\n\nResultado: propuesta detectada. Nivel de interés estimado: 0,7 %.\n\nAcción ejecutada: rechazo cortés.\n\nGracias por su comprensión.\n\nFin de la transmisión.", modeName = AppMode.ROBOT.name, partType = MessagePart.BODY.name, language = "ES", isStandalone = true),
-            ReplyEntity(text = "Hola,\n\nMensaje recibido.\n\nNo estoy interesado en esta propuesta.\n\nNo se dará ninguna respuesta adicional.\n\nAtentamente.", modeName = AppMode.FROID.name, partType = MessagePart.BODY.name, language = "ES", isStandalone = true),
-            ReplyEntity(text = "Hola,\n\nGracias por su mensaje.\n\nComo la mayoría de las propuestas no solicitadas que recibo, la suya no presenta ningún interés para mí.\n\nPor lo tanto, le invito a no perder más su tiempo ni el mío continuando este intercambio.\n\nBuena continuación.", modeName = AppMode.CINGLANT.name, partType = MessagePart.BODY.name, language = "ES", isStandalone = true),
+            ReplyEntity(text = "Gracias por su mensaje y por el interés que me ha mostrado.\n\nTras leer su propuesta, no deseo darle seguimiento por el momento.\n\nLe agradezco su comprensión y le deseo una excelente continuación.", modeName = AppMode.POLI.name, partType = MessagePart.BODY.name, language = "ES"),
+            ReplyEntity(text = "Gracias por su contacto.\n\nTras examinar su mensaje, su propuesta no corresponde a mis necesidades actuales. Por lo tanto, no deseo continuar este intercambio.\n\nLe agradezco su gestión y le deseo un buen día.\n\nAtentamente.", modeName = AppMode.PRO.name, partType = MessagePart.BODY.name, language = "ES"),
+            ReplyEntity(text = "Gracias por haber pensado en mí para esta propuesta.\n\nAunque parece interesante, no es algo que me convenga actualmente, así que voy a dejarlo pasar.\n\nLe deseo de todos modos mucho éxito en sus gestiones.", modeName = AppMode.AMICAL.name, partType = MessagePart.BODY.name, language = "ES"),
+            ReplyEntity(text = "Gracias por su mensaje.\n\nNo estoy interesado en esta propuesta y no deseo que se me vuelva a contactar al respecto.\n\nBuena continuación.", modeName = AppMode.DIRECT.name, partType = MessagePart.BODY.name, language = "ES"),
+            ReplyEntity(text = "Gracias por su propuesta.\n\nTras una intensa reunión estratégica conmigo mismo, un café y mi agenda, hemos llegado a la conclusión de que no es el momento adecuado.\n\nPor lo tanto, voy a rechazar esta oferta.\n\nQue tenga un excelente día.", modeName = AppMode.HUMOUR.name, partType = MessagePart.BODY.name, language = "ES"),
+            ReplyEntity(text = "Gracias por esta oportunidad manifiestamente excepcional.\n\nDesgraciadamente, tras un análisis exhaustivo de unos tres segundos, he decidido no dar seguimiento a su propuesta.\n\nLe deseo no obstante buena suerte en su búsqueda de clientes más entusiastas.", modeName = AppMode.SARCASTIQUE.name, partType = MessagePart.BODY.name, language = "ES"),
+            ReplyEntity(text = "Su mensaje ha sido recibido y transmitido a mi comité de selección.\n\nTras varios debates animados, dos votos en contra, un voto en blanco y la abstención del presidente, se ha tomado la decisión: su propuesta no será aceptada.\n\nLe agradecemos su participación y le deseamos una excelente continuación.", modeName = AppMode.TROLL.name, partType = MessagePart.BODY.name, language = "ES"),
+            ReplyEntity(text = "Su mensaje ha sido analizado por el sistema.\n\nResultado: propuesta detectada. Nivel de interés estimado: 0,7 %.\n\nAcción ejecutada: rechazo cortés.\n\nGracias por su comprensión.\n\nFin de la transmisión.", modeName = AppMode.ROBOT.name, partType = MessagePart.BODY.name, language = "ES"),
+            ReplyEntity(text = "Mensaje recibido.\n\nNo estoy interesado en esta propuesta.\n\nNo se dará ninguna respuesta adicional.\n\nAtentamente.", modeName = AppMode.FROID.name, partType = MessagePart.BODY.name, language = "ES"),
+            ReplyEntity(text = "Gracias por su mensaje.\n\nComo la mayoría de las propuestas no solicitadas que recibo, la suya no presenta ningún interés para mí.\n\nPor lo tanto, le invito a no perder más su tiempo ni el mío continuando este intercambio.\n\nBuena continuación.", modeName = AppMode.CINGLANT.name, partType = MessagePart.BODY.name, language = "ES"),
 
             // ── Formules de fin globales (espagnol) ───────────────────────
             ReplyEntity(text = "Adiós.", modeName = MODE_GLOBAL, partType = MessagePart.ENDING.name, language = "ES"),

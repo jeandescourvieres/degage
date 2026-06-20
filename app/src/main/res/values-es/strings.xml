@@ -125,10 +125,10 @@
     <string name="mb_explain_ending_desc">La frase de cierre. Común a todos los modos.</string>
     <string name="mb_intro_footer">También puedes crear tus propias frases al final de cada sección.</string>
     <string name="mb_preview_label">Vista previa del mensaje completo</string>
-    <string name="mb_section_salutation_desc">La frase de apertura, leída primero por Tu dégages. Selecciona la que se ajuste a tu estilo — solo una a la vez.</string>
-    <string name="mb_section_body_desc">El núcleo de la respuesta, adaptado al modo %1$s %2$s. Es la frase principal que escucha el teleoperador. Solo una a la vez.</string>
+    <string name="mb_section_salutation_desc">Esta es la frase de apertura, leída primero por Tu dégages. Selecciona abajo el saludo que se ajuste a tu estilo — solo uno a la vez. O si no, crea tu propio saludo.</string>
+    <string name="mb_section_body_desc">Este es el núcleo de la respuesta, adaptado, como aquí, al modo %1$s %2$s. Es la frase principal que escucha el teleoperador. Solo una a la vez.</string>
     <string name="mb_section_ending_desc">La frase de cierre, pronunciada justo antes de colgar. Solo una a la vez.</string>
-    <string name="mb_add_part_placeholder">Añadir un %1$s…</string>
+    <string name="mb_add_part_placeholder">Crea tu %1$s personal…</string>
 
     <!-- ── Pantalla Historial ────────────────────────────────────────────── -->
     <string name="history_title">Historial</string>
