@@ -34,6 +34,10 @@
     <string name="modes_title">Choix du ton de réponse</string>
     <string name="modes_subtitle">Ne raccrochez plus. Faites répondre votre IA.</string>
     <string name="modes_intro_text">Chaque ton ci-dessous correspond à un message complet, déjà rédigé et prêt à l\'emploi : sélectionnez-en un, il sera joué tel quel au prochain démarcheur, sans rien à écrire. Si aucun ne vous convient parfaitement, vous pouvez aussi composer votre propre message de A à Z — formule d\'accueil, corps du texte, formule de fin — dans Personnaliser les réponses.</string>
+    <string name="modes_choice_intro_title">2 façons de choisir le ton de votre réponse</string>
+    <string name="modes_choice_intro_desc">Piochez parmi des modèles tout faits, déjà rédigés et prêts à l\'emploi pour chaque situation. Ou composez votre propre message de A à Z, à votre façon.</string>
+    <string name="modes_choice_button_premade">🎭 Choisir parmi les modèles tout faits</string>
+    <string name="modes_choice_button_custom">✏️ Composer mon propre message</string>
     <string name="modes_info_title">Modes de réponse</string>
     <string name="modes_info_content">Les modes définissent le ton de la réponse donnée aux spammeurs avant de raccrocher.\n\n🤝 Poli — réponse courtoise et ferme. Idéal pour rester discret.\n\n📋 Administratif — ton froid et officiel, comme un service juridique.\n\n😏 Sarcastique — réponse humoristique pour les démarcheurs qui le méritent.\n\n🎭 Troll — fait patienter le spammeur 10 secondes avant de raccrocher. Leur fait perdre du temps.\n\nTouchez un mode pour le sélectionner, puis tapez \"Écouter un aperçu\" pour l\'entendre.</string>
     <string name="modes_preview_button">Écouter un aperçu</string>
@@ -124,6 +128,8 @@
     <string name="mb_explain_ending_title">Formule de fin</string>
     <string name="mb_explain_ending_desc">La phrase de clôture. Commune à tous les modes.</string>
     <string name="mb_intro_footer">Vous pouvez aussi créer vos propres formules en bas de chaque section.</string>
+    <string name="mb_ready_made_hint">Vous préférez ne rien composer ? Tu dégages propose aussi des messages tout faits, déjà rédigés et prêts à l\'emploi pour chaque ton.</string>
+    <string name="mb_ready_made_button">🎭 Voir les modèles tout faits</string>
     <string name="mb_preview_label">Aperçu du message assemblé</string>
     <string name="mb_preview_intro">Cet exemple est le résultat des choix faits ci-dessous, dans les sections « Salutation », « Corps du message » et « Formule de fin ».</string>
     <string name="mb_section_salutation_desc">C\'est la phrase d\'ouverture lue en premier par Tu dégages. Sélectionnez ci-dessous la salutation qui correspond à votre style — une seule à la fois. Ou sinon, créez votre propre salutation.</string>
@@ -225,9 +231,9 @@
     <string name="welcome_hero_subtitle">TU DÉGAGES, votre nouvelle IA,\nva adorer leur répondre !</string>
     <string name="welcome_hero_headline">Stop aux appels indésirables. Définitivement.</string>
     <string name="welcome_hero_desc">Laissez votre IA personnelle répondre à votre place, avec le message, la voix et le ton de votre choix. Elle raccroche et bloque le numéro automatiquement.</string>
-    <string name="welcome_hero_desc_more">Pourquoi perdre votre temps à décrocher pour raccrocher quelques secondes plus tard ?\n\nChoisissez votre message, votre voix et votre style parmi 10 tons — du plus poli au plus cinglant, en passant par le troll et sa musique d\'attente ! À chaque appel indésirable, votre IA prend le relais, délivre le message que vous avez choisi, puis raccroche automatiquement.</string>
-    <string name="welcome_hero_modes_button">Vos 10 façons de dire non</string>
-    <string name="welcome_hero_desc_more_2">Et ce n\'est pas tout : le numéro est immédiatement bloqué pour éviter qu\'on vous rappelle encore et encore.\n\n✅ Votre message personnalisé\n✅ Votre voix, dans plusieurs langues\n✅ Votre ton de réponse préféré\n✅ Configuration en quelques clics, en une seule fois\n✅ Modifiable à tout moment\n\nVotre IA répond. Raccroche. Bloque.\n\nVous gagnez du temps. Vous gardez votre tranquillité.</string>
+    <string name="welcome_hero_desc_more">Pourquoi perdre votre temps à décrocher pour raccrocher quelques secondes plus tard ?\n\nChoisissez votre message (ou composez-le vous-même), votre voix et votre style parmi 10 tons — du plus poli au plus cinglant, en passant par le troll et sa musique d\'attente !</string>
+    <string name="welcome_hero_modes_button">On vous explique tout ici</string>
+    <string name="welcome_hero_desc_more_2">À chaque appel indésirable, votre IA prend le relais, délivre le message que vous avez choisi, puis raccroche automatiquement.\n\nEt ce n\'est pas tout : le numéro est immédiatement bloqué pour éviter qu\'on vous rappelle encore et encore.\n\n✅ Votre message personnalisé\n✅ Votre voix, dans plusieurs langues\n✅ Votre ton de réponse préféré\n✅ Configuration en quelques clics, en une seule fois\n✅ Modifiable à tout moment\n\nVotre IA répond. Raccroche. Bloque.\n\nVous gagnez du temps. Vous gardez votre tranquillité.</string>
     <string name="common_read_more">Lire la suite ▾</string>
     <string name="common_read_less">Réduire ▴</string>
     <string name="welcome_sections_intro">TU DÉGAGES : c\'est quoi le principe ?</string>

@@ -73,6 +73,97 @@ fun AppMode.localizedExample(): String = when (this) {
 
 @Composable
 fun ModesScreen(
+    onBack: () -> Unit = {},
+    onNavigateReadyMadeModes: () -> Unit = {},
+    onNavigateMessageBuilder: () -> Unit = {},
+) {
+    Column(
+        modifier = Modifier
+            .fillMaxSize()
+            .background(DarkBg)
+            .padding(horizontal = 16.dp)
+    ) {
+        Row(
+            modifier = Modifier.fillMaxWidth().padding(top = 8.dp),
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            IconButton(onClick = onBack) {
+                Icon(Icons.Default.ArrowBack, contentDescription = stringResource(R.string.cd_back), tint = Color.White)
+            }
+            Column(modifier = Modifier.weight(1f)) {
+                Text(stringResource(R.string.modes_title), fontSize = 20.sp, fontWeight = FontWeight.Bold, color = Color.White)
+                Text(stringResource(R.string.modes_subtitle), color = TextSecondary, fontSize = 13.sp)
+            }
+        }
+        Spacer(modifier = Modifier.height(12.dp))
+
+        // ── Intro : 2 façons de choisir le ton de la réponse ────────────────
+        Column(
+            modifier = Modifier
+                .fillMaxWidth()
+                .background(CardBg, RoundedCornerShape(14.dp))
+                .padding(16.dp)
+        ) {
+            Text(
+                text = stringResource(R.string.modes_choice_intro_title),
+                color = Color.White,
+                fontSize = 15.sp,
+                fontWeight = FontWeight.Bold
+            )
+            Spacer(modifier = Modifier.height(6.dp))
+            Text(
+                text = stringResource(R.string.modes_choice_intro_desc),
+                color = TextSecondary,
+                fontSize = 13.sp,
+                lineHeight = 18.sp
+            )
+        }
+        Spacer(modifier = Modifier.height(12.dp))
+
+        // ── Bouton 1 : modèles tout faits → page dédiée ─────────────────────
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .background(CardBg, RoundedCornerShape(14.dp))
+                .clickable { onNavigateReadyMadeModes() }
+                .border(1.dp, NeonGreen.copy(alpha = 0.5f), RoundedCornerShape(14.dp))
+                .padding(vertical = 14.dp, horizontal = 16.dp),
+            horizontalArrangement = Arrangement.SpaceBetween,
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            Text(
+                text = stringResource(R.string.modes_choice_button_premade),
+                fontSize = 15.sp,
+                fontWeight = FontWeight.Bold,
+                color = NeonGreen
+            )
+            Icon(Icons.Default.ArrowForward, contentDescription = null, tint = NeonGreen)
+        }
+        Spacer(modifier = Modifier.height(12.dp))
+
+        // ── Bouton 2 : composer son propre message ──────────────────────────
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .background(AccentCyan, RoundedCornerShape(14.dp))
+                .clickable { onNavigateMessageBuilder() }
+                .padding(vertical = 14.dp, horizontal = 16.dp),
+            horizontalArrangement = Arrangement.SpaceBetween,
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            Text(
+                text = stringResource(R.string.modes_choice_button_custom),
+                fontSize = 15.sp,
+                fontWeight = FontWeight.Bold,
+                color = Color.Black
+            )
+            Icon(Icons.Default.ArrowForward, contentDescription = null, tint = Color.Black)
+        }
+    }
+}
+
+@Composable
+fun ReadyMadeModesScreen(
     activeMode: AppMode,
     onSelectMode: (AppMode) -> Unit,
     onPreviewMode: (AppMode) -> Unit,
@@ -276,7 +367,15 @@ fun ModeCard(mode: AppMode, isSelected: Boolean, locked: Boolean = false, onClic
 @Composable
 fun ModesScreenPreview() {
     DegageTheme {
-        ModesScreen(
+        ModesScreen()
+    }
+}
+
+@Preview(showBackground = true, backgroundColor = 0xFF0A0A0A)
+@Composable
+fun ReadyMadeModesScreenPreview() {
+    DegageTheme {
+        ReadyMadeModesScreen(
             activeMode = AppMode.SARCASTIQUE,
             onSelectMode = {},
             onPreviewMode = {}

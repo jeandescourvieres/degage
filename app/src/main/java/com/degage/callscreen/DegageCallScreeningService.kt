@@ -213,7 +213,7 @@ class DegageCallScreeningService : CallScreeningService() {
             val ending = db.replyDao().getEnabledGlobalByPart(MessagePart.ENDING.name, replyLanguage).firstOrNull()?.text ?: ""
             val fullMessage = listOf(salutation, body, ending)
                 .filter { it.isNotBlank() }
-                .joinToString(" ")
+                .joinToString("\n\n")
 
             val rate = prefs.speechRate.first()
             val pitch = prefs.pitch.first()

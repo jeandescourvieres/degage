@@ -225,9 +225,9 @@
     <string name="welcome_hero_subtitle">TU DÉGAGES, Ihre neue KI,\nantwortet ihnen gerne!</string>
     <string name="welcome_hero_headline">Schluss mit unerwünschten Anrufen. Endgültig.</string>
     <string name="welcome_hero_desc">Lassen Sie Ihre persönliche KI in Ihrem Namen antworten – mit der Nachricht, Stimme und dem Ton Ihrer Wahl. Sie legt auf und blockiert die Nummer automatisch.</string>
-    <string name="welcome_hero_desc_more">Warum verschwenden Sie Zeit damit, abzuheben, nur um wenige Sekunden später wieder aufzulegen?\n\nWählen Sie Ihre Nachricht, Ihre Stimme und Ihren Stil aus 10 Tönen — von höflich bis bissig, inklusive Troll mit Wartemusik! Bei jedem unerwünschten Anruf übernimmt Ihre KI, spielt Ihre Nachricht ab und legt danach automatisch auf.</string>
-    <string name="welcome_hero_modes_button">Ihre 10 Arten, Nein zu sagen</string>
-    <string name="welcome_hero_desc_more_2">Und das ist noch nicht alles: Die Nummer wird sofort gesperrt, damit Sie nicht immer wieder angerufen werden.\n\n✅ Ihre persönliche Nachricht.\n✅ Ihre Stimme, in mehreren Sprachen.\n✅ Ihr bevorzugter Antwortstil.\n✅ In wenigen Klicks eingerichtet – ein einziges Mal.\n✅ Jederzeit änderbar.\n\nIhre KI antwortet. Legt auf. Sperrt.\n\nSie sparen Zeit. Sie behalten Ihre Ruhe.</string>
+    <string name="welcome_hero_desc_more">Warum verschwenden Sie Zeit damit, abzuheben, nur um wenige Sekunden später wieder aufzulegen?\n\nWählen Sie Ihre Nachricht (oder verfassen Sie sie selbst), Ihre Stimme und Ihren Stil aus 10 Tönen — von höflich bis bissig, inklusive Troll mit Wartemusik!</string>
+    <string name="welcome_hero_modes_button">Wir erklären Ihnen hier alles</string>
+    <string name="welcome_hero_desc_more_2">Bei jedem unerwünschten Anruf übernimmt Ihre KI, spielt Ihre Nachricht ab und legt danach automatisch auf.\n\nUnd das ist noch nicht alles: Die Nummer wird sofort gesperrt, damit Sie nicht immer wieder angerufen werden.\n\n✅ Ihre persönliche Nachricht.\n✅ Ihre Stimme, in mehreren Sprachen.\n✅ Ihr bevorzugter Antwortstil.\n✅ In wenigen Klicks eingerichtet – ein einziges Mal.\n✅ Jederzeit änderbar.\n\nIhre KI antwortet. Legt auf. Sperrt.\n\nSie sparen Zeit. Sie behalten Ihre Ruhe.</string>
     <string name="common_read_more">Mehr lesen ▾</string>
     <string name="common_read_less">Weniger anzeigen ▴</string>
     <string name="welcome_sections_intro">TU DÉGAGES: was bringt das eigentlich?</string>

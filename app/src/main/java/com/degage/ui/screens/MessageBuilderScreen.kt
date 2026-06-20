@@ -15,6 +15,7 @@ import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.ArrowBack
+import androidx.compose.material.icons.filled.ArrowForward
 import androidx.compose.material.icons.filled.Delete
 import androidx.compose.material.icons.filled.ExpandLess
 import androidx.compose.material.icons.filled.ExpandMore
@@ -50,13 +51,14 @@ fun MessageBuilderScreen(
     onSelect: (ReplyEntity) -> Unit,
     onAdd: (String, MessagePart) -> Unit,
     onDelete: (ReplyEntity) -> Unit,
+    onNavigateReadyMadeModes: () -> Unit = {},
     @Suppress("UNUSED_PARAMETER") onToggle: (ReplyEntity) -> Unit = {},
 ) {
     val previewText = remember(salutations, bodies, endings) {
         val s = salutations.firstOrNull { it.isEnabled }?.text ?: ""
         val b = bodies.firstOrNull { it.isEnabled }?.text ?: "…"
         val e = endings.firstOrNull { it.isEnabled }?.text ?: ""
-        listOf(s, b, e).filter { it.isNotBlank() }.joinToString(" ")
+        listOf(s, b, e).filter { it.isNotBlank() }.joinToString("\n\n")
     }
 
     var expandedSection by remember { mutableStateOf<MessagePart?>(MessagePart.SALUTATION) }
@@ -178,6 +180,45 @@ fun MessageBuilderScreen(
                         color = NeonGreen.copy(alpha = 0.8f),
                         lineHeight = 18.sp
                     )
+                }
+            }
+
+            // ── Renvoi vers les modèles tout faits ────────────────────────
+            item {
+                Column(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .background(CardBg, RoundedCornerShape(14.dp))
+                        .padding(16.dp)
+                ) {
+                    Text(
+                        text = stringResource(R.string.mb_ready_made_hint),
+                        color = TextSecondary,
+                        fontSize = 13.sp,
+                        lineHeight = 18.sp
+                    )
+                    Row(
+                        modifier = Modifier
+                            .padding(top = 10.dp)
+                            .clickable { onNavigateReadyMadeModes() }
+                            .border(1.dp, NeonGreen.copy(alpha = 0.5f), RoundedCornerShape(14.dp))
+                            .padding(vertical = 10.dp, horizontal = 16.dp),
+                        verticalAlignment = Alignment.CenterVertically
+                    ) {
+                        Text(
+                            text = stringResource(R.string.mb_ready_made_button),
+                            fontSize = 14.sp,
+                            fontWeight = FontWeight.Bold,
+                            color = NeonGreen
+                        )
+                        Spacer(modifier = Modifier.width(6.dp))
+                        Icon(
+                            imageVector = Icons.Default.ArrowForward,
+                            contentDescription = null,
+                            tint = NeonGreen,
+                            modifier = Modifier.size(18.dp)
+                        )
+                    }
                 }
             }
 

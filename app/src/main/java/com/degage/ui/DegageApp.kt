@@ -155,6 +155,14 @@ fun DegageApp(
 
                 composable(Screen.Modes.route) {
                     ModesScreen(
+                        onBack = { navController.navigateUp() },
+                        onNavigateReadyMadeModes = { navController.navigate(Screen.ReadyMadeModes.route) },
+                        onNavigateMessageBuilder = { navController.navigate(Screen.MessageBuilder.route) }
+                    )
+                }
+
+                composable(Screen.ReadyMadeModes.route) {
+                    ReadyMadeModesScreen(
                         activeMode = activeMode,
                         onSelectMode = viewModel::setMode,
                         onPreviewMode = { mode ->
@@ -269,7 +277,8 @@ fun DegageApp(
                         onBack = { navController.popBackStack() },
                         onSelect = viewModel::selectReply,
                         onAdd = { text, part -> viewModel.addPartItem(text, part, activeMode) },
-                        onDelete = viewModel::deleteReply
+                        onDelete = viewModel::deleteReply,
+                        onNavigateReadyMadeModes = { navController.navigate(Screen.ReadyMadeModes.route) }
                     )
                 }
 
