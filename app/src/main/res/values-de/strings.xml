@@ -4,6 +4,7 @@
 
     <!-- ── Allgemein ──────────────────────────────────────────────────────── -->
     <string name="cd_back">Zurück</string>
+    <string name="cd_close">Schließen</string>
     <string name="cd_help">Hilfe</string>
     <string name="cd_add">Hinzufügen</string>
     <string name="cd_delete">Löschen</string>
@@ -158,7 +159,7 @@
     <string name="voice_rate_label">Sprechgeschwindigkeit</string>
     <string name="voice_pitch_label">Tonhöhe</string>
     <string name="voice_test_button">Stimme testen</string>
-    <string name="voice_available_title">Verfügbare Stimmen (%1$s)</string>
+    <string name="voice_available_title">Verfügbare Stimmen (%1$s): %2$d</string>
     <string name="voice_generic_label">Stimme %1$d</string>
     <string name="voice_none_found">Keine Stimme für diese Sprache gefunden.\nÜberprüfen Sie Ihre Android-TTS-Einstellungen.</string>
     <string name="voice_speed_slow">Langsam</string>

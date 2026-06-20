@@ -74,7 +74,8 @@ class TtsManager(context: Context) {
             ?.groupBy { it.name.removeSuffix("-network").removeSuffix("-local") }
             ?.map { (_, group) -> group.firstOrNull { it.name.endsWith("-local") } ?: group.first() }
             ?.sortedBy { it.name }
-            ?.toList() ?: emptyList()
+            // On plafonne à 10 voix par langue : au-delà, le choix n'apporte plus rien à l'utilisateur.
+            ?.take(10) ?: emptyList()
     }
 
     suspend fun speak(text: String): Boolean = suspendCancellableCoroutine { cont ->

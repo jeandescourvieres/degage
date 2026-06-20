@@ -11,6 +11,7 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material.icons.filled.ChevronRight
+import androidx.compose.material.icons.filled.Close
 import androidx.compose.material.icons.filled.VolumeUp
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
@@ -54,6 +55,7 @@ fun VoiceSettingsScreen(
                 localVoice = it
                 onSelectVoice(it)
             },
+            onPreviewVoice = { onPreview(it, localRate, localPitch) },
             onDismiss = { showVoiceDialog = false }
         )
     }
@@ -138,7 +140,7 @@ fun VoiceSettingsScreen(
                     verticalAlignment = Alignment.CenterVertically
                 ) {
                     Text(
-                        stringResource(R.string.voice_available_title, replyLanguageLabel),
+                        stringResource(R.string.voice_available_title, replyLanguageLabel, voices.size),
                         color = Color.White,
                         fontSize = 15.sp,
                         fontWeight = FontWeight.SemiBold
@@ -198,7 +200,7 @@ private fun VoiceSliderCard(
 }
 
 @Composable
-private fun VoiceRow(voice: Voice, label: String, isSelected: Boolean, onClick: () -> Unit) {
+private fun VoiceRow(voice: Voice, label: String, isSelected: Boolean, onClick: () -> Unit, onPreviewClick: () -> Unit) {
     Row(
         modifier = Modifier
             .fillMaxWidth()
@@ -222,12 +224,18 @@ private fun VoiceRow(voice: Voice, label: String, isSelected: Boolean, onClick: 
                 fontSize = 12.sp
             )
         }
-        if (isSelected) {
-            Box(
-                modifier = Modifier
-                    .size(10.dp)
-                    .background(NeonGreen, RoundedCornerShape(5.dp))
-            )
+        Row(verticalAlignment = Alignment.CenterVertically) {
+            IconButton(onClick = onPreviewClick, modifier = Modifier.size(36.dp)) {
+                Icon(Icons.Default.VolumeUp, contentDescription = stringResource(R.string.voice_test_button), tint = NeonGreen, modifier = Modifier.size(18.dp))
+            }
+            if (isSelected) {
+                Spacer(modifier = Modifier.width(4.dp))
+                Box(
+                    modifier = Modifier
+                        .size(10.dp)
+                        .background(NeonGreen, RoundedCornerShape(5.dp))
+                )
+            }
         }
     }
 }
@@ -238,6 +246,7 @@ private fun VoiceListDialog(
     selectedVoiceName: String,
     replyLanguageLabel: String,
     onSelectVoice: (String) -> Unit,
+    onPreviewVoice: (String) -> Unit,
     onDismiss: () -> Unit,
 ) {
     Dialog(onDismissRequest = onDismiss) {
@@ -246,12 +255,22 @@ private fun VoiceListDialog(
                 .background(CardBg, RoundedCornerShape(20.dp))
                 .padding(24.dp)
         ) {
-            Text(
-                stringResource(R.string.voice_available_title, replyLanguageLabel),
-                fontSize = 18.sp,
-                fontWeight = FontWeight.Bold,
-                color = Color.White
-            )
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                horizontalArrangement = Arrangement.SpaceBetween,
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                Text(
+                    stringResource(R.string.voice_available_title, replyLanguageLabel, voices.size),
+                    fontSize = 18.sp,
+                    fontWeight = FontWeight.Bold,
+                    color = Color.White,
+                    modifier = Modifier.weight(1f)
+                )
+                IconButton(onClick = onDismiss) {
+                    Icon(Icons.Default.Close, contentDescription = stringResource(R.string.cd_close), tint = Color.White)
+                }
+            }
             Spacer(modifier = Modifier.height(16.dp))
             if (voices.isEmpty()) {
                 Text(
@@ -271,7 +290,8 @@ private fun VoiceListDialog(
                             onClick = {
                                 onSelectVoice(voice.name)
                                 onDismiss()
-                            }
+                            },
+                            onPreviewClick = { onPreviewVoice(voice.name) }
                         )
                     }
                 }
