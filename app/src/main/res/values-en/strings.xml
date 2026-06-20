@@ -125,6 +125,7 @@
     <string name="mb_explain_ending_desc">The closing phrase. Common to all modes.</string>
     <string name="mb_intro_footer">You can also create your own phrases at the bottom of each section.</string>
     <string name="mb_preview_label">Preview of the assembled message</string>
+    <string name="mb_preview_intro">This example is the result of the choices made below, in the "Greeting", "Message body" and "Closing line" sections.</string>
     <string name="mb_section_salutation_desc">This is the opening line spoken first by Tu dégages. Select the greeting below that matches your style — only one at a time. Or create your own greeting instead.</string>
     <string name="mb_section_body_desc">This is the heart of the reply, adapted, as shown here, to %1$s %2$s mode. This is the main phrase heard by the telemarketer. Only one at a time.</string>
     <string name="mb_section_ending_desc">The closing phrase spoken right before hanging up. Only one at a time.</string>

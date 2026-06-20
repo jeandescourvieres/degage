@@ -125,6 +125,7 @@
     <string name="mb_explain_ending_desc">Der Abschlusssatz. Gilt für alle Modi.</string>
     <string name="mb_intro_footer">Sie können auch eigene Formulierungen unten in jedem Abschnitt erstellen.</string>
     <string name="mb_preview_label">Vorschau der zusammengesetzten Nachricht</string>
+    <string name="mb_preview_intro">Dieses Beispiel ergibt sich aus den unten getroffenen Auswahlen in den Abschnitten „Begrüßung", „Nachrichtentext" und „Schlussformel".</string>
     <string name="mb_section_salutation_desc">Das ist der einleitende Satz, den Tu dégages zuerst vorliest. Wählen Sie unten die Begrüßung, die zu Ihrem Stil passt — immer nur eine. Oder erstellen Sie stattdessen Ihre eigene Begrüßung.</string>
     <string name="mb_section_body_desc">Das ist der Kern der Antwort, angepasst, wie hier, an den Modus %1$s %2$s. Dies ist der Hauptsatz, den der Anrufer hört. Immer nur einen.</string>
     <string name="mb_section_ending_desc">Die Abschlussformel, die kurz vor dem Auflegen gesprochen wird. Immer nur eine.</string>

@@ -191,6 +191,13 @@ fun MessageBuilderScreen(
                         .padding(16.dp)
                 ) {
                     Text(stringResource(R.string.mb_preview_label), fontSize = 12.sp, color = NeonGreen, fontWeight = FontWeight.SemiBold)
+                    Spacer(modifier = Modifier.height(4.dp))
+                    Text(
+                        text = stringResource(R.string.mb_preview_intro),
+                        fontSize = 11.sp,
+                        color = TextSecondary,
+                        lineHeight = 15.sp
+                    )
                     Spacer(modifier = Modifier.height(6.dp))
                     Text(
                         text = "\"$previewText\"",

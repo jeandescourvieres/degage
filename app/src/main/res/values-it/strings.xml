@@ -125,6 +125,7 @@
     <string name="mb_explain_ending_desc">La frase di chiusura. Comune a tutte le modalità.</string>
     <string name="mb_intro_footer">Puoi anche creare le tue formule personalizzate in fondo a ogni sezione.</string>
     <string name="mb_preview_label">Anteprima del messaggio assemblato</string>
+    <string name="mb_preview_intro">Questo esempio è il risultato delle scelte fatte qui sotto, nelle sezioni "Saluto", "Corpo del messaggio" e "Formula di chiusura".</string>
     <string name="mb_section_salutation_desc">Questa è la frase di apertura letta per prima da Tu dégages. Seleziona qui sotto il saluto che corrisponde al tuo stile — uno solo alla volta. Oppure crea il tuo saluto personalizzato.</string>
     <string name="mb_section_body_desc">Questo è il cuore della risposta, adattato, come qui, alla modalità %1$s %2$s. È la frase principale ascoltata dal call center. Una sola alla volta.</string>
     <string name="mb_section_ending_desc">La formula di chiusura pronunciata appena prima di riagganciare. Una sola alla volta.</string>
