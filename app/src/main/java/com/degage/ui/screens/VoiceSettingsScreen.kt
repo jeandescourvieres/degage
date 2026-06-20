@@ -10,6 +10,7 @@ import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
+import androidx.compose.material.icons.filled.ChevronRight
 import androidx.compose.material.icons.filled.VolumeUp
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
@@ -21,6 +22,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.compose.ui.window.Dialog
 import com.degage.R
 import com.degage.ui.theme.*
 import kotlin.math.roundToInt
@@ -41,6 +43,20 @@ fun VoiceSettingsScreen(
     var localRate by remember(speechRate) { mutableFloatStateOf(speechRate) }
     var localPitch by remember(pitch) { mutableFloatStateOf(pitch) }
     var localVoice by remember(selectedVoiceName) { mutableStateOf(selectedVoiceName) }
+    var showVoiceDialog by remember { mutableStateOf(false) }
+
+    if (showVoiceDialog) {
+        VoiceListDialog(
+            voices = voices,
+            selectedVoiceName = localVoice,
+            replyLanguageLabel = replyLanguageLabel,
+            onSelectVoice = {
+                localVoice = it
+                onSelectVoice(it)
+            },
+            onDismiss = { showVoiceDialog = false }
+        )
+    }
 
     Column(
         modifier = Modifier
@@ -110,28 +126,25 @@ fun VoiceSettingsScreen(
                 }
             }
 
-            // Liste des voix disponibles
+            // Bouton "Voix disponibles" -> ouvre le pop-up de choix
             item {
-                Text(stringResource(R.string.voice_available_title, replyLanguageLabel), fontSize = 15.sp, fontWeight = FontWeight.SemiBold, color = Color.White)
-                if (voices.isEmpty()) {
-                    Spacer(modifier = Modifier.height(8.dp))
+                Row(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .background(CardBg, RoundedCornerShape(14.dp))
+                        .clickable { showVoiceDialog = true }
+                        .padding(horizontal = 20.dp, vertical = 16.dp),
+                    horizontalArrangement = Arrangement.SpaceBetween,
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
                     Text(
-                        stringResource(R.string.voice_none_found),
-                        color = TextSecondary, fontSize = 13.sp, lineHeight = 20.sp
+                        stringResource(R.string.voice_available_title, replyLanguageLabel),
+                        color = Color.White,
+                        fontSize = 15.sp,
+                        fontWeight = FontWeight.SemiBold
                     )
+                    Icon(Icons.Default.ChevronRight, contentDescription = null, tint = NeonGreen)
                 }
-            }
-
-            itemsIndexed(voices, key = { _, voice -> voice.name }) { index, voice ->
-                VoiceRow(
-                    voice = voice,
-                    label = stringResource(R.string.voice_generic_label, index + 1),
-                    isSelected = localVoice == voice.name,
-                    onClick = {
-                        localVoice = voice.name
-                        onSelectVoice(voice.name)
-                    }
-                )
             }
 
             item { Spacer(modifier = Modifier.height(80.dp)) }
@@ -215,6 +228,62 @@ private fun VoiceRow(voice: Voice, label: String, isSelected: Boolean, onClick: 
                     .size(10.dp)
                     .background(NeonGreen, RoundedCornerShape(5.dp))
             )
+        }
+    }
+}
+
+@Composable
+private fun VoiceListDialog(
+    voices: List<Voice>,
+    selectedVoiceName: String,
+    replyLanguageLabel: String,
+    onSelectVoice: (String) -> Unit,
+    onDismiss: () -> Unit,
+) {
+    Dialog(onDismissRequest = onDismiss) {
+        Column(
+            modifier = Modifier
+                .background(CardBg, RoundedCornerShape(20.dp))
+                .padding(24.dp)
+        ) {
+            Text(
+                stringResource(R.string.voice_available_title, replyLanguageLabel),
+                fontSize = 18.sp,
+                fontWeight = FontWeight.Bold,
+                color = Color.White
+            )
+            Spacer(modifier = Modifier.height(16.dp))
+            if (voices.isEmpty()) {
+                Text(
+                    stringResource(R.string.voice_none_found),
+                    color = TextSecondary, fontSize = 13.sp, lineHeight = 20.sp
+                )
+            } else {
+                LazyColumn(
+                    modifier = Modifier.heightIn(max = 420.dp),
+                    verticalArrangement = Arrangement.spacedBy(10.dp)
+                ) {
+                    itemsIndexed(voices, key = { _, voice -> voice.name }) { index, voice ->
+                        VoiceRow(
+                            voice = voice,
+                            label = stringResource(R.string.voice_generic_label, index + 1),
+                            isSelected = selectedVoiceName == voice.name,
+                            onClick = {
+                                onSelectVoice(voice.name)
+                                onDismiss()
+                            }
+                        )
+                    }
+                }
+            }
+            Spacer(modifier = Modifier.height(20.dp))
+            Button(
+                onClick = onDismiss,
+                modifier = Modifier.align(Alignment.End),
+                colors = ButtonDefaults.buttonColors(containerColor = NeonGreen)
+            ) {
+                Text("OK", color = Color.Black, fontWeight = FontWeight.Bold)
+            }
         }
     }
 }
