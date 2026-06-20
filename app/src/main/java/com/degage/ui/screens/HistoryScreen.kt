@@ -18,6 +18,7 @@ import androidx.compose.material.icons.filled.ExpandMore
 import androidx.compose.material.icons.filled.Delete
 import androidx.compose.material.icons.filled.FileDownload
 import androidx.compose.material.icons.filled.Info
+import androidx.compose.material.icons.filled.VolumeUp
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import com.degage.ui.components.InfoDialog
@@ -40,16 +41,6 @@ import com.degage.ui.theme.*
 import java.text.SimpleDateFormat
 import java.util.*
 
-enum class HistoryFilter(val label: String) { TOUS("Tous"), BLOQUES("Bloqués"), REPONSES("Réponses"), MANUELS("Manuels") }
-
-@Composable
-fun HistoryFilter.localizedLabel(): String = when (this) {
-    HistoryFilter.TOUS -> stringResource(R.string.history_filter_all)
-    HistoryFilter.BLOQUES -> stringResource(R.string.history_filter_blocked)
-    HistoryFilter.REPONSES -> stringResource(R.string.history_filter_replies)
-    HistoryFilter.MANUELS -> stringResource(R.string.history_filter_manual)
-}
-
 @Composable
 fun HistoryScreen(
     calls: List<BlockedCallEntity>,
@@ -64,7 +55,6 @@ fun HistoryScreen(
     onBack: () -> Unit = {},
 ) {
     val context = LocalContext.current
-    var filter by remember { mutableStateOf(HistoryFilter.TOUS) }
     var showInfo by remember { mutableStateOf(false) }
     if (showInfo) InfoDialog(
         title = stringResource(R.string.history_info_title),
@@ -102,67 +92,27 @@ fun HistoryScreen(
                 Icon(Icons.Default.Info, contentDescription = stringResource(R.string.cd_help), tint = NeonGreen, modifier = Modifier.size(26.dp))
             }
         }
-        Spacer(modifier = Modifier.height(12.dp))
-
-        // Filter chips
-        Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-            HistoryFilter.entries.forEach { f ->
-                FilterChip(
-                    selected = filter == f,
-                    onClick = { filter = f },
-                    label = { Text(f.localizedLabel(), fontSize = 13.sp) },
-                    colors = FilterChipDefaults.filterChipColors(
-                        selectedContainerColor = NeonGreen,
-                        selectedLabelColor = Color.Black,
-                        containerColor = CardBg,
-                        labelColor = TextSecondary
-                    )
-                )
-            }
-        }
-
         Spacer(modifier = Modifier.height(16.dp))
 
-        if (filter == HistoryFilter.TOUS) {
-            HistoryReadingGuide(
-                title = stringResource(R.string.history_tous_help_title),
-                content = stringResource(R.string.history_tous_help_content)
-            )
-            Spacer(modifier = Modifier.height(16.dp))
-            CustomBlocksLinkCard(locked = !isPremium, onClick = onNavigateCustomBlocks, onUpgrade = onUpgrade)
-            Spacer(modifier = Modifier.height(16.dp))
-        }
+        HistoryReadingGuide(
+            title = stringResource(R.string.history_tous_help_title),
+            content = stringResource(R.string.history_tous_help_content)
+        )
+        Spacer(modifier = Modifier.height(16.dp))
+        CustomBlocksLinkCard(locked = !isPremium, onClick = onNavigateCustomBlocks, onUpgrade = onUpgrade)
+        Spacer(modifier = Modifier.height(16.dp))
 
-        if (filter == HistoryFilter.BLOQUES) {
-            HistoryReadingGuide(
-                title = stringResource(R.string.history_bloques_help_title),
-                content = stringResource(R.string.history_bloques_help_content)
-            )
-            Spacer(modifier = Modifier.height(16.dp))
-        }
-
-        if (filter == HistoryFilter.REPONSES) {
-            HistoryReadingGuide(
-                title = stringResource(R.string.history_reponses_help_title),
-                content = stringResource(R.string.history_reponses_help_content)
-            )
-            Spacer(modifier = Modifier.height(16.dp))
-        }
-
-        if (filter == HistoryFilter.MANUELS) {
-            HistoryReadingGuide(
-                title = stringResource(R.string.history_manuels_help_title),
-                content = stringResource(R.string.history_manuels_help_content)
-            )
-            Spacer(modifier = Modifier.height(16.dp))
-        }
-
-        if (filter == HistoryFilter.TOUS && recentUnblockedCalls.isNotEmpty()) {
+        if (recentUnblockedCalls.isNotEmpty()) {
             Text(
                 stringResource(R.string.history_recent_title),
                 fontSize = 13.sp,
                 fontWeight = FontWeight.SemiBold,
                 color = NeonGreen
+            )
+            Spacer(modifier = Modifier.height(8.dp))
+            HistoryReadingGuide(
+                title = stringResource(R.string.history_recent_help_title),
+                content = stringResource(R.string.history_recent_help_content)
             )
             Spacer(modifier = Modifier.height(8.dp))
             Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
@@ -173,20 +123,13 @@ fun HistoryScreen(
             Spacer(modifier = Modifier.height(16.dp))
         }
 
-        val filteredCalls = when (filter) {
-            HistoryFilter.TOUS -> calls
-            HistoryFilter.BLOQUES -> calls.filter { it.modeName == "Auto" }
-            HistoryFilter.REPONSES -> calls.filter { it.modeName != "Auto" }
-            HistoryFilter.MANUELS -> calls.filter { it.replyUsed.contains("règle personnalisée") }
-        }
-
-        if (filteredCalls.isEmpty()) {
+        if (calls.isEmpty()) {
             Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
                 Text(stringResource(R.string.history_empty), color = TextSecondary)
             }
         } else {
             LazyColumn(verticalArrangement = Arrangement.spacedBy(10.dp)) {
-                items(filteredCalls, key = { it.id }) { call ->
+                items(calls, key = { it.id }) { call ->
                     HistoryRow(call = call, onDelete = { onDelete(call.id) }, onMarkNotSpam = { onMarkNotSpam(call) })
                 }
                 item { Spacer(modifier = Modifier.height(80.dp)) }
@@ -285,6 +228,7 @@ fun HistoryRow(call: BlockedCallEntity, onDelete: () -> Unit, onMarkNotSpam: () 
         sdf.format(Date(call.timestamp))
     }
     val isRealNumber = call.phoneNumber.any { it.isDigit() }
+    val isSilent = call.modeName == "Auto"
 
     Row(
         modifier = Modifier
@@ -293,13 +237,22 @@ fun HistoryRow(call: BlockedCallEntity, onDelete: () -> Unit, onMarkNotSpam: () 
             .padding(horizontal = 16.dp, vertical = 12.dp),
         verticalAlignment = Alignment.CenterVertically
     ) {
-        Icon(Icons.Default.Block, contentDescription = null, tint = RedAlert, modifier = Modifier.size(20.dp))
+        Icon(
+            if (isSilent) Icons.Default.Block else Icons.Default.VolumeUp,
+            contentDescription = null,
+            tint = if (isSilent) RedAlert else NeonGreen,
+            modifier = Modifier.size(20.dp)
+        )
         Spacer(modifier = Modifier.width(12.dp))
         Column(modifier = Modifier.weight(1f)) {
             Text(call.phoneNumber, fontWeight = FontWeight.SemiBold, color = Color.White, fontSize = 15.sp)
-            Text(call.modeName, color = NeonGreen, fontSize = 12.sp)
-            if (call.replyUsed.isNotBlank()) {
-                Text("« ${call.replyUsed} »", color = TextSecondary, fontSize = 11.sp, maxLines = 1)
+            if (isSilent) {
+                Text(call.replyUsed, color = TextSecondary, fontSize = 12.sp)
+            } else {
+                Text(call.modeName, color = NeonGreen, fontSize = 12.sp)
+                if (call.replyUsed.isNotBlank()) {
+                    Text("« ${call.replyUsed} »", color = TextSecondary, fontSize = 11.sp, maxLines = 1)
+                }
             }
         }
         Column(horizontalAlignment = Alignment.End) {

@@ -133,24 +133,16 @@
     <!-- ── History screen ────────────────────────────────────────────── -->
     <string name="history_title">History</string>
     <string name="history_info_title">History</string>
-    <string name="history_info_content">Log of all calls blocked by Tu dégages.\n\n• Each row shows the detected number, date/time, mode used and message played.\n• Use the filters at the top (All / Blocked / Replies / Manual) to sort the display.\n• Tap the ✅ icon if this number was blocked by mistake: it will never be blocked again.\n• Tap the 🗑️ icon to delete an entry from the history.\n• Tap the ⬇️ icon to export the history as a CSV file (to save or send by email).\n\nIf a spam call got through without being blocked, find it at the top in "Recent unblocked calls" and tap "🚫 Block": it will be added to your manually blocked numbers and rejected automatically next time.</string>
+    <string name="history_info_content">Log of all calls blocked by Tu dégages.\n\n• Each row shows the detected number, date/time, and either the reply mode used (🗣️ Tu dégages spoke) or the reason for a silent rejection (🔇 no ring, no message).\n• Tap the ✅ icon if this number was blocked by mistake: it will never be blocked again.\n• Tap the 🗑️ icon to delete an entry from the history.\n• Tap the ⬇️ icon to export the history as a CSV file (to save or send by email).\n\nIf a spam call got through without being blocked, find it at the top in "Recent unblocked calls" and tap "🚫 Block": it will be added to your manually blocked numbers and rejected automatically next time.</string>
     <string name="history_export_csv">Export to CSV</string>
     <string name="history_recent_title">📵 Recent unblocked calls</string>
+    <string name="history_recent_help_title">ℹ️ What are you seeing here?</string>
+    <string name="history_recent_help_content">Here you\'ll find the latest calls that rang through normally on your phone — meaning Tu dégages let them through.\n\nThese are numbers the app had no reason to suspect: no known spam prefix, and not yet enough repeat calls to trigger burst detection.\n\nThis is exactly what the "Block" button next to each one is for: if you recognize a telemarketer yourself (even when the algorithm didn\'t catch anything), one tap adds it to your personal rules. It will then be silently rejected from the next call onward.\n\nIt\'s the manual safety net for catching what the automation can\'t guess on its own.</string>
     <string name="history_recent_block_button">🚫 Block</string>
-    <string name="history_filter_all">All</string>
-    <string name="history_filter_blocked">Blocked</string>
-    <string name="history_filter_replies">Replies</string>
-    <string name="history_filter_manual">Manual</string>
     <string name="history_custom_blocks_title">🚫 Manually blocked numbers</string>
     <string name="history_custom_blocks_desc">Find here all the numbers you have blocked yourself — using the "Block" button above or elsewhere in the app. You can view or remove them at any time.</string>
     <string name="history_tous_help_title">ℹ️ What will you see on this screen?</string>
-    <string name="history_tous_help_content">🚫 Manually blocked numbers — direct access to the list of numbers you have blocked yourself.\n\n📵 Recent unblocked calls — the latest suspicious calls that rang normally on your phone; tap "Block" so they get rejected automatically next time.\n\n📜 Full history — all calls handled by TU DÉGAGES, from most recent to oldest.</string>
-    <string name="history_bloques_help_title">ℹ️ What do you see here?</string>
-    <string name="history_bloques_help_content">This list groups calls rejected directly, without even making your phone ring or having the AI speak.\n\nThis happens when the number was already recognized as spam: personal list, community database, hidden number, custom rule, or several repeated calls in a short time (burst).</string>
-    <string name="history_reponses_help_title">ℹ️ What do you see here?</string>
-    <string name="history_reponses_help_content">This list groups calls for which your AI replied to the telemarketer with the chosen mode (Polite, Administrative, Sarcastic or Troll), before hanging up.\n\nThis happens when the number wasn\'t already recognized as spam: the AI takes the call, plays its message, then ends the conversation and remembers the number for next time.</string>
-    <string name="history_manuels_help_title">ℹ️ What do you see here?</string>
-    <string name="history_manuels_help_content">This list groups calls rejected because of one of your custom rules — a number or prefix you added yourself in "🚫 Manually blocked numbers".\n\nThis is different from numbers blocked automatically by TU DÉGAGES via the spam database: here, you decided the block.</string>
+    <string name="history_tous_help_content">🚫 Manually blocked numbers — direct access to the list of numbers you have blocked yourself.\n\n📵 Recent unblocked calls — the latest suspicious calls that rang normally on your phone; tap "Block" so they get rejected automatically next time.\n\n📜 Full history — all calls handled by TU DÉGAGES, from most recent to oldest. Each row shows at a glance whether TU DÉGAGES replied (🗣️) or silently rejected the call (🔇), and why.</string>
     <string name="history_empty">No blocked calls</string>
     <string name="history_not_spam">Not spam</string>
 
@@ -161,6 +153,9 @@
     <string name="voice_test_button">Test the voice</string>
     <string name="voice_available_title">Available voices (%1$s): %2$d</string>
     <string name="voice_generic_label">Voice %1$d</string>
+    <string name="voice_preview_hint">To listen</string>
+    <string name="voice_current_label">Selected voice: %1$s</string>
+    <string name="voice_autosave_hint">Settings are saved automatically</string>
     <string name="voice_none_found">No voice found for this language.\nCheck your Android TTS settings.</string>
     <string name="voice_speed_slow">Slow</string>
     <string name="voice_speed_normal">Normal</string>
@@ -433,7 +428,7 @@
     <string name="manual_q16_body">Yes! In Settings → Manually blocked numbers, you can add your own rules:\n\n• Exact number: blocks only this specific number (e.g. 0612345678).\n• Prefix: blocks all numbers starting with this digit sequence (e.g. 0033612 blocks all numbers starting that way).\n\nThese rules are added on top of the automatic spam database: any matching call is rejected immediately, without a voice message. You can remove a rule at any time from the same screen.</string>
 
     <string name="manual_q17_title">📋 History</string>
-    <string name="manual_q17_body">The History tab lists all blocked calls:\n\n• Detected phone number.\n• Date and time of the block.\n• Mode used to reply.\n• Exact message played to the caller.\n\nUse the filters (All / Blocked / Replies / Manual) to refine the display. Delete an entry with the 🗑️ icon.</string>
+    <string name="manual_q17_body">The History tab lists all blocked calls, most recent first:\n\n• Detected phone number.\n• Date and time.\n• A 🗣️ icon if TU DÉGAGES replied with a message (and which one), or 🔇 if the call was silently rejected (and why: known spam prefix, burst of calls, custom rule, hidden number…).\n\nDelete an entry with the 🗑️ icon.</string>
 
     <string name="manual_q18_title">⬇️ Can I download the list of blocked numbers?</string>
     <string name="manual_q18_body">Yes. In the History tab, tap the ⬇️ icon at the top of the screen: a CSV file (number, date, mode, message played) is generated and you can save it or send it by email via the Android share menu.\n\nThis export is purely personal: it serves as a record or proof, for example for an official report. It sends nothing to Tu dégages or anyone else.</string>
@@ -454,7 +449,7 @@
     <string name="manual_q23_body">Spoofing (a spammer displaying a fake number, sometimes yours or a relative\'s) is a phone network issue that Tu dégages cannot fix: the app only sees the number displayed by the carrier.\n\nIf you receive calls showing your own number or a spoofed number, reporting it to your carrier or to 33700 (anti-fraud SMS/call service in France) remains the most effective solution.</string>
 
     <string name="manual_q24_title">A spam number is not blocked, what should I do?</string>
-    <string name="manual_q24_body">1. Check that protection is enabled (home screen).\n2. Check that Tu dégages is set as the default caller ID app (Android Settings → Apps → Default apps → Caller ID and spam app).\n3. Update the spam database manually: Settings → Update spam database.\n4. If the number keeps calling after that, it will be remembered after the first block and rejected automatically next time.\n5. You can also add it immediately to your personal list (Anti-spam database → Manually blocked numbers): it will be blocked from the next call, and reported to the community database if that option is enabled.</string>
+    <string name="manual_q24_body">A spam number can sometimes ring through without being blocked — that\'s not a bug, it\'s because the number slipped through the gaps in automatic detection (no known spam prefix, not enough repeat calls yet to trigger burst detection). Tu dégages can\'t guess that a "clean-looking" number is actually a telemarketer it hasn\'t seen or couldn\'t see.\n\nThis is exactly what the History tab\'s "Recent unblocked calls" section is for: it lists the latest calls that rang through without being intercepted, with a one-tap "Block" button next to each number. As soon as you tap it, the number is added to your personal rules and will be silently rejected from the next call onward.\n\nOther useful checks:\n1. Check that protection is enabled (home screen).\n2. Check that Tu dégages is set as the default caller ID app (Android Settings → Apps → Default apps → Caller ID and spam app).\n3. Update the spam database manually: Settings → Update spam database.\n4. You can also add the number yourself in Settings → Manually blocked numbers (exact number or prefix), even if it doesn\'t appear in your recent calls: it will be blocked from the next call, and reported to the community database if that option is enabled.</string>
 
     <string name="manual_q25_title">Can callers leave a voicemail?</string>
     <string name="manual_q25_body">No. Tu dégages plays its own message to the caller and then hangs up — the caller does not have access to your usual voicemail for this call.\n\nThis is intentional: a telemarketer who can neither talk to you nor leave a message has much less reason to call back.</string>

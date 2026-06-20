@@ -279,6 +279,7 @@ fun DegageApp(
                     val rate by voiceVm.speechRate.collectAsStateWithLifecycle()
                     val pitch by voiceVm.pitch.collectAsStateWithLifecycle()
                     val voiceName by voiceVm.selectedVoiceName.collectAsStateWithLifecycle()
+                    val previewingVoiceName by voiceVm.previewingVoiceName.collectAsStateWithLifecycle()
                     val replyLanguage by voiceVm.replyLanguage.collectAsStateWithLifecycle()
                     val replyLanguageLabel = when (replyLanguage) {
                         "DE" -> stringResource(R.string.reply_lang_de)
@@ -290,6 +291,7 @@ fun DegageApp(
                     VoiceSettingsScreen(
                         voices = voices,
                         selectedVoiceName = voiceName,
+                        previewingVoiceName = previewingVoiceName,
                         speechRate = rate,
                         pitch = pitch,
                         replyLanguageLabel = replyLanguageLabel,

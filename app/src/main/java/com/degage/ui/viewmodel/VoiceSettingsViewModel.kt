@@ -33,6 +33,9 @@ class VoiceSettingsViewModel(app: Application) : AndroidViewModel(app) {
         prefs.voiceNameFor(lang)
     }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(5000), "")
 
+    private val _previewingVoiceName = MutableStateFlow<String?>(null)
+    val previewingVoiceName: StateFlow<String?> = _previewingVoiceName.asStateFlow()
+
     fun previewVoice(voiceName: String, rate: Float, pitch: Float) = viewModelScope.launch {
         val lang = replyLanguage.value
         val phrase = when (lang) {
@@ -44,7 +47,12 @@ class VoiceSettingsViewModel(app: Application) : AndroidViewModel(app) {
         }
         ttsManager.setLanguage(lang)
         ttsManager.applySettings(rate, pitch, voiceName)
-        ttsManager.speak(phrase)
+        _previewingVoiceName.value = voiceName
+        try {
+            ttsManager.speak(phrase)
+        } finally {
+            if (_previewingVoiceName.value == voiceName) _previewingVoiceName.value = null
+        }
     }
 
     fun setRate(value: Float) = viewModelScope.launch { prefs.setSpeechRate(value) }
