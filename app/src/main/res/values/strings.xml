@@ -33,9 +33,13 @@
     <!-- ── Écran Modes ─────────────────────────────────────────────────── -->
     <string name="modes_title">Choix du ton de réponse</string>
     <string name="modes_subtitle">Ne raccrochez plus. Faites répondre votre IA.</string>
-    <string name="modes_intro_text">Chaque ton ci-dessous correspond à un message complet, déjà rédigé et prêt à l\'emploi : sélectionnez-en un, il sera joué tel quel au prochain démarcheur, sans rien à écrire. Si aucun ne vous convient parfaitement, vous pouvez aussi composer votre propre message de A à Z — formule d\'accueil, corps du texte, formule de fin — dans Personnaliser les réponses.</string>
-    <string name="modes_choice_intro_title">2 façons de choisir le ton de votre réponse</string>
-    <string name="modes_choice_intro_desc">Piochez parmi des modèles tout faits, déjà rédigés et prêts à l\'emploi pour chaque situation. Ou composez votre propre message de A à Z, à votre façon.</string>
+    <string name="modes_intro_text">Chaque ton ci-dessous correspond à un message complet, déjà rédigé et prêt à l\'emploi : sélectionnez-en un, il sera joué tel quel au prochain démarcheur, sans rien à écrire.\n\nSi aucun ne vous convient parfaitement, vous pouvez aussi composer votre propre message de A à Z — formule d\'accueil, corps du texte, formule de fin — dans Personnaliser les réponses.</string>
+    <string name="modes_ready_list_intro">Voilà les messages prêts à l\'emploi que vous propose Tu dégages :</string>
+    <string name="modes_why_title">Pourquoi un ton plutôt qu\'un autre ?</string>
+    <string name="modes_why_desc">Un démarcheur insistant n\'appelle pas la même réaction qu\'un simple sondage — et votre humeur du jour compte aussi ! Le ton choisi change uniquement ce que l\'appelant entend : le résultat, lui, ne change jamais — l\'appel est bloqué et le numéro mémorisé.</string>
+    <string name="modes_choice_intro_title">Tu dégages vous offre 2 façons de choisir le ton de votre réponse.</string>
+    <string name="modes_choice_intro_desc">Vous pouvez tout d\'abord choisir parmi des modèles tout faits, déjà rédigés et prêts à l\'emploi pour chaque situation.</string>
+    <string name="modes_choice_custom_desc">Sinon, vous pouvez composer vous-même votre propre message de A à Z, à votre façon.</string>
     <string name="modes_choice_button_premade">🎭 Choisir parmi les modèles tout faits</string>
     <string name="modes_choice_button_custom">✏️ Composer mon propre message</string>
     <string name="modes_info_title">Modes de réponse</string>
@@ -111,14 +115,15 @@
 
     <!-- ── Écran Constructeur de message ──────────────────────────────── -->
     <string name="mb_header_title">Personnaliser les réponses</string>
-    <string name="mb_active_mode_label">Mode actif</string>
-    <string name="mb_active_mode_hint">Corps adapté\nà ce mode →</string>
+    <string name="mb_active_mode_label">Mode actuellement actif :</string>
     <string name="mb_lang_banner">Les phrases ci-dessous sont en %1$s, la langue choisie pour vos messages vocaux. Sélectionnez celles qui vous correspondent.</string>
     <string name="reply_lang_de">allemand</string>
     <string name="reply_lang_it">italien</string>
     <string name="reply_lang_en">anglais</string>
     <string name="reply_lang_es">espagnol</string>
     <string name="reply_lang_fr">français</string>
+    <string name="mb_why_title">Pourquoi composer votre propre message ?</string>
+    <string name="mb_why_desc">Les modèles tout faits couvrent la plupart des situations, mais rien ne remplace vos propres mots : une formule qui vous ressemble, une blague bien à vous, ou un style que vous seul connaissez. Composez-le une fois, Tu dégages s\'en sert à chaque appel indésirable.</string>
     <string name="mb_intro_title">Comment composer votre message ?</string>
     <string name="mb_intro_desc">Tu dégages assemble automatiquement un message en 3 sections avant de raccrocher. L\'application propose déjà des modèles pour chaque section, mais vous pouvez tout modifier à votre convenance, comme expliqué à chaque étape :</string>
     <string name="mb_explain_salutation_title">Salutation</string>
@@ -230,10 +235,9 @@
     <string name="welcome_hero_title">Les spammeurs adorent\nvous appeler ?</string>
     <string name="welcome_hero_subtitle">TU DÉGAGES, votre nouvelle IA,\nva adorer leur répondre !</string>
     <string name="welcome_hero_headline">Stop aux appels indésirables. Définitivement.</string>
-    <string name="welcome_hero_desc">Laissez votre IA personnelle répondre à votre place, avec le message, la voix et le ton de votre choix. Elle raccroche et bloque le numéro automatiquement.</string>
-    <string name="welcome_hero_desc_more">Pourquoi perdre votre temps à décrocher pour raccrocher quelques secondes plus tard ?\n\nChoisissez votre message (ou composez-le vous-même), votre voix et votre style parmi 10 tons — du plus poli au plus cinglant, en passant par le troll et sa musique d\'attente !</string>
+    <string name="welcome_hero_desc">Pourquoi perdre votre temps à décrocher pour raccrocher quelques secondes plus tard ?\n\nTu dégages, votre IA personnelle, répond automatiquement à votre place aux appels non désirés avec le message, la voix et le ton de votre choix. Une fois le message délivré, elle raccroche et bloque immédiatement le numéro pour éviter tout nouvel appel. Vous allez gagner du temps et surtout de la tranquillité.</string>
+    <string name="welcome_hero_desc_more">Choisissez votre message (ou composez-le vous-même), votre voix et votre style parmi 10 tons — du plus poli au plus cinglant, en passant par le troll et sa musique d\'attente !</string>
     <string name="welcome_hero_modes_button">On vous explique tout ici</string>
-    <string name="welcome_hero_desc_more_2">À chaque appel indésirable, votre IA prend le relais, délivre le message que vous avez choisi, puis raccroche automatiquement.\n\nEt ce n\'est pas tout : le numéro est immédiatement bloqué pour éviter qu\'on vous rappelle encore et encore.\n\n✅ Votre message personnalisé\n✅ Votre voix, dans plusieurs langues\n✅ Votre ton de réponse préféré\n✅ Configuration en quelques clics, en une seule fois\n✅ Modifiable à tout moment\n\nVotre IA répond. Raccroche. Bloque.\n\nVous gagnez du temps. Vous gardez votre tranquillité.</string>
     <string name="common_read_more">Lire la suite ▾</string>
     <string name="common_read_less">Réduire ▴</string>
     <string name="welcome_sections_intro">TU DÉGAGES : c\'est quoi le principe ?</string>

@@ -6,26 +6,40 @@ import android.media.AudioTrack
 import kotlin.math.PI
 import kotlin.math.sin
 
-/** Petit jingle joue une fois a l'ouverture de l'accueil — pas de fichier audio, synthese a la volee. */
+/**
+ * Petit jingle joue une fois a l'ouverture de l'accueil — pas de fichier audio, synthese a la volee.
+ * Inspire des 9 premieres notes du theme principal de Star Wars (transcription simplifiee,
+ * non garantie fidele a 100% a la partition originale) : clin d'oeil demande par Jean,
+ * en connaissance du risque de droits d'auteur sur la melodie si l'appli est publiee.
+ */
 object WelcomeChime {
 
-    // Six bips nettement separes : Do, Mi, Sol (montant) puis Sol, Mi, Do (descendant)
-    private val notes = floatArrayOf(523.25f, 659.25f, 783.99f, 783.99f, 659.25f, 523.25f)
+    // Frequence (Hz) et duree (s) de chaque note : G G G C G D C B A
+    private val notes = listOf(
+        392.00f to 0.15, // G4
+        392.00f to 0.15, // G4
+        392.00f to 0.15, // G4
+        523.25f to 0.55, // C5 — la grande tenue
+        392.00f to 0.35, // G4
+        587.33f to 0.35, // D5
+        523.25f to 0.15, // C5
+        493.88f to 0.15, // B4
+        440.00f to 0.45, // A4 — note finale, laissee sonner
+    )
+    private const val gapDurationSec = 0.03
 
     fun play() {
         Thread {
             val sampleRate = 44100
-            val beepDurationSec = 0.14
-            val gapDurationSec = 0.10
-            val beepSamples = (sampleRate * beepDurationSec).toInt()
             val gapSamples = (sampleRate * gapDurationSec).toInt()
-            // Assez de place pour les 3 bips en entier : un buffer trop petit forcait stop()
-            // a couper la fin du dernier bip avant qu'il ait fini de jouer.
+            val totalSamples = notes.sumOf { (_, dur) -> (sampleRate * dur).toInt() + gapSamples }
+            // Assez de place pour toutes les notes en entier : un buffer trop petit forcait stop()
+            // a couper la fin de la derniere note avant qu'elle ait fini de jouer.
             val bufferSize = AudioTrack.getMinBufferSize(
                 sampleRate,
                 AudioFormat.CHANNEL_OUT_MONO,
                 AudioFormat.ENCODING_PCM_16BIT
-            ).coerceAtLeast((beepSamples + gapSamples) * notes.size * 2)
+            ).coerceAtLeast(totalSamples * 2)
 
             val track = AudioTrack.Builder()
                 .setAudioAttributes(
@@ -45,24 +59,27 @@ object WelcomeChime {
                 .build()
 
             track.play()
-            notes.forEachIndexed { index, freq ->
-                val buffer = ShortArray(beepSamples + gapSamples)
-                for (i in 0 until beepSamples) {
+            var totalDurationSec = 0.0
+            notes.forEach { (freq, durationSec) ->
+                val noteSamples = (sampleRate * durationSec).toInt()
+                val buffer = ShortArray(noteSamples + gapSamples)
+                for (i in 0 until noteSamples) {
                     val t = i.toDouble() / sampleRate
                     val env = when {
-                        i < beepSamples * 0.1 -> i / (beepSamples * 0.1)
-                        i > beepSamples * 0.6 -> (beepSamples - i) / (beepSamples * 0.4)
+                        i < noteSamples * 0.1 -> i / (noteSamples * 0.1)
+                        i > noteSamples * 0.7 -> (noteSamples - i) / (noteSamples * 0.3)
                         else -> 1.0
                     }
                     buffer[i] = (sin(2.0 * PI * freq * t) * 26000 * env).toInt().toShort()
                 }
-                // silence entre les bips pour qu'ils restent distincts a l'oreille
-                for (i in beepSamples until buffer.size) buffer[i] = 0
+                // bref silence entre les notes pour eviter les clics de raccord
+                for (i in noteSamples until buffer.size) buffer[i] = 0
                 track.write(buffer, 0, buffer.size)
+                totalDurationSec += durationSec + gapDurationSec
             }
-            // Laisse le temps au dernier bip de jouer reellement avant de couper la piste :
+            // Laisse le temps a la derniere note de jouer reellement avant de couper la piste :
             // write() ne garantit que la mise en file, pas la lecture effective.
-            Thread.sleep(((beepDurationSec + gapDurationSec) * notes.size * 1000).toLong() + 80)
+            Thread.sleep((totalDurationSec * 1000).toLong() + 80)
             track.stop()
             track.release()
         }.apply { isDaemon = true }.start()

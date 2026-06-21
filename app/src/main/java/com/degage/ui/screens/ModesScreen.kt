@@ -15,6 +15,7 @@ import androidx.compose.material.icons.filled.VolumeUp
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import com.degage.ui.components.InfoDialog
+import com.degage.ui.components.highlightBrand
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
@@ -105,7 +106,7 @@ fun ModesScreen(
                 .padding(16.dp)
         ) {
             Text(
-                text = stringResource(R.string.modes_choice_intro_title),
+                text = highlightBrand(stringResource(R.string.modes_choice_intro_title)),
                 color = Color.White,
                 fontSize = 15.sp,
                 fontWeight = FontWeight.Bold
@@ -138,6 +139,22 @@ fun ModesScreen(
                 color = NeonGreen
             )
             Icon(Icons.Default.ArrowForward, contentDescription = null, tint = NeonGreen)
+        }
+        Spacer(modifier = Modifier.height(12.dp))
+
+        // ── Texte intermédiaire : composer son propre message ───────────────
+        Column(
+            modifier = Modifier
+                .fillMaxWidth()
+                .background(CardBg, RoundedCornerShape(14.dp))
+                .padding(16.dp)
+        ) {
+            Text(
+                text = stringResource(R.string.modes_choice_custom_desc),
+                color = TextSecondary,
+                fontSize = 13.sp,
+                lineHeight = 18.sp
+            )
         }
         Spacer(modifier = Modifier.height(12.dp))
 
@@ -224,6 +241,32 @@ fun ReadyMadeModesScreen(
                         .padding(16.dp)
                 ) {
                     Text(
+                        text = stringResource(R.string.modes_why_title),
+                        color = Color.Black,
+                        fontSize = 17.sp,
+                        fontWeight = FontWeight.Bold,
+                        lineHeight = 20.sp,
+                        modifier = Modifier
+                            .background(AccentOrange, RoundedCornerShape(8.dp))
+                            .padding(horizontal = 10.dp, vertical = 4.dp)
+                    )
+                    Spacer(modifier = Modifier.height(18.dp))
+                    Text(
+                        text = stringResource(R.string.modes_why_desc),
+                        color = TextSecondary,
+                        fontSize = 13.sp,
+                        lineHeight = 18.sp
+                    )
+                }
+            }
+            item {
+                Column(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .background(CardBg, RoundedCornerShape(14.dp))
+                        .padding(16.dp)
+                ) {
+                    Text(
                         text = stringResource(R.string.modes_intro_text),
                         color = TextSecondary,
                         fontSize = 13.sp,
@@ -252,6 +295,17 @@ fun ReadyMadeModesScreen(
                         )
                     }
                 }
+            }
+            item {
+                Text(
+                    text = highlightBrand(stringResource(R.string.modes_ready_list_intro)),
+                    color = Color.Black,
+                    fontSize = 16.sp,
+                    fontWeight = FontWeight.Bold,
+                    modifier = Modifier
+                        .background(AccentOrange, RoundedCornerShape(8.dp))
+                        .padding(horizontal = 10.dp, vertical = 4.dp)
+                )
             }
             items(modeInfoList) { mode ->
                 val locked = !isPremium && mode != AppMode.POLI

@@ -28,7 +28,6 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.ImeAction
-import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -107,14 +106,6 @@ fun MessageBuilderScreen(
                     color = Color.White
                 )
             }
-            Spacer(modifier = Modifier.weight(1f))
-            Text(
-                stringResource(R.string.mb_active_mode_hint),
-                fontSize = 10.sp,
-                color = TextSecondary,
-                textAlign = TextAlign.End,
-                lineHeight = 14.sp
-            )
         }
 
         if (replyLanguage != "FR") {
@@ -150,6 +141,33 @@ fun MessageBuilderScreen(
             modifier = Modifier.padding(horizontal = 16.dp),
             verticalArrangement = Arrangement.spacedBy(12.dp)
         ) {
+            // ── Pourquoi composer son propre message ? ──────────────────
+            item {
+                Column(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .background(CardBg, RoundedCornerShape(16.dp))
+                        .padding(16.dp),
+                    verticalArrangement = Arrangement.spacedBy(10.dp)
+                ) {
+                    Text(
+                        stringResource(R.string.mb_why_title),
+                        fontSize = 16.sp,
+                        fontWeight = FontWeight.Bold,
+                        color = Color.Black,
+                        modifier = Modifier
+                            .background(AccentOrange, RoundedCornerShape(8.dp))
+                            .padding(horizontal = 10.dp, vertical = 4.dp)
+                    )
+                    Text(
+                        highlightBrand(stringResource(R.string.mb_why_desc)),
+                        fontSize = 13.sp,
+                        color = TextSecondary,
+                        lineHeight = 20.sp
+                    )
+                }
+            }
+
             // ── Intro / mode d'emploi ────────────────────────────────────
             item {
                 Column(
@@ -161,9 +179,12 @@ fun MessageBuilderScreen(
                 ) {
                     Text(
                         stringResource(R.string.mb_intro_title),
-                        fontSize = 14.sp,
+                        fontSize = 16.sp,
                         fontWeight = FontWeight.Bold,
-                        color = Color.White
+                        color = Color.Black,
+                        modifier = Modifier
+                            .background(AccentOrange, RoundedCornerShape(8.dp))
+                            .padding(horizontal = 10.dp, vertical = 4.dp)
                     )
                     Text(
                         highlightBrand(stringResource(R.string.mb_intro_desc)),
@@ -174,12 +195,24 @@ fun MessageBuilderScreen(
                     MessagePartExplainRow("👋", stringResource(R.string.mb_explain_salutation_title), stringResource(R.string.mb_explain_salutation_desc))
                     MessagePartExplainRow("💬", stringResource(R.string.mb_explain_body_title), stringResource(R.string.mb_explain_body_desc, activeMode.localizedLabel()))
                     MessagePartExplainRow("🔚", stringResource(R.string.mb_explain_ending_title), stringResource(R.string.mb_explain_ending_desc))
-                    Text(
-                        stringResource(R.string.mb_intro_footer),
-                        fontSize = 12.sp,
-                        color = NeonGreen.copy(alpha = 0.8f),
-                        lineHeight = 18.sp
-                    )
+                    Row(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .background(NeonGreen.copy(alpha = 0.15f), RoundedCornerShape(10.dp))
+                            .border(1.dp, NeonGreen.copy(alpha = 0.5f), RoundedCornerShape(10.dp))
+                            .padding(horizontal = 12.dp, vertical = 10.dp),
+                        verticalAlignment = Alignment.CenterVertically
+                    ) {
+                        Text("💡", fontSize = 16.sp)
+                        Spacer(modifier = Modifier.width(8.dp))
+                        Text(
+                            stringResource(R.string.mb_intro_footer),
+                            fontSize = 13.sp,
+                            fontWeight = FontWeight.SemiBold,
+                            color = NeonGreen,
+                            lineHeight = 18.sp
+                        )
+                    }
                 }
             }
 

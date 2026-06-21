@@ -229,13 +229,13 @@ fun HomeScreen(
                     text = stringResource(R.string.welcome_hero_headline),
                     fontSize = 22.sp,
                     fontWeight = FontWeight.Black,
-                    color = NeonGreen,
+                    color = AccentOrange,
                     textAlign = TextAlign.Center,
                     lineHeight = 28.sp
                 )
                 Spacer(modifier = Modifier.height(8.dp))
                 Text(
-                    text = stringResource(R.string.welcome_hero_desc),
+                    text = highlightBrand(stringResource(R.string.welcome_hero_desc)),
                     fontSize = 14.sp,
                     color = TextSecondary,
                     textAlign = TextAlign.Center,
@@ -273,14 +273,6 @@ fun HomeScreen(
                                 modifier = Modifier.size(22.dp)
                             )
                         }
-                        Text(
-                            text = stringResource(R.string.welcome_hero_desc_more_2),
-                            fontSize = 14.sp,
-                            color = TextSecondary,
-                            textAlign = TextAlign.Center,
-                            lineHeight = 21.sp,
-                            modifier = Modifier.padding(top = 14.dp)
-                        )
                     }
                 }
                 Spacer(modifier = Modifier.height(10.dp))
