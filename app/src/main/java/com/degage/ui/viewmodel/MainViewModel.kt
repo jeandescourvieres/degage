@@ -33,26 +33,44 @@ class MainViewModel(app: Application) : AndroidViewModel(app) {
     private val ttsManager = TtsManager(app)
     private val holdMusicPlayer = HoldMusicPlayer()
 
-    // Joue exactement le message actif pour ce mode (modele de base ou compose par
-    // l'utilisateur) plutot qu'une phrase figee : l'apercu reste toujours fidele a la realite.
+    // Joue exactement le message qui serait dit a l'appel (salutation + corps + fin),
+    // avec la voix/vitesse/ton choisis : l'apercu reste toujours fidele a la realite.
     fun previewMode(mode: AppMode) = viewModelScope.launch {
         val lang = prefs.replyLanguage.first()
         val activeBody = db.replyDao().getEnabledBodyByMode(mode.name, lang).firstOrNull()
-        val phrase = activeBody?.text ?: when (lang) {
+        val defaultBody = when (lang) {
             "DE" -> "Diese Nummer wünscht keine Werbeanrufe."
             "IT" -> "Questo numero non desidera ricevere chiamate pubblicitarie."
             "EN" -> "This line does not accept commercial solicitations."
             "ES" -> "Este número no desea recibir llamadas publicitarias."
             else -> "Cette ligne refuse les sollicitations commerciales."
         }
-        ttsManager.setLanguage(lang)
-        ttsManager.speak(phrase)
+        val salutation = db.replyDao().getEnabledGlobalByPart(com.degage.replies.MessagePart.SALUTATION.name, lang).firstOrNull()?.text ?: ""
+        val body = activeBody?.text ?: defaultBody
+        val ending = db.replyDao().getEnabledGlobalByPart(com.degage.replies.MessagePart.ENDING.name, lang).firstOrNull()?.text ?: ""
+        val phrase = listOf(salutation, body, ending).filter { it.isNotBlank() }.joinToString("\n\n")
+        speakWithCurrentSettings(phrase, lang)
         if (mode == AppMode.TROLL) {
             delay(300L)
             holdMusicPlayer.start()
             delay(20_000L)
             holdMusicPlayer.stop()
         }
+    }
+
+    // Lit un texte avec la voix/vitesse/ton actuellement choisis, pour que l'ecoute d'un
+    // apercu (page "Personnaliser les reponses") sonne exactement comme un vrai appel.
+    fun speakPreview(text: String) = viewModelScope.launch {
+        speakWithCurrentSettings(text, prefs.replyLanguage.first())
+    }
+
+    private suspend fun speakWithCurrentSettings(text: String, lang: String) {
+        val rate = prefs.speechRate.first()
+        val pitch = prefs.pitch.first()
+        val voiceName = prefs.voiceNameFor(lang).first().ifBlank { null }
+        ttsManager.setLanguage(lang)
+        ttsManager.applySettings(rate, pitch, voiceName)
+        ttsManager.speak(text)
     }
 
     override fun onCleared() {

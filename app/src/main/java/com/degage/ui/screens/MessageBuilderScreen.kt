@@ -19,6 +19,7 @@ import androidx.compose.material.icons.filled.ArrowForward
 import androidx.compose.material.icons.filled.Delete
 import androidx.compose.material.icons.filled.ExpandLess
 import androidx.compose.material.icons.filled.ExpandMore
+import androidx.compose.material.icons.filled.VolumeUp
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import com.degage.ui.components.highlightBrand
@@ -28,6 +29,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.ImeAction
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -51,6 +53,7 @@ fun MessageBuilderScreen(
     onAdd: (String, MessagePart) -> Unit,
     onDelete: (ReplyEntity) -> Unit,
     onNavigateReadyMadeModes: () -> Unit = {},
+    onListenPreview: (String) -> Unit = {},
     @Suppress("UNUSED_PARAMETER") onToggle: (ReplyEntity) -> Unit = {},
 ) {
     val previewText = remember(salutations, bodies, endings) {
@@ -155,7 +158,9 @@ fun MessageBuilderScreen(
                         fontSize = 16.sp,
                         fontWeight = FontWeight.Bold,
                         color = Color.Black,
+                        textAlign = TextAlign.Center,
                         modifier = Modifier
+                            .fillMaxWidth()
                             .background(AccentOrange, RoundedCornerShape(8.dp))
                             .padding(horizontal = 10.dp, vertical = 4.dp)
                     )
@@ -182,7 +187,9 @@ fun MessageBuilderScreen(
                         fontSize = 16.sp,
                         fontWeight = FontWeight.Bold,
                         color = Color.Black,
+                        textAlign = TextAlign.Center,
                         modifier = Modifier
+                            .fillMaxWidth()
                             .background(AccentOrange, RoundedCornerShape(8.dp))
                             .padding(horizontal = 10.dp, vertical = 4.dp)
                     )
@@ -264,13 +271,23 @@ fun MessageBuilderScreen(
                         .border(1.dp, NeonGreen.copy(alpha = 0.4f), RoundedCornerShape(16.dp))
                         .padding(16.dp)
                 ) {
-                    Text(stringResource(R.string.mb_preview_label), fontSize = 12.sp, color = NeonGreen, fontWeight = FontWeight.SemiBold)
+                    Text(
+                        stringResource(R.string.mb_preview_label),
+                        fontSize = 16.sp,
+                        fontWeight = FontWeight.Bold,
+                        color = Color.Black,
+                        textAlign = TextAlign.Center,
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .background(AccentOrange, RoundedCornerShape(8.dp))
+                            .padding(horizontal = 10.dp, vertical = 4.dp)
+                    )
                     Spacer(modifier = Modifier.height(4.dp))
                     Text(
                         text = stringResource(R.string.mb_preview_intro),
-                        fontSize = 11.sp,
+                        fontSize = 14.sp,
                         color = TextSecondary,
-                        lineHeight = 15.sp
+                        lineHeight = 19.sp
                     )
                     Spacer(modifier = Modifier.height(6.dp))
                     Text(
@@ -280,6 +297,20 @@ fun MessageBuilderScreen(
                         lineHeight = 22.sp,
                         fontStyle = androidx.compose.ui.text.font.FontStyle.Italic
                     )
+                    Spacer(modifier = Modifier.height(10.dp))
+                    Row(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .clickable { onListenPreview(previewText) }
+                            .background(NeonGreen, RoundedCornerShape(20.dp))
+                            .padding(vertical = 8.dp, horizontal = 16.dp),
+                        horizontalArrangement = Arrangement.Center,
+                        verticalAlignment = Alignment.CenterVertically
+                    ) {
+                        Icon(Icons.Default.VolumeUp, contentDescription = null, tint = Color.Black, modifier = Modifier.size(18.dp))
+                        Spacer(modifier = Modifier.width(6.dp))
+                        Text(stringResource(R.string.mb_listen_preview), color = Color.Black, fontSize = 13.sp, fontWeight = FontWeight.Bold)
+                    }
                 }
             }
 

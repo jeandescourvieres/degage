@@ -33,13 +33,19 @@
     <!-- ── Écran Modes ─────────────────────────────────────────────────── -->
     <string name="modes_title">Choix du ton de réponse</string>
     <string name="modes_subtitle">Ne raccrochez plus. Faites répondre votre IA.</string>
-    <string name="modes_intro_text">Chaque ton ci-dessous correspond à un message complet, déjà rédigé et prêt à l\'emploi : sélectionnez-en un, il sera joué tel quel au prochain démarcheur, sans rien à écrire.\n\nSi aucun ne vous convient parfaitement, vous pouvez aussi composer votre propre message de A à Z — formule d\'accueil, corps du texte, formule de fin — dans Personnaliser les réponses.</string>
+    <string name="modes_intro_text">Chaque ton ci-dessous correspond à un message complet, déjà rédigé et prêt à l\'emploi : sélectionnez-en un, il sera joué tel quel au prochain démarcheur, sans rien à écrire.</string>
+    <string name="modes_intro_text_custom">Si aucun ton ne vous convient parfaitement, vous pouvez aussi composer votre propre message de A à Z — formule d\'accueil, corps du texte, formule de fin — dans Personnaliser les réponses.</string>
     <string name="modes_ready_list_intro">Voilà les messages prêts à l\'emploi que vous propose Tu dégages :</string>
+    <string name="modes_preview_label">Aperçu du message en service</string>
+    <string name="modes_change_message_button">🔁 Changer de message</string>
+    <string name="modes_preview_compact_button">Aperçu du message en service</string>
+    <string name="modes_preview_compact_intro">Vous voulez savoir ce qui sera dit au prochain appel indésirable ? Touchez le bouton ci-dessous pour voir et écouter le message actuellement en service.</string>
+    <string name="modes_preview_intro">Voici le message exact qui sera utilisé au prochain appel indésirable — qu\'il s\'agisse d\'un modèle tout fait ou d\'un message que vous avez composé vous-même.</string>
     <string name="modes_why_title">Pourquoi un ton plutôt qu\'un autre ?</string>
     <string name="modes_why_desc">Un démarcheur insistant n\'appelle pas la même réaction qu\'un simple sondage — et votre humeur du jour compte aussi ! Le ton choisi change uniquement ce que l\'appelant entend : le résultat, lui, ne change jamais — l\'appel est bloqué et le numéro mémorisé.</string>
     <string name="modes_choice_intro_title">Tu dégages vous offre 2 façons de choisir le ton de votre réponse.</string>
-    <string name="modes_choice_intro_desc">Vous pouvez tout d\'abord choisir parmi des modèles tout faits, déjà rédigés et prêts à l\'emploi pour chaque situation.</string>
-    <string name="modes_choice_custom_desc">Sinon, vous pouvez composer vous-même votre propre message de A à Z, à votre façon.</string>
+    <string name="modes_choice_intro_desc">➡️ Vous pouvez tout d\'abord choisir parmi des modèles tout faits, déjà rédigés et prêts à l\'emploi pour chaque situation.</string>
+    <string name="modes_choice_custom_desc">➡️ Sinon, vous pouvez composer vous-même votre propre message de A à Z, à votre façon.</string>
     <string name="modes_choice_button_premade">🎭 Choisir parmi les modèles tout faits</string>
     <string name="modes_choice_button_custom">✏️ Composer mon propre message</string>
     <string name="modes_info_title">Modes de réponse</string>
@@ -137,6 +143,7 @@
     <string name="mb_ready_made_button">🎭 Voir les modèles tout faits</string>
     <string name="mb_preview_label">Aperçu du message assemblé</string>
     <string name="mb_preview_intro">Cet exemple est le résultat des choix faits ci-dessous, dans les sections « Salutation », « Corps du message » et « Formule de fin ».</string>
+    <string name="mb_listen_preview">🔊 Écouter ce message</string>
     <string name="mb_section_salutation_desc">C\'est la phrase d\'ouverture lue en premier par Tu dégages. Sélectionnez ci-dessous la salutation qui correspond à votre style — une seule à la fois. Ou sinon, créez votre propre salutation.</string>
     <string name="mb_section_body_desc">C\'est le cœur de la réponse, adapté, comme ici, au mode %1$s %2$s. C\'est la phrase principale entendue par le démarcheur. Une seule à la fois.</string>
     <string name="mb_section_ending_desc">La formule de clôture prononcée juste avant de raccrocher. Une seule à la fois.</string>

@@ -154,10 +154,21 @@ fun DegageApp(
                 }
 
                 composable(Screen.Modes.route) {
+                    val salutations by viewModel.getSalutations().collectAsStateWithLifecycle(emptyList())
+                    val bodies by viewModel.getBodiesForMode(activeMode).collectAsStateWithLifecycle(emptyList())
+                    val endings by viewModel.getEndings().collectAsStateWithLifecycle(emptyList())
+                    val previewText = remember(salutations, bodies, endings) {
+                        val s = salutations.firstOrNull { it.isEnabled }?.text ?: ""
+                        val b = bodies.firstOrNull { it.isEnabled }?.text ?: "…"
+                        val e = endings.firstOrNull { it.isEnabled }?.text ?: ""
+                        listOf(s, b, e).filter { it.isNotBlank() }.joinToString("\n\n")
+                    }
                     ModesScreen(
                         onBack = { navController.navigateUp() },
                         onNavigateReadyMadeModes = { navController.navigate(Screen.ReadyMadeModes.route) },
-                        onNavigateMessageBuilder = { navController.navigate(Screen.MessageBuilder.route) }
+                        onNavigateMessageBuilder = { navController.navigate(Screen.MessageBuilder.route) },
+                        previewText = previewText,
+                        onListenPreview = { text -> viewModel.speakPreview(text) }
                     )
                 }
 
@@ -278,7 +289,8 @@ fun DegageApp(
                         onSelect = viewModel::selectReply,
                         onAdd = { text, part -> viewModel.addPartItem(text, part, activeMode) },
                         onDelete = viewModel::deleteReply,
-                        onNavigateReadyMadeModes = { navController.navigate(Screen.ReadyMadeModes.route) }
+                        onNavigateReadyMadeModes = { navController.navigate(Screen.ReadyMadeModes.route) },
+                        onListenPreview = { text -> viewModel.speakPreview(text) }
                     )
                 }
 

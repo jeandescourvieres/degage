@@ -6,7 +6,9 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material.icons.filled.ArrowForward
@@ -22,9 +24,11 @@ import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.compose.ui.window.Dialog
 import com.degage.R
 import com.degage.modes.AppMode
 import com.degage.modes.localizedLabel
@@ -77,11 +81,15 @@ fun ModesScreen(
     onBack: () -> Unit = {},
     onNavigateReadyMadeModes: () -> Unit = {},
     onNavigateMessageBuilder: () -> Unit = {},
+    previewText: String = "",
+    onListenPreview: (String) -> Unit = {},
 ) {
+    var showPreviewDialog by remember { mutableStateOf(false) }
     Column(
         modifier = Modifier
             .fillMaxSize()
             .background(DarkBg)
+            .verticalScroll(rememberScrollState())
             .padding(horizontal = 16.dp)
     ) {
         Row(
@@ -108,73 +116,184 @@ fun ModesScreen(
             Text(
                 text = highlightBrand(stringResource(R.string.modes_choice_intro_title)),
                 color = Color.White,
-                fontSize = 15.sp,
-                fontWeight = FontWeight.Bold
-            )
-            Spacer(modifier = Modifier.height(6.dp))
-            Text(
-                text = stringResource(R.string.modes_choice_intro_desc),
-                color = TextSecondary,
-                fontSize = 13.sp,
-                lineHeight = 18.sp
-            )
-        }
-        Spacer(modifier = Modifier.height(12.dp))
-
-        // ── Bouton 1 : modèles tout faits → page dédiée ─────────────────────
-        Row(
-            modifier = Modifier
-                .fillMaxWidth()
-                .background(CardBg, RoundedCornerShape(14.dp))
-                .clickable { onNavigateReadyMadeModes() }
-                .border(1.dp, NeonGreen.copy(alpha = 0.5f), RoundedCornerShape(14.dp))
-                .padding(vertical = 14.dp, horizontal = 16.dp),
-            horizontalArrangement = Arrangement.SpaceBetween,
-            verticalAlignment = Alignment.CenterVertically
-        ) {
-            Text(
-                text = stringResource(R.string.modes_choice_button_premade),
-                fontSize = 15.sp,
+                fontSize = 18.sp,
                 fontWeight = FontWeight.Bold,
-                color = NeonGreen
+                lineHeight = 23.sp,
+                textAlign = TextAlign.Center,
+                modifier = Modifier.fillMaxWidth()
             )
-            Icon(Icons.Default.ArrowForward, contentDescription = null, tint = NeonGreen)
         }
         Spacer(modifier = Modifier.height(12.dp))
 
-        // ── Texte intermédiaire : composer son propre message ───────────────
+        // ── Groupe 1 : texte + bouton modèles tout faits ─────────────────────
         Column(
             modifier = Modifier
                 .fillMaxWidth()
-                .background(CardBg, RoundedCornerShape(14.dp))
+                .border(1.dp, NeonGreen.copy(alpha = 0.5f), RoundedCornerShape(16.dp))
+                .padding(16.dp)
+        ) {
+            Text(
+                text = stringResource(R.string.modes_choice_intro_desc),
+                color = TextSecondary,
+                fontSize = 15.sp,
+                lineHeight = 20.sp
+            )
+            Spacer(modifier = Modifier.height(10.dp))
+            Row(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .background(NeonGreen, RoundedCornerShape(14.dp))
+                    .clickable { onNavigateReadyMadeModes() }
+                    .padding(vertical = 14.dp, horizontal = 16.dp),
+                horizontalArrangement = Arrangement.Center,
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                Text(
+                    text = stringResource(R.string.modes_choice_button_premade),
+                    fontSize = 15.sp,
+                    fontWeight = FontWeight.Bold,
+                    color = Color.Black
+                )
+                Spacer(modifier = Modifier.width(8.dp))
+                Icon(Icons.Default.ArrowForward, contentDescription = null, tint = Color.Black)
+            }
+        }
+        Spacer(modifier = Modifier.height(12.dp))
+
+        // ── Groupe 2 : texte + bouton composer son propre message ───────────
+        Column(
+            modifier = Modifier
+                .fillMaxWidth()
+                .border(1.dp, AccentCyan.copy(alpha = 0.5f), RoundedCornerShape(16.dp))
                 .padding(16.dp)
         ) {
             Text(
                 text = stringResource(R.string.modes_choice_custom_desc),
                 color = TextSecondary,
-                fontSize = 13.sp,
-                lineHeight = 18.sp
-            )
-        }
-        Spacer(modifier = Modifier.height(12.dp))
-
-        // ── Bouton 2 : composer son propre message ──────────────────────────
-        Row(
-            modifier = Modifier
-                .fillMaxWidth()
-                .background(AccentCyan, RoundedCornerShape(14.dp))
-                .clickable { onNavigateMessageBuilder() }
-                .padding(vertical = 14.dp, horizontal = 16.dp),
-            horizontalArrangement = Arrangement.SpaceBetween,
-            verticalAlignment = Alignment.CenterVertically
-        ) {
-            Text(
-                text = stringResource(R.string.modes_choice_button_custom),
                 fontSize = 15.sp,
-                fontWeight = FontWeight.Bold,
-                color = Color.Black
+                lineHeight = 20.sp
             )
-            Icon(Icons.Default.ArrowForward, contentDescription = null, tint = Color.Black)
+            Spacer(modifier = Modifier.height(10.dp))
+            Row(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .background(AccentCyan, RoundedCornerShape(14.dp))
+                    .clickable { onNavigateMessageBuilder() }
+                    .padding(vertical = 14.dp, horizontal = 16.dp),
+                horizontalArrangement = Arrangement.Center,
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                Text(
+                    text = stringResource(R.string.modes_choice_button_custom),
+                    fontSize = 15.sp,
+                    fontWeight = FontWeight.Bold,
+                    color = Color.Black
+                )
+                Spacer(modifier = Modifier.width(8.dp))
+                Icon(Icons.Default.ArrowForward, contentDescription = null, tint = Color.Black)
+            }
+        }
+
+        if (previewText.isNotBlank()) {
+            Spacer(modifier = Modifier.height(20.dp))
+            Column(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .border(1.dp, AccentOrange.copy(alpha = 0.5f), RoundedCornerShape(16.dp))
+                    .padding(16.dp)
+            ) {
+                Text(
+                    text = stringResource(R.string.modes_preview_compact_intro),
+                    color = TextSecondary,
+                    fontSize = 15.sp,
+                    lineHeight = 20.sp
+                )
+                Spacer(modifier = Modifier.height(10.dp))
+                // ── Bouton compact : ouvre le popup d'aperçu ─────────────────
+                Row(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .background(AccentOrange, RoundedCornerShape(14.dp))
+                        .clickable { showPreviewDialog = true }
+                        .padding(vertical = 14.dp, horizontal = 16.dp),
+                    horizontalArrangement = Arrangement.Center,
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    Icon(Icons.Default.VolumeUp, contentDescription = null, tint = Color.Black)
+                    Spacer(modifier = Modifier.width(8.dp))
+                    Text(
+                        text = stringResource(R.string.modes_preview_compact_button),
+                        fontSize = 15.sp,
+                        fontWeight = FontWeight.Bold,
+                        color = Color.Black
+                    )
+                    Spacer(modifier = Modifier.width(6.dp))
+                    Icon(Icons.Default.ArrowForward, contentDescription = null, tint = Color.Black, modifier = Modifier.size(18.dp))
+                }
+            }
+        }
+        Spacer(modifier = Modifier.height(24.dp))
+    }
+
+    if (showPreviewDialog) {
+        Dialog(onDismissRequest = { showPreviewDialog = false }) {
+            Column(
+                modifier = Modifier
+                    .background(CardBg, RoundedCornerShape(20.dp))
+                    .padding(24.dp)
+            ) {
+                Text(stringResource(R.string.modes_preview_label), fontSize = 16.sp, color = NeonGreen, fontWeight = FontWeight.Bold)
+                Spacer(modifier = Modifier.height(8.dp))
+                Text(
+                    text = stringResource(R.string.modes_preview_intro),
+                    fontSize = 12.sp,
+                    color = TextSecondary,
+                    lineHeight = 17.sp
+                )
+                Spacer(modifier = Modifier.height(10.dp))
+                Text(
+                    text = "\"$previewText\"",
+                    color = Color.White,
+                    fontSize = 14.sp,
+                    lineHeight = 22.sp,
+                    fontStyle = androidx.compose.ui.text.font.FontStyle.Italic,
+                    modifier = Modifier
+                        .heightIn(max = 300.dp)
+                        .verticalScroll(rememberScrollState())
+                )
+                Spacer(modifier = Modifier.height(16.dp))
+                Row(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .clickable { onListenPreview(previewText) }
+                        .background(NeonGreen, RoundedCornerShape(20.dp))
+                        .padding(vertical = 8.dp, horizontal = 16.dp),
+                    horizontalArrangement = Arrangement.Center,
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    Icon(Icons.Default.VolumeUp, contentDescription = null, tint = Color.Black, modifier = Modifier.size(18.dp))
+                    Spacer(modifier = Modifier.width(6.dp))
+                    Text(stringResource(R.string.mb_listen_preview), color = Color.Black, fontSize = 13.sp, fontWeight = FontWeight.Bold)
+                }
+                Spacer(modifier = Modifier.height(10.dp))
+                Row(
+                    modifier = Modifier
+                        .clickable { showPreviewDialog = false }
+                        .border(1.dp, NeonGreen.copy(alpha = 0.5f), RoundedCornerShape(20.dp))
+                        .padding(vertical = 8.dp, horizontal = 16.dp),
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    Text(stringResource(R.string.modes_change_message_button), color = NeonGreen, fontSize = 13.sp, fontWeight = FontWeight.Bold)
+                }
+                Spacer(modifier = Modifier.height(20.dp))
+                Button(
+                    onClick = { showPreviewDialog = false },
+                    modifier = Modifier.align(Alignment.End),
+                    colors = ButtonDefaults.buttonColors(containerColor = NeonGreen)
+                ) {
+                    Text("OK", color = Color.Black, fontWeight = FontWeight.Bold)
+                }
+            }
         }
     }
 }
@@ -234,65 +353,77 @@ fun ReadyMadeModesScreen(
                 LanguageFlagHeader(appLanguage = appLanguage, onSetAppLanguage = onSetAppLanguage)
             }
             item {
-                Column(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .background(CardBg, RoundedCornerShape(14.dp))
-                        .padding(16.dp)
-                ) {
-                    Text(
-                        text = stringResource(R.string.modes_why_title),
-                        color = Color.Black,
-                        fontSize = 17.sp,
-                        fontWeight = FontWeight.Bold,
-                        lineHeight = 20.sp,
+                Column {
+                    Column(
                         modifier = Modifier
-                            .background(AccentOrange, RoundedCornerShape(8.dp))
-                            .padding(horizontal = 10.dp, vertical = 4.dp)
-                    )
-                    Spacer(modifier = Modifier.height(18.dp))
-                    Text(
-                        text = stringResource(R.string.modes_why_desc),
-                        color = TextSecondary,
-                        fontSize = 13.sp,
-                        lineHeight = 18.sp
-                    )
-                }
-            }
-            item {
-                Column(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .background(CardBg, RoundedCornerShape(14.dp))
-                        .padding(16.dp)
-                ) {
+                            .fillMaxWidth()
+                            .background(CardBg, RoundedCornerShape(14.dp))
+                            .padding(16.dp)
+                    ) {
+                        Text(
+                            text = stringResource(R.string.modes_why_title),
+                            color = Color.Black,
+                            fontSize = 17.sp,
+                            fontWeight = FontWeight.Bold,
+                            lineHeight = 20.sp,
+                            textAlign = TextAlign.Center,
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .background(AccentOrange, RoundedCornerShape(8.dp))
+                                .padding(horizontal = 10.dp, vertical = 4.dp)
+                        )
+                        Spacer(modifier = Modifier.height(18.dp))
+                        Text(
+                            text = stringResource(R.string.modes_why_desc),
+                            color = TextSecondary,
+                            fontSize = 13.sp,
+                            lineHeight = 18.sp
+                        )
+                    }
+                    Spacer(modifier = Modifier.height(8.dp))
                     Text(
                         text = stringResource(R.string.modes_intro_text),
                         color = TextSecondary,
                         fontSize = 13.sp,
-                        lineHeight = 18.sp
+                        lineHeight = 18.sp,
+                        modifier = Modifier.padding(horizontal = 16.dp)
                     )
-                    Row(
+                    Spacer(modifier = Modifier.height(10.dp))
+                    Column(
                         modifier = Modifier
-                            .padding(top = 12.dp)
-                            .clickable { onNavigateMessageBuilder() }
-                            .border(1.dp, NeonGreen.copy(alpha = 0.5f), RoundedCornerShape(14.dp))
-                            .padding(vertical = 10.dp, horizontal = 16.dp),
-                        verticalAlignment = Alignment.CenterVertically
+                            .fillMaxWidth()
+                            .border(1.dp, NeonGreen.copy(alpha = 0.5f), RoundedCornerShape(16.dp))
+                            .padding(16.dp)
                     ) {
                         Text(
-                            text = stringResource(R.string.mb_header_title),
-                            fontSize = 14.sp,
-                            fontWeight = FontWeight.Bold,
-                            color = NeonGreen
+                            text = stringResource(R.string.modes_intro_text_custom),
+                            color = TextSecondary,
+                            fontSize = 13.sp,
+                            lineHeight = 18.sp
                         )
-                        Spacer(modifier = Modifier.width(6.dp))
-                        Icon(
-                            imageVector = Icons.Default.ArrowForward,
-                            contentDescription = null,
-                            tint = NeonGreen,
-                            modifier = Modifier.size(18.dp)
-                        )
+                        Spacer(modifier = Modifier.height(10.dp))
+                        Row(
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .clickable { onNavigateMessageBuilder() }
+                                .padding(vertical = 10.dp, horizontal = 16.dp),
+                            horizontalArrangement = Arrangement.Center,
+                            verticalAlignment = Alignment.CenterVertically
+                        ) {
+                            Text(
+                                text = stringResource(R.string.mb_header_title),
+                                fontSize = 14.sp,
+                                fontWeight = FontWeight.Bold,
+                                color = NeonGreen
+                            )
+                            Spacer(modifier = Modifier.width(6.dp))
+                            Icon(
+                                imageVector = Icons.Default.ArrowForward,
+                                contentDescription = null,
+                                tint = NeonGreen,
+                                modifier = Modifier.size(18.dp)
+                            )
+                        }
                     }
                 }
             }
@@ -302,7 +433,9 @@ fun ReadyMadeModesScreen(
                     color = Color.Black,
                     fontSize = 16.sp,
                     fontWeight = FontWeight.Bold,
+                    textAlign = TextAlign.Center,
                     modifier = Modifier
+                        .fillMaxWidth()
                         .background(AccentOrange, RoundedCornerShape(8.dp))
                         .padding(horizontal = 10.dp, vertical = 4.dp)
                 )
