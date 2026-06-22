@@ -40,7 +40,21 @@
     <!-- ── Bildschirm Modi ─────────────────────────────────────────────────── -->
     <string name="modes_title">Tonfall der Antwort wählen</string>
     <string name="modes_subtitle">Nicht mehr auflegen. Lassen Sie Ihre KI antworten.</string>
-    <string name="modes_intro_text">Jeder Ton unten entspricht einer vollständigen, bereits geschriebenen und einsatzbereiten Nachricht: Wählen Sie einen aus, er wird dem nächsten Anrufer genau so vorgespielt, ohne dass Sie etwas schreiben müssen. Passt keiner perfekt, können Sie Ihre eigene Nachricht auch komplett von Grund auf zusammenstellen — Begrüßung, Textkörper, Schlussformel — unter Antworten anpassen.</string>
+    <string name="modes_intro_text">Jeder Ton unten entspricht einer vollständigen, bereits geschriebenen und einsatzbereiten Nachricht: Wählen Sie einen aus, er wird dem nächsten Anrufer genau so vorgespielt, ohne dass Sie etwas schreiben müssen.</string>
+    <string name="modes_intro_text_custom">Wenn kein Ton perfekt passt, können Sie auch Ihre eigene Nachricht komplett von Grund auf zusammenstellen — Begrüßung, Textkörper, Schlussformel — unter Antworten anpassen.</string>
+    <string name="modes_choice_intro_title">Tu dégages bietet Ihnen 2 Möglichkeiten, den Ton Ihrer Antwort zu wählen.</string>
+    <string name="modes_choice_intro_desc">➡️ Sie können zunächst aus fertigen Vorlagen wählen, die bereits geschrieben und für jede Situation einsatzbereit sind.</string>
+    <string name="modes_choice_custom_desc">➡️ Oder Sie verfassen Ihre eigene Nachricht selbst von A bis Z, ganz nach Ihrem Geschmack.</string>
+    <string name="modes_choice_button_premade">🎭 Aus fertigen Vorlagen wählen</string>
+    <string name="modes_choice_button_custom">✏️ Meine eigene Nachricht verfassen</string>
+    <string name="modes_why_title">Warum ein Ton statt eines anderen?</string>
+    <string name="modes_why_desc">Ein hartnäckiger Telefonverkäufer verdient nicht die gleiche Reaktion wie eine einfache Umfrage — und Ihre Tagesstimmung zählt auch! Der gewählte Ton ändert nur das, was der Anrufer hört: Das Ergebnis selbst ändert sich nie — der Anruf wird blockiert und die Nummer gespeichert.</string>
+    <string name="modes_ready_list_intro">Hier sind die einsatzbereiten Nachrichten, die Tu dégages Ihnen vorschlägt:</string>
+    <string name="modes_preview_label">Vorschau der aktiven Nachricht</string>
+    <string name="modes_preview_intro">Hier ist die genaue Nachricht, die beim nächsten unerwünschten Anruf verwendet wird — egal ob fertige Vorlage oder eine Nachricht, die Sie selbst verfasst haben.</string>
+    <string name="modes_preview_compact_button">Vorschau der aktiven Nachricht</string>
+    <string name="modes_preview_compact_intro">Möchten Sie wissen, was beim nächsten unerwünschten Anruf gesagt wird? Tippen Sie auf die Schaltfläche unten, um die aktuell aktive Nachricht zu sehen und anzuhören.</string>
+    <string name="modes_change_message_button">🔁 Nachricht ändern</string>
     <string name="modes_info_title">Antwortmodi</string>
     <string name="modes_info_content">Die Modi bestimmen den Ton der Antwort an Werbeanrufer, bevor aufgelegt wird.\n\n🤝 Höflich — höfliche, aber bestimmte Antwort. Ideal, um diskret zu bleiben.\n\n📋 Administrativ — kühler, offizieller Ton, wie eine Rechtsabteilung.\n\n😏 Sarkastisch — humorvolle Antwort für Anrufer, die es verdienen.\n\n🎭 Troll — lässt den Spammer 10 Sekunden warten, bevor aufgelegt wird. Lässt ihn Zeit verlieren.\n\nTippen Sie auf einen Modus, um ihn auszuwählen, dann auf \"Vorschau anhören\", um ihn zu hören.</string>
     <string name="modes_preview_button">Vorschau anhören</string>
@@ -107,8 +121,7 @@
 
     <!-- ── Bildschirm Nachrichten-Baukasten ──────────────────────────── -->
     <string name="mb_header_title">Antworten anpassen</string>
-    <string name="mb_active_mode_label">Aktiver Modus</string>
-    <string name="mb_active_mode_hint">An diesen Modus\nangepasster Text →</string>
+    <string name="mb_active_mode_label">Aktuell aktiver Modus:</string>
     <string name="mb_lang_banner">Die folgenden Sätze sind auf %1$s, der für Ihre Sprachnachrichten gewählten Sprache. Wählen Sie die aus, die zu Ihnen passen.</string>
     <string name="reply_lang_de">Deutsch</string>
     <string name="reply_lang_it">Italienisch</string>
@@ -123,8 +136,13 @@
     <string name="mb_explain_body_desc">Die Hauptantwort. Variiert je nach aktivem Modus (%1$s).</string>
     <string name="mb_explain_ending_title">Schlussformel</string>
     <string name="mb_explain_ending_desc">Der Abschlusssatz. Gilt für alle Modi.</string>
+    <string name="mb_why_title">Warum Ihre eigene Nachricht verfassen?</string>
+    <string name="mb_why_desc">Die fertigen Vorlagen decken die meisten Situationen ab, aber nichts ersetzt Ihre eigenen Worte: eine Formulierung, die zu Ihnen passt, ein Witz, der nur Ihnen gehört, oder ein Stil, den nur Sie kennen. Verfassen Sie ihn einmal, Tu dégages verwendet ihn bei jedem unerwünschten Anruf.</string>
     <string name="mb_intro_footer">Sie können auch eigene Formulierungen unten in jedem Abschnitt erstellen.</string>
+    <string name="mb_ready_made_hint">Sie möchten lieber nichts selbst verfassen? Tu dégages bietet auch fertige Nachrichten an, bereits geschrieben und einsatzbereit für jeden Ton.</string>
+    <string name="mb_ready_made_button">🎭 Fertige Vorlagen ansehen</string>
     <string name="mb_preview_label">Vorschau der zusammengesetzten Nachricht</string>
+    <string name="mb_listen_preview">🔊 Diese Nachricht anhören</string>
     <string name="mb_preview_intro">Dieses Beispiel ergibt sich aus den unten getroffenen Auswahlen in den Abschnitten „Begrüßung", „Nachrichtentext" und „Schlussformel".</string>
     <string name="mb_section_salutation_desc">Das ist der einleitende Satz, den Tu dégages zuerst vorliest. Wählen Sie unten die Begrüßung, die zu Ihrem Stil passt — immer nur eine. Oder erstellen Sie stattdessen Ihre eigene Begrüßung.</string>
     <string name="mb_section_body_desc">Das ist der Kern der Antwort, angepasst, wie hier, an den Modus %1$s %2$s. Dies ist der Hauptsatz, den der Anrufer hört. Immer nur einen.</string>
@@ -224,8 +242,8 @@
     <string name="welcome_hero_title">Werbeanrufer rufen Sie\nständig an?</string>
     <string name="welcome_hero_subtitle">TU DÉGAGES, Ihre neue KI,\nantwortet ihnen gerne!</string>
     <string name="welcome_hero_headline">Schluss mit unerwünschten Anrufen. Endgültig.</string>
-    <string name="welcome_hero_desc">Lassen Sie Ihre persönliche KI in Ihrem Namen antworten – mit der Nachricht, Stimme und dem Ton Ihrer Wahl. Sie legt auf und blockiert die Nummer automatisch.</string>
-    <string name="welcome_hero_desc_more">Warum verschwenden Sie Zeit damit, abzuheben, nur um wenige Sekunden später wieder aufzulegen?\n\nWählen Sie Ihre Nachricht (oder verfassen Sie sie selbst), Ihre Stimme und Ihren Stil aus 10 Tönen — von höflich bis bissig, inklusive Troll mit Wartemusik!</string>
+    <string name="welcome_hero_desc">Warum Zeit verschwenden, abzuheben, nur um wenige Sekunden später wieder aufzulegen?\n\nTu dégages, Ihre persönliche KI, antwortet automatisch an Ihrer Stelle auf unerwünschte Anrufe — mit der Nachricht, der Stimme und dem Ton Ihrer Wahl. Sobald die Nachricht übermittelt ist, legt sie auf und blockiert die Nummer sofort, um weitere Anrufe zu verhindern. Sie gewinnen Zeit und vor allem Ruhe.</string>
+    <string name="welcome_hero_desc_more">Wählen Sie Ihre Nachricht (oder verfassen Sie sie selbst), Ihre Stimme und Ihren Stil aus 10 Tönen — von höflich bis bissig, inklusive Troll mit Wartemusik!</string>
     <string name="welcome_hero_modes_button">Wir erklären Ihnen hier alles</string>
     <string name="common_read_more">Mehr lesen ▾</string>
     <string name="common_read_less">Weniger anzeigen ▴</string>

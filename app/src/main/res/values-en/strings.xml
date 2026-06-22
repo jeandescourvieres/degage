@@ -40,7 +40,21 @@
     <!-- ── Modes screen ─────────────────────────────────────────────────── -->
     <string name="modes_title">Choose your reply tone</string>
     <string name="modes_subtitle">Stop hanging up. Let your AI answer.</string>
-    <string name="modes_intro_text">Each tone below is a complete message, already written and ready to use: pick one, and it will be played as-is to the next telemarketer, with nothing to write. If none of them feels quite right, you can also build your own message from scratch — opening line, body, closing line — in Customize replies.</string>
+    <string name="modes_intro_text">Each tone below is a complete message, already written and ready to use: pick one, and it will be played as-is to the next telemarketer, with nothing to write.</string>
+    <string name="modes_intro_text_custom">If no tone suits you perfectly, you can also build your own message from scratch — opening line, body, closing line — in Customize replies.</string>
+    <string name="modes_choice_intro_title">Tu dégages offers you 2 ways to choose the tone of your response.</string>
+    <string name="modes_choice_intro_desc">➡️ You can first choose from ready-made templates, already written and ready to use for every situation.</string>
+    <string name="modes_choice_custom_desc">➡️ Or you can write your own message yourself from start to finish, your way.</string>
+    <string name="modes_choice_button_premade">🎭 Choose from ready-made templates</string>
+    <string name="modes_choice_button_custom">✏️ Write my own message</string>
+    <string name="modes_why_title">Why one tone rather than another?</string>
+    <string name="modes_why_desc">An insistent telemarketer doesn\'t deserve the same reaction as a simple survey — and your mood of the day matters too! The tone you choose only changes what the caller hears: the outcome itself never changes — the call is blocked and the number is remembered.</string>
+    <string name="modes_ready_list_intro">Here are the ready-to-use messages Tu dégages offers you:</string>
+    <string name="modes_preview_label">Preview of the message in use</string>
+    <string name="modes_preview_intro">Here is the exact message that will be used for the next unwanted call — whether it\'s a ready-made template or a message you wrote yourself.</string>
+    <string name="modes_preview_compact_button">Preview of the message in use</string>
+    <string name="modes_preview_compact_intro">Want to know what will be said on the next unwanted call? Tap the button below to see and listen to the message currently in use.</string>
+    <string name="modes_change_message_button">🔁 Change message</string>
     <string name="modes_info_title">Reply modes</string>
     <string name="modes_info_content">Modes define the tone of the reply given to spammers before hanging up.\n\n🤝 Polite — courteous and firm reply. Ideal for staying discreet.\n\n📋 Administrative — cold, official tone, like a legal department.\n\n😏 Sarcastic — humorous reply for telemarketers who deserve it.\n\n🎭 Troll — makes the spammer wait 10 seconds before hanging up. Wastes their time.\n\nTap a mode to select it, then tap \"Listen to a preview\" to hear it.</string>
     <string name="modes_preview_button">Listen to a preview</string>
@@ -107,8 +121,7 @@
 
     <!-- ── Message Builder screen ──────────────────────────────── -->
     <string name="mb_header_title">Customize replies</string>
-    <string name="mb_active_mode_label">Active mode</string>
-    <string name="mb_active_mode_hint">Body adapted\nto this mode →</string>
+    <string name="mb_active_mode_label">Currently active mode:</string>
     <string name="mb_lang_banner">The phrases below are in %1$s, the language chosen for your voice messages. Select the ones that suit you.</string>
     <string name="reply_lang_de">German</string>
     <string name="reply_lang_it">Italian</string>
@@ -123,8 +136,13 @@
     <string name="mb_explain_body_desc">The main reply. Varies depending on the active mode (%1$s).</string>
     <string name="mb_explain_ending_title">Closing line</string>
     <string name="mb_explain_ending_desc">The closing phrase. Common to all modes.</string>
+    <string name="mb_why_title">Why write your own message?</string>
+    <string name="mb_why_desc">Ready-made templates cover most situations, but nothing replaces your own words: a phrase that sounds like you, a joke that\'s truly yours, or a style only you know. Write it once, and Tu dégages uses it for every unwanted call.</string>
     <string name="mb_intro_footer">You can also create your own phrases at the bottom of each section.</string>
+    <string name="mb_ready_made_hint">Prefer not to write anything? Tu dégages also offers ready-made messages, already written and ready to use for every tone.</string>
+    <string name="mb_ready_made_button">🎭 See ready-made templates</string>
     <string name="mb_preview_label">Preview of the assembled message</string>
+    <string name="mb_listen_preview">🔊 Listen to this message</string>
     <string name="mb_preview_intro">This example is the result of the choices made below, in the "Greeting", "Message body" and "Closing line" sections.</string>
     <string name="mb_section_salutation_desc">This is the opening line spoken first by Tu dégages. Select the greeting below that matches your style — only one at a time. Or create your own greeting instead.</string>
     <string name="mb_section_body_desc">This is the heart of the reply, adapted, as shown here, to %1$s %2$s mode. This is the main phrase heard by the telemarketer. Only one at a time.</string>
@@ -224,8 +242,8 @@
     <string name="welcome_hero_title">Telemarketers love\ncalling you?</string>
     <string name="welcome_hero_subtitle">TU DÉGAGES, your new AI,\nwill love answering them!</string>
     <string name="welcome_hero_headline">Stop unwanted calls. For good.</string>
-    <string name="welcome_hero_desc">Let your personal AI answer on your behalf, with the message, voice and tone of your choice. It hangs up and blocks the number automatically.</string>
-    <string name="welcome_hero_desc_more">Why waste your time picking up just to hang up a few seconds later?\n\nChoose your message (or write your own), your voice and your style from 10 tones — from the most polite to the most scathing, troll\'s hold music included!</string>
+    <string name="welcome_hero_desc">Why waste your time picking up just to hang up a few seconds later?\n\nTu dégages, your personal AI, automatically answers unwanted calls on your behalf, with the message, voice and tone of your choice. Once the message has been delivered, it hangs up and immediately blocks the number to prevent any further calls. You\'ll save time and, above all, gain peace of mind.</string>
+    <string name="welcome_hero_desc_more">Choose your message (or write your own), your voice and your style from 10 tones — from the most polite to the most scathing, troll\'s hold music included!</string>
     <string name="welcome_hero_modes_button">We explain it all here</string>
     <string name="common_read_more">Read more ▾</string>
     <string name="common_read_less">Show less ▴</string>

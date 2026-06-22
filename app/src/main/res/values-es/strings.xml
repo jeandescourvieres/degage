@@ -40,7 +40,21 @@
     <!-- ── Pantalla Modos ─────────────────────────────────────────────────── -->
     <string name="modes_title">Elige el tono de respuesta</string>
     <string name="modes_subtitle">No cuelgues más. Deja que tu IA responda.</string>
-    <string name="modes_intro_text">Cada tono de abajo corresponde a un mensaje completo, ya redactado y listo para usar: elige uno y se reproducirá tal cual al próximo teleoperador, sin que tengas que escribir nada. Si ninguno te convence del todo, también puedes componer tu propio mensaje de la A a la Z — fórmula de saludo, cuerpo del texto, fórmula de cierre — en Personalizar las respuestas.</string>
+    <string name="modes_intro_text">Cada tono de abajo corresponde a un mensaje completo, ya redactado y listo para usar: elige uno y se reproducirá tal cual al próximo teleoperador, sin que tengas que escribir nada.</string>
+    <string name="modes_intro_text_custom">Si ningún tono te convence del todo, también puedes componer tu propio mensaje de la A a la Z — fórmula de saludo, cuerpo del texto, fórmula de cierre — en Personalizar las respuestas.</string>
+    <string name="modes_choice_intro_title">Tu dégages te ofrece 2 formas de elegir el tono de tu respuesta.</string>
+    <string name="modes_choice_intro_desc">➡️ Primero puedes elegir entre modelos ya hechos, redactados y listos para usar en cada situación.</string>
+    <string name="modes_choice_custom_desc">➡️ O puedes componer tú mismo tu propio mensaje de la A a la Z, a tu manera.</string>
+    <string name="modes_choice_button_premade">🎭 Elegir entre los modelos ya hechos</string>
+    <string name="modes_choice_button_custom">✏️ Componer mi propio mensaje</string>
+    <string name="modes_why_title">¿Por qué un tono y no otro?</string>
+    <string name="modes_why_desc">Un comercial insistente no merece la misma reacción que una simple encuesta — ¡y tu estado de ánimo del día también cuenta! El tono elegido solo cambia lo que oye quien llama: el resultado, en cambio, nunca cambia — la llamada se bloquea y el número se memoriza.</string>
+    <string name="modes_ready_list_intro">Aquí están los mensajes listos para usar que te propone Tu dégages:</string>
+    <string name="modes_preview_label">Vista previa del mensaje en uso</string>
+    <string name="modes_preview_intro">Este es el mensaje exacto que se usará en la próxima llamada indeseada — ya sea un modelo ya hecho o un mensaje que hayas compuesto tú mismo.</string>
+    <string name="modes_preview_compact_button">Vista previa del mensaje en uso</string>
+    <string name="modes_preview_compact_intro">¿Quieres saber qué se dirá en la próxima llamada indeseada? Toca el botón de abajo para ver y escuchar el mensaje actualmente en uso.</string>
+    <string name="modes_change_message_button">🔁 Cambiar de mensaje</string>
     <string name="modes_info_title">Modos de respuesta</string>
     <string name="modes_info_content">Los modos definen el tono de la respuesta dada a los spammers antes de colgar.\n\n🤝 Educado — respuesta cortés y firme. Ideal para mantener la discreción.\n\n📋 Administrativo — tono frío y oficial, como un departamento jurídico.\n\n😏 Sarcástico — respuesta humorística para los teleoperadores que lo merecen.\n\n🎭 Troll — hace esperar al spammer 10 segundos antes de colgar. Le hace perder tiempo.\n\nToca un modo para seleccionarlo, luego toca \"Escuchar un ejemplo\" para oírlo.</string>
     <string name="modes_preview_button">Escuchar un ejemplo</string>
@@ -107,8 +121,7 @@
 
     <!-- ── Pantalla Constructor de mensajes ──────────────────────────────── -->
     <string name="mb_header_title">Personalizar las respuestas</string>
-    <string name="mb_active_mode_label">Modo activo</string>
-    <string name="mb_active_mode_hint">Cuerpo adaptado\na este modo →</string>
+    <string name="mb_active_mode_label">Modo actualmente activo:</string>
     <string name="mb_lang_banner">Las frases a continuación están en %1$s, el idioma elegido para tus mensajes de voz. Selecciona las que te convengan.</string>
     <string name="reply_lang_de">alemán</string>
     <string name="reply_lang_it">italiano</string>
@@ -123,8 +136,13 @@
     <string name="mb_explain_body_desc">La respuesta principal. Varía según el modo activo (%1$s).</string>
     <string name="mb_explain_ending_title">Frase de cierre</string>
     <string name="mb_explain_ending_desc">La frase de cierre. Común a todos los modos.</string>
+    <string name="mb_why_title">¿Por qué componer tu propio mensaje?</string>
+    <string name="mb_why_desc">Los modelos ya hechos cubren la mayoría de las situaciones, pero nada sustituye tus propias palabras: una frase que se parezca a ti, una broma que sea solo tuya, o un estilo que solo tú conozcas. Compónlo una vez, Tu dégages lo usará en cada llamada indeseada.</string>
     <string name="mb_intro_footer">También puedes crear tus propias frases al final de cada sección.</string>
+    <string name="mb_ready_made_hint">¿Prefieres no componer nada? Tu dégages también ofrece mensajes ya hechos, redactados y listos para usar para cada tono.</string>
+    <string name="mb_ready_made_button">🎭 Ver los modelos ya hechos</string>
     <string name="mb_preview_label">Vista previa del mensaje completo</string>
+    <string name="mb_listen_preview">🔊 Escuchar este mensaje</string>
     <string name="mb_preview_intro">Este ejemplo es el resultado de las elecciones hechas abajo, en las secciones "Saludo", "Cuerpo del mensaje" y "Frase de cierre".</string>
     <string name="mb_section_salutation_desc">Esta es la frase de apertura, leída primero por Tu dégages. Selecciona abajo el saludo que se ajuste a tu estilo — solo uno a la vez. O si no, crea tu propio saludo.</string>
     <string name="mb_section_body_desc">Este es el núcleo de la respuesta, adaptado, como aquí, al modo %1$s %2$s. Es la frase principal que escucha el teleoperador. Solo una a la vez.</string>
@@ -224,8 +242,8 @@
     <string name="welcome_hero_title">¿A los teleoperadores les encanta\nllamarte?</string>
     <string name="welcome_hero_subtitle">¡TU DÉGAGES, tu nueva IA,\nva a adorar responderles!</string>
     <string name="welcome_hero_headline">Stop a las llamadas indeseadas. Definitivamente.</string>
-    <string name="welcome_hero_desc">Deja que tu IA personal responda en tu lugar, con el mensaje, la voz y el tono que elijas. Cuelga y bloquea el número automáticamente.</string>
-    <string name="welcome_hero_desc_more">¿Por qué perder el tiempo descolgando para colgar unos segundos después?\n\nElige tu mensaje (o redáctalo tú mismo), tu voz y tu estilo entre 10 tonos — del más educado al más mordaz, pasando por el troll con su música de espera.</string>
+    <string name="welcome_hero_desc">¿Por qué perder el tiempo descolgando para colgar unos segundos después?\n\nTu dégages, tu IA personal, responde automáticamente en tu lugar a las llamadas indeseadas con el mensaje, la voz y el tono que elijas. Una vez entregado el mensaje, cuelga y bloquea el número de inmediato para evitar cualquier nueva llamada. Ganarás tiempo y, sobre todo, tranquilidad.</string>
+    <string name="welcome_hero_desc_more">Elige tu mensaje (o redáctalo tú mismo), tu voz y tu estilo entre 10 tonos — del más educado al más mordaz, pasando por el troll con su música de espera.</string>
     <string name="welcome_hero_modes_button">Te lo explicamos todo aquí</string>
     <string name="common_read_more">Leer más ▾</string>
     <string name="common_read_less">Reducir ▴</string>
