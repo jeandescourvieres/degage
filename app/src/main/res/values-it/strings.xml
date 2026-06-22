@@ -164,6 +164,7 @@
     <string name="history_tous_help_content">🚫 Numeri bloccati manualmente — accesso diretto all\'elenco dei numeri che hai bloccato tu stesso.\n\n📵 Chiamate recenti non bloccate — le ultime chiamate sospette che hanno squillato normalmente sul tuo telefono; tocca «Blocca» perché vengano rifiutate automaticamente la prossima volta.\n\n📜 Cronologia completa — tutte le chiamate gestite da TU DÉGAGES, dalla più recente alla più vecchia. Ogni riga mostra a colpo d\'occhio se TU DÉGAGES ha risposto (🗣️) o ha rifiutato la chiamata in silenzio (🔇), e perché.</string>
     <string name="history_empty">Nessuna chiamata bloccata</string>
     <string name="history_not_spam">Non è spam</string>
+    <string name="history_not_spam_confirm">✅ Numero autorizzato: non verrà mai più bloccato.</string>
 
     <!-- ── Schermata Impostazioni vocali ─────────────────────────────────── -->
     <string name="voice_title">Impostazioni vocali</string>

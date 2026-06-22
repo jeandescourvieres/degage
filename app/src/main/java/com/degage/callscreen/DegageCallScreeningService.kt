@@ -27,6 +27,22 @@ class DegageCallScreeningService : CallScreeningService() {
     companion object {
         private const val BURST_WINDOW_MS = 30 * 60 * 1000L // 30 minutes
         private const val BURST_THRESHOLD = 3 // appels avant blocage automatique
+        private const val DUPLICATE_WINDOW_MS = 5_000L // fenetre anti-doublon dans l'historique
+    }
+
+    // Sur certains appareils/cartes SIM, onScreenCall peut etre invoque plusieurs fois pour
+    // le meme appel : on ignore un enregistrement identique survenu dans les secondes precedentes
+    // pour eviter les doublons dans l'historique (le blocage de l'appel lui-meme n'est pas affecte).
+    private suspend fun AppDatabase.insertBlockedCallOnce(
+        phoneNumber: String,
+        modeName: String,
+        replyUsed: String,
+        timestamp: Long = System.currentTimeMillis()
+    ) {
+        if (blockedCallDao().hasRecentEntry(phoneNumber, timestamp - DUPLICATE_WINDOW_MS)) return
+        blockedCallDao().insert(
+            BlockedCallEntity(phoneNumber = phoneNumber, timestamp = timestamp, modeName = modeName, replyUsed = replyUsed)
+        )
     }
 
     private val scope = CoroutineScope(Dispatchers.IO + SupervisorJob())
@@ -74,13 +90,10 @@ class DegageCallScreeningService : CallScreeningService() {
             // ── Appel masqué/inconnu + option activée → rejet immédiat sans TTS ──
             if (isUnknown && prefs.blockHiddenNumbers.first()) {
                 silentReject(callDetails)
-                db.blockedCallDao().insert(
-                    BlockedCallEntity(
-                        phoneNumber = rawNumber.displayNumber(),
-                        timestamp = System.currentTimeMillis(),
-                        modeName = "Auto",
-                        replyUsed = "Rejet automatique — numéro masqué"
-                    )
+                db.insertBlockedCallOnce(
+                    phoneNumber = rawNumber.displayNumber(),
+                    modeName = "Auto",
+                    replyUsed = "Rejet automatique — numéro masqué"
                 )
                 if (notificationsEnabled) {
                     NotificationHelper.notifyBlockedCall(applicationContext, rawNumber.displayNumber(), "numéro masqué")
@@ -91,13 +104,10 @@ class DegageCallScreeningService : CallScreeningService() {
             // ── Mode strict → rejet de toute la plage des opérateurs VoIP ────
             if (!isUnknown && normalized.isNotBlank() && prefs.strictMode.first() && rawNumber!!.isStrictVoipNumber(country)) {
                 silentReject(callDetails)
-                db.blockedCallDao().insert(
-                    BlockedCallEntity(
-                        phoneNumber = rawNumber.displayNumber(),
-                        timestamp = System.currentTimeMillis(),
-                        modeName = "Auto",
-                        replyUsed = "Rejet automatique — mode strict (plage opérateur VoIP)"
-                    )
+                db.insertBlockedCallOnce(
+                    phoneNumber = rawNumber.displayNumber(),
+                    modeName = "Auto",
+                    replyUsed = "Rejet automatique — mode strict (plage opérateur VoIP)"
                 )
                 if (notificationsEnabled) {
                     NotificationHelper.notifyBlockedCall(applicationContext, rawNumber.displayNumber(), "mode strict")
@@ -111,13 +121,10 @@ class DegageCallScreeningService : CallScreeningService() {
             // rappeler, donc le seul fait de ne jamais le montrer comme manqué la neutralise.
             if (!isUnknown && normalized.isNotBlank() && rawNumber!!.isWangiriRiskNumber()) {
                 silentReject(callDetails)
-                db.blockedCallDao().insert(
-                    BlockedCallEntity(
-                        phoneNumber = rawNumber.displayNumber(),
-                        timestamp = System.currentTimeMillis(),
-                        modeName = "Auto",
-                        replyUsed = "Rejet automatique — indicatif international à risque (Wangiri)"
-                    )
+                db.insertBlockedCallOnce(
+                    phoneNumber = rawNumber.displayNumber(),
+                    modeName = "Auto",
+                    replyUsed = "Rejet automatique — indicatif international à risque (Wangiri)"
                 )
                 if (notificationsEnabled) {
                     NotificationHelper.notifyBlockedCall(applicationContext, rawNumber.displayNumber(), "indicatif à risque")
@@ -131,13 +138,10 @@ class DegageCallScreeningService : CallScreeningService() {
                 val isCustomPrefix = db.customBlockDao().getPrefixes().any { normalized.startsWith(it) }
                 if (isCustomExact || isCustomPrefix) {
                     silentReject(callDetails)
-                    db.blockedCallDao().insert(
-                        BlockedCallEntity(
-                            phoneNumber = rawNumber.displayNumber(),
-                            timestamp = System.currentTimeMillis(),
-                            modeName = "Auto",
-                            replyUsed = "Rejet automatique — règle personnalisée"
-                        )
+                    db.insertBlockedCallOnce(
+                        phoneNumber = rawNumber.displayNumber(),
+                        modeName = "Auto",
+                        replyUsed = "Rejet automatique — règle personnalisée"
                     )
                     if (notificationsEnabled) {
                         NotificationHelper.notifyBlockedCall(applicationContext, rawNumber.displayNumber(), "règle personnalisée")
@@ -150,13 +154,10 @@ class DegageCallScreeningService : CallScreeningService() {
             if (normalized.isNotBlank() && db.spamDao().isKnownSpam(normalized)) {
                 silentReject(callDetails)
                 db.spamDao().incrementReport(normalized)
-                db.blockedCallDao().insert(
-                    BlockedCallEntity(
-                        phoneNumber = rawNumber.displayNumber(),
-                        timestamp = System.currentTimeMillis(),
-                        modeName = "Auto",
-                        replyUsed = "Rejet automatique — numéro connu"
-                    )
+                db.insertBlockedCallOnce(
+                    phoneNumber = rawNumber.displayNumber(),
+                    modeName = "Auto",
+                    replyUsed = "Rejet automatique — numéro connu"
                 )
                 if (notificationsEnabled) {
                     NotificationHelper.notifyBlockedCall(applicationContext, rawNumber.displayNumber(), "numéro connu")
@@ -176,13 +177,11 @@ class DegageCallScreeningService : CallScreeningService() {
                         silentReject(callDetails)
                         db.spamDao().insert(SpamEntry(number = normalized, source = "auto_block_burst"))
                         db.callAttemptDao().deleteByNumber(normalized)
-                        db.blockedCallDao().insert(
-                            BlockedCallEntity(
-                                phoneNumber = rawNumber.displayNumber(),
-                                timestamp = now,
-                                modeName = "Auto",
-                                replyUsed = "Rejet automatique — appels répétés en peu de temps"
-                            )
+                        db.insertBlockedCallOnce(
+                            phoneNumber = rawNumber.displayNumber(),
+                            modeName = "Auto",
+                            replyUsed = "Rejet automatique — appels répétés en peu de temps",
+                            timestamp = now
                         )
                         if (notificationsEnabled) {
                             NotificationHelper.notifyBlockedCall(applicationContext, rawNumber.displayNumber(), "appels répétés")
@@ -248,13 +247,10 @@ class DegageCallScreeningService : CallScreeningService() {
 
             silentReject(callDetails)
 
-            db.blockedCallDao().insert(
-                BlockedCallEntity(
-                    phoneNumber = rawNumber.displayNumber(),
-                    timestamp = System.currentTimeMillis(),
-                    modeName = mode.label,
-                    replyUsed = fullMessage
-                )
+            db.insertBlockedCallOnce(
+                phoneNumber = rawNumber.displayNumber(),
+                modeName = mode.label,
+                replyUsed = fullMessage
             )
 
             if (notificationsEnabled) {

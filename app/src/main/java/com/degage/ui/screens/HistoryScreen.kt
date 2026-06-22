@@ -1,5 +1,6 @@
 package com.degage.ui.screens
 
+import android.widget.Toast
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -223,6 +224,8 @@ fun RecentCallRow(entry: RecentCallEntry, onBlock: () -> Unit) {
 
 @Composable
 fun HistoryRow(call: BlockedCallEntity, onDelete: () -> Unit, onMarkNotSpam: () -> Unit = {}) {
+    val context = LocalContext.current
+    val notSpamConfirmMessage = stringResource(R.string.history_not_spam_confirm)
     val dateStr = remember(call.timestamp) {
         val sdf = SimpleDateFormat("dd/MM HH:mm", Locale.FRENCH)
         sdf.format(Date(call.timestamp))
@@ -260,13 +263,19 @@ fun HistoryRow(call: BlockedCallEntity, onDelete: () -> Unit, onMarkNotSpam: () 
             Spacer(modifier = Modifier.height(4.dp))
             Row {
                 if (isRealNumber) {
-                    IconButton(onClick = onMarkNotSpam, modifier = Modifier.size(24.dp)) {
-                        Icon(Icons.Default.CheckCircle, contentDescription = stringResource(R.string.history_not_spam), tint = NeonGreen, modifier = Modifier.size(16.dp))
+                    IconButton(
+                        onClick = {
+                            onMarkNotSpam()
+                            Toast.makeText(context, notSpamConfirmMessage, Toast.LENGTH_LONG).show()
+                        },
+                        modifier = Modifier.size(32.dp)
+                    ) {
+                        Icon(Icons.Default.CheckCircle, contentDescription = stringResource(R.string.history_not_spam), tint = NeonGreen, modifier = Modifier.size(22.dp))
                     }
-                    Spacer(modifier = Modifier.width(4.dp))
+                    Spacer(modifier = Modifier.width(16.dp))
                 }
-                IconButton(onClick = onDelete, modifier = Modifier.size(24.dp)) {
-                    Icon(Icons.Default.Delete, contentDescription = stringResource(R.string.cd_delete), tint = TextSecondary, modifier = Modifier.size(16.dp))
+                IconButton(onClick = onDelete, modifier = Modifier.size(32.dp)) {
+                    Icon(Icons.Default.Delete, contentDescription = stringResource(R.string.cd_delete), tint = TextSecondary, modifier = Modifier.size(22.dp))
                 }
             }
         }

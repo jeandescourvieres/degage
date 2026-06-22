@@ -164,6 +164,7 @@
     <string name="history_tous_help_content">🚫 Manuell blockierte Nummern — direkter Zugriff auf die Liste der Nummern, die Sie selbst blockiert haben.\n\n📵 Zuletzt nicht blockierte Anrufe — die letzten verdächtigen Anrufe, die normal bei Ihnen geklingelt haben; tippen Sie auf „Blockieren", damit sie beim nächsten Mal automatisch abgelehnt werden.\n\n📜 Vollständiger Verlauf — alle von TU DÉGAGES bearbeiteten Anrufe, vom neuesten zum ältesten. Jede Zeile zeigt auf einen Blick, ob TU DÉGAGES geantwortet hat (🗣️) oder den Anruf stillschweigend abgelehnt hat (🔇), und warum.</string>
     <string name="history_empty">Kein Anruf blockiert</string>
     <string name="history_not_spam">Kein Spam</string>
+    <string name="history_not_spam_confirm">✅ Nummer freigegeben: Sie wird nie wieder blockiert.</string>
 
     <!-- ── Bildschirm Spracheinstellungen ─────────────────────────────────── -->
     <string name="voice_title">Spracheinstellungen</string>

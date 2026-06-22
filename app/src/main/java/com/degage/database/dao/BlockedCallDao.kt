@@ -19,4 +19,7 @@ interface BlockedCallDao {
 
     @Query("DELETE FROM blocked_calls WHERE id = :id")
     suspend fun deleteById(id: Long)
+
+    @Query("SELECT EXISTS(SELECT 1 FROM blocked_calls WHERE phoneNumber = :phoneNumber AND timestamp >= :since LIMIT 1)")
+    suspend fun hasRecentEntry(phoneNumber: String, since: Long): Boolean
 }

@@ -9,6 +9,8 @@ import com.degage.callscreen.RecentCallEntry
 import com.degage.callscreen.getRecentIncomingCalls
 import com.degage.callscreen.isNumberInContacts
 import com.degage.callscreen.normalizeNumber
+import com.degage.callscreen.toE164
+import com.degage.spam.SupabaseClient
 import com.degage.database.AppDatabase
 import com.degage.database.entities.BlockedCallEntity
 import com.degage.database.entities.CustomBlockEntity
@@ -331,6 +333,11 @@ class MainViewModel(app: Application) : AndroidViewModel(app) {
         val cleaned = value.trim().filter { it.isDigit() || it == '+' }
         if (cleaned.isBlank()) return@launch
         db.customBlockDao().insert(CustomBlockEntity(value = cleaned, isPrefix = isPrefix))
+        // Un prefixe (ex: "0162") n'est pas un numero individuel : la base communautaire
+        // stocke des numeros complets, donc seul un blocage exact est signale.
+        if (!isPrefix && prefs.contributeDb.first()) {
+            SupabaseClient.reportNumber(cleaned.toE164(prefs.country.first()))
+        }
     }
 
     fun deleteCustomBlock(entry: CustomBlockEntity) = viewModelScope.launch {

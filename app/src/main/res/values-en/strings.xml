@@ -164,6 +164,7 @@
     <string name="history_tous_help_content">🚫 Manually blocked numbers — direct access to the list of numbers you have blocked yourself.\n\n📵 Recent unblocked calls — the latest suspicious calls that rang normally on your phone; tap "Block" so they get rejected automatically next time.\n\n📜 Full history — all calls handled by TU DÉGAGES, from most recent to oldest. Each row shows at a glance whether TU DÉGAGES replied (🗣️) or silently rejected the call (🔇), and why.</string>
     <string name="history_empty">No blocked calls</string>
     <string name="history_not_spam">Not spam</string>
+    <string name="history_not_spam_confirm">✅ Number allowed: it will never be blocked again.</string>
 
     <!-- ── Voice settings screen ─────────────────────────────────────── -->
     <string name="voice_title">Voice settings</string>

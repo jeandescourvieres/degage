@@ -164,6 +164,7 @@
     <string name="history_tous_help_content">🚫 Números bloqueados manualmente — acceso directo a la lista de números que has bloqueado tú mismo.\n\n📵 Llamadas recientes no bloqueadas — las últimas llamadas sospechosas que sonaron normalmente en tu teléfono; toca «Bloquear» para que se rechacen automáticamente la próxima vez.\n\n📜 Historial completo — todas las llamadas tratadas por TU DÉGAGES, de la más reciente a la más antigua. Cada línea muestra de un vistazo si TU DÉGAGES respondió (🗣️) o rechazó la llamada en silencio (🔇), y por qué.</string>
     <string name="history_empty">Ninguna llamada bloqueada</string>
     <string name="history_not_spam">No es spam</string>
+    <string name="history_not_spam_confirm">✅ Número autorizado: nunca volverá a ser bloqueado.</string>
 
     <!-- ── Pantalla Ajustes de voz ─────────────────────────────────────── -->
     <string name="voice_title">Ajustes de voz</string>
