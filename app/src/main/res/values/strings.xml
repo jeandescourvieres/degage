@@ -84,6 +84,7 @@
     <string name="custom_block_title">Numéros bloqués manuellement</string>
     <string name="custom_block_info_title">Numéros bloqués manuellement</string>
     <string name="custom_block_info_content">Ajoutez vos propres règles de blocage, en plus de la base spam automatique :\n\n• Numéro exact : bloque uniquement ce numéro précis (ex. 0612345678).\n• Préfixe : bloque tous les numéros commençant par cette suite de chiffres (ex. 0033612 bloque tous les numéros commençant ainsi).\n\nTout appel correspondant à une règle est rejeté immédiatement, sans message vocal.</string>
+    <string name="custom_block_reading_guide_title">ℹ️ Qu\'allez-vous voir dans cet écran ?</string>
     <string name="custom_block_add_rule">Ajouter une règle</string>
     <string name="custom_block_placeholder_prefix">Ex. 0033612</string>
     <string name="custom_block_placeholder_exact">Ex. 0612345678</string>

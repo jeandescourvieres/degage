@@ -72,6 +72,12 @@ fun CustomBlockScreen(
         }
         Spacer(modifier = Modifier.height(12.dp))
 
+        HistoryReadingGuide(
+            title = stringResource(R.string.custom_block_reading_guide_title),
+            content = stringResource(R.string.custom_block_info_content)
+        )
+        Spacer(modifier = Modifier.height(12.dp))
+
         // ── Formulaire d'ajout ───────────────────────────────────────────
         Column(
             modifier = Modifier
