@@ -165,6 +165,10 @@
     <string name="history_empty">No blocked calls</string>
     <string name="history_not_spam">Not spam</string>
     <string name="history_not_spam_confirm">✅ Number allowed: it will never be blocked again.</string>
+    <string name="history_not_spam_confirm_title">Allow this number?</string>
+    <string name="history_not_spam_confirm_desc">This number will never be blocked again, even by the community database, and will be removed from your manually blocked numbers if it\'s there.</string>
+    <string name="history_not_spam_confirm_button">Yes, allow it</string>
+    <string name="common_cancel">Cancel</string>
 
     <!-- ── Voice settings screen ─────────────────────────────────────── -->
     <string name="voice_title">Voice settings</string>

@@ -165,6 +165,10 @@
     <string name="history_empty">Nessuna chiamata bloccata</string>
     <string name="history_not_spam">Non è spam</string>
     <string name="history_not_spam_confirm">✅ Numero autorizzato: non verrà mai più bloccato.</string>
+    <string name="history_not_spam_confirm_title">Autorizzare questo numero?</string>
+    <string name="history_not_spam_confirm_desc">Questo numero non verrà mai più bloccato, nemmeno dalla base comunitaria, e verrà rimosso dai tuoi numeri bloccati manualmente se presente.</string>
+    <string name="history_not_spam_confirm_button">Sì, autorizza</string>
+    <string name="common_cancel">Annulla</string>
 
     <!-- ── Schermata Impostazioni vocali ─────────────────────────────────── -->
     <string name="voice_title">Impostazioni vocali</string>

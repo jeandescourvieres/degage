@@ -165,6 +165,10 @@
     <string name="history_empty">Kein Anruf blockiert</string>
     <string name="history_not_spam">Kein Spam</string>
     <string name="history_not_spam_confirm">✅ Nummer freigegeben: Sie wird nie wieder blockiert.</string>
+    <string name="history_not_spam_confirm_title">Diese Nummer freigeben?</string>
+    <string name="history_not_spam_confirm_desc">Diese Nummer wird nie wieder blockiert, auch nicht über die Community-Datenbank, und wird aus Ihren manuell blockierten Nummern entfernt, falls sie dort steht.</string>
+    <string name="history_not_spam_confirm_button">Ja, freigeben</string>
+    <string name="common_cancel">Abbrechen</string>
 
     <!-- ── Bildschirm Spracheinstellungen ─────────────────────────────────── -->
     <string name="voice_title">Spracheinstellungen</string>

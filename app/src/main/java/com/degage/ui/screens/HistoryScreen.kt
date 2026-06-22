@@ -226,12 +226,38 @@ fun RecentCallRow(entry: RecentCallEntry, onBlock: () -> Unit) {
 fun HistoryRow(call: BlockedCallEntity, onDelete: () -> Unit, onMarkNotSpam: () -> Unit = {}) {
     val context = LocalContext.current
     val notSpamConfirmMessage = stringResource(R.string.history_not_spam_confirm)
+    var showNotSpamConfirm by remember { mutableStateOf(false) }
     val dateStr = remember(call.timestamp) {
         val sdf = SimpleDateFormat("dd/MM HH:mm", Locale.FRENCH)
         sdf.format(Date(call.timestamp))
     }
     val isRealNumber = call.phoneNumber.any { it.isDigit() }
     val isSilent = call.modeName == "Auto"
+
+    if (showNotSpamConfirm) {
+        AlertDialog(
+            onDismissRequest = { showNotSpamConfirm = false },
+            containerColor = CardBg,
+            titleContentColor = Color.White,
+            textContentColor = TextSecondary,
+            title = { Text(stringResource(R.string.history_not_spam_confirm_title)) },
+            text = { Text(stringResource(R.string.history_not_spam_confirm_desc)) },
+            confirmButton = {
+                TextButton(onClick = {
+                    onMarkNotSpam()
+                    showNotSpamConfirm = false
+                    Toast.makeText(context, notSpamConfirmMessage, Toast.LENGTH_LONG).show()
+                }) {
+                    Text(stringResource(R.string.history_not_spam_confirm_button), color = NeonGreen, fontWeight = FontWeight.Bold)
+                }
+            },
+            dismissButton = {
+                TextButton(onClick = { showNotSpamConfirm = false }) {
+                    Text(stringResource(R.string.common_cancel), color = TextSecondary)
+                }
+            }
+        )
+    }
 
     Row(
         modifier = Modifier
@@ -264,10 +290,7 @@ fun HistoryRow(call: BlockedCallEntity, onDelete: () -> Unit, onMarkNotSpam: () 
             Row {
                 if (isRealNumber) {
                     IconButton(
-                        onClick = {
-                            onMarkNotSpam()
-                            Toast.makeText(context, notSpamConfirmMessage, Toast.LENGTH_LONG).show()
-                        },
+                        onClick = { showNotSpamConfirm = true },
                         modifier = Modifier.size(32.dp)
                     ) {
                         Icon(Icons.Default.CheckCircle, contentDescription = stringResource(R.string.history_not_spam), tint = NeonGreen, modifier = Modifier.size(22.dp))
