@@ -83,7 +83,7 @@
     <!-- ── Pantalla Números bloqueados manualmente ─────────────────────────────── -->
     <string name="custom_block_title">Números bloqueados manualmente</string>
     <string name="custom_block_info_title">Números bloqueados manualmente</string>
-    <string name="custom_block_info_content">Añade tus propias reglas de bloqueo, además de la base de spam automática:\n\n• Número exacto: bloquea solo ese número concreto (ej. 0612345678).\n• Prefijo: bloquea todos los números que empiecen por esa secuencia de cifras (ej. 0033612 bloquea todos los números que empiecen así).\n\nCualquier llamada que coincida con una regla se rechaza de inmediato, sin mensaje de voz.</string>
+    <string name="custom_block_info_content">Añade tus propias reglas de bloqueo, además de la base de spam automática:\n\n• Número exacto: bloquea solo ese número concreto (ej. 0612345678).\n• Prefijo: bloquea todos los números que empiecen por esa secuencia de cifras (ej. 0033612 bloquea todos los números que empiecen así).\n\nCualquier llamada que coincida con una regla se rechaza de inmediato, sin mensaje de voz.\n\n🗑️ Para retirar una regla, toca el icono de la papelera junto al número correspondiente en la lista de abajo: ya no será bloqueado por esa regla.</string>
     <string name="custom_block_reading_guide_title">ℹ️ ¿Qué vas a ver en esta pantalla?</string>
     <string name="custom_block_add_rule">Añadir una regla</string>
     <string name="custom_block_placeholder_prefix">Ej. 0033612</string>
@@ -93,6 +93,10 @@
     <string name="custom_block_empty">Ninguna regla personalizada</string>
     <string name="custom_block_prefix_label">Prefijo — bloquea todos los números que empiecen así</string>
     <string name="custom_block_exact_label">Número exacto</string>
+    <string name="custom_block_delete_confirm_title">¿Retirar esta regla?</string>
+    <string name="custom_block_delete_confirm_desc_exact">Este número podrá volver a llamarte normalmente.</string>
+    <string name="custom_block_delete_confirm_desc_prefix">Los números que empiecen por este prefijo podrán volver a llamarte normalmente.</string>
+    <string name="custom_block_delete_confirm_button">Sí, retirar</string>
 
     <!-- ── Pantalla Premium ───────────────────────────────────────────────── -->
     <string name="premium_title">TU DÉGAGES Premium</string>

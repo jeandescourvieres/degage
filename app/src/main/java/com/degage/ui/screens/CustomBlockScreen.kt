@@ -151,6 +151,37 @@ fun CustomBlockScreen(
 
 @Composable
 fun CustomBlockRow(block: CustomBlockEntity, onDelete: () -> Unit) {
+    var showDeleteConfirm by remember { mutableStateOf(false) }
+
+    if (showDeleteConfirm) {
+        AlertDialog(
+            onDismissRequest = { showDeleteConfirm = false },
+            containerColor = CardBg,
+            titleContentColor = Color.White,
+            textContentColor = TextSecondary,
+            title = { Text(stringResource(R.string.custom_block_delete_confirm_title)) },
+            text = {
+                Text(
+                    if (block.isPrefix) stringResource(R.string.custom_block_delete_confirm_desc_prefix)
+                    else stringResource(R.string.custom_block_delete_confirm_desc_exact)
+                )
+            },
+            confirmButton = {
+                TextButton(onClick = {
+                    onDelete()
+                    showDeleteConfirm = false
+                }) {
+                    Text(stringResource(R.string.custom_block_delete_confirm_button), color = RedAlert, fontWeight = FontWeight.Bold)
+                }
+            },
+            dismissButton = {
+                TextButton(onClick = { showDeleteConfirm = false }) {
+                    Text(stringResource(R.string.common_cancel), color = TextSecondary)
+                }
+            }
+        )
+    }
+
     Row(
         modifier = Modifier
             .fillMaxWidth()
@@ -166,7 +197,7 @@ fun CustomBlockRow(block: CustomBlockEntity, onDelete: () -> Unit) {
                 fontSize = 12.sp
             )
         }
-        IconButton(onClick = onDelete) {
+        IconButton(onClick = { showDeleteConfirm = true }) {
             Icon(Icons.Default.Delete, contentDescription = stringResource(R.string.cd_delete), tint = TextSecondary, modifier = Modifier.size(18.dp))
         }
     }

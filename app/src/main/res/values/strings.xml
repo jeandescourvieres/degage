@@ -83,7 +83,7 @@
     <!-- ── Écran Numéros bloqués manuellement ─────────────────────────────── -->
     <string name="custom_block_title">Numéros bloqués manuellement</string>
     <string name="custom_block_info_title">Numéros bloqués manuellement</string>
-    <string name="custom_block_info_content">Ajoutez vos propres règles de blocage, en plus de la base spam automatique :\n\n• Numéro exact : bloque uniquement ce numéro précis (ex. 0612345678).\n• Préfixe : bloque tous les numéros commençant par cette suite de chiffres (ex. 0033612 bloque tous les numéros commençant ainsi).\n\nTout appel correspondant à une règle est rejeté immédiatement, sans message vocal.</string>
+    <string name="custom_block_info_content">Ajoutez vos propres règles de blocage, en plus de la base spam automatique :\n\n• Numéro exact : bloque uniquement ce numéro précis (ex. 0612345678).\n• Préfixe : bloque tous les numéros commençant par cette suite de chiffres (ex. 0033612 bloque tous les numéros commençant ainsi).\n\nTout appel correspondant à une règle est rejeté immédiatement, sans message vocal.\n\n🗑️ Pour retirer une règle, touchez l\'icône poubelle à côté du numéro concerné dans la liste ci-dessous : il ne sera alors plus bloqué par cette règle.</string>
     <string name="custom_block_reading_guide_title">ℹ️ Qu\'allez-vous voir dans cet écran ?</string>
     <string name="custom_block_add_rule">Ajouter une règle</string>
     <string name="custom_block_placeholder_prefix">Ex. 0033612</string>
@@ -93,6 +93,10 @@
     <string name="custom_block_empty">Aucune règle personnalisée</string>
     <string name="custom_block_prefix_label">Préfixe — bloque tous les numéros commençant ainsi</string>
     <string name="custom_block_exact_label">Numéro exact</string>
+    <string name="custom_block_delete_confirm_title">Retirer cette règle ?</string>
+    <string name="custom_block_delete_confirm_desc_exact">Ce numéro pourra à nouveau vous appeler normalement.</string>
+    <string name="custom_block_delete_confirm_desc_prefix">Les numéros commençant par ce préfixe pourront à nouveau vous appeler normalement.</string>
+    <string name="custom_block_delete_confirm_button">Oui, retirer</string>
 
     <!-- ── Écran Premium ───────────────────────────────────────────────── -->
     <string name="premium_title">TU DÉGAGES Premium</string>

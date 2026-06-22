@@ -165,8 +165,8 @@ fun HistoryReadingGuide(title: String, content: String) {
             Text(
                 highlightBrand(content),
                 color = TextSecondary,
-                fontSize = 12.sp,
-                lineHeight = 17.sp,
+                fontSize = 15.sp,
+                lineHeight = 21.sp,
                 modifier = Modifier.padding(top = 10.dp)
             )
         }

@@ -83,7 +83,7 @@
     <!-- ── Schermata Numeri bloccati manualmente ─────────────────────────────── -->
     <string name="custom_block_title">Numeri bloccati manualmente</string>
     <string name="custom_block_info_title">Numeri bloccati manualmente</string>
-    <string name="custom_block_info_content">Aggiungi le tue regole di blocco, in aggiunta al database spam automatico:\n\n• Numero esatto: blocca solo questo numero preciso (es. 0612345678).\n• Prefisso: blocca tutti i numeri che iniziano con questa sequenza di cifre (es. 0033612 blocca tutti i numeri che iniziano così).\n\nOgni chiamata corrispondente a una regola viene rifiutata immediatamente, senza messaggio vocale.</string>
+    <string name="custom_block_info_content">Aggiungi le tue regole di blocco, in aggiunta al database spam automatico:\n\n• Numero esatto: blocca solo questo numero preciso (es. 0612345678).\n• Prefisso: blocca tutti i numeri che iniziano con questa sequenza di cifre (es. 0033612 blocca tutti i numeri che iniziano così).\n\nOgni chiamata corrispondente a una regola viene rifiutata immediatamente, senza messaggio vocale.\n\n🗑️ Per rimuovere una regola, tocca l\'icona del cestino accanto al numero corrispondente nell\'elenco qui sotto: non verrà più bloccato da questa regola.</string>
     <string name="custom_block_reading_guide_title">ℹ️ Cosa vedrai in questa schermata?</string>
     <string name="custom_block_add_rule">Aggiungi una regola</string>
     <string name="custom_block_placeholder_prefix">Es. 0033612</string>
@@ -93,6 +93,10 @@
     <string name="custom_block_empty">Nessuna regola personalizzata</string>
     <string name="custom_block_prefix_label">Prefisso — blocca tutti i numeri che iniziano così</string>
     <string name="custom_block_exact_label">Numero esatto</string>
+    <string name="custom_block_delete_confirm_title">Rimuovere questa regola?</string>
+    <string name="custom_block_delete_confirm_desc_exact">Questo numero potrà richiamarti normalmente.</string>
+    <string name="custom_block_delete_confirm_desc_prefix">I numeri che iniziano con questo prefisso potranno richiamarti normalmente.</string>
+    <string name="custom_block_delete_confirm_button">Sì, rimuovi</string>
 
     <!-- ── Schermata Premium ───────────────────────────────────────────────── -->
     <string name="premium_title">TU DÉGAGES Premium</string>

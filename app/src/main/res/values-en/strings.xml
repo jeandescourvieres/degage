@@ -83,7 +83,7 @@
     <!-- ── Manually blocked numbers screen ─────────────────────────────── -->
     <string name="custom_block_title">Manually blocked numbers</string>
     <string name="custom_block_info_title">Manually blocked numbers</string>
-    <string name="custom_block_info_content">Add your own blocking rules, on top of the automatic spam database:\n\n• Exact number: blocks only this specific number (e.g. 0612345678).\n• Prefix: blocks all numbers starting with this digit sequence (e.g. 0033612 blocks all numbers starting that way).\n\nAny call matching a rule is rejected immediately, without a voice message.</string>
+    <string name="custom_block_info_content">Add your own blocking rules, on top of the automatic spam database:\n\n• Exact number: blocks only this specific number (e.g. 0612345678).\n• Prefix: blocks all numbers starting with this digit sequence (e.g. 0033612 blocks all numbers starting that way).\n\nAny call matching a rule is rejected immediately, without a voice message.\n\n🗑️ To remove a rule, tap the trash icon next to the number in the list below: it will no longer be blocked by this rule.</string>
     <string name="custom_block_reading_guide_title">ℹ️ What will you see on this screen?</string>
     <string name="custom_block_add_rule">Add a rule</string>
     <string name="custom_block_placeholder_prefix">E.g. 0033612</string>
@@ -93,6 +93,10 @@
     <string name="custom_block_empty">No custom rules</string>
     <string name="custom_block_prefix_label">Prefix — blocks all numbers starting this way</string>
     <string name="custom_block_exact_label">Exact number</string>
+    <string name="custom_block_delete_confirm_title">Remove this rule?</string>
+    <string name="custom_block_delete_confirm_desc_exact">This number will be able to call you normally again.</string>
+    <string name="custom_block_delete_confirm_desc_prefix">Numbers starting with this prefix will be able to call you normally again.</string>
+    <string name="custom_block_delete_confirm_button">Yes, remove it</string>
 
     <!-- ── Premium screen ───────────────────────────────────────────────── -->
     <string name="premium_title">TU DÉGAGES Premium</string>
