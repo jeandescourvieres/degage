@@ -32,9 +32,11 @@
 
     <!-- ── Écran Modes ─────────────────────────────────────────────────── -->
     <string name="modes_title">Choix du ton de réponse</string>
+    <string name="modes_ready_title">Les messages prêts à l\'emploi</string>
     <string name="modes_subtitle">Ne raccrochez plus. Faites répondre votre IA.</string>
     <string name="modes_intro_text">Chaque ton ci-dessous correspond à un message complet, déjà rédigé et prêt à l\'emploi : sélectionnez-en un, il sera joué tel quel au prochain démarcheur, sans rien à écrire.</string>
-    <string name="modes_intro_text_custom">Si aucun ton ne vous convient parfaitement, vous pouvez aussi composer votre propre message de A à Z — formule d\'accueil, corps du texte, formule de fin — dans Personnaliser les réponses.</string>
+    <string name="modes_intro_custom_bold">Si aucun ton ne vous convient parfaitement</string>
+    <string name="modes_intro_custom_rest">, vous pouvez aussi composer votre propre message de A à Z — formule d\'accueil, corps du texte et formule de fin.</string>
     <string name="modes_ready_list_intro">Voilà les messages prêts à l\'emploi que vous propose Tu dégages :</string>
     <string name="modes_preview_label">Aperçu du message en service</string>
     <string name="modes_change_message_button">🔁 Changer de message</string>
@@ -126,7 +128,7 @@
     <string name="premium_dev_mode_desc">Active Premium localement pour tester les fonctionnalités, en attendant l\'abonnement réel.</string>
 
     <!-- ── Écran Constructeur de message ──────────────────────────────── -->
-    <string name="mb_header_title">Personnaliser les réponses</string>
+    <string name="mb_header_title">Personnaliser les messages</string>
     <string name="mb_active_mode_label">Mode actuellement actif :</string>
     <string name="mb_lang_banner">Les phrases ci-dessous sont en %1$s, la langue choisie pour vos messages vocaux. Sélectionnez celles qui vous correspondent.</string>
     <string name="reply_lang_de">allemand</string>
@@ -178,11 +180,13 @@
 
     <!-- ── Écran Paramètres vocaux ─────────────────────────────────────── -->
     <string name="voice_title">Paramètres vocaux</string>
+    <string name="voice_intro_bold">Choisissez la voix qui répondra à vos appels indésirables</string>
+    <string name="voice_intro_rest">parmi 10 voix disponibles, réglez sa vitesse et sa tonalité, puis écoutez un aperçu pour apprécier le résultat.</string>
     <string name="voice_rate_label">Vitesse de lecture</string>
     <string name="voice_pitch_label">Hauteur de voix (pitch)</string>
     <string name="voice_test_button">Tester la voix</string>
     <string name="voice_available_title">Voix disponibles (%1$s) : %2$d</string>
-    <string name="voice_generic_label">Voix %1$d</string>
+    <string name="voice_generic_label">Voix n°%1$d</string>
     <string name="voice_preview_hint">Pour écouter</string>
     <string name="voice_current_label">Voix sélectionnée : %1$s</string>
     <string name="voice_autosave_hint">Réglages enregistrés automatiquement</string>
@@ -253,9 +257,13 @@
     <string name="welcome_hero_title">Les spammeurs adorent\nvous appeler ?</string>
     <string name="welcome_hero_subtitle">TU DÉGAGES, votre nouvelle IA,\nva adorer leur répondre !</string>
     <string name="welcome_hero_headline">Stop aux appels indésirables. Définitivement.</string>
-    <string name="welcome_hero_desc">Pourquoi perdre votre temps à décrocher pour raccrocher quelques secondes plus tard ?\n\nTu dégages, votre IA personnelle, répond automatiquement à votre place aux appels non désirés avec le message, la voix et le ton de votre choix. Une fois le message délivré, elle raccroche et bloque immédiatement le numéro pour éviter tout nouvel appel. Vous allez gagner du temps et surtout de la tranquillité.</string>
-    <string name="welcome_hero_desc_more">Choisissez votre message et votre style parmi 10 tons, du plus poli au plus cinglant, en passant par le troll et sa musique d\'attente !</string>
-    <string name="welcome_hero_voice_desc">Choisissez votre voix parmi les 10 de disponible</string>
+    <string name="welcome_hero_desc_q">Pourquoi perdre votre temps à décrocher pour raccrocher quelques secondes plus tard ?</string>
+    <string name="welcome_hero_desc_body">Tu dégages, votre IA personnelle, répond automatiquement à votre place aux appels non désirés avec le message, la voix et le ton de votre choix. Une fois le message délivré, elle raccroche et bloque immédiatement le numéro pour éviter tout nouvel appel. Vous allez gagner du temps et surtout de la tranquillité...</string>
+    <string name="welcome_hero_msg_bold1">Choisissez votre message</string>
+    <string name="welcome_hero_msg_rest">et votre style parmi 10 tons, du plus poli au plus cinglant, en passant par le troll et sa musique d\'attente.</string>
+    <string name="welcome_hero_msg_bold2">Ou composez-le vous-même !</string>
+    <string name="welcome_hero_voice_bold">Choisissez votre voix</string>
+    <string name="welcome_hero_voice_rest">parmi les 10 de disponible :</string>
     <string name="welcome_hero_see_here">Voir ici</string>
     <string name="welcome_sections_intro">TU DÉGAGES c\'est quoi le principe ?</string>
     <string name="welcome_details_intro">Petit tour des 5 super-pouvoirs de votre application, sans la notice de 50 pages 😄</string>
@@ -282,7 +290,7 @@
     <string name="settings_title">Les paramètres</string>
     <string name="settings_search_placeholder">Rechercher un réglage…</string>
     <string name="settings_info_title">Paramètres</string>
-    <string name="settings_info_content">Configurez le comportement de DÉGAGE :\n\n• Protection : active/désactive le filtrage global des appels.\n• Décroche automatique : répond à l\'appel sans que le téléphone sonne (recommandé).\n• Bloquer après réponse : ajoute le numéro à la liste noire après chaque interaction.\n• Notifications : vous avertit à chaque appel bloqué.\n• Personnaliser les réponses : créez et gérez vos propres messages.\n• Paramètres vocaux : changez la voix, la vitesse et la hauteur.</string>
+    <string name="settings_info_content">Configurez le comportement de DÉGAGE :\n\n• Protection : active/désactive le filtrage global des appels.\n• Décroche automatique : répond à l\'appel sans que le téléphone sonne (recommandé).\n• Bloquer après réponse : ajoute le numéro à la liste noire après chaque interaction.\n• Notifications : vous avertit à chaque appel bloqué.\n• Personnaliser les messages : créez et gérez vos propres messages.\n• Paramètres vocaux : changez la voix, la vitesse et la hauteur.</string>
     <string name="settings_toggle_protection">Protection</string>
     <string name="settings_toggle_auto_reject">Décroche automatique</string>
     <string name="settings_toggle_block_after_reply">Bloquer le numéro après réponse</string>
@@ -304,7 +312,7 @@
     <string name="settings_help_premium">Premium débloque les langues de messages vocaux allemand/italien/anglais/espagnol, la personnalisation complète des réponses, le choix de la voix, le blocage de numéros personnalisés et la contribution à la base communautaire de spam.</string>
     <string name="settings_help_community_db">En activant la contribution (case « Base communautaire » plus haut), chaque numéro que Tu dégages bloque sur votre téléphone est signalé anonymement. En retour, votre app télécharge régulièrement les nouveaux numéros signalés par les autres utilisateurs pour enrichir votre propre base de blocage.</string>
     <string name="settings_quick_access_title">⚡ Accès rapides</string>
-    <string name="settings_nav_message_builder">💬 Personnaliser les réponses</string>
+    <string name="settings_nav_message_builder">💬 Personnaliser les messages</string>
     <string name="settings_nav_voice">🎙️ Paramètres vocaux</string>
     <string name="settings_nav_custom_blocks">🚫 Numéros bloqués manuellement</string>
     <string name="settings_nav_premium">⭐ TU DÉGAGES Premium</string>
@@ -430,7 +438,7 @@
     <string name="manual_q8_body">Accédez à l\'onglet « Modes » pour choisir le ton de la réponse :\n\n🤝 Poli — réponse courtoise et ferme. Idéal si vous préférez rester discret.\n\n📋 Administratif — ton froid et officiel, comme un service juridique. Déstabilise les opérateurs de centres d\'appels.\n\n😏 Sarcastique — réponse humoristique. Pour les démarcheurs qui méritent un peu d\'ironie.\n\n🎭 Troll — fait patienter le spammeur pendant 10 secondes de musique d\'attente avant de raccrocher. Leur fait perdre du temps et de l\'argent.</string>
 
     <string name="manual_q9_title">💬 Personnaliser les messages</string>
-    <string name="manual_q9_body">Dans Paramètres → Personnaliser les réponses, vous pouvez :\n\n• Activer ou désactiver chaque phrase existante.\n• Ajouter vos propres phrases personnalisées.\n• Utiliser le Constructeur de messages pour composer un message en 3 parties : salutation + corps + conclusion.</string>
+    <string name="manual_q9_body">Dans Paramètres → Personnaliser les messages, vous pouvez :\n\n• Activer ou désactiver chaque phrase existante.\n• Ajouter vos propres phrases personnalisées.\n• Utiliser le Constructeur de messages pour composer un message en 3 parties : salutation + corps + conclusion.</string>
 
     <string name="manual_q10_title">🎙️ Paramètres vocaux</string>
     <string name="manual_q10_body">Dans Paramètres → Paramètres vocaux :\n\n• Choisissez la voix (selon les voix installées sur votre téléphone).\n• Ajustez la vitesse de lecture (de lent à rapide).\n• Modifiez la hauteur de la voix (grave ou aiguë).\n• Testez le rendu avec le bouton de prévisualisation.</string>

@@ -21,7 +21,10 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.SpanStyle
+import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -88,16 +91,38 @@ fun VoiceSettingsScreen(
             )
         }
 
+        val voiceIntro = buildAnnotatedString {
+            withStyle(SpanStyle(color = Color.White, fontWeight = FontWeight.Bold)) {
+                append(stringResource(R.string.voice_intro_bold))
+            }
+            append(" ")
+            append(stringResource(R.string.voice_intro_rest))
+        }
+        Text(
+            text = voiceIntro,
+            color = TextSecondary,
+            fontSize = 13.sp,
+            lineHeight = 19.sp,
+            modifier = Modifier
+                .padding(horizontal = 16.dp)
+                .fillMaxWidth()
+                .background(CardBg, RoundedCornerShape(14.dp))
+                .padding(12.dp)
+        )
+
+        Spacer(modifier = Modifier.height(8.dp))
+
         Row(
             modifier = Modifier.padding(horizontal = 16.dp, vertical = 4.dp),
             verticalAlignment = Alignment.CenterVertically
         ) {
-            Icon(Icons.Default.CheckCircle, contentDescription = null, tint = NeonGreen, modifier = Modifier.size(14.dp))
-            Spacer(modifier = Modifier.width(6.dp))
+            Icon(Icons.Default.CheckCircle, contentDescription = null, tint = NeonGreen, modifier = Modifier.size(20.dp))
+            Spacer(modifier = Modifier.width(8.dp))
             Text(
                 stringResource(R.string.voice_autosave_hint),
-                color = TextSecondary,
-                fontSize = 12.sp
+                color = NeonGreen,
+                fontSize = 16.sp,
+                fontWeight = FontWeight.Bold
             )
         }
 

@@ -34,11 +34,15 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.AnnotatedString
+import androidx.compose.ui.text.SpanStyle
+import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.degage.R
+import com.degage.ui.components.LinkRow
 import com.degage.ui.components.highlightBrand
 import com.degage.ui.theme.*
 import kotlinx.coroutines.delay
@@ -248,21 +252,46 @@ fun HomeScreen(
                         lineHeight = 28.sp
                     )
                     Spacer(modifier = Modifier.height(8.dp))
+                    val heroDesc = buildAnnotatedString {
+                        withStyle(SpanStyle(color = Color.White, fontWeight = FontWeight.Bold)) {
+                            append(stringResource(R.string.welcome_hero_desc_q))
+                        }
+                        append("\n\n")
+                        append(highlightBrand(stringResource(R.string.welcome_hero_desc_body)))
+                    }
                     Text(
-                        text = highlightBrand(stringResource(R.string.welcome_hero_desc)),
+                        text = heroDesc,
                         fontSize = 14.sp,
                         color = TextSecondary,
                         textAlign = TextAlign.Center,
                         lineHeight = 21.sp
                     )
                     Spacer(modifier = Modifier.height(14.dp))
-                    HeroLinkRow(
-                        text = stringResource(R.string.welcome_hero_desc_more),
+                    val messageDesc = buildAnnotatedString {
+                        withStyle(SpanStyle(color = Color.White, fontWeight = FontWeight.Bold)) {
+                            append(stringResource(R.string.welcome_hero_msg_bold1))
+                        }
+                        append(" ")
+                        append(stringResource(R.string.welcome_hero_msg_rest))
+                        append("\n")
+                        withStyle(SpanStyle(color = Color.White, fontWeight = FontWeight.Bold)) {
+                            append(stringResource(R.string.welcome_hero_msg_bold2))
+                        }
+                    }
+                    LinkRow(
+                        text = messageDesc,
                         onClick = onNavigateModes
                     )
                     Spacer(modifier = Modifier.height(10.dp))
-                    HeroLinkRow(
-                        text = stringResource(R.string.welcome_hero_voice_desc),
+                    val voiceDesc = buildAnnotatedString {
+                        withStyle(SpanStyle(color = Color.White, fontWeight = FontWeight.Bold)) {
+                            append(stringResource(R.string.welcome_hero_voice_bold))
+                        }
+                        append(" ")
+                        append(stringResource(R.string.welcome_hero_voice_rest))
+                    }
+                    LinkRow(
+                        text = voiceDesc,
                         onClick = onNavigateVoiceSettings
                     )
                 }
@@ -506,45 +535,6 @@ private fun BoxScope.BackgroundColorTipPopup(
                     textAlign = TextAlign.Center
                 )
             }
-        }
-    }
-}
-
-@Composable
-private fun HeroLinkRow(text: String, onClick: () -> Unit) {
-    Row(
-        modifier = Modifier.fillMaxWidth(),
-        verticalAlignment = Alignment.CenterVertically
-    ) {
-        Text(
-            text = text,
-            fontSize = 14.sp,
-            color = TextSecondary,
-            lineHeight = 20.sp,
-            modifier = Modifier.weight(1f)
-        )
-        Spacer(modifier = Modifier.width(10.dp))
-        Row(
-            modifier = Modifier
-                .clickable { onClick() }
-                .background(NeonGreen.copy(alpha = 0.15f), RoundedCornerShape(20.dp))
-                .border(1.5.dp, NeonGreen, RoundedCornerShape(20.dp))
-                .padding(vertical = 8.dp, horizontal = 12.dp),
-            verticalAlignment = Alignment.CenterVertically
-        ) {
-            Text(
-                text = stringResource(R.string.welcome_hero_see_here),
-                color = NeonGreen,
-                fontSize = 13.sp,
-                fontWeight = FontWeight.Bold
-            )
-            Spacer(modifier = Modifier.width(4.dp))
-            Icon(
-                imageVector = Icons.Default.ArrowForward,
-                contentDescription = null,
-                tint = NeonGreen,
-                modifier = Modifier.size(14.dp)
-            )
         }
     }
 }

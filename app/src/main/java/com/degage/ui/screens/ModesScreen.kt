@@ -17,14 +17,18 @@ import androidx.compose.material.icons.filled.VolumeUp
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import com.degage.ui.components.InfoDialog
+import com.degage.ui.components.LinkRow
 import com.degage.ui.components.highlightBrand
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.SpanStyle
+import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -339,7 +343,7 @@ fun ReadyMadeModesScreen(
                 Icon(Icons.Default.ArrowBack, contentDescription = stringResource(R.string.cd_back), tint = Color.White)
             }
             Column(modifier = Modifier.weight(1f)) {
-                Text(stringResource(R.string.modes_title), fontSize = 20.sp, fontWeight = FontWeight.Bold, color = Color.White)
+                Text(stringResource(R.string.modes_ready_title), fontSize = 20.sp, fontWeight = FontWeight.Bold, color = Color.White)
                 Text(stringResource(R.string.modes_subtitle), color = TextSecondary, fontSize = 13.sp)
             }
             IconButton(onClick = { showInfo = true }) {
@@ -353,78 +357,31 @@ fun ReadyMadeModesScreen(
                 LanguageFlagHeader(appLanguage = appLanguage, onSetAppLanguage = onSetAppLanguage)
             }
             item {
-                Column {
-                    Column(
+                Column(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .background(CardBg, RoundedCornerShape(14.dp))
+                        .padding(16.dp)
+                ) {
+                    Text(
+                        text = stringResource(R.string.modes_why_title),
+                        color = Color.Black,
+                        fontSize = 17.sp,
+                        fontWeight = FontWeight.Bold,
+                        lineHeight = 20.sp,
+                        textAlign = TextAlign.Center,
                         modifier = Modifier
                             .fillMaxWidth()
-                            .background(CardBg, RoundedCornerShape(14.dp))
-                            .padding(16.dp)
-                    ) {
-                        Text(
-                            text = stringResource(R.string.modes_why_title),
-                            color = Color.Black,
-                            fontSize = 17.sp,
-                            fontWeight = FontWeight.Bold,
-                            lineHeight = 20.sp,
-                            textAlign = TextAlign.Center,
-                            modifier = Modifier
-                                .fillMaxWidth()
-                                .background(AccentOrange, RoundedCornerShape(8.dp))
-                                .padding(horizontal = 10.dp, vertical = 4.dp)
-                        )
-                        Spacer(modifier = Modifier.height(8.dp))
-                        Text(
-                            text = stringResource(R.string.modes_why_desc),
-                            color = TextSecondary,
-                            fontSize = 13.sp,
-                            lineHeight = 18.sp
-                        )
-                    }
+                            .background(AccentOrange, RoundedCornerShape(8.dp))
+                            .padding(horizontal = 10.dp, vertical = 4.dp)
+                    )
                     Spacer(modifier = Modifier.height(8.dp))
                     Text(
-                        text = stringResource(R.string.modes_intro_text),
+                        text = stringResource(R.string.modes_why_desc),
                         color = TextSecondary,
                         fontSize = 13.sp,
-                        lineHeight = 18.sp,
-                        modifier = Modifier.padding(horizontal = 16.dp)
+                        lineHeight = 18.sp
                     )
-                    Spacer(modifier = Modifier.height(10.dp))
-                    Column(
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .border(1.dp, NeonGreen.copy(alpha = 0.5f), RoundedCornerShape(16.dp))
-                            .padding(16.dp)
-                    ) {
-                        Text(
-                            text = stringResource(R.string.modes_intro_text_custom),
-                            color = TextSecondary,
-                            fontSize = 13.sp,
-                            lineHeight = 18.sp
-                        )
-                        Spacer(modifier = Modifier.height(10.dp))
-                        Row(
-                            modifier = Modifier
-                                .fillMaxWidth()
-                                .clickable { onNavigateMessageBuilder() }
-                                .padding(vertical = 10.dp, horizontal = 16.dp),
-                            horizontalArrangement = Arrangement.Center,
-                            verticalAlignment = Alignment.CenterVertically
-                        ) {
-                            Text(
-                                text = stringResource(R.string.mb_header_title),
-                                fontSize = 14.sp,
-                                fontWeight = FontWeight.Bold,
-                                color = NeonGreen
-                            )
-                            Spacer(modifier = Modifier.width(6.dp))
-                            Icon(
-                                imageVector = Icons.Default.ArrowForward,
-                                contentDescription = null,
-                                tint = NeonGreen,
-                                modifier = Modifier.size(18.dp)
-                            )
-                        }
-                    }
                 }
             }
             item {
@@ -439,6 +396,33 @@ fun ReadyMadeModesScreen(
                         .background(AccentOrange, RoundedCornerShape(8.dp))
                         .padding(horizontal = 10.dp, vertical = 4.dp)
                 )
+            }
+            item {
+                Text(
+                    text = stringResource(R.string.modes_intro_text),
+                    color = TextSecondary,
+                    fontSize = 13.sp,
+                    lineHeight = 18.sp
+                )
+            }
+            item {
+                Column(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .border(1.dp, NeonGreen.copy(alpha = 0.5f), RoundedCornerShape(16.dp))
+                        .padding(16.dp)
+                ) {
+                    val introCustom = buildAnnotatedString {
+                        withStyle(SpanStyle(color = Color.White, fontWeight = FontWeight.Bold)) {
+                            append(stringResource(R.string.modes_intro_custom_bold))
+                        }
+                        append(stringResource(R.string.modes_intro_custom_rest))
+                    }
+                    LinkRow(
+                        text = introCustom,
+                        onClick = onNavigateMessageBuilder
+                    )
+                }
             }
             items(modeInfoList) { mode ->
                 val locked = !isPremium && mode != AppMode.POLI

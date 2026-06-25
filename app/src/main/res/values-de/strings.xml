@@ -39,9 +39,11 @@
 
     <!-- ── Bildschirm Modi ─────────────────────────────────────────────────── -->
     <string name="modes_title">Tonfall der Antwort wählen</string>
+    <string name="modes_ready_title">Die einsatzbereiten Nachrichten</string>
     <string name="modes_subtitle">Nicht mehr auflegen. Lassen Sie Ihre KI antworten.</string>
     <string name="modes_intro_text">Jeder Ton unten entspricht einer vollständigen, bereits geschriebenen und einsatzbereiten Nachricht: Wählen Sie einen aus, er wird dem nächsten Anrufer genau so vorgespielt, ohne dass Sie etwas schreiben müssen.</string>
-    <string name="modes_intro_text_custom">Wenn kein Ton perfekt passt, können Sie auch Ihre eigene Nachricht komplett von Grund auf zusammenstellen — Begrüßung, Textkörper, Schlussformel — unter Antworten anpassen.</string>
+    <string name="modes_intro_custom_bold">Wenn kein Ton perfekt passt</string>
+    <string name="modes_intro_custom_rest">, können Sie auch Ihre eigene Nachricht komplett von Grund auf zusammenstellen — Begrüßung, Textkörper und Schlussformel.</string>
     <string name="modes_choice_intro_title">Tu dégages bietet Ihnen 2 Möglichkeiten, den Ton Ihrer Antwort zu wählen.</string>
     <string name="modes_choice_intro_desc">➡️ Sie können zunächst aus fertigen Vorlagen wählen, die bereits geschrieben und für jede Situation einsatzbereit sind.</string>
     <string name="modes_choice_custom_desc">➡️ Oder Sie verfassen Ihre eigene Nachricht selbst von A bis Z, ganz nach Ihrem Geschmack.</string>
@@ -126,7 +128,7 @@
     <string name="premium_dev_mode_desc">Aktiviert Premium lokal zum Testen der Funktionen, bis das echte Abo verfügbar ist.</string>
 
     <!-- ── Bildschirm Nachrichten-Baukasten ──────────────────────────── -->
-    <string name="mb_header_title">Antworten anpassen</string>
+    <string name="mb_header_title">Nachrichten anpassen</string>
     <string name="mb_active_mode_label">Aktuell aktiver Modus:</string>
     <string name="mb_lang_banner">Die folgenden Sätze sind auf %1$s, der für Ihre Sprachnachrichten gewählten Sprache. Wählen Sie die aus, die zu Ihnen passen.</string>
     <string name="reply_lang_de">Deutsch</string>
@@ -178,11 +180,13 @@
 
     <!-- ── Bildschirm Spracheinstellungen ─────────────────────────────────── -->
     <string name="voice_title">Spracheinstellungen</string>
+    <string name="voice_intro_bold">Wählen Sie die Stimme, die auf Ihre unerwünschten Anrufe antwortet</string>
+    <string name="voice_intro_rest">aus 10 verfügbaren Stimmen, passen Sie Geschwindigkeit und Tonhöhe an und hören Sie sich dann eine Vorschau an, um das Ergebnis zu überprüfen.</string>
     <string name="voice_rate_label">Sprechgeschwindigkeit</string>
     <string name="voice_pitch_label">Tonhöhe</string>
     <string name="voice_test_button">Stimme testen</string>
     <string name="voice_available_title">Verfügbare Stimmen (%1$s): %2$d</string>
-    <string name="voice_generic_label">Stimme %1$d</string>
+    <string name="voice_generic_label">Stimme Nr. %1$d</string>
     <string name="voice_preview_hint">Zum Anhören</string>
     <string name="voice_current_label">Ausgewählte Stimme: %1$s</string>
     <string name="voice_autosave_hint">Einstellungen werden automatisch gespeichert</string>
@@ -253,9 +257,13 @@
     <string name="welcome_hero_title">Werbeanrufer rufen Sie\nständig an?</string>
     <string name="welcome_hero_subtitle">TU DÉGAGES, Ihre neue KI,\nantwortet ihnen gerne!</string>
     <string name="welcome_hero_headline">Schluss mit unerwünschten Anrufen. Endgültig.</string>
-    <string name="welcome_hero_desc">Warum Zeit verschwenden, abzuheben, nur um wenige Sekunden später wieder aufzulegen?\n\nTu dégages, Ihre persönliche KI, antwortet automatisch an Ihrer Stelle auf unerwünschte Anrufe — mit der Nachricht, der Stimme und dem Ton Ihrer Wahl. Sobald die Nachricht übermittelt ist, legt sie auf und blockiert die Nummer sofort, um weitere Anrufe zu verhindern. Sie gewinnen Zeit und vor allem Ruhe.</string>
-    <string name="welcome_hero_desc_more">Wählen Sie Ihre Nachricht und Ihren Stil aus 10 Tönen, von höflich bis bissig, inklusive Troll mit Wartemusik!</string>
-    <string name="welcome_hero_voice_desc">Wählen Sie Ihre Stimme aus den 10 verfügbaren</string>
+    <string name="welcome_hero_desc_q">Warum Zeit verschwenden, abzuheben, nur um wenige Sekunden später wieder aufzulegen?</string>
+    <string name="welcome_hero_desc_body">Tu dégages, Ihre persönliche KI, antwortet automatisch an Ihrer Stelle auf unerwünschte Anrufe — mit der Nachricht, der Stimme und dem Ton Ihrer Wahl. Sobald die Nachricht übermittelt ist, legt sie auf und blockiert die Nummer sofort, um weitere Anrufe zu verhindern. Sie gewinnen Zeit und vor allem Ruhe...</string>
+    <string name="welcome_hero_msg_bold1">Wählen Sie Ihre Nachricht</string>
+    <string name="welcome_hero_msg_rest">und Ihren Stil aus 10 Tönen, von höflich bis bissig, inklusive Troll mit Wartemusik.</string>
+    <string name="welcome_hero_msg_bold2">Oder verfassen Sie sie selbst!</string>
+    <string name="welcome_hero_voice_bold">Wählen Sie Ihre Stimme</string>
+    <string name="welcome_hero_voice_rest">aus den 10 verfügbaren:</string>
     <string name="welcome_hero_see_here">Hier ansehen</string>
     <string name="welcome_sections_intro">TU DÉGAGES: was bringt das eigentlich?</string>
     <string name="welcome_details_intro">Eine kurze Tour durch die 5 Superkräfte Ihrer App – ganz ohne 50-seitige Anleitung 😄</string>
@@ -282,7 +290,7 @@
     <string name="settings_title">Einstellungen</string>
     <string name="settings_search_placeholder">Einstellung suchen…</string>
     <string name="settings_info_title">Einstellungen</string>
-    <string name="settings_info_content">Konfigurieren Sie das Verhalten von Tu dégages:\n\n• Schutz: aktiviert/deaktiviert die globale Anruffilterung.\n• Automatische Annahme: nimmt den Anruf an, ohne dass das Telefon klingelt (empfohlen).\n• Nach Antwort blockieren: fügt die Nummer nach jeder Interaktion zur Sperrliste hinzu.\n• Benachrichtigungen: informiert Sie bei jedem blockierten Anruf.\n• Antworten anpassen: erstellen und verwalten Sie eigene Nachrichten.\n• Spracheinstellungen: ändern Sie Stimme, Geschwindigkeit und Tonhöhe.</string>
+    <string name="settings_info_content">Konfigurieren Sie das Verhalten von Tu dégages:\n\n• Schutz: aktiviert/deaktiviert die globale Anruffilterung.\n• Automatische Annahme: nimmt den Anruf an, ohne dass das Telefon klingelt (empfohlen).\n• Nach Antwort blockieren: fügt die Nummer nach jeder Interaktion zur Sperrliste hinzu.\n• Benachrichtigungen: informiert Sie bei jedem blockierten Anruf.\n• Nachrichten anpassen: erstellen und verwalten Sie eigene Nachrichten.\n• Spracheinstellungen: ändern Sie Stimme, Geschwindigkeit und Tonhöhe.</string>
     <string name="settings_toggle_protection">Schutz</string>
     <string name="settings_toggle_auto_reject">Automatische Annahme</string>
     <string name="settings_toggle_block_after_reply">Nummer nach Antwort blockieren</string>
@@ -304,7 +312,7 @@
     <string name="settings_help_premium">Premium schaltet die Sprachnachrichten auf Deutsch/Italienisch/Englisch/Spanisch frei, die vollständige Anpassung der Antworten, die Wahl der Stimme, das Blockieren eigener Nummern und den Beitrag zur Community-Spam-Datenbank.</string>
     <string name="settings_help_community_db">Wenn Sie den Beitrag aktivieren (Kästchen „Community-Datenbank" oben), wird jede von Tu dégages auf Ihrem Telefon blockierte Nummer anonym gemeldet. Im Gegenzug lädt Ihre App regelmäßig neue, von anderen Nutzern gemeldete Nummern herunter, um Ihre eigene Blockierliste zu erweitern.</string>
     <string name="settings_quick_access_title">⚡ Schnellzugriff</string>
-    <string name="settings_nav_message_builder">💬 Antworten anpassen</string>
+    <string name="settings_nav_message_builder">💬 Nachrichten anpassen</string>
     <string name="settings_nav_voice">🎙️ Spracheinstellungen</string>
     <string name="settings_nav_custom_blocks">🚫 Manuell blockierte Nummern</string>
     <string name="settings_nav_premium">⭐ TU DÉGAGES Premium</string>
@@ -430,7 +438,7 @@
     <string name="manual_q8_body">Öffnen Sie den Tab „Modi“, um den Ton der Antwort zu wählen:\n\n🤝 Höflich — höfliche, aber bestimmte Antwort. Ideal, um diskret zu bleiben.\n\n📋 Administrativ — kühler, offizieller Ton, wie eine Rechtsabteilung. Bringt Callcenter-Mitarbeiter aus der Fassung.\n\n😏 Sarkastisch — humorvolle Antwort. Für Werbeanrufer, die etwas Ironie verdienen.\n\n🎭 Troll — lässt den Spammer 10 Sekunden Wartemusik hören, bevor aufgelegt wird. Lässt ihn Zeit und Geld verlieren.</string>
 
     <string name="manual_q9_title">💬 Nachrichten anpassen</string>
-    <string name="manual_q9_body">Unter Einstellungen → Antworten anpassen können Sie:\n\n• Jeden vorhandenen Satz aktivieren oder deaktivieren.\n• Eigene Sätze hinzufügen.\n• Den Nachrichten-Baukasten nutzen, um eine Nachricht aus 3 Teilen zu erstellen: Begrüßung + Hauptteil + Schlussformel.</string>
+    <string name="manual_q9_body">Unter Einstellungen → Nachrichten anpassen können Sie:\n\n• Jeden vorhandenen Satz aktivieren oder deaktivieren.\n• Eigene Sätze hinzufügen.\n• Den Nachrichten-Baukasten nutzen, um eine Nachricht aus 3 Teilen zu erstellen: Begrüßung + Hauptteil + Schlussformel.</string>
 
     <string name="manual_q10_title">🎙️ Spracheinstellungen</string>
     <string name="manual_q10_body">Unter Einstellungen → Spracheinstellungen:\n\n• Wählen Sie die Stimme (abhängig von den auf Ihrem Telefon installierten Stimmen).\n• Passen Sie die Lesegeschwindigkeit an (von langsam bis schnell).\n• Ändern Sie die Tonhöhe der Stimme (tief oder hoch).\n• Testen Sie das Ergebnis mit der Vorschau-Taste.</string>

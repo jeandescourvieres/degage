@@ -39,9 +39,11 @@
 
     <!-- ── Pantalla Modos ─────────────────────────────────────────────────── -->
     <string name="modes_title">Elige el tono de respuesta</string>
+    <string name="modes_ready_title">Los mensajes listos para usar</string>
     <string name="modes_subtitle">No cuelgues más. Deja que tu IA responda.</string>
     <string name="modes_intro_text">Cada tono de abajo corresponde a un mensaje completo, ya redactado y listo para usar: elige uno y se reproducirá tal cual al próximo teleoperador, sin que tengas que escribir nada.</string>
-    <string name="modes_intro_text_custom">Si ningún tono te convence del todo, también puedes componer tu propio mensaje de la A a la Z — fórmula de saludo, cuerpo del texto, fórmula de cierre — en Personalizar las respuestas.</string>
+    <string name="modes_intro_custom_bold">Si ningún tono te convence del todo</string>
+    <string name="modes_intro_custom_rest">, también puedes componer tu propio mensaje de la A a la Z — fórmula de saludo, cuerpo del texto y fórmula de cierre.</string>
     <string name="modes_choice_intro_title">Tu dégages te ofrece 2 formas de elegir el tono de tu respuesta.</string>
     <string name="modes_choice_intro_desc">➡️ Primero puedes elegir entre modelos ya hechos, redactados y listos para usar en cada situación.</string>
     <string name="modes_choice_custom_desc">➡️ O puedes componer tú mismo tu propio mensaje de la A a la Z, a tu manera.</string>
@@ -126,7 +128,7 @@
     <string name="premium_dev_mode_desc">Activa Premium localmente para probar las funciones, mientras llega la suscripción real.</string>
 
     <!-- ── Pantalla Constructor de mensajes ──────────────────────────────── -->
-    <string name="mb_header_title">Personalizar las respuestas</string>
+    <string name="mb_header_title">Personalizar los mensajes</string>
     <string name="mb_active_mode_label">Modo actualmente activo:</string>
     <string name="mb_lang_banner">Las frases a continuación están en %1$s, el idioma elegido para tus mensajes de voz. Selecciona las que te convengan.</string>
     <string name="reply_lang_de">alemán</string>
@@ -178,11 +180,13 @@
 
     <!-- ── Pantalla Ajustes de voz ─────────────────────────────────────── -->
     <string name="voice_title">Ajustes de voz</string>
+    <string name="voice_intro_bold">Elige la voz que responderá a tus llamadas indeseadas</string>
+    <string name="voice_intro_rest">entre 10 voces disponibles, ajusta su velocidad y su tono, y luego escucha una vista previa para comprobar el resultado.</string>
     <string name="voice_rate_label">Velocidad de lectura</string>
     <string name="voice_pitch_label">Tono de voz (pitch)</string>
     <string name="voice_test_button">Probar la voz</string>
     <string name="voice_available_title">Voces disponibles (%1$s): %2$d</string>
-    <string name="voice_generic_label">Voz %1$d</string>
+    <string name="voice_generic_label">Voz n.º %1$d</string>
     <string name="voice_preview_hint">Para escuchar</string>
     <string name="voice_current_label">Voz seleccionada: %1$s</string>
     <string name="voice_autosave_hint">Los ajustes se guardan automáticamente</string>
@@ -253,9 +257,13 @@
     <string name="welcome_hero_title">¿A los teleoperadores les encanta\nllamarte?</string>
     <string name="welcome_hero_subtitle">¡TU DÉGAGES, tu nueva IA,\nva a adorar responderles!</string>
     <string name="welcome_hero_headline">Stop a las llamadas indeseadas. Definitivamente.</string>
-    <string name="welcome_hero_desc">¿Por qué perder el tiempo descolgando para colgar unos segundos después?\n\nTu dégages, tu IA personal, responde automáticamente en tu lugar a las llamadas indeseadas con el mensaje, la voz y el tono que elijas. Una vez entregado el mensaje, cuelga y bloquea el número de inmediato para evitar cualquier nueva llamada. Ganarás tiempo y, sobre todo, tranquilidad.</string>
-    <string name="welcome_hero_desc_more">Elige tu mensaje y tu estilo entre 10 tonos, del más educado al más mordaz, pasando por el troll con su música de espera.</string>
-    <string name="welcome_hero_voice_desc">Elige tu voz entre las 10 disponibles</string>
+    <string name="welcome_hero_desc_q">¿Por qué perder el tiempo descolgando para colgar unos segundos después?</string>
+    <string name="welcome_hero_desc_body">Tu dégages, tu IA personal, responde automáticamente en tu lugar a las llamadas indeseadas con el mensaje, la voz y el tono que elijas. Una vez entregado el mensaje, cuelga y bloquea el número de inmediato para evitar cualquier nueva llamada. Ganarás tiempo y, sobre todo, tranquilidad...</string>
+    <string name="welcome_hero_msg_bold1">Elige tu mensaje</string>
+    <string name="welcome_hero_msg_rest">y tu estilo entre 10 tonos, del más educado al más mordaz, pasando por el troll con su música de espera.</string>
+    <string name="welcome_hero_msg_bold2">¡O redáctalo tú mismo!</string>
+    <string name="welcome_hero_voice_bold">Elige tu voz</string>
+    <string name="welcome_hero_voice_rest">entre las 10 disponibles:</string>
     <string name="welcome_hero_see_here">Ver aquí</string>
     <string name="welcome_sections_intro">TU DÉGAGES: ¿cuál es el concepto?</string>
     <string name="welcome_details_intro">Un pequeño recorrido por los 5 superpoderes de tu aplicación, sin el manual de 50 páginas 😄</string>
@@ -282,7 +290,7 @@
     <string name="settings_title">Los ajustes</string>
     <string name="settings_search_placeholder">Buscar un ajuste…</string>
     <string name="settings_info_title">Ajustes</string>
-    <string name="settings_info_content">Configura el comportamiento de DÉGAGE:\n\n• Protección: activa/desactiva el filtrado global de llamadas.\n• Descolgar automáticamente: responde a la llamada sin que el teléfono suene (recomendado).\n• Bloquear tras responder: añade el número a la lista negra después de cada interacción.\n• Notificaciones: te avisa en cada llamada bloqueada.\n• Personalizar las respuestas: crea y gestiona tus propios mensajes.\n• Ajustes de voz: cambia la voz, la velocidad y el tono.</string>
+    <string name="settings_info_content">Configura el comportamiento de DÉGAGE:\n\n• Protección: activa/desactiva el filtrado global de llamadas.\n• Descolgar automáticamente: responde a la llamada sin que el teléfono suene (recomendado).\n• Bloquear tras responder: añade el número a la lista negra después de cada interacción.\n• Notificaciones: te avisa en cada llamada bloqueada.\n• Personalizar los mensajes: crea y gestiona tus propios mensajes.\n• Ajustes de voz: cambia la voz, la velocidad y el tono.</string>
     <string name="settings_toggle_protection">Protección</string>
     <string name="settings_toggle_auto_reject">Descolgar automáticamente</string>
     <string name="settings_toggle_block_after_reply">Bloquear el número tras responder</string>
@@ -304,7 +312,7 @@
     <string name="settings_help_premium">Premium desbloquea los idiomas de mensajes de voz alemán/italiano/inglés/español, la personalización completa de las respuestas, la elección de la voz, el bloqueo de números personalizados y la contribución a la base de datos comunitaria de spam.</string>
     <string name="settings_help_community_db">Al activar la contribución (casilla «Base de datos comunitaria» más arriba), cada número que Tu dégages bloquea en tu teléfono se reporta de forma anónima. A cambio, tu app descarga periódicamente los nuevos números reportados por otros usuarios para enriquecer tu propia base de bloqueo.</string>
     <string name="settings_quick_access_title">⚡ Accesos rápidos</string>
-    <string name="settings_nav_message_builder">💬 Personalizar las respuestas</string>
+    <string name="settings_nav_message_builder">💬 Personalizar los mensajes</string>
     <string name="settings_nav_voice">🎙️ Ajustes de voz</string>
     <string name="settings_nav_custom_blocks">🚫 Números bloqueados manualmente</string>
     <string name="settings_nav_premium">⭐ TU DÉGAGES Premium</string>
@@ -430,7 +438,7 @@
     <string name="manual_q8_body">Ve a la pestaña «Modos» para elegir el tono de la respuesta:\n\n🤝 Educado — respuesta cortés y firme. Ideal si prefieres mantener la discreción.\n\n📋 Administrativo — tono frío y oficial, como un departamento jurídico. Desconcierta a los operadores de los centros de llamadas.\n\n😏 Sarcástico — respuesta humorística. Para los teleoperadores que merecen un poco de ironía.\n\n🎭 Troll — hace esperar al spammer 10 segundos de música de espera antes de colgar. Le hace perder tiempo y dinero.</string>
 
     <string name="manual_q9_title">💬 Personalizar los mensajes</string>
-    <string name="manual_q9_body">En Ajustes → Personalizar las respuestas, puedes:\n\n• Activar o desactivar cada frase existente.\n• Añadir tus propias frases personalizadas.\n• Usar el Constructor de mensajes para componer un mensaje en 3 partes: saludo + cuerpo + cierre.</string>
+    <string name="manual_q9_body">En Ajustes → Personalizar los mensajes, puedes:\n\n• Activar o desactivar cada frase existente.\n• Añadir tus propias frases personalizadas.\n• Usar el Constructor de mensajes para componer un mensaje en 3 partes: saludo + cuerpo + cierre.</string>
 
     <string name="manual_q10_title">🎙️ Ajustes de voz</string>
     <string name="manual_q10_body">En Ajustes → Ajustes de voz:\n\n• Elige la voz (según las voces instaladas en tu teléfono).\n• Ajusta la velocidad de lectura (de lenta a rápida).\n• Modifica el tono de la voz (grave o aguda).\n• Prueba el resultado con el botón de vista previa.</string>
