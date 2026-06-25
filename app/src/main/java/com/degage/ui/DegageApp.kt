@@ -166,6 +166,7 @@ fun DegageApp(
                         onNavigateFaq = { navController.navigate(Screen.Manual.route) },
                         onNavigateDashboard = { navController.navigate(Screen.Dashboard.route) },
                         onNavigateModes = { navController.navigate(Screen.Modes.route) },
+                        onNavigateVoiceSettings = { navController.navigate(Screen.VoiceSettings.route) },
                         appLanguage = appLanguage,
                         onSetAppLanguage = { viewModel.setAppLanguage(it) },
                         welcomeMusicEnabled = welcomeMusic,

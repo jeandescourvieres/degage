@@ -254,10 +254,9 @@
     <string name="welcome_hero_subtitle">TU DÉGAGES, la tua nuova IA,\nadorerà rispondere loro!</string>
     <string name="welcome_hero_headline">Stop alle chiamate indesiderate. Definitivamente.</string>
     <string name="welcome_hero_desc">Perché perdere tempo a rispondere solo per riagganciare qualche secondo dopo?\n\nTu dégages, la tua IA personale, risponde automaticamente al tuo posto alle chiamate indesiderate con il messaggio, la voce e il tono che preferisci. Una volta consegnato il messaggio, riaggancia e blocca immediatamente il numero per evitare nuove chiamate. Guadagnerai tempo e, soprattutto, tranquillità.</string>
-    <string name="welcome_hero_desc_more">Scegli il tuo messaggio (o componilo tu stesso), la tua voce e il tuo stile tra 10 toni — dal più educato al più pungente, passando per il troll con la sua musica d\'attesa!</string>
-    <string name="welcome_hero_modes_button">Ti spieghiamo tutto qui</string>
-    <string name="common_read_more">Leggi di più ▾</string>
-    <string name="common_read_less">Riduci ▴</string>
+    <string name="welcome_hero_desc_more">Scegli il tuo messaggio e il tuo stile tra 10 toni, dal più educato al più pungente, passando per il troll con la sua musica d\'attesa!</string>
+    <string name="welcome_hero_voice_desc">Scegli la tua voce tra le 10 disponibili</string>
+    <string name="welcome_hero_see_here">Vedi qui</string>
     <string name="welcome_sections_intro">TU DÉGAGES: cosa fa esattamente?</string>
     <string name="welcome_details_intro">Un rapido giro tra i 5 superpoteri della tua app, senza il manuale di 50 pagine 😄</string>
     <string name="welcome_section1_title">🤖 Blocco intelligente con risposta IA:</string>

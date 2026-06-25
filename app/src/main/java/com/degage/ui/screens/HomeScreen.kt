@@ -59,6 +59,7 @@ fun HomeScreen(
     onNavigateFaq: () -> Unit,
     onNavigateDashboard: () -> Unit,
     onNavigateModes: () -> Unit = {},
+    onNavigateVoiceSettings: () -> Unit = {},
     appLanguage: String = "",
     onSetAppLanguage: (String) -> Unit = {},
     welcomeMusicEnabled: Boolean = true,
@@ -238,7 +239,6 @@ fun HomeScreen(
                         .padding(12.dp),
                     horizontalAlignment = Alignment.CenterHorizontally
                 ) {
-                    var heroDescExpanded by remember { mutableStateOf(false) }
                     Text(
                         text = stringResource(R.string.welcome_hero_headline),
                         fontSize = 22.sp,
@@ -255,52 +255,15 @@ fun HomeScreen(
                         textAlign = TextAlign.Center,
                         lineHeight = 21.sp
                     )
-                    AnimatedVisibility(visible = heroDescExpanded) {
-                        Column(horizontalAlignment = Alignment.CenterHorizontally) {
-                            Text(
-                                text = stringResource(R.string.welcome_hero_desc_more),
-                                fontSize = 14.sp,
-                                color = TextSecondary,
-                                textAlign = TextAlign.Center,
-                                lineHeight = 21.sp,
-                                modifier = Modifier.padding(top = 12.dp)
-                            )
-                            Row(
-                                modifier = Modifier
-                                    .padding(top = 14.dp)
-                                    .clickable { onNavigateModes() }
-                                    .border(2.dp, NeonGreen, RoundedCornerShape(16.dp))
-                                    .padding(vertical = 16.dp, horizontal = 22.dp),
-                                verticalAlignment = Alignment.CenterVertically
-                            ) {
-                                Text(
-                                    text = stringResource(R.string.welcome_hero_modes_button),
-                                    fontSize = 18.sp,
-                                    fontWeight = FontWeight.Bold,
-                                    color = NeonGreen
-                                )
-                                Spacer(modifier = Modifier.width(8.dp))
-                                Icon(
-                                    imageVector = Icons.Default.ArrowForward,
-                                    contentDescription = null,
-                                    tint = NeonGreen,
-                                    modifier = Modifier.size(22.dp)
-                                )
-                            }
-                        }
-                    }
+                    Spacer(modifier = Modifier.height(14.dp))
+                    HeroLinkRow(
+                        text = stringResource(R.string.welcome_hero_desc_more),
+                        onClick = onNavigateModes
+                    )
                     Spacer(modifier = Modifier.height(10.dp))
-                    Text(
-                        text = stringResource(if (heroDescExpanded) R.string.common_read_less else R.string.common_read_more),
-                        fontSize = 14.sp,
-                        fontWeight = FontWeight.Bold,
-                        color = NeonGreen,
-                        textAlign = TextAlign.Center,
-                        modifier = Modifier
-                            .clickable { heroDescExpanded = !heroDescExpanded }
-                            .background(NeonGreen.copy(alpha = 0.12f), RoundedCornerShape(20.dp))
-                            .border(1.5.dp, NeonGreen.copy(alpha = 0.6f), RoundedCornerShape(20.dp))
-                            .padding(vertical = 8.dp, horizontal = 18.dp)
+                    HeroLinkRow(
+                        text = stringResource(R.string.welcome_hero_voice_desc),
+                        onClick = onNavigateVoiceSettings
                     )
                 }
                 Spacer(modifier = Modifier.height(12.dp))
@@ -543,6 +506,45 @@ private fun BoxScope.BackgroundColorTipPopup(
                     textAlign = TextAlign.Center
                 )
             }
+        }
+    }
+}
+
+@Composable
+private fun HeroLinkRow(text: String, onClick: () -> Unit) {
+    Row(
+        modifier = Modifier.fillMaxWidth(),
+        verticalAlignment = Alignment.CenterVertically
+    ) {
+        Text(
+            text = text,
+            fontSize = 14.sp,
+            color = TextSecondary,
+            lineHeight = 20.sp,
+            modifier = Modifier.weight(1f)
+        )
+        Spacer(modifier = Modifier.width(10.dp))
+        Row(
+            modifier = Modifier
+                .clickable { onClick() }
+                .background(NeonGreen.copy(alpha = 0.15f), RoundedCornerShape(20.dp))
+                .border(1.5.dp, NeonGreen, RoundedCornerShape(20.dp))
+                .padding(vertical = 8.dp, horizontal = 12.dp),
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            Text(
+                text = stringResource(R.string.welcome_hero_see_here),
+                color = NeonGreen,
+                fontSize = 13.sp,
+                fontWeight = FontWeight.Bold
+            )
+            Spacer(modifier = Modifier.width(4.dp))
+            Icon(
+                imageVector = Icons.Default.ArrowForward,
+                contentDescription = null,
+                tint = NeonGreen,
+                modifier = Modifier.size(14.dp)
+            )
         }
     }
 }

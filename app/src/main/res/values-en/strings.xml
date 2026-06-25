@@ -254,10 +254,9 @@
     <string name="welcome_hero_subtitle">TU DÉGAGES, your new AI,\nwill love answering them!</string>
     <string name="welcome_hero_headline">Stop unwanted calls. For good.</string>
     <string name="welcome_hero_desc">Why waste your time picking up just to hang up a few seconds later?\n\nTu dégages, your personal AI, automatically answers unwanted calls on your behalf, with the message, voice and tone of your choice. Once the message has been delivered, it hangs up and immediately blocks the number to prevent any further calls. You\'ll save time and, above all, gain peace of mind.</string>
-    <string name="welcome_hero_desc_more">Choose your message (or write your own), your voice and your style from 10 tones — from the most polite to the most scathing, troll\'s hold music included!</string>
-    <string name="welcome_hero_modes_button">We explain it all here</string>
-    <string name="common_read_more">Read more ▾</string>
-    <string name="common_read_less">Show less ▴</string>
+    <string name="welcome_hero_desc_more">Choose your message and your style from 10 tones, from the most polite to the most scathing, troll\'s hold music included!</string>
+    <string name="welcome_hero_voice_desc">Choose your voice from the 10 available</string>
+    <string name="welcome_hero_see_here">See here</string>
     <string name="welcome_sections_intro">TU DÉGAGES: what does it actually do?</string>
     <string name="welcome_details_intro">A quick tour of your app\'s 5 superpowers, no 50-page manual required 😄</string>
     <string name="welcome_section1_title">🤖 Smart blocking with AI reply:</string>

@@ -254,10 +254,9 @@
     <string name="welcome_hero_subtitle">TU DÉGAGES, Ihre neue KI,\nantwortet ihnen gerne!</string>
     <string name="welcome_hero_headline">Schluss mit unerwünschten Anrufen. Endgültig.</string>
     <string name="welcome_hero_desc">Warum Zeit verschwenden, abzuheben, nur um wenige Sekunden später wieder aufzulegen?\n\nTu dégages, Ihre persönliche KI, antwortet automatisch an Ihrer Stelle auf unerwünschte Anrufe — mit der Nachricht, der Stimme und dem Ton Ihrer Wahl. Sobald die Nachricht übermittelt ist, legt sie auf und blockiert die Nummer sofort, um weitere Anrufe zu verhindern. Sie gewinnen Zeit und vor allem Ruhe.</string>
-    <string name="welcome_hero_desc_more">Wählen Sie Ihre Nachricht (oder verfassen Sie sie selbst), Ihre Stimme und Ihren Stil aus 10 Tönen — von höflich bis bissig, inklusive Troll mit Wartemusik!</string>
-    <string name="welcome_hero_modes_button">Wir erklären Ihnen hier alles</string>
-    <string name="common_read_more">Mehr lesen ▾</string>
-    <string name="common_read_less">Weniger anzeigen ▴</string>
+    <string name="welcome_hero_desc_more">Wählen Sie Ihre Nachricht und Ihren Stil aus 10 Tönen, von höflich bis bissig, inklusive Troll mit Wartemusik!</string>
+    <string name="welcome_hero_voice_desc">Wählen Sie Ihre Stimme aus den 10 verfügbaren</string>
+    <string name="welcome_hero_see_here">Hier ansehen</string>
     <string name="welcome_sections_intro">TU DÉGAGES: was bringt das eigentlich?</string>
     <string name="welcome_details_intro">Eine kurze Tour durch die 5 Superkräfte Ihrer App – ganz ohne 50-seitige Anleitung 😄</string>
     <string name="welcome_section1_title">🤖 Intelligente Blockierung mit KI-Antwort:</string>
