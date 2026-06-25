@@ -36,6 +36,20 @@ class VoiceSettingsViewModel(app: Application) : AndroidViewModel(app) {
     private val _previewingVoiceName = MutableStateFlow<String?>(null)
     val previewingVoiceName: StateFlow<String?> = _previewingVoiceName.asStateFlow()
 
+    // Si aucune voix n'a encore ete choisie pour cette langue, on fige comme "voix par defaut"
+    // celle que le moteur utilise reellement deja, pour que la liste affiche d'emblee une voix
+    // active au lieu de ne rien surligner.
+    init {
+        viewModelScope.launch {
+            combine(replyLanguage, voices) { lang, list -> lang to list }.collect { (lang, list) ->
+                if (list.isEmpty() || prefs.voiceNameFor(lang).first().isNotBlank()) return@collect
+                ttsManager.setLanguage(lang)
+                val resolved = ttsManager.getDefaultVoiceName(lang) ?: list.first().name
+                prefs.setVoiceNameFor(lang, resolved)
+            }
+        }
+    }
+
     fun previewVoice(voiceName: String, rate: Float, pitch: Float) = viewModelScope.launch {
         val lang = replyLanguage.value
         val phrase = when (lang) {

@@ -55,6 +55,15 @@ class TtsManager(context: Context) {
         }
     }
 
+    // Voix utilisee par le moteur quand aucun choix explicite n'a encore ete fait, pour pre-selectionner
+    // la meme entree dans la liste plutot que de laisser l'utilisateur deviner laquelle est active.
+    fun getDefaultVoiceName(languageCode: String = "FR"): String? {
+        val baseName = tts?.defaultVoice?.name?.removeSuffix("-network")?.removeSuffix("-local") ?: return null
+        return getAvailableVoices(languageCode)
+            .firstOrNull { it.name.removeSuffix("-network").removeSuffix("-local") == baseName }
+            ?.name
+    }
+
     // Retourne les voix installées pour la langue donnée ("FR", "DE", "IT", "EN" ou "ES"), triées par nom
     fun getAvailableVoices(languageCode: String = "FR"): List<Voice> {
         val isoLanguage = when (languageCode) {
