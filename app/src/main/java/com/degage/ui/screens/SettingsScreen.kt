@@ -1,9 +1,12 @@
 package com.degage.ui.screens
 
+import android.widget.Toast
 import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.combinedClickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -24,13 +27,18 @@ import com.degage.ui.components.PremiumBadge
 import com.degage.ui.components.highlightBrand
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import android.graphics.Color as AndroidColor
 import com.degage.R
 import com.degage.ui.theme.*
 
@@ -49,6 +57,9 @@ fun SettingsScreen(
     homeCountry: String = "",
     replyLanguage: String = "FR",
     appLanguage: String = "",
+    backgroundColor: Int = 0xFF0A0A0A.toInt(),
+    onSetBackgroundColor: (Int) -> Unit = {},
+    onResetBgColorTip: () -> Unit = {},
     isPremium: Boolean = true,
     onUpgrade: () -> Unit = {},
     onToggleEnabled: () -> Unit,
@@ -84,6 +95,7 @@ fun SettingsScreen(
     fun matches(vararg texts: String) =
         searchQuery.isBlank() || texts.any { it.contains(searchQuery, ignoreCase = true) }
 
+    val labelBgColor = stringResource(R.string.settings_bg_color_label)
     val labelAppLang = stringResource(R.string.settings_app_lang_label)
     val labelCountry = stringResource(R.string.settings_country_label)
     val labelReplyLang = stringResource(R.string.settings_reply_lang_label)
@@ -110,7 +122,7 @@ fun SettingsScreen(
             .fillMaxSize()
             .background(DarkBg)
             .padding(horizontal = 16.dp),
-        verticalArrangement = Arrangement.spacedBy(2.dp)
+        verticalArrangement = Arrangement.spacedBy(14.dp)
     ) {
         item {
             Row(
@@ -145,7 +157,7 @@ fun SettingsScreen(
             OutlinedTextField(
                 value = searchQuery,
                 onValueChange = { searchQuery = it },
-                modifier = Modifier.fillMaxWidth().padding(bottom = 12.dp),
+                modifier = Modifier.fillMaxWidth(),
                 placeholder = { Text(stringResource(R.string.settings_search_placeholder), color = TextSecondary) },
                 leadingIcon = { Icon(Icons.Default.Search, contentDescription = null, tint = NeonGreen) },
                 singleLine = true,
@@ -163,24 +175,31 @@ fun SettingsScreen(
         }
 
         if (searchQuery.isBlank()) item {
-            Column(
-                modifier = Modifier.fillMaxWidth().padding(bottom = 16.dp),
-                verticalArrangement = Arrangement.spacedBy(8.dp)
-            ) {
+            Column(modifier = Modifier.fillMaxWidth().padding(bottom = 16.dp)) {
                 Text(
                     stringResource(R.string.settings_quick_access_title),
                     color = Color.White,
                     fontSize = 15.sp,
                     fontWeight = FontWeight.SemiBold
                 )
-                QuickAccessRow(label = labelMessageBuilder, locked = !isPremium, onClick = onNavigateMessageBuilder, onUpgrade = onUpgrade)
-                QuickAccessRow(label = labelVoice, locked = !isPremium, onClick = onNavigateVoiceSettings, onUpgrade = onUpgrade)
-                QuickAccessRow(label = labelCustomBlocks, locked = !isPremium, onClick = onNavigateCustomBlocks, onUpgrade = onUpgrade)
+                Spacer(modifier = Modifier.height(4.dp))
+                Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
+                    QuickAccessRow(label = labelMessageBuilder, locked = !isPremium, onClick = onNavigateMessageBuilder, onUpgrade = onUpgrade)
+                    QuickAccessRow(label = labelVoice, locked = !isPremium, onClick = onNavigateVoiceSettings, onUpgrade = onUpgrade)
+                    QuickAccessRow(label = labelCustomBlocks, locked = !isPremium, onClick = onNavigateCustomBlocks, onUpgrade = onUpgrade)
+                }
             }
         }
 
         if (matches(labelAppLang)) item {
             AppLanguageSelectorRow(language = appLanguage, onSetLanguage = onSetAppLanguage)
+        }
+        if (matches(labelBgColor)) item {
+            BackgroundColorPickerRow(
+                colorArgb = backgroundColor,
+                onSetColor = onSetBackgroundColor,
+                onResetTip = onResetBgColorTip
+            )
         }
         if (matches(labelCountry)) item {
             CountrySelectorRow(country = country, homeCountry = homeCountry, isPremium = isPremium, onSetCountry = onSetCountry, onUpgrade = onUpgrade)
@@ -221,8 +240,6 @@ fun SettingsScreen(
         if (matches(labelContribute)) item {
             ContributeDbRow(checked = contributeDb, isPremium = isPremium, onToggle = onToggleContributeDb, onUpgrade = onUpgrade)
         }
-
-        item { Spacer(modifier = Modifier.height(16.dp)) }
 
         if (matches(labelMessageBuilder)) item {
             SettingsNavRow(
@@ -451,6 +468,137 @@ fun AppLanguageSelectorRow(language: String, onSetLanguage: (String) -> Unit) {
             CountryChip(stringResource(R.string.lang_es), selected = language == "ES", onClick = { onSetLanguage("ES") })
         }
         SettingsHelpToggle(stringResource(R.string.settings_help_app_lang))
+    }
+}
+
+@OptIn(ExperimentalFoundationApi::class)
+@Composable
+fun BackgroundColorPickerRow(colorArgb: Int, onSetColor: (Int) -> Unit, onResetTip: () -> Unit = {}) {
+    val initialHsv = remember(colorArgb) {
+        FloatArray(3).also { AndroidColor.colorToHSV(colorArgb, it) }
+    }
+    var hue by remember(colorArgb) { mutableStateOf(initialHsv[0]) }
+    var saturation by remember(colorArgb) { mutableStateOf(initialHsv[1]) }
+    var brightness by remember(colorArgb) { mutableStateOf(initialHsv[2]) }
+    val context = LocalContext.current
+    val tipResetMessage = stringResource(R.string.settings_bg_color_tip_reset_confirm)
+
+    fun currentColor() = Color(AndroidColor.HSVToColor(floatArrayOf(hue, saturation, brightness)))
+    fun applyLive() { DarkBg = currentColor() }
+    fun commit() { onSetColor(currentColor().toArgb()) }
+
+    Column(
+        modifier = Modifier
+            .fillMaxWidth()
+            .background(CardBg, RoundedCornerShape(14.dp))
+            .padding(horizontal = 20.dp, vertical = 14.dp)
+    ) {
+        Text(
+            stringResource(R.string.settings_bg_color_label),
+            color = Color.White,
+            fontSize = 15.sp,
+            modifier = Modifier.combinedClickable(
+                onClick = {},
+                onLongClick = {
+                    onResetTip()
+                    Toast.makeText(context, tipResetMessage, Toast.LENGTH_LONG).show()
+                }
+            )
+        )
+        Text(
+            stringResource(R.string.settings_bg_color_desc),
+            color = TextSecondary,
+            fontSize = 11.sp,
+            lineHeight = 16.sp
+        )
+        Spacer(modifier = Modifier.height(12.dp))
+        Box(
+            modifier = Modifier
+                .fillMaxWidth()
+                .height(56.dp)
+                .clip(RoundedCornerShape(10.dp))
+                .background(currentColor()),
+            contentAlignment = Alignment.Center
+        ) {
+            Text("TU DÉGAGES !", color = NeonGreen, fontWeight = FontWeight.Bold, fontSize = 16.sp)
+        }
+        Spacer(modifier = Modifier.height(10.dp))
+        ColorSliderRow(
+            label = stringResource(R.string.settings_bg_color_hue),
+            value = hue,
+            valueRange = 0f..360f,
+            trackBrush = Brush.horizontalGradient(
+                (0..12).map { step -> Color(AndroidColor.HSVToColor(floatArrayOf(step * 30f, 1f, 1f))) }
+            ),
+            onValueChange = { hue = it; applyLive() },
+            onValueChangeFinished = { commit() }
+        )
+        ColorSliderRow(
+            label = stringResource(R.string.settings_bg_color_saturation),
+            value = saturation,
+            valueRange = 0f..1f,
+            trackBrush = Brush.horizontalGradient(listOf(
+                Color(AndroidColor.HSVToColor(floatArrayOf(hue, 0f, brightness))),
+                Color(AndroidColor.HSVToColor(floatArrayOf(hue, 1f, brightness)))
+            )),
+            onValueChange = { saturation = it; applyLive() },
+            onValueChangeFinished = { commit() }
+        )
+        ColorSliderRow(
+            label = stringResource(R.string.settings_bg_color_brightness),
+            value = brightness,
+            valueRange = 0f..1f,
+            trackBrush = Brush.horizontalGradient(listOf(
+                Color.Black,
+                Color(AndroidColor.HSVToColor(floatArrayOf(hue, saturation, 1f)))
+            )),
+            onValueChange = { brightness = it; applyLive() },
+            onValueChangeFinished = { commit() }
+        )
+        TextButton(onClick = {
+            val defaultArgb = 0xFF0A0A0A.toInt()
+            val defaultHsv = FloatArray(3).also { AndroidColor.colorToHSV(defaultArgb, it) }
+            hue = defaultHsv[0]; saturation = defaultHsv[1]; brightness = defaultHsv[2]
+            DarkBg = Color(defaultArgb)
+            onSetColor(defaultArgb)
+        }) {
+            Text(stringResource(R.string.settings_bg_color_reset), color = NeonGreen, fontSize = 13.sp)
+        }
+    }
+}
+
+@Composable
+private fun ColorSliderRow(
+    label: String,
+    value: Float,
+    valueRange: ClosedFloatingPointRange<Float>,
+    trackBrush: Brush,
+    onValueChange: (Float) -> Unit,
+    onValueChangeFinished: () -> Unit,
+) {
+    Column(modifier = Modifier.padding(vertical = 2.dp)) {
+        Text(label, color = TextSecondary, fontSize = 12.sp)
+        Box(contentAlignment = Alignment.CenterStart) {
+            Box(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(horizontal = 10.dp)
+                    .height(6.dp)
+                    .clip(RoundedCornerShape(3.dp))
+                    .background(trackBrush)
+            )
+            Slider(
+                value = value,
+                onValueChange = onValueChange,
+                onValueChangeFinished = onValueChangeFinished,
+                valueRange = valueRange,
+                colors = SliderDefaults.colors(
+                    thumbColor = Color.White,
+                    activeTrackColor = Color.Transparent,
+                    inactiveTrackColor = Color.Transparent,
+                )
+            )
+        }
     }
 }
 

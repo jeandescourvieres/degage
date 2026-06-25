@@ -118,7 +118,6 @@ fun ManualScreen(onBack: () -> Unit) {
                 )
             }
 
-            item { CategoryHeader(stringResource(R.string.manual_cat_db)) }
             item {
                 ManualSection(
                     title = stringResource(R.string.manual_q11_title),

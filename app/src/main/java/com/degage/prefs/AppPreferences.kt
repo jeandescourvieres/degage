@@ -4,6 +4,7 @@ import android.content.Context
 import androidx.datastore.preferences.core.booleanPreferencesKey
 import androidx.datastore.preferences.core.edit
 import androidx.datastore.preferences.core.floatPreferencesKey
+import androidx.datastore.preferences.core.intPreferencesKey
 import androidx.datastore.preferences.core.longPreferencesKey
 import androidx.datastore.preferences.core.stringPreferencesKey
 import androidx.datastore.preferences.preferencesDataStore
@@ -12,6 +13,9 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 
 private val Context.dataStore by preferencesDataStore("degage_prefs")
+
+// Couleur de fond par defaut (= DarkBg dans Theme.kt), reinterpretee en Int ARGB.
+private val DEFAULT_BACKGROUND_COLOR = 0xFF0A0A0A.toInt()
 
 class AppPreferences(private val context: Context) {
 
@@ -39,6 +43,8 @@ class AppPreferences(private val context: Context) {
         val KEY_HOME_COUNTRY = stringPreferencesKey("home_country")
         val KEY_WELCOME_MUSIC = booleanPreferencesKey("welcome_music")
         val KEY_FIRST_LAUNCH = longPreferencesKey("first_launch")
+        val KEY_BACKGROUND_COLOR = intPreferencesKey("background_color")
+        val KEY_BG_COLOR_TIP_SEEN = booleanPreferencesKey("bg_color_tip_seen")
     }
 
     val isEnabled: Flow<Boolean> = context.dataStore.data.map { it[KEY_ENABLED] ?: true }
@@ -81,6 +87,8 @@ class AppPreferences(private val context: Context) {
     val welcomeMusic: Flow<Boolean> = context.dataStore.data.map { it[KEY_WELCOME_MUSIC] ?: true }
     // 0L = jamais encore enregistré (avant le tout premier appel à setFirstLaunchIfNeeded)
     val firstLaunch: Flow<Long> = context.dataStore.data.map { it[KEY_FIRST_LAUNCH] ?: 0L }
+    val backgroundColor: Flow<Int> = context.dataStore.data.map { it[KEY_BACKGROUND_COLOR] ?: DEFAULT_BACKGROUND_COLOR }
+    val bgColorTipSeen: Flow<Boolean> = context.dataStore.data.map { it[KEY_BG_COLOR_TIP_SEEN] ?: false }
 
     suspend fun setEnabled(value: Boolean) = context.dataStore.edit { it[KEY_ENABLED] = value }
     suspend fun setActiveMode(mode: String) = context.dataStore.edit { it[KEY_MODE] = mode }
@@ -109,4 +117,7 @@ class AppPreferences(private val context: Context) {
     suspend fun setFirstLaunchIfNeeded() = context.dataStore.edit {
         if (it[KEY_FIRST_LAUNCH] == null) it[KEY_FIRST_LAUNCH] = System.currentTimeMillis()
     }
+    suspend fun setBackgroundColor(value: Int) = context.dataStore.edit { it[KEY_BACKGROUND_COLOR] = value }
+    suspend fun setBgColorTipSeen() = context.dataStore.edit { it[KEY_BG_COLOR_TIP_SEEN] = true }
+    suspend fun resetBgColorTipSeen() = context.dataStore.edit { it[KEY_BG_COLOR_TIP_SEEN] = false }
 }

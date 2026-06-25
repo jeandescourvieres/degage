@@ -12,11 +12,13 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowForward
+import androidx.compose.material.icons.filled.Close
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.key
@@ -39,6 +41,7 @@ import androidx.compose.ui.unit.sp
 import com.degage.R
 import com.degage.ui.components.highlightBrand
 import com.degage.ui.theme.*
+import kotlinx.coroutines.delay
 
 private val NavBlue = Color(0xFF3B9DFF)
 private val NavYellow = Color(0xFFFFD60A)
@@ -61,7 +64,10 @@ fun HomeScreen(
     welcomeMusicEnabled: Boolean = true,
     shouldPlayWelcomeChime: Boolean = false,
     onWelcomeChimePlayed: () -> Unit = {},
+    showBackgroundColorTip: Boolean = false,
+    onBackgroundColorTipDismissed: () -> Unit = {},
 ) {
+    Box(modifier = Modifier.fillMaxSize()) {
     LazyColumn(
         modifier = Modifier
             .fillMaxSize()
@@ -86,10 +92,7 @@ fun HomeScreen(
                 label = "heroPulse"
             )
             Column(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .background(NeonGreenDim.copy(alpha = 0.15f), RoundedCornerShape(20.dp))
-                    .padding(8.dp),
+                modifier = Modifier.fillMaxWidth(),
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
                 key(refreshKey) {
@@ -111,6 +114,7 @@ fun HomeScreen(
                 Column(
                     modifier = Modifier
                         .fillMaxWidth()
+                        .background(NeonGreenDim.copy(alpha = 0.15f), RoundedCornerShape(14.dp))
                         .border(
                             4.dp,
                             NeonGreen.copy(alpha = 0.5f + 0.5f * heroPulse),
@@ -170,7 +174,7 @@ fun HomeScreen(
                 }
                 }
                 }
-                Spacer(modifier = Modifier.height(14.dp))
+                Spacer(modifier = Modifier.height(22.dp))
                 key(refreshKey) {
                 var badgeVisible by remember { mutableStateOf(false) }
                 LaunchedEffect(Unit) { badgeVisible = true }
@@ -184,6 +188,7 @@ fun HomeScreen(
                 Column(
                     modifier = Modifier
                         .fillMaxWidth()
+                        .background(NeonGreenDim.copy(alpha = 0.15f), RoundedCornerShape(14.dp))
                         .border(1.dp, NeonGreen.copy(alpha = 0.35f), RoundedCornerShape(14.dp))
                         .padding(12.dp),
                     horizontalAlignment = Alignment.CenterHorizontally
@@ -198,10 +203,11 @@ fun HomeScreen(
                 }
                 }
                 }
-                Spacer(modifier = Modifier.height(14.dp))
+                Spacer(modifier = Modifier.height(22.dp))
                 Column(
                     modifier = Modifier
                         .fillMaxWidth()
+                        .background(NeonGreenDim.copy(alpha = 0.15f), RoundedCornerShape(14.dp))
                         .border(1.dp, NeonGreen.copy(alpha = 0.35f), RoundedCornerShape(14.dp))
                         .padding(12.dp),
                     horizontalAlignment = Alignment.CenterHorizontally
@@ -223,71 +229,80 @@ fun HomeScreen(
                         lineHeight = 23.sp
                     )
                 }
-                Spacer(modifier = Modifier.height(12.dp))
-                var heroDescExpanded by remember { mutableStateOf(false) }
-                Text(
-                    text = stringResource(R.string.welcome_hero_headline),
-                    fontSize = 22.sp,
-                    fontWeight = FontWeight.Black,
-                    color = AccentOrange,
-                    textAlign = TextAlign.Center,
-                    lineHeight = 28.sp
-                )
-                Spacer(modifier = Modifier.height(8.dp))
-                Text(
-                    text = highlightBrand(stringResource(R.string.welcome_hero_desc)),
-                    fontSize = 14.sp,
-                    color = TextSecondary,
-                    textAlign = TextAlign.Center,
-                    lineHeight = 21.sp
-                )
-                AnimatedVisibility(visible = heroDescExpanded) {
-                    Column(horizontalAlignment = Alignment.CenterHorizontally) {
-                        Text(
-                            text = stringResource(R.string.welcome_hero_desc_more),
-                            fontSize = 14.sp,
-                            color = TextSecondary,
-                            textAlign = TextAlign.Center,
-                            lineHeight = 21.sp,
-                            modifier = Modifier.padding(top = 12.dp)
-                        )
-                        Row(
-                            modifier = Modifier
-                                .padding(top = 14.dp)
-                                .clickable { onNavigateModes() }
-                                .border(2.dp, NeonGreen, RoundedCornerShape(16.dp))
-                                .padding(vertical = 16.dp, horizontal = 22.dp),
-                            verticalAlignment = Alignment.CenterVertically
-                        ) {
+                Spacer(modifier = Modifier.height(22.dp))
+                Column(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .background(NeonGreenDim.copy(alpha = 0.15f), RoundedCornerShape(14.dp))
+                        .border(1.dp, NeonGreen.copy(alpha = 0.35f), RoundedCornerShape(14.dp))
+                        .padding(12.dp),
+                    horizontalAlignment = Alignment.CenterHorizontally
+                ) {
+                    var heroDescExpanded by remember { mutableStateOf(false) }
+                    Text(
+                        text = stringResource(R.string.welcome_hero_headline),
+                        fontSize = 22.sp,
+                        fontWeight = FontWeight.Black,
+                        color = AccentOrange,
+                        textAlign = TextAlign.Center,
+                        lineHeight = 28.sp
+                    )
+                    Spacer(modifier = Modifier.height(8.dp))
+                    Text(
+                        text = highlightBrand(stringResource(R.string.welcome_hero_desc)),
+                        fontSize = 14.sp,
+                        color = TextSecondary,
+                        textAlign = TextAlign.Center,
+                        lineHeight = 21.sp
+                    )
+                    AnimatedVisibility(visible = heroDescExpanded) {
+                        Column(horizontalAlignment = Alignment.CenterHorizontally) {
                             Text(
-                                text = stringResource(R.string.welcome_hero_modes_button),
-                                fontSize = 18.sp,
-                                fontWeight = FontWeight.Bold,
-                                color = NeonGreen
+                                text = stringResource(R.string.welcome_hero_desc_more),
+                                fontSize = 14.sp,
+                                color = TextSecondary,
+                                textAlign = TextAlign.Center,
+                                lineHeight = 21.sp,
+                                modifier = Modifier.padding(top = 12.dp)
                             )
-                            Spacer(modifier = Modifier.width(8.dp))
-                            Icon(
-                                imageVector = Icons.Default.ArrowForward,
-                                contentDescription = null,
-                                tint = NeonGreen,
-                                modifier = Modifier.size(22.dp)
-                            )
+                            Row(
+                                modifier = Modifier
+                                    .padding(top = 14.dp)
+                                    .clickable { onNavigateModes() }
+                                    .border(2.dp, NeonGreen, RoundedCornerShape(16.dp))
+                                    .padding(vertical = 16.dp, horizontal = 22.dp),
+                                verticalAlignment = Alignment.CenterVertically
+                            ) {
+                                Text(
+                                    text = stringResource(R.string.welcome_hero_modes_button),
+                                    fontSize = 18.sp,
+                                    fontWeight = FontWeight.Bold,
+                                    color = NeonGreen
+                                )
+                                Spacer(modifier = Modifier.width(8.dp))
+                                Icon(
+                                    imageVector = Icons.Default.ArrowForward,
+                                    contentDescription = null,
+                                    tint = NeonGreen,
+                                    modifier = Modifier.size(22.dp)
+                                )
+                            }
                         }
                     }
+                    Spacer(modifier = Modifier.height(10.dp))
+                    Text(
+                        text = stringResource(if (heroDescExpanded) R.string.common_read_less else R.string.common_read_more),
+                        fontSize = 14.sp,
+                        fontWeight = FontWeight.Bold,
+                        color = NeonGreen,
+                        textAlign = TextAlign.Center,
+                        modifier = Modifier
+                            .clickable { heroDescExpanded = !heroDescExpanded }
+                            .background(NeonGreen.copy(alpha = 0.12f), RoundedCornerShape(20.dp))
+                            .border(1.5.dp, NeonGreen.copy(alpha = 0.6f), RoundedCornerShape(20.dp))
+                            .padding(vertical = 8.dp, horizontal = 18.dp)
+                    )
                 }
-                Spacer(modifier = Modifier.height(10.dp))
-                Text(
-                    text = stringResource(if (heroDescExpanded) R.string.common_read_less else R.string.common_read_more),
-                    fontSize = 14.sp,
-                    fontWeight = FontWeight.Bold,
-                    color = NeonGreen,
-                    textAlign = TextAlign.Center,
-                    modifier = Modifier
-                        .clickable { heroDescExpanded = !heroDescExpanded }
-                        .background(NeonGreen.copy(alpha = 0.12f), RoundedCornerShape(20.dp))
-                        .border(1.5.dp, NeonGreen.copy(alpha = 0.6f), RoundedCornerShape(20.dp))
-                        .padding(vertical = 8.dp, horizontal = 18.dp)
-                )
                 Spacer(modifier = Modifier.height(12.dp))
                 Column(
                     modifier = Modifier
@@ -449,6 +464,87 @@ fun HomeScreen(
 
         item { Spacer(modifier = Modifier.height(24.dp)) }
     }
+
+    if (showBackgroundColorTip) {
+        BackgroundColorTipPopup(
+            onOpenSettings = {
+                onBackgroundColorTipDismissed()
+                onNavigateSettings()
+            },
+            onDismiss = onBackgroundColorTipDismissed
+        )
+    }
+    }
+}
+
+@Composable
+private fun BoxScope.BackgroundColorTipPopup(
+    onOpenSettings: () -> Unit,
+    onDismiss: () -> Unit,
+) {
+    var visible by remember { mutableStateOf(false) }
+    LaunchedEffect(Unit) {
+        delay(2200)
+        visible = true
+        delay(7000)
+        if (visible) {
+            visible = false
+            onDismiss()
+        }
+    }
+    AnimatedVisibility(
+        visible = visible,
+        modifier = Modifier
+            .align(Alignment.Center)
+            .fillMaxSize()
+    ) {
+        Box(
+            modifier = Modifier
+                .fillMaxSize()
+                .background(Color.Black.copy(alpha = 0.6f))
+                .clickable(indication = null, interactionSource = remember { MutableInteractionSource() }) {
+                    visible = false
+                    onDismiss()
+                },
+            contentAlignment = Alignment.Center
+        ) {
+            Column(
+                modifier = Modifier
+                    .fillMaxWidth(0.85f)
+                    .clickable {
+                        visible = false
+                        onOpenSettings()
+                    }
+                    .background(CardBgAlt, RoundedCornerShape(24.dp))
+                    .border(2.dp, NeonGreen, RoundedCornerShape(24.dp))
+                    .padding(24.dp),
+                horizontalAlignment = Alignment.CenterHorizontally
+            ) {
+                IconButton(
+                    onClick = {
+                        visible = false
+                        onDismiss()
+                    },
+                    modifier = Modifier.align(Alignment.End)
+                ) {
+                    Icon(
+                        imageVector = Icons.Default.Close,
+                        contentDescription = stringResource(R.string.cd_close),
+                        tint = TextSecondary,
+                        modifier = Modifier.size(28.dp)
+                    )
+                }
+                Text(
+                    text = stringResource(R.string.home_bg_color_tip),
+                    color = Color.White,
+                    fontSize = 19.sp,
+                    lineHeight = 27.sp,
+                    fontWeight = FontWeight.SemiBold,
+                    textAlign = TextAlign.Center
+                )
+            }
+        }
+    }
 }
 
 @Composable
@@ -465,7 +561,7 @@ private fun IntroBadge(label: AnnotatedString) {
         fontWeight = FontWeight.SemiBold,
         textAlign = TextAlign.Center,
         modifier = Modifier
-            .background(CardBgAlt, RoundedCornerShape(20.dp))
+            .background(NeonGreenDim.copy(alpha = 0.15f), RoundedCornerShape(20.dp))
             .padding(horizontal = 10.dp, vertical = 4.dp)
     )
 }

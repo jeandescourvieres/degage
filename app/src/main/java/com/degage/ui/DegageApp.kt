@@ -1,15 +1,16 @@
 package com.degage.ui
 
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.*
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavDestination.Companion.hierarchy
@@ -73,43 +74,63 @@ fun DegageApp(
     val trialDaysRemaining by viewModel.trialDaysRemaining.collectAsStateWithLifecycle()
     val replyLanguage by viewModel.replyLanguage.collectAsStateWithLifecycle()
     val appLanguage by viewModel.appLanguage.collectAsStateWithLifecycle()
+    val backgroundColorArgb by viewModel.backgroundColor.collectAsStateWithLifecycle()
+    LaunchedEffect(backgroundColorArgb) { DarkBg = Color(backgroundColorArgb) }
+    val bgColorTipSeen by viewModel.bgColorTipSeen.collectAsStateWithLifecycle()
 
     val startDestination = when {
         !onboardingDone -> Screen.Onboarding.route
         else -> Screen.Home.route
     }
-    val showBottomBar = currentDestination?.route in bottomNavItems.map { it.screen.route }
+    val showBottomBar = currentDestination?.route != Screen.Onboarding.route
 
     Scaffold(
         containerColor = DarkBg,
         bottomBar = {
             if (showBottomBar) {
-                NavigationBar(containerColor = CardBg, tonalElevation = 0.dp) {
+                Row(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .background(CardBg)
+                        .navigationBarsPadding()
+                        .height(52.dp),
+                    horizontalArrangement = Arrangement.SpaceEvenly,
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
                     bottomNavItems.forEach { item ->
-                        val selected = currentDestination?.hierarchy?.any { it.route == item.screen.route } == true
-                        NavigationBarItem(
-                            selected = selected,
-                            onClick = {
-                                if (item.screen.route == Screen.Home.route && selected) {
-                                    homeRefreshKey++
-                                } else {
-                                    navController.navigate(item.screen.route) {
-                                        popUpTo(navController.graph.findStartDestination().id) { saveState = true }
-                                        launchSingleTop = true
-                                        restoreState = true
+                        val selected = currentDestination?.hierarchy?.any { it.route?.substringBefore("?") == item.screen.route } == true
+                        val tint = if (selected) NeonGreen else TextSecondary
+                        Column(
+                            modifier = Modifier
+                                .fillMaxHeight()
+                                .weight(1f)
+                                .clickable {
+                                    if (item.screen.route == Screen.Home.route && selected) {
+                                        homeRefreshKey++
+                                    } else {
+                                        navController.navigate(item.screen.route) {
+                                            popUpTo(navController.graph.findStartDestination().id) { saveState = true }
+                                            launchSingleTop = true
+                                            restoreState = true
+                                        }
                                     }
-                                }
-                            },
-                            icon = { Icon(item.icon, contentDescription = stringResource(item.labelRes)) },
-                            label = { Text(stringResource(item.labelRes), maxLines = 1) },
-                            colors = NavigationBarItemDefaults.colors(
-                                selectedIconColor = NeonGreen,
-                                selectedTextColor = NeonGreen,
-                                unselectedIconColor = TextSecondary,
-                                unselectedTextColor = TextSecondary,
-                                indicatorColor = Color.Transparent
+                                },
+                            horizontalAlignment = Alignment.CenterHorizontally,
+                            verticalArrangement = Arrangement.Center
+                        ) {
+                            Icon(
+                                item.icon,
+                                contentDescription = stringResource(item.labelRes),
+                                tint = tint,
+                                modifier = Modifier.size(18.dp)
                             )
-                        )
+                            Text(
+                                stringResource(item.labelRes),
+                                color = tint,
+                                fontSize = 10.sp,
+                                maxLines = 1
+                            )
+                        }
                     }
                 }
             }
@@ -149,7 +170,9 @@ fun DegageApp(
                         onSetAppLanguage = { viewModel.setAppLanguage(it) },
                         welcomeMusicEnabled = welcomeMusic,
                         shouldPlayWelcomeChime = !welcomeChimePlayed,
-                        onWelcomeChimePlayed = { welcomeChimePlayed = true }
+                        onWelcomeChimePlayed = { welcomeChimePlayed = true },
+                        showBackgroundColorTip = !bgColorTipSeen,
+                        onBackgroundColorTipDismissed = { viewModel.markBgColorTipSeen() }
                     )
                 }
 
@@ -236,6 +259,9 @@ fun DegageApp(
                         homeCountry = homeCountry,
                         replyLanguage = replyLanguage,
                         appLanguage = appLanguage,
+                        backgroundColor = backgroundColorArgb,
+                        onSetBackgroundColor = { viewModel.setBackgroundColor(it) },
+                        onResetBgColorTip = { viewModel.resetBgColorTipSeen() },
                         isPremium = isPremiumUnlocked,
                         onUpgrade = { navController.navigate(Screen.Premium.route) },
                         onToggleEnabled = viewModel::toggleEnabled,

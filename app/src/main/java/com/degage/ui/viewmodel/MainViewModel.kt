@@ -166,6 +166,12 @@ class MainViewModel(app: Application) : AndroidViewModel(app) {
     val welcomeMusic: StateFlow<Boolean> = prefs.welcomeMusic
         .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5000), true)
 
+    val backgroundColor: StateFlow<Int> = prefs.backgroundColor
+        .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5000), 0xFF0A0A0A.toInt())
+
+    val bgColorTipSeen: StateFlow<Boolean> = prefs.bgColorTipSeen
+        .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5000), false)
+
     // Texte integral du message actif par mode, pour la popup "voir le message complet" —
     // meme source que previewMode(), pour eviter tout decalage avec ce qui est reellement joue.
     val modeFullTexts: StateFlow<Map<String, String>> = replyLanguage.flatMapLatest { lang ->
@@ -178,6 +184,13 @@ class MainViewModel(app: Application) : AndroidViewModel(app) {
     }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(5000), emptyMap())
 
     fun setWelcomeMusic(value: Boolean) = viewModelScope.launch { prefs.setWelcomeMusic(value) }
+
+    fun setBackgroundColor(value: Int) = viewModelScope.launch { prefs.setBackgroundColor(value) }
+
+    fun markBgColorTipSeen() = viewModelScope.launch { prefs.setBgColorTipSeen() }
+
+    /** Raccourci dev : appui long sur "Couleur de fond" dans Paramètres pour retester le popup d'astuce. */
+    fun resetBgColorTipSeen() = viewModelScope.launch { prefs.resetBgColorTipSeen() }
 
     /** Enregistre la date du tout premier lancement, point de départ de l'essai gratuit. */
     fun ensureFirstLaunchRecorded() = viewModelScope.launch {

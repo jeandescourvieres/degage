@@ -146,7 +146,7 @@
     <string name="mb_intro_footer">Vous pouvez aussi créer vos propres formules en bas de chaque section.</string>
     <string name="mb_ready_made_hint">Vous préférez ne rien composer ? Tu dégages propose aussi des messages tout faits, déjà rédigés et prêts à l\'emploi pour chaque ton.</string>
     <string name="mb_ready_made_button">🎭 Voir les modèles tout faits</string>
-    <string name="mb_preview_label">Aperçu du message assemblé</string>
+    <string name="mb_preview_label">Aperçu d\'un message assemblé</string>
     <string name="mb_preview_intro">Cet exemple est le résultat des choix faits ci-dessous, dans les sections « Salutation », « Corps du message » et « Formule de fin ».</string>
     <string name="mb_listen_preview">🔊 Écouter ce message</string>
     <string name="mb_section_salutation_desc">C\'est la phrase d\'ouverture lue en premier par Tu dégages. Sélectionnez ci-dessous la salutation qui correspond à votre style — une seule à la fois. Ou sinon, créez votre propre salutation.</string>
@@ -257,7 +257,7 @@
     <string name="welcome_hero_modes_button">On vous explique tout ici</string>
     <string name="common_read_more">Lire la suite ▾</string>
     <string name="common_read_less">Réduire ▴</string>
-    <string name="welcome_sections_intro">TU DÉGAGES : c\'est quoi le principe ?</string>
+    <string name="welcome_sections_intro">TU DÉGAGES c\'est quoi le principe ?</string>
     <string name="welcome_details_intro">Petit tour des 5 super-pouvoirs de votre application, sans la notice de 50 pages 😄</string>
     <string name="welcome_section1_title">🤖 Blocage intelligent avec réponse IA :</string>
     <string name="welcome_section1_body">TU DÉGAGES filtre les appels indésirables et les redirige vers votre assistant vocal IA personnalisé — avant de mettre fin à la conversation. Le démarcheur parle à votre IA, pas à vous.</string>
@@ -322,6 +322,15 @@
     <string name="country_de">🇩🇪 Allemagne</string>
     <string name="country_it">🇮🇹 Italie</string>
     <string name="country_es">🇪🇸 Espagne</string>
+
+    <string name="settings_bg_color_label">🎨 Couleur de fond</string>
+    <string name="settings_bg_color_desc">Personnalise la couleur de fond de l\'application. Le texte reste en vert fluo pour rester lisible.</string>
+    <string name="settings_bg_color_hue">Teinte</string>
+    <string name="settings_bg_color_saturation">Saturation</string>
+    <string name="settings_bg_color_brightness">Luminosité</string>
+    <string name="settings_bg_color_reset">Réinitialiser</string>
+    <string name="home_bg_color_tip">🎨 Astuce : Pour une navigation plus agréable, personnalise la couleur de fond de l\'appli depuis le menu \"Paramètres\" !</string>
+    <string name="settings_bg_color_tip_reset_confirm">Astuce réinitialisée — retourne à l\'accueil pour la revoir.</string>
 
     <string name="settings_app_lang_label">Langue de l\'application</string>
     <string name="settings_app_lang_desc">Langue de l\'interface de Tu dégages.</string>
@@ -391,8 +400,6 @@
 
     <!-- ── Écran Mode d'emploi ─────────────────────────────────────────── -->
     <string name="manual_title">FAQ - La foire aux questions</string>
-
-    <string name="manual_cat_db">📋 Base de numéros bloqués</string>
     <string name="manual_cat_usage">📱 Utilisation</string>
     <string name="manual_cat_issues">🔧 Problèmes</string>
     <string name="manual_cat_tech">⚙️ Fonctionnalités &amp; technique</string>

@@ -323,6 +323,15 @@
     <string name="country_it">🇮🇹 Italy</string>
     <string name="country_es">🇪🇸 Spain</string>
 
+    <string name="settings_bg_color_label">🎨 Background color</string>
+    <string name="settings_bg_color_desc">Customize the app\'s background color. The text stays neon green so it remains readable.</string>
+    <string name="settings_bg_color_hue">Hue</string>
+    <string name="settings_bg_color_saturation">Saturation</string>
+    <string name="settings_bg_color_brightness">Brightness</string>
+    <string name="settings_bg_color_reset">Reset</string>
+    <string name="home_bg_color_tip">🎨 Tip: For a more pleasant navigation, customize the app\'s background color from the \"Settings\" menu!</string>
+    <string name="settings_bg_color_tip_reset_confirm">Tip reset — go back to Home to see it again.</string>
+
     <string name="settings_app_lang_label">App language</string>
     <string name="settings_app_lang_desc">Interface language of Tu dégages.</string>
     <string name="lang_system">📱 System</string>
@@ -391,8 +400,6 @@
 
     <!-- ── User manual screen ─────────────────────────────────────────── -->
     <string name="manual_title">FAQ - Frequently Asked Questions</string>
-
-    <string name="manual_cat_db">📋 Blocked numbers database</string>
     <string name="manual_cat_usage">📱 Usage</string>
     <string name="manual_cat_issues">🔧 Issues</string>
     <string name="manual_cat_tech">⚙️ Features &amp; technical</string>
