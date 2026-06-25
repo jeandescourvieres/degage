@@ -14,6 +14,7 @@
     <string name="nav_modes">Antworten</string>
     <string name="nav_statistics">Statistik</string>
     <string name="nav_history">Verlauf</string>
+    <string name="nav_guide">Anleitung</string>
     <string name="nav_settings">Einstellungen</string>
 
     <!-- ── Modi (AppMode) ─────────────────────────────────────────────── -->
@@ -40,7 +41,6 @@
     <!-- ── Bildschirm Modi ─────────────────────────────────────────────────── -->
     <string name="modes_title">Tonfall der Antwort wählen</string>
     <string name="modes_ready_title">Die einsatzbereiten Nachrichten</string>
-    <string name="modes_subtitle">Nicht mehr auflegen. Lassen Sie Ihre KI antworten.</string>
     <string name="modes_intro_text">Jeder Ton unten entspricht einer vollständigen, bereits geschriebenen und einsatzbereiten Nachricht: Wählen Sie einen aus, er wird dem nächsten Anrufer genau so vorgespielt, ohne dass Sie etwas schreiben müssen.</string>
     <string name="modes_intro_custom_bold">Wenn kein Ton perfekt passt</string>
     <string name="modes_intro_custom_rest">, können Sie auch Ihre eigene Nachricht komplett von Grund auf zusammenstellen — Begrüßung, Textkörper und Schlussformel.</string>
@@ -258,7 +258,7 @@
     <string name="welcome_hero_subtitle">TU DÉGAGES, Ihre neue KI,\nantwortet ihnen gerne!</string>
     <string name="welcome_hero_headline">Schluss mit unerwünschten Anrufen. Endgültig.</string>
     <string name="welcome_hero_desc_q">Warum Zeit verschwenden, abzuheben, nur um wenige Sekunden später wieder aufzulegen?</string>
-    <string name="welcome_hero_desc_body">Tu dégages, Ihre persönliche KI, antwortet automatisch an Ihrer Stelle auf unerwünschte Anrufe — mit der Nachricht, der Stimme und dem Ton Ihrer Wahl. Sobald die Nachricht übermittelt ist, legt sie auf und blockiert die Nummer sofort, um weitere Anrufe zu verhindern. Sie gewinnen Zeit und vor allem Ruhe...</string>
+    <string name="welcome_hero_desc_body">Tu dégages, Ihre persönliche KI, antwortet automatisch an Ihrer Stelle auf unerwünschte Anrufe — mit der Nachricht, der Stimme und dem Ton Ihrer Wahl.\nSobald die Nachricht übermittelt ist, legt sie auf und blockiert die Nummer sofort, um weitere Anrufe zu verhindern.\nSie gewinnen Zeit und vor allem Ruhe...</string>
     <string name="welcome_hero_msg_bold1">Wählen Sie Ihre Nachricht</string>
     <string name="welcome_hero_msg_rest">und Ihren Stil aus 10 Tönen, von höflich bis bissig, inklusive Troll mit Wartemusik.</string>
     <string name="welcome_hero_msg_bold2">Oder verfassen Sie sie selbst!</string>
@@ -278,7 +278,7 @@
     <string name="welcome_section5_title">🇫🇷🇨🇭 Angepasst an Frankreich und die Schweiz. Und an weitere Länder: 🇩🇪🇪🇸🇮🇹🇬🇧</string>
     <string name="welcome_section5_body">Wählen Sie Ihr Land in den Einstellungen: Die Datenbank unerwünschter Nummern passt sich automatisch an (ARCEP-Präfixe in Frankreich, Mehrwert- und OFCOM-Unternehmensnummern in der Schweiz).</string>
     <string name="welcome_details_outro">Mehr erfahren Sie in der vollständigen Bedienungsanleitung und in den Einstellungen der App:</string>
-    <string name="welcome_settings_link">⚙️ Zu den Einstellungen</string>
+    <string name="welcome_settings_link">⚙️ Zu den App-Einstellungen</string>
     <string name="welcome_faq_link">❓ FAQ - Häufige Fragen</string>
     <string name="welcome_dashboard_link">📊 Mein Dashboard</string>
     <string name="dashboard_title">Mein Dashboard</string>
@@ -288,6 +288,8 @@
 
     <!-- ── Bildschirm Einstellungen ────────────────────────────────────────── -->
     <string name="settings_title">Einstellungen</string>
+    <string name="settings_intro">Passen Sie hier alle Einstellungen von TU DÉGAGES an: Anrufschutz, Stimmwahl, personalisierte Nachrichten und vieles mehr.</string>
+    <string name="settings_learn_more">Mehr erfahren</string>
     <string name="settings_search_placeholder">Einstellung suchen…</string>
     <string name="settings_info_title">Einstellungen</string>
     <string name="settings_info_content">Konfigurieren Sie das Verhalten von Tu dégages:\n\n• Schutz: aktiviert/deaktiviert die globale Anruffilterung.\n• Automatische Annahme: nimmt den Anruf an, ohne dass das Telefon klingelt (empfohlen).\n• Nach Antwort blockieren: fügt die Nummer nach jeder Interaktion zur Sperrliste hinzu.\n• Benachrichtigungen: informiert Sie bei jedem blockierten Anruf.\n• Nachrichten anpassen: erstellen und verwalten Sie eigene Nachrichten.\n• Spracheinstellungen: ändern Sie Stimme, Geschwindigkeit und Tonhöhe.</string>
@@ -312,6 +314,7 @@
     <string name="settings_help_premium">Premium schaltet die Sprachnachrichten auf Deutsch/Italienisch/Englisch/Spanisch frei, die vollständige Anpassung der Antworten, die Wahl der Stimme, das Blockieren eigener Nummern und den Beitrag zur Community-Spam-Datenbank.</string>
     <string name="settings_help_community_db">Wenn Sie den Beitrag aktivieren (Kästchen „Community-Datenbank" oben), wird jede von Tu dégages auf Ihrem Telefon blockierte Nummer anonym gemeldet. Im Gegenzug lädt Ihre App regelmäßig neue, von anderen Nutzern gemeldete Nummern herunter, um Ihre eigene Blockierliste zu erweitern.</string>
     <string name="settings_quick_access_title">⚡ Schnellzugriff</string>
+    <string name="settings_nav_ready_modes">🎭 Die einsatzbereiten Nachrichten</string>
     <string name="settings_nav_message_builder">💬 Nachrichten anpassen</string>
     <string name="settings_nav_voice">🎙️ Spracheinstellungen</string>
     <string name="settings_nav_custom_blocks">🚫 Manuell blockierte Nummern</string>
@@ -519,6 +522,26 @@
 
     <string name="manual_q33_title">🇪🇸 Warum blockiert Tu dégages in Spanien nicht automatisch alles?</string>
     <string name="manual_q33_body">Spanien hat nützliche offizielle Quellen — die AEPD (Datenschutzbehörde), die Lista Robinson (das spanische Pendant zu Bloctel/TPS) und das Ministerio para la Transformación Digital — aber keine davon veröffentlicht eine fertige, einbindbare Spam-Nummernliste: Die Lista Robinson listet Verbraucher, die Werbeanrufe abgelehnt haben, nicht die Nummern der Anrufer selbst.\n\nSeit 2025 verbietet die spanische Regulierung die Nutzung gewöhnlicher Mobilfunk-Vorwahlen (6 und 7) für Werbekampagnen und verschärft die Spoofing-Bekämpfung — gute Nachrichten, aber immer noch keine herunterladbare Nummerndatenbank.\n\nTu dégages nutzt die schmalen spanischen Mehrwertdienst-Bereiche (803, 806, 807, 907), die deutlich zuverlässiger sind, und stützt sich vor allem auf die Community-Datenbank: Melden Sie Nummern, die Sie anrufen, damit sie auch für alle anderen blockiert werden.</string>
+
+    <!-- ── Bedienungsanleitung ─────────────────────────────────────────── -->
+    <string name="guide_title">Bedienungsanleitung</string>
+    <string name="guide_intro">Eine kurze Tour durch die Bildschirme von TU DÉGAGES, in der Reihenfolge, in der Sie sie nutzen werden. Für genauere Fragen konsultieren Sie die FAQ.</string>
+    <string name="guide_sec1_title">🏠 Die Startseite</string>
+    <string name="guide_sec1_body">Das ist der Hauptbildschirm. Die zentrale Schaltfläche aktiviert oder deaktiviert den Schutz vor unerwünschten Anrufen. Darunter finden Sie eine Zusammenfassung des aktiven Modus sowie Schnellzugriffe auf die wichtigsten Bildschirme der App.</string>
+    <string name="guide_sec2_title">🎭 Tonfall der Antwort wählen</string>
+    <string name="guide_sec2_body">Wählen Sie im Tab Antworten, wie TU DÉGAGES auf Werbeanrufer reagieren soll: entweder durch Auswahl einer fertigen Nachricht aus 10 verschiedenen Tönen (Höflich, Sarkastisch, Troll...), oder indem Sie Ihre eigene Nachricht komplett selbst verfassen.</string>
+    <string name="guide_sec3_title">💬 Nachrichten anpassen</string>
+    <string name="guide_sec3_body">Verfassen Sie Ihre eigene Nachricht in 3 Teilen: die Begrüßung (Eröffnungssatz), den Hauptteil (der je nach aktivem Modus variiert) und die Schlussformel. Für jeden Teil stehen mehrere fertige Sätze zur Auswahl, oder Sie schreiben Ihre eigenen.</string>
+    <string name="guide_sec4_title">🎙️ Spracheinstellungen</string>
+    <string name="guide_sec4_body">Wählen Sie aus 10 verfügbaren Stimmen diejenige, die auf Ihre unerwünschten Anrufe antworten soll, und passen Sie dann Geschwindigkeit und Tonhöhe an. Über die Schaltfläche „Stimme testen" können Sie eine Vorschau anhören, bevor Sie sich entscheiden.</string>
+    <string name="guide_sec5_title">📋 Verlauf</string>
+    <string name="guide_sec5_body">Hier finden Sie alle von TU DÉGAGES blockierten Anrufe, mit der Möglichkeit, einen Eintrag zu löschen oder zu melden, dass eine Nummer kein Spam ist, um sie wieder freizugeben.</string>
+    <string name="guide_sec6_title">📊 Statistik</string>
+    <string name="guide_sec6_body">Dieser Bildschirm fasst die Gesamtzahl blockierter Anrufe, die eingesparte Zeit und die heutige Aktivität zusammen, damit Sie die Wirksamkeit des Schutzes auf einen Blick erkennen.</string>
+    <string name="guide_sec7_title">🚫 Manuell blockierte Nummern</string>
+    <string name="guide_sec7_body">Fügen Sie eigene Sperrregeln hinzu, Nummer für Nummer oder nach Vorwahl, zusätzlich zu der von TU DÉGAGES bereits bekannten Spam-Datenbank.</string>
+    <string name="guide_sec8_title">⚙️ Einstellungen</string>
+    <string name="guide_sec8_body">Passen Sie die Sprache der App und die Hintergrundfarbe an, und greifen Sie von diesem Bildschirm aus auf alle erweiterten Optionen zu (Schutz, Benachrichtigungen, Community-Datenbank...).</string>
 
     <!-- ── Über die App ────────────────────────────────────────────────────── -->
     <string name="about_title">Über die App</string>

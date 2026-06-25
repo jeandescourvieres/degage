@@ -98,33 +98,33 @@ fun VoiceSettingsScreen(
             append(" ")
             append(stringResource(R.string.voice_intro_rest))
         }
-        Text(
-            text = voiceIntro,
-            color = TextSecondary,
-            fontSize = 13.sp,
-            lineHeight = 19.sp,
+        Column(
             modifier = Modifier
                 .padding(horizontal = 16.dp)
                 .fillMaxWidth()
                 .background(CardBg, RoundedCornerShape(14.dp))
                 .padding(12.dp)
-        )
-
-        Spacer(modifier = Modifier.height(8.dp))
-
-        Row(
-            modifier = Modifier.padding(horizontal = 16.dp, vertical = 4.dp),
-            verticalAlignment = Alignment.CenterVertically
         ) {
-            Icon(Icons.Default.CheckCircle, contentDescription = null, tint = NeonGreen, modifier = Modifier.size(20.dp))
-            Spacer(modifier = Modifier.width(8.dp))
             Text(
-                stringResource(R.string.voice_autosave_hint),
-                color = NeonGreen,
-                fontSize = 16.sp,
-                fontWeight = FontWeight.Bold
+                text = voiceIntro,
+                color = TextSecondary,
+                fontSize = 13.sp,
+                lineHeight = 19.sp
             )
+            Spacer(modifier = Modifier.height(10.dp))
+            Row(verticalAlignment = Alignment.CenterVertically) {
+                Icon(Icons.Default.CheckCircle, contentDescription = null, tint = NeonGreen, modifier = Modifier.size(20.dp))
+                Spacer(modifier = Modifier.width(8.dp))
+                Text(
+                    stringResource(R.string.voice_autosave_hint),
+                    color = NeonGreen,
+                    fontSize = 16.sp,
+                    fontWeight = FontWeight.Bold
+                )
+            }
         }
+
+        Spacer(modifier = Modifier.height(12.dp))
 
         LazyColumn(
             modifier = Modifier.padding(horizontal = 16.dp),

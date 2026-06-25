@@ -55,6 +55,8 @@ fun MessageBuilderScreen(
     onNavigateReadyMadeModes: () -> Unit = {},
     onListenPreview: (String) -> Unit = {},
     @Suppress("UNUSED_PARAMETER") onToggle: (ReplyEntity) -> Unit = {},
+    appLanguage: String = "",
+    onSetAppLanguage: (String) -> Unit = {},
 ) {
     val previewText = remember(salutations, bodies, endings) {
         val s = salutations.firstOrNull { it.isEnabled }?.text ?: ""
@@ -89,10 +91,16 @@ fun MessageBuilderScreen(
             )
         }
 
+        Box(modifier = Modifier.padding(horizontal = 16.dp)) {
+            LanguageFlagHeader(appLanguage = appLanguage, onSetAppLanguage = onSetAppLanguage)
+        }
+
+        Spacer(modifier = Modifier.height(12.dp))
+
         // ── Mode actif — badge proéminent ────────────────────────────────
         Row(
             modifier = Modifier
-                .padding(horizontal = 16.dp)
+                .align(Alignment.CenterHorizontally)
                 .background(NeonGreen.copy(alpha = 0.15f), RoundedCornerShape(12.dp))
                 .border(1.dp, NeonGreen.copy(alpha = 0.6f), RoundedCornerShape(12.dp))
                 .padding(horizontal = 16.dp, vertical = 10.dp),
@@ -110,6 +118,8 @@ fun MessageBuilderScreen(
                 )
             }
         }
+
+        Spacer(modifier = Modifier.height(12.dp))
 
         if (replyLanguage != "FR") {
             val langLabel = when (replyLanguage) {

@@ -103,10 +103,13 @@ fun ModesScreen(
             IconButton(onClick = onBack) {
                 Icon(Icons.Default.ArrowBack, contentDescription = stringResource(R.string.cd_back), tint = Color.White)
             }
-            Column(modifier = Modifier.weight(1f)) {
-                Text(stringResource(R.string.modes_title), fontSize = 20.sp, fontWeight = FontWeight.Bold, color = Color.White)
-                Text(stringResource(R.string.modes_subtitle), color = TextSecondary, fontSize = 13.sp)
-            }
+            Text(
+                stringResource(R.string.modes_title),
+                fontSize = 20.sp,
+                fontWeight = FontWeight.Bold,
+                color = Color.White,
+                modifier = Modifier.weight(1f)
+            )
         }
         Spacer(modifier = Modifier.height(12.dp))
 
@@ -342,20 +345,56 @@ fun ReadyMadeModesScreen(
             IconButton(onClick = onBack) {
                 Icon(Icons.Default.ArrowBack, contentDescription = stringResource(R.string.cd_back), tint = Color.White)
             }
-            Column(modifier = Modifier.weight(1f)) {
-                Text(stringResource(R.string.modes_ready_title), fontSize = 20.sp, fontWeight = FontWeight.Bold, color = Color.White)
-                Text(stringResource(R.string.modes_subtitle), color = TextSecondary, fontSize = 13.sp)
+            Box(
+                modifier = Modifier.weight(1f),
+                contentAlignment = Alignment.Center
+            ) {
+                Text(
+                    stringResource(R.string.modes_ready_title),
+                    fontSize = 18.sp,
+                    fontWeight = FontWeight.Bold,
+                    color = Color.Black,
+                    textAlign = TextAlign.Center,
+                    modifier = Modifier
+                        .background(AccentBlue, RoundedCornerShape(14.dp))
+                        .padding(horizontal = 16.dp, vertical = 6.dp)
+                )
             }
             IconButton(onClick = { showInfo = true }) {
                 Icon(Icons.Default.Info, contentDescription = stringResource(R.string.cd_help), tint = NeonGreen, modifier = Modifier.size(26.dp))
             }
         }
+        Spacer(modifier = Modifier.height(8.dp))
+
+        LanguageFlagHeader(appLanguage = appLanguage, onSetAppLanguage = onSetAppLanguage)
+
+        Spacer(modifier = Modifier.height(4.dp))
+
+        // ── Mode actif — badge compact, toujours visible ─────────────────
+        Row(
+            modifier = Modifier
+                .align(Alignment.CenterHorizontally)
+                .background(NeonGreen.copy(alpha = 0.15f), RoundedCornerShape(12.dp))
+                .border(1.dp, NeonGreen.copy(alpha = 0.6f), RoundedCornerShape(12.dp))
+                .padding(horizontal = 16.dp, vertical = 10.dp),
+            verticalAlignment = Alignment.CenterVertically,
+            horizontalArrangement = Arrangement.spacedBy(10.dp)
+        ) {
+            Text(activeMode.emoji, fontSize = 28.sp)
+            Column {
+                Text(stringResource(R.string.mb_active_mode_label), fontSize = 11.sp, color = NeonGreen, fontWeight = FontWeight.SemiBold)
+                Text(
+                    activeMode.localizedLabel(),
+                    fontSize = 20.sp,
+                    fontWeight = FontWeight.Black,
+                    color = Color.White
+                )
+            }
+        }
+
         Spacer(modifier = Modifier.height(12.dp))
 
         LazyColumn(verticalArrangement = Arrangement.spacedBy(12.dp)) {
-            item {
-                LanguageFlagHeader(appLanguage = appLanguage, onSetAppLanguage = onSetAppLanguage)
-            }
             item {
                 Column(
                     modifier = Modifier
@@ -463,16 +502,12 @@ fun ReadyMadeModesScreen(
 fun LanguageFlagHeader(appLanguage: String, onSetAppLanguage: (String) -> Unit) {
     Row(
         modifier = Modifier.fillMaxWidth().padding(bottom = 4.dp),
-        horizontalArrangement = Arrangement.End
+        horizontalArrangement = Arrangement.SpaceEvenly
     ) {
         LanguageFlagChip("🇩🇪", "D", selected = appLanguage == "DE", onClick = { onSetAppLanguage("DE") })
-        Spacer(modifier = Modifier.width(4.dp))
         LanguageFlagChip("🇪🇸", "ES", selected = appLanguage == "ES", onClick = { onSetAppLanguage("ES") })
-        Spacer(modifier = Modifier.width(4.dp))
         LanguageFlagChip("🇫🇷", "FR", selected = appLanguage == "FR", onClick = { onSetAppLanguage("FR") })
-        Spacer(modifier = Modifier.width(4.dp))
         LanguageFlagChip("🇬🇧", "GB", selected = appLanguage == "EN", onClick = { onSetAppLanguage("EN") })
-        Spacer(modifier = Modifier.width(4.dp))
         LanguageFlagChip("🇮🇹", "IT", selected = appLanguage == "IT", onClick = { onSetAppLanguage("IT") })
     }
 }

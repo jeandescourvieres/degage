@@ -77,6 +77,7 @@ fun SettingsScreen(
     onNavigateAbout: () -> Unit,
     onNavigateMessageBuilder: () -> Unit,
     onNavigateVoiceSettings: () -> Unit,
+    onNavigateReadyModes: () -> Unit = {},
     onNavigateManual: () -> Unit,
     onNavigateCustomBlocks: () -> Unit = {},
     onSyncSpamList: () -> Unit = {},
@@ -108,6 +109,7 @@ fun SettingsScreen(
     val labelStrictMode = stringResource(R.string.settings_strict_mode_label)
     val labelMonitorLive = stringResource(R.string.settings_monitor_live_label)
     val labelContribute = stringResource(R.string.settings_contribute_label)
+    val labelReadyModes = stringResource(R.string.settings_nav_ready_modes)
     val labelMessageBuilder = stringResource(R.string.settings_nav_message_builder)
     val labelVoice = stringResource(R.string.settings_nav_voice)
     val labelCustomBlocks = stringResource(R.string.settings_nav_custom_blocks)
@@ -154,6 +156,35 @@ fun SettingsScreen(
         }
 
         item {
+            Column(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .background(CardBg, RoundedCornerShape(14.dp))
+                    .padding(16.dp)
+            ) {
+                Text(
+                    text = stringResource(R.string.settings_intro),
+                    color = TextSecondary,
+                    fontSize = 13.sp,
+                    lineHeight = 19.sp
+                )
+                Spacer(modifier = Modifier.height(10.dp))
+                Row(
+                    modifier = Modifier
+                        .clickable { showInfo = true }
+                        .background(NeonGreen.copy(alpha = 0.15f), RoundedCornerShape(20.dp))
+                        .border(1.5.dp, NeonGreen, RoundedCornerShape(20.dp))
+                        .padding(vertical = 8.dp, horizontal = 14.dp),
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    Icon(Icons.Default.Info, contentDescription = null, tint = NeonGreen, modifier = Modifier.size(16.dp))
+                    Spacer(modifier = Modifier.width(6.dp))
+                    Text(stringResource(R.string.settings_learn_more), color = NeonGreen, fontSize = 13.sp, fontWeight = FontWeight.Bold)
+                }
+            }
+        }
+
+        item {
             OutlinedTextField(
                 value = searchQuery,
                 onValueChange = { searchQuery = it },
@@ -179,11 +210,12 @@ fun SettingsScreen(
                 Text(
                     stringResource(R.string.settings_quick_access_title),
                     color = Color.White,
-                    fontSize = 15.sp,
+                    fontSize = 18.sp,
                     fontWeight = FontWeight.SemiBold
                 )
-                Spacer(modifier = Modifier.height(4.dp))
+                Spacer(modifier = Modifier.height(10.dp))
                 Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
+                    QuickAccessRow(label = labelReadyModes, locked = false, onClick = onNavigateReadyModes, onUpgrade = onUpgrade)
                     QuickAccessRow(label = labelMessageBuilder, locked = !isPremium, onClick = onNavigateMessageBuilder, onUpgrade = onUpgrade)
                     QuickAccessRow(label = labelVoice, locked = !isPremium, onClick = onNavigateVoiceSettings, onUpgrade = onUpgrade)
                     QuickAccessRow(label = labelCustomBlocks, locked = !isPremium, onClick = onNavigateCustomBlocks, onUpgrade = onUpgrade)

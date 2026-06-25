@@ -14,6 +14,7 @@
     <string name="nav_modes">Replies</string>
     <string name="nav_statistics">Statistics</string>
     <string name="nav_history">History</string>
+    <string name="nav_guide">Guide</string>
     <string name="nav_settings">Settings</string>
 
     <!-- ── Modes (AppMode) ─────────────────────────────────────────────── -->
@@ -40,7 +41,6 @@
     <!-- ── Modes screen ─────────────────────────────────────────────────── -->
     <string name="modes_title">Choose your reply tone</string>
     <string name="modes_ready_title">Ready-to-use messages</string>
-    <string name="modes_subtitle">Stop hanging up. Let your AI answer.</string>
     <string name="modes_intro_text">Each tone below is a complete message, already written and ready to use: pick one, and it will be played as-is to the next telemarketer, with nothing to write.</string>
     <string name="modes_intro_custom_bold">If no tone suits you perfectly</string>
     <string name="modes_intro_custom_rest">, you can also build your own message from scratch — opening line, body and closing line.</string>
@@ -258,7 +258,7 @@
     <string name="welcome_hero_subtitle">TU DÉGAGES, your new AI,\nwill love answering them!</string>
     <string name="welcome_hero_headline">Stop unwanted calls. For good.</string>
     <string name="welcome_hero_desc_q">Why waste your time picking up just to hang up a few seconds later?</string>
-    <string name="welcome_hero_desc_body">Tu dégages, your personal AI, automatically answers unwanted calls on your behalf, with the message, voice and tone of your choice. Once the message has been delivered, it hangs up and immediately blocks the number to prevent any further calls. You\'ll save time and, above all, gain peace of mind...</string>
+    <string name="welcome_hero_desc_body">Tu dégages, your personal AI, automatically answers unwanted calls on your behalf, with the message, voice and tone of your choice.\nOnce the message has been delivered, it hangs up and immediately blocks the number to prevent any further calls.\nYou\'ll save time and, above all, gain peace of mind...</string>
     <string name="welcome_hero_msg_bold1">Choose your message</string>
     <string name="welcome_hero_msg_rest">and your style from 10 tones, from the most polite to the most scathing, troll\'s hold music included.</string>
     <string name="welcome_hero_msg_bold2">Or write it yourself!</string>
@@ -278,7 +278,7 @@
     <string name="welcome_section5_title">🇫🇷🇨🇭 Tailored for France and Switzerland. And other countries: 🇩🇪🇪🇸🇮🇹🇬🇧</string>
     <string name="welcome_section5_body">Choose your country in Settings: the unwanted-number database adapts automatically (ARCEP prefixes in France, premium-rate and OFCOM business numbers in Switzerland).</string>
     <string name="welcome_details_outro">To learn more, check out the full user manual and the app settings:</string>
-    <string name="welcome_settings_link">⚙️ Go to Settings</string>
+    <string name="welcome_settings_link">⚙️ Go to App Settings</string>
     <string name="welcome_faq_link">❓ FAQ - Frequently Asked Questions</string>
     <string name="welcome_dashboard_link">📊 My dashboard</string>
     <string name="dashboard_title">My dashboard</string>
@@ -288,6 +288,8 @@
 
     <!-- ── Settings screen ────────────────────────────────────────────── -->
     <string name="settings_title">Settings</string>
+    <string name="settings_intro">Customize all of TU DÉGAGES\'s settings here: call protection, voice choice, personalized messages and much more.</string>
+    <string name="settings_learn_more">Learn more</string>
     <string name="settings_search_placeholder">Search settings…</string>
     <string name="settings_info_title">Settings</string>
     <string name="settings_info_content">Configure how Tu dégages behaves:\n\n• Protection: enables/disables global call filtering.\n• Auto-answer: answers the call without making the phone ring (recommended).\n• Block after reply: adds the number to the blacklist after each interaction.\n• Notifications: alerts you for every blocked call.\n• Customize messages: create and manage your own messages.\n• Voice settings: change the voice, speed and pitch.</string>
@@ -312,6 +314,7 @@
     <string name="settings_help_premium">Premium unlocks German/Italian/English/Spanish voice messages, full customization of replies, voice selection, custom number blocking, and contributing to the community spam database.</string>
     <string name="settings_help_community_db">Turning on contribution (the "Community database" toggle above) anonymously reports every number Tu dégages blocks on your phone. In return, your app regularly downloads new numbers reported by other users to grow your own blocklist.</string>
     <string name="settings_quick_access_title">⚡ Quick access</string>
+    <string name="settings_nav_ready_modes">🎭 Ready-to-use messages</string>
     <string name="settings_nav_message_builder">💬 Customize messages</string>
     <string name="settings_nav_voice">🎙️ Voice settings</string>
     <string name="settings_nav_custom_blocks">🚫 Manually blocked numbers</string>
@@ -518,6 +521,26 @@
 
     <string name="manual_q33_title">🇪🇸 Why doesn\'t Tu dégages block everything automatically in Spain?</string>
     <string name="manual_q33_body">Spain has useful official sources — the AEPD (data protection authority), the Lista Robinson (Spain\'s equivalent of Bloctel/TPS) and the Ministerio para la Transformación Digital — but none of them publish a ready-to-use spam number list: the Lista Robinson lists consumers who opted out of marketing calls, not the numbers of the telemarketers themselves.\n\nSince 2025, Spanish regulation bans the use of regular mobile prefixes (6 and 7) for commercial campaigns and strengthens anti-spoofing rules — good news, but still not a downloadable number database.\n\nTu dégages uses Spain\'s narrow premium-rate ranges (803, 806, 807, 907), which are far more reliable, and relies mainly on the community database: report the numbers that call you so they get blocked for everyone else too.</string>
+
+    <!-- ── User guide ──────────────────────────────────────────────────── -->
+    <string name="guide_title">User guide</string>
+    <string name="guide_intro">A quick tour of TU DÉGAGES\'s screens, in the order you\'ll use them. For more specific questions, check the FAQ.</string>
+    <string name="guide_sec1_title">🏠 The home screen</string>
+    <string name="guide_sec1_body">This is the main screen. The central button enables or disables protection against unwanted calls. Below it, you\'ll find a summary of the active mode as well as shortcuts to the app\'s main screens.</string>
+    <string name="guide_sec2_title">🎭 Choosing your reply tone</string>
+    <string name="guide_sec2_body">From the Replies tab, choose how TU DÉGAGES should answer telemarketers: either by selecting a ready-made message from 10 different tones (Polite, Sarcastic, Troll...), or by writing your own message from scratch.</string>
+    <string name="guide_sec3_title">💬 Customize messages</string>
+    <string name="guide_sec3_body">Build your own message in 3 parts: the greeting (opening line), the body (which varies depending on the active mode) and the closing line. Each part offers several ready-to-use phrases, or you can write your own.</string>
+    <string name="guide_sec4_title">🎙️ Voice settings</string>
+    <string name="guide_sec4_body">Choose the voice that will answer your unwanted calls from 10 available voices, then adjust its speed and pitch. A "Test the voice" button lets you listen to a preview before confirming.</string>
+    <string name="guide_sec5_title">📋 History</string>
+    <string name="guide_sec5_body">Find all the calls blocked by TU DÉGAGES here, with the option to delete an entry or report that a number isn\'t spam to unblock it.</string>
+    <string name="guide_sec6_title">📊 Statistics</string>
+    <string name="guide_sec6_body">This screen summarizes the total number of blocked calls, the time saved and today\'s activity, so you can see the protection\'s effectiveness at a glance.</string>
+    <string name="guide_sec7_title">🚫 Manually blocked numbers</string>
+    <string name="guide_sec7_body">Add your own blocking rules, number by number or by prefix, in addition to the spam number database already known to TU DÉGAGES.</string>
+    <string name="guide_sec8_title">⚙️ Settings</string>
+    <string name="guide_sec8_body">Customize the app\'s language and background color, and access all advanced options (protection, notifications, community database...) from this screen.</string>
 
     <!-- ── About ────────────────────────────────────────────────────── -->
     <string name="about_title">About</string>

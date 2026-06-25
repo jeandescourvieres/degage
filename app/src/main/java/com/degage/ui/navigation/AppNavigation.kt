@@ -5,6 +5,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.BarChart
 import androidx.compose.material.icons.filled.History
 import androidx.compose.material.icons.filled.Home
+import androidx.compose.material.icons.filled.MenuBook
 import androidx.compose.material.icons.filled.Settings
 import androidx.compose.material.icons.filled.Tune
 import androidx.compose.ui.graphics.vector.ImageVector
@@ -29,6 +30,7 @@ sealed class Screen(val route: String) {
     data object MessageBuilder : Screen("message_builder")
     data object VoiceSettings : Screen("voice_settings")
     data object Manual : Screen("manual")
+    data object UserGuide : Screen("user_guide")
     data object WelcomeDetails : Screen("welcome_details")
     data object Dashboard : Screen("dashboard")
     data object Premium : Screen("premium")
@@ -45,5 +47,6 @@ val bottomNavItems = listOf(
     BottomNavItem(Screen.Modes, R.string.nav_modes, Icons.Default.Tune),
     BottomNavItem(Screen.Statistics, R.string.nav_statistics, Icons.Default.BarChart),
     BottomNavItem(Screen.History, R.string.nav_history, Icons.Default.History),
+    BottomNavItem(Screen.UserGuide, R.string.nav_guide, Icons.Default.MenuBook),
     BottomNavItem(Screen.Settings, R.string.nav_settings, Icons.Default.Settings),
 )

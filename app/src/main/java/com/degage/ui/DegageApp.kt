@@ -108,10 +108,12 @@ fun DegageApp(
                                     if (item.screen.route == Screen.Home.route && selected) {
                                         homeRefreshKey++
                                     } else {
+                                        // Pas de saveState/restoreState : un onglet doit toujours ramener a sa
+                                        // page racine, jamais a un sous-ecran ou l'on avait navigue depuis (ex.
+                                        // Personnaliser les messages depuis Parametres).
                                         navController.navigate(item.screen.route) {
-                                            popUpTo(navController.graph.findStartDestination().id) { saveState = true }
+                                            popUpTo(navController.graph.findStartDestination().id)
                                             launchSingleTop = true
-                                            restoreState = true
                                         }
                                     }
                                 },
@@ -280,6 +282,7 @@ fun DegageApp(
                         onNavigateAbout = { navController.navigate(Screen.About.route) },
                         onNavigateMessageBuilder = { navController.navigate(Screen.MessageBuilder.route) },
                         onNavigateVoiceSettings = { navController.navigate(Screen.VoiceSettings.route) },
+                        onNavigateReadyModes = { navController.navigate(Screen.ReadyMadeModes.route) },
                         onNavigateManual = { navController.navigate(Screen.Manual.route) },
                         onNavigateCustomBlocks = { navController.navigate(Screen.CustomBlocks.route) },
                         onSyncSpamList = viewModel::syncSpamList,
@@ -317,7 +320,9 @@ fun DegageApp(
                         onAdd = { text, part -> viewModel.addPartItem(text, part, activeMode) },
                         onDelete = viewModel::deleteReply,
                         onNavigateReadyMadeModes = { navController.navigate(Screen.ReadyMadeModes.route) },
-                        onListenPreview = { text -> viewModel.speakPreview(text) }
+                        onListenPreview = { text -> viewModel.speakPreview(text) },
+                        appLanguage = appLanguage,
+                        onSetAppLanguage = { viewModel.setAppLanguage(it) }
                     )
                 }
 
@@ -374,6 +379,10 @@ fun DegageApp(
 
                 composable(Screen.Manual.route) {
                     ManualScreen(onBack = { navController.popBackStack() })
+                }
+
+                composable(Screen.UserGuide.route) {
+                    UserGuideScreen(onBack = { navController.navigateUp() })
                 }
 
                 composable(Screen.About.route) {

@@ -14,6 +14,7 @@
     <string name="nav_modes">Réponses</string>
     <string name="nav_statistics">Statistiques</string>
     <string name="nav_history">Historique</string>
+    <string name="nav_guide">Guide</string>
     <string name="nav_settings">Paramètres</string>
 
     <!-- ── Modes (AppMode) ─────────────────────────────────────────────── -->
@@ -33,7 +34,6 @@
     <!-- ── Écran Modes ─────────────────────────────────────────────────── -->
     <string name="modes_title">Choix du ton de réponse</string>
     <string name="modes_ready_title">Les messages prêts à l\'emploi</string>
-    <string name="modes_subtitle">Ne raccrochez plus. Faites répondre votre IA.</string>
     <string name="modes_intro_text">Chaque ton ci-dessous correspond à un message complet, déjà rédigé et prêt à l\'emploi : sélectionnez-en un, il sera joué tel quel au prochain démarcheur, sans rien à écrire.</string>
     <string name="modes_intro_custom_bold">Si aucun ton ne vous convient parfaitement</string>
     <string name="modes_intro_custom_rest">, vous pouvez aussi composer votre propre message de A à Z — formule d\'accueil, corps du texte et formule de fin.</string>
@@ -189,7 +189,7 @@
     <string name="voice_generic_label">Voix n°%1$d</string>
     <string name="voice_preview_hint">Pour écouter</string>
     <string name="voice_current_label">Voix sélectionnée : %1$s</string>
-    <string name="voice_autosave_hint">Réglages enregistrés automatiquement</string>
+    <string name="voice_autosave_hint">Les réglages sont enregistrés automatiquement</string>
     <string name="voice_none_found">Aucune voix trouvée pour cette langue.\nVérifiez vos paramètres TTS Android.</string>
     <string name="voice_speed_slow">Lent</string>
     <string name="voice_speed_normal">Normal</string>
@@ -258,7 +258,7 @@
     <string name="welcome_hero_subtitle">TU DÉGAGES, votre nouvelle IA,\nva adorer leur répondre !</string>
     <string name="welcome_hero_headline">Stop aux appels indésirables. Définitivement.</string>
     <string name="welcome_hero_desc_q">Pourquoi perdre votre temps à décrocher pour raccrocher quelques secondes plus tard ?</string>
-    <string name="welcome_hero_desc_body">Tu dégages, votre IA personnelle, répond automatiquement à votre place aux appels non désirés avec le message, la voix et le ton de votre choix. Une fois le message délivré, elle raccroche et bloque immédiatement le numéro pour éviter tout nouvel appel. Vous allez gagner du temps et surtout de la tranquillité...</string>
+    <string name="welcome_hero_desc_body">Tu dégages, votre IA personnelle, répond automatiquement à votre place aux appels non désirés avec le message, la voix et le ton de votre choix.\nUne fois le message délivré, elle raccroche et bloque immédiatement le numéro pour éviter tout nouvel appel.\nVous allez gagner du temps et surtout de la tranquillité...</string>
     <string name="welcome_hero_msg_bold1">Choisissez votre message</string>
     <string name="welcome_hero_msg_rest">et votre style parmi 10 tons, du plus poli au plus cinglant, en passant par le troll et sa musique d\'attente.</string>
     <string name="welcome_hero_msg_bold2">Ou composez-le vous-même !</string>
@@ -278,7 +278,7 @@
     <string name="welcome_section5_title">🇫🇷🇨🇭 Adapté à la France et à la Suisse. Et à d\'autres pays : 🇩🇪🇪🇸🇮🇹🇬🇧</string>
     <string name="welcome_section5_body">Choisissez votre pays dans Paramètres : la base de numéros indésirables s\'adapte automatiquement (préfixes ARCEP en France, numéros à valeur ajoutée et numéros d\'entreprise OFCOM en Suisse).</string>
     <string name="welcome_details_outro">Pour en savoir plus, consultez ci-dessous les paramétres de l\'application, ou encore la FAQ - Foire aux questions.</string>
-    <string name="welcome_settings_link">⚙️ Voir les paramètres</string>
+    <string name="welcome_settings_link">⚙️ Voir les paramètres de l\'appli</string>
     <string name="welcome_faq_link">❓ FAQ - La foire aux questions</string>
     <string name="welcome_dashboard_link">📊 Mon tableau de bord</string>
     <string name="dashboard_title">Mon tableau de bord</string>
@@ -288,6 +288,8 @@
 
     <!-- ── Écran Paramètres ────────────────────────────────────────────── -->
     <string name="settings_title">Les paramètres</string>
+    <string name="settings_intro">Personnalisez ici tous les réglages de TU DÉGAGES : protection des appels, choix de la voix, messages personnalisés et bien plus encore.</string>
+    <string name="settings_learn_more">En savoir plus</string>
     <string name="settings_search_placeholder">Rechercher un réglage…</string>
     <string name="settings_info_title">Paramètres</string>
     <string name="settings_info_content">Configurez le comportement de DÉGAGE :\n\n• Protection : active/désactive le filtrage global des appels.\n• Décroche automatique : répond à l\'appel sans que le téléphone sonne (recommandé).\n• Bloquer après réponse : ajoute le numéro à la liste noire après chaque interaction.\n• Notifications : vous avertit à chaque appel bloqué.\n• Personnaliser les messages : créez et gérez vos propres messages.\n• Paramètres vocaux : changez la voix, la vitesse et la hauteur.</string>
@@ -312,6 +314,7 @@
     <string name="settings_help_premium">Premium débloque les langues de messages vocaux allemand/italien/anglais/espagnol, la personnalisation complète des réponses, le choix de la voix, le blocage de numéros personnalisés et la contribution à la base communautaire de spam.</string>
     <string name="settings_help_community_db">En activant la contribution (case « Base communautaire » plus haut), chaque numéro que Tu dégages bloque sur votre téléphone est signalé anonymement. En retour, votre app télécharge régulièrement les nouveaux numéros signalés par les autres utilisateurs pour enrichir votre propre base de blocage.</string>
     <string name="settings_quick_access_title">⚡ Accès rapides</string>
+    <string name="settings_nav_ready_modes">🎭 Les messages prêts à l\'emploi</string>
     <string name="settings_nav_message_builder">💬 Personnaliser les messages</string>
     <string name="settings_nav_voice">🎙️ Paramètres vocaux</string>
     <string name="settings_nav_custom_blocks">🚫 Numéros bloqués manuellement</string>
@@ -518,6 +521,26 @@
 
     <string name="manual_q33_title">🇪🇸 Pourquoi Tu dégages ne bloque pas tout automatiquement en Espagne ?</string>
     <string name="manual_q33_body">L\'Espagne dispose de sources officielles utiles — l\'AEPD (protection des données), la Lista Robinson (équivalent de Bloctel) et le Ministerio para la Transformación Digital — mais aucune ne publie une liste de numéros spam prête à intégrer : la Lista Robinson recense les numéros des consommateurs qui refusent le démarchage, pas les numéros des démarcheurs.\n\nDepuis 2025, la réglementation espagnole interdit l\'usage des préfixes mobiles classiques (6 et 7) pour les campagnes commerciales et renforce la lutte contre le spoofing — une bonne nouvelle, mais ça ne donne pas non plus de base de numéros téléchargeable.\n\nTu dégages utilise les tranches espagnoles à tarification additionnelle (803, 806, 807, 907), nettement plus fiables, et s\'appuie surtout sur la base communautaire : signalez les numéros qui vous démarchent pour qu\'ils soient bloqués pour tout le monde.</string>
+
+    <!-- ── Mode d'emploi ───────────────────────────────────────────────── -->
+    <string name="guide_title">Mode d\'emploi</string>
+    <string name="guide_intro">Un tour rapide des écrans de TU DÉGAGES, dans l\'ordre où vous les utiliserez. Pour les questions plus précises, consultez la FAQ.</string>
+    <string name="guide_sec1_title">🏠 L\'accueil</string>
+    <string name="guide_sec1_body">C\'est l\'écran principal. Le bouton central active ou désactive la protection contre les appels indésirables. En dessous, vous retrouvez un résumé du mode actif ainsi que des raccourcis vers les écrans principaux de l\'application.</string>
+    <string name="guide_sec2_title">🎭 Choix du ton de réponse</string>
+    <string name="guide_sec2_body">Depuis l\'onglet Réponses, choisissez comment TU DÉGAGES doit répondre aux démarcheurs : soit en sélectionnant un message tout fait parmi 10 tons différents (Poli, Sarcastique, Troll...), soit en composant votre propre message de A à Z.</string>
+    <string name="guide_sec3_title">💬 Personnaliser les messages</string>
+    <string name="guide_sec3_body">Composez votre propre message en 3 parties : la salutation (phrase d\'ouverture), le corps (qui varie selon le mode actif) et la formule de fin. Chaque partie propose plusieurs phrases prêtes à l\'emploi, ou vous pouvez écrire les vôtres.</string>
+    <string name="guide_sec4_title">🎙️ Paramètres vocaux</string>
+    <string name="guide_sec4_body">Choisissez parmi 10 voix disponibles celle qui répondra à vos appels indésirables, puis réglez sa vitesse et sa tonalité. Un bouton « Tester la voix » permet d\'écouter un aperçu avant de valider.</string>
+    <string name="guide_sec5_title">📋 Historique</string>
+    <string name="guide_sec5_body">Retrouvez ici tous les appels bloqués par TU DÉGAGES, avec la possibilité de supprimer une entrée ou de signaler qu\'un numéro n\'est pas un spam pour le débloquer.</string>
+    <string name="guide_sec6_title">📊 Statistiques</string>
+    <string name="guide_sec6_body">Cet écran résume le nombre total d\'appels bloqués, le temps économisé et l\'activité du jour, pour visualiser en un coup d\'œil l\'efficacité de la protection.</string>
+    <string name="guide_sec7_title">🚫 Numéros bloqués manuellement</string>
+    <string name="guide_sec7_body">Ajoutez vos propres règles de blocage, numéro par numéro ou par préfixe, en plus de la base de numéros spam déjà connue par TU DÉGAGES.</string>
+    <string name="guide_sec8_title">⚙️ Paramètres</string>
+    <string name="guide_sec8_body">Personnalisez la langue de l\'application, la couleur de fond, et accédez à toutes les options avancées (protection, notifications, base communautaire...) depuis cet écran.</string>
 
     <!-- ── À propos ────────────────────────────────────────────────────── -->
     <string name="about_title">À propos</string>

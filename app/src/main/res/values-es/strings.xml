@@ -14,6 +14,7 @@
     <string name="nav_modes">Respuestas</string>
     <string name="nav_statistics">Estadísticas</string>
     <string name="nav_history">Historial</string>
+    <string name="nav_guide">Guía</string>
     <string name="nav_settings">Ajustes</string>
 
     <!-- ── Modos (AppMode) ─────────────────────────────────────────────── -->
@@ -40,7 +41,6 @@
     <!-- ── Pantalla Modos ─────────────────────────────────────────────────── -->
     <string name="modes_title">Elige el tono de respuesta</string>
     <string name="modes_ready_title">Los mensajes listos para usar</string>
-    <string name="modes_subtitle">No cuelgues más. Deja que tu IA responda.</string>
     <string name="modes_intro_text">Cada tono de abajo corresponde a un mensaje completo, ya redactado y listo para usar: elige uno y se reproducirá tal cual al próximo teleoperador, sin que tengas que escribir nada.</string>
     <string name="modes_intro_custom_bold">Si ningún tono te convence del todo</string>
     <string name="modes_intro_custom_rest">, también puedes componer tu propio mensaje de la A a la Z — fórmula de saludo, cuerpo del texto y fórmula de cierre.</string>
@@ -258,7 +258,7 @@
     <string name="welcome_hero_subtitle">¡TU DÉGAGES, tu nueva IA,\nva a adorar responderles!</string>
     <string name="welcome_hero_headline">Stop a las llamadas indeseadas. Definitivamente.</string>
     <string name="welcome_hero_desc_q">¿Por qué perder el tiempo descolgando para colgar unos segundos después?</string>
-    <string name="welcome_hero_desc_body">Tu dégages, tu IA personal, responde automáticamente en tu lugar a las llamadas indeseadas con el mensaje, la voz y el tono que elijas. Una vez entregado el mensaje, cuelga y bloquea el número de inmediato para evitar cualquier nueva llamada. Ganarás tiempo y, sobre todo, tranquilidad...</string>
+    <string name="welcome_hero_desc_body">Tu dégages, tu IA personal, responde automáticamente en tu lugar a las llamadas indeseadas con el mensaje, la voz y el tono que elijas.\nUna vez entregado el mensaje, cuelga y bloquea el número de inmediato para evitar cualquier nueva llamada.\nGanarás tiempo y, sobre todo, tranquilidad...</string>
     <string name="welcome_hero_msg_bold1">Elige tu mensaje</string>
     <string name="welcome_hero_msg_rest">y tu estilo entre 10 tonos, del más educado al más mordaz, pasando por el troll con su música de espera.</string>
     <string name="welcome_hero_msg_bold2">¡O redáctalo tú mismo!</string>
@@ -278,7 +278,7 @@
     <string name="welcome_section5_title">🇫🇷🇨🇭 Adaptado a Francia y Suiza. Y a otros países: 🇩🇪🇪🇸🇮🇹🇬🇧</string>
     <string name="welcome_section5_body">Elige tu país en Ajustes: la base de números indeseados se adapta automáticamente (prefijos ARCEP en Francia, números de tarificación adicional y números empresariales OFCOM en Suiza).</string>
     <string name="welcome_details_outro">Para saber más, consulta a continuación los ajustes de la aplicación, o la FAQ - Preguntas frecuentes.</string>
-    <string name="welcome_settings_link">⚙️ Ver los ajustes</string>
+    <string name="welcome_settings_link">⚙️ Ver los ajustes de la app</string>
     <string name="welcome_faq_link">❓ FAQ - Preguntas frecuentes</string>
     <string name="welcome_dashboard_link">📊 Mi panel</string>
     <string name="dashboard_title">Mi panel</string>
@@ -288,6 +288,8 @@
 
     <!-- ── Pantalla Ajustes ────────────────────────────────────────────── -->
     <string name="settings_title">Los ajustes</string>
+    <string name="settings_intro">Personaliza aquí todos los ajustes de TU DÉGAGES: protección de llamadas, elección de voz, mensajes personalizados y mucho más.</string>
+    <string name="settings_learn_more">Saber más</string>
     <string name="settings_search_placeholder">Buscar un ajuste…</string>
     <string name="settings_info_title">Ajustes</string>
     <string name="settings_info_content">Configura el comportamiento de DÉGAGE:\n\n• Protección: activa/desactiva el filtrado global de llamadas.\n• Descolgar automáticamente: responde a la llamada sin que el teléfono suene (recomendado).\n• Bloquear tras responder: añade el número a la lista negra después de cada interacción.\n• Notificaciones: te avisa en cada llamada bloqueada.\n• Personalizar los mensajes: crea y gestiona tus propios mensajes.\n• Ajustes de voz: cambia la voz, la velocidad y el tono.</string>
@@ -312,6 +314,7 @@
     <string name="settings_help_premium">Premium desbloquea los idiomas de mensajes de voz alemán/italiano/inglés/español, la personalización completa de las respuestas, la elección de la voz, el bloqueo de números personalizados y la contribución a la base de datos comunitaria de spam.</string>
     <string name="settings_help_community_db">Al activar la contribución (casilla «Base de datos comunitaria» más arriba), cada número que Tu dégages bloquea en tu teléfono se reporta de forma anónima. A cambio, tu app descarga periódicamente los nuevos números reportados por otros usuarios para enriquecer tu propia base de bloqueo.</string>
     <string name="settings_quick_access_title">⚡ Accesos rápidos</string>
+    <string name="settings_nav_ready_modes">🎭 Los mensajes listos para usar</string>
     <string name="settings_nav_message_builder">💬 Personalizar los mensajes</string>
     <string name="settings_nav_voice">🎙️ Ajustes de voz</string>
     <string name="settings_nav_custom_blocks">🚫 Números bloqueados manualmente</string>
@@ -518,6 +521,26 @@
 
     <string name="manual_q33_title">🇪🇸 ¿Por qué Tu dégages no bloquea todo automáticamente en España?</string>
     <string name="manual_q33_body">España dispone de fuentes oficiales útiles — la AEPD (protección de datos), la Lista Robinson (equivalente a Bloctel) y el Ministerio para la Transformación Digital — pero ninguna publica una lista de números de spam lista para integrar: la Lista Robinson recoge los números de los consumidores que rechazan el telemarketing, no los números de los propios teleoperadores.\n\nDesde 2025, la normativa española prohíbe el uso de los prefijos móviles habituales (6 y 7) para campañas comerciales y refuerza la lucha contra el spoofing — una buena noticia, pero que tampoco ofrece una base de números descargable.\n\nTu dégages utiliza los rangos españoles de tarificación adicional (803, 806, 807, 907), mucho más fiables, y se apoya sobre todo en la base de datos comunitaria: reporta los números que te llaman para que se bloqueen para todo el mundo.</string>
+
+    <!-- ── Guía de uso ─────────────────────────────────────────────────── -->
+    <string name="guide_title">Guía de uso</string>
+    <string name="guide_intro">Un recorrido rápido por las pantallas de TU DÉGAGES, en el orden en que las usarás. Para preguntas más concretas, consulta las preguntas frecuentes.</string>
+    <string name="guide_sec1_title">🏠 El inicio</string>
+    <string name="guide_sec1_body">Es la pantalla principal. El botón central activa o desactiva la protección contra las llamadas indeseadas. Debajo encontrarás un resumen del modo activo, además de accesos directos a las pantallas principales de la aplicación.</string>
+    <string name="guide_sec2_title">🎭 Elegir el tono de respuesta</string>
+    <string name="guide_sec2_body">Desde la pestaña Respuestas, elige cómo debe responder TU DÉGAGES a los teleoperadores: ya sea seleccionando un mensaje ya hecho entre 10 tonos diferentes (Educado, Sarcástico, Troll...), o componiendo tu propio mensaje de la A a la Z.</string>
+    <string name="guide_sec3_title">💬 Personalizar los mensajes</string>
+    <string name="guide_sec3_body">Compón tu propio mensaje en 3 partes: el saludo (frase de apertura), el cuerpo (que varía según el modo activo) y la fórmula de cierre. Cada parte ofrece varias frases listas para usar, o puedes escribir las tuyas.</string>
+    <string name="guide_sec4_title">🎙️ Ajustes de voz</string>
+    <string name="guide_sec4_body">Elige entre las 10 voces disponibles la que responderá a tus llamadas indeseadas, y luego ajusta su velocidad y su tono. Un botón «Probar la voz» permite escuchar una vista previa antes de confirmar.</string>
+    <string name="guide_sec5_title">📋 Historial</string>
+    <string name="guide_sec5_body">Aquí encontrarás todas las llamadas bloqueadas por TU DÉGAGES, con la posibilidad de eliminar una entrada o indicar que un número no es spam para desbloquearlo.</string>
+    <string name="guide_sec6_title">📊 Estadísticas</string>
+    <string name="guide_sec6_body">Esta pantalla resume el número total de llamadas bloqueadas, el tiempo ahorrado y la actividad del día, para visualizar de un vistazo la eficacia de la protección.</string>
+    <string name="guide_sec7_title">🚫 Números bloqueados manualmente</string>
+    <string name="guide_sec7_body">Añade tus propias reglas de bloqueo, número por número o por prefijo, además de la base de números spam que TU DÉGAGES ya conoce.</string>
+    <string name="guide_sec8_title">⚙️ Ajustes</string>
+    <string name="guide_sec8_body">Personaliza el idioma de la aplicación y el color de fondo, y accede a todas las opciones avanzadas (protección, notificaciones, base comunitaria...) desde esta pantalla.</string>
 
     <!-- ── Acerca de ────────────────────────────────────────────────────── -->
     <string name="about_title">Acerca de</string>

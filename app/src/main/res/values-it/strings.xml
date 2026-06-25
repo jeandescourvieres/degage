@@ -14,6 +14,7 @@
     <string name="nav_modes">Risposte</string>
     <string name="nav_statistics">Statistiche</string>
     <string name="nav_history">Cronologia</string>
+    <string name="nav_guide">Guida</string>
     <string name="nav_settings">Impostazioni</string>
 
     <!-- ── Modalità (AppMode) ─────────────────────────────────────────────── -->
@@ -40,7 +41,6 @@
     <!-- ── Schermata Modalità ─────────────────────────────────────────────── -->
     <string name="modes_title">Scegli il tono di risposta</string>
     <string name="modes_ready_title">I messaggi pronti all\'uso</string>
-    <string name="modes_subtitle">Non riagganciare più. Lascia che la tua IA risponda.</string>
     <string name="modes_intro_text">Ogni tono qui sotto corrisponde a un messaggio completo, già scritto e pronto all\'uso: selezionane uno, verrà riprodotto tale e quale al prossimo operatore, senza nulla da scrivere.</string>
     <string name="modes_intro_custom_bold">Se nessun tono ti convince del tutto</string>
     <string name="modes_intro_custom_rest">, puoi anche comporre il tuo messaggio da zero — formula di apertura, corpo del testo e formula di chiusura.</string>
@@ -258,7 +258,7 @@
     <string name="welcome_hero_subtitle">TU DÉGAGES, la tua nuova IA,\nadorerà rispondere loro!</string>
     <string name="welcome_hero_headline">Stop alle chiamate indesiderate. Definitivamente.</string>
     <string name="welcome_hero_desc_q">Perché perdere tempo a rispondere solo per riagganciare qualche secondo dopo?</string>
-    <string name="welcome_hero_desc_body">Tu dégages, la tua IA personale, risponde automaticamente al tuo posto alle chiamate indesiderate con il messaggio, la voce e il tono che preferisci. Una volta consegnato il messaggio, riaggancia e blocca immediatamente il numero per evitare nuove chiamate. Guadagnerai tempo e, soprattutto, tranquillità...</string>
+    <string name="welcome_hero_desc_body">Tu dégages, la tua IA personale, risponde automaticamente al tuo posto alle chiamate indesiderate con il messaggio, la voce e il tono che preferisci.\nUna volta consegnato il messaggio, riaggancia e blocca immediatamente il numero per evitare nuove chiamate.\nGuadagnerai tempo e, soprattutto, tranquillità...</string>
     <string name="welcome_hero_msg_bold1">Scegli il tuo messaggio</string>
     <string name="welcome_hero_msg_rest">e il tuo stile tra 10 toni, dal più educato al più pungente, passando per il troll con la sua musica d\'attesa.</string>
     <string name="welcome_hero_msg_bold2">Oppure componilo tu stesso!</string>
@@ -278,7 +278,7 @@
     <string name="welcome_section5_title">🇫🇷🇨🇭 Adatta alla Francia e alla Svizzera. E ad altri paesi: 🇩🇪🇪🇸🇮🇹🇬🇧</string>
     <string name="welcome_section5_body">Scegli il tuo paese in Impostazioni: il database dei numeri indesiderati si adatta automaticamente (prefissi ARCEP in Francia, numeri a valore aggiunto e numeri aziendali OFCOM in Svizzera).</string>
     <string name="welcome_details_outro">Per saperne di più, consulta il manuale completo e le impostazioni dell\'app:</string>
-    <string name="welcome_settings_link">⚙️ Accesso alle impostazioni</string>
+    <string name="welcome_settings_link">⚙️ Accesso alle impostazioni dell\'app</string>
     <string name="welcome_faq_link">❓ FAQ - Domande frequenti</string>
     <string name="welcome_dashboard_link">📊 La mia dashboard</string>
     <string name="dashboard_title">La mia dashboard</string>
@@ -288,6 +288,8 @@
 
     <!-- ── Schermata Impostazioni ────────────────────────────────────────────── -->
     <string name="settings_title">Impostazioni</string>
+    <string name="settings_intro">Personalizza qui tutte le impostazioni di TU DÉGAGES: protezione dalle chiamate, scelta della voce, messaggi personalizzati e molto altro.</string>
+    <string name="settings_learn_more">Scopri di più</string>
     <string name="settings_search_placeholder">Cerca un\'impostazione…</string>
     <string name="settings_info_title">Impostazioni</string>
     <string name="settings_info_content">Configura il comportamento di Tu dégages:\n\n• Protezione: attiva/disattiva il filtraggio globale delle chiamate.\n• Risposta automatica: risponde alla chiamata senza far squillare il telefono (consigliato).\n• Blocca dopo la risposta: aggiunge il numero alla lista nera dopo ogni interazione.\n• Notifiche: ti avvisa a ogni chiamata bloccata.\n• Personalizza i messaggi: crea e gestisci i tuoi messaggi.\n• Impostazioni vocali: cambia voce, velocità e tono.</string>
@@ -312,6 +314,7 @@
     <string name="settings_help_premium">Premium sblocca le lingue dei messaggi vocali tedesco/italiano/inglese/spagnolo, la personalizzazione completa delle risposte, la scelta della voce, il blocco di numeri personalizzati e il contributo al database spam della community.</string>
     <string name="settings_help_community_db">Attivando il contributo (casella "Database della community" sopra), ogni numero bloccato da Tu dégages sul tuo telefono viene segnalato in modo anonimo. In cambio, la tua app scarica regolarmente i nuovi numeri segnalati dagli altri utenti per arricchire il tuo database di blocco.</string>
     <string name="settings_quick_access_title">⚡ Accesso rapido</string>
+    <string name="settings_nav_ready_modes">🎭 I messaggi pronti all\'uso</string>
     <string name="settings_nav_message_builder">💬 Personalizza i messaggi</string>
     <string name="settings_nav_voice">🎙️ Impostazioni vocali</string>
     <string name="settings_nav_custom_blocks">🚫 Numeri bloccati manualmente</string>
@@ -519,6 +522,26 @@
 
     <string name="manual_q33_title">🇪🇸 Perché Tu dégages non blocca tutto automaticamente in Spagna?</string>
     <string name="manual_q33_body">La Spagna ha fonti ufficiali utili — l\'AEPD (autorità per la protezione dei dati), la Lista Robinson (l\'equivalente spagnolo di Bloctel/TPS) e il Ministerio para la Transformación Digital — ma nessuna pubblica un elenco di numeri spam pronto da integrare: la Lista Robinson elenca i consumatori che hanno rifiutato le chiamate di marketing, non i numeri di chi chiama.\n\nDal 2025 la normativa spagnola vieta l\'uso dei prefissi mobili classici (6 e 7) per le campagne commerciali e rafforza la lotta allo spoofing — buone notizie, ma comunque non un database scaricabile.\n\nTu dégages usa le fasce spagnole a tariffazione aggiuntiva (803, 806, 807, 907), molto più affidabili, e si basa soprattutto sul database della community: segnala i numeri che ti chiamano per farli bloccare anche per tutti gli altri.</string>
+
+    <!-- ── Guida d'uso ─────────────────────────────────────────────────── -->
+    <string name="guide_title">Guida d\'uso</string>
+    <string name="guide_intro">Un rapido giro tra le schermate di TU DÉGAGES, nell\'ordine in cui le utilizzerai. Per domande più specifiche, consulta le FAQ.</string>
+    <string name="guide_sec1_title">🏠 La home</string>
+    <string name="guide_sec1_body">È la schermata principale. Il pulsante centrale attiva o disattiva la protezione dalle chiamate indesiderate. Sotto trovi un riepilogo della modalità attiva e scorciatoie verso le schermate principali dell\'app.</string>
+    <string name="guide_sec2_title">🎭 Scegliere il tono di risposta</string>
+    <string name="guide_sec2_body">Dalla scheda Risposte, scegli come TU DÉGAGES deve rispondere ai call center: selezionando un messaggio già pronto tra 10 toni diversi (Cortese, Sarcastico, Troll...), oppure componendo il tuo messaggio da zero.</string>
+    <string name="guide_sec3_title">💬 Personalizza i messaggi</string>
+    <string name="guide_sec3_body">Componi il tuo messaggio in 3 parti: il saluto (frase di apertura), il corpo (che varia in base alla modalità attiva) e la formula di chiusura. Ogni parte propone diverse frasi pronte all\'uso, oppure puoi scrivere le tue.</string>
+    <string name="guide_sec4_title">🎙️ Impostazioni vocali</string>
+    <string name="guide_sec4_body">Scegli tra le 10 voci disponibili quella che risponderà alle tue chiamate indesiderate, poi regola la sua velocità e il suo tono. Un pulsante «Testa la voce» permette di ascoltare un\'anteprima prima di confermare.</string>
+    <string name="guide_sec5_title">📋 Cronologia</string>
+    <string name="guide_sec5_body">Qui trovi tutte le chiamate bloccate da TU DÉGAGES, con la possibilità di eliminare una voce o segnalare che un numero non è spam per sbloccarlo.</string>
+    <string name="guide_sec6_title">📊 Statistiche</string>
+    <string name="guide_sec6_body">Questa schermata riassume il numero totale di chiamate bloccate, il tempo risparmiato e l\'attività del giorno, per visualizzare a colpo d\'occhio l\'efficacia della protezione.</string>
+    <string name="guide_sec7_title">🚫 Numeri bloccati manualmente</string>
+    <string name="guide_sec7_body">Aggiungi le tue regole di blocco, numero per numero o per prefisso, in aggiunta al database di numeri spam già conosciuto da TU DÉGAGES.</string>
+    <string name="guide_sec8_title">⚙️ Impostazioni</string>
+    <string name="guide_sec8_body">Personalizza la lingua dell\'app e il colore di sfondo, e accedi a tutte le opzioni avanzate (protezione, notifiche, database comunitario...) da questa schermata.</string>
 
     <!-- ── Informazioni ────────────────────────────────────────────────────── -->
     <string name="about_title">Informazioni</string>
