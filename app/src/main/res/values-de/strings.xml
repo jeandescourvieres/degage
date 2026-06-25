@@ -59,6 +59,7 @@
     <string name="modes_info_content">Die Modi bestimmen den Ton der Antwort an Werbeanrufer, bevor aufgelegt wird.\n\n🤝 Höflich — höfliche, aber bestimmte Antwort. Ideal, um diskret zu bleiben.\n\n📋 Administrativ — kühler, offizieller Ton, wie eine Rechtsabteilung.\n\n😏 Sarkastisch — humorvolle Antwort für Anrufer, die es verdienen.\n\n🎭 Troll — lässt den Spammer 10 Sekunden warten, bevor aufgelegt wird. Lässt ihn Zeit verlieren.\n\nTippen Sie auf einen Modus, um ihn auszuwählen, dann auf \"Vorschau anhören\", um ihn zu hören.</string>
     <string name="modes_preview_button">Vorschau anhören</string>
     <string name="modes_card_tap_hint">👆 Tippen, um die vollständige Nachricht zu lesen</string>
+    <string name="modes_activated_prefix">✅ Modus aktiviert:</string>
     <string name="mode_poli_desc">Höflich, aber bestimmt. Die perfekte Antwort, um elegant und dennoch klar zu bleiben.</string>
     <string name="mode_poli_example">"Guten Tag, vielen Dank für Ihre Nachricht und Ihr Interesse an mir…"</string>
     <string name="mode_pro_desc">Formell und gepflegt. Die Antwort, die wie ein echter Unternehmens-Kundendienst wirkt.</string>

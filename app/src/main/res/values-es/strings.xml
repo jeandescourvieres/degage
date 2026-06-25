@@ -59,6 +59,7 @@
     <string name="modes_info_content">Los modos definen el tono de la respuesta dada a los spammers antes de colgar.\n\n🤝 Educado — respuesta cortés y firme. Ideal para mantener la discreción.\n\n📋 Administrativo — tono frío y oficial, como un departamento jurídico.\n\n😏 Sarcástico — respuesta humorística para los teleoperadores que lo merecen.\n\n🎭 Troll — hace esperar al spammer 10 segundos antes de colgar. Le hace perder tiempo.\n\nToca un modo para seleccionarlo, luego toca \"Escuchar un ejemplo\" para oírlo.</string>
     <string name="modes_preview_button">Escuchar un ejemplo</string>
     <string name="modes_card_tap_hint">👆 Toca para leer el mensaje completo</string>
+    <string name="modes_activated_prefix">✅ Modo activado:</string>
     <string name="mode_poli_desc">Cortés pero firme. La respuesta perfecta para mantener la elegancia siendo claro.</string>
     <string name="mode_poli_example">"Hola, gracias por su mensaje y por el interés que me ha mostrado…"</string>
     <string name="mode_pro_desc">Formal y cuidado. La respuesta que da el pego, como un verdadero servicio de atención al cliente.</string>

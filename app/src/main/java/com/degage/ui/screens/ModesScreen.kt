@@ -326,7 +326,7 @@ fun ReadyMadeModesScreen(
         var showFullMessageFor by remember { mutableStateOf<AppMode?>(null) }
         showFullMessageFor?.let { mode ->
             InfoDialog(
-                title = "${mode.emoji} ${mode.localizedLabel()}",
+                title = "${stringResource(R.string.modes_activated_prefix)} ${mode.emoji} ${mode.localizedLabel()}",
                 content = modeFullTexts[mode.name]?.takeIf { it.isNotBlank() } ?: mode.localizedExample(),
                 onDismiss = { showFullMessageFor = null }
             )
@@ -372,7 +372,7 @@ fun ReadyMadeModesScreen(
                                 .background(AccentOrange, RoundedCornerShape(8.dp))
                                 .padding(horizontal = 10.dp, vertical = 4.dp)
                         )
-                        Spacer(modifier = Modifier.height(18.dp))
+                        Spacer(modifier = Modifier.height(8.dp))
                         Text(
                             text = stringResource(R.string.modes_why_desc),
                             color = TextSecondary,

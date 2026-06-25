@@ -52,6 +52,7 @@
     <string name="modes_info_content">Les modes définissent le ton de la réponse donnée aux spammeurs avant de raccrocher.\n\n🤝 Poli — réponse courtoise et ferme. Idéal pour rester discret.\n\n📋 Administratif — ton froid et officiel, comme un service juridique.\n\n😏 Sarcastique — réponse humoristique pour les démarcheurs qui le méritent.\n\n🎭 Troll — fait patienter le spammeur 10 secondes avant de raccrocher. Leur fait perdre du temps.\n\nTouchez un mode pour le sélectionner, puis tapez \"Écouter un aperçu\" pour l\'entendre.</string>
     <string name="modes_preview_button">Écouter un aperçu</string>
     <string name="modes_card_tap_hint">👆 Touchez pour lire le message complet</string>
+    <string name="modes_activated_prefix">✅ Mode activé :</string>
     <string name="mode_poli_desc">Courtois mais ferme. La réponse parfaite pour rester élégant tout en étant clair.</string>
     <string name="mode_poli_example">"Bonjour, merci pour votre message et pour l\'intérêt que vous me portez…"</string>
     <string name="mode_pro">Administratif</string>
